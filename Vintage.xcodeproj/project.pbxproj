@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		58F696FC18AD799B006F2089 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58F696FB18AD799B006F2089 /* CoreMedia.framework */; };
+		58F696FE18AD79A7006F2089 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58F696FD18AD79A7006F2089 /* CoreVideo.framework */; };
+		58F6970018AD79AF006F2089 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58F696FF18AD79AF006F2089 /* OpenGLES.framework */; };
+		58F6970218AD79B9006F2089 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58F6970118AD79B9006F2089 /* AVFoundation.framework */; };
+		58F6970418AD79C3006F2089 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58F6970318AD79C3006F2089 /* QuartzCore.framework */; };
+		58F6970518AD79CB006F2089 /* libGPUImage.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 58F696F718AD793B006F2089 /* libGPUImage.a */; };
 		58F767B218AD6F4800015FBA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58F767B118AD6F4800015FBA /* Foundation.framework */; };
 		58F767B418AD6F4800015FBA /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58F767B318AD6F4800015FBA /* CoreGraphics.framework */; };
 		58F767B618AD6F4800015FBA /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58F767B518AD6F4800015FBA /* UIKit.framework */; };
@@ -24,6 +30,20 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		58F696F618AD793B006F2089 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 58F696F018AD793B006F2089 /* GPUImage.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = BCF1A33414DDB1EC00852800;
+			remoteInfo = GPUImage;
+		};
+		58F696F818AD793B006F2089 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 58F696F018AD793B006F2089 /* GPUImage.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = BCF1A34414DDB1EC00852800;
+			remoteInfo = GPUImageTests;
+		};
 		58F767D418AD6F4900015FBA /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 58F767A618AD6F4800015FBA /* Project object */;
@@ -34,6 +54,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		58F696F018AD793B006F2089 /* GPUImage.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = GPUImage.xcodeproj; path = GPUImage/framework/GPUImage.xcodeproj; sourceTree = "<group>"; };
+		58F696FB18AD799B006F2089 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
+		58F696FD18AD79A7006F2089 /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
+		58F696FF18AD79AF006F2089 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
+		58F6970118AD79B9006F2089 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		58F6970318AD79C3006F2089 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		58F767AE18AD6F4800015FBA /* Vintage.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Vintage.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		58F767B118AD6F4800015FBA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		58F767B318AD6F4800015FBA /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -60,6 +86,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				58F6970518AD79CB006F2089 /* libGPUImage.a in Frameworks */,
+				58F6970418AD79C3006F2089 /* QuartzCore.framework in Frameworks */,
+				58F6970218AD79B9006F2089 /* AVFoundation.framework in Frameworks */,
+				58F6970018AD79AF006F2089 /* OpenGLES.framework in Frameworks */,
+				58F696FE18AD79A7006F2089 /* CoreVideo.framework in Frameworks */,
+				58F696FC18AD799B006F2089 /* CoreMedia.framework in Frameworks */,
 				58F767B418AD6F4800015FBA /* CoreGraphics.framework in Frameworks */,
 				58F767B618AD6F4800015FBA /* UIKit.framework in Frameworks */,
 				58F767B218AD6F4800015FBA /* Foundation.framework in Frameworks */,
@@ -79,6 +111,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		58F696F118AD793B006F2089 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				58F696F718AD793B006F2089 /* libGPUImage.a */,
+				58F696F918AD793B006F2089 /* GPUImageTests.octest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		58F767A518AD6F4800015FBA = {
 			isa = PBXGroup;
 			children = (
@@ -101,6 +142,12 @@
 		58F767B018AD6F4800015FBA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				58F6970318AD79C3006F2089 /* QuartzCore.framework */,
+				58F6970118AD79B9006F2089 /* AVFoundation.framework */,
+				58F696FF18AD79AF006F2089 /* OpenGLES.framework */,
+				58F696FD18AD79A7006F2089 /* CoreVideo.framework */,
+				58F696FB18AD799B006F2089 /* CoreMedia.framework */,
+				58F696F018AD793B006F2089 /* GPUImage.xcodeproj */,
 				58F767B118AD6F4800015FBA /* Foundation.framework */,
 				58F767B318AD6F4800015FBA /* CoreGraphics.framework */,
 				58F767B518AD6F4800015FBA /* UIKit.framework */,
@@ -215,6 +262,12 @@
 			mainGroup = 58F767A518AD6F4800015FBA;
 			productRefGroup = 58F767AF18AD6F4800015FBA /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 58F696F118AD793B006F2089 /* Products */;
+					ProjectRef = 58F696F018AD793B006F2089 /* GPUImage.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				58F767AD18AD6F4800015FBA /* Vintage */,
@@ -222,6 +275,23 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		58F696F718AD793B006F2089 /* libGPUImage.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libGPUImage.a;
+			remoteRef = 58F696F618AD793B006F2089 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		58F696F918AD793B006F2089 /* GPUImageTests.octest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = GPUImageTests.octest;
+			remoteRef = 58F696F818AD793B006F2089 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		58F767AC18AD6F4800015FBA /* Resources */ = {
@@ -382,7 +452,9 @@
 				GCC_PREFIX_HEADER = "Vintage/Vintage-Prefix.pch";
 				INFOPLIST_FILE = "Vintage/Vintage-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				USER_HEADER_SEARCH_PATHS = "./GPUImage/framework/**";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -396,7 +468,9 @@
 				GCC_PREFIX_HEADER = "Vintage/Vintage-Prefix.pch";
 				INFOPLIST_FILE = "Vintage/Vintage-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				USER_HEADER_SEARCH_PATHS = "./GPUImage/framework/**";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -462,6 +536,7 @@
 				58F767E218AD6F4900015FBA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		58F767E318AD6F4900015FBA /* Build configuration list for PBXNativeTarget "VintageTests" */ = {
 			isa = XCConfigurationList;
@@ -470,6 +545,7 @@
 				58F767E518AD6F4900015FBA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
