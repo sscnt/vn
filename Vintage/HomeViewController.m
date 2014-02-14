@@ -6,13 +6,13 @@
 //  Copyright (c) 2014年 SSC. All rights reserved.
 //
 
-#import "ViewController.h"
+#import "HomeViewController.h"
 
-@interface ViewController ()
+@interface HomeViewController ()
 
 @end
 
-@implementation ViewController
+@implementation HomeViewController
 
 - (void)viewDidLoad
 {
