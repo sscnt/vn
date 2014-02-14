@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "GPUImage.h"
+#import "UIBlurredButton.h"
 
 @interface HomeViewController : UIViewController
 

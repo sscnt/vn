@@ -28,6 +28,11 @@
     }
     imageViewBg = [[UIImageView alloc] initWithImage:imageBg];
     [self.view addSubview:imageViewBg];
+    
+    //// Action Button
+    UIBlurredButton* b = [[UIBlurredButton alloc] initWithFrame:CGRectMake(30.0f, 500.0f, [UIScreen screenSize].width, 44.0)];
+    [self.view addSubview:b];
+    [b generateBackgroundImage];
 }
 
 - (void)didReceiveMemoryWarning

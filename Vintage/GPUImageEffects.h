@@ -15,6 +15,7 @@
 #import "GPUImageHueSaturationFilter.h"
 #import "GPUImageGradientMapFilter.h"
 #import "GPUImagePhotoFilter.h"
+#import "GPUPhotoFilter.h"
 #import "GPUImageVividLightBlendFilter.h"
 #import "GPUImageLinearDodgeBlendFilter.h"
 

@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "GPUImage.h"
 
 @interface UIBlurredButton : UIButton
+
+- (void)generateBackgroundImage;
 
 @end
