@@ -8,9 +8,11 @@
 
 #import <UIKit/UIKit.h>
 #import "GPUImage.h"
+#import "GPUImageSolidColorGenerator.h"
+#import "GPUImageEffects.h"
 
 @interface UIBlurredButton : UIButton
 
-- (void)generateBackgroundImage;
+- (void)generateBackgroundImageByCaputuredImage:(UIImage *)inputImage;
 
 @end

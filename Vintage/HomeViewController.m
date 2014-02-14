@@ -30,9 +30,31 @@
     [self.view addSubview:imageViewBg];
     
     //// Action Button
-    UIBlurredButton* b = [[UIBlurredButton alloc] initWithFrame:CGRectMake(30.0f, 500.0f, [UIScreen screenSize].width, 44.0)];
-    [self.view addSubview:b];
-    [b generateBackgroundImage];
+    CGFloat top = 414.0f;
+    buttonCamera = [[UIBlurredButton alloc] initWithFrame:CGRectMake(15.0f, top, [UIScreen screenSize].width - 30.0f, 50.0)];
+    [self.view addSubview:buttonCamera];
+    
+    top = buttonCamera.bottom + 15.0f;
+    buttonPhotos = [[UIBlurredButton alloc] initWithFrame:CGRectMake(15.0f, top, [UIScreen screenSize].width - 30.0f, 50.0)];
+    [self.view addSubview:buttonPhotos];
+    
+    //// Gaussian Blur
+    [self generateBlurredImage];
+    
+}
+
+- (void)generateBlurredImage
+{
+    UIImage* imageCaptured;
+    CGRect rect = buttonPhotos.frame;
+    
+    //// Camera
+    imageCaptured = [self.view imageByRenderingViewWithRect:buttonCamera.frame];
+    [buttonCamera generateBackgroundImageByCaputuredImage:imageCaptured];
+    
+    //// Photos
+    imageCaptured = [self.view imageByRenderingViewWithRect:buttonPhotos.frame];
+    [buttonPhotos generateBackgroundImageByCaputuredImage:imageCaptured];
 }
 
 - (void)didReceiveMemoryWarning

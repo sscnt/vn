@@ -77,6 +77,12 @@
 		58F767DB18AD6F4900015FBA /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 58F767D918AD6F4900015FBA /* InfoPlist.strings */; };
 		58F767DD18AD6F4900015FBA /* VintageTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F767DC18AD6F4900015FBA /* VintageTests.m */; };
 		58F78B1518AE6D97004510AC /* libGPUImage.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 58F78B1218AE6D1F004510AC /* libGPUImage.a */; };
+		58FB369318AEAFEC00B284FB /* rounded-mplus-1p-bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 58FB368D18AEAFEC00B284FB /* rounded-mplus-1p-bold.ttf */; };
+		58FB369418AEAFEC00B284FB /* rounded-mplus-1p-heavy.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 58FB368E18AEAFEC00B284FB /* rounded-mplus-1p-heavy.ttf */; };
+		58FB369518AEAFEC00B284FB /* rounded-mplus-1p-light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 58FB368F18AEAFEC00B284FB /* rounded-mplus-1p-light.ttf */; };
+		58FB369618AEAFEC00B284FB /* rounded-mplus-1p-medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 58FB369018AEAFEC00B284FB /* rounded-mplus-1p-medium.ttf */; };
+		58FB369718AEAFEC00B284FB /* rounded-mplus-1p-regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 58FB369118AEAFEC00B284FB /* rounded-mplus-1p-regular.ttf */; };
+		58FB369818AEAFEC00B284FB /* rounded-mplus-1p-thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 58FB369218AEAFEC00B284FB /* rounded-mplus-1p-thin.ttf */; };
 		58FB898118AE1031001F661B /* home-568h@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 58FB897F18AE1031001F661B /* home-568h@2x.jpg */; };
 		58FB898218AE1031001F661B /* home@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 58FB898018AE1031001F661B /* home@2x.jpg */; };
 		58FB898B18AE10CF001F661B /* RootController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58FB898A18AE10CF001F661B /* RootController.m */; };
@@ -249,6 +255,12 @@
 		58F767DA18AD6F4900015FBA /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		58F767DC18AD6F4900015FBA /* VintageTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VintageTests.m; sourceTree = "<group>"; };
 		58F78B0B18AE6D1E004510AC /* GPUImage.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = GPUImage.xcodeproj; path = GPUImage/framework/GPUImage.xcodeproj; sourceTree = "<group>"; };
+		58FB368D18AEAFEC00B284FB /* rounded-mplus-1p-bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "rounded-mplus-1p-bold.ttf"; sourceTree = "<group>"; };
+		58FB368E18AEAFEC00B284FB /* rounded-mplus-1p-heavy.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "rounded-mplus-1p-heavy.ttf"; sourceTree = "<group>"; };
+		58FB368F18AEAFEC00B284FB /* rounded-mplus-1p-light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "rounded-mplus-1p-light.ttf"; sourceTree = "<group>"; };
+		58FB369018AEAFEC00B284FB /* rounded-mplus-1p-medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "rounded-mplus-1p-medium.ttf"; sourceTree = "<group>"; };
+		58FB369118AEAFEC00B284FB /* rounded-mplus-1p-regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "rounded-mplus-1p-regular.ttf"; sourceTree = "<group>"; };
+		58FB369218AEAFEC00B284FB /* rounded-mplus-1p-thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "rounded-mplus-1p-thin.ttf"; sourceTree = "<group>"; };
 		58FB897F18AE1031001F661B /* home-568h@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "home-568h@2x.jpg"; sourceTree = "<group>"; };
 		58FB898018AE1031001F661B /* home@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "home@2x.jpg"; sourceTree = "<group>"; };
 		58FB898918AE10CF001F661B /* RootController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootController.h; sourceTree = "<group>"; };
@@ -681,6 +693,7 @@
 		58F767B718AD6F4800015FBA /* Vintage */ = {
 			isa = PBXGroup;
 			children = (
+				58FB368918AEAFCE00B284FB /* Fonts */,
 				58FF484018AE512900B978D9 /* GPUImageFilter */,
 				588F11F418AE1F9D00787045 /* GPUImageLayer */,
 				588F11EE18AE1F4E00787045 /* Effects */,
@@ -735,6 +748,19 @@
 				58F78B1418AE6D1F004510AC /* GPUImageTests.octest */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		58FB368918AEAFCE00B284FB /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				58FB368D18AEAFEC00B284FB /* rounded-mplus-1p-bold.ttf */,
+				58FB368E18AEAFEC00B284FB /* rounded-mplus-1p-heavy.ttf */,
+				58FB368F18AEAFEC00B284FB /* rounded-mplus-1p-light.ttf */,
+				58FB369018AEAFEC00B284FB /* rounded-mplus-1p-medium.ttf */,
+				58FB369118AEAFEC00B284FB /* rounded-mplus-1p-regular.ttf */,
+				58FB369218AEAFEC00B284FB /* rounded-mplus-1p-thin.ttf */,
+			);
+			name = Fonts;
 			sourceTree = "<group>";
 		};
 		58FB898618AE1071001F661B /* NavigationViewController */ = {
@@ -1045,6 +1071,7 @@
 				588F123618AE220500787045 /* Girder2.acv in Resources */,
 				58FF482518AE49F800B978D9 /* Vintage21.acv in Resources */,
 				588F121B18AE21C200787045 /* Miami3.acv in Resources */,
+				58FB369718AEAFEC00B284FB /* rounded-mplus-1p-regular.ttf in Resources */,
 				58FF47F918AE47D000B978D9 /* SpringLight1.acv in Resources */,
 				588F122818AE21EB00787045 /* Summers4.acv in Resources */,
 				58FF483418AE4B3C00B978D9 /* Hazelnut2.acv in Resources */,
@@ -1053,13 +1080,16 @@
 				588F121C18AE21C200787045 /* Miami2.acv in Resources */,
 				588F123F18AE224F00787045 /* FaerieVintage2.acv in Resources */,
 				588F127318AE24D300787045 /* CreamyNoon3.acv in Resources */,
+				58FB369418AEAFEC00B284FB /* rounded-mplus-1p-heavy.ttf in Resources */,
 				58FF482C18AE4A2000B978D9 /* VintageFilm.acv in Resources */,
 				58FF47EF18AE478E00B978D9 /* GentleMemories1.acv in Resources */,
 				58FF480C18AE488B00B978D9 /* WarmAutumn3.acv in Resources */,
 				58F767CA18AD6F4900015FBA /* Images.xcassets in Resources */,
 				58FF481D18AE49DC00B978D9 /* Vintage11.acv in Resources */,
 				588F127D18AE251700787045 /* Vanilla2.acv in Resources */,
+				58FB369618AEAFEC00B284FB /* rounded-mplus-1p-medium.ttf in Resources */,
 				588F126618AE248E00787045 /* VividVintage3.acv in Resources */,
+				58FB369818AEAFEC00B284FB /* rounded-mplus-1p-thin.ttf in Resources */,
 				588F123518AE220500787045 /* Girder3.acv in Resources */,
 				58FF480B18AE488B00B978D9 /* WarmAutumn2.acv in Resources */,
 				58FF481218AE48BB00B978D9 /* Weekend.acv in Resources */,
@@ -1084,7 +1114,9 @@
 				58FF481E18AE49DC00B978D9 /* Vintage12.acv in Resources */,
 				58F767C518AD6F4900015FBA /* Main.storyboard in Resources */,
 				588F126718AE248E00787045 /* VividVintage1.acv in Resources */,
+				58FB369518AEAFEC00B284FB /* rounded-mplus-1p-light.ttf in Resources */,
 				58FF480A18AE488B00B978D9 /* WarmAutumn1.acv in Resources */,
+				58FB369318AEAFEC00B284FB /* rounded-mplus-1p-bold.ttf in Resources */,
 				58FF47F218AE478E00B978D9 /* GentleMemories4.acv in Resources */,
 				58FF482618AE49F800B978D9 /* Vintage22.acv in Resources */,
 				58FF480118AE484F00B978D9 /* Joyful1.acv in Resources */,

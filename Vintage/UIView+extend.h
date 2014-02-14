@@ -21,7 +21,8 @@
 - (void)setOrigin:(CGPoint)point;
 - (void)setSize:(CGSize)size;
 
+- (UIImage *) imageByRenderingViewOpaque:(BOOL) opaque Rect:(CGRect)rect;
 - (UIImage *) imageByRenderingView;
-- (UIImage *) imageByRenderingViewOpaque:(BOOL) opaque;
+- (UIImage *) imageByRenderingViewWithRect:(CGRect)rect;
 
 @end

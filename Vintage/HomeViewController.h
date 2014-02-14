@@ -11,5 +11,11 @@
 #import "UIBlurredButton.h"
 
 @interface HomeViewController : UIViewController
+{
+    UIBlurredButton* buttonCamera;
+    UIBlurredButton* buttonPhotos;
+}
+
+- (void)generateBlurredImage;
 
 @end
