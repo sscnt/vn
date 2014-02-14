@@ -32,10 +32,12 @@
     //// Action Button
     CGFloat top = 414.0f;
     buttonCamera = [[UIBlurredButton alloc] initWithFrame:CGRectMake(15.0f, top, [UIScreen screenSize].width - 30.0f, 50.0)];
+    [buttonCamera setTitle:NSLocalizedString(@"Camera", nil) forState:UIControlStateNormal];
     [self.view addSubview:buttonCamera];
     
     top = buttonCamera.bottom + 15.0f;
     buttonPhotos = [[UIBlurredButton alloc] initWithFrame:CGRectMake(15.0f, top, [UIScreen screenSize].width - 30.0f, 50.0)];
+    [buttonPhotos setTitle:NSLocalizedString(@"Photos", nil) forState:UIControlStateNormal];
     [self.view addSubview:buttonPhotos];
     
     //// Gaussian Blur

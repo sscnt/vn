@@ -14,7 +14,16 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
-        // Initialization code
+        self.titleLabel.font = [UIFont fontWithName:@"rounded-mplus-1p-heavy" size:18.0f];
+        [self setTitleEdgeInsets:UIEdgeInsetsMake(1.5f, 0.0f, 0.0f, -6.0f)];
+        NSArray *langs = [NSLocale preferredLanguages];
+        NSString *currentLanguage = [langs objectAtIndex:0];
+        if([currentLanguage compare:@"ja"] == NSOrderedSame) {
+            [self setTitleEdgeInsets:UIEdgeInsetsMake(2.0f, 0.0f, 0.0f, -6.0f)];
+        }
+        [self setTitleColor:[UIColor colorWithWhite:1.0f alpha:0.70f] forState:UIControlStateNormal];
+        [self setTitleColor:[UIColor colorWithWhite:1.0f alpha:0.40f] forState:UIControlStateHighlighted];
+        [self setTitleShadowColor:[UIColor blackColor] forState:UIControlStateNormal];
     }
     return self;
 }
