@@ -17,7 +17,17 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
+
+    //// Background Image
+    UIImageView* imageViewBg;
+    UIImage* imageBg;
+    if ([UIDevice resolution] == UIDeviceResolution_iPhoneRetina4) {
+        imageBg = [UIImage imageNamed:@"home.jpg"];
+    }else if([UIDevice resolution] == UIDeviceResolution_iPhoneRetina5){
+        imageBg = [UIImage imageNamed:@"home-568h.jpg"];
+    }
+    imageViewBg = [[UIImageView alloc] initWithImage:imageBg];
+    [self.view addSubview:imageViewBg];
 }
 
 - (void)didReceiveMemoryWarning
