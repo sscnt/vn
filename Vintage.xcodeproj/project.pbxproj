@@ -130,8 +130,8 @@
 		58FF482718AE49F800B978D9 /* GPUEffectVintage2.m in Sources */ = {isa = PBXBuildFile; fileRef = 58FF482418AE49F800B978D9 /* GPUEffectVintage2.m */; };
 		58FF482C18AE4A2000B978D9 /* VintageFilm.acv in Resources */ = {isa = PBXBuildFile; fileRef = 58FF482918AE4A2000B978D9 /* VintageFilm.acv */; };
 		58FF482D18AE4A2000B978D9 /* GPUEffectVintageFilm.m in Sources */ = {isa = PBXBuildFile; fileRef = 58FF482B18AE4A2000B978D9 /* GPUEffectVintageFilm.m */; };
-		58FF483318AE4B3C00B978D9 /* Hazelnut1.acv in Resources */ = {isa = PBXBuildFile; fileRef = 58FF482F18AE4B3C00B978D9 /* Hazelnut1.acv */; };
-		58FF483418AE4B3C00B978D9 /* Hazelnut2.acv in Resources */ = {isa = PBXBuildFile; fileRef = 58FF483018AE4B3C00B978D9 /* Hazelnut2.acv */; };
+		58FF483318AE4B3C00B978D9 /* Hzl1.acv in Resources */ = {isa = PBXBuildFile; fileRef = 58FF482F18AE4B3C00B978D9 /* Hzl1.acv */; };
+		58FF483418AE4B3C00B978D9 /* Hzl2.acv in Resources */ = {isa = PBXBuildFile; fileRef = 58FF483018AE4B3C00B978D9 /* Hzl2.acv */; };
 		58FF483518AE4B3C00B978D9 /* GPUEffectHazelnut.m in Sources */ = {isa = PBXBuildFile; fileRef = 58FF483218AE4B3C00B978D9 /* GPUEffectHazelnut.m */; };
 		58FF483A18AE4BDF00B978D9 /* Candy.acv in Resources */ = {isa = PBXBuildFile; fileRef = 58FF483718AE4BDF00B978D9 /* Candy.acv */; };
 		58FF483B18AE4BDF00B978D9 /* GPUEffectColorfulCandy.m in Sources */ = {isa = PBXBuildFile; fileRef = 58FF483918AE4BDF00B978D9 /* GPUEffectColorfulCandy.m */; };
@@ -344,8 +344,8 @@
 		58FF482918AE4A2000B978D9 /* VintageFilm.acv */ = {isa = PBXFileReference; lastKnownFileType = file; path = VintageFilm.acv; sourceTree = "<group>"; };
 		58FF482A18AE4A2000B978D9 /* GPUEffectVintageFilm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPUEffectVintageFilm.h; sourceTree = "<group>"; };
 		58FF482B18AE4A2000B978D9 /* GPUEffectVintageFilm.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GPUEffectVintageFilm.m; sourceTree = "<group>"; };
-		58FF482F18AE4B3C00B978D9 /* Hazelnut1.acv */ = {isa = PBXFileReference; lastKnownFileType = file; path = Hazelnut1.acv; sourceTree = "<group>"; };
-		58FF483018AE4B3C00B978D9 /* Hazelnut2.acv */ = {isa = PBXFileReference; lastKnownFileType = file; path = Hazelnut2.acv; sourceTree = "<group>"; };
+		58FF482F18AE4B3C00B978D9 /* Hzl1.acv */ = {isa = PBXFileReference; lastKnownFileType = file; path = Hzl1.acv; sourceTree = "<group>"; };
+		58FF483018AE4B3C00B978D9 /* Hzl2.acv */ = {isa = PBXFileReference; lastKnownFileType = file; path = Hzl2.acv; sourceTree = "<group>"; };
 		58FF483118AE4B3C00B978D9 /* GPUEffectHazelnut.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPUEffectHazelnut.h; sourceTree = "<group>"; };
 		58FF483218AE4B3C00B978D9 /* GPUEffectHazelnut.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GPUEffectHazelnut.m; sourceTree = "<group>"; };
 		58FF483718AE4BDF00B978D9 /* Candy.acv */ = {isa = PBXFileReference; lastKnownFileType = file; path = Candy.acv; sourceTree = "<group>"; };
@@ -992,8 +992,8 @@
 		58FF482E18AE4B1E00B978D9 /* Hazelnut */ = {
 			isa = PBXGroup;
 			children = (
-				58FF482F18AE4B3C00B978D9 /* Hazelnut1.acv */,
-				58FF483018AE4B3C00B978D9 /* Hazelnut2.acv */,
+				58FF482F18AE4B3C00B978D9 /* Hzl1.acv */,
+				58FF483018AE4B3C00B978D9 /* Hzl2.acv */,
 				58FF483118AE4B3C00B978D9 /* GPUEffectHazelnut.h */,
 				58FF483218AE4B3C00B978D9 /* GPUEffectHazelnut.m */,
 			);
@@ -1155,7 +1155,7 @@
 				58FF47F918AE47D000B978D9 /* SpringLight1.acv in Resources */,
 				58FCAD1C18AFA13E001559F0 /* photos-40-40@2x.png in Resources */,
 				588F122818AE21EB00787045 /* Summers4.acv in Resources */,
-				58FF483418AE4B3C00B978D9 /* Hazelnut2.acv in Resources */,
+				58FF483418AE4B3C00B978D9 /* Hzl2.acv in Resources */,
 				58FE950918AF995C005A4DFE /* camera-40-40@2x.png in Resources */,
 				58F7F07A18AFE42F00997877 /* loading-48@2x.gif in Resources */,
 				58FB898218AE1031001F661B /* home@2x.jpg in Resources */,
@@ -1198,7 +1198,7 @@
 				58FCAD2C18AFAECA001559F0 /* camera-36-70@2x.png in Resources */,
 				588F127118AE24D300787045 /* CreamyNoon1.acv in Resources */,
 				588F123418AE220500787045 /* Girder4.acv in Resources */,
-				58FF483318AE4B3C00B978D9 /* Hazelnut1.acv in Resources */,
+				58FF483318AE4B3C00B978D9 /* Hzl1.acv in Resources */,
 				588F127218AE24D300787045 /* CreamyNoon2.acv in Resources */,
 				58FF481E18AE49DC00B978D9 /* Vintage12.acv in Resources */,
 				58F767C518AD6F4900015FBA /* Main.storyboard in Resources */,

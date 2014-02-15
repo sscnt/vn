@@ -17,7 +17,7 @@
 
     // Curve
     @autoreleasepool {
-        GPUImageToneCurveFilter* curveFilter = [[GPUImageToneCurveFilter alloc] initWithACV:@"Hazelnut1"];
+        GPUImageToneCurveFilter* curveFilter = [[GPUImageToneCurveFilter alloc] initWithACV:@"Hzl1"];
         
         GPUImageOpacityFilter* opacityFilter = [[GPUImageOpacityFilter alloc] init];
         opacityFilter.opacity = 0.50f;
@@ -170,7 +170,7 @@
     
     // Curve
     @autoreleasepool {
-        GPUImageToneCurveFilter* curveFilter = [[GPUImageToneCurveFilter alloc] initWithACV:@"Hazelnut2"];
+        GPUImageToneCurveFilter* curveFilter = [[GPUImageToneCurveFilter alloc] initWithACV:@"Hzl2"];
         
         GPUImagePicture* picture = [[GPUImagePicture alloc] initWithImage:resultImage];
         [picture addTarget:curveFilter];

@@ -8,9 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
-@interface UISelectionPreviewImageView : UIImageView
+@interface UISelectionPreviewImageView : UIButton
+{
+    UIImageView* _imageViewLoading;
+}
 
-@property (nonatomic, strong) UIImageView* imageViewLoading;
+@property (nonatomic, strong) UIImageView* imageViewPreview;
 
 - (void)removeLoadingIndicator;
 

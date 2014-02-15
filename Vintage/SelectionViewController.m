@@ -33,8 +33,8 @@
     _arrayPreviews = [NSMutableArray array];
     CGFloat width = ([UIScreen screenSize].width - 3.0f) / 2.0f;
     CGFloat height = roundf(self.imageOriginal.size.height * width / self.imageOriginal.size.width);
-    _scrollView = [[UIScrollView alloc] initWithFrame:self.view.bounds];
-    [_scrollView setContentSize:CGSizeMake([UIScreen screenSize].width, (CGFloat)_numberOfEffects * height)];
+    _scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, self.view.bounds.size.width, self.view.bounds.size.height - 20.0f)];
+    [_scrollView setContentSize:CGSizeMake([UIScreen screenSize].width, ceilf((CGFloat)_numberOfEffects / 2.0f) * height + ceilf((CGFloat)_numberOfEffects / 2.0f) + 1.0)];
     
     //// Effects
     _arrayEffects = [NSMutableArray array];
@@ -46,11 +46,11 @@
     [_arrayEffects addObject:[[GPUEffectOldTone alloc] init]];
     [_arrayEffects addObject:[[GPUEffectMiami alloc] init]];
     [_arrayEffects addObject:[[GPUEffectGirder alloc] init]];
-    [_arrayEffects addObject:[[GPUEffectHaze3 alloc] init]];
+    [_arrayEffects addObject:[[GPUEffectCavalleriaRusticana alloc] init]];
     [_arrayEffects addObject:[[GPUEffectHazelnut alloc] init]];
     [_arrayEffects addObject:[[GPUEffectCreamyNoon alloc] init]];
+    [_arrayEffects addObject:[[GPUEffectHaze3 alloc] init]];
     [_arrayEffects addObject:[[GPUEffectBeachVintage alloc] init]];
-    [_arrayEffects addObject:[[GPUEffectCavalleriaRusticana alloc] init]];
     [_arrayEffects addObject:[[GPUEffectDreamyVintage alloc] init]];
     [_arrayEffects addObject:[[GPUEffectFaerieVintage alloc] init]];
     [_arrayEffects addObject:[[GPUEffectGentleMemories alloc] init]];
@@ -112,7 +112,7 @@
                 imageApplied = [effect process];
                 dispatch_async(q_main, ^{
                     [preview removeLoadingIndicator];
-                    [preview setImage:imageApplied];
+                    [preview.imageViewPreview setImage:imageApplied];
                     [_self applyEffectAtIndex:index + 1];
                 });
                 
