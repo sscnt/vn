@@ -8,13 +8,22 @@
 
 #import <UIKit/UIKit.h>
 #import "UISelectionPreviewImageView.h"
+#import "GPUImageEffectsImport.h"
 
 @interface SelectionViewController : UIViewController
+{
+    int _currentProcessingIndex;
+    int _numberOfEffects;
+    UIImage* _imageResized;
+    NSMutableArray* _arrayPreviews;
+    NSMutableArray* _arrayEffects;
+    UIScrollView* _scrollView;
+}
 
 @property (nonatomic, strong) UIImage* imageOriginal;
-@property (nonatomic, strong) UIImage* imageResized;
-@property (nonatomic, strong) NSMutableArray* imagesArray;
 
 - (id)initWithImage:(UIImage*)image;
+- (void)applyEffectAtIndex:(int)index;
+- (void)resizeOriginalImageWidth:(CGFloat)width Height:(CGFloat)height;
 
 @end

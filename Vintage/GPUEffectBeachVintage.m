@@ -28,6 +28,7 @@
         resultImage = [self mergeBaseImage:resultImage overlayFilter:solidColor opacity:0.20f blendingMode:MergeBlendingModeHardLight];
     }
     
+    
     // Fill Layer
     @autoreleasepool {
         GPUImageSolidColorGenerator* solidColor = [[GPUImageSolidColorGenerator alloc] init];

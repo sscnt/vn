@@ -17,6 +17,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+	[UIApplication sharedApplication].statusBarHidden = YES;
 
     //// Background Image
     UIImageView* imageViewBg;

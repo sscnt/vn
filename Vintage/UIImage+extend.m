@@ -11,7 +11,27 @@
 
 @implementation UIImage (extend)
 
-+(UIImage*)animatedGIFWithData:(NSData *)data {
++ (UIImage *)resizedImage:(UIImage *)image width:(CGFloat)width height:(CGFloat)height
+{
+    if (UIGraphicsBeginImageContextWithOptions != NULL) {
+        UIGraphicsBeginImageContextWithOptions(CGSizeMake(width, height), NO, [[UIScreen mainScreen] scale]);
+    } else {
+        UIGraphicsBeginImageContext(CGSizeMake(width, height));
+    }
+    
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    CGContextSetInterpolationQuality(context, kCGInterpolationHigh);
+    
+    [image drawInRect:CGRectMake(0.0, 0.0, width, height)];
+    
+    UIImage *resizedImage = UIGraphicsGetImageFromCurrentImageContext();
+    
+    UIGraphicsEndImageContext();
+    
+    return resizedImage;
+}
+
++ (UIImage*)animatedGIFWithData:(NSData *)data {
     if (!data) {
         return nil;
     }
@@ -43,7 +63,7 @@
     return [UIImage animatedImageWithImages:images duration:duration];
 }
 
-+(UIImage*)animatedGIFNamed:(NSString *)name {
++ (UIImage*)animatedGIFNamed:(NSString *)name {
     CGFloat scale = [UIScreen mainScreen].scale;
     
     if (scale > 1.0f) {
@@ -78,7 +98,7 @@
     }
 }
 
--(UIImage*)animatedImageByScalingAndCroppingToSize:(CGSize)size {
+- (UIImage*)animatedImageByScalingAndCroppingToSize:(CGSize)size {
     if (CGSizeEqualToSize(self.size, size) || CGSizeEqualToSize(size, CGSizeZero)) {
         return self;
     }

@@ -18,39 +18,114 @@
 {
     self = [super init];
     if (self) {
-        self.imageOriginal = image;
+        _imageOriginal = image;
     }
     return self;
 }
 
 - (void)viewDidLoad
 {
-    [self.view setBackgroundColor:[UIColor colorWithWhite:26.0f/255.0f alpha:1.0]];
-    CGSize size = self.imageOriginal.size;
+    [super viewDidLoad];
+    [UIApplication sharedApplication].statusBarHidden = NO;
     
-    //// Preview
+    //// Init
+    _numberOfEffects = 24;
+    _arrayPreviews = [NSMutableArray array];
     CGFloat width = ([UIScreen screenSize].width - 3.0f) / 2.0f;
     CGFloat height = roundf(self.imageOriginal.size.height * width / self.imageOriginal.size.width);
+    _scrollView = [[UIScrollView alloc] initWithFrame:self.view.bounds];
+    [_scrollView setContentSize:CGSizeMake([UIScreen screenSize].width, (CGFloat)_numberOfEffects * height)];
+    
+    //// Effects
+    _arrayEffects = [NSMutableArray array];
+    [_arrayEffects addObject:[[GPUEffectVintageFilm alloc] init]];
+    [_arrayEffects addObject:[[GPUEffectVintage1 alloc] init]];
+    [_arrayEffects addObject:[[GPUEffectVintage2 alloc] init]];
+    [_arrayEffects addObject:[[GPUEffectWeekend alloc] init]];
+    [_arrayEffects addObject:[[GPUEffectVividVintage alloc] init]];
+    [_arrayEffects addObject:[[GPUEffectOldTone alloc] init]];
+    [_arrayEffects addObject:[[GPUEffectMiami alloc] init]];
+    [_arrayEffects addObject:[[GPUEffectGirder alloc] init]];
+    [_arrayEffects addObject:[[GPUEffectHaze3 alloc] init]];
+    [_arrayEffects addObject:[[GPUEffectHazelnut alloc] init]];
+    [_arrayEffects addObject:[[GPUEffectCreamyNoon alloc] init]];
+    [_arrayEffects addObject:[[GPUEffectBeachVintage alloc] init]];
+    [_arrayEffects addObject:[[GPUEffectCavalleriaRusticana alloc] init]];
+    [_arrayEffects addObject:[[GPUEffectDreamyVintage alloc] init]];
+    [_arrayEffects addObject:[[GPUEffectFaerieVintage alloc] init]];
+    [_arrayEffects addObject:[[GPUEffectGentleMemories alloc] init]];
+    [_arrayEffects addObject:[[GPUEffectJoyful alloc] init]];
+    [_arrayEffects addObject:[[GPUEffectPinkBubbleTea alloc] init]];
+    [_arrayEffects addObject:[[GPUEffectSummers alloc] init]];
+    [_arrayEffects addObject:[[GPUEffectVanilla alloc] init]];
+    [_arrayEffects addObject:[[GPUEffectWarmAutumn alloc] init]];
+    [_arrayEffects addObject:[[GPUEffectSunsetCarnevale alloc] init]];
+    [_arrayEffects addObject:[[GPUEffectSpringLight alloc] init]];
+    [_arrayEffects addObject:[[GPUEffectColorfulCandy alloc] init]];
+    
+    //// Layout
+    [self.view setBackgroundColor:[UIColor colorWithWhite:26.0f/255.0f alpha:1.0]];
+    [self.view addSubview:_scrollView];
+    
+    //// Preview
     CGFloat left = 1.0;
     CGFloat top = 1.0;
     CGRect rect;
-    for (int i = 0; i < 24; i++) {
+    for (int i = 0; i < _numberOfEffects; i++) {
         left = (i % 2 == 0) ? 1.0 : left * 2.0 + width;
         rect = CGRectMake(left, top, width, height);
         UISelectionPreviewImageView* preview = [[UISelectionPreviewImageView alloc] initWithFrame:rect];
-        [self.view addSubview:preview];
+        [_scrollView addSubview:preview];
+        [_arrayPreviews addObject:preview];
         top += (i % 2 == 0) ? 0.0 : 1.0 + height;
     }
-
-    [super viewDidLoad];
+    
+    //// Resize
+    __block SelectionViewController* _self = self;
     dispatch_queue_t q_global = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
     dispatch_queue_t q_main = dispatch_get_main_queue();
     dispatch_async(q_global, ^{
-        
+        [_self resizeOriginalImageWidth:width Height:height];
         dispatch_async(q_main, ^{
-
+            //// Effect
+            [_self applyEffectAtIndex:0];
         });
     });
+    
+
+
+}
+
+- (void)applyEffectAtIndex:(int)index
+{
+    if (index < _numberOfEffects) {
+        __block SelectionViewController* _self = self;
+        __block GPUImageEffects* effect = [_arrayEffects objectAtIndex:index];
+        __block UIImage* imageToProcess = _imageResized;
+        __block UISelectionPreviewImageView* preview = [_arrayPreviews objectAtIndex:index];
+        __block UIImage* imageApplied;
+        if ([effect respondsToSelector:@selector(imageToProcess)]) {
+            dispatch_queue_t q_global = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+            dispatch_queue_t q_main = dispatch_get_main_queue();
+            dispatch_async(q_global, ^{
+                effect.imageToProcess = imageToProcess;
+                imageApplied = [effect process];
+                dispatch_async(q_main, ^{
+                    [preview removeLoadingIndicator];
+                    [preview setImage:imageApplied];
+                    [_self applyEffectAtIndex:index + 1];
+                });
+                
+            });
+        }
+    }
+}
+
+- (void)resizeOriginalImageWidth:(CGFloat)width Height:(CGFloat)height
+{
+    if(self.imageOriginal){
+        _imageResized = [UIImage resizedImage:self.imageOriginal width:width height:height];
+    }
 }
 
 - (void)didReceiveMemoryWarning

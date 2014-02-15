@@ -12,4 +12,6 @@
 
 @property (nonatomic, strong) UIImageView* imageViewLoading;
 
+- (void)removeLoadingIndicator;
+
 @end
