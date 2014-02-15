@@ -11,8 +11,16 @@
 #import "GPUImageSolidColorGenerator.h"
 #import "GPUImageEffects.h"
 
+typedef NS_ENUM(NSInteger, BlurredButtonIconType){
+    BlurredButtonIconTypeCamera = 1,
+    BlurredButtonIconTypePhotos
+};
+
+
 @interface UIBlurredButton : UIButton
 
+- (id)initWithFrame:(CGRect)frame Type:(BlurredButtonIconType)type;
 - (void)generateBackgroundImageByCaputuredImage:(UIImage *)inputImage;
+- (void)setIcon:(BlurredButtonIconType)type;
 
 @end

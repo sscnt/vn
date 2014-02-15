@@ -36,6 +36,8 @@
 	<string>UIStatusBarStyleBlackTranslucent</string>
 	<key>UIAppFonts</key>
 	<array>
+		<string>JockeyOne-Regular.ttf</string>
+		<string>chunkfive.ttf</string>
 		<string>rounded-mplus-1p-bold.ttf</string>
 		<string>rounded-mplus-1p-heavy.ttf</string>
 		<string>rounded-mplus-1p-light.ttf</string>

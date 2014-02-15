@@ -10,22 +10,45 @@
 
 @implementation UIBlurredButton
 
-- (id)initWithFrame:(CGRect)frame
+
+- (id)initWithFrame:(CGRect)frame Type:(BlurredButtonIconType)type
 {
     self = [super initWithFrame:frame];
     if (self) {
-        self.titleLabel.font = [UIFont fontWithName:@"rounded-mplus-1p-heavy" size:18.0f];
         [self setTitleEdgeInsets:UIEdgeInsetsMake(1.5f, 0.0f, 0.0f, -6.0f)];
         NSArray *langs = [NSLocale preferredLanguages];
         NSString *currentLanguage = [langs objectAtIndex:0];
         if([currentLanguage compare:@"ja"] == NSOrderedSame) {
+            self.titleLabel.font = [UIFont fontWithName:@"rounded-mplus-1p-bold" size:20.0f];
             [self setTitleEdgeInsets:UIEdgeInsetsMake(2.0f, 0.0f, 0.0f, -6.0f)];
+            [self setImageEdgeInsets:UIEdgeInsetsMake(0.0f, 0.0f, 0.0f, 5.0)];
+        } else {
+            self.titleLabel.font = [UIFont fontWithName:@"chunkfive" size:20.0f];
+            [self setTitleEdgeInsets:UIEdgeInsetsMake(6.0f, 0.0f, 0.0f, 0.0f)];
+            [self setImageEdgeInsets:UIEdgeInsetsMake(0.0f, 0.0f, 0.0f, 15.0)];
         }
         [self setTitleColor:[UIColor colorWithWhite:1.0f alpha:0.70f] forState:UIControlStateNormal];
         [self setTitleColor:[UIColor colorWithWhite:1.0f alpha:0.40f] forState:UIControlStateHighlighted];
         [self setTitleShadowColor:[UIColor blackColor] forState:UIControlStateNormal];
+        [self setIcon:type];
     }
     return self;
+}
+
+- (void)setIcon:(BlurredButtonIconType)type
+{
+    switch (type) {
+        case BlurredButtonIconTypeCamera:
+            [self setImage:[UIImage imageNamed:@"camera-40-70.png"] forState:UIControlStateNormal];
+            [self setImage:[UIImage imageNamed:@"camera-40-40.png"] forState:UIControlStateHighlighted];            
+            break;
+        case BlurredButtonIconTypePhotos:
+            [self setImage:[UIImage imageNamed:@"photos-40-70.png"] forState:UIControlStateNormal];
+            [self setImage:[UIImage imageNamed:@"photos-40-40.png"] forState:UIControlStateHighlighted];
+            break;
+        default:
+            break;
+    }
 }
 
 - (void)generateBackgroundImageByCaputuredImage:(UIImage *)inputImage

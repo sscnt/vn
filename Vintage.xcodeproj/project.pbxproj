@@ -91,6 +91,14 @@
 		58FB899A18AE12B1001F661B /* UIDevice+extend.m in Sources */ = {isa = PBXBuildFile; fileRef = 58FB899318AE12B1001F661B /* UIDevice+extend.m */; };
 		58FB899B18AE12B1001F661B /* UIScreen+extend.m in Sources */ = {isa = PBXBuildFile; fileRef = 58FB899518AE12B1001F661B /* UIScreen+extend.m */; };
 		58FB899C18AE12B1001F661B /* UIView+extend.m in Sources */ = {isa = PBXBuildFile; fileRef = 58FB899718AE12B1001F661B /* UIView+extend.m */; };
+		58FCAD1C18AFA13E001559F0 /* photos-40-40@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 58FCAD1A18AFA13E001559F0 /* photos-40-40@2x.png */; };
+		58FCAD1D18AFA13E001559F0 /* photos-40-70@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 58FCAD1B18AFA13E001559F0 /* photos-40-70@2x.png */; };
+		58FCAD2518AFA81C001559F0 /* EffectsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58FCAD2418AFA81C001559F0 /* EffectsViewController.m */; };
+		58FCAD2818AFAD6E001559F0 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58FCAD2718AFAD6E001559F0 /* Crashlytics.framework */; };
+		58FE950918AF995C005A4DFE /* camera-40-40@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 58FE950718AF995C005A4DFE /* camera-40-40@2x.png */; };
+		58FE950A18AF995C005A4DFE /* camera-40-70@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 58FE950818AF995C005A4DFE /* camera-40-70@2x.png */; };
+		58FE950D18AF9BDC005A4DFE /* chunkfive.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 58FE950B18AF9BDC005A4DFE /* chunkfive.ttf */; };
+		58FE950E18AF9BDC005A4DFE /* JockeyOne-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 58FE950C18AF9BDC005A4DFE /* JockeyOne-Regular.ttf */; };
 		58FF47EF18AE478E00B978D9 /* GentleMemories1.acv in Resources */ = {isa = PBXBuildFile; fileRef = 58FF47E918AE478E00B978D9 /* GentleMemories1.acv */; };
 		58FF47F018AE478E00B978D9 /* GentleMemories2.acv in Resources */ = {isa = PBXBuildFile; fileRef = 58FF47EA18AE478E00B978D9 /* GentleMemories2.acv */; };
 		58FF47F118AE478E00B978D9 /* GentleMemories3.acv in Resources */ = {isa = PBXBuildFile; fileRef = 58FF47EB18AE478E00B978D9 /* GentleMemories3.acv */; };
@@ -158,9 +166,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		581595E918AEBFB400621C3F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
-		581595EE18AEBFB800621C3F /* en */ = {isa = PBXFileReference; lastKnownFileType = file; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
-		581595EF18AEBFB900621C3F /* ja */ = {isa = PBXFileReference; lastKnownFileType = file; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
+		581595E918AEBFB400621C3F /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
+		581595EE18AEBFB800621C3F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		581595EF18AEBFB900621C3F /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
 		5826CEA918AE14230091E303 /* UIScrollView+extend.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+extend.h"; sourceTree = "<group>"; };
 		5826CEAA18AE14230091E303 /* UIScrollView+extend.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+extend.m"; sourceTree = "<group>"; };
 		588F11F618AE1FC700787045 /* GPUImagePhotoFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPUImagePhotoFilter.h; sourceTree = "<group>"; };
@@ -280,6 +288,15 @@
 		58FB899518AE12B1001F661B /* UIScreen+extend.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScreen+extend.m"; sourceTree = "<group>"; };
 		58FB899618AE12B1001F661B /* UIView+extend.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+extend.h"; sourceTree = "<group>"; };
 		58FB899718AE12B1001F661B /* UIView+extend.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+extend.m"; sourceTree = "<group>"; };
+		58FCAD1A18AFA13E001559F0 /* photos-40-40@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "photos-40-40@2x.png"; sourceTree = "<group>"; };
+		58FCAD1B18AFA13E001559F0 /* photos-40-70@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "photos-40-70@2x.png"; sourceTree = "<group>"; };
+		58FCAD2318AFA81C001559F0 /* EffectsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EffectsViewController.h; sourceTree = "<group>"; };
+		58FCAD2418AFA81C001559F0 /* EffectsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EffectsViewController.m; sourceTree = "<group>"; };
+		58FCAD2718AFAD6E001559F0 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
+		58FE950718AF995C005A4DFE /* camera-40-40@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "camera-40-40@2x.png"; sourceTree = "<group>"; };
+		58FE950818AF995C005A4DFE /* camera-40-70@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "camera-40-70@2x.png"; sourceTree = "<group>"; };
+		58FE950B18AF9BDC005A4DFE /* chunkfive.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = chunkfive.ttf; sourceTree = "<group>"; };
+		58FE950C18AF9BDC005A4DFE /* JockeyOne-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "JockeyOne-Regular.ttf"; sourceTree = "<group>"; };
 		58FF47E918AE478E00B978D9 /* GentleMemories1.acv */ = {isa = PBXFileReference; lastKnownFileType = file; path = GentleMemories1.acv; sourceTree = "<group>"; };
 		58FF47EA18AE478E00B978D9 /* GentleMemories2.acv */ = {isa = PBXFileReference; lastKnownFileType = file; path = GentleMemories2.acv; sourceTree = "<group>"; };
 		58FF47EB18AE478E00B978D9 /* GentleMemories3.acv */ = {isa = PBXFileReference; lastKnownFileType = file; path = GentleMemories3.acv; sourceTree = "<group>"; };
@@ -353,6 +370,7 @@
 				58F6970018AD79AF006F2089 /* OpenGLES.framework in Frameworks */,
 				58F696FE18AD79A7006F2089 /* CoreVideo.framework in Frameworks */,
 				58F696FC18AD799B006F2089 /* CoreMedia.framework in Frameworks */,
+				58FCAD2818AFAD6E001559F0 /* Crashlytics.framework in Frameworks */,
 				58F767B418AD6F4800015FBA /* CoreGraphics.framework in Frameworks */,
 				58F767B618AD6F4800015FBA /* UIKit.framework in Frameworks */,
 				58F767B218AD6F4800015FBA /* Foundation.framework in Frameworks */,
@@ -375,6 +393,7 @@
 		5801D75E18AE0E5D00425412 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				58FE950118AF95EA005A4DFE /* Icons */,
 				5801D76218AE0E6200425412 /* Home */,
 			);
 			name = Images;
@@ -683,6 +702,7 @@
 		58F767B018AD6F4800015FBA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				58FCAD2718AFAD6E001559F0 /* Crashlytics.framework */,
 				58F78B0B18AE6D1E004510AC /* GPUImage.xcodeproj */,
 				58F6970318AD79C3006F2089 /* QuartzCore.framework */,
 				58F6970118AD79B9006F2089 /* AVFoundation.framework */,
@@ -761,6 +781,8 @@
 		58FB368918AEAFCE00B284FB /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
+				58FE950B18AF9BDC005A4DFE /* chunkfive.ttf */,
+				58FE950C18AF9BDC005A4DFE /* JockeyOne-Regular.ttf */,
 				58FB368D18AEAFEC00B284FB /* rounded-mplus-1p-bold.ttf */,
 				58FB368E18AEAFEC00B284FB /* rounded-mplus-1p-heavy.ttf */,
 				58FB368F18AEAFEC00B284FB /* rounded-mplus-1p-light.ttf */,
@@ -783,6 +805,7 @@
 		58FB898718AE1083001F661B /* ViewContoroller */ = {
 			isa = PBXGroup;
 			children = (
+				58FCAD2218AFA7FF001559F0 /* Selection */,
 				58FB898818AE1096001F661B /* Home */,
 			);
 			name = ViewContoroller;
@@ -819,6 +842,26 @@
 				5826CEAA18AE14230091E303 /* UIScrollView+extend.m */,
 			);
 			name = Categories;
+			sourceTree = "<group>";
+		};
+		58FCAD2218AFA7FF001559F0 /* Selection */ = {
+			isa = PBXGroup;
+			children = (
+				58FCAD2318AFA81C001559F0 /* EffectsViewController.h */,
+				58FCAD2418AFA81C001559F0 /* EffectsViewController.m */,
+			);
+			name = Selection;
+			sourceTree = "<group>";
+		};
+		58FE950118AF95EA005A4DFE /* Icons */ = {
+			isa = PBXGroup;
+			children = (
+				58FCAD1A18AFA13E001559F0 /* photos-40-40@2x.png */,
+				58FCAD1B18AFA13E001559F0 /* photos-40-70@2x.png */,
+				58FE950718AF995C005A4DFE /* camera-40-40@2x.png */,
+				58FE950818AF995C005A4DFE /* camera-40-70@2x.png */,
+			);
+			name = Icons;
 			sourceTree = "<group>";
 		};
 		58FF47E518AE477F00B978D9 /* GentleMemories */ = {
@@ -982,6 +1025,7 @@
 				58F767AA18AD6F4800015FBA /* Sources */,
 				58F767AB18AD6F4800015FBA /* Frameworks */,
 				58F767AC18AD6F4800015FBA /* Resources */,
+				58FCAD2618AFAD3F001559F0 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -1082,8 +1126,10 @@
 				588F121B18AE21C200787045 /* Miami3.acv in Resources */,
 				58FB369718AEAFEC00B284FB /* rounded-mplus-1p-regular.ttf in Resources */,
 				58FF47F918AE47D000B978D9 /* SpringLight1.acv in Resources */,
+				58FCAD1C18AFA13E001559F0 /* photos-40-40@2x.png in Resources */,
 				588F122818AE21EB00787045 /* Summers4.acv in Resources */,
 				58FF483418AE4B3C00B978D9 /* Hazelnut2.acv in Resources */,
+				58FE950918AF995C005A4DFE /* camera-40-40@2x.png in Resources */,
 				58FB898218AE1031001F661B /* home@2x.jpg in Resources */,
 				588F123E18AE224F00787045 /* FaerieVintage1.acv in Resources */,
 				588F121C18AE21C200787045 /* Miami2.acv in Resources */,
@@ -1094,6 +1140,7 @@
 				58FF47EF18AE478E00B978D9 /* GentleMemories1.acv in Resources */,
 				58FF480C18AE488B00B978D9 /* WarmAutumn3.acv in Resources */,
 				58F767CA18AD6F4900015FBA /* Images.xcassets in Resources */,
+				58FE950E18AF9BDC005A4DFE /* JockeyOne-Regular.ttf in Resources */,
 				58FF481D18AE49DC00B978D9 /* Vintage11.acv in Resources */,
 				588F127D18AE251700787045 /* Vanilla2.acv in Resources */,
 				58FB369618AEAFEC00B284FB /* rounded-mplus-1p-medium.ttf in Resources */,
@@ -1107,11 +1154,14 @@
 				588F126818AE248E00787045 /* VividVintage2.acv in Resources */,
 				58F767BC18AD6F4900015FBA /* InfoPlist.strings in Resources */,
 				58FF483A18AE4BDF00B978D9 /* Candy.acv in Resources */,
+				58FE950D18AF9BDC005A4DFE /* chunkfive.ttf in Resources */,
 				58FB898118AE1031001F661B /* home-568h@2x.jpg in Resources */,
 				58FF47F018AE478E00B978D9 /* GentleMemories2.acv in Resources */,
 				588F124F18AE235000787045 /* SunsetCarnevale1.acv in Resources */,
 				58FF47FA18AE47D000B978D9 /* SpringLight2.acv in Resources */,
 				588F122718AE21EB00787045 /* Summers5.acv in Resources */,
+				58FCAD1D18AFA13E001559F0 /* photos-40-70@2x.png in Resources */,
+				58FE950A18AF995C005A4DFE /* camera-40-70@2x.png in Resources */,
 				588F127E18AE251700787045 /* Vanilla3.acv in Resources */,
 				588F122A18AE21EB00787045 /* Summers2.acv in Resources */,
 				58FF47F118AE478E00B978D9 /* GentleMemories3.acv in Resources */,
@@ -1144,6 +1194,22 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		58FCAD2618AFAD3F001559F0 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "./Crashlytics.framework/run a8f7ec67dfb4ba747a4f4ed2d8a07acd5b1e5bf6 6da32613a4c81e1205b39618c7d17c20f7af78812d8f016a777dcf98ae62ce65";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		58F767AA18AD6F4800015FBA /* Sources */ = {
@@ -1180,6 +1246,7 @@
 				588F120818AE207800787045 /* GPUImageSelectiveColorFilter.m in Sources */,
 				58FF480D18AE488B00B978D9 /* GPUEffectWarmAutumn.m in Sources */,
 				588F120C18AE208E00787045 /* GPUImageChannelMixerFilter.m in Sources */,
+				58FCAD2518AFA81C001559F0 /* EffectsViewController.m in Sources */,
 				58FB899A18AE12B1001F661B /* UIDevice+extend.m in Sources */,
 				58FF483518AE4B3C00B978D9 /* GPUEffectHazelnut.m in Sources */,
 				58FB899018AE1165001F661B /* UIFadeNavigationController.m in Sources */,
@@ -1340,6 +1407,10 @@
 				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					/Users/ssc/Desktop/Vintage,
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Vintage/Vintage-Prefix.pch";
 				INFOPLIST_FILE = "Vintage/Vintage-Info.plist";
@@ -1357,6 +1428,10 @@
 				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					/Users/ssc/Desktop/Vintage,
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Vintage/Vintage-Prefix.pch";
 				INFOPLIST_FILE = "Vintage/Vintage-Info.plist";

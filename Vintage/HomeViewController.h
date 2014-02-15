@@ -7,15 +7,29 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <AssetsLibrary/AssetsLibrary.h>
 #import "GPUImage.h"
 #import "UIBlurredButton.h"
+#import "EffectsViewController.h"
 
-@interface HomeViewController : UIViewController
+typedef NS_ENUM(NSInteger, UIBlurredButtonId){
+    UIBlurredButtonIdCamera = 1,
+    UIBlurredButtonIdPhotos
+};
+
+@interface HomeViewController : UIViewController <UINavigationControllerDelegate, UIImagePickerControllerDelegate>
 {
     UIBlurredButton* buttonCamera;
     UIBlurredButton* buttonPhotos;
 }
 
 - (void)generateBlurredImage;
+
+- (void)didPressButton:(UIBlurredButton*)sender;
+- (void)didPressCameraButton;
+- (void)didPressPhotosButton;
+- (void)showErrorAlertWithMessage:(NSString*)message;
+
+- (void)goToEffectsViewControllerWithImage:(UIImage*)image;
 
 @end

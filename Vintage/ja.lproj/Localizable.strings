@@ -5,3 +5,10 @@
   Created by SSC on 2014/02/15.
   Copyright (c) 2014年 SSC. All rights reserved.
 */
+
+"Camera" = "カメラ";
+"Photos" = "写真を選択";
+"Camera is not available." = "カメラを利用できません。";
+
+"no_access_to_your_photos" = "写真およびビデオへのアクセス権がありません。iPhoneの「設定」アプリから、「プライバシー」→「写真」→「Vintage」をオンにしてください。";
+"no_access_due_to_parental_controls" = "写真およびビデオへのアクセス権がありません。ペアレンタルコントロールによりブロックされている可能性があります。";
