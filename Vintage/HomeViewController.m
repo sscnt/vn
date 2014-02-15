@@ -39,7 +39,7 @@
     
     top = buttonCamera.bottom + 15.0f;
     buttonPhotos = [[UIBlurredButton alloc] initWithFrame:CGRectMake(15.0f, top, [UIScreen screenSize].width - 30.0f, 50.0) Type:BlurredButtonIconTypePhotos];
-    buttonCamera.tag = UIBlurredButtonIdPhotos;
+    buttonPhotos.tag = UIBlurredButtonIdPhotos;
     [buttonPhotos setTitle:NSLocalizedString(@"Photos", nil) forState:UIControlStateNormal];
     [buttonPhotos addTarget:self action:@selector(didPressButton:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:buttonPhotos];
@@ -166,8 +166,7 @@
 
 - (void)goToEffectsViewControllerWithImage:(UIImage *)image
 {
-    EffectsViewController* controller = [[EffectsViewController alloc] init];
-    controller.imageOriginal = image;
+    SelectionViewController* controller = [[SelectionViewController alloc] initWithImage:image];
     controller.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
     [self.navigationController pushViewController:controller animated:NO];
 }

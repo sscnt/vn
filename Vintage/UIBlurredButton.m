@@ -19,13 +19,13 @@
         NSArray *langs = [NSLocale preferredLanguages];
         NSString *currentLanguage = [langs objectAtIndex:0];
         if([currentLanguage compare:@"ja"] == NSOrderedSame) {
-            self.titleLabel.font = [UIFont fontWithName:@"rounded-mplus-1p-bold" size:20.0f];
+            self.titleLabel.font = [UIFont fontWithName:@"rounded-mplus-1p-bold" size:16.0f];
             [self setTitleEdgeInsets:UIEdgeInsetsMake(2.0f, 0.0f, 0.0f, -6.0f)];
             [self setImageEdgeInsets:UIEdgeInsetsMake(0.0f, 0.0f, 0.0f, 5.0)];
         } else {
             self.titleLabel.font = [UIFont fontWithName:@"chunkfive" size:20.0f];
-            [self setTitleEdgeInsets:UIEdgeInsetsMake(6.0f, 0.0f, 0.0f, 0.0f)];
-            [self setImageEdgeInsets:UIEdgeInsetsMake(0.0f, 0.0f, 0.0f, 15.0)];
+            [self setTitleEdgeInsets:UIEdgeInsetsMake(5.5f, 0.0f, 0.0f, 0.0f)];
+            [self setImageEdgeInsets:UIEdgeInsetsMake(0.0f, 0.0f, 0.0f, 12.0)];
         }
         [self setTitleColor:[UIColor colorWithWhite:1.0f alpha:0.70f] forState:UIControlStateNormal];
         [self setTitleColor:[UIColor colorWithWhite:1.0f alpha:0.40f] forState:UIControlStateHighlighted];
@@ -39,8 +39,8 @@
 {
     switch (type) {
         case BlurredButtonIconTypeCamera:
-            [self setImage:[UIImage imageNamed:@"camera-40-70.png"] forState:UIControlStateNormal];
-            [self setImage:[UIImage imageNamed:@"camera-40-40.png"] forState:UIControlStateHighlighted];            
+            [self setImage:[UIImage imageNamed:@"camera-36-70.png"] forState:UIControlStateNormal];
+            [self setImage:[UIImage imageNamed:@"camera-36-40.png"] forState:UIControlStateHighlighted];
             break;
         case BlurredButtonIconTypePhotos:
             [self setImage:[UIImage imageNamed:@"photos-40-70.png"] forState:UIControlStateNormal];

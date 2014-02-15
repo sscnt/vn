@@ -10,7 +10,7 @@
 #import <AssetsLibrary/AssetsLibrary.h>
 #import "GPUImage.h"
 #import "UIBlurredButton.h"
-#import "EffectsViewController.h"
+#import "SelectionViewController.h"
 
 typedef NS_ENUM(NSInteger, UIBlurredButtonId){
     UIBlurredButtonIdCamera = 1,
