@@ -10,6 +10,11 @@
 
 @implementation GPUImageEffects
 
+- (UIImage*)process
+{
+    return nil;
+}
+
 - (UIImage*)mergeBaseImage:(UIImage *)baseImage overlayImage:(UIImage *)overlayImage opacity:(CGFloat)opacity blendingMode:(MergeBlendingMode)blendingMode
 {
     GPUImagePicture* overlayPicture = [[GPUImagePicture alloc] initWithImage:overlayImage];

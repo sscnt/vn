@@ -12,9 +12,9 @@
 
 - (UIImage*)process
 {
+    self.effectId = EffectIdMiami;
+    
     UIImage* resultImage = self.imageToProcess;
-    
-    
     
     // Hue / Saturation
     @autoreleasepool {
@@ -73,14 +73,14 @@
     
     // Curve
     @autoreleasepool {
-        GPUImageToneCurveFilter* curveFilter = [[GPUImageToneCurveFilter alloc] initWithACV:@"Miami1"];
+        GPUImageToneCurveFilter* curveFilter = [[GPUImageToneCurveFilter alloc] initWithACV:@"mi1"];
         
         resultImage = [self mergeBaseImage:resultImage overlayFilter:curveFilter opacity:1.0f blendingMode:MergeBlendingModeNormal];
     }
     
     // Curve
     @autoreleasepool {
-        GPUImageToneCurveFilter* curveFilter = [[GPUImageToneCurveFilter alloc] initWithACV:@"Miami2"];
+        GPUImageToneCurveFilter* curveFilter = [[GPUImageToneCurveFilter alloc] initWithACV:@"mi2"];
         
         resultImage = [self mergeBaseImage:resultImage overlayFilter:curveFilter opacity:1.0f blendingMode:MergeBlendingModeNormal];
     }
@@ -105,7 +105,7 @@
     
     // Curve
     @autoreleasepool {
-        GPUImageToneCurveFilter* curveFilter = [[GPUImageToneCurveFilter alloc] initWithACV:@"Miami3"];
+        GPUImageToneCurveFilter* curveFilter = [[GPUImageToneCurveFilter alloc] initWithACV:@"mi3"];
         
         resultImage = [self mergeBaseImage:resultImage overlayFilter:curveFilter opacity:0.90f blendingMode:MergeBlendingModeNormal];
     }

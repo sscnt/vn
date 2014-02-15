@@ -80,7 +80,6 @@
     UIGraphicsBeginImageContextWithOptions(rect.size, opaque, 0.0);
     CGContextRef context = UIGraphicsGetCurrentContext();
     CGContextTranslateCTM(context, -rect.origin.x, -rect.origin.y);
-    CALayer *layer = self.layer;
     if ([self respondsToSelector:@selector(drawViewHierarchyInRect:afterScreenUpdates:)]) {
         [self drawViewHierarchyInRect:self.frame afterScreenUpdates:YES];
     } else {

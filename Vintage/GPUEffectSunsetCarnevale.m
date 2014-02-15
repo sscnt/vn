@@ -12,6 +12,8 @@
 
 - (UIImage*)process
 {
+    self.effectId = EffectIdSunsetCarnevale;
+    
     UIImage* resultImage = self.imageToProcess;
     UIImage* solidImage = self.imageToProcess;
     
@@ -25,7 +27,7 @@
     
     // Curve
     @autoreleasepool {
-        GPUImageToneCurveFilter* curveFilter = [[GPUImageToneCurveFilter alloc] initWithACV:@"SunsetCarnevale1"];
+        GPUImageToneCurveFilter* curveFilter = [[GPUImageToneCurveFilter alloc] initWithACV:@"sc1"];
         
         resultImage = [self mergeBaseImage:resultImage overlayFilter:curveFilter opacity:1.0f blendingMode:MergeBlendingModeNormal];
     }

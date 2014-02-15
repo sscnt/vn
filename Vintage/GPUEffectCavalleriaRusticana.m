@@ -12,6 +12,8 @@
 
 - (UIImage*)process
 {
+    self.effectId = EffectIdCavalleriaRusticana;
+    
     UIImage* resultImage = self.imageToProcess;
     
     // Blur
@@ -24,7 +26,7 @@
     
     // Curve
     @autoreleasepool {
-        GPUImageToneCurveFilter* curveFilter = [[GPUImageToneCurveFilter alloc] initWithACV:@"CavalleriaRusticana1"];
+        GPUImageToneCurveFilter* curveFilter = [[GPUImageToneCurveFilter alloc] initWithACV:@"cr1"];
         
         resultImage = [self mergeBaseImage:resultImage overlayFilter:curveFilter opacity:1.0f blendingMode:MergeBlendingModeNormal];
     }

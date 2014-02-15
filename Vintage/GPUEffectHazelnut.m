@@ -13,6 +13,8 @@
 
 - (UIImage*)process
 {
+    self.effectId = EffectIdHazelnut;
+    
     UIImage* resultImage = self.imageToProcess;
 
     // Curve

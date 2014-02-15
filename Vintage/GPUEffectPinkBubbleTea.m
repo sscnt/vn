@@ -12,6 +12,8 @@
 
 - (UIImage*)process
 {
+    self.effectId = EffectIdPinkBubbleTea;
+    
     UIImage* resultImage = self.imageToProcess;
     
     // Fill Layer
@@ -24,7 +26,7 @@
     
     // Curve
     @autoreleasepool {
-        GPUImageToneCurveFilter* curveFilter = [[GPUImageToneCurveFilter alloc] initWithACV:@"PinkBubbleTea"];
+        GPUImageToneCurveFilter* curveFilter = [[GPUImageToneCurveFilter alloc] initWithACV:@"pbt"];
         
         resultImage = [self mergeBaseImage:resultImage overlayFilter:curveFilter opacity:1.0f blendingMode:MergeBlendingModeNormal];
     }

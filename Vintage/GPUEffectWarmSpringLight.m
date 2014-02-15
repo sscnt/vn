@@ -6,18 +6,19 @@
 //  Copyright (c) 2013年 SSC. All rights reserved.
 //
 
-#import "GPUEffectSpringLight.h"
+#import "GPUEffectWarmSpringLight.h"
 
-@implementation GPUEffectSpringLight
+@implementation GPUEffectWarmSpringLight
 
 - (UIImage*)process
 {
-    UIImage* resultImage = self.imageToProcess;
+    self.effectId = EffectIdWarmSpringLight;
     
+    UIImage* resultImage = self.imageToProcess;
     
     // Curve
     @autoreleasepool {
-        GPUImageToneCurveFilter* curveFilter = [[GPUImageToneCurveFilter alloc] initWithACV:@"SpringLight1"];
+        GPUImageToneCurveFilter* curveFilter = [[GPUImageToneCurveFilter alloc] initWithACV:@"sl1"];
         
         resultImage = [self mergeBaseImage:resultImage overlayFilter:curveFilter opacity:1.0f blendingMode:MergeBlendingModeNormal];
     }
@@ -54,7 +55,7 @@
     
     // Curve
     @autoreleasepool {
-        GPUImageToneCurveFilter* curveFilter = [[GPUImageToneCurveFilter alloc] initWithACV:@"SpringLight2"];
+        GPUImageToneCurveFilter* curveFilter = [[GPUImageToneCurveFilter alloc] initWithACV:@"sl2"];
         
         resultImage = [self mergeBaseImage:resultImage overlayFilter:curveFilter opacity:1.0f blendingMode:MergeBlendingModeNormal];
     }

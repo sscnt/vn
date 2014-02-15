@@ -12,6 +12,8 @@
 
 - (UIImage*)process
 {
+    self.effectId = EffectIdFaerieVintage;
+    
     UIImage* resultImage = self.imageToProcess;
     
     // Fill Layer
@@ -32,7 +34,7 @@
     
     // Curve
     @autoreleasepool {
-        GPUImageToneCurveFilter* curveFilter = [[GPUImageToneCurveFilter alloc] initWithACV:@"FaerieVintage1"];
+        GPUImageToneCurveFilter* curveFilter = [[GPUImageToneCurveFilter alloc] initWithACV:@"fv1"];
         
         resultImage = [self mergeBaseImage:resultImage overlayFilter:curveFilter opacity:0.40f blendingMode:MergeBlendingModeNormal];
     }
@@ -85,7 +87,7 @@
     
     // Curve
     @autoreleasepool {
-        GPUImageToneCurveFilter* curveFilter = [[GPUImageToneCurveFilter alloc] initWithACV:@"FaerieVintage2"];
+        GPUImageToneCurveFilter* curveFilter = [[GPUImageToneCurveFilter alloc] initWithACV:@"fv2"];
         
         resultImage = [self mergeBaseImage:resultImage overlayFilter:curveFilter opacity:1.0f blendingMode:MergeBlendingModeNormal];
     }

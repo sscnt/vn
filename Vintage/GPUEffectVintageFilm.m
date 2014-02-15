@@ -13,6 +13,8 @@
 
 - (UIImage*)process
 {
+    self.effectId = EffectIdVintageFilm;
+    
     UIImage* resultImage = self.imageToProcess;
     UIImage* solidImage;
     
@@ -65,7 +67,7 @@
     // Curve
     @autoreleasepool {
 
-        GPUImageToneCurveFilter* curveFilter = [[GPUImageToneCurveFilter alloc] initWithACV:@"VintageFilm"];
+        GPUImageToneCurveFilter* curveFilter = [[GPUImageToneCurveFilter alloc] initWithACV:@"vf"];
         
         GPUImagePicture* picture = [[GPUImagePicture alloc] initWithImage:resultImage];
         [picture addTarget:curveFilter];

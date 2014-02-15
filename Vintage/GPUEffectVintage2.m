@@ -12,6 +12,8 @@
 
 - (UIImage*)process
 {
+    self.effectId = EffectIdVintage2;
+    
     UIImage* resultImage = self.imageToProcess;
     
     // Curve

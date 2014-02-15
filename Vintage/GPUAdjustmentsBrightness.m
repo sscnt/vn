@@ -260,7 +260,7 @@ NSString *const kGravyBrightnessFragmentShaderString = SHADER_STRING
     return self;
 }
 
-- (void)setShadowsAmount:(CGFloat)shadows
+- (void)setShadowsAmount:(float)shadows
 {
     _shadowsAmount = (shadows < 0.0f) ? -shadows: shadows;
     [self setFloat:_shadowsAmount forUniform:shadowsAmountUniform program:filterProgram];
@@ -279,7 +279,7 @@ NSString *const kGravyBrightnessFragmentShaderString = SHADER_STRING
     [self setFloat:_contrastAmount forUniform:contrastAmountUniform program:filterProgram];
 }
 
-- (void)setHighlightsAmount:(CGFloat)highlights
+- (void)setHighlightsAmount:(float)highlights
 {
     _highlightsAmount = MIN(1.0f, MAX(0.0f, highlights));
     [self setFloat:_highlightsAmount forUniform:highlightsAmountUniform program:filterProgram];

@@ -20,6 +20,33 @@
 #import "GPUImageLinearDodgeBlendFilter.h"
 
 
+typedef NS_ENUM(NSInteger, EffectId){
+    EffectIdHaze3 = 1,
+    EffectIdColorfulCandy,
+    EffectIdHazelnut,
+    EffectIdVintageFilm,
+    EffectIdVintage2,
+    EffectIdVintage1,
+    EffectIdOldTone,
+    EffectIdWeekend,
+    EffectIdWarmAutumn,
+    EffectIdJoyful,
+    EffectIdWarmSpringLight,
+    EffectIdGentleMemories,
+    EffectIdVanila,
+    EffectIdCreamyNoon,
+    EffectIdVividVintage,
+    EffectIdCavalleriaRusticana,
+    EffectIdDreamyVintage,
+    EffectIdSunsetCarnevale,
+    EffectIdBeachVintage,
+    EffectIdPinkBubbleTea,
+    EffectIdFaerieVintage,
+    EffectIdGirder,
+    EffectIdSummers,
+    EffectIdMiami
+};
+
 typedef NS_ENUM(NSInteger, MergeBlendingMode){
     MergeBlendingModeNormal = 1,
     MergeBlendingModeDarken,
@@ -43,6 +70,7 @@ typedef NS_ENUM(NSInteger, MergeBlendingMode){
 @interface GPUImageEffects : NSObject
 
 @property (nonatomic, weak) UIImage* imageToProcess;
+@property (nonatomic, assign) EffectId effectId;
 
 - (UIImage*)process;
 - (UIImage*)mergeBaseImage:(UIImage*)baseImage overlayImage:(UIImage*)overlayImage opacity:(CGFloat)opacity blendingMode:(MergeBlendingMode)blendingMode;

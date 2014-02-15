@@ -12,8 +12,9 @@
 
 - (UIImage*)process
 {
+    self.effectId = EffectIdVintage1;
+    
     UIImage* resultImage = self.imageToProcess;
-
     
     // Fill Layer
     @autoreleasepool {

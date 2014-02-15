@@ -12,6 +12,8 @@
 
 - (UIImage*)process
 {
+    self.effectId = EffectIdGirder;
+    
     UIImage* resultImage = self.imageToProcess;
     
     // Paind Daubs

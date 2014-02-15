@@ -12,6 +12,8 @@
 
 - (UIImage*)process
 {
+    self.effectId = EffectIdColorfulCandy;
+    
     UIImage* resultImage = self.imageToProcess;
     UIImage* solidImage;
 

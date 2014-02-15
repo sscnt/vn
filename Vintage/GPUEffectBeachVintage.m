@@ -12,6 +12,8 @@
 
 - (UIImage*)process
 {
+    self.effectId = EffectIdBeachVintage;
+    
     UIImage* resultImage = self.imageToProcess;
     UIImage* solidImage = self.imageToProcess;
     

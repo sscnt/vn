@@ -12,9 +12,9 @@
 
 - (UIImage*)process
 {
-    UIImage* resultImage = self.imageToProcess;
+    self.effectId = EffectIdWeekend;
     
-
+    UIImage* resultImage = self.imageToProcess;
     
     // Contrast
     @autoreleasepool {
@@ -135,7 +135,7 @@
     
     // Curve
     @autoreleasepool {
-        GPUImageToneCurveFilter* curveFilter = [[GPUImageToneCurveFilter alloc] initWithACV:@"Weekend"];
+        GPUImageToneCurveFilter* curveFilter = [[GPUImageToneCurveFilter alloc] initWithACV:@"wnd"];
         
         resultImage = [self mergeBaseImage:resultImage overlayFilter:curveFilter opacity:0.35f blendingMode:MergeBlendingModeNormal];
     }

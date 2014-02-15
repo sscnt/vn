@@ -10,7 +10,7 @@
 #import "GPUEffectCreamyNoon.h"
 #import "GPUEffectGentleMemories.h"
 #import "GPUEffectVanilla.h"
-#import "GPUEffectSpringLight.h"
+#import "GPUEffectWarmSpringLight.h"
 #import "GPUEffectVividVintage.h"
 #import "GPUEffectCavalleriaRusticana.h"
 #import "GPUEffectDreamyVintage.h"

@@ -15,8 +15,15 @@
     #import <Foundation/Foundation.h>
 #endif
 
+#ifdef DEBUG
+#define dlog(fmt, ...) NSLog((@"%s [Line %d] \n# " fmt), __PRETTY_FUNCTION__, __LINE__, ##__VA_ARGS__);
+#else
+#define dlog(...)
+#endif
+
 #import "UIDevice+extend.h"
 #import "UIScreen+extend.h"
 #import "UIView+extend.h"
 #import "UIScrollView+extend.h"
 #import "UIImage+extend.h"
+#import "UIImagePickerController+extend.h"

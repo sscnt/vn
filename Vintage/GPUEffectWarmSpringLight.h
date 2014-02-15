@@ -8,6 +8,6 @@
 
 #import "GPUImageEffects.h"
 
-@interface GPUEffectSpringLight : GPUImageEffects
+@interface GPUEffectWarmSpringLight : GPUImageEffects
 
 @end

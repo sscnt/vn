@@ -17,7 +17,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	[UIApplication sharedApplication].statusBarHidden = YES;
 
     //// Background Image
     UIImageView* imageViewBg;
@@ -164,6 +163,12 @@
 {
     [picker dismissViewControllerAnimated:YES completion:nil];
 }
+
+- (void)navigationController:(UINavigationController *)navigationController willShowViewController:(UIViewController *)viewController animated:(BOOL)animated
+{
+    [[UIApplication sharedApplication] setStatusBarHidden:YES];
+}
+
 
 - (void)goToEffectsViewControllerWithImage:(UIImage *)image
 {

@@ -12,8 +12,9 @@
 
 - (UIImage*)process
 {
-    UIImage* resultImage = self.imageToProcess;
+    self.effectId = EffectIdOldTone;
     
+    UIImage* resultImage = self.imageToProcess;
     
     // Selective Color
     @autoreleasepool {

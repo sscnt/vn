@@ -11,6 +11,7 @@
 #import "GPUImage.h"
 #import "UIBlurredButton.h"
 #import "SelectionViewController.h"
+#import "UIImagePickerController+extend.h"
 
 typedef NS_ENUM(NSInteger, UIBlurredButtonId){
     UIBlurredButtonIdCamera = 1,

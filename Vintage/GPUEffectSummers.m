@@ -12,8 +12,9 @@
 
 - (UIImage*)process
 {
-    UIImage* resultImage = self.imageToProcess;
+    self.effectId = EffectIdSummers;
     
+    UIImage* resultImage = self.imageToProcess;
     
     // Hue / Saturation
     @autoreleasepool {

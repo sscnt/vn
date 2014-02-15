@@ -26,7 +26,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [UIApplication sharedApplication].statusBarHidden = NO;
     
     //// Init
     _numberOfEffects = 24;
@@ -47,20 +46,20 @@
     [_arrayEffects addObject:[[GPUEffectMiami alloc] init]];
     [_arrayEffects addObject:[[GPUEffectGirder alloc] init]];
     [_arrayEffects addObject:[[GPUEffectCavalleriaRusticana alloc] init]];
-    [_arrayEffects addObject:[[GPUEffectHazelnut alloc] init]];
-    [_arrayEffects addObject:[[GPUEffectCreamyNoon alloc] init]];
+    [_arrayEffects addObject:[[GPUEffectFaerieVintage alloc] init]];
+    [_arrayEffects addObject:[[GPUEffectHazelnut alloc] init]];    
+    [_arrayEffects addObject:[[GPUEffectGentleMemories alloc] init]];
     [_arrayEffects addObject:[[GPUEffectHaze3 alloc] init]];
     [_arrayEffects addObject:[[GPUEffectBeachVintage alloc] init]];
     [_arrayEffects addObject:[[GPUEffectDreamyVintage alloc] init]];
-    [_arrayEffects addObject:[[GPUEffectFaerieVintage alloc] init]];
-    [_arrayEffects addObject:[[GPUEffectGentleMemories alloc] init]];
+    [_arrayEffects addObject:[[GPUEffectCreamyNoon alloc] init]];
     [_arrayEffects addObject:[[GPUEffectJoyful alloc] init]];
     [_arrayEffects addObject:[[GPUEffectPinkBubbleTea alloc] init]];
     [_arrayEffects addObject:[[GPUEffectSummers alloc] init]];
     [_arrayEffects addObject:[[GPUEffectVanilla alloc] init]];
     [_arrayEffects addObject:[[GPUEffectWarmAutumn alloc] init]];
     [_arrayEffects addObject:[[GPUEffectSunsetCarnevale alloc] init]];
-    [_arrayEffects addObject:[[GPUEffectSpringLight alloc] init]];
+    [_arrayEffects addObject:[[GPUEffectWarmSpringLight alloc] init]];
     [_arrayEffects addObject:[[GPUEffectColorfulCandy alloc] init]];
     
     //// Layout

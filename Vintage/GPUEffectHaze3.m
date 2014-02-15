@@ -12,6 +12,8 @@
 
 - (UIImage*)process
 {
+    self.effectId = EffectIdHaze3;
+    
     UIImage* resultImage = self.imageToProcess;
     
     // Blur
