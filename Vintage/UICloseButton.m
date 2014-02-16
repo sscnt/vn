@@ -24,6 +24,15 @@
     return self;
 }
 
+- (void)setHighlighted:(BOOL)highlighted
+{
+    if (highlighted) {
+        self.alpha = 0.50f;
+    }else{
+        self.alpha = 1.0f;
+    }
+}
+
 /*
 // Only override drawRect: if you perform custom drawing.
 // An empty implementation adversely affects performance during animation.

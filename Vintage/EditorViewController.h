@@ -12,11 +12,14 @@
 #import "UINavigationBarView.h"
 #import "UICloseButton.h"
 #import "UIEditorPreviewImageView.h"
+#import "UISaveButton.h"
+#import "SVProgressHUD.h"
 
 @interface EditorViewController : UIViewController
 {
     UIEditorPreviewImageView* _imageViewPreview;
     CGFloat _strength;
+    BOOL _isSaving;
 }
 
 @property (nonatomic, assign) EffectId effectId;
@@ -27,6 +30,8 @@
 
 - (void)applyEffect;
 - (void)didPressCloseButton;
+- (void)didPressSaveButton;
+- (GPUImageEffects*)effect:(EffectId)effectId;
 
 - (UIImage*)merge2pictureBase:(GPUImagePicture*)basePicture overlay:(GPUImagePicture*)overlayPicture opacity:(CGFloat)opacity;
 

@@ -17,6 +17,7 @@ typedef NS_ENUM(NSInteger, NavigationBarViewPosition){
 {
     CGFloat _leftButtonPositionLeft;
     CGFloat _rightButtonPositionLeft;
+    UILabel* _titleLabel;
 }
 
 @property (nonatomic, assign) NavigationBarViewPosition position;
@@ -25,5 +26,6 @@ typedef NS_ENUM(NSInteger, NavigationBarViewPosition){
 - (id)initWithPosition:(NavigationBarViewPosition)position;
 - (void)appendButtonToLeft:(UIButton*)button;
 - (void)appendButtonToRight:(UIButton*)button;
+- (void)setTitle:(NSString*)title;
 
 @end

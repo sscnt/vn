@@ -19,6 +19,7 @@
     self = [super init];
     if (self) {
         _strength = 1.0;
+        _isSaving = NO;
     }
     return self;
 }
@@ -34,9 +35,13 @@
     UICloseButton* buttonClose = [[UICloseButton alloc] init];
     [buttonClose addTarget:self action:@selector(didPressCloseButton) forControlEvents:UIControlEventTouchUpInside];
     [bar appendButtonToLeft:buttonClose];
+    UISaveButton* buttonSave = [[UISaveButton alloc] init];
+    [buttonSave addTarget:self action:@selector(didPressSaveButton) forControlEvents:UIControlEventTouchUpInside];
+    [bar appendButtonToRight:buttonSave];
     [self.view addSubview:bar];
     //////// Top Bar
     bar = [[UINavigationBarView alloc] initWithPosition:NavigationBarViewPositionTop];
+    [bar setTitle:NSLocalizedString(@"Edit", nil)];
     [self.view addSubview:bar];
     
     //// Preview
@@ -51,77 +56,81 @@
     }
 }
 
-- (void)applyEffect
+- (GPUImageEffects*)effect:(EffectId)effectId
 {
-    GPUImageEffects* effect;
-    switch (_effectId) {
+    switch (effectId) {
         case EffectIdBeachVintage:
-            effect = [[GPUEffectBeachVintage alloc] init];
+            return [[GPUEffectBeachVintage alloc] init];
             break;
         case EffectIdCreamyNoon:
-            effect = [[GPUEffectCreamyNoon alloc] init];
+            return [[GPUEffectCreamyNoon alloc] init];
             break;
         case EffectIdCavalleriaRusticana:
-            effect = [[GPUEffectCavalleriaRusticana alloc] init];
+            return [[GPUEffectCavalleriaRusticana alloc] init];
             break;
         case EffectIdDreamyVintage:
-            effect = [[GPUEffectDreamyVintage alloc] init];
+            return [[GPUEffectDreamyVintage alloc] init];
             break;
         case EffectIdFaerieVintage:
-            effect = [[GPUEffectFaerieVintage alloc] init];
+            return [[GPUEffectFaerieVintage alloc] init];
             break;
         case EffectIdGentleMemories:
-            effect = [[GPUEffectGentleMemories alloc] init];
+            return [[GPUEffectGentleMemories alloc] init];
             break;
         case EffectIdGirder:
-            effect = [[GPUEffectGirder alloc] init];
+            return [[GPUEffectGirder alloc] init];
             break;
         case EffectIdHaze3:
-            effect = [[GPUEffectHaze3 alloc] init];
+            return [[GPUEffectHaze3 alloc] init];
             break;
         case EffectIdHazelnut:
-            effect = [[GPUEffectHazelnut alloc] init];
+            return [[GPUEffectHazelnut alloc] init];
             break;
         case EffectIdJoyful:
-            effect = [[GPUEffectJoyful alloc] init];
+            return [[GPUEffectJoyful alloc] init];
             break;
         case EffectIdMiami:
-            effect = [[GPUEffectMiami alloc] init];
+            return [[GPUEffectMiami alloc] init];
             break;
         case EffectIdOldTone:
-            effect = [[GPUEffectOldTone alloc] init];
+            return [[GPUEffectOldTone alloc] init];
             break;
         case EffectIdPinkBubbleTea:
-            effect = [[GPUEffectPinkBubbleTea alloc] init];
+            return [[GPUEffectPinkBubbleTea alloc] init];
             break;
         case EffectIdSummers:
-            effect = [[GPUEffectSummers alloc] init];
+            return [[GPUEffectSummers alloc] init];
             break;
         case EffectIdSunsetCarnevale:
-            effect = [[GPUEffectSunsetCarnevale alloc] init];
+            return [[GPUEffectSunsetCarnevale alloc] init];
             break;
         case EffectIdVintage1:
-            effect = [[GPUEffectVintage1 alloc] init];
+            return [[GPUEffectVintage1 alloc] init];
             break;
         case EffectIdVintage2:
-            effect = [[GPUEffectVintage2 alloc] init];
+            return [[GPUEffectVintage2 alloc] init];
             break;
         case EffectIdVintageFilm:
-            effect = [[GPUEffectVintageFilm alloc] init];
+            return [[GPUEffectVintageFilm alloc] init];
             break;
         case EffectIdVividVintage:
-            effect = [[GPUEffectVividVintage alloc] init];
+            return [[GPUEffectVividVintage alloc] init];
             break;
         case EffectIdWarmAutumn:
-            effect = [[GPUEffectWarmAutumn alloc] init];
+            return [[GPUEffectWarmAutumn alloc] init];
             break;
         case EffectIdWarmSpringLight:
-            effect = [[GPUEffectWarmSpringLight alloc] init];
+            return [[GPUEffectWarmSpringLight alloc] init];
             break;
         case EffectIdWeekend:
-            effect = [[GPUEffectWeekend alloc] init];
+            return [[GPUEffectWeekend alloc] init];
             break;
     }
+}
+
+- (void)applyEffect
+{
+    GPUImageEffects* effect = [self effect:_effectId];
     effect.imageToProcess = _imageResized;
     GPUImagePicture* base = [[GPUImagePicture alloc] initWithImage:_imageResized];
     _imageEffected = [effect process];
@@ -145,6 +154,41 @@
     [basePicture processImage];
     [overlayPicture processImage];
     return [normalBlend imageFromCurrentlyProcessedOutput];
+}
+
+- (void)didPressSaveButton
+{
+    if (_isSaving) {
+        return;
+    }
+    _isSaving = YES;
+    LOG(@"saving...");
+    [SVProgressHUD showWithMaskType:SVProgressHUDMaskTypeClear];
+    
+    __block UIImage* imageOriginal = _imageOriginal;
+    __block EditorViewController* _self = self;
+    dispatch_queue_t q_global = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+    dispatch_queue_t q_main = dispatch_get_main_queue();
+    dispatch_async(q_global, ^{
+        UIImage* resultImage;
+        GPUImageEffects* effect = [self effect:_effectId];
+        effect.imageToProcess = imageOriginal;
+        
+        GPUImagePicture* base = [[GPUImagePicture alloc] initWithImage:_imageOriginal];
+        UIImage* imageEffected = [effect process];
+        GPUImagePicture* overlay = [[GPUImagePicture alloc] initWithImage:imageEffected];
+        resultImage = [_self merge2pictureBase:base overlay:overlay opacity:_strength];
+
+        UIImageWriteToSavedPhotosAlbum(resultImage, nil, nil, nil);
+        
+        dispatch_async(q_main, ^{
+            [SVProgressHUD dismiss];
+            [SVProgressHUD showSuccessWithStatus:NSLocalizedString(@"Saved successfully", nil)];
+            _isSaving = NO;
+        });
+        
+    });
+
 }
 
 - (void)didPressCloseButton

@@ -21,10 +21,30 @@
         [self setBackgroundColor:[UIColor colorWithWhite:40.0f/255.0f alpha:0.65f]];
         _position = position;
         _buttonWidth = 44.0f;
-        _rightButtonPositionLeft = [UIScreen screenSize].width - _buttonWidth;
+        _rightButtonPositionLeft = [UIScreen screenSize].width;
         _leftButtonPositionLeft = 0.0f;
+        
+        _titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0.0f, 0.0f, frame.size.width, frame.size.height)];
+        _titleLabel.alpha = 0.9f;
+        _titleLabel.textAlignment = NSTextAlignmentCenter;
+        _titleLabel.backgroundColor = [UIColor clearColor];
+        _titleLabel.textColor = [UIColor whiteColor];
+        _titleLabel.numberOfLines = 0;
+        NSArray *langs = [NSLocale preferredLanguages];
+        NSString *currentLanguage = [langs objectAtIndex:0];
+        if([currentLanguage compare:@"ja"] == NSOrderedSame) {
+            _titleLabel.font = [UIFont fontWithName:@"rounded-mplus-1p-bold" size:16.0f];
+        } else {
+            _titleLabel.font = [UIFont fontWithName:@"chunkfive" size:20.0f];
+        }
+        [self addSubview:_titleLabel];
     }
     return self;
+}
+
+- (void)setTitle:(NSString *)title
+{
+    _titleLabel.text = title;
 }
 
 - (void)appendButtonToLeft:(UIButton *)button
