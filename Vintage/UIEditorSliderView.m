@@ -14,22 +14,49 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
+        self.alpha = 0.70f;
 
         //// Slider
         CGFloat sliderWidth = frame.size.width - 68.0f;
-        _slider = [[UISliderView alloc] initWithFrame:CGRectMake(46.0f, 0.0f, sliderWidth, 24.0f)];
+        _slider = [[UISliderView alloc] initWithFrame:CGRectMake(46.0f, 0.0f, sliderWidth, 22.0f)];
+        _slider.delegate = self;
         [self addSubview:_slider];
     }
     return self;
 }
 
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect
+- (CGFloat)value
 {
-    // Drawing code
+    return _slider.value;
 }
-*/
+
+- (void)setValue:(CGFloat)value
+{
+    _slider.value = value;
+}
+
+#pragma mark delegate
+
+- (void)slider:(UISliderView*)slider DidValueChange:(CGFloat)value
+{
+    [self.delegate slider:self DidValueChange:value];
+}
+
+- (void)touchesBeganWithSlider:(UISliderView *)slider
+{
+    self.alpha = 1.0f;
+    [self.delegate touchesBeganWithSlider:self];
+}
+
+- (void)touchesEndedWithSlider:(UISliderView *)slider
+{
+    self.alpha = 0.70f;
+    [self.delegate touchesEndedWithSlider:self];
+}
+
+- (void)touchesMovedWithSlider:(UISliderView *)slider
+{
+    self.alpha = 1.0f;
+}
 
 @end

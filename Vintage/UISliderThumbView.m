@@ -12,10 +12,11 @@
 
 - (id)initWithRadius:(CGFloat)radius
 {
-    CGRect frame = CGRectMake(0.0f, 0.0f, radius * 2.0f, radius * 2.0f);
+    CGRect frame = CGRectMake(0.0f, 0.0f, radius * 8.0f, radius * 4.0f);
     self = [super initWithFrame:frame];
     if (self) {
-        self.backgroundColor = [UIColor clearColor];
+        _radius = radius;
+        self.backgroundColor = [UIColor redColor];
     }
     return self;
 }
@@ -24,13 +25,12 @@
 - (void)drawRect:(CGRect)rect
 {
     //// Oval Drawing
-    UIBezierPath* ovalPath = [UIBezierPath bezierPathWithOvalInRect: CGRectMake(2.0f, 2.0f, rect.size.width - 4.0f, rect.size.height - 4.0f)];
+    UIBezierPath* ovalPath = [UIBezierPath bezierPathWithOvalInRect: CGRectMake(_radius * 4.0f - _radius + 2.0f, _radius * 2.0f - _radius - 2.0f, _radius * 2.0 - 4.0f, _radius * 2.0 - 4.0f)];
     [[UIColor whiteColor] setFill];
     [ovalPath fill];
-    [[UIColor blackColor] setStroke];
+    [[UIColor colorWithWhite:26.0f/255.0f alpha:1.0f] setStroke];
     ovalPath.lineWidth = 1;
     [ovalPath stroke];
 }
-
 
 @end

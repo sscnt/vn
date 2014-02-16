@@ -20,6 +20,7 @@
     if (self) {
         _strength = 1.0;
         _isSaving = NO;
+        _isApplying = NO;
     }
     return self;
 }
@@ -53,6 +54,8 @@
     
     //// Sliders
     _sliderStrength = [[UIEditorSliderView alloc] initWithFrame:CGRectMake(0.0f, 420.0f, [UIScreen screenSize].width, 48.0f)];
+    _sliderStrength.tag = EditorSliderIconTypeStrength;
+    _sliderStrength.delegate = self;
     [self.view addSubview:_sliderStrength];
     
     if (!self.waitingForOtherConversion) {
@@ -134,16 +137,35 @@
 
 - (void)applyEffect
 {
-    GPUImageEffects* effect = [self effect:_effectId];
-    effect.imageToProcess = _imageResized;
-    GPUImagePicture* base = [[GPUImagePicture alloc] initWithImage:_imageResized];
-    _imageEffected = [effect process];
-    GPUImagePicture* overlay = [[GPUImagePicture alloc] initWithImage:_imageEffected];
-    _imageEffected = [self merge2pictureBase:base overlay:overlay opacity:_strength];
-    [_imageViewPreview removeLoadingIndicator];
-    [_imageViewPreview.imageViewPreview setImage:_imageEffected];
-    _imageViewPreview.imageOriginal = _imageResized;
-}
+    if (_isApplying) {
+        return;
+    }
+    _isApplying = YES;
+    LOG(@"will apply effect");
+    __block UIImage* imageEffected = _imageEffected;
+    __block UIImage* imageResized = _imageResized;
+    __block UIEditorPreviewImageView* imageViewPreview = _imageViewPreview;
+    dispatch_queue_t q_global = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+    dispatch_queue_t q_main = dispatch_get_main_queue();
+    dispatch_async(q_global, ^{
+        
+        GPUImageEffects* effect = [self effect:_effectId];
+        effect.imageToProcess = imageResized;
+        GPUImagePicture* base = [[GPUImagePicture alloc] initWithImage:imageResized];
+        imageEffected = [effect process];
+        GPUImagePicture* overlay = [[GPUImagePicture alloc] initWithImage:imageEffected];
+        imageEffected = [self merge2pictureBase:base overlay:overlay opacity:_strength];
+        
+        dispatch_async(q_main, ^{
+            [imageViewPreview removeLoadingIndicator];
+            [imageViewPreview.imageViewPreview setImage:imageEffected];
+            imageViewPreview.imageOriginal = imageResized;
+            LOG(@"did apply effect");
+            _isApplying = NO;
+        });
+        
+    });
+    }
 
 - (UIImage*)merge2pictureBase:(GPUImagePicture *)basePicture overlay:(GPUImagePicture *)overlayPicture opacity:(CGFloat)opacity
 {
@@ -163,6 +185,7 @@
 - (void)didPressSaveButton
 {
     if (_isSaving) {
+        LOG(@"sorry now saving.");
         return;
     }
     _isSaving = YES;
@@ -195,9 +218,29 @@
 
 }
 
+#pragma mark delegate
+
+- (void)slider:(UIEditorSliderView*)slider DidValueChange:(CGFloat)value
+{
+}
+
 - (void)didPressCloseButton
 {
     [self.navigationController popViewControllerAnimated:YES];
+}
+
+- (void)touchesBeganWithSlider:(UIEditorSliderView *)slider
+{
+    
+}
+
+- (void)touchesEndedWithSlider:(UIEditorSliderView *)slider
+{
+    LOG(@"touchesend");
+    if (slider.tag == EditorSliderIconTypeStrength) {
+        _strength = slider.value;
+        [self applyEffect];
+    }
 }
 
 - (void)didReceiveMemoryWarning

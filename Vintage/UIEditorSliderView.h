@@ -13,6 +13,8 @@
 
 @protocol UIEditorSliderViewDelegate
 - (void)slider:(UIEditorSliderView*)slider DidValueChange:(CGFloat)value;
+- (void)touchesBeganWithSlider:(UIEditorSliderView*)slider;
+- (void)touchesEndedWithSlider:(UIEditorSliderView*)slider;
 @end
 
 typedef NS_ENUM(NSInteger, EditorSliderIconType){

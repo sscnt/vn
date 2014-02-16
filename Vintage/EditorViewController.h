@@ -22,6 +22,7 @@
     UIEditorSliderView* _sliderStrength;
     CGFloat _strength;
     BOOL _isSaving;
+    BOOL _isApplying;
 }
 
 @property (nonatomic, assign) EffectId effectId;

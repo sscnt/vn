@@ -9,6 +9,9 @@
 #import <UIKit/UIKit.h>
 
 @interface UISliderThumbVIew : UIView
+{
+    CGFloat _radius;
+}
 
 - (id)initWithRadius:(CGFloat)radius;
 

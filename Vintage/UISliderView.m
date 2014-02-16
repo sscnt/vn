@@ -34,12 +34,11 @@
         _thumbView = [[UISliderThumbVIew alloc] initWithRadius:radius];
         UIPanGestureRecognizer* recognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(didDragThumb:)];
         [_thumbView addGestureRecognizer:recognizer];
-        _thumbView.center = CGPointMake(radius * 2.0f + 2.0f, floorf(frame.size.height / 2.0f));
         [self addSubview:_thumbView];
         
         _thumbStartX = radius + 1.0f;
         _thumbEndX = frame.size.width - radius - 1.0f;
-        _value = 0.0f;
+        self.value = 1.0f;
     }
     return self;
 }
@@ -64,6 +63,7 @@
 
 - (void)didDragThumb:(UIPanGestureRecognizer *)sender
 {
+    
     UISliderThumbVIew* thumbView = (UISliderThumbVIew*)sender.view;
     CGPoint transitionPoint = [sender translationInView:thumbView];
     
@@ -78,9 +78,21 @@
     thumbView.center = movedPoint;
     
     _value = [self calcValueByThumbPosition:x];
-    LOG(@"%f", _value);
+    [self.delegate slider:self DidValueChange:_value];
     
     [sender setTranslation:CGPointZero inView:thumbView];
+    
+    switch (sender.state) {
+        case UIGestureRecognizerStateBegan:
+            [self.delegate touchesBeganWithSlider:self];
+            break;
+        case UIGestureRecognizerStateChanged:
+            [self.delegate touchesMovedWithSlider:self];
+            break;
+        case UIGestureRecognizerStateEnded:
+            [self.delegate touchesEndedWithSlider:self];
+            break;
+    }
 }
 
 - (void)drawRect:(CGRect)rect
@@ -94,6 +106,5 @@
     roundedRectanglePath.lineWidth = 2;
     [roundedRectanglePath stroke];
 }
-
 
 @end

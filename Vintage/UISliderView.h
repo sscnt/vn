@@ -13,6 +13,9 @@
 
 @protocol UISliderViewDelegate
 - (void)slider:(UISliderView*)slider DidValueChange:(CGFloat)value;
+- (void)touchesBeganWithSlider:(UISliderView*)slider;
+- (void)touchesMovedWithSlider:(UISliderView*)slider;
+- (void)touchesEndedWithSlider:(UISliderView*)slider;
 @end
 
 @interface UISliderView : UIView
