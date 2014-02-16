@@ -19,10 +19,14 @@
 {
     UILabel* _titleLabel;
     UISliderThumbVIew* _thumbView;
+    CGFloat _thumbStartX;
+    CGFloat _thumbEndX;
 }
 
 @property (nonatomic, strong) NSString* title;
 @property (nonatomic, assign) CGFloat value;
 @property (nonatomic, weak) id<UISliderViewDelegate> delegate;
+
+- (void)didDragThumb:(UIPanGestureRecognizer*)sender;
 
 @end

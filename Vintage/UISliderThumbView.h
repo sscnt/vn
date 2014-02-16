@@ -10,4 +10,6 @@
 
 @interface UISliderThumbVIew : UIView
 
+- (id)initWithRadius:(CGFloat)radius;
+
 @end

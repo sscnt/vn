@@ -14,6 +14,7 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
+        self.backgroundColor = [UIColor clearColor];
         _titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0.0f, 0.0f, frame.size.width, frame.size.height)];
         _titleLabel.alpha = 0.9f;
         _titleLabel.textAlignment = NSTextAlignmentCenter;
@@ -29,9 +30,15 @@
         }
         [self addSubview:_titleLabel];
         
-        _thumbView = [[UISliderThumbVIew alloc] init];
+        CGFloat radius = floorf((frame.size.height - 2.0f) / 2.0f);
+        _thumbView = [[UISliderThumbVIew alloc] initWithRadius:radius];
+        UIPanGestureRecognizer* recognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(didDragThumb:)];
+        [_thumbView addGestureRecognizer:recognizer];
+        _thumbView.center = CGPointMake(radius * 2.0f + 2.0f, floorf(frame.size.height / 2.0f));
         [self addSubview:_thumbView];
         
+        _thumbStartX = radius + 1.0f;
+        _thumbEndX = frame.size.width - radius - 1.0f;
         _value = 0.0f;
     }
     return self;
@@ -42,15 +49,33 @@
     
 }
 
+- (void)didDragThumb:(UIPanGestureRecognizer *)sender
+{
+    UISliderThumbVIew* thumbView = (UISliderThumbVIew*)sender.view;
+    CGPoint transitionPoint = [sender translationInView:thumbView];
+    
+    CGFloat x = thumbView.center.x + transitionPoint.x;
+    if (x > _thumbEndX) {
+        x = _thumbEndX;
+    }else if (x < _thumbStartX){
+        x = _thumbStartX;
+    }
+    
+    CGPoint movedPoint = CGPointMake(x, thumbView.center.y);
+    thumbView.center = movedPoint;
+    
+    [sender setTranslation:CGPointZero inView:thumbView];
+}
+
 - (void)drawRect:(CGRect)rect
 {
     //// Color Declarations
     UIColor* color = [UIColor colorWithRed: 1 green: 1 blue: 1 alpha: 1];
     
     //// Rounded Rectangle Drawing
-    UIBezierPath* roundedRectanglePath = [UIBezierPath bezierPathWithRoundedRect: CGRectMake(0.0f, 0.0f, rect.size.width, 40) cornerRadius: 20];
+    UIBezierPath* roundedRectanglePath = [UIBezierPath bezierPathWithRoundedRect: CGRectMake(1.0f, 1.0f, rect.size.width - 2.0f, rect.size.height - 2.0f) cornerRadius: rect.size.height];
     [color setStroke];
-    roundedRectanglePath.lineWidth = 1;
+    roundedRectanglePath.lineWidth = 2;
     [roundedRectanglePath stroke];
 }
 

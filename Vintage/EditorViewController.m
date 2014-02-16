@@ -51,6 +51,10 @@
     _imageViewPreview.center = self.view.center;
     [self.view addSubview:_imageViewPreview];
     
+    //// Sliders
+    _sliderStrength = [[UIEditorSliderView alloc] initWithFrame:CGRectMake(0.0f, 420.0f, [UIScreen screenSize].width, 48.0f)];
+    [self.view addSubview:_sliderStrength];
+    
     if (!self.waitingForOtherConversion) {
         [self applyEffect];        
     }

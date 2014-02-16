@@ -19,7 +19,7 @@ typedef NS_ENUM(NSInteger, EditorSliderIconType){
     EditorSliderIconTypeStrength = 1
 };
 
-@interface UIEditorSliderView : UIView
+@interface UIEditorSliderView : UIView <UISliderViewDelegate>
 {
     UISliderView* _slider;
 }

@@ -14,10 +14,12 @@
 #import "UIEditorPreviewImageView.h"
 #import "UISaveButton.h"
 #import "SVProgressHUD.h"
+#import "UIEditorSliderView.h"
 
-@interface EditorViewController : UIViewController
+@interface EditorViewController : UIViewController <UIEditorSliderViewDelegate>
 {
     UIEditorPreviewImageView* _imageViewPreview;
+    UIEditorSliderView* _sliderStrength;
     CGFloat _strength;
     BOOL _isSaving;
 }

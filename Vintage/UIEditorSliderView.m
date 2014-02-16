@@ -14,7 +14,11 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
-        // Initialization code
+
+        //// Slider
+        CGFloat sliderWidth = frame.size.width - 68.0f;
+        _slider = [[UISliderView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, sliderWidth, 24.0f)];
+        [self addSubview:_slider];
     }
     return self;
 }

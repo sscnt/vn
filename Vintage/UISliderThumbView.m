@@ -10,12 +10,12 @@
 
 @implementation UISliderThumbVIew
 
-- (id)init
+- (id)initWithRadius:(CGFloat)radius
 {
-    CGRect frame = CGRectMake(0.0f, 0.0f, 40.0f, 40.0f);
+    CGRect frame = CGRectMake(0.0f, 0.0f, radius * 2.0f, radius * 2.0f);
     self = [super initWithFrame:frame];
     if (self) {
-        // Initialization code
+        self.backgroundColor = [UIColor clearColor];
     }
     return self;
 }
@@ -24,7 +24,7 @@
 - (void)drawRect:(CGRect)rect
 {
     //// Oval Drawing
-    UIBezierPath* ovalPath = [UIBezierPath bezierPathWithOvalInRect: CGRectMake(0.0f, 0.0f, rect.size.width, rect.size.height)];
+    UIBezierPath* ovalPath = [UIBezierPath bezierPathWithOvalInRect: CGRectMake(2.0f, 2.0f, rect.size.width - 4.0f, rect.size.height - 4.0f)];
     [[UIColor whiteColor] setFill];
     [ovalPath fill];
     [[UIColor blackColor] setStroke];
