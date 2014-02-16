@@ -42,7 +42,7 @@
     //// Preview
     CGFloat width = [UIScreen screenSize].width;
     CGFloat height = _imageOriginal.size.height * width / _imageOriginal.size.width;
-    _imageViewPreview = [[UISelectionPreviewImageView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, width, height)];
+    _imageViewPreview = [[UIEditorPreviewImageView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, width, height)];
     _imageViewPreview.center = self.view.center;
     [self.view addSubview:_imageViewPreview];
     
@@ -125,11 +125,11 @@
     effect.imageToProcess = _imageResized;
     GPUImagePicture* base = [[GPUImagePicture alloc] initWithImage:_imageResized];
     _imageEffected = [effect process];
-    LOG(@"%@", _imageEffected);
     GPUImagePicture* overlay = [[GPUImagePicture alloc] initWithImage:_imageEffected];
     _imageEffected = [self merge2pictureBase:base overlay:overlay opacity:_strength];
     [_imageViewPreview removeLoadingIndicator];
     [_imageViewPreview.imageViewPreview setImage:_imageEffected];
+    _imageViewPreview.imageOriginal = _imageResized;
 }
 
 - (UIImage*)merge2pictureBase:(GPUImagePicture *)basePicture overlay:(GPUImagePicture *)overlayPicture opacity:(CGFloat)opacity

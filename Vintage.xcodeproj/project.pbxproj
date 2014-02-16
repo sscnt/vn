@@ -79,6 +79,7 @@
 		58F767DD18AD6F4900015FBA /* VintageTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F767DC18AD6F4900015FBA /* VintageTests.m */; };
 		58F78B1518AE6D97004510AC /* libGPUImage.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 58F78B1218AE6D1F004510AC /* libGPUImage.a */; };
 		58F7F07A18AFE42F00997877 /* loading-48@2x.gif in Resources */ = {isa = PBXBuildFile; fileRef = 58F7F07918AFE42F00997877 /* loading-48@2x.gif */; };
+		58FB1AE318B071EB0003EC79 /* UIEditorPreviewImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 58FB1AE218B071EB0003EC79 /* UIEditorPreviewImageView.m */; };
 		58FB369318AEAFEC00B284FB /* rounded-mplus-1p-bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 58FB368D18AEAFEC00B284FB /* rounded-mplus-1p-bold.ttf */; };
 		58FB369418AEAFEC00B284FB /* rounded-mplus-1p-heavy.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 58FB368E18AEAFEC00B284FB /* rounded-mplus-1p-heavy.ttf */; };
 		58FB369518AEAFEC00B284FB /* rounded-mplus-1p-light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 58FB368F18AEAFEC00B284FB /* rounded-mplus-1p-light.ttf */; };
@@ -276,6 +277,8 @@
 		58F78AD618AEB32A0099A85F /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		58F78B0B18AE6D1E004510AC /* GPUImage.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = GPUImage.xcodeproj; path = GPUImage/framework/GPUImage.xcodeproj; sourceTree = "<group>"; };
 		58F7F07918AFE42F00997877 /* loading-48@2x.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "loading-48@2x.gif"; sourceTree = "<group>"; };
+		58FB1AE118B071EB0003EC79 /* UIEditorPreviewImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIEditorPreviewImageView.h; sourceTree = "<group>"; };
+		58FB1AE218B071EB0003EC79 /* UIEditorPreviewImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIEditorPreviewImageView.m; sourceTree = "<group>"; };
 		58FB368D18AEAFEC00B284FB /* rounded-mplus-1p-bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "rounded-mplus-1p-bold.ttf"; sourceTree = "<group>"; };
 		58FB368E18AEAFEC00B284FB /* rounded-mplus-1p-heavy.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "rounded-mplus-1p-heavy.ttf"; sourceTree = "<group>"; };
 		58FB368F18AEAFEC00B284FB /* rounded-mplus-1p-light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "rounded-mplus-1p-light.ttf"; sourceTree = "<group>"; };
@@ -681,6 +684,7 @@
 			children = (
 				5891ABDB18B036B100241949 /* UINavigationBarView.h */,
 				5891ABDC18B036B100241949 /* UINavigationBarView.m */,
+				58FB1AE018B071D20003EC79 /* Editor */,
 				5891ABDE18B0380700241949 /* Button */,
 				58FCAD2D18AFC27A001559F0 /* Selection */,
 				58F5563618AE16B6008B2857 /* Home */,
@@ -793,6 +797,15 @@
 				58F78B1418AE6D1F004510AC /* GPUImageTests.octest */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		58FB1AE018B071D20003EC79 /* Editor */ = {
+			isa = PBXGroup;
+			children = (
+				58FB1AE118B071EB0003EC79 /* UIEditorPreviewImageView.h */,
+				58FB1AE218B071EB0003EC79 /* UIEditorPreviewImageView.m */,
+			);
+			name = Editor;
 			sourceTree = "<group>";
 		};
 		58FB368918AEAFCE00B284FB /* Fonts */ = {
@@ -1239,6 +1252,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				58FB1AE318B071EB0003EC79 /* UIEditorPreviewImageView.m in Sources */,
 				58FF481318AE48BB00B978D9 /* GPUEffectWeekend.m in Sources */,
 				58FF480318AE484F00B978D9 /* GPUEffectJoyful.m in Sources */,
 				5891ABDD18B036B100241949 /* UINavigationBarView.m in Sources */,

@@ -11,11 +11,11 @@
 #import "GPUImageEffects.h"
 #import "UINavigationBarView.h"
 #import "UICloseButton.h"
-#import "UISelectionPreviewImageView.h"
+#import "UIEditorPreviewImageView.h"
 
 @interface EditorViewController : UIViewController
 {
-    UISelectionPreviewImageView* _imageViewPreview;
+    UIEditorPreviewImageView* _imageViewPreview;
     CGFloat _strength;
 }
 
