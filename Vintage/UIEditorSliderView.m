@@ -17,7 +17,7 @@
 
         //// Slider
         CGFloat sliderWidth = frame.size.width - 68.0f;
-        _slider = [[UISliderView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, sliderWidth, 24.0f)];
+        _slider = [[UISliderView alloc] initWithFrame:CGRectMake(46.0f, 0.0f, sliderWidth, 24.0f)];
         [self addSubview:_slider];
     }
     return self;

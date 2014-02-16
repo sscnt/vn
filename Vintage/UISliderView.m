@@ -46,7 +46,20 @@
 
 - (void)setValue:(CGFloat)value
 {
-    
+    _value = value;
+    CGFloat x = [self calcPoxitionByValue:value];
+    _thumbView.center = CGPointMake(x, _thumbView.center.y);
+}
+
+- (CGFloat)calcPoxitionByValue:(CGFloat)value
+{
+    return (_thumbEndX - _thumbStartX) * value + _thumbStartX;
+}
+
+- (CGFloat)calcValueByThumbPosition:(CGFloat)x
+{
+    CGFloat value = (x - _thumbStartX) / (_thumbEndX - _thumbStartX);
+    return MAX(MIN(value, 1.0), 0.0f);
 }
 
 - (void)didDragThumb:(UIPanGestureRecognizer *)sender
@@ -63,6 +76,9 @@
     
     CGPoint movedPoint = CGPointMake(x, thumbView.center.y);
     thumbView.center = movedPoint;
+    
+    _value = [self calcValueByThumbPosition:x];
+    LOG(@"%f", _value);
     
     [sender setTranslation:CGPointZero inView:thumbView];
 }

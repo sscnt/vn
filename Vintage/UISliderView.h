@@ -28,5 +28,7 @@
 @property (nonatomic, weak) id<UISliderViewDelegate> delegate;
 
 - (void)didDragThumb:(UIPanGestureRecognizer*)sender;
+- (CGFloat)calcValueByThumbPosition:(CGFloat)x;
+- (CGFloat)calcPoxitionByValue:(CGFloat)value;
 
 @end
