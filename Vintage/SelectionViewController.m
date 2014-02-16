@@ -21,6 +21,7 @@
         _currentProcessingIndex = 0;
         _imageOriginal = image;
         _paused = NO;
+        _viewDidOnceAppear = NO;
     }
     return self;
 }
@@ -28,10 +29,11 @@
 - (void)viewDidAppear:(BOOL)animated
 {
     _paused = NO;
-    if (_currentProcessingIndex > 0) {
+    if (_currentProcessingIndex > 0 && _viewDidOnceAppear) {
         LOG(@"resumed.");
         [self applyEffectAtIndex:_currentProcessingIndex + 1];
     }
+    _viewDidOnceAppear = YES;
 }
 
 - (void)viewDidDisappear:(BOOL)animated
@@ -49,8 +51,8 @@
     _arrayPreviews = [NSMutableArray array];
     CGFloat width = ([UIScreen screenSize].width - 3.0f) / 2.0f;
     CGFloat height = roundf(self.imageOriginal.size.height * width / self.imageOriginal.size.width);
-    _scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, self.view.bounds.size.width, self.view.bounds.size.height - 20.0f)];
-    [_scrollView setContentSize:CGSizeMake([UIScreen screenSize].width, ceilf((CGFloat)_numberOfEffects / 2.0f) * height + ceilf((CGFloat)_numberOfEffects / 2.0f) + 1.0)];
+    _scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, self.view.bounds.size.width, self.view.bounds.size.height)];
+    [_scrollView setContentSize:CGSizeMake([UIScreen screenSize].width, ceilf((CGFloat)_numberOfEffects / 2.0f) * height + ceilf((CGFloat)_numberOfEffects / 2.0f) + 44.0f)];
     
     //// Effects
     _arrayEffects = [NSMutableArray array];
@@ -82,10 +84,15 @@
     //// Layout
     [self.view setBackgroundColor:[UIColor colorWithWhite:26.0f/255.0f alpha:1.0]];
     [self.view addSubview:_scrollView];
+    UINavigationBarView* bar = [[UINavigationBarView alloc] initWithPosition:NavigationBarViewPositionTop];
+    UICloseButton* buttonClose = [[UICloseButton alloc] init];
+    [buttonClose addTarget:self action:@selector(didPressCloseButton) forControlEvents:UIControlEventTouchUpInside];
+    [bar appendButtonToLeft:buttonClose];
+    [self.view addSubview:bar];
     
     //// Preview
     CGFloat left = 1.0;
-    CGFloat top = 1.0;
+    CGFloat top = 44.0f;
     CGRect rect;
     for (int i = 0; i < _numberOfEffects; i++) {
         left = (i % 2 == 0) ? 1.0 : left * 2.0 + width;
@@ -167,6 +174,11 @@
     controller.imageResized = _imageResized;
     controller.imageEffected = preview.imageViewPreview.image;
     [self.navigationController pushViewController:controller animated:YES];
+}
+
+- (void)didPressCloseButton
+{
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (void)didReceiveMemoryWarning

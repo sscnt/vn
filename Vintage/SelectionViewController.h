@@ -10,11 +10,13 @@
 #import "UISelectionPreviewImageView.h"
 #import "GPUImageEffectsImport.h"
 #import "EditorViewController.h"
-#import "UISelectionNavigationBar.h"
+#import "UINavigationBarView.h"
+#import "UICloseButton.h"
 
 @interface SelectionViewController : UIViewController
 {
     BOOL _paused;
+    BOOL _viewDidOnceAppear;
     int _currentProcessingIndex;
     int _numberOfEffects;
     UIImage* _imageResized;
@@ -30,5 +32,6 @@
 - (void)resizeOriginalImageWidth:(CGFloat)width Height:(CGFloat)height;
 
 - (void)didSelectPreview:(UISelectionPreviewImageView*)preview;
+- (void)didPressCloseButton;
 
 @end

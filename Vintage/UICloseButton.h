@@ -1,5 +1,5 @@
 //
-//  UISelectionNavigationBar.h
+//  UICloseButton.h
 //  Vintage
 //
 //  Created by SSC on 2014/02/16.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface UISelectionNavigationBar : UIView
+@interface UICloseButton : UIButton
 
 @end

@@ -8,11 +8,15 @@
 
 #import <UIKit/UIKit.h>
 #import "GPUImageEffects.h"
+#import "UINavigationBarView.h"
+#import "UICloseButton.h"
 
 @interface EditorViewController : UIViewController
 
 @property (nonatomic, assign) EffectId effectId;
 @property (nonatomic, weak) UIImage* imageResized;
 @property (nonatomic, weak) UIImage* imageEffected;
+
+- (void)didPressCloseButton;
 
 @end

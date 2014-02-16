@@ -59,7 +59,8 @@
 		588F127F18AE251700787045 /* GPUEffectVanilla.m in Sources */ = {isa = PBXBuildFile; fileRef = 588F127B18AE251700787045 /* GPUEffectVanilla.m */; };
 		5891ABD818B0312B00241949 /* EditorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5891ABD718B0312B00241949 /* EditorViewController.m */; };
 		5891ABDA18B0367400241949 /* close-60@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5891ABD918B0367400241949 /* close-60@2x.png */; };
-		5891ABDD18B036B100241949 /* UISelectionNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 5891ABDC18B036B100241949 /* UISelectionNavigationBar.m */; };
+		5891ABDD18B036B100241949 /* UINavigationBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5891ABDC18B036B100241949 /* UINavigationBarView.m */; };
+		5891ABE118B0381800241949 /* UICloseButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 5891ABE018B0381800241949 /* UICloseButton.m */; };
 		58F5563918AE16EB008B2857 /* UIBlurredButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F5563818AE16EB008B2857 /* UIBlurredButton.m */; };
 		58F696FC18AD799B006F2089 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58F696FB18AD799B006F2089 /* CoreMedia.framework */; };
 		58F696FE18AD79A7006F2089 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58F696FD18AD79A7006F2089 /* CoreVideo.framework */; };
@@ -251,8 +252,10 @@
 		5891ABD618B0312B00241949 /* EditorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditorViewController.h; sourceTree = "<group>"; };
 		5891ABD718B0312B00241949 /* EditorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditorViewController.m; sourceTree = "<group>"; };
 		5891ABD918B0367400241949 /* close-60@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "close-60@2x.png"; sourceTree = "<group>"; };
-		5891ABDB18B036B100241949 /* UISelectionNavigationBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UISelectionNavigationBar.h; sourceTree = "<group>"; };
-		5891ABDC18B036B100241949 /* UISelectionNavigationBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UISelectionNavigationBar.m; sourceTree = "<group>"; };
+		5891ABDB18B036B100241949 /* UINavigationBarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UINavigationBarView.h; sourceTree = "<group>"; };
+		5891ABDC18B036B100241949 /* UINavigationBarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UINavigationBarView.m; sourceTree = "<group>"; };
+		5891ABDF18B0381800241949 /* UICloseButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UICloseButton.h; sourceTree = "<group>"; };
+		5891ABE018B0381800241949 /* UICloseButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UICloseButton.m; sourceTree = "<group>"; };
 		58F5563718AE16EB008B2857 /* UIBlurredButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIBlurredButton.h; sourceTree = "<group>"; };
 		58F5563818AE16EB008B2857 /* UIBlurredButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIBlurredButton.m; sourceTree = "<group>"; };
 		58F696FB18AD799B006F2089 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
@@ -692,9 +695,21 @@
 			name = Editor;
 			sourceTree = "<group>";
 		};
+		5891ABDE18B0380700241949 /* Button */ = {
+			isa = PBXGroup;
+			children = (
+				5891ABDF18B0381800241949 /* UICloseButton.h */,
+				5891ABE018B0381800241949 /* UICloseButton.m */,
+			);
+			name = Button;
+			sourceTree = "<group>";
+		};
 		58F5563218AE16A8008B2857 /* UIComponents */ = {
 			isa = PBXGroup;
 			children = (
+				5891ABDB18B036B100241949 /* UINavigationBarView.h */,
+				5891ABDC18B036B100241949 /* UINavigationBarView.m */,
+				5891ABDE18B0380700241949 /* Button */,
 				58FCAD2D18AFC27A001559F0 /* Selection */,
 				58F5563618AE16B6008B2857 /* Home */,
 			);
@@ -891,8 +906,6 @@
 			children = (
 				58FCAD2E18AFC2D1001559F0 /* UISelectionPreviewImageView.h */,
 				58FCAD2F18AFC2D1001559F0 /* UISelectionPreviewImageView.m */,
-				5891ABDB18B036B100241949 /* UISelectionNavigationBar.h */,
-				5891ABDC18B036B100241949 /* UISelectionNavigationBar.m */,
 			);
 			name = Selection;
 			sourceTree = "<group>";
@@ -1270,7 +1283,7 @@
 			files = (
 				58FF481318AE48BB00B978D9 /* GPUEffectWeekend.m in Sources */,
 				58FF480318AE484F00B978D9 /* GPUEffectJoyful.m in Sources */,
-				5891ABDD18B036B100241949 /* UISelectionNavigationBar.m in Sources */,
+				5891ABDD18B036B100241949 /* UINavigationBarView.m in Sources */,
 				58F5563918AE16EB008B2857 /* UIBlurredButton.m in Sources */,
 				588F121E18AE21C200787045 /* GPUEffectMiami.m in Sources */,
 				5826CEAB18AE14230091E303 /* UIScrollView+extend.m in Sources */,
@@ -1286,6 +1299,7 @@
 				588F127518AE24D300787045 /* GPUEffectCreamyNoon.m in Sources */,
 				58FCAD3518AFC725001559F0 /* UIImage+extend.m in Sources */,
 				58FF484618AE513D00B978D9 /* GPUImageLinearDodgeBlendFilter.m in Sources */,
+				5891ABE118B0381800241949 /* UICloseButton.m in Sources */,
 				58FCAD3018AFC2D1001559F0 /* UISelectionPreviewImageView.m in Sources */,
 				588F120018AE203400787045 /* GPUImageHueSaturationFilter.m in Sources */,
 				58FF484918AE516500B978D9 /* GPUKelvinFilter.m in Sources */,
