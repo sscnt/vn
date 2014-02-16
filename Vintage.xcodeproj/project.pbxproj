@@ -57,6 +57,9 @@
 		588F127D18AE251700787045 /* vnl2.acv in Resources */ = {isa = PBXBuildFile; fileRef = 588F127818AE251700787045 /* vnl2.acv */; };
 		588F127E18AE251700787045 /* vnl3.acv in Resources */ = {isa = PBXBuildFile; fileRef = 588F127918AE251700787045 /* vnl3.acv */; };
 		588F127F18AE251700787045 /* GPUEffectVanilla.m in Sources */ = {isa = PBXBuildFile; fileRef = 588F127B18AE251700787045 /* GPUEffectVanilla.m */; };
+		5891ABD818B0312B00241949 /* EditorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5891ABD718B0312B00241949 /* EditorViewController.m */; };
+		5891ABDA18B0367400241949 /* close-60@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5891ABD918B0367400241949 /* close-60@2x.png */; };
+		5891ABDD18B036B100241949 /* UISelectionNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 5891ABDC18B036B100241949 /* UISelectionNavigationBar.m */; };
 		58F5563918AE16EB008B2857 /* UIBlurredButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F5563818AE16EB008B2857 /* UIBlurredButton.m */; };
 		58F696FC18AD799B006F2089 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58F696FB18AD799B006F2089 /* CoreMedia.framework */; };
 		58F696FE18AD79A7006F2089 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58F696FD18AD79A7006F2089 /* CoreVideo.framework */; };
@@ -245,6 +248,11 @@
 		588F127918AE251700787045 /* vnl3.acv */ = {isa = PBXFileReference; lastKnownFileType = file; path = vnl3.acv; sourceTree = "<group>"; };
 		588F127A18AE251700787045 /* GPUEffectVanilla.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPUEffectVanilla.h; sourceTree = "<group>"; };
 		588F127B18AE251700787045 /* GPUEffectVanilla.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GPUEffectVanilla.m; sourceTree = "<group>"; };
+		5891ABD618B0312B00241949 /* EditorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditorViewController.h; sourceTree = "<group>"; };
+		5891ABD718B0312B00241949 /* EditorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditorViewController.m; sourceTree = "<group>"; };
+		5891ABD918B0367400241949 /* close-60@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "close-60@2x.png"; sourceTree = "<group>"; };
+		5891ABDB18B036B100241949 /* UISelectionNavigationBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UISelectionNavigationBar.h; sourceTree = "<group>"; };
+		5891ABDC18B036B100241949 /* UISelectionNavigationBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UISelectionNavigationBar.m; sourceTree = "<group>"; };
 		58F5563718AE16EB008B2857 /* UIBlurredButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIBlurredButton.h; sourceTree = "<group>"; };
 		58F5563818AE16EB008B2857 /* UIBlurredButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIBlurredButton.m; sourceTree = "<group>"; };
 		58F696FB18AD799B006F2089 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
@@ -675,6 +683,15 @@
 			name = Vanilla;
 			sourceTree = "<group>";
 		};
+		5891ABD218B0310C00241949 /* Editor */ = {
+			isa = PBXGroup;
+			children = (
+				5891ABD618B0312B00241949 /* EditorViewController.h */,
+				5891ABD718B0312B00241949 /* EditorViewController.m */,
+			);
+			name = Editor;
+			sourceTree = "<group>";
+		};
 		58F5563218AE16A8008B2857 /* UIComponents */ = {
 			isa = PBXGroup;
 			children = (
@@ -818,6 +835,7 @@
 		58FB898718AE1083001F661B /* ViewContoroller */ = {
 			isa = PBXGroup;
 			children = (
+				5891ABD218B0310C00241949 /* Editor */,
 				58FCAD2218AFA7FF001559F0 /* Selection */,
 				58FB898818AE1096001F661B /* Home */,
 			);
@@ -873,6 +891,8 @@
 			children = (
 				58FCAD2E18AFC2D1001559F0 /* UISelectionPreviewImageView.h */,
 				58FCAD2F18AFC2D1001559F0 /* UISelectionPreviewImageView.m */,
+				5891ABDB18B036B100241949 /* UISelectionNavigationBar.h */,
+				5891ABDC18B036B100241949 /* UISelectionNavigationBar.m */,
 			);
 			name = Selection;
 			sourceTree = "<group>";
@@ -880,6 +900,7 @@
 		58FE950118AF95EA005A4DFE /* Icons */ = {
 			isa = PBXGroup;
 			children = (
+				5891ABD918B0367400241949 /* close-60@2x.png */,
 				58F7F07918AFE42F00997877 /* loading-48@2x.gif */,
 				58FCAD2918AFAECA001559F0 /* camera-36-40@2x.png */,
 				58FCAD2A18AFAECA001559F0 /* camera-36-70@2x.png */,
@@ -1180,6 +1201,7 @@
 				58FF481218AE48BB00B978D9 /* wnd.acv in Resources */,
 				588F122B18AE21EB00787045 /* sms1.acv in Resources */,
 				588F126818AE248E00787045 /* vvv2.acv in Resources */,
+				5891ABDA18B0367400241949 /* close-60@2x.png in Resources */,
 				58F767BC18AD6F4900015FBA /* InfoPlist.strings in Resources */,
 				58FF483A18AE4BDF00B978D9 /* Candy.acv in Resources */,
 				58FE950D18AF9BDC005A4DFE /* chunkfive.ttf in Resources */,
@@ -1248,6 +1270,7 @@
 			files = (
 				58FF481318AE48BB00B978D9 /* GPUEffectWeekend.m in Sources */,
 				58FF480318AE484F00B978D9 /* GPUEffectJoyful.m in Sources */,
+				5891ABDD18B036B100241949 /* UISelectionNavigationBar.m in Sources */,
 				58F5563918AE16EB008B2857 /* UIBlurredButton.m in Sources */,
 				588F121E18AE21C200787045 /* GPUEffectMiami.m in Sources */,
 				5826CEAB18AE14230091E303 /* UIScrollView+extend.m in Sources */,
@@ -1271,6 +1294,7 @@
 				58F767BE18AD6F4900015FBA /* main.m in Sources */,
 				588F125F18AE245D00787045 /* GPUEffectCavalleriaRusticana.m in Sources */,
 				588F124618AE22CE00787045 /* GPUEffectPinkBubbleTea.m in Sources */,
+				5891ABD818B0312B00241949 /* EditorViewController.m in Sources */,
 				588F11FC18AE1FEC00787045 /* GPUImageGradientMapFilter.m in Sources */,
 				58FF485918AE586F00B978D9 /* GPUAdjustmentsBrightness.m in Sources */,
 				58FF484518AE513D00B978D9 /* GPUImageVividLightBlendFilter.m in Sources */,

@@ -14,6 +14,7 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
+        _isPreviewReady = NO;
         [self setBackgroundColor:[UIColor colorWithWhite:33.0f/255.0f alpha:1.0f]];
         
         //// Preview

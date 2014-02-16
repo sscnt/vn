@@ -7,14 +7,18 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "GPUImageEffects.h"
 
 @interface UISelectionPreviewImageView : UIButton
 {
     UIImageView* _imageViewLoading;
 }
 
+@property (nonatomic, assign) EffectId effectId;
+@property (nonatomic, assign) BOOL isPreviewReady;
 @property (nonatomic, strong) UIImageView* imageViewPreview;
 
 - (void)removeLoadingIndicator;
+- (BOOL)isPreviewReady;
 
 @end

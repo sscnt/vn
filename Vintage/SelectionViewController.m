@@ -18,9 +18,26 @@
 {
     self = [super init];
     if (self) {
+        _currentProcessingIndex = 0;
         _imageOriginal = image;
+        _paused = NO;
     }
     return self;
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    _paused = NO;
+    if (_currentProcessingIndex > 0) {
+        LOG(@"resumed.");
+        [self applyEffectAtIndex:_currentProcessingIndex + 1];
+    }
+}
+
+- (void)viewDidDisappear:(BOOL)animated
+{
+    _paused = YES;
+    LOG(@"paused because view did disappear");
 }
 
 - (void)viewDidLoad
@@ -74,6 +91,7 @@
         left = (i % 2 == 0) ? 1.0 : left * 2.0 + width;
         rect = CGRectMake(left, top, width, height);
         UISelectionPreviewImageView* preview = [[UISelectionPreviewImageView alloc] initWithFrame:rect];
+        [preview addTarget:self action:@selector(didSelectPreview:) forControlEvents:UIControlEventTouchUpInside];
         [_scrollView addSubview:preview];
         [_arrayPreviews addObject:preview];
         top += (i % 2 == 0) ? 0.0 : 1.0 + height;
@@ -97,12 +115,19 @@
 
 - (void)applyEffectAtIndex:(int)index
 {
+    if (_paused) {
+        LOG(@"canceled.");
+        return;
+    }
     if (index < _numberOfEffects) {
+        LOG(@"applying %d", index);
+        _currentProcessingIndex = index;
         __block SelectionViewController* _self = self;
         __block GPUImageEffects* effect = [_arrayEffects objectAtIndex:index];
         __block UIImage* imageToProcess = _imageResized;
         __block UISelectionPreviewImageView* preview = [_arrayPreviews objectAtIndex:index];
         __block UIImage* imageApplied;
+        preview.effectId = effect.effectId;
         if ([effect respondsToSelector:@selector(imageToProcess)]) {
             dispatch_queue_t q_global = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
             dispatch_queue_t q_main = dispatch_get_main_queue();
@@ -112,6 +137,7 @@
                 dispatch_async(q_main, ^{
                     [preview removeLoadingIndicator];
                     [preview.imageViewPreview setImage:imageApplied];
+                    [preview setIsPreviewReady:YES];
                     [_self applyEffectAtIndex:index + 1];
                 });
                 
@@ -125,6 +151,22 @@
     if(self.imageOriginal){
         _imageResized = [UIImage resizedImage:self.imageOriginal width:width height:height];
     }
+}
+
+#pragma mark events
+
+- (void)didSelectPreview:(UISelectionPreviewImageView *)preview
+{
+    if (preview.isPreviewReady == NO) {
+        LOG(@"paused.");
+        return;
+    }
+    _paused = YES;
+    EditorViewController* controller = [[EditorViewController alloc] init];
+    controller.effectId = preview.effectId;
+    controller.imageResized = _imageResized;
+    controller.imageEffected = preview.imageViewPreview.image;
+    [self.navigationController pushViewController:controller animated:YES];
 }
 
 - (void)didReceiveMemoryWarning

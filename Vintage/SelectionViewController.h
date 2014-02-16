@@ -9,9 +9,12 @@
 #import <UIKit/UIKit.h>
 #import "UISelectionPreviewImageView.h"
 #import "GPUImageEffectsImport.h"
+#import "EditorViewController.h"
+#import "UISelectionNavigationBar.h"
 
 @interface SelectionViewController : UIViewController
 {
+    BOOL _paused;
     int _currentProcessingIndex;
     int _numberOfEffects;
     UIImage* _imageResized;
@@ -25,5 +28,7 @@
 - (id)initWithImage:(UIImage*)image;
 - (void)applyEffectAtIndex:(int)index;
 - (void)resizeOriginalImageWidth:(CGFloat)width Height:(CGFloat)height;
+
+- (void)didSelectPreview:(UISelectionPreviewImageView*)preview;
 
 @end
