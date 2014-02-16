@@ -119,6 +119,8 @@
         
     }
     
+    LOG(@"%@", resultImage);
+    
     return resultImage;
 }
 

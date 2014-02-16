@@ -20,8 +20,10 @@
     if (self) {
         _currentProcessingIndex = 0;
         _imageOriginal = image;
+        _isProcessing = NO;
         _paused = NO;
         _viewDidOnceAppear = NO;
+        _editorViewController = nil;
     }
     return self;
 }
@@ -47,7 +49,7 @@
     [super viewDidLoad];
     
     //// Init
-    _numberOfEffects = 24;
+    _numberOfEffects = 22;
     _arrayPreviews = [NSMutableArray array];
     CGFloat width = ([UIScreen screenSize].width - 3.0f) / 2.0f;
     CGFloat height = roundf(self.imageOriginal.size.height * width / self.imageOriginal.size.width);
@@ -75,11 +77,9 @@
     [_arrayEffects addObject:[[GPUEffectJoyful alloc] init]];
     [_arrayEffects addObject:[[GPUEffectPinkBubbleTea alloc] init]];
     [_arrayEffects addObject:[[GPUEffectSummers alloc] init]];
-    [_arrayEffects addObject:[[GPUEffectVanilla alloc] init]];
     [_arrayEffects addObject:[[GPUEffectWarmAutumn alloc] init]];
     [_arrayEffects addObject:[[GPUEffectSunsetCarnevale alloc] init]];
     [_arrayEffects addObject:[[GPUEffectWarmSpringLight alloc] init]];
-    [_arrayEffects addObject:[[GPUEffectColorfulCandy alloc] init]];
     
     //// Layout
     [self.view setBackgroundColor:[UIColor colorWithWhite:26.0f/255.0f alpha:1.0]];
@@ -110,6 +110,7 @@
     dispatch_queue_t q_main = dispatch_get_main_queue();
     dispatch_async(q_global, ^{
         [_self resizeOriginalImageWidth:width Height:height];
+        [_self resizeOriginalImageForEditorWidth:[UIScreen screenSize].width Height:height * [UIScreen screenSize].width / width];
         dispatch_async(q_main, ^{
             //// Effect
             [_self applyEffectAtIndex:0];
@@ -124,27 +125,34 @@
 {
     if (_paused) {
         LOG(@"canceled.");
+        if (_editorViewController) {
+            LOG(@"waiting finished.");
+            _editorViewController.waitingForOtherConversion = NO;
+            [_editorViewController applyEffect];
+        }
         return;
     }
     if (index < _numberOfEffects) {
         LOG(@"applying %d", index);
+        _isProcessing = YES;
         _currentProcessingIndex = index;
         __block SelectionViewController* _self = self;
         __block GPUImageEffects* effect = [_arrayEffects objectAtIndex:index];
         __block UIImage* imageToProcess = _imageResized;
         __block UISelectionPreviewImageView* preview = [_arrayPreviews objectAtIndex:index];
         __block UIImage* imageApplied;
-        preview.effectId = effect.effectId;
         if ([effect respondsToSelector:@selector(imageToProcess)]) {
             dispatch_queue_t q_global = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
             dispatch_queue_t q_main = dispatch_get_main_queue();
             dispatch_async(q_global, ^{
                 effect.imageToProcess = imageToProcess;
                 imageApplied = [effect process];
+                preview.effectId = effect.effectId;
                 dispatch_async(q_main, ^{
                     [preview removeLoadingIndicator];
                     [preview.imageViewPreview setImage:imageApplied];
                     [preview setIsPreviewReady:YES];
+                    _isProcessing = NO;
                     [_self applyEffectAtIndex:index + 1];
                 });
                 
@@ -159,21 +167,38 @@
         _imageResized = [UIImage resizedImage:self.imageOriginal width:width height:height];
     }
 }
+- (void)resizeOriginalImageForEditorWidth:(CGFloat)width Height:(CGFloat)height
+{
+    if(self.imageOriginal){
+        _imageResizedForEditor = [UIImage resizedImage:self.imageOriginal width:width height:height];
+    }
+}
 
 #pragma mark events
 
 - (void)didSelectPreview:(UISelectionPreviewImageView *)preview
 {
     if (preview.isPreviewReady == NO) {
-        LOG(@"paused.");
+        LOG(@"not ready.");
         return;
     }
     _paused = YES;
     EditorViewController* controller = [[EditorViewController alloc] init];
     controller.effectId = preview.effectId;
-    controller.imageResized = _imageResized;
+    controller.imageResized = _imageResizedForEditor;
     controller.imageEffected = preview.imageViewPreview.image;
+    controller.imageOriginal = _imageOriginal;
+    if (_isProcessing) {
+        controller.waitingForOtherConversion = YES;
+    }
+    _editorViewController = controller;
     [self.navigationController pushViewController:controller animated:YES];
+}
+
+- (void)navigationController:(UINavigationController *)navigationController didShowViewController:(UIViewController *)viewController animated:(BOOL)animated
+{
+    LOG(@"welcome back!");
+    _editorViewController = nil;
 }
 
 - (void)didPressCloseButton

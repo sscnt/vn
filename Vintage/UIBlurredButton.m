@@ -60,7 +60,7 @@
     dispatch_async(q_global, ^{
         //// Gaussian Blur
         GPUImageSolidColorGenerator* solid = [[GPUImageSolidColorGenerator alloc] init];
-        [solid setColorRed:207.0f/255.0f green:200.0f/255.0f blue:194.0f/255.0f alpha:1.0f];
+        [solid setColorRed:212.0f/255.0f green:201.0f/255.0f blue:193.0f/255.0f alpha:1.0f];
         GPUImageSoftLightBlendFilter* softlight = [[GPUImageSoftLightBlendFilter alloc] init];
         
         GPUImageGaussianBlurFilter* filter = [[GPUImageGaussianBlurFilter alloc] init];

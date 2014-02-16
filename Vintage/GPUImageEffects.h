@@ -22,7 +22,6 @@
 
 typedef NS_ENUM(NSInteger, EffectId){
     EffectIdHaze3 = 1,
-    EffectIdColorfulCandy,
     EffectIdHazelnut,
     EffectIdVintageFilm,
     EffectIdVintage2,
@@ -33,7 +32,6 @@ typedef NS_ENUM(NSInteger, EffectId){
     EffectIdJoyful,
     EffectIdWarmSpringLight,
     EffectIdGentleMemories,
-    EffectIdVanila,
     EffectIdCreamyNoon,
     EffectIdVividVintage,
     EffectIdCavalleriaRusticana,

@@ -9,7 +9,6 @@
 #import "GPUEffectJoyful.h"
 #import "GPUEffectCreamyNoon.h"
 #import "GPUEffectGentleMemories.h"
-#import "GPUEffectVanilla.h"
 #import "GPUEffectWarmSpringLight.h"
 #import "GPUEffectVividVintage.h"
 #import "GPUEffectCavalleriaRusticana.h"
@@ -21,4 +20,3 @@
 #import "GPUEffectMiami.h"
 #import "GPUEffectSummers.h"
 #import "GPUEffectGirder.h"
-#import "GPUEffectColorfulCandy.h"

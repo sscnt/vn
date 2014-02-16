@@ -31,8 +31,19 @@
 
 - (void)removeLoadingIndicator
 {
-    [_imageViewLoading removeFromSuperview];
-    _imageViewLoading = nil;
+    if (_imageViewLoading) {
+        [_imageViewLoading removeFromSuperview];
+        _imageViewLoading = nil;
+    }
+}
+
+- (void)setHighlighted:(BOOL)highlighted
+{
+    if (highlighted) {
+        self.imageViewPreview.alpha = 0.50f;
+    }else{
+        self.imageViewPreview.alpha = 1.0f;
+    }
 }
 
 /*

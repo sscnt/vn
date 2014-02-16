@@ -53,10 +53,6 @@
 		588F127318AE24D300787045 /* cn3.acv in Resources */ = {isa = PBXBuildFile; fileRef = 588F126D18AE24D300787045 /* cn3.acv */; };
 		588F127418AE24D300787045 /* cn4.acv in Resources */ = {isa = PBXBuildFile; fileRef = 588F126E18AE24D300787045 /* cn4.acv */; };
 		588F127518AE24D300787045 /* GPUEffectCreamyNoon.m in Sources */ = {isa = PBXBuildFile; fileRef = 588F127018AE24D300787045 /* GPUEffectCreamyNoon.m */; };
-		588F127C18AE251700787045 /* vnl1.acv in Resources */ = {isa = PBXBuildFile; fileRef = 588F127718AE251700787045 /* vnl1.acv */; };
-		588F127D18AE251700787045 /* vnl2.acv in Resources */ = {isa = PBXBuildFile; fileRef = 588F127818AE251700787045 /* vnl2.acv */; };
-		588F127E18AE251700787045 /* vnl3.acv in Resources */ = {isa = PBXBuildFile; fileRef = 588F127918AE251700787045 /* vnl3.acv */; };
-		588F127F18AE251700787045 /* GPUEffectVanilla.m in Sources */ = {isa = PBXBuildFile; fileRef = 588F127B18AE251700787045 /* GPUEffectVanilla.m */; };
 		5891ABD818B0312B00241949 /* EditorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5891ABD718B0312B00241949 /* EditorViewController.m */; };
 		5891ABDA18B0367400241949 /* close-60@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5891ABD918B0367400241949 /* close-60@2x.png */; };
 		5891ABDD18B036B100241949 /* UINavigationBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5891ABDC18B036B100241949 /* UINavigationBarView.m */; };
@@ -137,8 +133,6 @@
 		58FF483318AE4B3C00B978D9 /* Hzl1.acv in Resources */ = {isa = PBXBuildFile; fileRef = 58FF482F18AE4B3C00B978D9 /* Hzl1.acv */; };
 		58FF483418AE4B3C00B978D9 /* Hzl2.acv in Resources */ = {isa = PBXBuildFile; fileRef = 58FF483018AE4B3C00B978D9 /* Hzl2.acv */; };
 		58FF483518AE4B3C00B978D9 /* GPUEffectHazelnut.m in Sources */ = {isa = PBXBuildFile; fileRef = 58FF483218AE4B3C00B978D9 /* GPUEffectHazelnut.m */; };
-		58FF483A18AE4BDF00B978D9 /* Candy.acv in Resources */ = {isa = PBXBuildFile; fileRef = 58FF483718AE4BDF00B978D9 /* Candy.acv */; };
-		58FF483B18AE4BDF00B978D9 /* GPUEffectColorfulCandy.m in Sources */ = {isa = PBXBuildFile; fileRef = 58FF483918AE4BDF00B978D9 /* GPUEffectColorfulCandy.m */; };
 		58FF483F18AE4C8300B978D9 /* GPUEffectHaze3.m in Sources */ = {isa = PBXBuildFile; fileRef = 58FF483E18AE4C8300B978D9 /* GPUEffectHaze3.m */; };
 		58FF484518AE513D00B978D9 /* GPUImageVividLightBlendFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 58FF484218AE513D00B978D9 /* GPUImageVividLightBlendFilter.m */; };
 		58FF484618AE513D00B978D9 /* GPUImageLinearDodgeBlendFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 58FF484418AE513D00B978D9 /* GPUImageLinearDodgeBlendFilter.m */; };
@@ -244,11 +238,6 @@
 		588F126E18AE24D300787045 /* cn4.acv */ = {isa = PBXFileReference; lastKnownFileType = file; path = cn4.acv; sourceTree = "<group>"; };
 		588F126F18AE24D300787045 /* GPUEffectCreamyNoon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPUEffectCreamyNoon.h; sourceTree = "<group>"; };
 		588F127018AE24D300787045 /* GPUEffectCreamyNoon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GPUEffectCreamyNoon.m; sourceTree = "<group>"; };
-		588F127718AE251700787045 /* vnl1.acv */ = {isa = PBXFileReference; lastKnownFileType = file; path = vnl1.acv; sourceTree = "<group>"; };
-		588F127818AE251700787045 /* vnl2.acv */ = {isa = PBXFileReference; lastKnownFileType = file; path = vnl2.acv; sourceTree = "<group>"; };
-		588F127918AE251700787045 /* vnl3.acv */ = {isa = PBXFileReference; lastKnownFileType = file; path = vnl3.acv; sourceTree = "<group>"; };
-		588F127A18AE251700787045 /* GPUEffectVanilla.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPUEffectVanilla.h; sourceTree = "<group>"; };
-		588F127B18AE251700787045 /* GPUEffectVanilla.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GPUEffectVanilla.m; sourceTree = "<group>"; };
 		5891ABD618B0312B00241949 /* EditorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditorViewController.h; sourceTree = "<group>"; };
 		5891ABD718B0312B00241949 /* EditorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditorViewController.m; sourceTree = "<group>"; };
 		5891ABD918B0367400241949 /* close-60@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "close-60@2x.png"; sourceTree = "<group>"; };
@@ -359,9 +348,6 @@
 		58FF483018AE4B3C00B978D9 /* Hzl2.acv */ = {isa = PBXFileReference; lastKnownFileType = file; path = Hzl2.acv; sourceTree = "<group>"; };
 		58FF483118AE4B3C00B978D9 /* GPUEffectHazelnut.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPUEffectHazelnut.h; sourceTree = "<group>"; };
 		58FF483218AE4B3C00B978D9 /* GPUEffectHazelnut.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GPUEffectHazelnut.m; sourceTree = "<group>"; };
-		58FF483718AE4BDF00B978D9 /* Candy.acv */ = {isa = PBXFileReference; lastKnownFileType = file; path = Candy.acv; sourceTree = "<group>"; };
-		58FF483818AE4BDF00B978D9 /* GPUEffectColorfulCandy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPUEffectColorfulCandy.h; sourceTree = "<group>"; };
-		58FF483918AE4BDF00B978D9 /* GPUEffectColorfulCandy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GPUEffectColorfulCandy.m; sourceTree = "<group>"; };
 		58FF483D18AE4C8300B978D9 /* GPUEffectHaze3.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPUEffectHaze3.h; sourceTree = "<group>"; };
 		58FF483E18AE4C8300B978D9 /* GPUEffectHaze3.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GPUEffectHaze3.m; sourceTree = "<group>"; };
 		58FF484118AE513D00B978D9 /* GPUImageVividLightBlendFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPUImageVividLightBlendFilter.h; sourceTree = "<group>"; };
@@ -446,7 +432,6 @@
 			isa = PBXGroup;
 			children = (
 				58FF483C18AE4C7800B978D9 /* Haze3 */,
-				58FF483618AE4BCE00B978D9 /* ColorfulCandy */,
 				58FF482E18AE4B1E00B978D9 /* Hazelnut */,
 				58FF482818AE4A0B00B978D9 /* VintageFilm */,
 				58FF482018AE49E000B978D9 /* Vintage2 */,
@@ -457,7 +442,6 @@
 				58FF47FC18AE483F00B978D9 /* Joyful */,
 				58FF47F418AE47C300B978D9 /* WarmSpringLight */,
 				58FF47E518AE477F00B978D9 /* GentleMemories */,
-				588F127618AE24D800787045 /* Vanilla */,
 				588F126A18AE24BC00787045 /* CreamyNoon */,
 				588F126018AE248000787045 /* VividVintage */,
 				588F125A18AE244200787045 /* CavalleriaRusticana */,
@@ -672,18 +656,6 @@
 				588F127018AE24D300787045 /* GPUEffectCreamyNoon.m */,
 			);
 			name = CreamyNoon;
-			sourceTree = "<group>";
-		};
-		588F127618AE24D800787045 /* Vanilla */ = {
-			isa = PBXGroup;
-			children = (
-				588F127718AE251700787045 /* vnl1.acv */,
-				588F127818AE251700787045 /* vnl2.acv */,
-				588F127918AE251700787045 /* vnl3.acv */,
-				588F127A18AE251700787045 /* GPUEffectVanilla.h */,
-				588F127B18AE251700787045 /* GPUEffectVanilla.m */,
-			);
-			name = Vanilla;
 			sourceTree = "<group>";
 		};
 		5891ABD218B0310C00241949 /* Editor */ = {
@@ -1034,16 +1006,6 @@
 			name = Hazelnut;
 			sourceTree = "<group>";
 		};
-		58FF483618AE4BCE00B978D9 /* ColorfulCandy */ = {
-			isa = PBXGroup;
-			children = (
-				58FF483718AE4BDF00B978D9 /* Candy.acv */,
-				58FF483818AE4BDF00B978D9 /* GPUEffectColorfulCandy.h */,
-				58FF483918AE4BDF00B978D9 /* GPUEffectColorfulCandy.m */,
-			);
-			name = ColorfulCandy;
-			sourceTree = "<group>";
-		};
 		58FF483C18AE4C7800B978D9 /* Haze3 */ = {
 			isa = PBXGroup;
 			children = (
@@ -1204,7 +1166,6 @@
 				58F767CA18AD6F4900015FBA /* Images.xcassets in Resources */,
 				58FE950E18AF9BDC005A4DFE /* JockeyOne-Regular.ttf in Resources */,
 				58FF481D18AE49DC00B978D9 /* Vintage11.acv in Resources */,
-				588F127D18AE251700787045 /* vnl2.acv in Resources */,
 				58FB369618AEAFEC00B284FB /* rounded-mplus-1p-medium.ttf in Resources */,
 				581595E818AEBFB400621C3F /* Localizable.strings in Resources */,
 				588F126618AE248E00787045 /* vvv3.acv in Resources */,
@@ -1216,7 +1177,6 @@
 				588F126818AE248E00787045 /* vvv2.acv in Resources */,
 				5891ABDA18B0367400241949 /* close-60@2x.png in Resources */,
 				58F767BC18AD6F4900015FBA /* InfoPlist.strings in Resources */,
-				58FF483A18AE4BDF00B978D9 /* Candy.acv in Resources */,
 				58FE950D18AF9BDC005A4DFE /* chunkfive.ttf in Resources */,
 				58FB898118AE1031001F661B /* home-568h@2x.jpg in Resources */,
 				58FF47F018AE478E00B978D9 /* gm2.acv in Resources */,
@@ -1225,7 +1185,6 @@
 				588F122718AE21EB00787045 /* sms5.acv in Resources */,
 				58FCAD1D18AFA13E001559F0 /* photos-40-70@2x.png in Resources */,
 				58FE950A18AF995C005A4DFE /* camera-40-70@2x.png in Resources */,
-				588F127E18AE251700787045 /* vnl3.acv in Resources */,
 				588F122A18AE21EB00787045 /* sms2.acv in Resources */,
 				58FF47F118AE478E00B978D9 /* gm3.acv in Resources */,
 				588F127418AE24D300787045 /* cn4.acv in Resources */,
@@ -1245,7 +1204,6 @@
 				58FF482618AE49F800B978D9 /* Vintage22.acv in Resources */,
 				58FF480118AE484F00B978D9 /* jf1.acv in Resources */,
 				588F125818AE241800787045 /* dv1.acv in Resources */,
-				588F127C18AE251700787045 /* vnl1.acv in Resources */,
 				58FCAD2B18AFAECA001559F0 /* camera-36-40@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1326,7 +1284,6 @@
 				588F121418AE215200787045 /* GPUImageEffects.m in Sources */,
 				588F125918AE241800787045 /* GPUEffectDreamyVintage.m in Sources */,
 				58FB898B18AE10CF001F661B /* RootController.m in Sources */,
-				58FF483B18AE4BDF00B978D9 /* GPUEffectColorfulCandy.m in Sources */,
 				58FF485718AE586F00B978D9 /* GPULevelsImageFilter.m in Sources */,
 				58FF485C18AE589F00B978D9 /* GPUPhotoFilter.m in Sources */,
 				58FF483F18AE4C8300B978D9 /* GPUEffectHaze3.m in Sources */,
@@ -1336,7 +1293,6 @@
 				588F123818AE220500787045 /* GPUEffectGirder.m in Sources */,
 				58FF485818AE586F00B978D9 /* GPUAdjustmentsSaturation.m in Sources */,
 				588F120418AE205E00787045 /* GPUImageColorBalanceFilter.m in Sources */,
-				588F127F18AE251700787045 /* GPUEffectVanilla.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

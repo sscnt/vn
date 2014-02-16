@@ -13,16 +13,19 @@
 #import "UINavigationBarView.h"
 #import "UICloseButton.h"
 
-@interface SelectionViewController : UIViewController
+@interface SelectionViewController : UIViewController <UINavigationControllerDelegate>
 {
     BOOL _paused;
+    BOOL _isProcessing;
     BOOL _viewDidOnceAppear;
     int _currentProcessingIndex;
     int _numberOfEffects;
     UIImage* _imageResized;
+    UIImage* _imageResizedForEditor;
     NSMutableArray* _arrayPreviews;
     NSMutableArray* _arrayEffects;
     UIScrollView* _scrollView;
+    __weak EditorViewController* _editorViewController;
 }
 
 @property (nonatomic, strong) UIImage* imageOriginal;
@@ -30,6 +33,7 @@
 - (id)initWithImage:(UIImage*)image;
 - (void)applyEffectAtIndex:(int)index;
 - (void)resizeOriginalImageWidth:(CGFloat)width Height:(CGFloat)height;
+- (void)resizeOriginalImageForEditorWidth:(CGFloat)width Height:(CGFloat)height;
 
 - (void)didSelectPreview:(UISelectionPreviewImageView*)preview;
 - (void)didPressCloseButton;
