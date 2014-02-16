@@ -56,9 +56,12 @@
 		5891ABD818B0312B00241949 /* EditorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5891ABD718B0312B00241949 /* EditorViewController.m */; };
 		5891ABDD18B036B100241949 /* UINavigationBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5891ABDC18B036B100241949 /* UINavigationBarView.m */; };
 		5891ABE118B0381800241949 /* UICloseButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 5891ABE018B0381800241949 /* UICloseButton.m */; };
+		58F3555618B09B8C00F57F1B /* UIEditorSliderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F3555518B09B8C00F57F1B /* UIEditorSliderView.m */; };
 		58F4FF7E18B07B7D00C338B3 /* close-60@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 58F4FF7D18B07B7D00C338B3 /* close-60@2x.png */; };
 		58F4FF8818B07D1200C338B3 /* SVProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 58F4FF8518B07D1200C338B3 /* SVProgressHUD.bundle */; };
 		58F4FF8918B07D1200C338B3 /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F4FF8718B07D1200C338B3 /* SVProgressHUD.m */; };
+		58F4FF8D18B0936000C338B3 /* UISliderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F4FF8C18B0936000C338B3 /* UISliderView.m */; };
+		58F4FF9018B093A100C338B3 /* UISliderThumbView.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F4FF8F18B093A100C338B3 /* UISliderThumbView.m */; };
 		58F5563918AE16EB008B2857 /* UIBlurredButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F5563818AE16EB008B2857 /* UIBlurredButton.m */; };
 		58F696FC18AD799B006F2089 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58F696FB18AD799B006F2089 /* CoreMedia.framework */; };
 		58F696FE18AD79A7006F2089 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58F696FD18AD79A7006F2089 /* CoreVideo.framework */; };
@@ -249,10 +252,16 @@
 		5891ABDC18B036B100241949 /* UINavigationBarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UINavigationBarView.m; sourceTree = "<group>"; };
 		5891ABDF18B0381800241949 /* UICloseButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UICloseButton.h; sourceTree = "<group>"; };
 		5891ABE018B0381800241949 /* UICloseButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UICloseButton.m; sourceTree = "<group>"; };
+		58F3555418B09B8C00F57F1B /* UIEditorSliderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIEditorSliderView.h; sourceTree = "<group>"; };
+		58F3555518B09B8C00F57F1B /* UIEditorSliderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIEditorSliderView.m; sourceTree = "<group>"; };
 		58F4FF7D18B07B7D00C338B3 /* close-60@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "close-60@2x.png"; sourceTree = "<group>"; };
 		58F4FF8518B07D1200C338B3 /* SVProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = SVProgressHUD.bundle; sourceTree = "<group>"; };
 		58F4FF8618B07D1200C338B3 /* SVProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVProgressHUD.h; sourceTree = "<group>"; };
 		58F4FF8718B07D1200C338B3 /* SVProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVProgressHUD.m; sourceTree = "<group>"; };
+		58F4FF8B18B0936000C338B3 /* UISliderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UISliderView.h; sourceTree = "<group>"; };
+		58F4FF8C18B0936000C338B3 /* UISliderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UISliderView.m; sourceTree = "<group>"; };
+		58F4FF8E18B093A100C338B3 /* UISliderThumbView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UISliderThumbView.h; sourceTree = "<group>"; };
+		58F4FF8F18B093A100C338B3 /* UISliderThumbView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UISliderThumbView.m; sourceTree = "<group>"; };
 		58F5563718AE16EB008B2857 /* UIBlurredButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIBlurredButton.h; sourceTree = "<group>"; };
 		58F5563818AE16EB008B2857 /* UIBlurredButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIBlurredButton.m; sourceTree = "<group>"; };
 		58F696FB18AD799B006F2089 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
@@ -709,11 +718,23 @@
 			name = SVPregressHUD;
 			sourceTree = "<group>";
 		};
+		58F4FF8A18B0934400C338B3 /* Slider */ = {
+			isa = PBXGroup;
+			children = (
+				58F4FF8B18B0936000C338B3 /* UISliderView.h */,
+				58F4FF8C18B0936000C338B3 /* UISliderView.m */,
+				58F4FF8E18B093A100C338B3 /* UISliderThumbView.h */,
+				58F4FF8F18B093A100C338B3 /* UISliderThumbView.m */,
+			);
+			name = Slider;
+			sourceTree = "<group>";
+		};
 		58F5563218AE16A8008B2857 /* UIComponents */ = {
 			isa = PBXGroup;
 			children = (
 				5891ABDB18B036B100241949 /* UINavigationBarView.h */,
 				5891ABDC18B036B100241949 /* UINavigationBarView.m */,
+				58F4FF8A18B0934400C338B3 /* Slider */,
 				58FB1AE018B071D20003EC79 /* Editor */,
 				5891ABDE18B0380700241949 /* Button */,
 				58FCAD2D18AFC27A001559F0 /* Selection */,
@@ -833,6 +854,8 @@
 		58FB1AE018B071D20003EC79 /* Editor */ = {
 			isa = PBXGroup;
 			children = (
+				58F3555418B09B8C00F57F1B /* UIEditorSliderView.h */,
+				58F3555518B09B8C00F57F1B /* UIEditorSliderView.m */,
 				58FB1AE118B071EB0003EC79 /* UIEditorPreviewImageView.h */,
 				58FB1AE218B071EB0003EC79 /* UIEditorPreviewImageView.m */,
 			);
@@ -1324,6 +1347,7 @@
 				58FB1AE618B0779D0003EC79 /* UISaveButton.m in Sources */,
 				58FF480D18AE488B00B978D9 /* GPUEffectWarmAutumn.m in Sources */,
 				588F120C18AE208E00787045 /* GPUImageChannelMixerFilter.m in Sources */,
+				58F3555618B09B8C00F57F1B /* UIEditorSliderView.m in Sources */,
 				58FCAD2518AFA81C001559F0 /* SelectionViewController.m in Sources */,
 				58FB899A18AE12B1001F661B /* UIDevice+extend.m in Sources */,
 				58FF483518AE4B3C00B978D9 /* GPUEffectHazelnut.m in Sources */,
@@ -1331,8 +1355,10 @@
 				588F125018AE235000787045 /* GPUEffectSunsetCarnevale.m in Sources */,
 				58FF47FB18AE47D000B978D9 /* GPUEffectWarmSpringLight.m in Sources */,
 				58FB899C18AE12B1001F661B /* UIView+extend.m in Sources */,
+				58F4FF9018B093A100C338B3 /* UISliderThumbView.m in Sources */,
 				588F121418AE215200787045 /* GPUImageEffects.m in Sources */,
 				588F125918AE241800787045 /* GPUEffectDreamyVintage.m in Sources */,
+				58F4FF8D18B0936000C338B3 /* UISliderView.m in Sources */,
 				58FB898B18AE10CF001F661B /* RootController.m in Sources */,
 				58FF485718AE586F00B978D9 /* GPULevelsImageFilter.m in Sources */,
 				58FF485C18AE589F00B978D9 /* GPUPhotoFilter.m in Sources */,
