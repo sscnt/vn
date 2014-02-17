@@ -75,16 +75,12 @@
     view.frame = CGRectMake(view.frame.origin.x, view.frame.origin.y, view.frame.size.width/2, view.frame.size.height/2);
 }
 
-- (UIImage *) imageByRenderingViewOpaque:(BOOL) opaque Rect:(CGRect)rect {
+- (UIImage *) imageByRenderingViewOpaque:(BOOL)opaque Rect:(CGRect)rect {
     UIImage *capture;
     UIGraphicsBeginImageContextWithOptions(rect.size, opaque, 0.0);
     CGContextRef context = UIGraphicsGetCurrentContext();
     CGContextTranslateCTM(context, -rect.origin.x, -rect.origin.y);
-    if ([self respondsToSelector:@selector(drawViewHierarchyInRect:afterScreenUpdates:)]) {
-        [self drawViewHierarchyInRect:self.frame afterScreenUpdates:YES];
-    } else {
-        [self.layer renderInContext:UIGraphicsGetCurrentContext()];
-    }
+    [self.layer renderInContext:UIGraphicsGetCurrentContext()];
     capture = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
     return capture;

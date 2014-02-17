@@ -26,7 +26,6 @@
         NSString *currentLanguage = [langs objectAtIndex:0];
         if([currentLanguage compare:@"ja"] == NSOrderedSame) {
             _titleLabel.font = [UIFont fontWithName:@"rounded-mplus-1p-bold" size:15.0f];
-            [_titleLabel setY:1.0];
         } else {
             _titleLabel.font = [UIFont fontWithName:@"Aller-Bold" size:16.0f];
         }
@@ -93,6 +92,8 @@
     [sender setTranslation:CGPointZero inView:thumbView];
     
     switch (sender.state) {
+        case UIGestureRecognizerStatePossible:
+            break;
         case UIGestureRecognizerStateBegan:
             [self.delegate touchesBeganWithSlider:self];
             break;
@@ -104,6 +105,8 @@
             break;
         case UIGestureRecognizerStateCancelled:
             [self.delegate touchesEndedWithSlider:self];
+            break;
+        case UIGestureRecognizerStateFailed:
             break;
     }
 }
@@ -126,7 +129,7 @@
 {
     //// Color Declarations
     UIColor* strokeColor = [UIColor colorWithRed: 1 green: 1 blue: 1 alpha: _alpha];
-    UIColor* bgColor = [UIColor colorWithWhite:26.0f/255.0f alpha:0.40f];
+    UIColor* bgColor = [UIColor colorWithWhite:26.0f/255.0f alpha:0.20f];
     
     //// Rounded Rectangle Drawing
     UIBezierPath* roundedRectanglePath = [UIBezierPath bezierPathWithRoundedRect: CGRectMake(1.0f, 1.0f, rect.size.width - 2.0f, rect.size.height - 2.0f) cornerRadius: rect.size.height];

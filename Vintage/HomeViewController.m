@@ -29,7 +29,7 @@
     [self.view addSubview:bgImageView];
     
     //// Action Button
-    CGFloat top = 414.0f;
+    CGFloat top = [UIScreen screenSize].height - 160+.0f;
     buttonCamera = [[UIBlurredButton alloc] initWithFrame:CGRectMake(15.0f, top, [UIScreen screenSize].width - 30.0f, 50.0) Type:BlurredButtonIconTypeCamera];
     buttonCamera.tag = UIBlurredButtonIdCamera;
     [buttonCamera setTitle:NSLocalizedString(@"CAMERA", nil) forState:UIControlStateNormal];
@@ -46,12 +46,13 @@
     [self.view addSubview:buttonPhotos];
     
     //// Splash
+    UIImage* imageSplash;
     if ([UIDevice resolution] == UIDeviceResolution_iPhoneRetina4) {
-        imageBg = [UIImage imageNamed:@"splash.png"];
+        imageSplash = [UIImage imageNamed:@"splash.png"];
     }else if([UIDevice resolution] == UIDeviceResolution_iPhoneRetina5){
-        imageBg = [UIImage imageNamed:@"splash-568h.png"];
+        imageSplash = [UIImage imageNamed:@"splash-568h.png"];
     }
-    splashImageView = [[UIImageView alloc] initWithImage:imageBg];
+    splashImageView = [[UIImageView alloc] initWithImage:imageSplash];
     [self.view addSubview:splashImageView];
 
     

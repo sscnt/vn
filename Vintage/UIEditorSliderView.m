@@ -45,7 +45,6 @@
 
 - (void)setIconType:(EditorSliderIconType)iconType
 {
-    _iconImageView;
     switch (iconType) {
         case EditorSliderIconTypeOpacity:
             _iconImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"opacity-60.png"]];

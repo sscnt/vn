@@ -32,27 +32,32 @@
     
     //// Layout
     [self.view setBackgroundColor:[UIColor colorWithWhite:26.0f/255.0f alpha:1.0]];
-    //////// Bottom Bar
+    
+    //// Preview
+    CGFloat width = [UIScreen screenSize].width;
+    CGFloat height = _imageOriginal.size.height * width / _imageOriginal.size.width;
+    CGFloat max_height = [UIScreen screenSize].height - 88.0f - 30.0f;
+    if (height > max_height) {
+        width *= max_height / height;
+        height = max_height;
+    }
+    _previewImageView = [[UIEditorPreviewImageView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, width, height)];
+    _previewImageView.center = self.view.center;
+    [self.view addSubview:_previewImageView];
+    
+    //// Bottom Bar
     UINavigationBarView* bar = [[UINavigationBarView alloc] initWithPosition:NavigationBarViewPositionBottom];
     UISaveButton* buttonSave = [[UISaveButton alloc] init];
     [buttonSave addTarget:self action:@selector(didPressSaveButton) forControlEvents:UIControlEventTouchUpInside];
     [bar appendButtonToRight:buttonSave];
     [self.view addSubview:bar];
-    //////// Top Bar
+    //// Top Bar
     bar = [[UINavigationBarView alloc] initWithPosition:NavigationBarViewPositionTop];
     [bar setTitle:NSLocalizedString(@"EDIT", nil)];
     UICloseButton* buttonClose = [[UICloseButton alloc] init];
     [buttonClose addTarget:self action:@selector(didPressCloseButton) forControlEvents:UIControlEventTouchUpInside];
     [bar appendButtonToLeft:buttonClose];
     [self.view addSubview:bar];
-    
-    
-    //// Preview
-    CGFloat width = [UIScreen screenSize].width;
-    CGFloat height = _imageOriginal.size.height * width / _imageOriginal.size.width;
-    _previewImageView = [[UIEditorPreviewImageView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, width, height)];
-    _previewImageView.center = self.view.center;
-    [self.view addSubview:_previewImageView];
     
     //// Label
     _percentageLabel = [[UILabel alloc] initWithFrame:CGRectMake(0.0f, 0.0f, [UIScreen screenSize].width, 44.0f)];
@@ -195,12 +200,12 @@
                 [previewImageView setPreviewImage:imageEffected];
                 [previewImageView toggleBlurredImage:NO WithDuration:0.10f];
             }else{
+                [NSThread sleepForTimeInterval:1.0f];
                 previewImageView.imageOriginal = imageResized;
                 previewImageView.imageBlurred = blurredImage;
-                [previewImageView removeLoadingIndicator];
                 previewImageView.isPreviewReady = YES;
-                [NSThread sleepForTimeInterval:1.0f];
                 [previewImageView setPreviewImage:imageEffected WithDuration:0.50f];
+                [previewImageView removeLoadingIndicator];
             }
             LOG(@"did apply effect");
             _isApplying = NO;
@@ -228,6 +233,12 @@
 {
     if (_isSaving) {
         LOG(@"sorry now saving.");
+        return;
+    }
+    if (_isApplying) {
+        return;
+    }
+    if (!_previewImageView.isPreviewReady) {
         return;
     }
     _isSaving = YES;
