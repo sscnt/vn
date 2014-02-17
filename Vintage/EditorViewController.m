@@ -75,7 +75,7 @@
 
     
     //// Sliders
-    _sliderOpacity = [[UIEditorSliderView alloc] initWithFrame:CGRectMake(0.0f, 420.0f, [UIScreen screenSize].width, 48.0f)];
+    _sliderOpacity = [[UIEditorSliderView alloc] initWithFrame:CGRectMake(0.0f, [UIScreen screenSize].height - 44.0f - 48.0f - 10.0f, [UIScreen screenSize].width, 48.0f)];
     _sliderOpacity.tag = EditorSliderIconTypeOpacity;
     _sliderOpacity.delegate = self;
     _sliderOpacity.title = NSLocalizedString(@"Opacity", nil);
@@ -199,7 +199,7 @@
                 previewImageView.imageBlurred = blurredImage;
                 [previewImageView removeLoadingIndicator];
                 previewImageView.isPreviewReady = YES;
-                [NSThread sleepForTimeInterval:0.5f];
+                [NSThread sleepForTimeInterval:1.0f];
                 [previewImageView setPreviewImage:imageEffected WithDuration:0.50f];
             }
             LOG(@"did apply effect");
