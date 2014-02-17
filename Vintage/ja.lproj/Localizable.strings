@@ -6,11 +6,13 @@
   Copyright (c) 2014年 SSC. All rights reserved.
 */
 
-"Camera" = "カメラ";
-"Photos" = "写真を選択";
+"CAMERA" = "カメラ";
+"PHOTOS" = "写真を選択";
+"EFFECTS" = "エフェクトを選択";
 "Camera is not available." = "カメラを利用できません。";
 "Error" = "エラー";
-"Edit" = "編集";
+"Opacity" = "透明度";
+"EDIT" = "編集";
 "Saved successfully" = "保存しました";
 
 "no_access_to_your_photos" = "写真およびビデオへのアクセス権がありません。iPhoneの「設定」アプリから、「プライバシー」→「写真」→「Vintage」をオンにしてください。";

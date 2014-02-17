@@ -18,7 +18,7 @@
     }
     self = [super initWithFrame:frame];
     if (self) {
-        [self setBackgroundColor:[UIColor colorWithWhite:40.0f/255.0f alpha:0.65f]];
+        [self setBackgroundColor:[UIColor colorWithWhite:37.0f/255.0f alpha:0.80f]];
         _position = position;
         _buttonWidth = 44.0f;
         _rightButtonPositionLeft = [UIScreen screenSize].width;
@@ -35,7 +35,7 @@
         if([currentLanguage compare:@"ja"] == NSOrderedSame) {
             _titleLabel.font = [UIFont fontWithName:@"rounded-mplus-1p-bold" size:16.0f];
         } else {
-            _titleLabel.font = [UIFont fontWithName:@"chunkfive" size:20.0f];
+            _titleLabel.font = [UIFont fontWithName:@"Aller-Bold" size:18.0f];
         }
         [self addSubview:_titleLabel];
     }

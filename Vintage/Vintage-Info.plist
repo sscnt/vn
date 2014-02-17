@@ -26,6 +26,11 @@
 	<true/>
 	<key>UIAppFonts</key>
 	<array>
+		<string>AllerDisplay.ttf</string>
+		<string>Aller_Rg.ttf</string>
+		<string>Aller_Lt.ttf</string>
+		<string>Aller_Bd.ttf</string>
+		<string>bebasneue.ttf</string>
 		<string>JockeyOne-Regular.ttf</string>
 		<string>chunkfive.ttf</string>
 		<string>rounded-mplus-1p-bold.ttf</string>

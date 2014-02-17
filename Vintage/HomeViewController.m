@@ -19,30 +19,41 @@
     [super viewDidLoad];
 
     //// Background Image
-    UIImageView* imageViewBg;
     UIImage* imageBg;
     if ([UIDevice resolution] == UIDeviceResolution_iPhoneRetina4) {
         imageBg = [UIImage imageNamed:@"home.jpg"];
     }else if([UIDevice resolution] == UIDeviceResolution_iPhoneRetina5){
         imageBg = [UIImage imageNamed:@"home-568h.jpg"];
     }
-    imageViewBg = [[UIImageView alloc] initWithImage:imageBg];
-    [self.view addSubview:imageViewBg];
+    bgImageView = [[UIImageView alloc] initWithImage:imageBg];
+    [self.view addSubview:bgImageView];
     
     //// Action Button
     CGFloat top = 414.0f;
     buttonCamera = [[UIBlurredButton alloc] initWithFrame:CGRectMake(15.0f, top, [UIScreen screenSize].width - 30.0f, 50.0) Type:BlurredButtonIconTypeCamera];
     buttonCamera.tag = UIBlurredButtonIdCamera;
-    [buttonCamera setTitle:NSLocalizedString(@"Camera", nil) forState:UIControlStateNormal];
+    [buttonCamera setTitle:NSLocalizedString(@"CAMERA", nil) forState:UIControlStateNormal];
     [buttonCamera addTarget:self action:@selector(didPressButton:) forControlEvents:UIControlEventTouchUpInside];
+    buttonCamera.delegate = self;
     [self.view addSubview:buttonCamera];
     
     top = buttonCamera.bottom + 15.0f;
     buttonPhotos = [[UIBlurredButton alloc] initWithFrame:CGRectMake(15.0f, top, [UIScreen screenSize].width - 30.0f, 50.0) Type:BlurredButtonIconTypePhotos];
     buttonPhotos.tag = UIBlurredButtonIdPhotos;
-    [buttonPhotos setTitle:NSLocalizedString(@"Photos", nil) forState:UIControlStateNormal];
+    [buttonPhotos setTitle:NSLocalizedString(@"PHOTOS", nil) forState:UIControlStateNormal];
     [buttonPhotos addTarget:self action:@selector(didPressButton:) forControlEvents:UIControlEventTouchUpInside];
+    buttonPhotos.delegate = self;
     [self.view addSubview:buttonPhotos];
+    
+    //// Splash
+    if ([UIDevice resolution] == UIDeviceResolution_iPhoneRetina4) {
+        imageBg = [UIImage imageNamed:@"splash.png"];
+    }else if([UIDevice resolution] == UIDeviceResolution_iPhoneRetina5){
+        imageBg = [UIImage imageNamed:@"splash-568h.png"];
+    }
+    splashImageView = [[UIImageView alloc] initWithImage:imageBg];
+    [self.view addSubview:splashImageView];
+
     
     //// Gaussian Blur
     [self generateBlurredImage];
@@ -54,11 +65,11 @@
     UIImage* imageCaptured;
     
     //// Camera
-    imageCaptured = [self.view imageByRenderingViewWithRect:buttonCamera.frame];
+    imageCaptured = [bgImageView imageByRenderingViewWithRect:buttonCamera.frame];
     [buttonCamera generateBackgroundImageByCaputuredImage:imageCaptured];
     
     //// Photos
-    imageCaptured = [self.view imageByRenderingViewWithRect:buttonPhotos.frame];
+    imageCaptured = [bgImageView imageByRenderingViewWithRect:buttonPhotos.frame];
     [buttonPhotos generateBackgroundImageByCaputuredImage:imageCaptured];
 }
 
@@ -129,6 +140,18 @@
 
 
 #pragma mark delegates
+
+- (void)buttonDidCreateBgImage:(UIBlurredButton *)button
+{
+    if (buttonCamera.isReady && buttonPhotos.isReady) {
+        [UIView animateWithDuration:0.30f animations:^{
+            splashImageView.alpha = 0.0f;
+        } completion:^(BOOL finished){
+            [splashImageView removeFromSuperview];
+            splashImageView = nil;
+        }];
+    }
+}
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
 {

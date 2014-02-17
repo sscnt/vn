@@ -16,9 +16,10 @@
 
 @property (nonatomic, assign) EffectId effectId;
 @property (nonatomic, assign) BOOL isPreviewReady;
-@property (nonatomic, strong) UIImageView* imageViewPreview;
+@property (nonatomic, strong) UIImageView* previewImageView;
 
 - (void)removeLoadingIndicator;
-- (BOOL)isPreviewReady;
+- (void)setPreviewImage:(UIImage*)image;
+- (void)setPreviewImage:(UIImage*)image WithDuration:(CGFloat)duration;
 
 @end

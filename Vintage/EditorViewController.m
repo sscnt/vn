@@ -20,6 +20,7 @@
     if (self) {
         _strength = 1.0;
         _isSaving = NO;
+        _blurredImage = nil;
         _isApplying = NO;
     }
     return self;
@@ -33,30 +34,53 @@
     [self.view setBackgroundColor:[UIColor colorWithWhite:26.0f/255.0f alpha:1.0]];
     //////// Bottom Bar
     UINavigationBarView* bar = [[UINavigationBarView alloc] initWithPosition:NavigationBarViewPositionBottom];
-    UICloseButton* buttonClose = [[UICloseButton alloc] init];
-    [buttonClose addTarget:self action:@selector(didPressCloseButton) forControlEvents:UIControlEventTouchUpInside];
-    [bar appendButtonToLeft:buttonClose];
     UISaveButton* buttonSave = [[UISaveButton alloc] init];
     [buttonSave addTarget:self action:@selector(didPressSaveButton) forControlEvents:UIControlEventTouchUpInside];
     [bar appendButtonToRight:buttonSave];
     [self.view addSubview:bar];
     //////// Top Bar
     bar = [[UINavigationBarView alloc] initWithPosition:NavigationBarViewPositionTop];
-    [bar setTitle:NSLocalizedString(@"Edit", nil)];
+    [bar setTitle:NSLocalizedString(@"EDIT", nil)];
+    UICloseButton* buttonClose = [[UICloseButton alloc] init];
+    [buttonClose addTarget:self action:@selector(didPressCloseButton) forControlEvents:UIControlEventTouchUpInside];
+    [bar appendButtonToLeft:buttonClose];
     [self.view addSubview:bar];
+    
     
     //// Preview
     CGFloat width = [UIScreen screenSize].width;
     CGFloat height = _imageOriginal.size.height * width / _imageOriginal.size.width;
-    _imageViewPreview = [[UIEditorPreviewImageView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, width, height)];
-    _imageViewPreview.center = self.view.center;
-    [self.view addSubview:_imageViewPreview];
+    _previewImageView = [[UIEditorPreviewImageView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, width, height)];
+    _previewImageView.center = self.view.center;
+    [self.view addSubview:_previewImageView];
+    
+    //// Label
+    _percentageLabel = [[UILabel alloc] initWithFrame:CGRectMake(0.0f, 0.0f, [UIScreen screenSize].width, 44.0f)];
+    _percentageLabel.center = _previewImageView.center;
+    NSArray *langs = [NSLocale preferredLanguages];
+    NSString *currentLanguage = [langs objectAtIndex:0];
+    if([currentLanguage compare:@"ja"] == NSOrderedSame) {
+        _percentageLabel.font = [UIFont fontWithName:@"rounded-mplus-1p-bold" size:20.0f];
+    } else {
+        _percentageLabel.font = [UIFont fontWithName:@"Aller-Bold" size:20.0f];
+    }
+    _percentageLabel.textAlignment = NSTextAlignmentCenter;
+    _percentageLabel.backgroundColor = [UIColor clearColor];
+    _percentageLabel.textColor = [UIColor whiteColor];
+    _percentageLabel.numberOfLines = 0;
+    _percentageLabel.shadowColor = [UIColor blackColor];
+    _percentageLabel.shadowOffset = CGSizeMake(1, 1);
+    _percentageLabel.hidden = YES;
+    [self.view addSubview:_percentageLabel];
+
     
     //// Sliders
-    _sliderStrength = [[UIEditorSliderView alloc] initWithFrame:CGRectMake(0.0f, 420.0f, [UIScreen screenSize].width, 48.0f)];
-    _sliderStrength.tag = EditorSliderIconTypeStrength;
-    _sliderStrength.delegate = self;
-    [self.view addSubview:_sliderStrength];
+    _sliderOpacity = [[UIEditorSliderView alloc] initWithFrame:CGRectMake(0.0f, 420.0f, [UIScreen screenSize].width, 48.0f)];
+    _sliderOpacity.tag = EditorSliderIconTypeOpacity;
+    _sliderOpacity.delegate = self;
+    _sliderOpacity.title = NSLocalizedString(@"Opacity", nil);
+    _sliderOpacity.iconType = EditorSliderIconTypeOpacity;
+    [self.view addSubview:_sliderOpacity];
     
     if (!self.waitingForOtherConversion) {
         [self applyEffect];        
@@ -144,7 +168,8 @@
     LOG(@"will apply effect");
     __block UIImage* imageEffected = _imageEffected;
     __block UIImage* imageResized = _imageResized;
-    __block UIEditorPreviewImageView* imageViewPreview = _imageViewPreview;
+    __block UIEditorPreviewImageView* previewImageView = _previewImageView;
+    __block UIImage* blurredImage = _blurredImage;
     dispatch_queue_t q_global = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
     dispatch_queue_t q_main = dispatch_get_main_queue();
     dispatch_async(q_global, ^{
@@ -156,10 +181,27 @@
         GPUImagePicture* overlay = [[GPUImagePicture alloc] initWithImage:imageEffected];
         imageEffected = [self merge2pictureBase:base overlay:overlay opacity:_strength];
         
+        if (blurredImage == nil) {
+            GPUImageGaussianBlurFilter* filter = [[GPUImageGaussianBlurFilter alloc] init];
+            filter.blurRadiusInPixels = 8.0f;
+            base = [[GPUImagePicture alloc] initWithImage:imageResized];
+            [base addTarget:filter];
+            [base processImage];
+            blurredImage = [filter imageFromCurrentlyProcessedOutput];
+        }
+        
         dispatch_async(q_main, ^{
-            [imageViewPreview removeLoadingIndicator];
-            [imageViewPreview.imageViewPreview setImage:imageEffected];
-            imageViewPreview.imageOriginal = imageResized;
+            if(previewImageView.isPreviewReady){
+                [previewImageView setPreviewImage:imageEffected];
+                [previewImageView toggleBlurredImage:NO WithDuration:0.10f];
+            }else{
+                previewImageView.imageOriginal = imageResized;
+                previewImageView.imageBlurred = blurredImage;
+                [previewImageView removeLoadingIndicator];
+                previewImageView.isPreviewReady = YES;
+                [NSThread sleepForTimeInterval:0.5f];
+                [previewImageView setPreviewImage:imageEffected WithDuration:0.50f];
+            }
             LOG(@"did apply effect");
             _isApplying = NO;
         });
@@ -222,6 +264,9 @@
 
 - (void)slider:(UIEditorSliderView*)slider DidValueChange:(CGFloat)value
 {
+    if (slider.tag == EditorSliderIconTypeOpacity) {
+        _percentageLabel.text = [NSString stringWithFormat:@"%@: %d", NSLocalizedString(@"Opacity", nil), (int)roundf(value * 100.0f)];
+    }
 }
 
 - (void)didPressCloseButton
@@ -231,13 +276,24 @@
 
 - (void)touchesBeganWithSlider:(UIEditorSliderView *)slider
 {
-    
+    LOG(@"touchstart");
+    [_previewImageView toggleBlurredImage:YES WithDuration:0.10f];
+    if (slider.tag == EditorSliderIconTypeOpacity) {
+        _percentageLabel.hidden = NO;
+        _percentageLabel.text = [NSString stringWithFormat:@"%@: %d", NSLocalizedString(@"Opacity", nil), (int)roundf(_strength * 100.0f)];
+    }
 }
 
 - (void)touchesEndedWithSlider:(UIEditorSliderView *)slider
 {
     LOG(@"touchesend");
-    if (slider.tag == EditorSliderIconTypeStrength) {
+    _percentageLabel.hidden = YES;
+    if (slider.tag == EditorSliderIconTypeOpacity) {
+        if (!_previewImageView.isPreviewReady) {
+            LOG(@"preview not ready.");
+            _sliderOpacity.value = 1.0;
+            return;
+        }
         _strength = slider.value;
         [self applyEffect];
     }

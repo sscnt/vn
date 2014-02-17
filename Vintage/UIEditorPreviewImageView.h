@@ -11,8 +11,14 @@
 @interface UIEditorPreviewImageView : UISelectionPreviewImageView
 {
     UIImageView* _imageViewOriginal;
+    UIImageView* _imageViewBlurred;
 }
 
 @property (nonatomic, weak) UIImage* imageOriginal;
+@property (nonatomic, weak) UIImage* imageBlurred;
+
+- (void)toggleBlurredImage:(BOOL)show;
+- (void)toggleBlurredImage:(BOOL)show WithDuration:(CGFloat)duration;
+- (void)toggleOriginalImage:(BOOL)show;
 
 @end

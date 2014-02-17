@@ -17,9 +17,9 @@
         _isPreviewReady = NO;
         [self setBackgroundColor:[UIColor colorWithWhite:33.0f/255.0f alpha:1.0f]];
         
-        //// Preview
-        _imageViewPreview = [[UIImageView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, frame.size.width, frame.size.height)];
-        [self addSubview:_imageViewPreview];
+        //// Original
+        _previewImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, frame.size.width, frame.size.height)];
+        [self addSubview:_previewImageView];
         
         //// Loading
         _imageViewLoading = [[UIImageView alloc] initWithImage:[UIImage animatedGIFNamed:@"loading-48"]];
@@ -37,12 +37,29 @@
     }
 }
 
+- (void)setPreviewImage:(UIImage *)image
+{
+    _previewImageView.image = image;
+}
+
+- (void)setPreviewImage:(UIImage *)image WithDuration:(CGFloat)duration
+{
+    _previewImageView.image = image;
+    _previewImageView.alpha = 0.0f;
+    _previewImageView.hidden = NO;
+    [UIView animateWithDuration:duration animations:^{
+        _previewImageView.alpha = 1.0f;
+    } completion:^(BOOL finished){
+        
+    }];
+}
+
 - (void)setHighlighted:(BOOL)highlighted
 {
     if (highlighted) {
-        self.imageViewPreview.alpha = 0.50f;
+        self.previewImageView.alpha = 0.50f;
     }else{
-        self.imageViewPreview.alpha = 1.0f;
+        self.previewImageView.alpha = 1.0f;
     }
 }
 

@@ -15,6 +15,7 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
+        _isReady = NO;
         [self setTitleEdgeInsets:UIEdgeInsetsMake(1.5f, 0.0f, 0.0f, -6.0f)];
         NSArray *langs = [NSLocale preferredLanguages];
         NSString *currentLanguage = [langs objectAtIndex:0];
@@ -23,8 +24,8 @@
             [self setTitleEdgeInsets:UIEdgeInsetsMake(2.0f, 0.0f, 0.0f, -6.0f)];
             [self setImageEdgeInsets:UIEdgeInsetsMake(0.0f, 0.0f, 0.0f, 5.0)];
         } else {
-            self.titleLabel.font = [UIFont fontWithName:@"chunkfive" size:20.0f];
-            [self setTitleEdgeInsets:UIEdgeInsetsMake(5.5f, 0.0f, 0.0f, 0.0f)];
+            self.titleLabel.font = [UIFont fontWithName:@"Aller-Bold" size:18.0f];
+            [self setTitleEdgeInsets:UIEdgeInsetsMake(3.0f, 0.0f, 0.0f, 0.0f)];
             [self setImageEdgeInsets:UIEdgeInsetsMake(0.0f, 0.0f, 0.0f, 12.0)];
         }
         [self setTitleColor:[UIColor colorWithWhite:1.0f alpha:0.70f] forState:UIControlStateNormal];
@@ -79,6 +80,8 @@
         
         dispatch_async(q_main, ^{
             [_self setBackgroundImage:imageBg forState:UIControlStateNormal];
+            _self.isReady = YES;
+            [_self.delegate buttonDidCreateBgImage:_self];
         });
     });
 }

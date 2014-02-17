@@ -88,6 +88,7 @@
     UICloseButton* buttonClose = [[UICloseButton alloc] init];
     [buttonClose addTarget:self action:@selector(didPressCloseButton) forControlEvents:UIControlEventTouchUpInside];
     [bar appendButtonToLeft:buttonClose];
+    [bar setTitle:NSLocalizedString(@"EFFECTS", nil)];
     [self.view addSubview:bar];
     
     //// Preview
@@ -150,7 +151,7 @@
                 preview.effectId = effect.effectId;
                 dispatch_async(q_main, ^{
                     [preview removeLoadingIndicator];
-                    [preview.imageViewPreview setImage:imageApplied];
+                    [preview setPreviewImage:imageApplied WithDuration:0.20f];
                     [preview setIsPreviewReady:YES];
                     _isProcessing = NO;
                     [_self applyEffectAtIndex:index + 1];
@@ -186,7 +187,7 @@
     EditorViewController* controller = [[EditorViewController alloc] init];
     controller.effectId = preview.effectId;
     controller.imageResized = _imageResizedForEditor;
-    controller.imageEffected = preview.imageViewPreview.image;
+    controller.imageEffected = preview.previewImageView.image;
     controller.imageOriginal = _imageOriginal;
     if (_isProcessing) {
         controller.waitingForOtherConversion = YES;

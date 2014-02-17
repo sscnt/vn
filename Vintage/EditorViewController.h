@@ -18,11 +18,13 @@
 
 @interface EditorViewController : UIViewController <UIEditorSliderViewDelegate>
 {
-    UIEditorPreviewImageView* _imageViewPreview;
-    UIEditorSliderView* _sliderStrength;
+    UIEditorPreviewImageView* _previewImageView;
+    UIEditorSliderView* _sliderOpacity;
     CGFloat _strength;
     BOOL _isSaving;
     BOOL _isApplying;
+    UIImage* _blurredImage;
+    UILabel* _percentageLabel;
 }
 
 @property (nonatomic, assign) EffectId effectId;

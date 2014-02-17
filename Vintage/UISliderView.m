@@ -15,6 +15,7 @@
     self = [super initWithFrame:frame];
     if (self) {
         self.backgroundColor = [UIColor clearColor];
+        self.userInteractionEnabled = YES;
         _titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0.0f, 0.0f, frame.size.width, frame.size.height)];
         _titleLabel.alpha = 0.9f;
         _titleLabel.textAlignment = NSTextAlignmentCenter;
@@ -24,23 +25,33 @@
         NSArray *langs = [NSLocale preferredLanguages];
         NSString *currentLanguage = [langs objectAtIndex:0];
         if([currentLanguage compare:@"ja"] == NSOrderedSame) {
-            _titleLabel.font = [UIFont fontWithName:@"rounded-mplus-1p-bold" size:16.0f];
+            _titleLabel.font = [UIFont fontWithName:@"rounded-mplus-1p-bold" size:15.0f];
+            [_titleLabel setY:1.0];
         } else {
-            _titleLabel.font = [UIFont fontWithName:@"HelveticaNeue" size:20.0f];
+            _titleLabel.font = [UIFont fontWithName:@"Aller-Bold" size:16.0f];
         }
         [self addSubview:_titleLabel];
         
         CGFloat radius = floorf((frame.size.height - 2.0f) / 2.0f);
         _thumbView = [[UISliderThumbVIew alloc] initWithRadius:radius];
         UIPanGestureRecognizer* recognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(didDragThumb:)];
-        [_thumbView addGestureRecognizer:recognizer];
+        recognizer.maximumNumberOfTouches = 1;
+        recognizer.delegate = self;
+        [self addGestureRecognizer:recognizer];
         [self addSubview:_thumbView];
+        [self bringSubviewToFront:_thumbView];
         
         _thumbStartX = radius + 1.0f;
         _thumbEndX = frame.size.width - radius - 1.0f;
         self.value = 1.0f;
     }
     return self;
+}
+
+- (void)setTitle:(NSString *)title
+{
+    _title = title;
+    _titleLabel.text = title;
 }
 
 - (void)setValue:(CGFloat)value
@@ -63,8 +74,7 @@
 
 - (void)didDragThumb:(UIPanGestureRecognizer *)sender
 {
-    
-    UISliderThumbVIew* thumbView = (UISliderThumbVIew*)sender.view;
+    UISliderThumbVIew* thumbView = _thumbView;
     CGPoint transitionPoint = [sender translationInView:thumbView];
     
     CGFloat x = thumbView.center.x + transitionPoint.x;
@@ -92,17 +102,37 @@
         case UIGestureRecognizerStateEnded:
             [self.delegate touchesEndedWithSlider:self];
             break;
+        case UIGestureRecognizerStateCancelled:
+            [self.delegate touchesEndedWithSlider:self];
+            break;
     }
+}
+
+- (void)setAlpha:(CGFloat)alpha
+{
+    _alpha = alpha;
+    _titleLabel.alpha = _alpha;
+    [self setNeedsDisplay];
+}
+
+#pragma mark delegate
+
+- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldBeRequiredToFailByGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer
+{
+    return YES;
 }
 
 - (void)drawRect:(CGRect)rect
 {
     //// Color Declarations
-    UIColor* color = [UIColor colorWithRed: 1 green: 1 blue: 1 alpha: 1];
+    UIColor* strokeColor = [UIColor colorWithRed: 1 green: 1 blue: 1 alpha: _alpha];
+    UIColor* bgColor = [UIColor colorWithWhite:26.0f/255.0f alpha:0.40f];
     
     //// Rounded Rectangle Drawing
     UIBezierPath* roundedRectanglePath = [UIBezierPath bezierPathWithRoundedRect: CGRectMake(1.0f, 1.0f, rect.size.width - 2.0f, rect.size.height - 2.0f) cornerRadius: rect.size.height];
-    [color setStroke];
+    [strokeColor setStroke];
+    [roundedRectanglePath fill];
+    [bgColor setFill];
     roundedRectanglePath.lineWidth = 2;
     [roundedRectanglePath stroke];
 }

@@ -18,12 +18,13 @@
 - (void)touchesEndedWithSlider:(UISliderView*)slider;
 @end
 
-@interface UISliderView : UIView
+@interface UISliderView : UIView <UIGestureRecognizerDelegate>
 {
     UILabel* _titleLabel;
     UISliderThumbVIew* _thumbView;
     CGFloat _thumbStartX;
     CGFloat _thumbEndX;
+    CGFloat _alpha;
 }
 
 @property (nonatomic, strong) NSString* title;

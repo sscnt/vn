@@ -15,9 +15,16 @@ typedef NS_ENUM(NSInteger, BlurredButtonIconType){
     BlurredButtonIconTypeCamera = 1,
     BlurredButtonIconTypePhotos
 };
+@class UIBlurredButton;
 
+@protocol UIBlurredButtonDelegate
+- (void)buttonDidCreateBgImage:(UIBlurredButton*)button;
+@end
 
 @interface UIBlurredButton : UIButton
+
+@property (nonatomic, weak) id<UIBlurredButtonDelegate> delegate;
+@property (nonatomic, assign) BOOL isReady;
 
 - (id)initWithFrame:(CGRect)frame Type:(BlurredButtonIconType)type;
 - (void)generateBackgroundImageByCaputuredImage:(UIImage *)inputImage;

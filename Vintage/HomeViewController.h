@@ -17,8 +17,10 @@ typedef NS_ENUM(NSInteger, UIBlurredButtonId){
     UIBlurredButtonIdPhotos
 };
 
-@interface HomeViewController : UIViewController <UINavigationControllerDelegate, UIImagePickerControllerDelegate>
+@interface HomeViewController : UIViewController <UINavigationControllerDelegate, UIImagePickerControllerDelegate, UIBlurredButtonDelegate>
 {
+    UIImageView* splashImageView;
+    UIImageView* bgImageView;
     UIBlurredButton* buttonCamera;
     UIBlurredButton* buttonPhotos;
 }

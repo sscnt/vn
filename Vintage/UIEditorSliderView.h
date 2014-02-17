@@ -18,16 +18,18 @@
 @end
 
 typedef NS_ENUM(NSInteger, EditorSliderIconType){
-    EditorSliderIconTypeStrength = 1
+    EditorSliderIconTypeOpacity = 1
 };
 
 @interface UIEditorSliderView : UIView <UISliderViewDelegate>
 {
     UISliderView* _slider;
+    UIImageView* _iconImageView;
 }
 
 @property (nonatomic, assign) CGFloat value;
 @property (nonatomic, weak) id<UIEditorSliderViewDelegate> delegate;
 @property (nonatomic, assign) EditorSliderIconType iconType;
+@property (nonatomic, strong) NSString* title;
 
 @end
