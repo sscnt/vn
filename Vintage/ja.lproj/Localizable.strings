@@ -12,6 +12,11 @@
 "Camera is not available." = "カメラを利用できません。";
 "Error" = "エラー";
 "Opacity" = "透明度";
+"Brightness" = "明るさ";
+"Levels" = "均一な明るさ";
+"Contrast" = "コントラスト";
+"Clarity" = "細部の強調";
+"Temperature" = "色温度";
 "EDIT" = "編集";
 "Saved successfully" = "保存しました";
 
