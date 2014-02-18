@@ -17,6 +17,8 @@
 #import "UIEditorSliderView.h"
 #import "GPUKelvinFilter.h"
 #import "GPUImageVignette2Filter.h"
+#import "GPUimageTumblinBrightnessFilter.h"
+#import "GPUImageTumblinLevelsFilter.h"
 
 typedef NS_ENUM(NSInteger, AdjustmentViewId){
     AdjustmentViewIdOpacity = 1,

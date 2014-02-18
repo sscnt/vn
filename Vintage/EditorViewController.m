@@ -14,6 +14,13 @@
 
 @implementation EditorViewController
 
+float absf(float value){
+    if (value < 0.0) {
+        return -value;
+    }
+    return value;
+}
+
 - (id)init
 {
     self = [super init];
@@ -283,22 +290,31 @@
     
     //// Brightness
     if (_valueBrightness != 0.0f) {
+        float alpha = (20.0f * absf(_valueBrightness)) / (1.0f + 20.0f * absf(_valueBrightness));
         GPUImagePicture* base = [[GPUImagePicture alloc] initWithImage:baseImage];
-        GPUImageBrightnessFilter* filter = [[GPUImageBrightnessFilter alloc] init];
+        GPUimageTumblinBrightnessFilter* filter = [[GPUimageTumblinBrightnessFilter alloc] init];
         filter.brightness = _valueBrightness;
+        
         [base addTarget:filter];
         [base processImage];
-        baseImage = [filter imageFromCurrentlyProcessedOutput];
+        
+        UIImage* brightImage = [filter imageFromCurrentlyProcessedOutput];
+        baseImage = [self mergeBaseImage:baseImage overlayImage:brightImage opacity:0.30f * alpha blendingMode:MergeBlendingModeNormal];
+        baseImage = [self mergeBaseImage:baseImage overlayFilter:filter opacity:1.0f * alpha blendingMode:MergeBlendingModeSoftLight];
     }
     
     //// Levels
     if (_valueLevels != 0.0f) {
+        float alpha = (20.0f * absf(_valueLevels - 1.0f)) / (1.0f + 20.0f * absf(_valueLevels - 1.0f));
         GPUImagePicture* base = [[GPUImagePicture alloc] initWithImage:baseImage];
-        GPUImageLevelsFilter* filter = [[GPUImageLevelsFilter alloc] init];
+        GPUImageTumblinLevelsFilter* filter = [[GPUImageTumblinLevelsFilter alloc] init];
         [filter setMin:0.0f gamma:_valueLevels max:1.0f];
         [base addTarget:filter];
         [base processImage];
-        baseImage = [filter imageFromCurrentlyProcessedOutput];
+        
+        UIImage* brightImage = [filter imageFromCurrentlyProcessedOutput];
+        baseImage = [self mergeBaseImage:baseImage overlayImage:brightImage opacity:0.30f * alpha blendingMode:MergeBlendingModeNormal];
+        baseImage = [self mergeBaseImage:baseImage overlayFilter:filter opacity:alpha blendingMode:MergeBlendingModeSoftLight];
     }
     
     //// Contrast
@@ -524,6 +540,9 @@
 
 - (void)didPressAdjustmentButton:(UINavigationBarButton *)button
 {
+    if (_isSliding) {
+        return;
+    }
     _buttonBrightness.selected = NO;
     _buttonColor.selected = NO;
     _buttonContrast.selected = NO;
@@ -587,6 +606,9 @@
 
 - (void)slider:(UIEditorSliderView*)slider DidValueChange:(CGFloat)value
 {
+    if (_isApplying) {
+        return;
+    }
     switch (slider.tag) {
         case EditorSliderIconTypeBrightness:
             _percentageLabel.text = [NSString stringWithFormat:@"%@: %d", NSLocalizedString(@"Brightness", nil), (int)roundf((value - 0.50f) * 200.0f)];
@@ -678,6 +700,10 @@
                 _sliderVignette.value = 0.0f;
                 break;
         }
+        return;
+    }
+    
+    if (_isApplying) {
         return;
     }
     
