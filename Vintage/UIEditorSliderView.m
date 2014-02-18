@@ -50,6 +50,21 @@
         case EditorSliderIconTypeOpacity:
             _iconImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"opacity-60.png"]];
             break;
+        case EditorSliderIconTypeKelvin:
+            _iconImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"kelvin-60.png"]];
+            break;
+        case EditorSliderIconTypeLevels:
+            _iconImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"levels-60.png"]];
+            break;
+        case EditorSliderIconTypeBrightness:
+            _iconImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"brightness-60.png"]];
+            break;
+        case EditorSliderIconTypeClarity:
+            _iconImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"clarity-60.png"]];
+            break;
+        case EditorSliderIconTypeContrast:
+            _iconImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"contrast-60.png"]];
+            break;
     }
     _iconImageView.center = _slider.center;
     _iconImageView.center = CGPointMake(23.0f, self.bounds.size.height / 2.0f);

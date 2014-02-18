@@ -149,7 +149,7 @@
 {
     //// Color Declarations
     UIColor* strokeColor = [UIColor colorWithRed: 1 green: 1 blue: 1 alpha: _alpha];
-    UIColor* bgColor = [UIColor colorWithWhite:26.0f/255.0f alpha:0.20f];
+    UIColor* bgColor = [UIColor colorWithWhite:26.0f/255.0f alpha:0.60f];
     
     //// Rounded Rectangle Drawing
     UIBezierPath* roundedRectanglePath = [UIBezierPath bezierPathWithRoundedRect: CGRectMake(1.0f, 1.0f, rect.size.width - 2.0f, rect.size.height - 2.0f) cornerRadius: rect.size.height];

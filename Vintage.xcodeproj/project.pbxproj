@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		5801C55D18B1A60A0059818E /* opacity-60@2x.pn.png in Resources */ = {isa = PBXBuildFile; fileRef = 5801C55C18B1A60A0059818E /* opacity-60@2x.pn.png */; };
+		5801C55D18B1A60A0059818E /* opacity-60@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5801C55C18B1A60A0059818E /* opacity-60@2x.png */; };
 		5801C56318B1ACB90059818E /* splash@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5801C56118B1ACB90059818E /* splash@2x.png */; };
 		5801C56418B1ACB90059818E /* splash-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5801C56218B1ACB90059818E /* splash-568h@2x.png */; };
 		581595E818AEBFB400621C3F /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 581595EA18AEBFB400621C3F /* Localizable.strings */; };
@@ -59,7 +59,10 @@
 		5891ABD818B0312B00241949 /* EditorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5891ABD718B0312B00241949 /* EditorViewController.m */; };
 		5891ABDD18B036B100241949 /* UINavigationBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5891ABDC18B036B100241949 /* UINavigationBarView.m */; };
 		5891ABE118B0381800241949 /* UICloseButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 5891ABE018B0381800241949 /* UICloseButton.m */; };
+		58F14EA718B3013B00D2CD4E /* kelvin-60@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 58F14EA518B3013B00D2CD4E /* kelvin-60@2x.png */; };
+		58F14EA818B3013B00D2CD4E /* levels-60@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 58F14EA618B3013B00D2CD4E /* levels-60@2x.png */; };
 		58F3555618B09B8C00F57F1B /* UIEditorSliderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F3555518B09B8C00F57F1B /* UIEditorSliderView.m */; };
+		58F4B21918B30538004071A8 /* brightness-60@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 58F4B21818B30538004071A8 /* brightness-60@2x.png */; };
 		58F4FF8818B07D1200C338B3 /* SVProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 58F4FF8518B07D1200C338B3 /* SVProgressHUD.bundle */; };
 		58F4FF8918B07D1200C338B3 /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F4FF8718B07D1200C338B3 /* SVProgressHUD.m */; };
 		58F4FF8D18B0936000C338B3 /* UISliderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F4FF8C18B0936000C338B3 /* UISliderView.m */; };
@@ -71,6 +74,9 @@
 		58F6970018AD79AF006F2089 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58F696FF18AD79AF006F2089 /* OpenGLES.framework */; };
 		58F6970218AD79B9006F2089 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58F6970118AD79B9006F2089 /* AVFoundation.framework */; };
 		58F6970418AD79C3006F2089 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58F6970318AD79C3006F2089 /* QuartzCore.framework */; };
+		58F7126C18B306F50029AB6F /* brightness-button-60@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 58F7126B18B306F50029AB6F /* brightness-button-60@2x.png */; };
+		58F7127118B306FB0029AB6F /* contrast-60@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 58F7127018B306FB0029AB6F /* contrast-60@2x.png */; };
+		58F7127318B307020029AB6F /* clarity-60@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 58F7127218B307020029AB6F /* clarity-60@2x.png */; };
 		58F7452C18B1847C0096EB5D /* bebasneue.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 58F7452B18B1847C0096EB5D /* bebasneue.ttf */; };
 		58F7453418B186830096EB5D /* Aller_Bd.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 58F7453018B186830096EB5D /* Aller_Bd.ttf */; };
 		58F7453518B186830096EB5D /* Aller_Lt.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 58F7453118B186830096EB5D /* Aller_Lt.ttf */; };
@@ -95,7 +101,6 @@
 		58F907D018B2D26200C7A241 /* UINavigationBarButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F907CF18B2D26200C7A241 /* UINavigationBarButton.m */; };
 		58F907D218B2D9AE00C7A241 /* opacity-button-60@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 58F907D118B2D9AE00C7A241 /* opacity-button-60@2x.png */; };
 		58F907D418B2DA0300C7A241 /* color-button-60@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 58F907D318B2DA0300C7A241 /* color-button-60@2x.png */; };
-		58F907D618B2DA0B00C7A241 /* brightness-button-60@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 58F907D518B2DA0B00C7A241 /* brightness-button-60@2x.png */; };
 		58F907D818B2DA5F00C7A241 /* contrast-button-60@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 58F907D718B2DA5F00C7A241 /* contrast-button-60@2x.png */; };
 		58FB1AE318B071EB0003EC79 /* UIEditorPreviewImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 58FB1AE218B071EB0003EC79 /* UIEditorPreviewImageView.m */; };
 		58FB1AE618B0779D0003EC79 /* UISaveButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 58FB1AE518B0779D0003EC79 /* UISaveButton.m */; };
@@ -190,7 +195,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		5801C55C18B1A60A0059818E /* opacity-60@2x.pn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "opacity-60@2x.pn.png"; sourceTree = "<group>"; };
+		5801C55C18B1A60A0059818E /* opacity-60@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "opacity-60@2x.png"; sourceTree = "<group>"; };
 		5801C56118B1ACB90059818E /* splash@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "splash@2x.png"; sourceTree = "<group>"; };
 		5801C56218B1ACB90059818E /* splash-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "splash-568h@2x.png"; sourceTree = "<group>"; };
 		581595E918AEBFB400621C3F /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -268,8 +273,11 @@
 		5891ABDC18B036B100241949 /* UINavigationBarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UINavigationBarView.m; sourceTree = "<group>"; };
 		5891ABDF18B0381800241949 /* UICloseButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UICloseButton.h; sourceTree = "<group>"; };
 		5891ABE018B0381800241949 /* UICloseButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UICloseButton.m; sourceTree = "<group>"; };
+		58F14EA518B3013B00D2CD4E /* kelvin-60@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "kelvin-60@2x.png"; sourceTree = "<group>"; };
+		58F14EA618B3013B00D2CD4E /* levels-60@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "levels-60@2x.png"; sourceTree = "<group>"; };
 		58F3555418B09B8C00F57F1B /* UIEditorSliderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIEditorSliderView.h; sourceTree = "<group>"; };
 		58F3555518B09B8C00F57F1B /* UIEditorSliderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIEditorSliderView.m; sourceTree = "<group>"; };
+		58F4B21818B30538004071A8 /* brightness-60@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "brightness-60@2x.png"; sourceTree = "<group>"; };
 		58F4FF8518B07D1200C338B3 /* SVProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = SVProgressHUD.bundle; sourceTree = "<group>"; };
 		58F4FF8618B07D1200C338B3 /* SVProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVProgressHUD.h; sourceTree = "<group>"; };
 		58F4FF8718B07D1200C338B3 /* SVProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVProgressHUD.m; sourceTree = "<group>"; };
@@ -285,6 +293,9 @@
 		58F696FF18AD79AF006F2089 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		58F6970118AD79B9006F2089 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		58F6970318AD79C3006F2089 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		58F7126B18B306F50029AB6F /* brightness-button-60@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "brightness-button-60@2x.png"; sourceTree = "<group>"; };
+		58F7127018B306FB0029AB6F /* contrast-60@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "contrast-60@2x.png"; sourceTree = "<group>"; };
+		58F7127218B307020029AB6F /* clarity-60@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "clarity-60@2x.png"; sourceTree = "<group>"; };
 		58F7452B18B1847C0096EB5D /* bebasneue.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = bebasneue.ttf; sourceTree = "<group>"; };
 		58F7453018B186830096EB5D /* Aller_Bd.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Aller_Bd.ttf; sourceTree = "<group>"; };
 		58F7453118B186830096EB5D /* Aller_Lt.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Aller_Lt.ttf; sourceTree = "<group>"; };
@@ -318,7 +329,6 @@
 		58F907CF18B2D26200C7A241 /* UINavigationBarButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UINavigationBarButton.m; sourceTree = "<group>"; };
 		58F907D118B2D9AE00C7A241 /* opacity-button-60@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "opacity-button-60@2x.png"; sourceTree = "<group>"; };
 		58F907D318B2DA0300C7A241 /* color-button-60@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "color-button-60@2x.png"; sourceTree = "<group>"; };
-		58F907D518B2DA0B00C7A241 /* brightness-button-60@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "brightness-button-60@2x.png"; sourceTree = "<group>"; };
 		58F907D718B2DA5F00C7A241 /* contrast-button-60@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "contrast-button-60@2x.png"; sourceTree = "<group>"; };
 		58FB1AE118B071EB0003EC79 /* UIEditorPreviewImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIEditorPreviewImageView.h; sourceTree = "<group>"; };
 		58FB1AE218B071EB0003EC79 /* UIEditorPreviewImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIEditorPreviewImageView.m; sourceTree = "<group>"; };
@@ -996,11 +1006,16 @@
 		58FE950118AF95EA005A4DFE /* Icons */ = {
 			isa = PBXGroup;
 			children = (
+				58F7126B18B306F50029AB6F /* brightness-button-60@2x.png */,
 				58F907D718B2DA5F00C7A241 /* contrast-button-60@2x.png */,
-				58F907D518B2DA0B00C7A241 /* brightness-button-60@2x.png */,
 				58F907D318B2DA0300C7A241 /* color-button-60@2x.png */,
 				58F907D118B2D9AE00C7A241 /* opacity-button-60@2x.png */,
-				5801C55C18B1A60A0059818E /* opacity-60@2x.pn.png */,
+				58F7127018B306FB0029AB6F /* contrast-60@2x.png */,
+				58F7127218B307020029AB6F /* clarity-60@2x.png */,
+				58F4B21818B30538004071A8 /* brightness-60@2x.png */,
+				58F14EA518B3013B00D2CD4E /* kelvin-60@2x.png */,
+				58F14EA618B3013B00D2CD4E /* levels-60@2x.png */,
+				5801C55C18B1A60A0059818E /* opacity-60@2x.png */,
 				58F5BE9718B18D2000A6EA5B /* close-60@2x.png */,
 				58FB1AE718B0783D0003EC79 /* save-60@2x.png */,
 				58F7F07918AFE42F00997877 /* loading-48@2x.gif */,
@@ -1268,6 +1283,7 @@
 				58FB369718AEAFEC00B284FB /* rounded-mplus-1p-regular.ttf in Resources */,
 				58FF47F918AE47D000B978D9 /* sl1.acv in Resources */,
 				58FCAD1C18AFA13E001559F0 /* photos-40-40@2x.png in Resources */,
+				58F4B21918B30538004071A8 /* brightness-60@2x.png in Resources */,
 				588F122818AE21EB00787045 /* sms4.acv in Resources */,
 				58FF483418AE4B3C00B978D9 /* Hzl2.acv in Resources */,
 				58F7453518B186830096EB5D /* Aller_Lt.ttf in Resources */,
@@ -1277,9 +1293,9 @@
 				58FB898218AE1031001F661B /* home@2x.jpg in Resources */,
 				588F123E18AE224F00787045 /* fv1.acv in Resources */,
 				588F121C18AE21C200787045 /* mi2.acv in Resources */,
-				58F907D618B2DA0B00C7A241 /* brightness-button-60@2x.png in Resources */,
 				588F123F18AE224F00787045 /* fv2.acv in Resources */,
 				58F4FF8818B07D1200C338B3 /* SVProgressHUD.bundle in Resources */,
+				58F7127318B307020029AB6F /* clarity-60@2x.png in Resources */,
 				588F127318AE24D300787045 /* cn3.acv in Resources */,
 				58FB369418AEAFEC00B284FB /* rounded-mplus-1p-heavy.ttf in Resources */,
 				58FF482C18AE4A2000B978D9 /* vf.acv in Resources */,
@@ -1301,6 +1317,7 @@
 				588F126818AE248E00787045 /* vvv2.acv in Resources */,
 				58F767BC18AD6F4900015FBA /* InfoPlist.strings in Resources */,
 				58FE950D18AF9BDC005A4DFE /* chunkfive.ttf in Resources */,
+				58F7126C18B306F50029AB6F /* brightness-button-60@2x.png in Resources */,
 				58FB1AE818B0783D0003EC79 /* save-60@2x.png in Resources */,
 				58FB898118AE1031001F661B /* home-568h@2x.jpg in Resources */,
 				58FF47F018AE478E00B978D9 /* gm2.acv in Resources */,
@@ -1308,12 +1325,14 @@
 				58FF47FA18AE47D000B978D9 /* sl2.acv in Resources */,
 				588F122718AE21EB00787045 /* sms5.acv in Resources */,
 				58FCAD1D18AFA13E001559F0 /* photos-40-70@2x.png in Resources */,
+				58F14EA818B3013B00D2CD4E /* levels-60@2x.png in Resources */,
 				58FE950A18AF995C005A4DFE /* camera-40-70@2x.png in Resources */,
 				588F122A18AE21EB00787045 /* sms2.acv in Resources */,
 				58FF47F118AE478E00B978D9 /* gm3.acv in Resources */,
 				58F5BE9818B18D2000A6EA5B /* close-60@2x.png in Resources */,
 				588F127418AE24D300787045 /* cn4.acv in Resources */,
 				588F124518AE22CE00787045 /* pbt.acv in Resources */,
+				58F14EA718B3013B00D2CD4E /* kelvin-60@2x.png in Resources */,
 				5801C56318B1ACB90059818E /* splash@2x.png in Resources */,
 				58FCAD2C18AFAECA001559F0 /* camera-36-70@2x.png in Resources */,
 				588F127118AE24D300787045 /* cn1.acv in Resources */,
@@ -1321,10 +1340,11 @@
 				5801C56418B1ACB90059818E /* splash-568h@2x.png in Resources */,
 				58FF483318AE4B3C00B978D9 /* Hzl1.acv in Resources */,
 				588F127218AE24D300787045 /* cn2.acv in Resources */,
+				58F7127118B306FB0029AB6F /* contrast-60@2x.png in Resources */,
 				58FF481E18AE49DC00B978D9 /* Vintage12.acv in Resources */,
 				58F907D418B2DA0300C7A241 /* color-button-60@2x.png in Resources */,
 				58F767C518AD6F4900015FBA /* Main.storyboard in Resources */,
-				5801C55D18B1A60A0059818E /* opacity-60@2x.pn.png in Resources */,
+				5801C55D18B1A60A0059818E /* opacity-60@2x.png in Resources */,
 				588F126718AE248E00787045 /* vvv1.acv in Resources */,
 				58FB369518AEAFEC00B284FB /* rounded-mplus-1p-light.ttf in Resources */,
 				58F7453618B186830096EB5D /* Aller_Rg.ttf in Resources */,

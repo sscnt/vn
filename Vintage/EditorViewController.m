@@ -47,7 +47,6 @@
     [self.view addSubview:_previewImageView];
     
     //// Sliders
-    
     //////// Opacity
     _sliderOpacity = [[UIEditorSliderView alloc] initWithFrame:CGRectMake(0.0f, 10.0f, [UIScreen screenSize].width, 42.0f)];
     _sliderOpacity.tag = EditorSliderIconTypeOpacity;
@@ -63,34 +62,75 @@
     [self.view addSubview:_adjustmentOpacity];
     
     //////// Brightness
-    //////////// Brightness
+    //////////// Global
     _sliderBrightnessGlobal = [[UIEditorSliderView alloc] initWithFrame:CGRectMake(0.0f, 10.0f, [UIScreen screenSize].width, 42.0f)];
-    _sliderBrightnessGlobal.tag = EditorSliderIconTypeOpacity;
+    _sliderBrightnessGlobal.tag = EditorSliderIconTypeBrightness;
     _sliderBrightnessGlobal.delegate = self;
     _sliderBrightnessGlobal.title = NSLocalizedString(@"Brightness", nil);
-    _sliderBrightnessGlobal.iconType = EditorSliderIconTypeOpacity;
+    _sliderBrightnessGlobal.iconType = EditorSliderIconTypeBrightness;
     _sliderBrightnessGlobal.titlePosition = SliderViewTitlePositionLeft;
-    
+    _sliderBrightnessGlobal.value = 0.5f;
     //////////// Levels
-    _sliderContrastLocal = [[UIEditorSliderView alloc] initWithFrame:CGRectMake(0.0f, 10.0f, [UIScreen screenSize].width, 42.0f)];
-    _sliderContrastLocal.tag = EditorSliderIconTypeOpacity;
-    _sliderContrastLocal.delegate = self;
-    _sliderContrastLocal.title = NSLocalizedString(@"Brightness", nil);
-    _sliderContrastLocal.iconType = EditorSliderIconTypeOpacity;
-    _sliderContrastLocal.titlePosition = SliderViewTitlePositionLeft;
-    
+    _sliderBrightnessLevels = [[UIEditorSliderView alloc] initWithFrame:CGRectMake(0.0f, 10.0f + _sliderBrightnessGlobal.frame.size.height, [UIScreen screenSize].width, 42.0f)];
+    _sliderBrightnessLevels.tag = EditorSliderIconTypeLevels;
+    _sliderBrightnessLevels.delegate = self;
+    _sliderBrightnessLevels.title = NSLocalizedString(@"Levels", nil);
+    _sliderBrightnessLevels.iconType = EditorSliderIconTypeLevels;
+    _sliderBrightnessLevels.titlePosition = SliderViewTitlePositionLeft;
+    _sliderBrightnessLevels.value = 0.5f;
     //////// Adjustment
     _adjustmentBrightness = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, [UIScreen screenSize].width, _sliderBrightnessGlobal.bounds.size.height * 2.0f + 20.0f)];
-    _adjustmentBrightness.tag = AdjustmentViewIdOpacity;
-    [_adjustmentBrightness addSubview:_sliderOpacity];
+    _adjustmentBrightness.tag = AdjustmentViewIdBrightness;
+    [_adjustmentBrightness addSubview:_sliderBrightnessGlobal];
+    [_adjustmentBrightness addSubview:_sliderBrightnessLevels];
     _adjustmentBrightness.hidden = YES;
     [self.view addSubview:_adjustmentBrightness];
-
+    
+    //////// Contrast
+    //////////// Global
+    _sliderContrastGlobal = [[UIEditorSliderView alloc] initWithFrame:CGRectMake(0.0f, 10.0f, [UIScreen screenSize].width, 42.0f)];
+    _sliderContrastGlobal.tag = EditorSliderIconTypeContrast;
+    _sliderContrastGlobal.delegate = self;
+    _sliderContrastGlobal.title = NSLocalizedString(@"Contrast", nil);
+    _sliderContrastGlobal.iconType = EditorSliderIconTypeContrast;
+    _sliderContrastGlobal.titlePosition = SliderViewTitlePositionLeft;
+    _sliderContrastGlobal.value = 0.5f;
+    //////////// Local
+    _sliderContrastLocal = [[UIEditorSliderView alloc] initWithFrame:CGRectMake(0.0f, 10.0f + _sliderContrastGlobal.frame.size.height, [UIScreen screenSize].width, 42.0f)];
+    _sliderContrastLocal.tag = EditorSliderIconTypeClarity;
+    _sliderContrastLocal.delegate = self;
+    _sliderContrastLocal.title = NSLocalizedString(@"Clarity", nil);
+    _sliderContrastLocal.iconType = EditorSliderIconTypeClarity;
+    _sliderContrastLocal.titlePosition = SliderViewTitlePositionLeft;
+    _sliderContrastLocal.value = 0.5f;
+    //////// Adjustment
+    _adjustmentContrast = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, [UIScreen screenSize].width, _sliderContrastGlobal.bounds.size.height * 2.0f + 20.0f)];
+    _adjustmentContrast.tag = AdjustmentViewIdContrast;
+    [_adjustmentContrast addSubview:_sliderContrastGlobal];
+    [_adjustmentContrast addSubview:_sliderContrastLocal];
+    _adjustmentContrast.hidden = YES;
+    [self.view addSubview:_adjustmentContrast];
+    
+    //////// Color
+    _sliderColorKelvin = [[UIEditorSliderView alloc] initWithFrame:CGRectMake(0.0f, 10.0f, [UIScreen screenSize].width, 42.0f)];
+    _sliderColorKelvin.tag = EditorSliderIconTypeKelvin;
+    _sliderColorKelvin.delegate = self;
+    _sliderColorKelvin.title = NSLocalizedString(@"Temperature", nil);
+    _sliderColorKelvin.iconType = EditorSliderIconTypeKelvin;
+    _sliderColorKelvin.titlePosition = SliderViewTitlePositionLeft;
+    _sliderColorKelvin.value = 0.5f;
+    //////// Adjustment
+    _adjustmentColor = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, [UIScreen screenSize].width, _sliderColorKelvin.bounds.size.height + 20.0f)];
+    _adjustmentColor.tag = AdjustmentViewIdColor;
+    [_adjustmentColor addSubview:_sliderColorKelvin];
+    _adjustmentColor.hidden = YES;
+    [self.view addSubview:_adjustmentColor];
 
     
     //// Bottom Bar
     UINavigationBarView* bar = [[UINavigationBarView alloc] initWithPosition:NavigationBarViewPositionBottom];
     [bar setOpacity:1.0f];
+    
     //////// Save
     UISaveButton* buttonSave = [[UISaveButton alloc] init];
     [buttonSave addTarget:self action:@selector(didPressSaveButton) forControlEvents:UIControlEventTouchUpInside];
@@ -362,6 +402,11 @@
 
 - (void)didPressAdjustmentButton:(UINavigationBarButton *)button
 {
+    _buttonBrightness.selected = NO;
+    _buttonColor.selected = NO;
+    _buttonContrast.selected = NO;
+    _buttonOpacity.selected = NO;
+    button.selected = YES;
     UIView* adjustment;
     switch (button.tag) {
         case AdjustmentViewIdOpacity:
