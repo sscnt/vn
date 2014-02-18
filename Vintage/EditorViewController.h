@@ -16,6 +16,7 @@
 #import "SVProgressHUD.h"
 #import "UIEditorSliderView.h"
 #import "GPUKelvinFilter.h"
+#import "GPUImageVignette2Filter.h"
 
 typedef NS_ENUM(NSInteger, AdjustmentViewId){
     AdjustmentViewIdOpacity = 1,

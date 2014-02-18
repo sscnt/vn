@@ -344,17 +344,12 @@
     
     //// Vignette
     if (_valueVignette != 0.0f) {
-        
-        GPUImageGradientColorGenerator* gradientColor = [[GPUImageGradientColorGenerator alloc] init];
-        [gradientColor forceProcessingAtSize:CGSizeMake(imageEffected.size.width, imageEffected.size.height)];
-        [gradientColor setStyle:GradientStyleRadial];
-        [gradientColor setAngleDegree:0];
-        [gradientColor setScalePercent:120];
-        [gradientColor setOffsetX:0.0f Y:0.0f];
-        [gradientColor addColorRed:0.0f Green:0.0f Blue:0.0f Opacity:0.0f Location:0 Midpoint:50];
-        [gradientColor addColorRed:0.0f Green:0.0f Blue:0.0f Opacity:100.0f Location:4096 Midpoint:50];
-        
-        imageEffected = [self mergeBaseImage:imageEffected overlayFilter:gradientColor opacity:_valueVignette blendingMode:MergeBlendingModeOverlay];
+        GPUImagePicture* base = [[GPUImagePicture alloc] initWithImage:imageEffected];
+        GPUImageVignette2Filter* filter = [[GPUImageVignette2Filter alloc] init];
+        filter.scale = _valueVignette;
+        [base addTarget:filter];
+        [base processImage];
+        imageEffected = [filter imageFromCurrentlyProcessedOutput];
     }
     
     return imageEffected;

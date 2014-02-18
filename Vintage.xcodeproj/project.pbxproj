@@ -100,6 +100,7 @@
 		58F8127518B3166E00941C18 /* clarity-60@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 58F8127418B3166E00941C18 /* clarity-60@2x.png */; };
 		58F8127A18B3167700941C18 /* vignette-60@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 58F8127918B3167700941C18 /* vignette-60@2x.png */; };
 		58F8127D18B3398500941C18 /* GPUImageDarkerColorBlendFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F8127C18B3398500941C18 /* GPUImageDarkerColorBlendFilter.m */; };
+		58F8128018B343D200941C18 /* GPUImageVignette2Filter.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F8127F18B343D200941C18 /* GPUImageVignette2Filter.m */; };
 		58F907D018B2D26200C7A241 /* UINavigationBarButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F907CF18B2D26200C7A241 /* UINavigationBarButton.m */; };
 		58F907D218B2D9AE00C7A241 /* opacity-button-60@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 58F907D118B2D9AE00C7A241 /* opacity-button-60@2x.png */; };
 		58F907D418B2DA0300C7A241 /* color-button-60@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 58F907D318B2DA0300C7A241 /* color-button-60@2x.png */; };
@@ -330,6 +331,8 @@
 		58F8127918B3167700941C18 /* vignette-60@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "vignette-60@2x.png"; sourceTree = "<group>"; };
 		58F8127B18B3398500941C18 /* GPUImageDarkerColorBlendFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPUImageDarkerColorBlendFilter.h; sourceTree = "<group>"; };
 		58F8127C18B3398500941C18 /* GPUImageDarkerColorBlendFilter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GPUImageDarkerColorBlendFilter.m; sourceTree = "<group>"; };
+		58F8127E18B343D200941C18 /* GPUImageVignette2Filter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPUImageVignette2Filter.h; sourceTree = "<group>"; };
+		58F8127F18B343D200941C18 /* GPUImageVignette2Filter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GPUImageVignette2Filter.m; sourceTree = "<group>"; };
 		58F907CE18B2D26200C7A241 /* UINavigationBarButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UINavigationBarButton.h; sourceTree = "<group>"; };
 		58F907CF18B2D26200C7A241 /* UINavigationBarButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UINavigationBarButton.m; sourceTree = "<group>"; };
 		58F907D118B2D9AE00C7A241 /* opacity-button-60@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "opacity-button-60@2x.png"; sourceTree = "<group>"; };
@@ -1174,6 +1177,8 @@
 				58FF485B18AE589F00B978D9 /* GPUPhotoFilter.m */,
 				58F8127B18B3398500941C18 /* GPUImageDarkerColorBlendFilter.h */,
 				58F8127C18B3398500941C18 /* GPUImageDarkerColorBlendFilter.m */,
+				58F8127E18B343D200941C18 /* GPUImageVignette2Filter.h */,
+				58F8127F18B343D200941C18 /* GPUImageVignette2Filter.m */,
 			);
 			name = GPUImageFilter;
 			sourceTree = "<group>";
@@ -1446,6 +1451,7 @@
 				58FB899018AE1165001F661B /* UIFadeNavigationController.m in Sources */,
 				588F125018AE235000787045 /* GPUEffectSunsetCarnevale.m in Sources */,
 				58FF47FB18AE47D000B978D9 /* GPUEffectWarmSpringLight.m in Sources */,
+				58F8128018B343D200941C18 /* GPUImageVignette2Filter.m in Sources */,
 				58FB899C18AE12B1001F661B /* UIView+extend.m in Sources */,
 				58F4FF9018B093A100C338B3 /* UISliderThumbView.m in Sources */,
 				588F121418AE215200787045 /* GPUImageEffects.m in Sources */,
