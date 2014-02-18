@@ -603,10 +603,10 @@
             _percentageLabel.text = [NSString stringWithFormat:@"%@: %d", NSLocalizedString(@"Contrast", nil), (int)roundf((value - 0.50f) * 200.0f)];
             break;
         case EditorSliderIconTypeKelvin:
-            _percentageLabel.text = [NSString stringWithFormat:@"%@: %d", NSLocalizedString(@"Kelvin", nil), (int)roundf((value - 0.50f) * 200.0f)];
+            _percentageLabel.text = [NSString stringWithFormat:@"%@: %d", NSLocalizedString(@"Temperature", nil), (int)roundf((value - 0.50f) * 200.0f)];
             break;
         case EditorSliderIconTypeLevels:
-            _percentageLabel.text = [NSString stringWithFormat:@"%@: %d", NSLocalizedString(@"Opacity", nil), (int)roundf((value - 0.50f) * 200.0f)];
+            _percentageLabel.text = [NSString stringWithFormat:@"%@: %d", NSLocalizedString(@"Levels", nil), (int)roundf((value - 0.50f) * 200.0f)];
             break;
         case EditorSliderIconTypeOpacity:
             _percentageLabel.text = [NSString stringWithFormat:@"%@: %d", NSLocalizedString(@"Opacity", nil), (int)roundf(value * 100.0f)];
@@ -639,10 +639,10 @@
             _percentageLabel.text = [NSString stringWithFormat:@"%@: %d", NSLocalizedString(@"Contrast", nil), (int)roundf((_valueContrast - 0.50f) * 200.0f)];
             break;
         case EditorSliderIconTypeKelvin:
-            _percentageLabel.text = [NSString stringWithFormat:@"%@: %d", NSLocalizedString(@"Kelvin", nil), (int)roundf((_valueKelvin - 0.50f) * 200.0f)];
+            _percentageLabel.text = [NSString stringWithFormat:@"%@: %d", NSLocalizedString(@"Temperature", nil), (int)roundf((_valueKelvin - 0.50f) * 200.0f)];
             break;
         case EditorSliderIconTypeLevels:
-            _percentageLabel.text = [NSString stringWithFormat:@"%@: %d", NSLocalizedString(@"Opacity", nil), (int)roundf((_valueLevels - 0.50f) * 200.0f)];
+            _percentageLabel.text = [NSString stringWithFormat:@"%@: %d", NSLocalizedString(@"Levels", nil), (int)roundf((_valueLevels - 0.50f) * 200.0f)];
             break;
         case EditorSliderIconTypeOpacity:
             _percentageLabel.text = [NSString stringWithFormat:@"%@: %d", NSLocalizedString(@"Opacity", nil), (int)roundf(_valueOpacity * 100.0f)];

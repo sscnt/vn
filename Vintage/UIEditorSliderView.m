@@ -66,6 +66,7 @@
             break;
         case EditorSliderIconTypeContrast:
             _iconImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"contrast-60.png"]];
+            marginTop = -0.5f;
             break;
         case EditorSliderIconTypeVignette:
             _iconImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"vignette-60.png"]];
