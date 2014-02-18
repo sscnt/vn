@@ -11,12 +11,13 @@
 "EFFECTS" = "エフェクトを選択";
 "Camera is not available." = "カメラを利用できません。";
 "Error" = "エラー";
-"Opacity" = "透明度";
+"Opacity" = "適用量";
 "Brightness" = "明るさ";
-"Levels" = "均一な明るさ";
+"Levels" = "均等な明るさ";
 "Contrast" = "コントラスト";
 "Clarity" = "細部の強調";
 "Temperature" = "色温度";
+"Vignette" = "周辺減光";
 "EDIT" = "編集";
 "Saved successfully" = "保存しました";
 

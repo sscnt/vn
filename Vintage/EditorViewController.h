@@ -15,6 +15,7 @@
 #import "UISaveButton.h"
 #import "SVProgressHUD.h"
 #import "UIEditorSliderView.h"
+#import "GPUKelvinFilter.h"
 
 typedef NS_ENUM(NSInteger, AdjustmentViewId){
     AdjustmentViewIdOpacity = 1,
@@ -27,11 +28,12 @@ typedef NS_ENUM(NSInteger, AdjustmentViewId){
 {
     UIEditorPreviewImageView* _previewImageView;
     UIEditorSliderView* _sliderOpacity;
-    UIEditorSliderView* _sliderBrightnessGlobal;
-    UIEditorSliderView* _sliderBrightnessLevels;
-    UIEditorSliderView* _sliderContrastGlobal;
-    UIEditorSliderView* _sliderContrastLocal;
-    UIEditorSliderView* _sliderColorKelvin;
+    UIEditorSliderView* _sliderBrightness;
+    UIEditorSliderView* _sliderLevels;
+    UIEditorSliderView* _sliderVignette;
+    UIEditorSliderView* _sliderContrast;
+    UIEditorSliderView* _sliderClarity;
+    UIEditorSliderView* _sliderKelvin;
     UINavigationBarButton* _buttonOpacity;
     UINavigationBarButton* _buttonBrightness;
     UINavigationBarButton* _buttonColor;
@@ -41,7 +43,13 @@ typedef NS_ENUM(NSInteger, AdjustmentViewId){
     UIView* _adjustmentColor;
     UIView* _adjustmentContrast;
     UIView* _adjustmentCurrent;
-    CGFloat _strength;
+    CGFloat _valueOpacity;
+    CGFloat _valueBrightness;
+    CGFloat _valueLevels;
+    CGFloat _valueVignette;
+    CGFloat _valueContrast;
+    CGFloat _valueClarity;
+    CGFloat _valueKelvin;
     BOOL _isSaving;
     BOOL _isApplying;
     BOOL _isSliding;
@@ -64,6 +72,10 @@ typedef NS_ENUM(NSInteger, AdjustmentViewId){
 - (void)slideUpAdjustment:(UIView*)adjustment Completion:(void (^)(BOOL))completion;
 - (void)slideDownCurrentAdjustmentAndSlideUpAdjustment:(UIView *)adjustment;
 
+- (UIImage*)processImage:(UIImage*)inputImage;
+
 - (UIImage*)merge2pictureBase:(GPUImagePicture*)basePicture overlay:(GPUImagePicture*)overlayPicture opacity:(CGFloat)opacity;
+- (UIImage*)mergeBaseImage:(UIImage*)baseImage overlayImage:(UIImage*)overlayImage opacity:(CGFloat)opacity blendingMode:(MergeBlendingMode)blendingMode;
+- (UIImage*)mergeBaseImage:(UIImage*)baseImage overlayFilter:(GPUImageFilter*)overlayFilter opacity:(CGFloat)opacity blendingMode:(MergeBlendingMode)blendingMode;
 
 @end

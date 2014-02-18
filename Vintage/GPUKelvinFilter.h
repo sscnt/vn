@@ -16,8 +16,8 @@ extern NSString *const kGravyKelvinFragmentShaderString;
     GLuint strengthUniform;
 }
 
-@property (nonatomic, readwrite) float kelvin;
-@property (nonatomic, readwrite) float strength;
+@property (nonatomic, assign) float kelvin;
+@property (nonatomic, assign) float strength;
 
 
 @end

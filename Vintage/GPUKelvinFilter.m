@@ -155,7 +155,7 @@ NSString *const kGravyKelvinFragmentShaderString = SHADER_STRING
              b = 0.0;
          }else{
              b = kelvin - 10.0;
-             b = -0.0755148492 * log(b) - 305.0447927307;
+             b = 138.5177312231 * log(b) - 305.0447927307;
          }
      }
      if(b < 0.0){
@@ -202,8 +202,10 @@ NSString *const kGravyKelvinFragmentShaderString = SHADER_STRING
         kelvin = 40000.0f;
     }
     kelvin /= 100.0f;
+    _kelvin = kelvin;
     [self setFloat:kelvin forUniform:kelvinUniform program:filterProgram];
 }
+
 - (void)setStrength:(float)strength
 {
     if(strength > 100.0f){

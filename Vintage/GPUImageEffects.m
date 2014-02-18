@@ -24,52 +24,7 @@
     
     GPUImagePicture* basePicture = [[GPUImagePicture alloc] initWithImage:baseImage];
     
-    id blending;
-    
-    if(blendingMode == MergeBlendingModeNormal){
-        blending = [[GPUImageNormalBlendFilter alloc] init];
-    }
-    if(blendingMode == MergeBlendingModeDarken){
-        blending = [[GPUImageDarkenBlendFilter alloc] init];
-    }
-    if(blendingMode == MergeBlendingModeMultiply){
-        blending = [[GPUImageMultiplyBlendFilter alloc] init];
-    }
-    
-    if(blendingMode == MergeBlendingModeSoftLight){
-        blending = [[GPUImageSoftLightBlendFilter alloc] init];
-    }
-    if(blendingMode == MergeBlendingModeHardLight){
-        blending = [[GPUImageHardLightBlendFilter alloc] init];
-    }
-    if(blendingMode == MergeBlendingModeVividLight){
-        blending = [[GPUImageVividLightBlendFilter alloc] init];
-    }
-    if(blendingMode == MergeBlendingModeOverlay){
-        blending = [[GPUImageOverlayBlendFilter alloc] init];
-    }
-    if(blendingMode == MergeBlendingModeColorDodge){
-        blending = [[GPUImageColorDodgeBlendFilter alloc] init];
-    }
-    if(blendingMode == MergeBlendingModeExclusion){
-        blending = [[GPUImageExclusionBlendFilter alloc] init];
-    }
-    if(blendingMode == MergeBlendingModeColor){
-        blending = [[GPUImageColorBlendFilter alloc] init];
-    }
-    if(blendingMode == MergeBlendingModeHue){
-        blending = [[GPUImageHueBlendFilter alloc] init];
-    }
-    if(blendingMode == MergeBlendingModeColorBurn){
-        blending = [[GPUImageColorBurnBlendFilter alloc] init];
-    }
-    if(blendingMode == MergeBlendingModeSaturation){
-        blending = [[GPUImageSaturationBlendFilter alloc] init];
-    }
-    if(blendingMode == MergeBlendingModeDifference){
-        blending = [[GPUImageDifferenceBlendFilter alloc] init];
-    }
-    
+    id blending = [GPUImageEffects effectByBlendMode:blendingMode];
     [opacityFilter addTarget:blending atTextureLocation:1];
     
     [basePicture addTarget:blending];
@@ -88,66 +43,73 @@
     GPUImagePicture* picture = [[GPUImagePicture alloc] initWithImage:baseImage];
     [picture addTarget:overlayFilter];
     
-    id blending;
-    
-    if(blendingMode == MergeBlendingModeNormal){
-        blending = [[GPUImageNormalBlendFilter alloc] init];
-    }
-    if(blendingMode == MergeBlendingModeDarken){
-        blending = [[GPUImageDarkenBlendFilter alloc] init];
-    }
-    if(blendingMode == MergeBlendingModeMultiply){
-        blending = [[GPUImageMultiplyBlendFilter alloc] init];
-    }
-    if(blendingMode == MergeBlendingModeScreen){
-        blending = [[GPUImageScreenBlendFilter alloc] init];
-    }
-    if(blendingMode == MergeBlendingModeSoftLight){
-        blending = [[GPUImageSoftLightBlendFilter alloc] init];
-    }
-    if(blendingMode == MergeBlendingModeLighten){
-        blending = [[GPUImageLightenBlendFilter alloc] init];
-    }
-    if(blendingMode == MergeBlendingModeHardLight){
-        blending = [[GPUImageHardLightBlendFilter alloc] init];
-    }
-    if(blendingMode == MergeBlendingModeVividLight){
-        blending = [[GPUImageVividLightBlendFilter alloc] init];
-    }
-    if(blendingMode == MergeBlendingModeOverlay){
-        blending = [[GPUImageOverlayBlendFilter alloc] init];
-    }
-    if(blendingMode == MergeBlendingModeColorDodge){
-        blending = [[GPUImageColorDodgeBlendFilter alloc] init];
-    }
-    if(blendingMode == MergeBlendingModeLinearDodge){
-        blending = [[GPUImageLinearDodgeBlendFilter alloc] init];
-    }
-    if(blendingMode == MergeBlendingModeExclusion){
-        blending = [[GPUImageExclusionBlendFilter alloc] init];
-    }
-    if(blendingMode == MergeBlendingModeColor){
-        blending = [[GPUImageColorBlendFilter alloc] init];
-    }
-    if(blendingMode == MergeBlendingModeHue){
-        blending = [[GPUImageHueBlendFilter alloc] init];
-    }
-    if(blendingMode == MergeBlendingModeColorBurn){
-        blending = [[GPUImageColorBurnBlendFilter alloc] init];
-    }
-    if(blendingMode == MergeBlendingModeSaturation){
-        blending = [[GPUImageSaturationBlendFilter alloc] init];
-    }
-    if(blendingMode == MergeBlendingModeDifference){
-        blending = [[GPUImageDifferenceBlendFilter alloc] init];
-    }
-    
+    id blending = [GPUImageEffects effectByBlendMode:blendingMode];
     [opacityFilter addTarget:blending atTextureLocation:1];
     
     [picture addTarget:blending];
     [picture processImage];
     return [blending imageFromCurrentlyProcessedOutput];
 
+}
+
++ (id)effectByBlendMode:(MergeBlendingMode)mode
+{
+    id blending;
+    if(mode == MergeBlendingModeNormal){
+        blending = [[GPUImageNormalBlendFilter alloc] init];
+    }
+    if(mode == MergeBlendingModeDarken){
+        blending = [[GPUImageDarkenBlendFilter alloc] init];
+    }
+    if(mode == MergeBlendingModeMultiply){
+        blending = [[GPUImageMultiplyBlendFilter alloc] init];
+    }
+    if(mode == MergeBlendingModeScreen){
+        blending = [[GPUImageScreenBlendFilter alloc] init];
+    }
+    if(mode == MergeBlendingModeSoftLight){
+        blending = [[GPUImageSoftLightBlendFilter alloc] init];
+    }
+    if(mode == MergeBlendingModeLighten){
+        blending = [[GPUImageLightenBlendFilter alloc] init];
+    }
+    if(mode == MergeBlendingModeHardLight){
+        blending = [[GPUImageHardLightBlendFilter alloc] init];
+    }
+    if(mode == MergeBlendingModeVividLight){
+        blending = [[GPUImageVividLightBlendFilter alloc] init];
+    }
+    if(mode == MergeBlendingModeOverlay){
+        blending = [[GPUImageOverlayBlendFilter alloc] init];
+    }
+    if(mode == MergeBlendingModeColorDodge){
+        blending = [[GPUImageColorDodgeBlendFilter alloc] init];
+    }
+    if(mode == MergeBlendingModeLinearDodge){
+        blending = [[GPUImageLinearDodgeBlendFilter alloc] init];
+    }
+    if(mode == MergeBlendingModeDarkerColor){
+        blending = [[GPUImageDarkerColorBlendFilter alloc] init];
+    }
+    if(mode == MergeBlendingModeExclusion){
+        blending = [[GPUImageExclusionBlendFilter alloc] init];
+    }
+    if(mode == MergeBlendingModeColor){
+        blending = [[GPUImageColorBlendFilter alloc] init];
+    }
+    if(mode == MergeBlendingModeHue){
+        blending = [[GPUImageHueBlendFilter alloc] init];
+    }
+    if(mode == MergeBlendingModeColorBurn){
+        blending = [[GPUImageColorBurnBlendFilter alloc] init];
+    }
+    if(mode == MergeBlendingModeSaturation){
+        blending = [[GPUImageSaturationBlendFilter alloc] init];
+    }
+    if(mode == MergeBlendingModeDifference){
+        blending = [[GPUImageDifferenceBlendFilter alloc] init];
+    }
+    return blending;
 }
 
 @end

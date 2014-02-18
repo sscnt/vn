@@ -18,6 +18,7 @@
 #import "GPUPhotoFilter.h"
 #import "GPUImageVividLightBlendFilter.h"
 #import "GPUImageLinearDodgeBlendFilter.h"
+#import "GPUImageDarkerColorBlendFilter.h"
 
 
 typedef NS_ENUM(NSInteger, EffectId){
@@ -50,6 +51,7 @@ typedef NS_ENUM(NSInteger, MergeBlendingMode){
     MergeBlendingModeDarken,
     MergeBlendingModeScreen,
     MergeBlendingModeMultiply,
+    MergeBlendingModeDarkerColor,
     MergeBlendingModeLighten,
     MergeBlendingModeSoftLight,
     MergeBlendingModeHardLight,
@@ -73,5 +75,6 @@ typedef NS_ENUM(NSInteger, MergeBlendingMode){
 - (UIImage*)process;
 - (UIImage*)mergeBaseImage:(UIImage*)baseImage overlayImage:(UIImage*)overlayImage opacity:(CGFloat)opacity blendingMode:(MergeBlendingMode)blendingMode;
 - (UIImage*)mergeBaseImage:(UIImage*)baseImage overlayFilter:(GPUImageFilter*)overlayFilter opacity:(CGFloat)opacity blendingMode:(MergeBlendingMode)blendingMode;
++ (id)effectByBlendMode:(MergeBlendingMode)mode;
 
 @end

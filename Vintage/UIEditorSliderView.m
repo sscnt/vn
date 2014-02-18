@@ -46,6 +46,8 @@
 
 - (void)setIconType:(EditorSliderIconType)iconType
 {
+    CGFloat marginTop = 0.0f;
+    CGFloat marginLeft = 0.0f;
     switch (iconType) {
         case EditorSliderIconTypeOpacity:
             _iconImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"opacity-60.png"]];
@@ -65,9 +67,12 @@
         case EditorSliderIconTypeContrast:
             _iconImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"contrast-60.png"]];
             break;
+        case EditorSliderIconTypeVignette:
+            _iconImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"vignette-60.png"]];
+            break;
     }
     _iconImageView.center = _slider.center;
-    _iconImageView.center = CGPointMake(23.0f, self.bounds.size.height / 2.0f);
+    _iconImageView.center = CGPointMake(23.0f + marginLeft, self.bounds.size.height / 2.0f + marginTop);
     _iconImageView.alpha = _alpha;
     [self addSubview:_iconImageView];
 }

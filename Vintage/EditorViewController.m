@@ -18,7 +18,7 @@
 {
     self = [super init];
     if (self) {
-        _strength = 1.0;
+        _valueOpacity = 1.0;
         _isSaving = NO;
         _blurredImage = nil;
         _isApplying = NO;
@@ -63,66 +63,75 @@
     
     //////// Brightness
     //////////// Global
-    _sliderBrightnessGlobal = [[UIEditorSliderView alloc] initWithFrame:CGRectMake(0.0f, 10.0f, [UIScreen screenSize].width, 42.0f)];
-    _sliderBrightnessGlobal.tag = EditorSliderIconTypeBrightness;
-    _sliderBrightnessGlobal.delegate = self;
-    _sliderBrightnessGlobal.title = NSLocalizedString(@"Brightness", nil);
-    _sliderBrightnessGlobal.iconType = EditorSliderIconTypeBrightness;
-    _sliderBrightnessGlobal.titlePosition = SliderViewTitlePositionLeft;
-    _sliderBrightnessGlobal.value = 0.5f;
+    _sliderBrightness = [[UIEditorSliderView alloc] initWithFrame:CGRectMake(0.0f, 10.0f, [UIScreen screenSize].width, 42.0f)];
+    _sliderBrightness.tag = EditorSliderIconTypeBrightness;
+    _sliderBrightness.delegate = self;
+    _sliderBrightness.title = NSLocalizedString(@"Brightness", nil);
+    _sliderBrightness.iconType = EditorSliderIconTypeBrightness;
+    _sliderBrightness.titlePosition = SliderViewTitlePositionLeft;
+    _sliderBrightness.value = 0.5f;
     //////////// Levels
-    _sliderBrightnessLevels = [[UIEditorSliderView alloc] initWithFrame:CGRectMake(0.0f, 10.0f + _sliderBrightnessGlobal.frame.size.height, [UIScreen screenSize].width, 42.0f)];
-    _sliderBrightnessLevels.tag = EditorSliderIconTypeLevels;
-    _sliderBrightnessLevels.delegate = self;
-    _sliderBrightnessLevels.title = NSLocalizedString(@"Levels", nil);
-    _sliderBrightnessLevels.iconType = EditorSliderIconTypeLevels;
-    _sliderBrightnessLevels.titlePosition = SliderViewTitlePositionLeft;
-    _sliderBrightnessLevels.value = 0.5f;
+    _sliderLevels = [[UIEditorSliderView alloc] initWithFrame:CGRectMake(0.0f, 10.0f + _sliderBrightness.frame.size.height, [UIScreen screenSize].width, 42.0f)];
+    _sliderLevels.tag = EditorSliderIconTypeLevels;
+    _sliderLevels.delegate = self;
+    _sliderLevels.title = NSLocalizedString(@"Levels", nil);
+    _sliderLevels.iconType = EditorSliderIconTypeLevels;
+    _sliderLevels.titlePosition = SliderViewTitlePositionLeft;
+    _sliderLevels.value = 0.5f;
+    //////////// Levels
+    _sliderVignette = [[UIEditorSliderView alloc] initWithFrame:CGRectMake(0.0f, 10.0f + _sliderBrightness.frame.size.height + _sliderLevels.frame.size.height, [UIScreen screenSize].width, 42.0f)];
+    _sliderVignette.tag = EditorSliderIconTypeVignette;
+    _sliderVignette.delegate = self;
+    _sliderVignette.title = NSLocalizedString(@"Vignette", nil);
+    _sliderVignette.iconType = EditorSliderIconTypeVignette;
+    _sliderVignette.titlePosition = SliderViewTitlePositionCenter;
+    _sliderVignette.value = 0.0f;
     //////// Adjustment
-    _adjustmentBrightness = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, [UIScreen screenSize].width, _sliderBrightnessGlobal.bounds.size.height * 2.0f + 20.0f)];
+    _adjustmentBrightness = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, [UIScreen screenSize].width, _sliderBrightness.bounds.size.height * 3.0f + 20.0f)];
     _adjustmentBrightness.tag = AdjustmentViewIdBrightness;
-    [_adjustmentBrightness addSubview:_sliderBrightnessGlobal];
-    [_adjustmentBrightness addSubview:_sliderBrightnessLevels];
+    [_adjustmentBrightness addSubview:_sliderBrightness];
+    [_adjustmentBrightness addSubview:_sliderLevels];
+    [_adjustmentBrightness addSubview:_sliderVignette];
     _adjustmentBrightness.hidden = YES;
     [self.view addSubview:_adjustmentBrightness];
     
     //////// Contrast
     //////////// Global
-    _sliderContrastGlobal = [[UIEditorSliderView alloc] initWithFrame:CGRectMake(0.0f, 10.0f, [UIScreen screenSize].width, 42.0f)];
-    _sliderContrastGlobal.tag = EditorSliderIconTypeContrast;
-    _sliderContrastGlobal.delegate = self;
-    _sliderContrastGlobal.title = NSLocalizedString(@"Contrast", nil);
-    _sliderContrastGlobal.iconType = EditorSliderIconTypeContrast;
-    _sliderContrastGlobal.titlePosition = SliderViewTitlePositionLeft;
-    _sliderContrastGlobal.value = 0.5f;
+    _sliderContrast = [[UIEditorSliderView alloc] initWithFrame:CGRectMake(0.0f, 10.0f, [UIScreen screenSize].width, 42.0f)];
+    _sliderContrast.tag = EditorSliderIconTypeContrast;
+    _sliderContrast.delegate = self;
+    _sliderContrast.title = NSLocalizedString(@"Contrast", nil);
+    _sliderContrast.iconType = EditorSliderIconTypeContrast;
+    _sliderContrast.titlePosition = SliderViewTitlePositionLeft;
+    _sliderContrast.value = 0.5f;
     //////////// Local
-    _sliderContrastLocal = [[UIEditorSliderView alloc] initWithFrame:CGRectMake(0.0f, 10.0f + _sliderContrastGlobal.frame.size.height, [UIScreen screenSize].width, 42.0f)];
-    _sliderContrastLocal.tag = EditorSliderIconTypeClarity;
-    _sliderContrastLocal.delegate = self;
-    _sliderContrastLocal.title = NSLocalizedString(@"Clarity", nil);
-    _sliderContrastLocal.iconType = EditorSliderIconTypeClarity;
-    _sliderContrastLocal.titlePosition = SliderViewTitlePositionLeft;
-    _sliderContrastLocal.value = 0.5f;
+    _sliderClarity = [[UIEditorSliderView alloc] initWithFrame:CGRectMake(0.0f, 10.0f + _sliderContrast.frame.size.height, [UIScreen screenSize].width, 42.0f)];
+    _sliderClarity.tag = EditorSliderIconTypeClarity;
+    _sliderClarity.delegate = self;
+    _sliderClarity.title = NSLocalizedString(@"Clarity", nil);
+    _sliderClarity.iconType = EditorSliderIconTypeClarity;
+    _sliderClarity.titlePosition = SliderViewTitlePositionCenter;
+    _sliderClarity.value = 0.0f;
     //////// Adjustment
-    _adjustmentContrast = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, [UIScreen screenSize].width, _sliderContrastGlobal.bounds.size.height * 2.0f + 20.0f)];
+    _adjustmentContrast = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, [UIScreen screenSize].width, _sliderContrast.bounds.size.height * 2.0f + 20.0f)];
     _adjustmentContrast.tag = AdjustmentViewIdContrast;
-    [_adjustmentContrast addSubview:_sliderContrastGlobal];
-    [_adjustmentContrast addSubview:_sliderContrastLocal];
+    [_adjustmentContrast addSubview:_sliderContrast];
+    [_adjustmentContrast addSubview:_sliderClarity];
     _adjustmentContrast.hidden = YES;
     [self.view addSubview:_adjustmentContrast];
     
     //////// Color
-    _sliderColorKelvin = [[UIEditorSliderView alloc] initWithFrame:CGRectMake(0.0f, 10.0f, [UIScreen screenSize].width, 42.0f)];
-    _sliderColorKelvin.tag = EditorSliderIconTypeKelvin;
-    _sliderColorKelvin.delegate = self;
-    _sliderColorKelvin.title = NSLocalizedString(@"Temperature", nil);
-    _sliderColorKelvin.iconType = EditorSliderIconTypeKelvin;
-    _sliderColorKelvin.titlePosition = SliderViewTitlePositionLeft;
-    _sliderColorKelvin.value = 0.5f;
+    _sliderKelvin = [[UIEditorSliderView alloc] initWithFrame:CGRectMake(0.0f, 10.0f, [UIScreen screenSize].width, 42.0f)];
+    _sliderKelvin.tag = EditorSliderIconTypeKelvin;
+    _sliderKelvin.delegate = self;
+    _sliderKelvin.title = NSLocalizedString(@"Temperature", nil);
+    _sliderKelvin.iconType = EditorSliderIconTypeKelvin;
+    _sliderKelvin.titlePosition = SliderViewTitlePositionLeft;
+    _sliderKelvin.value = 0.5f;
     //////// Adjustment
-    _adjustmentColor = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, [UIScreen screenSize].width, _sliderColorKelvin.bounds.size.height + 20.0f)];
+    _adjustmentColor = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, [UIScreen screenSize].width, _sliderKelvin.bounds.size.height + 20.0f)];
     _adjustmentColor.tag = AdjustmentViewIdColor;
-    [_adjustmentColor addSubview:_sliderColorKelvin];
+    [_adjustmentColor addSubview:_sliderKelvin];
     _adjustmentColor.hidden = YES;
     [self.view addSubview:_adjustmentColor];
 
@@ -267,6 +276,91 @@
     }
 }
 
+- (UIImage*)processImage:(UIImage *)inputImage
+{
+    
+    UIImage* baseImage = inputImage;
+    
+    //// Brightness
+    if (_valueBrightness != 0.0f) {
+        GPUImagePicture* base = [[GPUImagePicture alloc] initWithImage:baseImage];
+        GPUImageBrightnessFilter* filter = [[GPUImageBrightnessFilter alloc] init];
+        filter.brightness = _valueBrightness;
+        [base addTarget:filter];
+        [base processImage];
+        baseImage = [filter imageFromCurrentlyProcessedOutput];
+    }
+    
+    //// Levels
+    if (_valueLevels != 0.0f) {
+        GPUImagePicture* base = [[GPUImagePicture alloc] initWithImage:baseImage];
+        GPUImageLevelsFilter* filter = [[GPUImageLevelsFilter alloc] init];
+        [filter setMin:0.0f gamma:_valueLevels max:1.0f];
+        [base addTarget:filter];
+        [base processImage];
+        baseImage = [filter imageFromCurrentlyProcessedOutput];
+    }
+    
+    //// Contrast
+    if (_valueContrast != 0.0f) {
+        GPUImagePicture* base = [[GPUImagePicture alloc] initWithImage:baseImage];
+        GPUImageContrastFilter* filter = [[GPUImageContrastFilter alloc] init];
+        filter.contrast = _valueContrast;
+        [base addTarget:filter];
+        [base processImage];
+        baseImage = [filter imageFromCurrentlyProcessedOutput];
+    }
+    
+    //// Clarity
+    if (_valueClarity != 0.0f) {
+        GPUImagePicture* base = [[GPUImagePicture alloc] initWithImage:baseImage];
+        GPUImageUnsharpMaskFilter* filter = [[GPUImageUnsharpMaskFilter alloc] init];
+        filter.blurRadiusInPixels = 30.0f;
+        filter.intensity = (_valueClarity + 1.0f);
+        [base addTarget:filter];
+        [base processImage];
+        UIImage* unsharpImage = [filter imageFromCurrentlyProcessedOutput];
+        baseImage = [self mergeBaseImage:baseImage overlayImage:unsharpImage opacity:1.0f blendingMode:MergeBlendingModeDarkerColor];
+    }
+    
+    //// Kelvin
+    if (_valueKelvin != 0.0f) {
+        GPUImagePicture* base = [[GPUImagePicture alloc] initWithImage:baseImage];
+        GPUKelvinFilter* filter = [[GPUKelvinFilter alloc] init];
+        filter.kelvin = 6500.0 - 6500.0 * _valueKelvin;
+        filter.strength = MIN(abs(_valueKelvin * 50), 50);
+        [base addTarget:filter];
+        [base processImage];
+        baseImage = [filter imageFromCurrentlyProcessedOutput];
+
+    }
+    
+    GPUImagePicture* base = [[GPUImagePicture alloc] initWithImage:baseImage];
+    GPUImageEffects* effect = [self effect:_effectId];
+    effect.imageToProcess = baseImage;
+    UIImage* imageEffected = [effect process];
+    GPUImagePicture* overlay = [[GPUImagePicture alloc] initWithImage:imageEffected];
+    imageEffected = [self merge2pictureBase:base overlay:overlay opacity:_valueOpacity];
+    
+    //// Vignette
+    if (_valueVignette != 0.0f) {
+        
+        GPUImageGradientColorGenerator* gradientColor = [[GPUImageGradientColorGenerator alloc] init];
+        [gradientColor forceProcessingAtSize:CGSizeMake(imageEffected.size.width, imageEffected.size.height)];
+        [gradientColor setStyle:GradientStyleRadial];
+        [gradientColor setAngleDegree:0];
+        [gradientColor setScalePercent:120];
+        [gradientColor setOffsetX:0.0f Y:0.0f];
+        [gradientColor addColorRed:0.0f Green:0.0f Blue:0.0f Opacity:0.0f Location:0 Midpoint:50];
+        [gradientColor addColorRed:0.0f Green:0.0f Blue:0.0f Opacity:100.0f Location:4096 Midpoint:50];
+        
+        imageEffected = [self mergeBaseImage:imageEffected overlayFilter:gradientColor opacity:_valueVignette blendingMode:MergeBlendingModeOverlay];
+    }
+    
+    return imageEffected;
+
+}
+
 - (void)applyEffect
 {
     if (_isApplying) {
@@ -283,25 +377,21 @@
     dispatch_queue_t q_global = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
     dispatch_queue_t q_main = dispatch_get_main_queue();
     dispatch_async(q_global, ^{
-        
-        GPUImageEffects* effect = [self effect:_effectId];
-        effect.imageToProcess = imageResized;
-        GPUImagePicture* base = [[GPUImagePicture alloc] initWithImage:imageResized];
-        imageEffected = [effect process];
-        GPUImagePicture* overlay = [[GPUImagePicture alloc] initWithImage:imageEffected];
-        imageEffected = [self merge2pictureBase:base overlay:overlay opacity:_strength];
-        
-        if (blurredImage == nil) {
+        @autoreleasepool {
+            
+            imageEffected = [_self processImage:imageResized];
+            
             GPUImageGaussianBlurFilter* filter = [[GPUImageGaussianBlurFilter alloc] init];
             filter.blurRadiusInPixels = 8.0f;
-            base = [[GPUImagePicture alloc] initWithImage:imageResized];
+            GPUImagePicture* base = [[GPUImagePicture alloc] initWithImage:imageEffected];
             [base addTarget:filter];
             [base processImage];
             blurredImage = [filter imageFromCurrentlyProcessedOutput];
+            
         }
-        
         dispatch_async(q_main, ^{
             if(previewImageView.isPreviewReady){
+                previewImageView.imageBlurred = blurredImage;
                 [previewImageView setPreviewImage:imageEffected];
                 [previewImageView toggleBlurredImage:NO WithDuration:0.10f];
             }else{
@@ -327,6 +417,43 @@
         });
         
     });
+    
+}
+
+- (UIImage*)mergeBaseImage:(UIImage *)baseImage overlayImage:(UIImage *)overlayImage opacity:(CGFloat)opacity blendingMode:(MergeBlendingMode)blendingMode
+{
+    GPUImagePicture* overlayPicture = [[GPUImagePicture alloc] initWithImage:overlayImage];
+    GPUImageOpacityFilter* opacityFilter = [[GPUImageOpacityFilter alloc] init];
+    opacityFilter.opacity = opacity;
+    [overlayPicture addTarget:opacityFilter];
+    
+    GPUImagePicture* basePicture = [[GPUImagePicture alloc] initWithImage:baseImage];
+    
+    id blending = [GPUImageEffects effectByBlendMode:blendingMode];
+    [opacityFilter addTarget:blending atTextureLocation:1];
+    
+    [basePicture addTarget:blending];
+    [basePicture processImage];
+    [overlayPicture processImage];
+    return [blending imageFromCurrentlyProcessedOutput];
+    
+}
+
+- (UIImage*)mergeBaseImage:(UIImage *)baseImage overlayFilter:(GPUImageFilter *)overlayFilter opacity:(CGFloat)opacity blendingMode:(MergeBlendingMode)blendingMode
+{
+    GPUImageOpacityFilter* opacityFilter = [[GPUImageOpacityFilter alloc] init];
+    opacityFilter.opacity = opacity;
+    [overlayFilter addTarget:opacityFilter];
+    
+    GPUImagePicture* picture = [[GPUImagePicture alloc] initWithImage:baseImage];
+    [picture addTarget:overlayFilter];
+    
+    id blending = [GPUImageEffects effectByBlendMode:blendingMode];
+    [opacityFilter addTarget:blending atTextureLocation:1];
+    
+    [picture addTarget:blending];
+    [picture processImage];
+    return [blending imageFromCurrentlyProcessedOutput];
     
 }
 
@@ -447,15 +574,8 @@
     dispatch_queue_t q_global = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
     dispatch_queue_t q_main = dispatch_get_main_queue();
     dispatch_async(q_global, ^{
-        UIImage* resultImage;
-        GPUImageEffects* effect = [self effect:_effectId];
-        effect.imageToProcess = imageOriginal;
         
-        GPUImagePicture* base = [[GPUImagePicture alloc] initWithImage:_imageOriginal];
-        UIImage* imageEffected = [effect process];
-        GPUImagePicture* overlay = [[GPUImagePicture alloc] initWithImage:imageEffected];
-        resultImage = [_self merge2pictureBase:base overlay:overlay opacity:_strength];
-
+        UIImage* resultImage = [_self processImage:imageOriginal];
         UIImageWriteToSavedPhotosAlbum(resultImage, nil, nil, nil);
         
         dispatch_async(q_main, ^{
@@ -472,8 +592,28 @@
 
 - (void)slider:(UIEditorSliderView*)slider DidValueChange:(CGFloat)value
 {
-    if (slider.tag == EditorSliderIconTypeOpacity) {
-        _percentageLabel.text = [NSString stringWithFormat:@"%@: %d", NSLocalizedString(@"Opacity", nil), (int)roundf(value * 100.0f)];
+    switch (slider.tag) {
+        case EditorSliderIconTypeBrightness:
+            _percentageLabel.text = [NSString stringWithFormat:@"%@: %d", NSLocalizedString(@"Brightness", nil), (int)roundf((value - 0.50f) * 200.0f)];
+            break;
+        case EditorSliderIconTypeClarity:
+            _percentageLabel.text = [NSString stringWithFormat:@"%@: %d", NSLocalizedString(@"Clarity", nil), (int)roundf(value * 100.0f)];
+            break;
+        case EditorSliderIconTypeContrast:
+            _percentageLabel.text = [NSString stringWithFormat:@"%@: %d", NSLocalizedString(@"Contrast", nil), (int)roundf((value - 0.50f) * 200.0f)];
+            break;
+        case EditorSliderIconTypeKelvin:
+            _percentageLabel.text = [NSString stringWithFormat:@"%@: %d", NSLocalizedString(@"Kelvin", nil), (int)roundf((value - 0.50f) * 200.0f)];
+            break;
+        case EditorSliderIconTypeLevels:
+            _percentageLabel.text = [NSString stringWithFormat:@"%@: %d", NSLocalizedString(@"Opacity", nil), (int)roundf((value - 0.50f) * 200.0f)];
+            break;
+        case EditorSliderIconTypeOpacity:
+            _percentageLabel.text = [NSString stringWithFormat:@"%@: %d", NSLocalizedString(@"Opacity", nil), (int)roundf(value * 100.0f)];
+            break;
+        case EditorSliderIconTypeVignette:
+            _percentageLabel.text = [NSString stringWithFormat:@"%@: %d", NSLocalizedString(@"Vignette", nil), (int)roundf(value * 100.0f)];
+            break;
     }
 }
 
@@ -486,25 +626,92 @@
 {
     LOG(@"touchstart");
     [_previewImageView toggleBlurredImage:YES WithDuration:0.10f];
-    if (slider.tag == EditorSliderIconTypeOpacity) {
-        _percentageLabel.hidden = NO;
-        _percentageLabel.text = [NSString stringWithFormat:@"%@: %d", NSLocalizedString(@"Opacity", nil), (int)roundf(_strength * 100.0f)];
+    
+    _percentageLabel.hidden = NO;
+    switch (slider.tag) {
+        case EditorSliderIconTypeBrightness:
+            _percentageLabel.text = [NSString stringWithFormat:@"%@: %d", NSLocalizedString(@"Brightness", nil), (int)roundf((_valueBrightness - 0.50f) * 200.0f)];
+            break;
+        case EditorSliderIconTypeClarity:
+            _percentageLabel.text = [NSString stringWithFormat:@"%@: %d", NSLocalizedString(@"Clarity", nil), (int)roundf(_valueClarity * 100.0f)];
+            break;
+        case EditorSliderIconTypeContrast:
+            _percentageLabel.text = [NSString stringWithFormat:@"%@: %d", NSLocalizedString(@"Contrast", nil), (int)roundf((_valueContrast - 0.50f) * 200.0f)];
+            break;
+        case EditorSliderIconTypeKelvin:
+            _percentageLabel.text = [NSString stringWithFormat:@"%@: %d", NSLocalizedString(@"Kelvin", nil), (int)roundf((_valueKelvin - 0.50f) * 200.0f)];
+            break;
+        case EditorSliderIconTypeLevels:
+            _percentageLabel.text = [NSString stringWithFormat:@"%@: %d", NSLocalizedString(@"Opacity", nil), (int)roundf((_valueLevels - 0.50f) * 200.0f)];
+            break;
+        case EditorSliderIconTypeOpacity:
+            _percentageLabel.text = [NSString stringWithFormat:@"%@: %d", NSLocalizedString(@"Opacity", nil), (int)roundf(_valueOpacity * 100.0f)];
+            break;
+        case EditorSliderIconTypeVignette:
+            _percentageLabel.text = [NSString stringWithFormat:@"%@: %d", NSLocalizedString(@"Vignette", nil), (int)roundf(_valueVignette * 100.0f)];
+            break;
     }
+    
 }
 
 - (void)touchesEndedWithSlider:(UIEditorSliderView *)slider
 {
     LOG(@"touchesend");
     _percentageLabel.hidden = YES;
-    if (slider.tag == EditorSliderIconTypeOpacity) {
-        if (!_previewImageView.isPreviewReady) {
-            LOG(@"preview not ready.");
-            _sliderOpacity.value = 1.0;
-            return;
+    if (!_previewImageView.isPreviewReady) {
+        LOG(@"preview not ready.");
+        switch (slider.tag) {
+            case EditorSliderIconTypeBrightness:
+                _sliderBrightness.value = 0.5f;
+                break;
+            case EditorSliderIconTypeClarity:
+                _sliderClarity.value = 0.0f;
+                break;
+            case EditorSliderIconTypeContrast:
+                _sliderContrast.value = 0.5f;
+                break;
+            case EditorSliderIconTypeKelvin:
+                _sliderKelvin.value = 0.5f;
+                break;
+            case EditorSliderIconTypeLevels:
+                _sliderLevels.value = 0.5f;
+                break;
+            case EditorSliderIconTypeOpacity:
+                _sliderOpacity.value = 1.0f;
+                break;
+            case EditorSliderIconTypeVignette:
+                _sliderVignette.value = 0.0f;
+                break;
         }
-        _strength = slider.value;
-        [self applyEffect];
+        return;
     }
+    
+    switch (slider.tag) {
+        case EditorSliderIconTypeBrightness:
+            _valueBrightness = (slider.value - 0.5f) * 1.0f;
+            break;
+        case EditorSliderIconTypeClarity:
+            _valueClarity = slider.value;
+            break;
+        case EditorSliderIconTypeContrast:
+            _valueContrast = MAX((slider.value - 0.5) * 2.0 + 1.1f, 0.1f);
+            break;
+        case EditorSliderIconTypeKelvin:
+            _valueKelvin = (slider.value - 0.5f) * 2.0f;
+            break;
+        case EditorSliderIconTypeLevels:
+            _valueLevels = powf(2.718,(slider.value - 0.5f));
+            _valueLevels *= _valueLevels;
+            break;
+        case EditorSliderIconTypeOpacity:
+            _valueOpacity = slider.value;
+            break;
+        case EditorSliderIconTypeVignette:
+            _valueVignette = slider.value;
+            break;
+    }
+    [self applyEffect];
+    
 }
 
 - (void)didReceiveMemoryWarning
