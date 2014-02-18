@@ -51,7 +51,7 @@ NSString *const kGPUImageVignette2FilterFragmentShaderString = SHADER_STRING
      mediump float x = textureCoordinate.x - 0.5;
      mediump float y = textureCoordinate.y - 0.5;
      mediump float d = sqrt(x * x + y * y) / sqrt(0.5) * scale;
-     d = 1.0 - pow(d, 1.4);
+     d = 1.0 - pow(d, 1.8);
      if(d < 0.0){
          d = 0.0;
      }
