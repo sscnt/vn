@@ -18,6 +18,12 @@
 - (void)touchesEndedWithSlider:(UISliderView*)slider;
 @end
 
+typedef NS_ENUM(NSInteger, SliderViewTitlePosition){
+    SliderViewTitlePositionCenter = 1,
+    SliderViewTitlePositionLeft,
+    SliderViewTitlePositionRight
+};
+
 @interface UISliderView : UIView <UIGestureRecognizerDelegate>
 {
     UILabel* _titleLabel;
@@ -30,6 +36,7 @@
 @property (nonatomic, strong) NSString* title;
 @property (nonatomic, assign) CGFloat value;
 @property (nonatomic, weak) id<UISliderViewDelegate> delegate;
+@property (nonatomic, assign) SliderViewTitlePosition titlePosition;
 
 - (void)didDragThumb:(UIPanGestureRecognizer*)sender;
 - (CGFloat)calcValueByThumbPosition:(CGFloat)x;

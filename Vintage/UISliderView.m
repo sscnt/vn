@@ -51,6 +51,7 @@
 {
     _title = title;
     _titleLabel.text = title;
+    [_titleLabel sizeToFit];
 }
 
 - (void)setValue:(CGFloat)value
@@ -111,6 +112,25 @@
     }
 }
 
+- (void)setTitlePosition:(SliderViewTitlePosition)titlePosition
+{
+    _titlePosition = titlePosition;
+    switch (titlePosition) {
+        case SliderViewTitlePositionCenter:
+            _titleLabel.center = CGPointMake(self.bounds.size.width / 2.0f, self.bounds.size.height / 2.0f);
+            break;
+        case SliderViewTitlePositionLeft:
+            _titleLabel.center = CGPointMake(10.0f + _titleLabel.bounds.size.width / 2.0f, self.bounds.size.height / 2.0f);
+            break;
+        case SliderViewTitlePositionRight:
+            _titleLabel.center = CGPointMake(self.bounds.size.width - 10.0f - _titleLabel.bounds.size.width / 2.0f, self.bounds.size.height / 2.0f);
+            break;
+        default:
+            _titleLabel.center = CGPointMake(self.bounds.size.width / 2.0f, self.bounds.size.height / 2.0f);
+            break;
+    }
+}
+
 - (void)setAlpha:(CGFloat)alpha
 {
     _alpha = alpha;
@@ -134,8 +154,8 @@
     //// Rounded Rectangle Drawing
     UIBezierPath* roundedRectanglePath = [UIBezierPath bezierPathWithRoundedRect: CGRectMake(1.0f, 1.0f, rect.size.width - 2.0f, rect.size.height - 2.0f) cornerRadius: rect.size.height];
     [strokeColor setStroke];
-    [roundedRectanglePath fill];
     [bgColor setFill];
+    [roundedRectanglePath fill];
     roundedRectanglePath.lineWidth = 2;
     [roundedRectanglePath stroke];
 }

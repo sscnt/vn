@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "UINavigationBarButton.h"
 
 typedef NS_ENUM(NSInteger, NavigationBarViewPosition){
     NavigationBarViewPositionTop = 1,
@@ -27,5 +28,6 @@ typedef NS_ENUM(NSInteger, NavigationBarViewPosition){
 - (void)appendButtonToLeft:(UIButton*)button;
 - (void)appendButtonToRight:(UIButton*)button;
 - (void)setTitle:(NSString*)title;
+- (void)setOpacity:(CGFloat)opacity;
 
 @end

@@ -19,6 +19,7 @@
         //// Slider
         CGFloat sliderWidth = frame.size.width - 78.0f;
         _slider = [[UISliderView alloc] initWithFrame:CGRectMake(46.0f, 0.0f, sliderWidth, 22.0f)];
+        _slider.center = CGPointMake(_slider.center.x, self.bounds.size.height / 2.0f);
         _slider.delegate = self;
         [self addSubview:_slider];
         
@@ -51,7 +52,8 @@
             break;
     }
     _iconImageView.center = _slider.center;
-    _iconImageView.center = CGPointMake(23.0f, _iconImageView.center.y - 1.0);
+    _iconImageView.center = CGPointMake(23.0f, self.bounds.size.height / 2.0f);
+    _iconImageView.alpha = _alpha;
     [self addSubview:_iconImageView];
 }
 
@@ -79,10 +81,20 @@
 
 }
 
+- (void)setTitlePosition:(SliderViewTitlePosition)titlePosition
+{
+    _slider.titlePosition = titlePosition;
+}
+
 - (void)setAlpha:(CGFloat)alpha
 {
-    _iconImageView.alpha = alpha;
-    _slider.alpha = alpha;
+    _alpha = alpha;
+    if(_slider){
+        _slider.alpha = alpha;
+    }
+    if (_iconImageView) {
+        _iconImageView.alpha = alpha;
+    }
 }
 
 @end

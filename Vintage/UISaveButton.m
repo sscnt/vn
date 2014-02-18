@@ -12,13 +12,13 @@
 
 - (id)init
 {
-    CGRect frame = CGRectMake(0.0f, 0.0f, 44.0f, 44.0f);
+    CGRect frame = CGRectMake(0.0f, 0.0f, roundf([UIScreen screenSize].width / 6.0f), 44.0f);
     self = [super initWithFrame:frame];
     if (self) {
         self.backgroundColor = [UIColor colorWithRed:46.0f/255.0f green:99.0f/255.0f blue:143.0f/255.0f alpha:1.0f];
         
         UIImageView* view = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"save-60.png"]];
-        view.center = CGPointMake(22.0f, 22.0f);
+        view.center = CGPointMake(frame.size.width / 2.0f, 22.0f);
         [self addSubview:view];
     }
     return self;

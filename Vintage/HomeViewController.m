@@ -59,6 +59,8 @@
     //// Gaussian Blur
     [self generateBlurredImage];
     
+
+    
 }
 
 - (void)generateBlurredImage
@@ -68,10 +70,6 @@
     //// Camera
     imageCaptured = [bgImageView imageByRenderingViewWithRect:buttonCamera.frame];
     [buttonCamera generateBackgroundImageByCaputuredImage:imageCaptured];
-    
-    //// Photos
-    imageCaptured = [bgImageView imageByRenderingViewWithRect:buttonPhotos.frame];
-    [buttonPhotos generateBackgroundImageByCaputuredImage:imageCaptured];
 }
 
 #pragma mark alert
@@ -144,7 +142,14 @@
 
 - (void)buttonDidCreateBgImage:(UIBlurredButton *)button
 {
-    if (buttonCamera.isReady && buttonPhotos.isReady) {
+    if (button.tag == UIBlurredButtonIdCamera) {
+        //// Photos
+        UIImage* imageCaptured = [bgImageView imageByRenderingViewWithRect:buttonPhotos.frame];
+        [buttonPhotos generateBackgroundImageByCaputuredImage:imageCaptured];
+        return;
+    }
+    if (button.tag == UIBlurredButtonIdPhotos) {
+        splashImageView.alpha = 1.0f;
         [UIView animateWithDuration:0.30f animations:^{
             splashImageView.alpha = 0.0f;
         } completion:^(BOOL finished){

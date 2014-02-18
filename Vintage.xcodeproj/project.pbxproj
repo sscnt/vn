@@ -92,6 +92,11 @@
 		58F767DD18AD6F4900015FBA /* VintageTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F767DC18AD6F4900015FBA /* VintageTests.m */; };
 		58F78B1518AE6D97004510AC /* libGPUImage.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 58F78B1218AE6D1F004510AC /* libGPUImage.a */; };
 		58F7F07A18AFE42F00997877 /* loading-48@2x.gif in Resources */ = {isa = PBXBuildFile; fileRef = 58F7F07918AFE42F00997877 /* loading-48@2x.gif */; };
+		58F907D018B2D26200C7A241 /* UINavigationBarButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F907CF18B2D26200C7A241 /* UINavigationBarButton.m */; };
+		58F907D218B2D9AE00C7A241 /* opacity-button-60@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 58F907D118B2D9AE00C7A241 /* opacity-button-60@2x.png */; };
+		58F907D418B2DA0300C7A241 /* color-button-60@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 58F907D318B2DA0300C7A241 /* color-button-60@2x.png */; };
+		58F907D618B2DA0B00C7A241 /* brightness-button-60@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 58F907D518B2DA0B00C7A241 /* brightness-button-60@2x.png */; };
+		58F907D818B2DA5F00C7A241 /* contrast-button-60@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 58F907D718B2DA5F00C7A241 /* contrast-button-60@2x.png */; };
 		58FB1AE318B071EB0003EC79 /* UIEditorPreviewImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 58FB1AE218B071EB0003EC79 /* UIEditorPreviewImageView.m */; };
 		58FB1AE618B0779D0003EC79 /* UISaveButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 58FB1AE518B0779D0003EC79 /* UISaveButton.m */; };
 		58FB1AE818B0783D0003EC79 /* save-60@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 58FB1AE718B0783D0003EC79 /* save-60@2x.png */; };
@@ -309,6 +314,12 @@
 		58F78AD618AEB32A0099A85F /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		58F78B0B18AE6D1E004510AC /* GPUImage.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = GPUImage.xcodeproj; path = GPUImage/framework/GPUImage.xcodeproj; sourceTree = "<group>"; };
 		58F7F07918AFE42F00997877 /* loading-48@2x.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "loading-48@2x.gif"; sourceTree = "<group>"; };
+		58F907CE18B2D26200C7A241 /* UINavigationBarButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UINavigationBarButton.h; sourceTree = "<group>"; };
+		58F907CF18B2D26200C7A241 /* UINavigationBarButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UINavigationBarButton.m; sourceTree = "<group>"; };
+		58F907D118B2D9AE00C7A241 /* opacity-button-60@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "opacity-button-60@2x.png"; sourceTree = "<group>"; };
+		58F907D318B2DA0300C7A241 /* color-button-60@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "color-button-60@2x.png"; sourceTree = "<group>"; };
+		58F907D518B2DA0B00C7A241 /* brightness-button-60@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "brightness-button-60@2x.png"; sourceTree = "<group>"; };
+		58F907D718B2DA5F00C7A241 /* contrast-button-60@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "contrast-button-60@2x.png"; sourceTree = "<group>"; };
 		58FB1AE118B071EB0003EC79 /* UIEditorPreviewImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIEditorPreviewImageView.h; sourceTree = "<group>"; };
 		58FB1AE218B071EB0003EC79 /* UIEditorPreviewImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIEditorPreviewImageView.m; sourceTree = "<group>"; };
 		58FB1AE418B0779D0003EC79 /* UISaveButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UISaveButton.h; sourceTree = "<group>"; };
@@ -750,8 +761,7 @@
 		58F5563218AE16A8008B2857 /* UIComponents */ = {
 			isa = PBXGroup;
 			children = (
-				5891ABDB18B036B100241949 /* UINavigationBarView.h */,
-				5891ABDC18B036B100241949 /* UINavigationBarView.m */,
+				58F907C918B2D23C00C7A241 /* NavigationBar */,
 				58F4FF8A18B0934400C338B3 /* Slider */,
 				58FB1AE018B071D20003EC79 /* Editor */,
 				5891ABDE18B0380700241949 /* Button */,
@@ -869,6 +879,17 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		58F907C918B2D23C00C7A241 /* NavigationBar */ = {
+			isa = PBXGroup;
+			children = (
+				5891ABDB18B036B100241949 /* UINavigationBarView.h */,
+				5891ABDC18B036B100241949 /* UINavigationBarView.m */,
+				58F907CE18B2D26200C7A241 /* UINavigationBarButton.h */,
+				58F907CF18B2D26200C7A241 /* UINavigationBarButton.m */,
+			);
+			name = NavigationBar;
+			sourceTree = "<group>";
+		};
 		58FB1AE018B071D20003EC79 /* Editor */ = {
 			isa = PBXGroup;
 			children = (
@@ -975,6 +996,10 @@
 		58FE950118AF95EA005A4DFE /* Icons */ = {
 			isa = PBXGroup;
 			children = (
+				58F907D718B2DA5F00C7A241 /* contrast-button-60@2x.png */,
+				58F907D518B2DA0B00C7A241 /* brightness-button-60@2x.png */,
+				58F907D318B2DA0300C7A241 /* color-button-60@2x.png */,
+				58F907D118B2D9AE00C7A241 /* opacity-button-60@2x.png */,
 				5801C55C18B1A60A0059818E /* opacity-60@2x.pn.png */,
 				58F5BE9718B18D2000A6EA5B /* close-60@2x.png */,
 				58FB1AE718B0783D0003EC79 /* save-60@2x.png */,
@@ -1247,10 +1272,12 @@
 				58FF483418AE4B3C00B978D9 /* Hzl2.acv in Resources */,
 				58F7453518B186830096EB5D /* Aller_Lt.ttf in Resources */,
 				58FE950918AF995C005A4DFE /* camera-40-40@2x.png in Resources */,
+				58F907D818B2DA5F00C7A241 /* contrast-button-60@2x.png in Resources */,
 				58F7F07A18AFE42F00997877 /* loading-48@2x.gif in Resources */,
 				58FB898218AE1031001F661B /* home@2x.jpg in Resources */,
 				588F123E18AE224F00787045 /* fv1.acv in Resources */,
 				588F121C18AE21C200787045 /* mi2.acv in Resources */,
+				58F907D618B2DA0B00C7A241 /* brightness-button-60@2x.png in Resources */,
 				588F123F18AE224F00787045 /* fv2.acv in Resources */,
 				58F4FF8818B07D1200C338B3 /* SVProgressHUD.bundle in Resources */,
 				588F127318AE24D300787045 /* cn3.acv in Resources */,
@@ -1295,11 +1322,13 @@
 				58FF483318AE4B3C00B978D9 /* Hzl1.acv in Resources */,
 				588F127218AE24D300787045 /* cn2.acv in Resources */,
 				58FF481E18AE49DC00B978D9 /* Vintage12.acv in Resources */,
+				58F907D418B2DA0300C7A241 /* color-button-60@2x.png in Resources */,
 				58F767C518AD6F4900015FBA /* Main.storyboard in Resources */,
 				5801C55D18B1A60A0059818E /* opacity-60@2x.pn.png in Resources */,
 				588F126718AE248E00787045 /* vvv1.acv in Resources */,
 				58FB369518AEAFEC00B284FB /* rounded-mplus-1p-light.ttf in Resources */,
 				58F7453618B186830096EB5D /* Aller_Rg.ttf in Resources */,
+				58F907D218B2D9AE00C7A241 /* opacity-button-60@2x.png in Resources */,
 				58FF480A18AE488B00B978D9 /* wa1.acv in Resources */,
 				58FB369318AEAFEC00B284FB /* rounded-mplus-1p-bold.ttf in Resources */,
 				58FF47F218AE478E00B978D9 /* gm4.acv in Resources */,
@@ -1356,6 +1385,7 @@
 				58F767C218AD6F4900015FBA /* AppDelegate.m in Sources */,
 				588F121018AE20A100787045 /* GPUImageGradientColorGenerator.m in Sources */,
 				58FF485618AE586F00B978D9 /* GPUAdjustmentsWhiteBalance.m in Sources */,
+				58F907D018B2D26200C7A241 /* UINavigationBarButton.m in Sources */,
 				58FB899B18AE12B1001F661B /* UIScreen+extend.m in Sources */,
 				588F127518AE24D300787045 /* GPUEffectCreamyNoon.m in Sources */,
 				58FCAD3518AFC725001559F0 /* UIImage+extend.m in Sources */,

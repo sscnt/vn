@@ -15,6 +15,7 @@ typedef NS_ENUM(NSInteger, BlurredButtonIconType){
     BlurredButtonIconTypeCamera = 1,
     BlurredButtonIconTypePhotos
 };
+
 @class UIBlurredButton;
 
 @protocol UIBlurredButtonDelegate

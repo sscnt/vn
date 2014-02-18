@@ -22,6 +22,7 @@
         _isSaving = NO;
         _blurredImage = nil;
         _isApplying = NO;
+        _isSliding = NO;
     }
     return self;
 }
@@ -45,12 +46,83 @@
     _previewImageView.center = self.view.center;
     [self.view addSubview:_previewImageView];
     
+    //// Sliders
+    
+    //////// Opacity
+    _sliderOpacity = [[UIEditorSliderView alloc] initWithFrame:CGRectMake(0.0f, 10.0f, [UIScreen screenSize].width, 42.0f)];
+    _sliderOpacity.tag = EditorSliderIconTypeOpacity;
+    _sliderOpacity.delegate = self;
+    _sliderOpacity.title = NSLocalizedString(@"Opacity", nil);
+    _sliderOpacity.iconType = EditorSliderIconTypeOpacity;
+    _sliderOpacity.titlePosition = SliderViewTitlePositionCenter;
+    //////// Adjustment
+    _adjustmentOpacity = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, [UIScreen screenSize].width, _sliderOpacity.bounds.size.height + 20.0f)];
+    _adjustmentOpacity.tag = AdjustmentViewIdOpacity;
+    [_adjustmentOpacity addSubview:_sliderOpacity];
+    _adjustmentOpacity.hidden = YES;
+    [self.view addSubview:_adjustmentOpacity];
+    
+    //////// Brightness
+    //////////// Brightness
+    _sliderBrightnessGlobal = [[UIEditorSliderView alloc] initWithFrame:CGRectMake(0.0f, 10.0f, [UIScreen screenSize].width, 42.0f)];
+    _sliderBrightnessGlobal.tag = EditorSliderIconTypeOpacity;
+    _sliderBrightnessGlobal.delegate = self;
+    _sliderBrightnessGlobal.title = NSLocalizedString(@"Brightness", nil);
+    _sliderBrightnessGlobal.iconType = EditorSliderIconTypeOpacity;
+    _sliderBrightnessGlobal.titlePosition = SliderViewTitlePositionLeft;
+    
+    //////////// Levels
+    _sliderContrastLocal = [[UIEditorSliderView alloc] initWithFrame:CGRectMake(0.0f, 10.0f, [UIScreen screenSize].width, 42.0f)];
+    _sliderContrastLocal.tag = EditorSliderIconTypeOpacity;
+    _sliderContrastLocal.delegate = self;
+    _sliderContrastLocal.title = NSLocalizedString(@"Brightness", nil);
+    _sliderContrastLocal.iconType = EditorSliderIconTypeOpacity;
+    _sliderContrastLocal.titlePosition = SliderViewTitlePositionLeft;
+    
+    //////// Adjustment
+    _adjustmentBrightness = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, [UIScreen screenSize].width, _sliderBrightnessGlobal.bounds.size.height * 2.0f + 20.0f)];
+    _adjustmentBrightness.tag = AdjustmentViewIdOpacity;
+    [_adjustmentBrightness addSubview:_sliderOpacity];
+    _adjustmentBrightness.hidden = YES;
+    [self.view addSubview:_adjustmentBrightness];
+
+
+    
     //// Bottom Bar
     UINavigationBarView* bar = [[UINavigationBarView alloc] initWithPosition:NavigationBarViewPositionBottom];
+    [bar setOpacity:1.0f];
+    //////// Save
     UISaveButton* buttonSave = [[UISaveButton alloc] init];
     [buttonSave addTarget:self action:@selector(didPressSaveButton) forControlEvents:UIControlEventTouchUpInside];
     [bar appendButtonToRight:buttonSave];
     [self.view addSubview:bar];
+    
+    //////// Opacity
+    _buttonOpacity = [[UINavigationBarButton alloc] initWithType:NavigationBarButtonTypeOpacity];
+    _buttonOpacity.selected = YES;
+    _buttonOpacity.tag = AdjustmentViewIdOpacity;
+    [_buttonOpacity addTarget:self action:@selector(didPressAdjustmentButton:) forControlEvents:UIControlEventTouchUpInside];
+    [bar appendButtonToLeft:_buttonOpacity];
+    
+    //////// Brightness
+    _buttonBrightness = [[UINavigationBarButton alloc] initWithType:NavigationBarButtonTypeBrightness];
+    _buttonBrightness.tag = AdjustmentViewIdBrightness;
+    [_buttonBrightness addTarget:self action:@selector(didPressAdjustmentButton:) forControlEvents:UIControlEventTouchUpInside];
+    [bar appendButtonToLeft:_buttonBrightness];
+    
+    //////// Contrast
+    _buttonContrast = [[UINavigationBarButton alloc] initWithType:NavigationBarButtonTypeContrast];
+    _buttonContrast.tag = AdjustmentViewIdContrast;
+    [_buttonContrast addTarget:self action:@selector(didPressAdjustmentButton:) forControlEvents:UIControlEventTouchUpInside];
+    [bar appendButtonToLeft:_buttonContrast];
+    
+    //////// Color
+    _buttonColor = [[UINavigationBarButton alloc] initWithType:NavigationBarButtonTypeColor];
+    _buttonColor.tag = AdjustmentViewIdColor;
+    [_buttonColor addTarget:self action:@selector(didPressAdjustmentButton:) forControlEvents:UIControlEventTouchUpInside];
+    [bar appendButtonToLeft:_buttonColor];
+    
+    
     //// Top Bar
     bar = [[UINavigationBarView alloc] initWithPosition:NavigationBarViewPositionTop];
     [bar setTitle:NSLocalizedString(@"EDIT", nil)];
@@ -77,15 +149,6 @@
     _percentageLabel.shadowOffset = CGSizeMake(1, 1);
     _percentageLabel.hidden = YES;
     [self.view addSubview:_percentageLabel];
-
-    
-    //// Sliders
-    _sliderOpacity = [[UIEditorSliderView alloc] initWithFrame:CGRectMake(0.0f, [UIScreen screenSize].height - 44.0f - 48.0f - 10.0f, [UIScreen screenSize].width, 48.0f)];
-    _sliderOpacity.tag = EditorSliderIconTypeOpacity;
-    _sliderOpacity.delegate = self;
-    _sliderOpacity.title = NSLocalizedString(@"Opacity", nil);
-    _sliderOpacity.iconType = EditorSliderIconTypeOpacity;
-    [self.view addSubview:_sliderOpacity];
     
     if (!self.waitingForOtherConversion) {
         [self applyEffect];        
@@ -175,6 +238,8 @@
     __block UIImage* imageResized = _imageResized;
     __block UIEditorPreviewImageView* previewImageView = _previewImageView;
     __block UIImage* blurredImage = _blurredImage;
+    __block EditorViewController* _self = self;
+    __block UIView* adjustment = _adjustmentOpacity;
     dispatch_queue_t q_global = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
     dispatch_queue_t q_main = dispatch_get_main_queue();
     dispatch_async(q_global, ^{
@@ -200,19 +265,30 @@
                 [previewImageView setPreviewImage:imageEffected];
                 [previewImageView toggleBlurredImage:NO WithDuration:0.10f];
             }else{
-                [NSThread sleepForTimeInterval:1.0f];
-                previewImageView.imageOriginal = imageResized;
-                previewImageView.imageBlurred = blurredImage;
-                previewImageView.isPreviewReady = YES;
-                [previewImageView setPreviewImage:imageEffected WithDuration:0.50f];
-                [previewImageView removeLoadingIndicator];
+                
+                dispatch_queue_t q_global = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+                dispatch_queue_t q_main = dispatch_get_main_queue();
+                dispatch_async(q_global, ^{
+                    
+                    [NSThread sleepForTimeInterval:0.50f];
+
+                    dispatch_async(q_main, ^{
+                        previewImageView.imageOriginal = imageResized;
+                        previewImageView.imageBlurred = blurredImage;
+                        previewImageView.isPreviewReady = YES;
+                        [previewImageView setPreviewImage:imageEffected WithDuration:0.50f];
+                        [previewImageView removeLoadingIndicator];
+                        [_self slideUpAdjustment:adjustment Completion:nil];
+                    });
+                });
             }
             LOG(@"did apply effect");
             _isApplying = NO;
         });
         
     });
-    }
+    
+}
 
 - (UIImage*)merge2pictureBase:(GPUImagePicture *)basePicture overlay:(GPUImagePicture *)overlayPicture opacity:(CGFloat)opacity
 {
@@ -227,6 +303,82 @@
     [basePicture processImage];
     [overlayPicture processImage];
     return [normalBlend imageFromCurrentlyProcessedOutput];
+}
+
+- (void)slideDownAdjustment:(UIView *)adjustment Completion:(void (^)(BOOL))completion
+{
+    if (_isSliding) {
+        LOG(@"sliding.");
+        return;
+    }
+    _isSliding = YES;
+    __block UIView* _adjustment = adjustment;
+    [UIView animateWithDuration:0.10f animations:^{
+        _adjustment.frame = CGRectMake(adjustment.frame.origin.x, [UIScreen screenSize].height - 44.0f, _adjustment.frame.size.width, _adjustment.frame.size.height);
+    } completion:^(BOOL finished){
+        _adjustment.hidden = YES;
+        _isSliding = NO;
+        if (completion) {
+            completion(finished);
+        }
+    }];
+}
+
+- (void)slideUpAdjustment:(UIView *)adjustment Completion:(void (^)(BOOL))completion
+{
+    if (_isSliding) {
+        LOG(@"sliding.");
+        return;
+    }
+    _isSliding = YES;
+    [adjustment setY:[UIScreen screenSize].height - 44.0f];
+    adjustment.hidden = NO;
+    __block UIView* _adjustment = adjustment;
+    _adjustmentCurrent = adjustment;
+    [UIView animateWithDuration:0.10f animations:^{
+        _adjustment.frame = CGRectMake(_adjustment.frame.origin.x, [UIScreen screenSize].height - _adjustment.bounds.size.height - 44.0f, _adjustment.frame.size.width, _adjustment.frame.size.height);
+    } completion:^(BOOL finished){
+        _isSliding = NO;
+        if (completion) {
+            completion(finished);
+        }
+    }];
+}
+
+- (void)slideDownCurrentAdjustmentAndSlideUpAdjustment:(UIView *)adjustment
+{
+    if (_adjustmentCurrent) {
+        __block UIView* _adjustment = adjustment;
+        __block EditorViewController* _self = self;
+        [self slideDownAdjustment:_adjustmentCurrent Completion:^(BOOL finished){
+            [_self slideUpAdjustment:_adjustment Completion:nil];
+        }];
+    }else{
+        [self slideUpAdjustment:adjustment Completion:nil];
+    }
+}
+
+#pragma mark events
+
+- (void)didPressAdjustmentButton:(UINavigationBarButton *)button
+{
+    UIView* adjustment;
+    switch (button.tag) {
+        case AdjustmentViewIdOpacity:
+            adjustment = _adjustmentOpacity;
+            break;
+        case AdjustmentViewIdBrightness:
+            adjustment = _adjustmentBrightness;
+            break;
+        case AdjustmentViewIdColor:
+            adjustment = _adjustmentColor;
+            break;
+        case AdjustmentViewIdContrast:
+            adjustment = _adjustmentContrast;
+        default:
+            break;
+    }
+    [self slideDownCurrentAdjustmentAndSlideUpAdjustment:adjustment];
 }
 
 - (void)didPressSaveButton

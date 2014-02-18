@@ -28,8 +28,10 @@ typedef NS_ENUM(NSInteger, EditorSliderIconType){
 }
 
 @property (nonatomic, assign) CGFloat value;
+@property (nonatomic, assign) CGFloat alpha;
 @property (nonatomic, weak) id<UIEditorSliderViewDelegate> delegate;
 @property (nonatomic, assign) EditorSliderIconType iconType;
 @property (nonatomic, strong) NSString* title;
+@property (nonatomic, assign) SliderViewTitlePosition titlePosition;
 
 @end
