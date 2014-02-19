@@ -67,7 +67,11 @@ NSString *const kGPUImageTumblinLevelsFragmentShaderString = SHADER_STRING
      mediump vec4 textureColor = texture2D(inputImageTexture, textureCoordinate);
      mediump vec3 yuv = rgb2yuv(textureColor.rgb);
      mediump float lum = yuv.x;
-     mediump float influence = 1.0 - pow(lum - 0.1, 5.0);
+     mediump float x = lum - 0.3;
+     if(x < 0.0){
+         x = 0.0;
+     }
+     mediump float influence = 1.0 - pow(x, 5.0);
      mediump vec3 result = LevelsControl(textureColor.rgb, levelMinimum, levelMiddle, levelMaximum, minOutput, maxOutput);
      yuv = rgb2yuv(result);
      

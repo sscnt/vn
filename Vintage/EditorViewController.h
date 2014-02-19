@@ -19,6 +19,7 @@
 #import "GPUImageVignette2Filter.h"
 #import "GPUimageTumblinBrightnessFilter.h"
 #import "GPUImageTumblinLevelsFilter.h"
+#import "GPUImageVibranceFilter.h"
 
 typedef NS_ENUM(NSInteger, AdjustmentViewId){
     AdjustmentViewIdOpacity = 1,
@@ -37,6 +38,7 @@ typedef NS_ENUM(NSInteger, AdjustmentViewId){
     UIEditorSliderView* _sliderContrast;
     UIEditorSliderView* _sliderClarity;
     UIEditorSliderView* _sliderKelvin;
+    UIEditorSliderView* _sliderSaturation;
     UINavigationBarButton* _buttonOpacity;
     UINavigationBarButton* _buttonBrightness;
     UINavigationBarButton* _buttonColor;
@@ -53,6 +55,7 @@ typedef NS_ENUM(NSInteger, AdjustmentViewId){
     CGFloat _valueContrast;
     CGFloat _valueClarity;
     CGFloat _valueKelvin;
+    CGFloat _valueSaturation;
     BOOL _isSaving;
     BOOL _isApplying;
     BOOL _isSliding;

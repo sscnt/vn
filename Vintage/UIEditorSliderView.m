@@ -71,6 +71,9 @@
         case EditorSliderIconTypeVignette:
             _iconImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"vignette-60.png"]];
             break;
+        case EditorSliderIconTypeSaturation:
+            _iconImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"color-button-60.png"]];
+            break;
     }
     _iconImageView.center = _slider.center;
     _iconImageView.center = CGPointMake(23.0f + marginLeft, self.bounds.size.height / 2.0f + marginTop);
