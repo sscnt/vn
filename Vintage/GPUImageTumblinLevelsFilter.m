@@ -67,6 +67,26 @@ NSString *const kGPUImageTumblinLevelsFragmentShaderString = SHADER_STRING
      mediump vec4 textureColor = texture2D(inputImageTexture, textureCoordinate);
      mediump vec3 yuv = rgb2yuv(textureColor.rgb);
      mediump float lum = yuv.x;
+     mediump float influence = 1.0 - pow(lum - 0.1, 5.0);
+     mediump vec3 result = LevelsControl(textureColor.rgb, levelMinimum, levelMiddle, levelMaximum, minOutput, maxOutput);
+     yuv = rgb2yuv(result);
+     
+     result.r = pow(textureColor.r / lum, 0.6) * yuv.x;
+     result.g = pow(textureColor.g / lum, 0.6) * yuv.x;
+     result.b = pow(textureColor.b / lum, 0.6) * yuv.x;
+     
+     textureColor.r = influence * result.r + (1.0 - influence) * textureColor.r;
+     textureColor.g = influence * result.g + (1.0 - influence) * textureColor.g;
+     textureColor.b = influence * result.b + (1.0 - influence) * textureColor.g;
+     
+     gl_FragColor = textureColor;
+ }
+ 
+ void _main()
+ {
+     mediump vec4 textureColor = texture2D(inputImageTexture, textureCoordinate);
+     mediump vec3 yuv = rgb2yuv(textureColor.rgb);
+     mediump float lum = yuv.x;
      mediump vec3 result = LevelsControl(textureColor.rgb, levelMinimum, levelMiddle, levelMaximum, minOutput, maxOutput);
      yuv = rgb2yuv(result);
      

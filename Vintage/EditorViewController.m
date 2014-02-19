@@ -299,7 +299,7 @@ float absf(float value){
         [base processImage];
         
         UIImage* brightImage = [filter imageFromCurrentlyProcessedOutput];
-        baseImage = [self mergeBaseImage:baseImage overlayImage:brightImage opacity:0.30f * alpha blendingMode:MergeBlendingModeNormal];
+        baseImage = [self mergeBaseImage:baseImage overlayImage:brightImage opacity:0.40f * alpha blendingMode:MergeBlendingModeNormal];
         baseImage = [self mergeBaseImage:baseImage overlayFilter:filter opacity:1.0f * alpha blendingMode:MergeBlendingModeSoftLight];
     }
     
@@ -313,8 +313,8 @@ float absf(float value){
         [base processImage];
         
         UIImage* brightImage = [filter imageFromCurrentlyProcessedOutput];
-        baseImage = [self mergeBaseImage:baseImage overlayImage:brightImage opacity:0.30f * alpha blendingMode:MergeBlendingModeNormal];
-        baseImage = [self mergeBaseImage:baseImage overlayFilter:filter opacity:alpha blendingMode:MergeBlendingModeSoftLight];
+        baseImage = [self mergeBaseImage:baseImage overlayImage:brightImage opacity:1.0f * alpha blendingMode:MergeBlendingModeNormal];
+        //baseImage = [self mergeBaseImage:baseImage overlayFilter:filter opacity:alpha blendingMode:MergeBlendingModeSoftLight];
     }
     
     //// Contrast
