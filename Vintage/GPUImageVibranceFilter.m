@@ -228,7 +228,7 @@ NSString *const kGPUImageVibranceFilterFragmentShaderString = SHADER_STRING
 
 - (void)setVibrance:(CGFloat)vibrance
 {
-    _vibrance = MAX(MIN(vibrance, 1.0), 0.01);
+    _vibrance = MAX(MIN(vibrance, 2.0), 0.01);
     [self setFloat:vibrance forUniform:vibranceUniform program:filterProgram];
 }
 

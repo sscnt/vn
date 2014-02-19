@@ -25,6 +25,7 @@
         
         self.backgroundColor = [UIColor clearColor];        
         self.alpha = 0.70f;
+        self.defaultValue = 0.0f;
     }
     return self;
 }
@@ -39,14 +40,34 @@
     _slider.value = value;
 }
 
+- (void)setDefaultValue:(CGFloat)defaultValue
+{
+    _defaultValue = defaultValue;
+    self.value = defaultValue;
+}
+
 - (void)setTitle:(NSString *)title
 {
     _title = title;
     _slider.title = title;
 }
 
+- (void)resetToDefault
+{
+    [self resetToDefaultPosition];
+    [self.delegate sliderDidValueResetToDefault:self];
+}
+
+- (void)resetToDefaultPosition
+{
+    _slider.value = self.defaultValue;
+}
+
 - (void)setIconType:(EditorSliderIconType)iconType
 {
+    _iconButton = [[UIButton alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 60.0f, 60.0f)];
+    [_iconButton addTarget:self action:@selector(resetToDefault) forControlEvents:UIControlEventTouchUpInside];
+    
     CGFloat marginTop = 0.0f;
     CGFloat marginLeft = 0.0f;
     switch (iconType) {
@@ -79,10 +100,11 @@
             _iconImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"color-button-60.png"]];
             break;
     }
-    _iconImageView.center = _slider.center;
-    _iconImageView.center = CGPointMake(23.0f + marginLeft, self.bounds.size.height / 2.0f + marginTop);
+    _iconButton.center = CGPointMake(23.0f + marginLeft, self.bounds.size.height / 2.0f + marginTop);
+    _iconImageView.center = CGPointMake(_iconButton.bounds.size.width / 2.0f, _iconButton.bounds.size.height / 2.0f);
     _iconImageView.alpha = _alpha;
-    [self addSubview:_iconImageView];
+    [_iconButton addSubview:_iconImageView];
+    [self addSubview:_iconButton];
 }
 
 #pragma mark delegate

@@ -13,6 +13,7 @@
 
 @protocol UIEditorSliderViewDelegate
 - (void)slider:(UIEditorSliderView*)slider DidValueChange:(CGFloat)value;
+- (void)sliderDidValueResetToDefault:(UIEditorSliderView*)slider;
 - (void)touchesBeganWithSlider:(UIEditorSliderView*)slider;
 - (void)touchesEndedWithSlider:(UIEditorSliderView*)slider;
 @end
@@ -33,13 +34,18 @@ typedef NS_ENUM(NSInteger, EditorSliderIconType){
 {
     UISliderView* _slider;
     UIImageView* _iconImageView;
+    UIButton* _iconButton;
 }
 
 @property (nonatomic, assign) CGFloat value;
+@property (nonatomic, assign) CGFloat defaultValue;
 @property (nonatomic, assign) CGFloat alpha;
 @property (nonatomic, weak) id<UIEditorSliderViewDelegate> delegate;
 @property (nonatomic, assign) EditorSliderIconType iconType;
 @property (nonatomic, strong) NSString* title;
 @property (nonatomic, assign) SliderViewTitlePosition titlePosition;
+
+- (void)resetToDefault;
+- (void)resetToDefaultPosition;
 
 @end

@@ -87,4 +87,6 @@ typedef NS_ENUM(NSInteger, AdjustmentViewId){
 - (UIImage*)mergeBaseImage:(UIImage*)baseImage overlayImage:(UIImage*)overlayImage opacity:(CGFloat)opacity blendingMode:(MergeBlendingMode)blendingMode;
 - (UIImage*)mergeBaseImage:(UIImage*)baseImage overlayFilter:(GPUImageFilter*)overlayFilter opacity:(CGFloat)opacity blendingMode:(MergeBlendingMode)blendingMode;
 
+- (void)applyValueWithSlider:(UIEditorSliderView*)slider;
+
 @end

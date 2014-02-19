@@ -61,6 +61,7 @@ float absf(float value){
     _sliderOpacity.title = NSLocalizedString(@"Opacity", nil);
     _sliderOpacity.iconType = EditorSliderIconTypeOpacity;
     _sliderOpacity.titlePosition = SliderViewTitlePositionCenter;
+    _sliderOpacity.defaultValue = 1.0f;
     //////// Adjustment
     _adjustmentOpacity = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, [UIScreen screenSize].width, _sliderOpacity.bounds.size.height + 20.0f)];
     _adjustmentOpacity.tag = AdjustmentViewIdOpacity;
@@ -76,7 +77,7 @@ float absf(float value){
     _sliderBrightness.title = NSLocalizedString(@"Brightness", nil);
     _sliderBrightness.iconType = EditorSliderIconTypeBrightness;
     _sliderBrightness.titlePosition = SliderViewTitlePositionLeft;
-    _sliderBrightness.value = 0.5f;
+    _sliderBrightness.defaultValue = 0.5f;
     //////////// Levels
     _sliderLevels = [[UIEditorSliderView alloc] initWithFrame:CGRectMake(0.0f, 10.0f + _sliderBrightness.frame.size.height, [UIScreen screenSize].width, 42.0f)];
     _sliderLevels.tag = EditorSliderIconTypeLevels;
@@ -84,7 +85,7 @@ float absf(float value){
     _sliderLevels.title = NSLocalizedString(@"Levels", nil);
     _sliderLevels.iconType = EditorSliderIconTypeLevels;
     _sliderLevels.titlePosition = SliderViewTitlePositionLeft;
-    _sliderLevels.value = 0.5f;
+    _sliderLevels.defaultValue = 0.5f;
     //////////// Levels
     _sliderVignette = [[UIEditorSliderView alloc] initWithFrame:CGRectMake(0.0f, 10.0f + _sliderBrightness.frame.size.height + _sliderLevels.frame.size.height, [UIScreen screenSize].width, 42.0f)];
     _sliderVignette.tag = EditorSliderIconTypeVignette;
@@ -92,7 +93,7 @@ float absf(float value){
     _sliderVignette.title = NSLocalizedString(@"Vignette", nil);
     _sliderVignette.iconType = EditorSliderIconTypeVignette;
     _sliderVignette.titlePosition = SliderViewTitlePositionCenter;
-    _sliderVignette.value = 0.0f;
+    _sliderVignette.defaultValue = 0.0f;
     //////// Adjustment
     _adjustmentBrightness = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, [UIScreen screenSize].width, _sliderBrightness.bounds.size.height * 3.0f + 20.0f)];
     _adjustmentBrightness.tag = AdjustmentViewIdBrightness;
@@ -110,7 +111,7 @@ float absf(float value){
     _sliderContrast.title = NSLocalizedString(@"Contrast", nil);
     _sliderContrast.iconType = EditorSliderIconTypeContrast;
     _sliderContrast.titlePosition = SliderViewTitlePositionLeft;
-    _sliderContrast.value = 0.5f;
+    _sliderContrast.defaultValue = 0.5f;
     //////////// Local
     _sliderClarity = [[UIEditorSliderView alloc] initWithFrame:CGRectMake(0.0f, 10.0f + _sliderContrast.frame.size.height, [UIScreen screenSize].width, 42.0f)];
     _sliderClarity.tag = EditorSliderIconTypeClarity;
@@ -118,7 +119,7 @@ float absf(float value){
     _sliderClarity.title = NSLocalizedString(@"Clarity", nil);
     _sliderClarity.iconType = EditorSliderIconTypeClarity;
     _sliderClarity.titlePosition = SliderViewTitlePositionCenter;
-    _sliderClarity.value = 0.0f;
+    _sliderClarity.defaultValue = 0.0f;
     //////// Adjustment
     _adjustmentContrast = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, [UIScreen screenSize].width, _sliderContrast.bounds.size.height * 2.0f + 20.0f)];
     _adjustmentContrast.tag = AdjustmentViewIdContrast;
@@ -135,15 +136,15 @@ float absf(float value){
     _sliderSaturation.title = NSLocalizedString(@"Saturation", nil);
     _sliderSaturation.iconType = EditorSliderIconTypeSaturation;
     _sliderSaturation.titlePosition = SliderViewTitlePositionLeft;
-    _sliderSaturation.value = 0.5f;
+    _sliderSaturation.defaultValue = 0.5f;
     //////////// Vibrance
     _sliderVibrance = [[UIEditorSliderView alloc] initWithFrame:CGRectMake(0.0f, 10.0f + _sliderSaturation.frame.size.height, [UIScreen screenSize].width, 42.0f)];
-    _sliderVibrance.tag = EditorSliderIconTypeSaturation;
+    _sliderVibrance.tag = EditorSliderIconTypeVibrance;
     _sliderVibrance.delegate = self;
     _sliderVibrance.title = NSLocalizedString(@"Vibrance", nil);
-    _sliderVibrance.iconType = EditorSliderIconTypeSaturation;
+    _sliderVibrance.iconType = EditorSliderIconTypeVibrance;
     _sliderVibrance.titlePosition = SliderViewTitlePositionLeft;
-    _sliderVibrance.value = 0.5f;
+    _sliderVibrance.defaultValue = 0.5f;
     //////////// Temperature
     _sliderKelvin = [[UIEditorSliderView alloc] initWithFrame:CGRectMake(0.0f, 10.0f + _sliderSaturation.frame.size.height + _sliderVibrance.frame.size.height, [UIScreen screenSize].width, 42.0f)];
     _sliderKelvin.tag = EditorSliderIconTypeKelvin;
@@ -151,11 +152,12 @@ float absf(float value){
     _sliderKelvin.title = NSLocalizedString(@"Temperature", nil);
     _sliderKelvin.iconType = EditorSliderIconTypeKelvin;
     _sliderKelvin.titlePosition = SliderViewTitlePositionLeft;
-    _sliderKelvin.value = 0.5f;
+    _sliderKelvin.defaultValue = 0.5f;
     //////// Adjustment
-    _adjustmentColor = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, [UIScreen screenSize].width, _sliderKelvin.bounds.size.height * 2.0f + 20.0f)];
+    _adjustmentColor = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, [UIScreen screenSize].width, _sliderKelvin.bounds.size.height * 3.0f + 20.0f)];
     _adjustmentColor.tag = AdjustmentViewIdColor;
     [_adjustmentColor addSubview:_sliderSaturation];
+    [_adjustmentColor addSubview:_sliderVibrance];
     [_adjustmentColor addSubview:_sliderKelvin];
     _adjustmentColor.hidden = YES;
     [self.view addSubview:_adjustmentColor];
@@ -727,7 +729,7 @@ float absf(float value){
             _percentageLabel.text = [NSString stringWithFormat:@"%@: %d", NSLocalizedString(@"Saturation", nil), (int)roundf((_valueSaturation - 0.5f) * 200.0f)];
             break;
         case EditorSliderIconTypeVibrance:
-            _percentageLabel.text = [NSString stringWithFormat:@"%@: %d", NSLocalizedString(@"Vibrance", nil), (int)roundf((_valueSaturation - 0.5f) * 200.0f)];
+            _percentageLabel.text = [NSString stringWithFormat:@"%@: %d", NSLocalizedString(@"Vibrance", nil), (int)roundf((_valueVibrance - 0.5f) * 200.0f)];
             break;
     }
     
@@ -739,42 +741,26 @@ float absf(float value){
     _percentageLabel.hidden = YES;
     if (!_previewImageView.isPreviewReady) {
         LOG(@"preview not ready.");
-        switch (slider.tag) {
-            case EditorSliderIconTypeBrightness:
-                _sliderBrightness.value = 0.5f;
-                break;
-            case EditorSliderIconTypeClarity:
-                _sliderClarity.value = 0.0f;
-                break;
-            case EditorSliderIconTypeContrast:
-                _sliderContrast.value = 0.5f;
-                break;
-            case EditorSliderIconTypeKelvin:
-                _sliderKelvin.value = 0.5f;
-                break;
-            case EditorSliderIconTypeLevels:
-                _sliderLevels.value = 0.5f;
-                break;
-            case EditorSliderIconTypeOpacity:
-                _sliderOpacity.value = 1.0f;
-                break;
-            case EditorSliderIconTypeVignette:
-                _sliderVignette.value = 0.0f;
-                break;
-            case EditorSliderIconTypeSaturation:
-                _sliderSaturation.value = 0.5f;
-                break;
-            case EditorSliderIconTypeVibrance:
-                _sliderVibrance.value = 0.5f;
-                break;
-        }
+        [slider resetToDefaultPosition];
         return;
     }
     
     if (_isApplying) {
         return;
     }
+    [self applyValueWithSlider:slider];
+    [self applyEffect];
     
+}
+
+- (void)sliderDidValueResetToDefault:(UIEditorSliderView *)slider
+{
+    [self applyValueWithSlider:slider];
+    [self applyEffect];
+}
+
+- (void)applyValueWithSlider:(UIEditorSliderView *)slider
+{
     switch (slider.tag) {
         case EditorSliderIconTypeBrightness:
             _valueBrightness = (slider.value - 0.5f) * 1.0f;
@@ -805,8 +791,7 @@ float absf(float value){
             _valueVibrance = slider.value * 2.0f;
             break;
     }
-    [self applyEffect];
-    
+
 }
 
 - (void)didReceiveMemoryWarning
