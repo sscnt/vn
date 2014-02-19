@@ -32,8 +32,6 @@
 
 - (id)initWithImage:(UIImage*)image;
 - (void)applyEffectAtIndex:(int)index;
-- (void)resizeOriginalImageWidth:(CGFloat)width Height:(CGFloat)height;
-- (void)resizeOriginalImageForEditorWidth:(CGFloat)width Height:(CGFloat)height;
 
 - (void)didSelectPreview:(UISelectionPreviewImageView*)preview;
 - (void)didPressCloseButton;

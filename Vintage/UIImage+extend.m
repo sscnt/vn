@@ -40,6 +40,8 @@
             drawTransposed = NO;
     }
     
+    newSize = CGSizeMake(newSize.width * [[UIScreen mainScreen] scale], newSize.height * [[UIScreen mainScreen] scale]);
+    
     CGAffineTransform transform = [self transformForOrientation:newSize];
     
     return [self resizedImage:newSize transform:transform drawTransposed:drawTransposed interpolationQuality:quality];

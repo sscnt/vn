@@ -110,16 +110,13 @@
     dispatch_queue_t q_global = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
     dispatch_queue_t q_main = dispatch_get_main_queue();
     dispatch_async(q_global, ^{
-        [_self resizeOriginalImageWidth:width Height:height];
-        [_self resizeOriginalImageForEditorWidth:[UIScreen screenSize].width Height:height * [UIScreen screenSize].width / width];
+        [_self setValue:[_self.imageOriginal resizedImage:CGSizeMake(width, height) interpolationQuality:kCGInterpolationHigh] forKey:@"_imageResized"];
+        [_self setValue:[_self.imageOriginal resizedImage:CGSizeMake([UIScreen screenSize].width, height * [UIScreen screenSize].width / width) interpolationQuality:kCGInterpolationHigh] forKey:@"_imageResizedForEditor"];
         dispatch_async(q_main, ^{
             //// Effect
             [_self applyEffectAtIndex:0];
         });
     });
-    
-
-
 }
 
 - (void)applyEffectAtIndex:(int)index
@@ -161,6 +158,7 @@
         }
     }
 }
+
 
 #pragma mark events
 
