@@ -31,12 +31,15 @@ typedef NS_ENUM(NSInteger, SliderViewTitlePosition){
     CGFloat _thumbStartX;
     CGFloat _thumbEndX;
     CGFloat _alpha;
+    CGFloat _value;
 }
 
 @property (nonatomic, strong) NSString* title;
 @property (nonatomic, assign) CGFloat value;
 @property (nonatomic, weak) id<UISliderViewDelegate> delegate;
 @property (nonatomic, assign) SliderViewTitlePosition titlePosition;
+@property (nonatomic, assign) CGFloat paddingHorizontal;
+@property (nonatomic, assign) CGFloat paddingVertical;
 
 - (void)didDragThumb:(UIPanGestureRecognizer*)sender;
 - (CGFloat)calcValueByThumbPosition:(CGFloat)x;

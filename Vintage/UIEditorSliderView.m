@@ -17,12 +17,13 @@
         self.userInteractionEnabled = YES;
 
         //// Slider
-        CGFloat sliderWidth = frame.size.width - 78.0f;
-        _slider = [[UISliderView alloc] initWithFrame:CGRectMake(46.0f, 0.0f, sliderWidth, 22.0f)];
+        CGFloat sliderWidth = frame.size.width - 38.0f;
+        _slider = [[UISliderView alloc] initWithFrame:CGRectMake(36.0f, 0.0f, sliderWidth, 42.0f)];
         _slider.center = CGPointMake(_slider.center.x, self.bounds.size.height / 2.0f);
         _slider.delegate = self;
         [self addSubview:_slider];
         
+        self.backgroundColor = [UIColor clearColor];        
         self.alpha = 0.70f;
     }
     return self;
@@ -72,6 +73,9 @@
             _iconImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"vignette-60.png"]];
             break;
         case EditorSliderIconTypeSaturation:
+            _iconImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"color-button-60.png"]];
+            break;
+        case EditorSliderIconTypeVibrance:
             _iconImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"color-button-60.png"]];
             break;
     }

@@ -14,6 +14,8 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
+        _paddingHorizontal = 15.0f;
+        _paddingVertical = 10.0f;
         self.backgroundColor = [UIColor clearColor];
         self.userInteractionEnabled = YES;
         _titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0.0f, 0.0f, frame.size.width, frame.size.height)];
@@ -31,8 +33,9 @@
         }
         [self addSubview:_titleLabel];
         
-        CGFloat radius = floorf((frame.size.height - 2.0f) / 2.0f);
+        CGFloat radius = floorf((frame.size.height - 2.0f - _paddingVertical * 2.0f) / 2.0f);
         _thumbView = [[UISliderThumbVIew alloc] initWithRadius:radius];
+        _thumbView.center = CGPointMake(frame.size.width / 2.0f, frame.size.height / 2.0f - 1.0f);
         UIPanGestureRecognizer* recognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(didDragThumb:)];
         recognizer.maximumNumberOfTouches = 1;
         recognizer.delegate = self;
@@ -40,8 +43,8 @@
         [self addSubview:_thumbView];
         [self bringSubviewToFront:_thumbView];
         
-        _thumbStartX = radius + 1.0f;
-        _thumbEndX = frame.size.width - radius - 1.0f;
+        _thumbStartX = radius + 1.0f + _paddingHorizontal;
+        _thumbEndX = frame.size.width - radius - 1.0f - _paddingHorizontal;
         self.value = 1.0f;
     }
     return self;
@@ -52,6 +55,11 @@
     _title = title;
     _titleLabel.text = title;
     [_titleLabel sizeToFit];
+}
+
+- (CGFloat)value
+{
+    return _value;
 }
 
 - (void)setValue:(CGFloat)value
@@ -120,10 +128,10 @@
             _titleLabel.center = CGPointMake(self.bounds.size.width / 2.0f, self.bounds.size.height / 2.0f);
             break;
         case SliderViewTitlePositionLeft:
-            _titleLabel.center = CGPointMake(10.0f + _titleLabel.bounds.size.width / 2.0f, self.bounds.size.height / 2.0f);
+            _titleLabel.center = CGPointMake(10.0f + _titleLabel.bounds.size.width / 2.0f + _paddingHorizontal, self.bounds.size.height / 2.0f);
             break;
         case SliderViewTitlePositionRight:
-            _titleLabel.center = CGPointMake(self.bounds.size.width - 10.0f - _titleLabel.bounds.size.width / 2.0f, self.bounds.size.height / 2.0f);
+            _titleLabel.center = CGPointMake(self.bounds.size.width - 10.0f - _titleLabel.bounds.size.width / 2.0f - _paddingHorizontal, self.bounds.size.height / 2.0f);
             break;
         default:
             _titleLabel.center = CGPointMake(self.bounds.size.width / 2.0f, self.bounds.size.height / 2.0f);
@@ -152,7 +160,7 @@
     UIColor* bgColor = [UIColor colorWithWhite:26.0f/255.0f alpha:0.60f];
     
     //// Rounded Rectangle Drawing
-    UIBezierPath* roundedRectanglePath = [UIBezierPath bezierPathWithRoundedRect: CGRectMake(1.0f, 1.0f, rect.size.width - 2.0f, rect.size.height - 2.0f) cornerRadius: rect.size.height];
+    UIBezierPath* roundedRectanglePath = [UIBezierPath bezierPathWithRoundedRect: CGRectMake(1.0f + _paddingHorizontal, 1.0f + _paddingVertical, rect.size.width - 2.0f - _paddingHorizontal * 2.0f, rect.size.height - 2.0f - _paddingVertical * 2.0) cornerRadius: rect.size.height];
     [strokeColor setStroke];
     [bgColor setFill];
     [roundedRectanglePath fill];

@@ -136,8 +136,16 @@ float absf(float value){
     _sliderSaturation.iconType = EditorSliderIconTypeSaturation;
     _sliderSaturation.titlePosition = SliderViewTitlePositionLeft;
     _sliderSaturation.value = 0.5f;
+    //////////// Vibrance
+    _sliderVibrance = [[UIEditorSliderView alloc] initWithFrame:CGRectMake(0.0f, 10.0f + _sliderSaturation.frame.size.height, [UIScreen screenSize].width, 42.0f)];
+    _sliderVibrance.tag = EditorSliderIconTypeSaturation;
+    _sliderVibrance.delegate = self;
+    _sliderVibrance.title = NSLocalizedString(@"Vibrance", nil);
+    _sliderVibrance.iconType = EditorSliderIconTypeSaturation;
+    _sliderVibrance.titlePosition = SliderViewTitlePositionLeft;
+    _sliderVibrance.value = 0.5f;
     //////////// Temperature
-    _sliderKelvin = [[UIEditorSliderView alloc] initWithFrame:CGRectMake(0.0f, 10.0f + _sliderSaturation.frame.size.height, [UIScreen screenSize].width, 42.0f)];
+    _sliderKelvin = [[UIEditorSliderView alloc] initWithFrame:CGRectMake(0.0f, 10.0f + _sliderSaturation.frame.size.height + _sliderVibrance.frame.size.height, [UIScreen screenSize].width, 42.0f)];
     _sliderKelvin.tag = EditorSliderIconTypeKelvin;
     _sliderKelvin.delegate = self;
     _sliderKelvin.title = NSLocalizedString(@"Temperature", nil);
@@ -300,6 +308,7 @@ float absf(float value){
     
     //// Brightness
     if (_sliderBrightness.value != 0.5f) {
+        LOG(@"brightness enabled. %f", _sliderBrightness.value);
         float alpha = (20.0f * absf(_valueBrightness)) / (1.0f + 20.0f * absf(_valueBrightness));
         GPUImagePicture* base = [[GPUImagePicture alloc] initWithImage:baseImage];
         GPUimageTumblinBrightnessFilter* filter = [[GPUimageTumblinBrightnessFilter alloc] init];
@@ -315,6 +324,7 @@ float absf(float value){
     
     //// Levels
     if (_sliderLevels.value != 0.5f) {
+        LOG(@"levels enabled. %f", _sliderLevels.value);
         float alpha = (20.0f * absf(_valueLevels - 1.0f)) / (1.0f + 20.0f * absf(_valueLevels - 1.0f));
         GPUImagePicture* base = [[GPUImagePicture alloc] initWithImage:baseImage];
         GPUImageTumblinLevelsFilter* filter = [[GPUImageTumblinLevelsFilter alloc] init];
@@ -333,6 +343,7 @@ float absf(float value){
     
     //// Contrast
     if (_sliderContrast.value != 0.5f) {
+        LOG(@"contrast enabled. %f", _sliderContrast.value);
         GPUImagePicture* base = [[GPUImagePicture alloc] initWithImage:baseImage];
         GPUImageContrastFilter* filter = [[GPUImageContrastFilter alloc] init];
         filter.contrast = _valueContrast;
@@ -343,18 +354,20 @@ float absf(float value){
     
     //// Clarity
     if (_sliderClarity.value != 0.0f) {
+        LOG(@"clarity enabled. %f", _sliderClarity.value);
         GPUImagePicture* base = [[GPUImagePicture alloc] initWithImage:baseImage];
         GPUImageUnsharpMaskFilter* filter = [[GPUImageUnsharpMaskFilter alloc] init];
-        filter.blurRadiusInPixels = 30.0f;
+        filter.blurRadiusInPixels = 100.0f;
         filter.intensity = (_valueClarity + 1.0f);
         [base addTarget:filter];
         [base processImage];
         UIImage* unsharpImage = [filter imageFromCurrentlyProcessedOutput];
-        baseImage = [self mergeBaseImage:baseImage overlayImage:unsharpImage opacity:1.0f blendingMode:MergeBlendingModeDarkerColor];
+        baseImage = [self mergeBaseImage:baseImage overlayImage:unsharpImage opacity:1.0f blendingMode:MergeBlendingModeSoftLight];
     }
     
     //// Temperature
     if (_sliderKelvin.value != 0.5f) {
+        LOG(@"temperature enabled. %f", _sliderKelvin.value);
         GPUImagePicture* base = [[GPUImagePicture alloc] initWithImage:baseImage];
         GPUKelvinFilter* filter = [[GPUKelvinFilter alloc] init];
         filter.kelvin = 6500.0 - 6500.0 * _valueKelvin;
@@ -367,9 +380,21 @@ float absf(float value){
     
     //// Saturation
     if (_sliderSaturation.value != 0.5f) {
+        LOG(@"saturation enabled. %f", _sliderSaturation.value);
+        GPUImagePicture* base = [[GPUImagePicture alloc] initWithImage:baseImage];
+        GPUImageNaturalSaturationFilter* filter = [[GPUImageNaturalSaturationFilter alloc] init];
+        filter.saturation = _valueSaturation;
+        [base addTarget:filter];
+        [base processImage];
+        baseImage = [filter imageFromCurrentlyProcessedOutput];
+    }
+    
+    //// Vibrance
+    if (_sliderVibrance.value != 0.5f) {
+        LOG(@"vibrance enabled. %f", _sliderVibrance.value);
         GPUImagePicture* base = [[GPUImagePicture alloc] initWithImage:baseImage];
         GPUImageVibranceFilter* filter = [[GPUImageVibranceFilter alloc] init];
-        filter.vibrance = _valueSaturation;
+        filter.vibrance = _valueVibrance;
         [base addTarget:filter];
         [base processImage];
         baseImage = [filter imageFromCurrentlyProcessedOutput];
@@ -384,6 +409,7 @@ float absf(float value){
     
     //// Vignette
     if (_sliderVignette.value != 0.0f) {
+        LOG(@"vignette enabled. %f", _sliderVignette.value);
         GPUImagePicture* base = [[GPUImagePicture alloc] initWithImage:imageEffected];
         GPUImageVignette2Filter* filter = [[GPUImageVignette2Filter alloc] init];
         filter.scale = _valueVignette;
@@ -658,6 +684,9 @@ float absf(float value){
         case EditorSliderIconTypeSaturation:
             _percentageLabel.text = [NSString stringWithFormat:@"%@: %d", NSLocalizedString(@"Saturation", nil), (int)roundf((value - 0.50f) * 200.0f)];
             break;
+        case EditorSliderIconTypeVibrance:
+            _percentageLabel.text = [NSString stringWithFormat:@"%@: %d", NSLocalizedString(@"Vibrance", nil), (int)roundf((value - 0.50f) * 200.0f)];
+            break;
     }
 }
 
@@ -697,6 +726,9 @@ float absf(float value){
         case EditorSliderIconTypeSaturation:
             _percentageLabel.text = [NSString stringWithFormat:@"%@: %d", NSLocalizedString(@"Saturation", nil), (int)roundf((_valueSaturation - 0.5f) * 200.0f)];
             break;
+        case EditorSliderIconTypeVibrance:
+            _percentageLabel.text = [NSString stringWithFormat:@"%@: %d", NSLocalizedString(@"Vibrance", nil), (int)roundf((_valueSaturation - 0.5f) * 200.0f)];
+            break;
     }
     
 }
@@ -730,7 +762,10 @@ float absf(float value){
                 _sliderVignette.value = 0.0f;
                 break;
             case EditorSliderIconTypeSaturation:
-                _sliderSaturation.value = 0.0f;
+                _sliderSaturation.value = 0.5f;
+                break;
+            case EditorSliderIconTypeVibrance:
+                _sliderVibrance.value = 0.5f;
                 break;
         }
         return;
@@ -748,7 +783,7 @@ float absf(float value){
             _valueClarity = slider.value;
             break;
         case EditorSliderIconTypeContrast:
-            _valueContrast = MAX((slider.value - 0.5) * 2.0 + 1.0f, 0.0f);
+            _valueContrast = MAX((slider.value - 0.5) + 1.0f, 0.0f);
             break;
         case EditorSliderIconTypeKelvin:
             _valueKelvin = (slider.value - 0.5f) * 2.0f;
@@ -765,6 +800,9 @@ float absf(float value){
             break;
         case EditorSliderIconTypeSaturation:
             _valueSaturation = slider.value * 2.0f;
+            break;
+        case EditorSliderIconTypeVibrance:
+            _valueVibrance = slider.value * 2.0f;
             break;
     }
     [self applyEffect];
