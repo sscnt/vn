@@ -16,4 +16,16 @@
 
 - (UIImage*)animatedImageByScalingAndCroppingToSize:(CGSize)size;
 
+- (UIImage *)croppedImage:(CGRect)bounds;
+- (UIImage *)resizedImage:(CGSize)newSize
+     interpolationQuality:(CGInterpolationQuality)quality;
+- (UIImage *)resizedImageWithContentMode:(UIViewContentMode)contentMode
+                                  bounds:(CGSize)bounds
+                    interpolationQuality:(CGInterpolationQuality)quality;
+- (UIImage *)resizedImage:(CGSize)newSize
+                transform:(CGAffineTransform)transform
+           drawTransposed:(BOOL)transpose
+     interpolationQuality:(CGInterpolationQuality)quality;
+- (CGAffineTransform)transformForOrientation:(CGSize)newSize;
+
 @end

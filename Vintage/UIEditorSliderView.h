@@ -14,6 +14,7 @@
 @protocol UIEditorSliderViewDelegate
 - (void)slider:(UIEditorSliderView*)slider DidValueChange:(CGFloat)value;
 - (void)sliderDidValueResetToDefault:(UIEditorSliderView*)slider;
+- (BOOL)sliderShouldValueResetToDefault:(UIEditorSliderView*)slider;
 - (void)touchesBeganWithSlider:(UIEditorSliderView*)slider;
 - (void)touchesEndedWithSlider:(UIEditorSliderView*)slider;
 @end

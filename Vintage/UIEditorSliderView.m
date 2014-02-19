@@ -54,8 +54,10 @@
 
 - (void)resetToDefault
 {
-    [self resetToDefaultPosition];
-    [self.delegate sliderDidValueResetToDefault:self];
+    if ([self.delegate sliderShouldValueResetToDefault:self]) {
+        [self resetToDefaultPosition];
+        [self.delegate sliderDidValueResetToDefault:self];        
+    }
 }
 
 - (void)resetToDefaultPosition

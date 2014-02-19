@@ -661,35 +661,7 @@ float absf(float value){
     if (_isApplying) {
         return;
     }
-    switch (slider.tag) {
-        case EditorSliderIconTypeBrightness:
-            _percentageLabel.text = [NSString stringWithFormat:@"%@: %d", NSLocalizedString(@"Brightness", nil), (int)roundf((value - 0.50f) * 200.0f)];
-            break;
-        case EditorSliderIconTypeClarity:
-            _percentageLabel.text = [NSString stringWithFormat:@"%@: %d", NSLocalizedString(@"Clarity", nil), (int)roundf(value * 100.0f)];
-            break;
-        case EditorSliderIconTypeContrast:
-            _percentageLabel.text = [NSString stringWithFormat:@"%@: %d", NSLocalizedString(@"Contrast", nil), (int)roundf((value - 0.50f) * 200.0f)];
-            break;
-        case EditorSliderIconTypeKelvin:
-            _percentageLabel.text = [NSString stringWithFormat:@"%@: %d", NSLocalizedString(@"Temperature", nil), (int)roundf((value - 0.50f) * 200.0f)];
-            break;
-        case EditorSliderIconTypeLevels:
-            _percentageLabel.text = [NSString stringWithFormat:@"%@: %d", NSLocalizedString(@"Levels", nil), (int)roundf((value - 0.50f) * 200.0f)];
-            break;
-        case EditorSliderIconTypeOpacity:
-            _percentageLabel.text = [NSString stringWithFormat:@"%@: %d", NSLocalizedString(@"Opacity", nil), (int)roundf(value * 100.0f)];
-            break;
-        case EditorSliderIconTypeVignette:
-            _percentageLabel.text = [NSString stringWithFormat:@"%@: %d", NSLocalizedString(@"Vignette", nil), (int)roundf(value * 100.0f)];
-            break;
-        case EditorSliderIconTypeSaturation:
-            _percentageLabel.text = [NSString stringWithFormat:@"%@: %d", NSLocalizedString(@"Saturation", nil), (int)roundf((value - 0.50f) * 200.0f)];
-            break;
-        case EditorSliderIconTypeVibrance:
-            _percentageLabel.text = [NSString stringWithFormat:@"%@: %d", NSLocalizedString(@"Vibrance", nil), (int)roundf((value - 0.50f) * 200.0f)];
-            break;
-    }
+    [self showCurrentValueWithSlider:slider];
 }
 
 - (void)didPressCloseButton
@@ -701,37 +673,6 @@ float absf(float value){
 {
     LOG(@"touchstart");
     [_previewImageView toggleBlurredImage:YES WithDuration:0.10f];
-    
-    _percentageLabel.hidden = NO;
-    switch (slider.tag) {
-        case EditorSliderIconTypeBrightness:
-            _percentageLabel.text = [NSString stringWithFormat:@"%@: %d", NSLocalizedString(@"Brightness", nil), (int)roundf((_valueBrightness - 0.50f) * 200.0f)];
-            break;
-        case EditorSliderIconTypeClarity:
-            _percentageLabel.text = [NSString stringWithFormat:@"%@: %d", NSLocalizedString(@"Clarity", nil), (int)roundf(_valueClarity * 100.0f)];
-            break;
-        case EditorSliderIconTypeContrast:
-            _percentageLabel.text = [NSString stringWithFormat:@"%@: %d", NSLocalizedString(@"Contrast", nil), (int)roundf((_valueContrast - 0.50f) * 200.0f)];
-            break;
-        case EditorSliderIconTypeKelvin:
-            _percentageLabel.text = [NSString stringWithFormat:@"%@: %d", NSLocalizedString(@"Temperature", nil), (int)roundf((_valueKelvin - 0.50f) * 200.0f)];
-            break;
-        case EditorSliderIconTypeLevels:
-            _percentageLabel.text = [NSString stringWithFormat:@"%@: %d", NSLocalizedString(@"Levels", nil), (int)roundf((_valueLevels - 0.50f) * 200.0f)];
-            break;
-        case EditorSliderIconTypeOpacity:
-            _percentageLabel.text = [NSString stringWithFormat:@"%@: %d", NSLocalizedString(@"Opacity", nil), (int)roundf(_valueOpacity * 100.0f)];
-            break;
-        case EditorSliderIconTypeVignette:
-            _percentageLabel.text = [NSString stringWithFormat:@"%@: %d", NSLocalizedString(@"Vignette", nil), (int)roundf(_valueVignette * 100.0f)];
-            break;
-        case EditorSliderIconTypeSaturation:
-            _percentageLabel.text = [NSString stringWithFormat:@"%@: %d", NSLocalizedString(@"Saturation", nil), (int)roundf((_valueSaturation - 0.5f) * 200.0f)];
-            break;
-        case EditorSliderIconTypeVibrance:
-            _percentageLabel.text = [NSString stringWithFormat:@"%@: %d", NSLocalizedString(@"Vibrance", nil), (int)roundf((_valueVibrance - 0.5f) * 200.0f)];
-            break;
-    }
     
 }
 
@@ -753,10 +694,60 @@ float absf(float value){
     
 }
 
+- (BOOL)sliderShouldValueResetToDefault:(UIEditorSliderView *)slider
+{
+    if (_isApplying) {
+        return false;
+    }else{
+        [_previewImageView toggleBlurredImage:YES WithDuration:0.10f];
+        return true;
+    }
+}
+
 - (void)sliderDidValueResetToDefault:(UIEditorSliderView *)slider
 {
-    [self applyValueWithSlider:slider];
-    [self applyEffect];
+    if (_isApplying) {
+        
+    }else{
+        [self applyValueWithSlider:slider];
+        [self applyEffect];        
+    }
+}
+
+- (void)showCurrentValueWithSlider:(UIEditorSliderView *)slider
+{
+    _percentageLabel.hidden = NO;
+    switch (slider.tag) {
+        case EditorSliderIconTypeBrightness:
+            _percentageLabel.text = [NSString stringWithFormat:@"%@: %d", NSLocalizedString(@"Brightness", nil), (int)roundf((slider.value - 0.50f) * 200.0f)];
+            break;
+        case EditorSliderIconTypeClarity:
+            _percentageLabel.text = [NSString stringWithFormat:@"%@: %d", NSLocalizedString(@"Clarity", nil), (int)roundf(slider.value * 100.0f)];
+            break;
+        case EditorSliderIconTypeContrast:
+            _percentageLabel.text = [NSString stringWithFormat:@"%@: %d", NSLocalizedString(@"Contrast", nil), (int)roundf((slider.value - 0.50f) * 200.0f)];
+            break;
+        case EditorSliderIconTypeKelvin:
+            _percentageLabel.text = [NSString stringWithFormat:@"%@: %d", NSLocalizedString(@"Temperature", nil), (int)roundf((slider.value - 0.50f) * 200.0f)];
+            break;
+        case EditorSliderIconTypeLevels:
+            _percentageLabel.text = [NSString stringWithFormat:@"%@: %d", NSLocalizedString(@"Levels", nil), (int)roundf((slider.value - 0.50f) * 200.0f)];
+            break;
+        case EditorSliderIconTypeOpacity:
+            _percentageLabel.text = [NSString stringWithFormat:@"%@: %d", NSLocalizedString(@"Opacity", nil), (int)roundf(slider.value * 100.0f)];
+            break;
+        case EditorSliderIconTypeVignette:
+            _percentageLabel.text = [NSString stringWithFormat:@"%@: %d", NSLocalizedString(@"Vignette", nil), (int)roundf(slider.value * 100.0f)];
+            break;
+        case EditorSliderIconTypeSaturation:
+            _percentageLabel.text = [NSString stringWithFormat:@"%@: %d", NSLocalizedString(@"Saturation", nil), (int)roundf((slider.value - 0.5f) * 200.0f)];
+            break;
+        case EditorSliderIconTypeVibrance:
+            _percentageLabel.text = [NSString stringWithFormat:@"%@: %d", NSLocalizedString(@"Vibrance", nil), (int)roundf((slider.value - 0.5f) * 200.0f)];
+            break;
+    }
+    
+
 }
 
 - (void)applyValueWithSlider:(UIEditorSliderView *)slider

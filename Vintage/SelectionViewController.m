@@ -162,19 +162,6 @@
     }
 }
 
-- (void)resizeOriginalImageWidth:(CGFloat)width Height:(CGFloat)height
-{
-    if(self.imageOriginal){
-        _imageResized = [UIImage resizedImage:self.imageOriginal width:width height:height];
-    }
-}
-- (void)resizeOriginalImageForEditorWidth:(CGFloat)width Height:(CGFloat)height
-{
-    if(self.imageOriginal){
-        _imageResizedForEditor = [UIImage resizedImage:self.imageOriginal width:width height:height];
-    }
-}
-
 #pragma mark events
 
 - (void)didSelectPreview:(UISelectionPreviewImageView *)preview
