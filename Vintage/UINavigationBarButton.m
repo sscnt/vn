@@ -31,10 +31,10 @@
     UIImage* iconImage;
     switch (_type) {
         case NavigationBarButtonTypeBrightness:
-            iconImage = [UIImage imageNamed:@"brightness-button-60.png"];
+            iconImage = [UIImage imageNamed:@"brightness-button-alter-60.png"];
             break;
         case NavigationBarButtonTypeColor:
-            iconImage = [UIImage imageNamed:@"color-button-60.png"];
+            iconImage = [UIImage imageNamed:@"color-button-alter-60.png"];
             break;
         case NavigationBarButtonTypeContrast:
             iconImage = [UIImage imageNamed:@"contrast-button-60.png"];

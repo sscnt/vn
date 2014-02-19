@@ -83,7 +83,7 @@
             _iconImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"levels-60.png"]];
             break;
         case EditorSliderIconTypeBrightness:
-            _iconImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"brightness-60.png"]];
+            _iconImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"brightness-alter-60.png"]];
             break;
         case EditorSliderIconTypeClarity:
             _iconImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"clarity-60.png"]];
@@ -99,7 +99,7 @@
             _iconImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"color-button-60.png"]];
             break;
         case EditorSliderIconTypeVibrance:
-            _iconImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"color-button-60.png"]];
+            _iconImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"color-alter-60.png"]];
             break;
     }
     _iconButton.center = CGPointMake(23.0f + marginLeft, self.bounds.size.height / 2.0f + marginTop);

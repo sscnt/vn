@@ -105,6 +105,10 @@
 		58F8127A18B3167700941C18 /* vignette-60@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 58F8127918B3167700941C18 /* vignette-60@2x.png */; };
 		58F8127D18B3398500941C18 /* GPUImageDarkerColorBlendFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F8127C18B3398500941C18 /* GPUImageDarkerColorBlendFilter.m */; };
 		58F8128018B343D200941C18 /* GPUImageVignette2Filter.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F8127F18B343D200941C18 /* GPUImageVignette2Filter.m */; };
+		58F883C918B4EBF6005D30B9 /* brightness-alter-60@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 58F883C518B4EBF6005D30B9 /* brightness-alter-60@2x.png */; };
+		58F883CA18B4EBF6005D30B9 /* brightness-button-alter-60@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 58F883C618B4EBF6005D30B9 /* brightness-button-alter-60@2x.png */; };
+		58F883CB18B4EBF6005D30B9 /* color-alter-60@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 58F883C718B4EBF6005D30B9 /* color-alter-60@2x.png */; };
+		58F883CC18B4EBF6005D30B9 /* color-button-alter-60@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 58F883C818B4EBF6005D30B9 /* color-button-alter-60@2x.png */; };
 		58F907D018B2D26200C7A241 /* UINavigationBarButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F907CF18B2D26200C7A241 /* UINavigationBarButton.m */; };
 		58F907D218B2D9AE00C7A241 /* opacity-button-60@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 58F907D118B2D9AE00C7A241 /* opacity-button-60@2x.png */; };
 		58F907D418B2DA0300C7A241 /* color-button-60@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 58F907D318B2DA0300C7A241 /* color-button-60@2x.png */; };
@@ -345,6 +349,10 @@
 		58F8127C18B3398500941C18 /* GPUImageDarkerColorBlendFilter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GPUImageDarkerColorBlendFilter.m; sourceTree = "<group>"; };
 		58F8127E18B343D200941C18 /* GPUImageVignette2Filter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPUImageVignette2Filter.h; sourceTree = "<group>"; };
 		58F8127F18B343D200941C18 /* GPUImageVignette2Filter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GPUImageVignette2Filter.m; sourceTree = "<group>"; };
+		58F883C518B4EBF6005D30B9 /* brightness-alter-60@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "brightness-alter-60@2x.png"; sourceTree = "<group>"; };
+		58F883C618B4EBF6005D30B9 /* brightness-button-alter-60@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "brightness-button-alter-60@2x.png"; sourceTree = "<group>"; };
+		58F883C718B4EBF6005D30B9 /* color-alter-60@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "color-alter-60@2x.png"; sourceTree = "<group>"; };
+		58F883C818B4EBF6005D30B9 /* color-button-alter-60@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "color-button-alter-60@2x.png"; sourceTree = "<group>"; };
 		58F907CE18B2D26200C7A241 /* UINavigationBarButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UINavigationBarButton.h; sourceTree = "<group>"; };
 		58F907CF18B2D26200C7A241 /* UINavigationBarButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UINavigationBarButton.m; sourceTree = "<group>"; };
 		58F907D118B2D9AE00C7A241 /* opacity-button-60@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "opacity-button-60@2x.png"; sourceTree = "<group>"; };
@@ -1026,6 +1034,10 @@
 		58FE950118AF95EA005A4DFE /* Icons */ = {
 			isa = PBXGroup;
 			children = (
+				58F883C518B4EBF6005D30B9 /* brightness-alter-60@2x.png */,
+				58F883C618B4EBF6005D30B9 /* brightness-button-alter-60@2x.png */,
+				58F883C718B4EBF6005D30B9 /* color-alter-60@2x.png */,
+				58F883C818B4EBF6005D30B9 /* color-button-alter-60@2x.png */,
 				58F7126B18B306F50029AB6F /* brightness-button-60@2x.png */,
 				58F907D718B2DA5F00C7A241 /* contrast-button-60@2x.png */,
 				58F907D318B2DA0300C7A241 /* color-button-60@2x.png */,
@@ -1309,6 +1321,7 @@
 				58FF480218AE484F00B978D9 /* jf2.acv in Resources */,
 				588F122918AE21EB00787045 /* sms3.acv in Resources */,
 				588F121D18AE21C200787045 /* mi1.acv in Resources */,
+				58F883CC18B4EBF6005D30B9 /* color-button-alter-60@2x.png in Resources */,
 				588F123618AE220500787045 /* gi2.acv in Resources */,
 				58FF482518AE49F800B978D9 /* Vintage21.acv in Resources */,
 				58F7453418B186830096EB5D /* Aller_Bd.ttf in Resources */,
@@ -1339,6 +1352,7 @@
 				58FE950E18AF9BDC005A4DFE /* JockeyOne-Regular.ttf in Resources */,
 				58FF481D18AE49DC00B978D9 /* Vintage11.acv in Resources */,
 				58FB369618AEAFEC00B284FB /* rounded-mplus-1p-medium.ttf in Resources */,
+				58F883CB18B4EBF6005D30B9 /* color-alter-60@2x.png in Resources */,
 				58F7453718B186830096EB5D /* AllerDisplay.ttf in Resources */,
 				581595E818AEBFB400621C3F /* Localizable.strings in Resources */,
 				588F126618AE248E00787045 /* vvv3.acv in Resources */,
@@ -1360,6 +1374,7 @@
 				588F122718AE21EB00787045 /* sms5.acv in Resources */,
 				58FCAD1D18AFA13E001559F0 /* photos-40-70@2x.png in Resources */,
 				58F14EA818B3013B00D2CD4E /* levels-60@2x.png in Resources */,
+				58F883CA18B4EBF6005D30B9 /* brightness-button-alter-60@2x.png in Resources */,
 				58FE950A18AF995C005A4DFE /* camera-40-70@2x.png in Resources */,
 				588F122A18AE21EB00787045 /* sms2.acv in Resources */,
 				58FF47F118AE478E00B978D9 /* gm3.acv in Resources */,
@@ -1383,6 +1398,7 @@
 				58FB369518AEAFEC00B284FB /* rounded-mplus-1p-light.ttf in Resources */,
 				58F7453618B186830096EB5D /* Aller_Rg.ttf in Resources */,
 				58F907D218B2D9AE00C7A241 /* opacity-button-60@2x.png in Resources */,
+				58F883C918B4EBF6005D30B9 /* brightness-alter-60@2x.png in Resources */,
 				58FF480A18AE488B00B978D9 /* wa1.acv in Resources */,
 				58FB369318AEAFEC00B284FB /* rounded-mplus-1p-bold.ttf in Resources */,
 				58FF47F218AE478E00B978D9 /* gm4.acv in Resources */,
