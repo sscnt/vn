@@ -334,8 +334,6 @@ float absf(float value){
         [base addTarget:filter];
         [base processImage];
         
-        UIImage* brightImage = [filter imageFromCurrentlyProcessedOutput];
-        //baseImage = [self mergeBaseImage:baseImage overlayImage:brightImage opacity:1.0f * alpha blendingMode:MergeBlendingModeNormal];
         if (_sliderLevels.value > 0.5f) {
             baseImage = [self mergeBaseImage:baseImage overlayFilter:filter opacity:alpha blendingMode:MergeBlendingModeLighten];
         }else{
@@ -372,7 +370,7 @@ float absf(float value){
         LOG(@"temperature enabled. %f", _sliderKelvin.value);
         GPUImagePicture* base = [[GPUImagePicture alloc] initWithImage:baseImage];
         GPUKelvinFilter* filter = [[GPUKelvinFilter alloc] init];
-        filter.kelvin = 6500.0 - 6500.0 * _valueKelvin;
+        filter.kelvin = 6500.0 - 6500.0 * _valueKelvin * 2.0f / 3.0f;
         filter.strength = MIN(abs(_valueKelvin * 50), 50);
         [base addTarget:filter];
         [base processImage];

@@ -51,14 +51,21 @@ NSString *const kGPUImageVignette2FilterFragmentShaderString = SHADER_STRING
      mediump float x = textureCoordinate.x - 0.5;
      mediump float y = textureCoordinate.y - 0.5;
      mediump float d = sqrt(x * x + y * y) / sqrt(0.5) * scale;
-     d = 1.0 - pow(d, 1.8);
+     d = 1.0 - pow(d * 0.80, 1.2);
      if(d < 0.0){
          d = 0.0;
      }
      
      mediump vec3 yuv = rgb2yuv(pixel.rgb);
      yuv.x *= d;
-     pixel.rgb = yuv2rgb(yuv);
+     mediump vec3 result = yuv2rgb(yuv);
+     
+     mediump float color;
+     
+     //// Multiply
+     pixel.r = result.r * pixel.r * (1.0 - d) + d * pixel.r;
+     pixel.g = result.g * pixel.g * (1.0 - d) + d * pixel.g;
+     pixel.b = result.b * pixel.b * (1.0 - d) + d * pixel.b;
      
      // Save the result
      gl_FragColor = pixel;

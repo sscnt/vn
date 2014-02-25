@@ -65,7 +65,7 @@
         GPUImageSoftLightBlendFilter* softlight = [[GPUImageSoftLightBlendFilter alloc] init];
         
         GPUImageGaussianBlurFilter* filter = [[GPUImageGaussianBlurFilter alloc] init];
-        filter.blurRadiusInPixels = 40.0;
+        filter.blurRadiusInPixels = 30.0;
         GPUImagePicture* picture = [[GPUImagePicture alloc] initWithCGImage:imageBg.CGImage];
         [picture addTarget:filter];
         [picture processImage];
