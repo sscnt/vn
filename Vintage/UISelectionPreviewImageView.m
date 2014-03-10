@@ -54,9 +54,10 @@
     }];
 }
 
-- (void)setHighlighted:(BOOL)highlighted
+- (void)setSelected:(BOOL)selected
 {
-    if (highlighted) {
+    LOG(@"Tapped: %d", selected);
+    if (selected) {
         self.previewImageView.alpha = 0.50f;
     }else{
         self.previewImageView.alpha = 1.0f;

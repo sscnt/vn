@@ -22,11 +22,21 @@
     return self;
 }
 
+- (void)setLocked:(BOOL)locked
+{
+    _locked = locked;
+    [self setNeedsDisplay];
+}
+
 - (void)drawRect:(CGRect)rect
 {
     //// Oval Drawing
     UIBezierPath* ovalPath = [UIBezierPath bezierPathWithOvalInRect: CGRectMake(2.0f, 3.0f, _radius * 2.0 - 4.0f, _radius * 2.0 - 4.0f)];
-    [[UIColor colorWithWhite:1.0f alpha:1.0f] setFill];
+    if(_locked){
+        [[UIColor colorWithWhite:0.20f alpha:1.0f] setFill];
+    }else{
+        [[UIColor colorWithWhite:1.0f alpha:1.0f] setFill];
+    }
     [ovalPath fill];
     [[UIColor colorWithWhite:26.0f/255.0f alpha:1.0f] setStroke];
     ovalPath.lineWidth = 2;

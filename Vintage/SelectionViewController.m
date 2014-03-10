@@ -168,6 +168,7 @@
         LOG(@"not ready.");
         return;
     }
+    LOG(@"Effect selected.");
     _paused = YES;
     EditorViewController* controller = [[EditorViewController alloc] init];
     controller.effectId = preview.effectId;

@@ -50,6 +50,7 @@ float absf(float value){
         height = max_height;
     }
     _previewImageView = [[UIEditorPreviewImageView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, width, height)];
+    _previewImageView.delegate = self;
     _previewImageView.center = self.view.center;
     [self.view addSubview:_previewImageView];
     
@@ -337,7 +338,7 @@ float absf(float value){
         if (_sliderLevels.value > 0.5f) {
             baseImage = [self mergeBaseImage:baseImage overlayFilter:filter opacity:alpha blendingMode:MergeBlendingModeLighten];
         }else{
-            baseImage = [self mergeBaseImage:baseImage overlayFilter:filter opacity:alpha blendingMode:MergeBlendingModeDarken];
+            baseImage = [filter imageFromCurrentlyProcessedOutput];
         }
     }
     
@@ -424,7 +425,8 @@ float absf(float value){
 
 - (void)applyEffect
 {
-    if (_isApplying) {
+    if (_isApplying == YES) {
+        LOG(@"Please wait.");
         return;
     }
     _isApplying = YES;
@@ -454,31 +456,27 @@ float absf(float value){
             if(previewImageView.isPreviewReady){
                 previewImageView.imageBlurred = blurredImage;
                 [previewImageView setPreviewImage:imageEffected];
-                [previewImageView toggleBlurredImage:NO WithDuration:0.10f];
+                [previewImageView toggleBlurredImage:NO WithDuration:0.20f];
             }else{
                 
                 dispatch_queue_t q_global = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
                 dispatch_queue_t q_main = dispatch_get_main_queue();
                 dispatch_async(q_global, ^{
                     
-                    [NSThread sleepForTimeInterval:0.50f];
-
                     dispatch_async(q_main, ^{
                         previewImageView.imageOriginal = imageResized;
                         previewImageView.imageBlurred = blurredImage;
                         previewImageView.isPreviewReady = YES;
-                        [previewImageView setPreviewImage:imageEffected WithDuration:0.50f];
+                        [previewImageView setPreviewImage:imageEffected];
                         [previewImageView removeLoadingIndicator];
                         [_self slideUpAdjustment:adjustment Completion:nil];
+                        _isApplying = NO;
                     });
                 });
             }
-            LOG(@"did apply effect");
-            _isApplying = NO;
         });
         
     });
-    
 }
 
 - (UIImage*)mergeBaseImage:(UIImage *)baseImage overlayImage:(UIImage *)overlayImage opacity:(CGFloat)opacity blendingMode:(MergeBlendingMode)blendingMode
@@ -593,6 +591,9 @@ float absf(float value){
     if (_isSliding) {
         return;
     }
+    if(_isApplying){
+        return;
+    }
     _buttonBrightness.selected = NO;
     _buttonColor.selected = NO;
     _buttonContrast.selected = NO;
@@ -649,10 +650,42 @@ float absf(float value){
         });
         
     });
+}
 
+- (void)lockAllSliders
+{
+    _sliderContrast.locked = YES;
+    _sliderClarity.locked = YES;
+    _sliderLevels.locked = YES;
+    _sliderSaturation.locked = YES;
+    _sliderVibrance.locked = YES;
+    _sliderVignette.locked = YES;
+    _sliderKelvin.locked = YES;
+    _sliderOpacity.locked = YES;
+    _sliderBrightness.locked = YES;
+}
+
+- (void)unlockAllSliders
+{
+    _sliderContrast.locked = NO;
+    _sliderClarity.locked = NO;
+    _sliderLevels.locked = NO;
+    _sliderSaturation.locked = NO;
+    _sliderVibrance.locked = NO;
+    _sliderVignette.locked = NO;
+    _sliderKelvin.locked = NO;
+    _sliderOpacity.locked = NO;
+    _sliderBrightness.locked = NO;
 }
 
 #pragma mark delegate
+
+- (void)previewIsReady:(UIEditorPreviewImageView *)preview
+{
+    LOG(@"Did apply effect");
+    _isApplying = NO;
+    [self unlockAllSliders];
+}
 
 - (void)slider:(UIEditorSliderView*)slider DidValueChange:(CGFloat)value
 {
@@ -669,6 +702,9 @@ float absf(float value){
 
 - (void)touchesBeganWithSlider:(UIEditorSliderView *)slider
 {
+    if (_isApplying) {
+        return;
+    }
     LOG(@"touchstart");
     [_previewImageView toggleBlurredImage:YES WithDuration:0.10f];
     
@@ -687,6 +723,7 @@ float absf(float value){
     if (_isApplying) {
         return;
     }
+    [self lockAllSliders];
     [self applyValueWithSlider:slider];
     [self applyEffect];
     

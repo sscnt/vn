@@ -69,6 +69,12 @@
     _thumbView.center = CGPointMake(x, _thumbView.center.y);
 }
 
+- (void)setLocked:(BOOL)locked
+{
+    _locked = locked;
+    _thumbView.locked = locked;
+}
+
 - (CGFloat)calcPoxitionByValue:(CGFloat)value
 {
     return (_thumbEndX - _thumbStartX) * value + _thumbStartX;
@@ -82,6 +88,9 @@
 
 - (void)didDragThumb:(UIPanGestureRecognizer *)sender
 {
+    if(_locked){
+        return;
+    }
     UISliderThumbVIew* thumbView = _thumbView;
     CGPoint transitionPoint = [sender translationInView:thumbView];
     

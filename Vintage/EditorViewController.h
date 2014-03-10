@@ -29,7 +29,7 @@ typedef NS_ENUM(NSInteger, AdjustmentViewId){
     AdjustmentViewIdContrast
 };
 
-@interface EditorViewController : UIViewController <UIEditorSliderViewDelegate>
+@interface EditorViewController : UIViewController <UIEditorSliderViewDelegate, UIEditorPreviewDelegate>
 {
     UIEditorPreviewImageView* _previewImageView;
     UIEditorSliderView* _sliderOpacity;
@@ -41,6 +41,7 @@ typedef NS_ENUM(NSInteger, AdjustmentViewId){
     UIEditorSliderView* _sliderKelvin;
     UIEditorSliderView* _sliderSaturation;
     UIEditorSliderView* _sliderVibrance;
+    UIEditorSliderView* _sliderCurrentSelected;
     UINavigationBarButton* _buttonOpacity;
     UINavigationBarButton* _buttonBrightness;
     UINavigationBarButton* _buttonColor;
@@ -80,6 +81,9 @@ typedef NS_ENUM(NSInteger, AdjustmentViewId){
 - (void)slideDownAdjustment:(UIView*)adjustment Completion:(void (^)(BOOL))completion;
 - (void)slideUpAdjustment:(UIView*)adjustment Completion:(void (^)(BOOL))completion;
 - (void)slideDownCurrentAdjustmentAndSlideUpAdjustment:(UIView *)adjustment;
+
+- (void)lockAllSliders;
+- (void)unlockAllSliders;
 
 - (UIImage*)processImage:(UIImage*)inputImage;
 

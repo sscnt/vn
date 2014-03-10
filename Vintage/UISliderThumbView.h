@@ -13,6 +13,8 @@
     CGFloat _radius;
 }
 
+@property (nonatomic, assign) BOOL locked;
+
 - (id)initWithRadius:(CGFloat)radius;
 
 @end

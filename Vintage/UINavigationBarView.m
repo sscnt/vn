@@ -54,14 +54,14 @@
 
 - (void)appendButtonToLeft:(UIButton *)button
 {
-    button.center = CGPointMake(ceilf(_buttonWidth / 2.0) + _leftButtonPositionLeft, 22.0f);
+    button.center = CGPointMake(ceilf(button.frame.size.width / 2.0) + _leftButtonPositionLeft, 22.0f);
     [self addSubview:button];
     _leftButtonPositionLeft += button.bounds.size.width;
 }
 
 - (void)appendButtonToRight:(UIButton *)button
 {
-    button.center = CGPointMake(_rightButtonPositionLeft - ceilf(_buttonWidth / 2.0), 22.0f);
+    button.center = CGPointMake(_rightButtonPositionLeft - ceilf(button.frame.size.width / 2.0), 22.0f);
     [self addSubview:button];
     _rightButtonPositionLeft -= button.bounds.size.width;
 }

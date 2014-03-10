@@ -8,6 +8,12 @@
 
 #import "UISelectionPreviewImageView.h"
 
+@class UIEditorPreviewImageView;
+
+@protocol UIEditorPreviewDelegate
+- (void)previewIsReady:(UIEditorPreviewImageView*)preview;
+@end
+
 @interface UIEditorPreviewImageView : UISelectionPreviewImageView
 {
     UIImageView* _imageViewOriginal;
@@ -16,6 +22,7 @@
 
 @property (nonatomic, weak) UIImage* imageOriginal;
 @property (nonatomic, weak) UIImage* imageBlurred;
+@property (nonatomic, assign) id<UIEditorPreviewDelegate> delegate;
 
 - (void)toggleBlurredImage:(BOOL)show;
 - (void)toggleBlurredImage:(BOOL)show WithDuration:(CGFloat)duration;

@@ -30,6 +30,17 @@
     return self;
 }
 
+- (void)setLocked:(BOOL)locked
+{
+    _locked = locked;
+    _slider.locked = locked;
+    if(locked){
+        self.alpha = 0.20f;
+    }else{
+        self.alpha = 0.70f;
+    }
+}
+
 - (CGFloat)value
 {
     return _slider.value;
@@ -54,6 +65,9 @@
 
 - (void)resetToDefault
 {
+    if(_locked){
+        return;
+    }
     if ([self.delegate sliderShouldValueResetToDefault:self]) {
         [self resetToDefaultPosition];
         [self.delegate sliderDidValueResetToDefault:self];        

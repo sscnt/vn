@@ -12,7 +12,7 @@
 
 - (id)initWithType:(NavigationBarButtonType)type
 {
-    CGRect frame = CGRectMake(0.0f, 0.0f,  roundf([UIScreen screenSize].width / 6.0f), 44.0f);
+    CGRect frame = CGRectMake(0.0f, 0.0f, roundf([UIScreen screenSize].width / 6.0f), 44.0f);
     self = [super initWithFrame:frame];
     if (self) {
         self.type = type;

@@ -53,6 +53,7 @@
     if (self.isPreviewReady == NO) {
         return;
     }
+    __block UIEditorPreviewImageView* _self = self;
     LOG(@"toggleBlurredImageWithDuration: %d", show);
     if (show) {
         _imageViewBlurred.alpha = 0.0f;
@@ -69,6 +70,7 @@
             _imageViewBlurred.alpha = 0.0f;
         } completion:^(BOOL finished){
             _imageViewBlurred.hidden = YES;
+            [_self.delegate previewIsReady:_self];
         }];
     }
 }

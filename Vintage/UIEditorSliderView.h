@@ -45,6 +45,7 @@ typedef NS_ENUM(NSInteger, EditorSliderIconType){
 @property (nonatomic, assign) EditorSliderIconType iconType;
 @property (nonatomic, strong) NSString* title;
 @property (nonatomic, assign) SliderViewTitlePosition titlePosition;
+@property (nonatomic, assign) BOOL locked;
 
 - (void)resetToDefault;
 - (void)resetToDefaultPosition;
