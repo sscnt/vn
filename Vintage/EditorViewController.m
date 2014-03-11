@@ -311,116 +311,132 @@ float absf(float value){
     
     //// Brightness
     if (_sliderBrightness.value != 0.5f) {
-        LOG(@"brightness enabled. %f", _sliderBrightness.value);
-        float alpha = (20.0f * absf(_valueBrightness)) / (1.0f + 20.0f * absf(_valueBrightness));
-        GPUImagePicture* base = [[GPUImagePicture alloc] initWithImage:baseImage];
-        GPUimageTumblinBrightnessFilter* filter = [[GPUimageTumblinBrightnessFilter alloc] init];
-        filter.brightness = _valueBrightness;
-        
-        [base addTarget:filter];
-        [base processImage];
-        
-        UIImage* brightImage = [filter imageFromCurrentlyProcessedOutput];
-        baseImage = [self mergeBaseImage:baseImage overlayImage:brightImage opacity:0.40f * alpha blendingMode:MergeBlendingModeNormal];
-        baseImage = [self mergeBaseImage:baseImage overlayFilter:filter opacity:1.0f * alpha blendingMode:MergeBlendingModeSoftLight];
+        @autoreleasepool {
+            LOG(@"brightness enabled. %f", _sliderBrightness.value);
+            float alpha = (20.0f * absf(_valueBrightness)) / (1.0f + 20.0f * absf(_valueBrightness));
+            GPUImagePicture* base = [[GPUImagePicture alloc] initWithImage:baseImage];
+            GPUimageTumblinBrightnessFilter* filter = [[GPUimageTumblinBrightnessFilter alloc] init];
+            filter.brightness = _valueBrightness;
+            
+            [base addTarget:filter];
+            [base processImage];
+            
+            UIImage* brightImage = [filter imageFromCurrentlyProcessedOutput];
+            baseImage = [self mergeBaseImage:baseImage overlayImage:brightImage opacity:0.40f * alpha blendingMode:MergeBlendingModeNormal];
+            baseImage = [self mergeBaseImage:baseImage overlayFilter:filter opacity:1.0f * alpha blendingMode:MergeBlendingModeSoftLight];
+        }
     }
     
     //// Levels
     if (_sliderLevels.value != 0.5f) {
-        LOG(@"levels enabled. %f", _sliderLevels.value);
-        float alpha = (20.0f * absf(_valueLevels - 1.0f)) / (1.0f + 20.0f * absf(_valueLevels - 1.0f));
-        GPUImagePicture* base = [[GPUImagePicture alloc] initWithImage:baseImage];
-        GPUImageTumblinLevelsFilter* filter = [[GPUImageTumblinLevelsFilter alloc] init];
-        [filter setMin:0.0f gamma:_valueLevels max:1.0f];
-        [base addTarget:filter];
-        [base processImage];
-        
-        if (_sliderLevels.value > 0.5f) {
-            baseImage = [self mergeBaseImage:baseImage overlayFilter:filter opacity:alpha blendingMode:MergeBlendingModeLighten];
-        }else{
-            baseImage = [filter imageFromCurrentlyProcessedOutput];
+        @autoreleasepool {
+            LOG(@"levels enabled. %f", _sliderLevels.value);
+            float alpha = (20.0f * absf(_valueLevels - 1.0f)) / (1.0f + 20.0f * absf(_valueLevels - 1.0f));
+            GPUImagePicture* base = [[GPUImagePicture alloc] initWithImage:baseImage];
+            GPUImageTumblinLevelsFilter* filter = [[GPUImageTumblinLevelsFilter alloc] init];
+            [filter setMin:0.0f gamma:_valueLevels max:1.0f];
+            [base addTarget:filter];
+            [base processImage];
+            
+            if (_sliderLevels.value > 0.5f) {
+                baseImage = [self mergeBaseImage:baseImage overlayFilter:filter opacity:alpha blendingMode:MergeBlendingModeLighten];
+            }else{
+                baseImage = [filter imageFromCurrentlyProcessedOutput];
+            }
         }
     }
     
     //// Contrast
     if (_sliderContrast.value != 0.5f) {
-        LOG(@"contrast enabled. %f", _sliderContrast.value);
-        GPUImagePicture* base = [[GPUImagePicture alloc] initWithImage:baseImage];
-        GPUImageContrastFilter* filter = [[GPUImageContrastFilter alloc] init];
-        filter.contrast = _valueContrast;
-        [base addTarget:filter];
-        [base processImage];
-        baseImage = [filter imageFromCurrentlyProcessedOutput];
+        @autoreleasepool {
+            LOG(@"contrast enabled. %f", _sliderContrast.value);
+            GPUImagePicture* base = [[GPUImagePicture alloc] initWithImage:baseImage];
+            GPUImageContrastFilter* filter = [[GPUImageContrastFilter alloc] init];
+            filter.contrast = _valueContrast;
+            [base addTarget:filter];
+            [base processImage];
+            baseImage = [filter imageFromCurrentlyProcessedOutput];
+        }
     }
     
     //// Clarity
     if (_sliderClarity.value != 0.0f) {
-        LOG(@"clarity enabled. %f", _sliderClarity.value);
-        GPUImagePicture* base = [[GPUImagePicture alloc] initWithImage:baseImage];
-        GPUImageUnsharpMaskFilter* filter = [[GPUImageUnsharpMaskFilter alloc] init];
-        filter.blurRadiusInPixels = 100.0f;
-        filter.intensity = (_valueClarity + 1.0f);
-        [base addTarget:filter];
-        [base processImage];
-        UIImage* unsharpImage = [filter imageFromCurrentlyProcessedOutput];
-        baseImage = [self mergeBaseImage:baseImage overlayImage:unsharpImage opacity:1.0f blendingMode:MergeBlendingModeSoftLight];
+        @autoreleasepool {
+            LOG(@"clarity enabled. %f", _sliderClarity.value);
+            GPUImagePicture* base = [[GPUImagePicture alloc] initWithImage:baseImage];
+            GPUImageUnsharpMaskFilter* filter = [[GPUImageUnsharpMaskFilter alloc] init];
+            filter.blurRadiusInPixels = 100.0f;
+            filter.intensity = (_valueClarity + 1.0f);
+            [base addTarget:filter];
+            [base processImage];
+            UIImage* unsharpImage = [filter imageFromCurrentlyProcessedOutput];
+            baseImage = [self mergeBaseImage:baseImage overlayImage:unsharpImage opacity:1.0f blendingMode:MergeBlendingModeSoftLight];
+        }
     }
     
     //// Temperature
     if (_sliderKelvin.value != 0.5f) {
-        LOG(@"temperature enabled. %f", _sliderKelvin.value);
-        GPUImagePicture* base = [[GPUImagePicture alloc] initWithImage:baseImage];
-        GPUKelvinFilter* filter = [[GPUKelvinFilter alloc] init];
-        filter.kelvin = 6500.0 - 6500.0 * _valueKelvin * 2.0f / 3.0f;
-        filter.strength = MIN(abs(_valueKelvin * 50), 50);
-        [base addTarget:filter];
-        [base processImage];
-        baseImage = [filter imageFromCurrentlyProcessedOutput];
-
+        @autoreleasepool {
+            LOG(@"temperature enabled. %f", _sliderKelvin.value);
+            GPUImagePicture* base = [[GPUImagePicture alloc] initWithImage:baseImage];
+            GPUKelvinFilter* filter = [[GPUKelvinFilter alloc] init];
+            filter.kelvin = 6500.0 - 6500.0 * _valueKelvin * 2.0f / 3.0f;
+            filter.strength = MIN(abs(_valueKelvin * 50), 50);
+            [base addTarget:filter];
+            [base processImage];
+            baseImage = [filter imageFromCurrentlyProcessedOutput];
+        }
     }
     
     //// Saturation
     if (_sliderSaturation.value != 0.5f) {
-        LOG(@"saturation enabled. %f", _sliderSaturation.value);
-        GPUImagePicture* base = [[GPUImagePicture alloc] initWithImage:baseImage];
-        GPUImageNaturalSaturationFilter* filter = [[GPUImageNaturalSaturationFilter alloc] init];
-        filter.saturation = _valueSaturation;
-        [base addTarget:filter];
-        [base processImage];
-        baseImage = [filter imageFromCurrentlyProcessedOutput];
+        @autoreleasepool {
+            LOG(@"saturation enabled. %f", _sliderSaturation.value);
+            GPUImagePicture* base = [[GPUImagePicture alloc] initWithImage:baseImage];
+            GPUImageNaturalSaturationFilter* filter = [[GPUImageNaturalSaturationFilter alloc] init];
+            filter.saturation = _valueSaturation;
+            [base addTarget:filter];
+            [base processImage];
+            baseImage = [filter imageFromCurrentlyProcessedOutput];
+        }
     }
     
     //// Vibrance
     if (_sliderVibrance.value != 0.5f) {
-        LOG(@"vibrance enabled. %f", _sliderVibrance.value);
-        GPUImagePicture* base = [[GPUImagePicture alloc] initWithImage:baseImage];
-        GPUImageVibranceFilter* filter = [[GPUImageVibranceFilter alloc] init];
-        filter.vibrance = _valueVibrance;
-        [base addTarget:filter];
-        [base processImage];
-        baseImage = [filter imageFromCurrentlyProcessedOutput];
+        @autoreleasepool {
+            LOG(@"vibrance enabled. %f", _sliderVibrance.value);
+            GPUImagePicture* base = [[GPUImagePicture alloc] initWithImage:baseImage];
+            GPUImageVibranceFilter* filter = [[GPUImageVibranceFilter alloc] init];
+            filter.vibrance = _valueVibrance;
+            [base addTarget:filter];
+            [base processImage];
+            baseImage = [filter imageFromCurrentlyProcessedOutput];
+        }
     }
-    
-    GPUImagePicture* base = [[GPUImagePicture alloc] initWithImage:baseImage];
-    GPUImageEffects* effect = [self effect:_effectId];
-    effect.imageToProcess = baseImage;
-    UIImage* imageEffected = [effect process];
-    GPUImagePicture* overlay = [[GPUImagePicture alloc] initWithImage:imageEffected];
-    imageEffected = [self merge2pictureBase:base overlay:overlay opacity:_valueOpacity];
-    
+    UIImage* imageEffected;
+    @autoreleasepool {
+        GPUImagePicture* base = [[GPUImagePicture alloc] initWithImage:baseImage];
+        GPUImageEffects* effect = [self effect:_effectId];
+        effect.imageToProcess = baseImage;
+        imageEffected = [effect process];
+        GPUImagePicture* overlay = [[GPUImagePicture alloc] initWithImage:imageEffected];
+        imageEffected = [self merge2pictureBase:base overlay:overlay opacity:_valueOpacity];
+    }
+
     //// Vignette
     if (_sliderVignette.value != 0.0f) {
-        LOG(@"vignette enabled. %f", _sliderVignette.value);
-        GPUImagePicture* base = [[GPUImagePicture alloc] initWithImage:imageEffected];
-        GPUImageVignette2Filter* filter = [[GPUImageVignette2Filter alloc] init];
-        filter.scale = _valueVignette;
-        [base addTarget:filter];
-        [base processImage];
-        imageEffected = [filter imageFromCurrentlyProcessedOutput];
+        @autoreleasepool {
+            LOG(@"vignette enabled. %f", _sliderVignette.value);
+            GPUImagePicture* base = [[GPUImagePicture alloc] initWithImage:imageEffected];
+            GPUImageVignette2Filter* filter = [[GPUImageVignette2Filter alloc] init];
+            filter.scale = _valueVignette;
+            [base addTarget:filter];
+            [base processImage];
+            imageEffected = [filter imageFromCurrentlyProcessedOutput];
+        }
     }
     
     return imageEffected;
-
 }
 
 - (void)applyEffect
