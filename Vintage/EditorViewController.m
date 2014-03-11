@@ -166,48 +166,48 @@ float absf(float value){
 
     
     //// Bottom Bar
-    UINavigationBarView* bar = [[UINavigationBarView alloc] initWithPosition:NavigationBarViewPositionBottom];
-    [bar setOpacity:1.0f];
+    _bottomNavigationBar = [[UINavigationBarView alloc] initWithPosition:NavigationBarViewPositionBottom];
+    [_bottomNavigationBar setOpacity:1.0f];
     
     //////// Save
     UISaveButton* buttonSave = [[UISaveButton alloc] init];
     [buttonSave addTarget:self action:@selector(didPressSaveButton) forControlEvents:UIControlEventTouchUpInside];
-    [bar appendButtonToRight:buttonSave];
-    [self.view addSubview:bar];
+    [_bottomNavigationBar appendButtonToRight:buttonSave];
+    [self.view addSubview:_bottomNavigationBar];
     
     //////// Opacity
     _buttonOpacity = [[UINavigationBarButton alloc] initWithType:NavigationBarButtonTypeOpacity];
     _buttonOpacity.selected = YES;
     _buttonOpacity.tag = AdjustmentViewIdOpacity;
     [_buttonOpacity addTarget:self action:@selector(didPressAdjustmentButton:) forControlEvents:UIControlEventTouchUpInside];
-    [bar appendButtonToLeft:_buttonOpacity];
+    [_bottomNavigationBar appendButtonToLeft:_buttonOpacity];
     
     //////// Brightness
     _buttonBrightness = [[UINavigationBarButton alloc] initWithType:NavigationBarButtonTypeBrightness];
     _buttonBrightness.tag = AdjustmentViewIdBrightness;
     [_buttonBrightness addTarget:self action:@selector(didPressAdjustmentButton:) forControlEvents:UIControlEventTouchUpInside];
-    [bar appendButtonToLeft:_buttonBrightness];
+    [_bottomNavigationBar appendButtonToLeft:_buttonBrightness];
     
     //////// Contrast
     _buttonContrast = [[UINavigationBarButton alloc] initWithType:NavigationBarButtonTypeContrast];
     _buttonContrast.tag = AdjustmentViewIdContrast;
     [_buttonContrast addTarget:self action:@selector(didPressAdjustmentButton:) forControlEvents:UIControlEventTouchUpInside];
-    [bar appendButtonToLeft:_buttonContrast];
+    [_bottomNavigationBar appendButtonToLeft:_buttonContrast];
     
     //////// Color
     _buttonColor = [[UINavigationBarButton alloc] initWithType:NavigationBarButtonTypeColor];
     _buttonColor.tag = AdjustmentViewIdColor;
     [_buttonColor addTarget:self action:@selector(didPressAdjustmentButton:) forControlEvents:UIControlEventTouchUpInside];
-    [bar appendButtonToLeft:_buttonColor];
+    [_bottomNavigationBar appendButtonToLeft:_buttonColor];
     
     
     //// Top Bar
-    bar = [[UINavigationBarView alloc] initWithPosition:NavigationBarViewPositionTop];
-    [bar setTitle:NSLocalizedString(@"EDIT", nil)];
+    _topNavigationBar = [[UINavigationBarView alloc] initWithPosition:NavigationBarViewPositionTop];
+    [_topNavigationBar setTitle:NSLocalizedString(@"EDIT", nil)];
     UICloseButton* buttonClose = [[UICloseButton alloc] init];
     [buttonClose addTarget:self action:@selector(didPressCloseButton) forControlEvents:UIControlEventTouchUpInside];
-    [bar appendButtonToLeft:buttonClose];
-    [self.view addSubview:bar];
+    [_topNavigationBar appendButtonToLeft:buttonClose];
+    [self.view addSubview:_topNavigationBar];
     
     
     //// Label
@@ -659,8 +659,14 @@ float absf(float value){
     
     CGPoint center = _previewImageView.center;
     
+    [self slideDownAdjustment:_adjustmentCurrent Completion:nil];
+    
     __block UIImageView* _bgView = _dialogBgImageView;
+    __block UINavigationBarView* topNavBar = _topNavigationBar;
+    __block UINavigationBarView* bottomNavBar = _bottomNavigationBar;
     [UIView animateWithDuration:0.20f animations:^{
+        [topNavBar setY:-44.0f];
+        [bottomNavBar setY:[UIScreen screenSize].height];
         _bgView.frame = frame;
         _bgView.center = center;
         _bgView.alpha = 1.0f;
@@ -676,12 +682,21 @@ float absf(float value){
     }
     CGRect frame = _previewImageView.frame;
     __block UIImageView* _bgView = _dialogBgImageView;
+    __block EditorViewController* _self = self;
+    __block UINavigationBarView* topNavBar = _topNavigationBar;
+    __block UINavigationBarView* bottomNavBar = _bottomNavigationBar;
     [UIView animateWithDuration:0.20f animations:^{
         _bgView.frame = frame;
-        _bgView.alpha = 0.70f;
+        [topNavBar setY:0.0f];
+        [bottomNavBar setY:[UIScreen screenSize].height - 44.0f];
     } completion:^(BOOL finished){
-        _dialogState = DialogStateDidHide;
-        [_bgView removeFromSuperview];
+        [_self slideUpAdjustment:_adjustmentCurrent Completion:nil];
+        [UIView animateWithDuration:0.10f animations:^{
+            _bgView.alpha = 0.0f;
+        } completion:^(BOOL finished){
+            _dialogState = DialogStateDidHide;
+            [_bgView removeFromSuperview];
+        }];
     }];
 }
 

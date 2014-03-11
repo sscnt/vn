@@ -28,9 +28,7 @@
         __block UISliderContainer* _self = self;
         [UIView animateWithDuration:0.20f animations:^{
             _self.alpha = 1.0f;
-        } completion:^(BOOL finished){
-            
-        }];
+        } completion:nil];
         
     }
 }
