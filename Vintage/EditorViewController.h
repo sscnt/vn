@@ -22,6 +22,8 @@
 #import "GPUImageTumblinLevelsFilter.h"
 #import "GPUImageVibranceFilter.h"
 #import "GPUImageNaturalSaturationFilter.h"
+#import "GPUImageClarityFilter.h"
+#import "UIEditorDialogBgImageView.h"
 
 typedef NS_ENUM(NSInteger, AdjustmentViewId){
     AdjustmentViewIdOpacity = 1,
@@ -30,7 +32,14 @@ typedef NS_ENUM(NSInteger, AdjustmentViewId){
     AdjustmentViewIdContrast
 };
 
-@interface EditorViewController : UIViewController <UIEditorSliderViewDelegate, UIEditorPreviewDelegate>
+typedef NS_ENUM(NSInteger, DialogState){
+    DialogStateWillShow = 1,
+    DialogStateDidShow,
+    DialogStateWillHide,
+    DialogStateDidHide,
+};
+
+@interface EditorViewController : UIViewController <UIEditorSliderViewDelegate, UIEditorPreviewDelegate, UIEditorDialogBgImageViewDelegate>
 {
     UIEditorPreviewImageView* _previewImageView;
     UIEditorSliderView* _sliderOpacity;
@@ -52,6 +61,7 @@ typedef NS_ENUM(NSInteger, AdjustmentViewId){
     UISliderContainer* _adjustmentColor;
     UISliderContainer* _adjustmentContrast;
     UISliderContainer* _adjustmentCurrent;
+    UIEditorDialogBgImageView* _dialogBgImageView;
     CGFloat _valueOpacity;
     CGFloat _valueBrightness;
     CGFloat _valueLevels;
@@ -62,9 +72,11 @@ typedef NS_ENUM(NSInteger, AdjustmentViewId){
     CGFloat _valueSaturation;
     CGFloat _valueVibrance;
     BOOL _isSaving;
+    DialogState _dialogState;
     BOOL _isApplying;
     BOOL _isSliding;
     UIImage* _blurredImage;
+    UIImage* _dialogBgImage;
     UILabel* _percentageLabel;
 }
 
@@ -87,6 +99,10 @@ typedef NS_ENUM(NSInteger, AdjustmentViewId){
 - (void)unlockAllSliders;
 
 - (UIImage*)processImage:(UIImage*)inputImage;
+
+- (void)showSaveDialog;
+- (void)hideSaveDialog;
+- (void)saveImage;
 
 - (UIImage*)merge2pictureBase:(GPUImagePicture*)basePicture overlay:(GPUImagePicture*)overlayPicture opacity:(CGFloat)opacity;
 - (UIImage*)mergeBaseImage:(UIImage*)baseImage overlayImage:(UIImage*)overlayImage opacity:(CGFloat)opacity blendingMode:(MergeBlendingMode)blendingMode;

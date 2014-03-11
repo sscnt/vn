@@ -59,7 +59,7 @@
     //// Effects
     _arrayEffects = [NSMutableArray array];
     [_arrayEffects addObject:[[GPUEffectVintageFilm alloc] init]];
-    [_arrayEffects addObject:[[GPUEffectVintage1 alloc] init]];
+    [_arrayEffects addObject:[[GPUEffectHaze3 alloc] init]];
     [_arrayEffects addObject:[[GPUEffectVintage2 alloc] init]];
     [_arrayEffects addObject:[[GPUEffectWeekend alloc] init]];
     [_arrayEffects addObject:[[GPUEffectVividVintage alloc] init]];
@@ -70,7 +70,7 @@
     [_arrayEffects addObject:[[GPUEffectFaerieVintage alloc] init]];
     [_arrayEffects addObject:[[GPUEffectHazelnut alloc] init]];    
     [_arrayEffects addObject:[[GPUEffectGentleMemories alloc] init]];
-    [_arrayEffects addObject:[[GPUEffectHaze3 alloc] init]];
+    [_arrayEffects addObject:[[GPUEffectVintage1 alloc] init]];
     [_arrayEffects addObject:[[GPUEffectBeachVintage alloc] init]];
     [_arrayEffects addObject:[[GPUEffectDreamyVintage alloc] init]];
     [_arrayEffects addObject:[[GPUEffectCreamyNoon alloc] init]];

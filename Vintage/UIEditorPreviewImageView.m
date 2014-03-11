@@ -20,6 +20,9 @@
         _imageViewOriginal = [[UIImageView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, self.frame.size.width, self.frame.size.height)];
         _imageViewOriginal.hidden = YES;
         [self addSubview:_imageViewOriginal];
+        
+        [self addTarget:self action:@selector(didTouchDown) forControlEvents:UIControlEventTouchDown];
+        [self addTarget:self action:@selector(didTouchUp) forControlEvents:UIControlEventTouchUpInside];
     }
     return self;
 }
@@ -87,14 +90,14 @@
     [_imageViewBlurred setImage:_imageBlurred];
 }
 
-- (void)setHighlighted:(BOOL)highlighted
+- (void)didTouchUp
 {
-    if (highlighted) {
-        [self toggleOriginalImage:YES];
-    }else{
-        [self toggleOriginalImage:NO];
-    }
+    [self.delegate previewDidTouchUp:self];
+}
 
+- (void)didTouchDown
+{
+    [self.delegate previewDidTouchDown:self];
 }
 
 /*

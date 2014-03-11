@@ -13,7 +13,7 @@
 #import "UICloseButton.h"
 
 
-@interface SaveViewController : UIView
+@interface SaveViewController : UIViewController
 
 @property (nonatomic, assign) EffectId effectId;
 @property (nonatomic, weak) UIImage* imageOriginal;

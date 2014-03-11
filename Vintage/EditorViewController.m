@@ -27,9 +27,9 @@ float absf(float value){
     if (self) {
         _valueOpacity = 1.0;
         _isSaving = NO;
-        _blurredImage = nil;
         _isApplying = NO;
         _isSliding = NO;
+        _dialogState = DialogStateDidHide;
     }
     return self;
 }
@@ -40,6 +40,7 @@ float absf(float value){
     
     //// Layout
     [self.view setBackgroundColor:[UIColor colorWithWhite:26.0f/255.0f alpha:1.0]];
+
     
     //// Preview
     CGFloat width = [UIScreen screenSize].width;
@@ -208,6 +209,7 @@ float absf(float value){
     [bar appendButtonToLeft:buttonClose];
     [self.view addSubview:bar];
     
+    
     //// Label
     _percentageLabel = [[UILabel alloc] initWithFrame:CGRectMake(0.0f, 0.0f, [UIScreen screenSize].width, 44.0f)];
     _percentageLabel.center = _previewImageView.center;
@@ -308,92 +310,90 @@ float absf(float value){
 {
     
     UIImage* baseImage = inputImage;
-    GPUImageFilterGroup* filterGroup = [[GPUImageFilterGroup alloc] init];
-    CGSize size = inputImage.size;
+    NSMutableArray* filterArray = [NSMutableArray array];
+    
+    GPUimageTumblinBrightnessFilter* brightnessFilter;
+    GPUImageTumblinLevelsFilter* levelsFilter;
+    GPUImageContrastFilter* contrastFilter;
+    GPUImageClarityFilter* clarityFilter;
+    GPUKelvinFilter* kelvinFilter;
+    GPUImageNaturalSaturationFilter* saturationFilter;
+    GPUImageVibranceFilter* vibranceFilter;
     
     //// Brightness
     if (_sliderBrightness.value != 0.5f) {
-        
         LOG(@"brightness enabled. %f", _sliderBrightness.value);
-        GPUimageTumblinBrightnessFilter* filter = [[GPUimageTumblinBrightnessFilter alloc] init];
-        filter.brightness = _valueBrightness;
-        [filterGroup addFilter:filter];
-        
+        brightnessFilter = [[GPUimageTumblinBrightnessFilter alloc] init];
+        [filterArray addObject:brightnessFilter];
     }
     
     //// Levels
     if (_sliderLevels.value != 0.5f) {
-        
         LOG(@"levels enabled. %f", _sliderLevels.value);
-        GPUImageTumblinLevelsFilter* filter = [[GPUImageTumblinLevelsFilter alloc] init];
-        [filter setMin:0.0f gamma:_valueLevels max:1.0f];
-        [filterGroup addFilter:filter];
-        
+        levelsFilter = [[GPUImageTumblinLevelsFilter alloc] init];
+        [levelsFilter setMin:0.0f gamma:_valueLevels max:1.0f];
+        [filterArray addObject:levelsFilter];
     }
     
     //// Contrast
     if (_sliderContrast.value != 0.5f) {
-        
         LOG(@"contrast enabled. %f", _sliderContrast.value);
-        GPUImageContrastFilter* filter = [[GPUImageContrastFilter alloc] init];
-        filter.contrast = _valueContrast;
-        [filterGroup addFilter:filter];
-        
+        contrastFilter = [[GPUImageContrastFilter alloc] init];
+        contrastFilter.contrast = _valueContrast;
+        [filterArray addObject:contrastFilter];
     }
     
     //// Clarity
     if (_sliderClarity.value != 0.0f) {
         LOG(@"clarity enabled. %f", _sliderClarity.value);
-        GPUImageUnsharpMaskFilter* filter = [[GPUImageUnsharpMaskFilter alloc] init];
-        filter.blurRadiusInPixels = 100.0f;
-        filter.intensity = (_valueClarity + 1.0f);
-        [filterGroup addFilter:filter];
-        
+        clarityFilter = [[GPUImageClarityFilter alloc] init];
+        clarityFilter.blurRadiusInPixels = 40.0f;
+        clarityFilter.intensity = (_valueClarity + 1.0f);
+        [filterArray addObject:clarityFilter];
     }
     
     //// Temperature
     if (_sliderKelvin.value != 0.5f) {
-        
         LOG(@"temperature enabled. %f", _sliderKelvin.value);
-        GPUKelvinFilter* filter = [[GPUKelvinFilter alloc] init];
-        filter.kelvin = 6500.0 - 6500.0 * _valueKelvin * 2.0f / 3.0f;
-        filter.strength = MIN(abs(_valueKelvin * 50), 50);
-        [filterGroup addFilter:filter];
-        
+        kelvinFilter = [[GPUKelvinFilter alloc] init];
+        kelvinFilter.kelvin = 6500.0 - 6500.0 * _valueKelvin * 2.0f / 3.0f;
+        kelvinFilter.strength = MIN(abs(_valueKelvin * 50), 50);
+        [filterArray addObject:kelvinFilter];
     }
     
     //// Saturation
     if (_sliderSaturation.value != 0.5f) {
-        
         LOG(@"saturation enabled. %f", _sliderSaturation.value);
-        GPUImageNaturalSaturationFilter* filter = [[GPUImageNaturalSaturationFilter alloc] init];
-        filter.saturation = _valueSaturation;
-        [filterGroup addFilter:filter];
-        
+        saturationFilter = [[GPUImageNaturalSaturationFilter alloc] init];
+        saturationFilter.saturation = _valueSaturation;
+        [filterArray addObject:saturationFilter];
     }
     
     //// Vibrance
     if (_sliderVibrance.value != 0.5f) {
-        
         LOG(@"vibrance enabled. %f", _sliderVibrance.value);
-        GPUImageVibranceFilter* filter = [[GPUImageVibranceFilter alloc] init];
-        filter.vibrance = _valueVibrance;
-        [filterGroup addFilter:filter];
+        vibranceFilter = [[GPUImageVibranceFilter alloc] init];
+        vibranceFilter.vibrance = _valueVibrance;
+        [filterArray addObject:vibranceFilter];
         
     }
     
-    if ([filterGroup filterCount] > 0) {
-        [[filterGroup filterAtIndex:0] forceProcessingAtSize:size];
-        for (NSInteger index = 0; index < [filterGroup filterCount] - 1; index++) {
-            [[filterGroup filterAtIndex:index] addTarget:[filterGroup filterAtIndex:index + 1]];
-        }
-        [filterGroup setInitialFilters:@[[filterGroup filterAtIndex:0]]];
-        [filterGroup setTerminalFilter:[filterGroup filterAtIndex:[filterGroup filterCount] - 1]];
-        @autoreleasepool {
+    if ([filterArray count] > 0) {
+        //Avoiding crashes
+        //[[filterArray objectAtIndex:[filterArray count] - 1] forceProcessingAtSize:size];
+        if([filterArray count] > 1){
+            for (NSInteger index = 0; index < [filterArray count] - 1; index++) {
+                [[filterArray objectAtIndex:index] addTarget:[filterArray objectAtIndex:index + 1]];
+            }
             GPUImagePicture* base = [[GPUImagePicture alloc] initWithImage:baseImage];
-            [base addTarget:filterGroup];
+            [base addTarget:[filterArray objectAtIndex:0]];
             [base processImage];
-            baseImage = [filterGroup imageFromCurrentlyProcessedOutput];
+            baseImage = [[filterArray objectAtIndex:[filterArray count] - 1] imageFromCurrentlyProcessedOutput];
+        }else{
+            GPUImagePicture* base = [[GPUImagePicture alloc] initWithImage:baseImage];
+            [base addTarget:[filterArray objectAtIndex:0]];
+            [base processImage];
+            baseImage = [[filterArray objectAtIndex:0] imageFromCurrentlyProcessedOutput];
         }
     }
     
@@ -435,6 +435,7 @@ float absf(float value){
     __block UIImage* imageResized = _imageResized;
     __block UIEditorPreviewImageView* previewImageView = _previewImageView;
     __block UIImage* blurredImage = _blurredImage;
+    __block UIImage* dialogBgImage = _dialogBgImage;
     __block EditorViewController* _self = self;
     __block UISliderContainer* adjustment = _adjustmentOpacity;
     dispatch_queue_t q_global = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
@@ -444,12 +445,18 @@ float absf(float value){
             
             imageEffected = [_self processImage:imageResized];
             
+            
             GPUImageGaussianBlurFilter* filter = [[GPUImageGaussianBlurFilter alloc] init];
             filter.blurRadiusInPixels = 8.0f;
             GPUImagePicture* base = [[GPUImagePicture alloc] initWithImage:imageEffected];
             [base addTarget:filter];
             [base processImage];
             blurredImage = [filter imageFromCurrentlyProcessedOutput];
+            
+            filter.blurRadiusInPixels = 30.0f;
+            [base processImage];
+            _dialogBgImage = [filter imageFromCurrentlyProcessedOutput];
+            
             
         }
         dispatch_async(q_main, ^{
@@ -621,6 +628,66 @@ float absf(float value){
 
 - (void)didPressSaveButton
 {
+    [self showSaveDialog];
+}
+
+- (void)showSaveDialog
+{
+    if(_dialogState != DialogStateDidHide){
+        return;
+    }
+    _dialogState = DialogStateWillShow;
+    
+    if(!_dialogBgImageView){
+        _dialogBgImageView = [[UIEditorDialogBgImageView alloc] init];
+        _dialogBgImageView.delegate = self;
+    }
+    _dialogBgImageView.hidden = YES;
+    _dialogBgImageView.alpha = 0.70f;
+    [_dialogBgImageView setImage:_dialogBgImage];
+    [_dialogBgImageView setCenter:_previewImageView.center];
+    [self.view addSubview:_dialogBgImageView];
+    
+    CGFloat width = _dialogBgImage.size.width * [UIScreen screenSize].height / _dialogBgImage.size.height;
+    CGFloat height = [UIScreen screenSize].height;
+    CGRect frame = CGRectMake(0.0f, 0.0f, width, height);
+    _dialogBgImageView.frame = frame;
+    _dialogBgImageView.center = _previewImageView.center;
+    frame = _dialogBgImageView.frame;
+    _dialogBgImageView.frame = _previewImageView.frame;
+    _dialogBgImageView.hidden = NO;
+    
+    CGPoint center = _previewImageView.center;
+    
+    __block UIImageView* _bgView = _dialogBgImageView;
+    [UIView animateWithDuration:0.20f animations:^{
+        _bgView.frame = frame;
+        _bgView.center = center;
+        _bgView.alpha = 1.0f;
+    } completion:^(BOOL finished){
+        _dialogState = DialogStateDidShow;
+    }];
+}
+
+- (void)hideSaveDialog
+{
+    if(_dialogState != DialogStateDidShow){
+        return;
+    }
+    CGRect frame = _previewImageView.frame;
+    __block UIImageView* _bgView = _dialogBgImageView;
+    [UIView animateWithDuration:0.20f animations:^{
+        _bgView.frame = frame;
+        _bgView.alpha = 0.70f;
+    } completion:^(BOOL finished){
+        _dialogState = DialogStateDidHide;
+        [_bgView removeFromSuperview];
+    }];
+}
+
+- (void)saveImage
+{
+    
     if (_isSaving) {
         LOG(@"sorry now saving.");
         return;
@@ -651,6 +718,7 @@ float absf(float value){
         });
         
     });
+
 }
 
 - (void)lockAllSliders
@@ -715,6 +783,30 @@ float absf(float value){
     _isApplying = NO;
 }
 
+- (void)previewDidTouchDown:(UIEditorPreviewImageView *)preview
+{
+    if(_dialogState == DialogStateDidHide){
+        [preview toggleOriginalImage:YES];
+        return;
+    }
+}
+
+- (void)previewDidTouchUp:(UIEditorPreviewImageView *)preview
+{
+    if(_dialogState == DialogStateDidHide){
+        [preview toggleOriginalImage:NO];
+        return;
+    }
+}
+
+- (void)touchesBeganWithBackgroundImageView:(UIEditorDialogBgImageView *)slider
+{
+    
+}
+- (void)touchesEndedWithBackgroundImageView:(UIEditorDialogBgImageView *)slider
+{
+    [self hideSaveDialog];
+}
 - (void)slider:(UIEditorSliderView*)slider DidValueChange:(CGFloat)value
 {
     if (_isApplying) {

@@ -10,22 +10,34 @@
 
 @implementation SaveViewController
 
-- (id)initWithFrame:(CGRect)frame
+- (id)init
 {
-    self = [super initWithFrame:frame];
+    self = [super init];
     if (self) {
         // Initialization code
     }
     return self;
 }
 
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect
+- (void)viewDidLoad
 {
-    // Drawing code
+    [super viewDidLoad];
+    
+    
+    //// Layout
+    [self.view setBackgroundColor:[UIColor colorWithWhite:26.0f/255.0f alpha:1.0]];
+    UINavigationBarView* bar = [[UINavigationBarView alloc] initWithPosition:NavigationBarViewPositionTop];
+    UICloseButton* buttonClose = [[UICloseButton alloc] init];
+    [buttonClose addTarget:self action:@selector(didPressCloseButton) forControlEvents:UIControlEventTouchUpInside];
+    [bar appendButtonToLeft:buttonClose];
+    [bar setTitle:NSLocalizedString(@"SAVE", nil)];
+    [self.view addSubview:bar];
+
 }
-*/
+
+- (void)didPressCloseButton
+{
+    [self.navigationController popViewControllerAnimated:YES];
+}
 
 @end

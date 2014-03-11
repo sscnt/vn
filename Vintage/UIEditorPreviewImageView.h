@@ -12,6 +12,8 @@
 
 @protocol UIEditorPreviewDelegate
 - (void)previewIsReady:(UIEditorPreviewImageView*)preview;
+- (void)previewDidTouchDown:(UIEditorPreviewImageView*)preview;
+- (void)previewDidTouchUp:(UIEditorPreviewImageView*)preview;
 @end
 
 @interface UIEditorPreviewImageView : UISelectionPreviewImageView
@@ -27,5 +29,8 @@
 - (void)toggleBlurredImage:(BOOL)show;
 - (void)toggleBlurredImage:(BOOL)show WithDuration:(CGFloat)duration;
 - (void)toggleOriginalImage:(BOOL)show;
+
+- (void)didTouchUp;
+- (void)didTouchDown;
 
 @end
