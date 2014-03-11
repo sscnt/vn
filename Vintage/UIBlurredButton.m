@@ -77,6 +77,7 @@
         [picture addTarget:softlight];
         [picture processImage];
         imageBg = [softlight imageFromCurrentlyProcessedOutput];
+    
         
         dispatch_async(q_main, ^{
             [_self setBackgroundImage:imageBg forState:UIControlStateNormal];

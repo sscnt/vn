@@ -193,6 +193,15 @@
     [self.navigationController popViewControllerAnimated:YES];
 }
 
+- (BOOL)shouldAutorotate
+{
+    return NO;
+}
+
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
+    return NO;
+}
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];

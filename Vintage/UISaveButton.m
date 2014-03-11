@@ -17,7 +17,7 @@
     if (self) {
         self.backgroundColor = [UIColor colorWithRed:46.0f/255.0f green:99.0f/255.0f blue:143.0f/255.0f alpha:1.0f];
         
-        UIImageView* view = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"save-60.png"]];
+        UIImageView* view = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"save-cloud-60.png"]];
         view.center = CGPointMake(frame.size.width / 2.0f, 22.0f);
         [self addSubview:view];
     }

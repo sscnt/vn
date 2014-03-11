@@ -64,7 +64,7 @@ float absf(float value){
     _sliderOpacity.titlePosition = SliderViewTitlePositionCenter;
     _sliderOpacity.defaultValue = 1.0f;
     //////// Adjustment
-    _adjustmentOpacity = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, [UIScreen screenSize].width, _sliderOpacity.bounds.size.height + 20.0f)];
+    _adjustmentOpacity = [[UISliderContainer alloc] initWithFrame:CGRectMake(0.0f, 0.0f, [UIScreen screenSize].width, _sliderOpacity.bounds.size.height + 20.0f)];
     _adjustmentOpacity.tag = AdjustmentViewIdOpacity;
     [_adjustmentOpacity addSubview:_sliderOpacity];
     _adjustmentOpacity.hidden = YES;
@@ -96,7 +96,7 @@ float absf(float value){
     _sliderVignette.titlePosition = SliderViewTitlePositionCenter;
     _sliderVignette.defaultValue = 0.0f;
     //////// Adjustment
-    _adjustmentBrightness = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, [UIScreen screenSize].width, _sliderBrightness.bounds.size.height * 3.0f + 20.0f)];
+    _adjustmentBrightness = [[UISliderContainer alloc] initWithFrame:CGRectMake(0.0f, 0.0f, [UIScreen screenSize].width, _sliderBrightness.bounds.size.height * 3.0f + 20.0f)];
     _adjustmentBrightness.tag = AdjustmentViewIdBrightness;
     [_adjustmentBrightness addSubview:_sliderBrightness];
     [_adjustmentBrightness addSubview:_sliderLevels];
@@ -122,7 +122,7 @@ float absf(float value){
     _sliderClarity.titlePosition = SliderViewTitlePositionCenter;
     _sliderClarity.defaultValue = 0.0f;
     //////// Adjustment
-    _adjustmentContrast = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, [UIScreen screenSize].width, _sliderContrast.bounds.size.height * 2.0f + 20.0f)];
+    _adjustmentContrast = [[UISliderContainer alloc] initWithFrame:CGRectMake(0.0f, 0.0f, [UIScreen screenSize].width, _sliderContrast.bounds.size.height * 2.0f + 20.0f)];
     _adjustmentContrast.tag = AdjustmentViewIdContrast;
     [_adjustmentContrast addSubview:_sliderContrast];
     [_adjustmentContrast addSubview:_sliderClarity];
@@ -155,7 +155,7 @@ float absf(float value){
     _sliderKelvin.titlePosition = SliderViewTitlePositionLeft;
     _sliderKelvin.defaultValue = 0.5f;
     //////// Adjustment
-    _adjustmentColor = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, [UIScreen screenSize].width, _sliderKelvin.bounds.size.height * 3.0f + 20.0f)];
+    _adjustmentColor = [[UISliderContainer alloc] initWithFrame:CGRectMake(0.0f, 0.0f, [UIScreen screenSize].width, _sliderKelvin.bounds.size.height * 3.0f + 20.0f)];
     _adjustmentColor.tag = AdjustmentViewIdColor;
     [_adjustmentColor addSubview:_sliderSaturation];
     [_adjustmentColor addSubview:_sliderVibrance];
@@ -436,7 +436,7 @@ float absf(float value){
     __block UIEditorPreviewImageView* previewImageView = _previewImageView;
     __block UIImage* blurredImage = _blurredImage;
     __block EditorViewController* _self = self;
-    __block UIView* adjustment = _adjustmentOpacity;
+    __block UISliderContainer* adjustment = _adjustmentOpacity;
     dispatch_queue_t q_global = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
     dispatch_queue_t q_main = dispatch_get_main_queue();
     dispatch_async(q_global, ^{
@@ -457,6 +457,7 @@ float absf(float value){
                 previewImageView.imageBlurred = blurredImage;
                 [previewImageView setPreviewImage:imageEffected];
                 [previewImageView toggleBlurredImage:NO WithDuration:0.20f];
+                [_self unlockAllSliders];
             }else{
                 
                 dispatch_queue_t q_global = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
@@ -531,14 +532,14 @@ float absf(float value){
     return [normalBlend imageFromCurrentlyProcessedOutput];
 }
 
-- (void)slideDownAdjustment:(UIView *)adjustment Completion:(void (^)(BOOL))completion
+- (void)slideDownAdjustment:(UISliderContainer *)adjustment Completion:(void (^)(BOOL))completion
 {
     if (_isSliding) {
         LOG(@"sliding.");
         return;
     }
     _isSliding = YES;
-    __block UIView* _adjustment = adjustment;
+    __block UISliderContainer* _adjustment = adjustment;
     [UIView animateWithDuration:0.10f animations:^{
         _adjustment.frame = CGRectMake(adjustment.frame.origin.x, [UIScreen screenSize].height - 44.0f, _adjustment.frame.size.width, _adjustment.frame.size.height);
     } completion:^(BOOL finished){
@@ -550,7 +551,7 @@ float absf(float value){
     }];
 }
 
-- (void)slideUpAdjustment:(UIView *)adjustment Completion:(void (^)(BOOL))completion
+- (void)slideUpAdjustment:(UISliderContainer *)adjustment Completion:(void (^)(BOOL))completion
 {
     if (_isSliding) {
         LOG(@"sliding.");
@@ -559,7 +560,7 @@ float absf(float value){
     _isSliding = YES;
     [adjustment setY:[UIScreen screenSize].height - 44.0f];
     adjustment.hidden = NO;
-    __block UIView* _adjustment = adjustment;
+    __block UISliderContainer* _adjustment = adjustment;
     _adjustmentCurrent = adjustment;
     [UIView animateWithDuration:0.10f animations:^{
         _adjustment.frame = CGRectMake(_adjustment.frame.origin.x, [UIScreen screenSize].height - _adjustment.bounds.size.height - 44.0f, _adjustment.frame.size.width, _adjustment.frame.size.height);
@@ -571,10 +572,10 @@ float absf(float value){
     }];
 }
 
-- (void)slideDownCurrentAdjustmentAndSlideUpAdjustment:(UIView *)adjustment
+- (void)slideDownCurrentAdjustmentAndSlideUpAdjustment:(UISliderContainer *)adjustment
 {
     if (_adjustmentCurrent) {
-        __block UIView* _adjustment = adjustment;
+        __block UISliderContainer* _adjustment = adjustment;
         __block EditorViewController* _self = self;
         [self slideDownAdjustment:_adjustmentCurrent Completion:^(BOOL finished){
             [_self slideUpAdjustment:_adjustment Completion:nil];
@@ -599,7 +600,7 @@ float absf(float value){
     _buttonContrast.selected = NO;
     _buttonOpacity.selected = NO;
     button.selected = YES;
-    UIView* adjustment;
+    UISliderContainer* adjustment;
     switch (button.tag) {
         case AdjustmentViewIdOpacity:
             adjustment = _adjustmentOpacity;
@@ -654,28 +655,56 @@ float absf(float value){
 
 - (void)lockAllSliders
 {
-    _sliderContrast.locked = YES;
-    _sliderClarity.locked = YES;
-    _sliderLevels.locked = YES;
-    _sliderSaturation.locked = YES;
-    _sliderVibrance.locked = YES;
-    _sliderVignette.locked = YES;
-    _sliderKelvin.locked = YES;
-    _sliderOpacity.locked = YES;
-    _sliderBrightness.locked = YES;
+    _adjustmentCurrent.locked = YES;
+    if(_adjustmentCurrent == _adjustmentBrightness){
+        _sliderBrightness.locked = YES;
+        _sliderLevels.locked = YES;
+        _sliderVignette.locked = YES;
+        return;
+    }
+    if(_adjustmentCurrent == _adjustmentColor){
+        _sliderSaturation.locked = YES;
+        _sliderVibrance.locked = YES;
+        _sliderKelvin.locked = YES;
+        return;
+    }
+    if(_adjustmentCurrent == _adjustmentContrast){
+        _sliderContrast.locked = YES;
+        _sliderClarity.locked = YES;
+        return;
+    }
+    if(_adjustmentCurrent == _adjustmentOpacity){
+        _sliderOpacity.locked = YES;
+        return;
+    }
 }
 
 - (void)unlockAllSliders
 {
-    _sliderContrast.locked = NO;
-    _sliderClarity.locked = NO;
-    _sliderLevels.locked = NO;
-    _sliderSaturation.locked = NO;
-    _sliderVibrance.locked = NO;
-    _sliderVignette.locked = NO;
-    _sliderKelvin.locked = NO;
-    _sliderOpacity.locked = NO;
-    _sliderBrightness.locked = NO;
+    
+    _adjustmentCurrent.locked = NO;
+    if(_adjustmentCurrent == _adjustmentBrightness){
+        _sliderBrightness.locked = NO;
+        _sliderLevels.locked = NO;
+        _sliderVignette.locked = NO;
+        return;
+    }
+    if(_adjustmentCurrent == _adjustmentColor){
+        _sliderSaturation.locked = NO;
+        _sliderVibrance.locked = NO;
+        _sliderKelvin.locked = NO;
+        return;
+    }
+    if(_adjustmentCurrent == _adjustmentContrast){
+        _sliderContrast.locked = NO;
+        _sliderClarity.locked = NO;
+        return;
+    }
+    if(_adjustmentCurrent == _adjustmentOpacity){
+        _sliderOpacity.locked = NO;
+        return;
+    }
+
 }
 
 #pragma mark delegate
@@ -684,7 +713,6 @@ float absf(float value){
 {
     LOG(@"Did apply effect");
     _isApplying = NO;
-    [self unlockAllSliders];
 }
 
 - (void)slider:(UIEditorSliderView*)slider DidValueChange:(CGFloat)value
@@ -744,6 +772,7 @@ float absf(float value){
     if (_isApplying) {
         
     }else{
+        [self lockAllSliders];
         [self applyValueWithSlider:slider];
         [self applyEffect];        
     }
@@ -818,6 +847,15 @@ float absf(float value){
             break;
     }
 
+}
+
+- (BOOL)shouldAutorotate
+{
+    return NO;
+}
+
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
+    return NO;
 }
 
 - (void)didReceiveMemoryWarning

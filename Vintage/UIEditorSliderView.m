@@ -34,11 +34,6 @@
 {
     _locked = locked;
     _slider.locked = locked;
-    if(locked){
-        self.alpha = 0.20f;
-    }else{
-        self.alpha = 0.70f;
-    }
 }
 
 - (CGFloat)value

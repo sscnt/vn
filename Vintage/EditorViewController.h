@@ -11,6 +11,7 @@
 #import "GPUImageEffects.h"
 #import "UINavigationBarView.h"
 #import "UICloseButton.h"
+#import "UISliderContainer.h"
 #import "UIEditorPreviewImageView.h"
 #import "UISaveButton.h"
 #import "SVProgressHUD.h"
@@ -46,11 +47,11 @@ typedef NS_ENUM(NSInteger, AdjustmentViewId){
     UINavigationBarButton* _buttonBrightness;
     UINavigationBarButton* _buttonColor;
     UINavigationBarButton* _buttonContrast;
-    UIView* _adjustmentOpacity;
-    UIView* _adjustmentBrightness;
-    UIView* _adjustmentColor;
-    UIView* _adjustmentContrast;
-    UIView* _adjustmentCurrent;
+    UISliderContainer* _adjustmentOpacity;
+    UISliderContainer* _adjustmentBrightness;
+    UISliderContainer* _adjustmentColor;
+    UISliderContainer* _adjustmentContrast;
+    UISliderContainer* _adjustmentCurrent;
     CGFloat _valueOpacity;
     CGFloat _valueBrightness;
     CGFloat _valueLevels;
@@ -78,9 +79,9 @@ typedef NS_ENUM(NSInteger, AdjustmentViewId){
 - (void)didPressCloseButton;
 - (void)didPressSaveButton;
 - (GPUImageEffects*)effect:(EffectId)effectId;
-- (void)slideDownAdjustment:(UIView*)adjustment Completion:(void (^)(BOOL))completion;
-- (void)slideUpAdjustment:(UIView*)adjustment Completion:(void (^)(BOOL))completion;
-- (void)slideDownCurrentAdjustmentAndSlideUpAdjustment:(UIView *)adjustment;
+- (void)slideDownAdjustment:(UISliderContainer*)adjustment Completion:(void (^)(BOOL))completion;
+- (void)slideUpAdjustment:(UISliderContainer*)adjustment Completion:(void (^)(BOOL))completion;
+- (void)slideDownCurrentAdjustmentAndSlideUpAdjustment:(UISliderContainer *)adjustment;
 
 - (void)lockAllSliders;
 - (void)unlockAllSliders;
