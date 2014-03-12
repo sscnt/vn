@@ -31,6 +31,10 @@
 @property (nonatomic, assign) float kelvin;
 @property (nonatomic, assign) float kelvinStrength;
 
+@property (nonatomic, assign) CGFloat saturation;
+
+@property (nonatomic, assign) CGFloat vibrance;
+
 #pragma mark Levels
 - (void)setLevelsRedMin:(CGFloat)min gamma:(CGFloat)mid max:(CGFloat)max minOut:(CGFloat)minOut maxOut:(CGFloat)maxOut;
 - (void)setLevelsRedMin:(CGFloat)min gamma:(CGFloat)mid max:(CGFloat)max;

@@ -310,17 +310,8 @@ float absf(float value){
 {
     
     UIImage* baseImage = inputImage;
-    NSMutableArray* filterArray = [NSMutableArray array];
     
     GPUImageAllAdjustmentsInOneFilter* adjustmentFilter = [[GPUImageAllAdjustmentsInOneFilter alloc] init];
-    
-    GPUimageTumblinBrightnessFilter* brightnessFilter;
-    GPUImageTumblinLevelsFilter* levelsFilter;
-    GPUImageContrastFilter* contrastFilter;
-    GPUImageClarityFilter* clarityFilter;
-    GPUKelvinFilter* kelvinFilter;
-    GPUImageNaturalSaturationFilter* saturationFilter;
-    GPUImageVibranceFilter* vibranceFilter;
     
     //// Brightness
     if (_sliderBrightness.value != 0.5f) {
@@ -357,18 +348,13 @@ float absf(float value){
     //// Saturation
     if (_sliderSaturation.value != 0.5f) {
         LOG(@"saturation enabled. %f", _sliderSaturation.value);
-        saturationFilter = [[GPUImageNaturalSaturationFilter alloc] init];
-        saturationFilter.saturation = _valueSaturation;
-        [filterArray addObject:saturationFilter];
+        adjustmentFilter.saturation = _valueSaturation;
     }
     
     //// Vibrance
     if (_sliderVibrance.value != 0.5f) {
         LOG(@"vibrance enabled. %f", _sliderVibrance.value);
-        vibranceFilter = [[GPUImageVibranceFilter alloc] init];
-        vibranceFilter.vibrance = _valueVibrance;
-        [filterArray addObject:vibranceFilter];
-        
+        adjustmentFilter.vibrance = _valueVibrance;
     }
     
     GPUImagePicture* base = [[GPUImagePicture alloc] initWithImage:baseImage];

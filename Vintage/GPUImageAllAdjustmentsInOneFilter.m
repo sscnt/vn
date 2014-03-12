@@ -43,6 +43,8 @@ NSString *const kGPUImageAllAdjustmentsInOneFilterFragmentShaderString = SHADER_
  uniform mediump float contrast;
  uniform mediump float kelvin;
  uniform mediump float kelvinStrength;
+ uniform mediump float saturation;
+ uniform mediump float vibrance;
  
  mediump vec3 rgb2hsl(mediump vec3 color)
  {
@@ -66,9 +68,9 @@ NSString *const kGPUImageAllAdjustmentsInOneFilterFragmentShaderString = SHADER_
          else
              hsl.y = delta / (2.0 - fmax - fmin); // Saturation
          
-         lowp float deltaR = (((fmax - color.r) / 6.0) + (delta / 2.0)) / delta;
-         lowp float deltaG = (((fmax - color.g) / 6.0) + (delta / 2.0)) / delta;
-         lowp float deltaB = (((fmax - color.b) / 6.0) + (delta / 2.0)) / delta;
+         mediump float deltaR = (((fmax - color.r) / 6.0) + (delta / 2.0)) / delta;
+         mediump float deltaG = (((fmax - color.g) / 6.0) + (delta / 2.0)) / delta;
+         mediump float deltaB = (((fmax - color.b) / 6.0) + (delta / 2.0)) / delta;
          
          if (color.r == fmax )
              hsl.x = deltaB - deltaG; // Hue
@@ -85,7 +87,7 @@ NSString *const kGPUImageAllAdjustmentsInOneFilterFragmentShaderString = SHADER_
      
      return hsl;
  }
- mediump float hue2rgb(lowp float f1, lowp float f2, lowp float hue)
+ mediump float hue2rgb(mediump float f1, mediump float f2, mediump float hue)
  {
      if (hue < 0.0)
          hue += 1.0;
@@ -128,6 +130,90 @@ NSString *const kGPUImageAllAdjustmentsInOneFilterFragmentShaderString = SHADER_
      return rgb;
  }
  
+ mediump vec3 hsv2rgb(mediump vec3 color){
+     mediump float h = color.r;
+     mediump float s = color.g;
+     mediump float v = color.b;
+     mediump float r;
+     mediump float g;
+     mediump float b;
+     mediump float m60 = 0.01665;
+     int hi = int(mod(float(floor(h * m60)), 6.0));
+     mediump float f = (h * m60) - float(hi);
+     mediump float p = v * (1.0 - s);
+     mediump float q = v * (1.0 - s * f);
+     mediump float t = v * (1.0 - s * (1.0 - f));
+     
+     if(hi == 0){
+         r = v;
+         g = t;
+         b = p;
+     } else if(hi == 1){
+         r = q;
+         g = v;
+         b = p;
+     } else if(hi == 2){
+         r = p;
+         g = v;
+         b = t;
+     } else if(hi == 3){
+         r = p;
+         g = q;
+         b = v;
+     } else if(hi == 4){
+         r = t;
+         g = p;
+         b = v;
+     } else if(hi == 5){
+         r = v;
+         g = p;
+         b = q;
+     } else {
+         r = v;
+         g = t;
+         b = p;
+     }
+     return mediump vec3(r, g, b);
+     
+ }
+ 
+ mediump vec3 rgb2hsv(mediump vec3 color){
+     mediump float r = color.r;
+     mediump float g = color.g;
+     mediump float b = color.b;
+     
+     mediump float max = max(r, max(g, b));
+     mediump float min = min(r, min(g, b));
+     mediump float h = 0.0;
+     if(max < min){
+         max = 0.0;
+         min = 0.0;
+     }
+     
+     if(max == min){
+         
+     } else if(max == r){
+         h = 60.0 * (g - b) / (max - min);
+     } else if(max == g){
+         h = 60.0 * (b - r) / (max - min) + 120.0;
+     } else if(max == b){
+         h = 60.0 * (r - g) / (max - min) + 240.0;
+     }
+     if(h < 0.0){
+         h += 360.0;
+     }
+     h = mod(h, 360.0);
+     
+     mediump float s;
+     if(max == 0.0) {
+         s = 0.0;
+     } else {
+         s = (max - min) / max;
+     }
+     mediump float v = max;
+     
+     return mediump vec3(h, s, v);
+ }
  mediump vec3 rgb2yuv(mediump vec3 rgb){
      mediump float r = rgb.r * 0.8588 + 0.0625;
      mediump float g = rgb.g * 0.8588 + 0.0625;
@@ -153,7 +239,67 @@ NSString *const kGPUImageAllAdjustmentsInOneFilterFragmentShaderString = SHADER_
      b = max(0.0, min(1.0, b));
      return mediump vec3(r, g, b);
  }
-
+ 
+mediump vec3 rgb2xyz(mediump vec3 color){
+     mediump mat3 adobe;
+     adobe[0] = vec3(0.576669, 0.297345, 0.027031);
+     adobe[1] = vec3(0.185558, 0.627364, 0.070689);
+     adobe[2] = vec3(0.188229, 0.075291, 0.991338);
+     return adobe * color;
+ }
+ 
+ mediump vec3 xyz2rgb(mediump vec3 color){
+     mediump mat3 adobe;
+     adobe[0] = vec3(2.041588, -0.969244, 0.013444);
+     adobe[1] = vec3(-0.565007, 1.875968, -0.118362);
+     adobe[2] = vec3(-0.344731, 0.041555, 1.015175);
+     return adobe * color;
+ }
+ 
+mediump float xyz2labFt(mediump float t){
+     if(t > 0.00885645167){
+         return 116.0 * pow(t, 0.33333333333) - 16.0;
+     } else{
+         return 903.296296296 * t;
+     }
+ }
+ 
+ mediump vec3 xyz2lab(mediump vec3 color){
+     mediump float l = xyz2labFt(color.y);
+     mediump float a = 4.31034482759 * (xyz2labFt(color.x / 0.9642) - l);
+     mediump float b = 1.72413793103 * (l - xyz2labFt(color.z / 0.8249));
+     return mediump vec3(l, a, b);
+ }
+ 
+ mediump vec3 lab2xyz(mediump vec3 color){
+     mediump float fy = (color.x + 16.0) / 116.0;
+     mediump float fx = fy + (color.y / 500.0);
+     mediump float fz = fy - (color.z / 200.0);
+     mediump float x;
+     mediump float y;
+     mediump float z;
+     if(fy > 0.20689655172)
+         y = fy * fy * fy;
+     else
+         y = 0.00110705645 * (116.0 * fy - 16.0);
+     if(fx > 0.20689655172)
+         x = fx * fx * fx * 0.9642;
+     else
+         x = 0.00110705645 * (116.0 * fx - 16.0) * 0.9642;
+     if(fz > 0.20689655172)
+         z = fz * fz * fz * 0.8249 ;
+     else
+         z = 0.00110705645 * (116.0 * fz - 16.0) * 0.8249;
+     return mediump vec3(x, y, z);
+ }
+ 
+ mediump vec3 rgb2lab(mediump vec3 color){
+     return xyz2lab(rgb2xyz(color));
+ }
+ 
+ mediump vec3 lab2rgb(mediump vec3 color){
+     return xyz2rgb(lab2xyz(color));
+ }
  mediump vec3 kelvinShift(mediump float kelvin, mediump float strength, mediump vec3 pixel){
      mediump float fmin = min(min(pixel.r, pixel.g), pixel.b);    //Min. value of RGB
      mediump float fmax = max(max(pixel.r, pixel.g), pixel.b);    //Max. value of RGB
@@ -224,6 +370,43 @@ NSString *const kGPUImageAllAdjustmentsInOneFilterFragmentShaderString = SHADER_
      return pixel;
  }
  
+ mediump vec3 adjustVibrance(mediump float vibrance, mediump vec3 pixel){
+     mediump vec3 hsv = rgb2hsv(pixel);
+     mediump float x = hsv.y * 2.0 - 1.0;
+     mediump float y = hsv.x / 90.0;
+     mediump float influence = 1.0 - x * x;
+     
+     mediump vec3 lab = rgb2lab(pixel);
+     mediump vec3 baselab = rgb2lab(vec3(252.0/255.0, 226.0/255.0, 196.0/255.0));
+     mediump float skin_distance = sqrt((lab.x - baselab.x) * (lab.x - baselab.x) + (lab.y - baselab.y) * (lab.y - baselab.y) + (lab.z - baselab.z) * (lab.z - baselab.z));
+     skin_distance /= 376.0;
+     
+     baselab = rgb2lab(vec3(1.0, 0.5, 0.0));
+     mediump float red_distance = sqrt((lab.x - baselab.x) * (lab.x - baselab.x) + (lab.y - baselab.y) * (lab.y - baselab.y) + (lab.z - baselab.z) * (lab.z - baselab.z));
+     red_distance /= 376.0;
+     
+     baselab = rgb2lab(vec3(0.0, 1.0, 0.0));
+     mediump float green_distance = sqrt((lab.x - baselab.x) * (lab.x - baselab.x) + (lab.y - baselab.y) * (lab.y - baselab.y) + (lab.z - baselab.z) * (lab.z - baselab.z));
+     green_distance /= 376.0;
+     
+     baselab = rgb2lab(vec3(0.0, 0.0, 1.0));
+     mediump float blue_distance = sqrt((lab.x - baselab.x) * (lab.x - baselab.x) + (lab.y - baselab.y) * (lab.y - baselab.y) + (lab.z - baselab.z) * (lab.z - baselab.z));
+     blue_distance /= 376.0;
+     
+     mediump float distance = (skin_distance + red_distance) / (blue_distance + green_distance);
+     distance = max(min(distance, 1.0), 0.0);
+     
+     influence *= distance;
+     hsv.y *= vibrance;
+     mediump vec3 rgb = hsv2rgb(hsv);
+     
+     pixel.r = influence * rgb.r + (1.0 - influence) * pixel.r;
+     pixel.g = influence * rgb.g + (1.0 - influence) * pixel.g;
+     pixel.b = influence * rgb.b + (1.0 - influence) * pixel.b;
+     
+     return pixel;
+ }
+ 
  void main()
  {
      mediump vec4 basePixel = texture2D(inputImageTexture, textureCoordinate);
@@ -235,6 +418,26 @@ NSString *const kGPUImageAllAdjustmentsInOneFilterFragmentShaderString = SHADER_
      mediump float lum;
      mediump float tmp;
      mediump float weight;
+     
+     //// Saturation
+     if(saturation != 1.0){
+         tmpvec = rgb2hsv(pixel);
+         mediump float x = tmpvec.y * 2.0 - 1.0;
+         mediump float y = tmpvec.x / 90.0;
+         weight = 1.0 - x * x;
+         
+         tmpvec.y *= saturation;
+         tmpvec = hsv2rgb(tmpvec);
+         
+         pixel.r = weight * tmpvec.r + (1.0 - weight) * pixel.r;
+         pixel.g = weight * tmpvec.g + (1.0 - weight) * pixel.g;
+         pixel.b = weight * tmpvec.b + (1.0 - weight) * pixel.b;
+     }
+     
+     //// Vibrance
+     if(vibrance != 1.0){
+         pixel = adjustVibrance(vibrance, pixel);
+     }
      
      //// Clarity
      if(clarityIntensity != 0.0){
@@ -303,6 +506,8 @@ NSString *const kGPUImageAllAdjustmentsInOneFilterFragmentShaderString = SHADER_
      if(kelvinStrength != 0.0){
          pixel = kelvinShift(kelvin, kelvinStrength, pixel);
      }
+     
+    
 
      gl_FragColor = vec4(pixel, basePixel.a);
  }
@@ -350,6 +555,12 @@ NSString *const kGPUImageAllAdjustmentsInOneFilterFragmentShaderString = SHADER_
     
     //// Kelvin
     self.kelvinStrength = 0.0f;
+    
+    //// Saturation
+    self.saturation = 1.0f;
+    
+    //// Vibrance
+    self.vibrance = 1.0f;
     
     return self;
 }
@@ -473,6 +684,23 @@ NSString *const kGPUImageAllAdjustmentsInOneFilterFragmentShaderString = SHADER_
     kelvinStrength /= 100.0f;
     [unsharpMaskFilter setFloat:kelvinStrength forUniformName:@"kelvinStrength"];
 }
+
+#pragma mark Saturation
+
+- (void)setSaturation:(CGFloat)saturation
+{
+    _saturation = MAX(MIN(saturation, 2.0), 0.01);
+    [unsharpMaskFilter setFloat:_saturation forUniformName:@"saturation"];
+}
+
+#pragma mark Vibrance
+
+- (void)setVibrance:(CGFloat)vibrance
+{
+    _vibrance = MAX(MIN(vibrance, 2.0), 0.01);
+    [unsharpMaskFilter setFloat:_vibrance forUniformName:@"vibrance"];
+}
+
 
 
 @end
