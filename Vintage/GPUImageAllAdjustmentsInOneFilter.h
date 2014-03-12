@@ -26,6 +26,8 @@
 @property (nonatomic, assign) CGFloat clarityBlurRadiusInPixels;
 @property (nonatomic, assign) CGFloat clarityIntensity;
 
+@property(readwrite, nonatomic) CGFloat contrast;
+
 #pragma mark Levels
 - (void)setLevelsRedMin:(CGFloat)min gamma:(CGFloat)mid max:(CGFloat)max minOut:(CGFloat)minOut maxOut:(CGFloat)maxOut;
 - (void)setLevelsRedMin:(CGFloat)min gamma:(CGFloat)mid max:(CGFloat)max;

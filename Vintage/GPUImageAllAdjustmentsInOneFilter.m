@@ -40,6 +40,7 @@ NSString *const kGPUImageAllAdjustmentsInOneFilterFragmentShaderString = SHADER_
  uniform mediump vec3 levelsMax;
  uniform mediump vec3 levelsMinOutput;
  uniform mediump vec3 levelsMaxOutput;
+ uniform mediump float contrast;
  
  
  mediump vec3 rgb2yuv(mediump vec3 rgb){
@@ -138,6 +139,11 @@ NSString *const kGPUImageAllAdjustmentsInOneFilterFragmentShaderString = SHADER_
              pixel = tmpvec;
          }
      }
+     
+     //// Contrast
+     if(contrast != 1.0){
+         pixel = vec3(((pixel.rgb - vec3(0.5)) * contrast + vec3(0.5)));
+     }
 
      gl_FragColor = vec4(pixel, basePixel.a);
  }
@@ -179,6 +185,9 @@ NSString *const kGPUImageAllAdjustmentsInOneFilterFragmentShaderString = SHADER_
     [self setLevelsRedMin:0.0 gamma:1.0 max:1.0 minOut:0.0 maxOut:1.0];
     [self setLevelsGreenMin:0.0 gamma:1.0 max:1.0 minOut:0.0 maxOut:1.0];
     [self setLevelsBlueMin:0.0 gamma:1.0 max:1.0 minOut:0.0 maxOut:1.0];
+    
+    //// Contrast
+    self.contrast = 1.0f;
     
     return self;
 }
@@ -268,6 +277,13 @@ NSString *const kGPUImageAllAdjustmentsInOneFilterFragmentShaderString = SHADER_
     [self setLevelsBlueMin:min gamma:mid max:max minOut:0.0 maxOut:1.0];
 }
 
+#pragma mark Contrast
+
+- (void)setContrast:(CGFloat)newValue;
+{
+    _contrast = newValue;
+    [unsharpMaskFilter setFloat:newValue forUniformName:@"contrast"];
+}
 
 
 @end

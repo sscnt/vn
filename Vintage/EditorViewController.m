@@ -337,9 +337,7 @@ float absf(float value){
     //// Contrast
     if (_sliderContrast.value != 0.5f) {
         LOG(@"contrast enabled. %f", _sliderContrast.value);
-        contrastFilter = [[GPUImageContrastFilter alloc] init];
-        contrastFilter.contrast = _valueContrast;
-        [filterArray addObject:contrastFilter];
+        adjustmentFilter.contrast = _valueContrast;
     }
     
     //// Clarity
