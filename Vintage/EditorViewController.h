@@ -24,6 +24,8 @@
 #import "GPUImageNaturalSaturationFilter.h"
 #import "GPUImageClarityFilter.h"
 #import "UIEditorDialogBgImageView.h"
+#import "UIResolutionSelectorView.h"
+#import "GPUImageAllAdjustmentsInOneFilter.h"
 
 typedef NS_ENUM(NSInteger, AdjustmentViewId){
     AdjustmentViewIdOpacity = 1,
@@ -39,7 +41,7 @@ typedef NS_ENUM(NSInteger, DialogState){
     DialogStateDidHide,
 };
 
-@interface EditorViewController : UIViewController <UIEditorSliderViewDelegate, UIEditorPreviewDelegate, UIEditorDialogBgImageViewDelegate>
+@interface EditorViewController : UIViewController <UIEditorSliderViewDelegate, UIEditorPreviewDelegate, UIEditorDialogBgImageViewDelegate, UIResolutionSelectorViewDelegate>
 {
     UIEditorPreviewImageView* _previewImageView;
     UIEditorSliderView* _sliderOpacity;
@@ -64,6 +66,7 @@ typedef NS_ENUM(NSInteger, DialogState){
     UISliderContainer* _adjustmentContrast;
     UISliderContainer* _adjustmentCurrent;
     UIEditorDialogBgImageView* _dialogBgImageView;
+    UIResolutionSelectorView* _resolutionSelector;
     CGFloat _valueOpacity;
     CGFloat _valueBrightness;
     CGFloat _valueLevels;

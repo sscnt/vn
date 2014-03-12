@@ -10,9 +10,10 @@
 		5801C55D18B1A60A0059818E /* opacity-60@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5801C55C18B1A60A0059818E /* opacity-60@2x.png */; };
 		5801C56318B1ACB90059818E /* splash@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5801C56118B1ACB90059818E /* splash@2x.png */; };
 		5801C56418B1ACB90059818E /* splash-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5801C56218B1ACB90059818E /* splash-568h@2x.png */; };
+		581355DC18D04918001CCFDD /* UIResolutionSelectorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 581355DB18D04918001CCFDD /* UIResolutionSelectorView.m */; };
+		581355DF18D04ABC001CCFDD /* UIResolutionSelectButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 581355DE18D04ABC001CCFDD /* UIResolutionSelectButton.m */; };
 		581595E818AEBFB400621C3F /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 581595EA18AEBFB400621C3F /* Localizable.strings */; };
 		5826CEAB18AE14230091E303 /* UIScrollView+extend.m in Sources */ = {isa = PBXBuildFile; fileRef = 5826CEAA18AE14230091E303 /* UIScrollView+extend.m */; };
-		582747A018CE0CE000642ED8 /* SaveViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5827479F18CE0CE000642ED8 /* SaveViewController.m */; };
 		588F11F818AE1FC700787045 /* GPUImagePhotoFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 588F11F718AE1FC700787045 /* GPUImagePhotoFilter.m */; };
 		588F11FC18AE1FEC00787045 /* GPUImageGradientMapFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 588F11FB18AE1FEC00787045 /* GPUImageGradientMapFilter.m */; };
 		588F120018AE203400787045 /* GPUImageHueSaturationFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 588F11FF18AE203400787045 /* GPUImageHueSaturationFilter.m */; };
@@ -142,6 +143,9 @@
 		58FCAD2C18AFAECA001559F0 /* camera-36-70@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 58FCAD2A18AFAECA001559F0 /* camera-36-70@2x.png */; };
 		58FCAD3018AFC2D1001559F0 /* UISelectionPreviewImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 58FCAD2F18AFC2D1001559F0 /* UISelectionPreviewImageView.m */; };
 		58FCAD3518AFC725001559F0 /* UIImage+extend.m in Sources */ = {isa = PBXBuildFile; fileRef = 58FCAD3418AFC725001559F0 /* UIImage+extend.m */; };
+		58FD375418D08D4700319BA0 /* UISaveToVIew.m in Sources */ = {isa = PBXBuildFile; fileRef = 58FD375318D08D4700319BA0 /* UISaveToVIew.m */; };
+		58FD375A18D0926C00319BA0 /* UISaveToButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 58FD375918D0926C00319BA0 /* UISaveToButton.m */; };
+		58FD375D18D0A05800319BA0 /* GPUImageAllAdjustmentsInOneFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 58FD375C18D0A05800319BA0 /* GPUImageAllAdjustmentsInOneFilter.m */; };
 		58FE950918AF995C005A4DFE /* camera-40-40@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 58FE950718AF995C005A4DFE /* camera-40-40@2x.png */; };
 		58FE950A18AF995C005A4DFE /* camera-40-70@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 58FE950818AF995C005A4DFE /* camera-40-70@2x.png */; };
 		58FE950D18AF9BDC005A4DFE /* chunkfive.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 58FE950B18AF9BDC005A4DFE /* chunkfive.ttf */; };
@@ -214,13 +218,15 @@
 		5801C55C18B1A60A0059818E /* opacity-60@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "opacity-60@2x.png"; sourceTree = "<group>"; };
 		5801C56118B1ACB90059818E /* splash@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "splash@2x.png"; sourceTree = "<group>"; };
 		5801C56218B1ACB90059818E /* splash-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "splash-568h@2x.png"; sourceTree = "<group>"; };
+		581355DA18D04918001CCFDD /* UIResolutionSelectorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIResolutionSelectorView.h; sourceTree = "<group>"; };
+		581355DB18D04918001CCFDD /* UIResolutionSelectorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIResolutionSelectorView.m; sourceTree = "<group>"; };
+		581355DD18D04ABC001CCFDD /* UIResolutionSelectButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIResolutionSelectButton.h; sourceTree = "<group>"; };
+		581355DE18D04ABC001CCFDD /* UIResolutionSelectButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIResolutionSelectButton.m; sourceTree = "<group>"; };
 		581595E918AEBFB400621C3F /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
 		581595EE18AEBFB800621C3F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		581595EF18AEBFB900621C3F /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
 		5826CEA918AE14230091E303 /* UIScrollView+extend.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+extend.h"; sourceTree = "<group>"; };
 		5826CEAA18AE14230091E303 /* UIScrollView+extend.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+extend.m"; sourceTree = "<group>"; };
-		5827479E18CE0CE000642ED8 /* SaveViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SaveViewController.h; sourceTree = "<group>"; };
-		5827479F18CE0CE000642ED8 /* SaveViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SaveViewController.m; sourceTree = "<group>"; };
 		588F11F618AE1FC700787045 /* GPUImagePhotoFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPUImagePhotoFilter.h; sourceTree = "<group>"; };
 		588F11F718AE1FC700787045 /* GPUImagePhotoFilter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GPUImagePhotoFilter.m; sourceTree = "<group>"; };
 		588F11FA18AE1FEC00787045 /* GPUImageGradientMapFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPUImageGradientMapFilter.h; sourceTree = "<group>"; };
@@ -406,6 +412,12 @@
 		58FCAD2F18AFC2D1001559F0 /* UISelectionPreviewImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UISelectionPreviewImageView.m; sourceTree = "<group>"; };
 		58FCAD3318AFC725001559F0 /* UIImage+extend.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+extend.h"; sourceTree = "<group>"; };
 		58FCAD3418AFC725001559F0 /* UIImage+extend.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+extend.m"; sourceTree = "<group>"; };
+		58FD375218D08D4700319BA0 /* UISaveToVIew.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UISaveToVIew.h; sourceTree = "<group>"; };
+		58FD375318D08D4700319BA0 /* UISaveToVIew.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UISaveToVIew.m; sourceTree = "<group>"; };
+		58FD375818D0926C00319BA0 /* UISaveToButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UISaveToButton.h; sourceTree = "<group>"; };
+		58FD375918D0926C00319BA0 /* UISaveToButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UISaveToButton.m; sourceTree = "<group>"; };
+		58FD375B18D0A05800319BA0 /* GPUImageAllAdjustmentsInOneFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPUImageAllAdjustmentsInOneFilter.h; sourceTree = "<group>"; };
+		58FD375C18D0A05800319BA0 /* GPUImageAllAdjustmentsInOneFilter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GPUImageAllAdjustmentsInOneFilter.m; sourceTree = "<group>"; };
 		58FE950718AF995C005A4DFE /* camera-40-40@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "camera-40-40@2x.png"; sourceTree = "<group>"; };
 		58FE950818AF995C005A4DFE /* camera-40-70@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "camera-40-70@2x.png"; sourceTree = "<group>"; };
 		58FE950B18AF9BDC005A4DFE /* chunkfive.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = chunkfive.ttf; sourceTree = "<group>"; };
@@ -518,15 +530,6 @@
 				58FB898018AE1031001F661B /* home@2x.jpg */,
 			);
 			name = Home;
-			sourceTree = "<group>";
-		};
-		5827479A18CE0CC500642ED8 /* Save */ = {
-			isa = PBXGroup;
-			children = (
-				5827479E18CE0CE000642ED8 /* SaveViewController.h */,
-				5827479F18CE0CE000642ED8 /* SaveViewController.m */,
-			);
-			name = Save;
 			sourceTree = "<group>";
 		};
 		588F11EE18AE1F4E00787045 /* Effects */ = {
@@ -962,6 +965,14 @@
 				5897499F18CD8A90002D9969 /* UISliderContainer.m */,
 				58F492DE18CF14C000613526 /* UIEditorDialogBgImageView.h */,
 				58F492DF18CF14C000613526 /* UIEditorDialogBgImageView.m */,
+				581355DA18D04918001CCFDD /* UIResolutionSelectorView.h */,
+				581355DB18D04918001CCFDD /* UIResolutionSelectorView.m */,
+				581355DD18D04ABC001CCFDD /* UIResolutionSelectButton.h */,
+				581355DE18D04ABC001CCFDD /* UIResolutionSelectButton.m */,
+				58FD375218D08D4700319BA0 /* UISaveToVIew.h */,
+				58FD375318D08D4700319BA0 /* UISaveToVIew.m */,
+				58FD375818D0926C00319BA0 /* UISaveToButton.h */,
+				58FD375918D0926C00319BA0 /* UISaveToButton.m */,
 			);
 			name = Editor;
 			sourceTree = "<group>";
@@ -998,7 +1009,6 @@
 		58FB898718AE1083001F661B /* ViewContoroller */ = {
 			isa = PBXGroup;
 			children = (
-				5827479A18CE0CC500642ED8 /* Save */,
 				5891ABD218B0310C00241949 /* Editor */,
 				58FCAD2218AFA7FF001559F0 /* Selection */,
 				58FB898818AE1096001F661B /* Home */,
@@ -1242,6 +1252,8 @@
 				58F2738318B4971C003056E9 /* GPUImageNaturalSaturationFilter.m */,
 				58F492D618CECDCE00613526 /* GPUImageClarityFilter.h */,
 				58F492D718CECDCE00613526 /* GPUImageClarityFilter.m */,
+				58FD375B18D0A05800319BA0 /* GPUImageAllAdjustmentsInOneFilter.h */,
+				58FD375C18D0A05800319BA0 /* GPUImageAllAdjustmentsInOneFilter.m */,
 			);
 			name = GPUImageFilter;
 			sourceTree = "<group>";
@@ -1481,6 +1493,7 @@
 				5826CEAB18AE14230091E303 /* UIScrollView+extend.m in Sources */,
 				58FF482718AE49F800B978D9 /* GPUEffectVintage2.m in Sources */,
 				588F126918AE248E00787045 /* GPUEffectVividVintage.m in Sources */,
+				58FD375A18D0926C00319BA0 /* UISaveToButton.m in Sources */,
 				58FF481F18AE49DC00B978D9 /* GPUEffectVintage1.m in Sources */,
 				589749A018CD8A90002D9969 /* UISliderContainer.m in Sources */,
 				58F767C818AD6F4900015FBA /* HomeViewController.m in Sources */,
@@ -1510,10 +1523,12 @@
 				5891ABD818B0312B00241949 /* EditorViewController.m in Sources */,
 				588F11FC18AE1FEC00787045 /* GPUImageGradientMapFilter.m in Sources */,
 				58FF485918AE586F00B978D9 /* GPUAdjustmentsBrightness.m in Sources */,
+				581355DC18D04918001CCFDD /* UIResolutionSelectorView.m in Sources */,
 				58FF484518AE513D00B978D9 /* GPUImageVividLightBlendFilter.m in Sources */,
 				588F124A18AE22F800787045 /* GPUEffectBeachVintage.m in Sources */,
 				58F2737E18B46D2E003056E9 /* GPUImageVibranceFilter.m in Sources */,
 				588F120818AE207800787045 /* GPUImageSelectiveColorFilter.m in Sources */,
+				581355DF18D04ABC001CCFDD /* UIResolutionSelectButton.m in Sources */,
 				58FB1AE618B0779D0003EC79 /* UISaveButton.m in Sources */,
 				58FF480D18AE488B00B978D9 /* GPUEffectWarmAutumn.m in Sources */,
 				588F120C18AE208E00787045 /* GPUImageChannelMixerFilter.m in Sources */,
@@ -1521,8 +1536,8 @@
 				58FCAD2518AFA81C001559F0 /* SelectionViewController.m in Sources */,
 				58FB899A18AE12B1001F661B /* UIDevice+extend.m in Sources */,
 				58FF483518AE4B3C00B978D9 /* GPUEffectHazelnut.m in Sources */,
+				58FD375418D08D4700319BA0 /* UISaveToVIew.m in Sources */,
 				58FB899018AE1165001F661B /* UIFadeNavigationController.m in Sources */,
-				582747A018CE0CE000642ED8 /* SaveViewController.m in Sources */,
 				588F125018AE235000787045 /* GPUEffectSunsetCarnevale.m in Sources */,
 				58FF47FB18AE47D000B978D9 /* GPUEffectWarmSpringLight.m in Sources */,
 				58F8128018B343D200941C18 /* GPUImageVignette2Filter.m in Sources */,
@@ -1536,6 +1551,7 @@
 				58F492D818CECDCE00613526 /* GPUImageClarityFilter.m in Sources */,
 				58FF485C18AE589F00B978D9 /* GPUPhotoFilter.m in Sources */,
 				58FF483F18AE4C8300B978D9 /* GPUEffectHaze3.m in Sources */,
+				58FD375D18D0A05800319BA0 /* GPUImageAllAdjustmentsInOneFilter.m in Sources */,
 				58F492E018CF14C000613526 /* UIEditorDialogBgImageView.m in Sources */,
 				58FF47F318AE478E00B978D9 /* GPUEffectGentleMemories.m in Sources */,
 				588F124018AE224F00787045 /* GPUEffectFaerieVintage.m in Sources */,

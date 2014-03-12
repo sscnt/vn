@@ -312,6 +312,8 @@ float absf(float value){
     UIImage* baseImage = inputImage;
     NSMutableArray* filterArray = [NSMutableArray array];
     
+    GPUImageAllAdjustmentsInOneFilter* adjustmentFilter = [[GPUImageAllAdjustmentsInOneFilter alloc] init];
+    
     GPUimageTumblinBrightnessFilter* brightnessFilter;
     GPUImageTumblinLevelsFilter* levelsFilter;
     GPUImageContrastFilter* contrastFilter;
@@ -323,16 +325,13 @@ float absf(float value){
     //// Brightness
     if (_sliderBrightness.value != 0.5f) {
         LOG(@"brightness enabled. %f", _sliderBrightness.value);
-        brightnessFilter = [[GPUimageTumblinBrightnessFilter alloc] init];
-        [filterArray addObject:brightnessFilter];
+        adjustmentFilter.brightness = _valueBrightness;
     }
     
     //// Levels
     if (_sliderLevels.value != 0.5f) {
         LOG(@"levels enabled. %f", _sliderLevels.value);
-        levelsFilter = [[GPUImageTumblinLevelsFilter alloc] init];
-        [levelsFilter setMin:0.0f gamma:_valueLevels max:1.0f];
-        [filterArray addObject:levelsFilter];
+        [adjustmentFilter setLevelsMin:0.0f gamma:_valueLevels max:1.0f];
     }
     
     //// Contrast
@@ -346,10 +345,8 @@ float absf(float value){
     //// Clarity
     if (_sliderClarity.value != 0.0f) {
         LOG(@"clarity enabled. %f", _sliderClarity.value);
-        clarityFilter = [[GPUImageClarityFilter alloc] init];
-        clarityFilter.blurRadiusInPixels = 40.0f;
-        clarityFilter.intensity = (_valueClarity + 1.0f);
-        [filterArray addObject:clarityFilter];
+        adjustmentFilter.clarityBlurRadiusInPixels = 40.0f;
+        adjustmentFilter.clarityIntensity = (_valueClarity + 1.0f);
     }
     
     //// Temperature
@@ -378,24 +375,10 @@ float absf(float value){
         
     }
     
-    if ([filterArray count] > 0) {
-        //Avoiding crashes
-        //[[filterArray objectAtIndex:[filterArray count] - 1] forceProcessingAtSize:size];
-        if([filterArray count] > 1){
-            for (NSInteger index = 0; index < [filterArray count] - 1; index++) {
-                [[filterArray objectAtIndex:index] addTarget:[filterArray objectAtIndex:index + 1]];
-            }
-            GPUImagePicture* base = [[GPUImagePicture alloc] initWithImage:baseImage];
-            [base addTarget:[filterArray objectAtIndex:0]];
-            [base processImage];
-            baseImage = [[filterArray objectAtIndex:[filterArray count] - 1] imageFromCurrentlyProcessedOutput];
-        }else{
-            GPUImagePicture* base = [[GPUImagePicture alloc] initWithImage:baseImage];
-            [base addTarget:[filterArray objectAtIndex:0]];
-            [base processImage];
-            baseImage = [[filterArray objectAtIndex:0] imageFromCurrentlyProcessedOutput];
-        }
-    }
+    GPUImagePicture* base = [[GPUImagePicture alloc] initWithImage:baseImage];
+    [base addTarget:adjustmentFilter];
+    [base processImage];
+    baseImage = [adjustmentFilter imageFromCurrentlyProcessedOutput];
     
     UIImage* imageEffected;
     @autoreleasepool {
@@ -431,39 +414,32 @@ float absf(float value){
     }
     _isApplying = YES;
     LOG(@"will apply effect");
-    __block UIImage* imageEffected = _imageEffected;
-    __block UIImage* imageResized = _imageResized;
-    __block UIEditorPreviewImageView* previewImageView = _previewImageView;
-    __block UIImage* blurredImage = _blurredImage;
-    __block UIImage* dialogBgImage = _dialogBgImage;
     __block EditorViewController* _self = self;
-    __block UISliderContainer* adjustment = _adjustmentOpacity;
     dispatch_queue_t q_global = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
     dispatch_queue_t q_main = dispatch_get_main_queue();
     dispatch_async(q_global, ^{
         @autoreleasepool {
             
-            imageEffected = [_self processImage:imageResized];
-            
+            _imageEffected = [_self processImage:_imageResized];
             
             GPUImageGaussianBlurFilter* filter = [[GPUImageGaussianBlurFilter alloc] init];
             filter.blurRadiusInPixels = 8.0f;
-            GPUImagePicture* base = [[GPUImagePicture alloc] initWithImage:imageEffected];
+            GPUImagePicture* base = [[GPUImagePicture alloc] initWithImage:_imageEffected];
             [base addTarget:filter];
             [base processImage];
-            blurredImage = [filter imageFromCurrentlyProcessedOutput];
+            _blurredImage = [filter imageFromCurrentlyProcessedOutput];
             
-            filter.blurRadiusInPixels = 30.0f;
+            filter.blurRadiusInPixels = 16.0f;
             [base processImage];
             _dialogBgImage = [filter imageFromCurrentlyProcessedOutput];
             
             
         }
         dispatch_async(q_main, ^{
-            if(previewImageView.isPreviewReady){
-                previewImageView.imageBlurred = blurredImage;
-                [previewImageView setPreviewImage:imageEffected];
-                [previewImageView toggleBlurredImage:NO WithDuration:0.20f];
+            if(_previewImageView.isPreviewReady){
+                _previewImageView.imageBlurred = _blurredImage;
+                [_previewImageView setPreviewImage:_imageEffected];
+                [_previewImageView toggleBlurredImage:NO WithDuration:0.20f];
                 [_self unlockAllSliders];
             }else{
                 
@@ -472,12 +448,12 @@ float absf(float value){
                 dispatch_async(q_global, ^{
                     
                     dispatch_async(q_main, ^{
-                        previewImageView.imageOriginal = imageResized;
-                        previewImageView.imageBlurred = blurredImage;
-                        previewImageView.isPreviewReady = YES;
-                        [previewImageView setPreviewImage:imageEffected];
-                        [previewImageView removeLoadingIndicator];
-                        [_self slideUpAdjustment:adjustment Completion:nil];
+                        _previewImageView.imageOriginal = _imageResized;
+                        _previewImageView.imageBlurred = _blurredImage;
+                        _previewImageView.isPreviewReady = YES;
+                        [_previewImageView setPreviewImage:_imageEffected];
+                        [_previewImageView removeLoadingIndicator];
+                        [_self slideUpAdjustment:_adjustmentOpacity Completion:nil];
                         _isApplying = NO;
                     });
                 });
@@ -546,11 +522,10 @@ float absf(float value){
         return;
     }
     _isSliding = YES;
-    __block UISliderContainer* _adjustment = adjustment;
     [UIView animateWithDuration:0.10f animations:^{
-        _adjustment.frame = CGRectMake(adjustment.frame.origin.x, [UIScreen screenSize].height - 44.0f, _adjustment.frame.size.width, _adjustment.frame.size.height);
+        adjustment.frame = CGRectMake(adjustment.frame.origin.x, [UIScreen screenSize].height - 44.0f, adjustment.frame.size.width, adjustment.frame.size.height);
     } completion:^(BOOL finished){
-        _adjustment.hidden = YES;
+        adjustment.hidden = YES;
         _isSliding = NO;
         if (completion) {
             completion(finished);
@@ -567,10 +542,9 @@ float absf(float value){
     _isSliding = YES;
     [adjustment setY:[UIScreen screenSize].height - 44.0f];
     adjustment.hidden = NO;
-    __block UISliderContainer* _adjustment = adjustment;
     _adjustmentCurrent = adjustment;
     [UIView animateWithDuration:0.10f animations:^{
-        _adjustment.frame = CGRectMake(_adjustment.frame.origin.x, [UIScreen screenSize].height - _adjustment.bounds.size.height - 44.0f, _adjustment.frame.size.width, _adjustment.frame.size.height);
+        _adjustmentCurrent.frame = CGRectMake(_adjustmentCurrent.frame.origin.x, [UIScreen screenSize].height - _adjustmentCurrent.bounds.size.height - 44.0f, _adjustmentCurrent.frame.size.width, _adjustmentCurrent.frame.size.height);
     } completion:^(BOOL finished){
         _isSliding = NO;
         if (completion) {
@@ -628,6 +602,12 @@ float absf(float value){
 
 - (void)didPressSaveButton
 {
+    if(_isApplying){
+        return;
+    }
+    if(_isSliding){
+        return;
+    }
     [self showSaveDialog];
 }
 
@@ -648,6 +628,16 @@ float absf(float value){
     [_dialogBgImageView setCenter:_previewImageView.center];
     [self.view addSubview:_dialogBgImageView];
     
+    if(!_resolutionSelector){
+        _resolutionSelector = [[UIResolutionSelectorView alloc] init];
+        _resolutionSelector.delegate = self;
+        _resolutionSelector.maxImageHeight = _imageOriginal.size.height;
+        _resolutionSelector.maxImageWidth = _imageOriginal.size.width;
+    }
+    _resolutionSelector.alpha = 0.0f;
+    [_resolutionSelector setY:-_resolutionSelector.frame.size.height];
+    [self.view addSubview:_resolutionSelector];
+    
     CGFloat width = _dialogBgImage.size.width * [UIScreen screenSize].height / _dialogBgImage.size.height;
     CGFloat height = [UIScreen screenSize].height;
     CGRect frame = CGRectMake(0.0f, 0.0f, width, height);
@@ -665,6 +655,8 @@ float absf(float value){
     __block UINavigationBarView* topNavBar = _topNavigationBar;
     __block UINavigationBarView* bottomNavBar = _bottomNavigationBar;
     [UIView animateWithDuration:0.20f animations:^{
+        _resolutionSelector.alpha = 1.0f;
+        [_resolutionSelector setY:40.0f];
         [topNavBar setY:-44.0f];
         [bottomNavBar setY:[UIScreen screenSize].height];
         _bgView.frame = frame;
@@ -686,10 +678,13 @@ float absf(float value){
     __block UINavigationBarView* topNavBar = _topNavigationBar;
     __block UINavigationBarView* bottomNavBar = _bottomNavigationBar;
     [UIView animateWithDuration:0.20f animations:^{
+        [_resolutionSelector setY:-_resolutionSelector.frame.size.height];
+        _resolutionSelector.alpha = 0.0f;
         _bgView.frame = frame;
         [topNavBar setY:0.0f];
         [bottomNavBar setY:[UIScreen screenSize].height - 44.0f];
     } completion:^(BOOL finished){
+        [_resolutionSelector removeFromSuperview];
         [_self slideUpAdjustment:_adjustmentCurrent Completion:nil];
         [UIView animateWithDuration:0.10f animations:^{
             _bgView.alpha = 0.0f;
@@ -835,6 +830,11 @@ float absf(float value){
     [self.navigationController popViewControllerAnimated:YES];
 }
 
+- (void)selector:(UIResolutionSelectorView *)selector DidSelectResolution:(ImageResolution)resolution
+{
+    
+}
+
 - (void)touchesBeganWithSlider:(UIEditorSliderView *)slider
 {
     if (_isApplying) {
@@ -963,6 +963,22 @@ float absf(float value){
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
     return NO;
+}
+
+- (void)dealloc
+{
+    _previewImageView.delegate = nil;
+    _sliderBrightness.delegate = nil;
+    _sliderClarity.delegate = nil;
+    _sliderContrast.delegate = nil;
+    _sliderKelvin.delegate = nil;
+    _sliderLevels.delegate = nil;
+    _sliderOpacity.delegate = nil;
+    _sliderSaturation.delegate = nil;
+    _sliderVibrance.delegate = nil;
+    _sliderVignette.delegate = nil;
+    _dialogBgImageView.delegate = nil;
+    _resolutionSelector.delegate = nil;
 }
 
 - (void)didReceiveMemoryWarning
