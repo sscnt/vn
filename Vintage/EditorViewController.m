@@ -350,10 +350,8 @@ float absf(float value){
     //// Temperature
     if (_sliderKelvin.value != 0.5f) {
         LOG(@"temperature enabled. %f", _sliderKelvin.value);
-        kelvinFilter = [[GPUKelvinFilter alloc] init];
-        kelvinFilter.kelvin = 6500.0 - 6500.0 * _valueKelvin * 2.0f / 3.0f;
-        kelvinFilter.strength = MIN(abs(_valueKelvin * 50), 50);
-        [filterArray addObject:kelvinFilter];
+        adjustmentFilter.kelvin = 6500.0 - 6500.0 * _valueKelvin * 2.0f / 3.0f;
+        adjustmentFilter.kelvinStrength = MIN(abs(_valueKelvin * 50), 50);
     }
     
     //// Saturation

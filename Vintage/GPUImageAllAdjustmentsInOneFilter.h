@@ -28,6 +28,9 @@
 
 @property(readwrite, nonatomic) CGFloat contrast;
 
+@property (nonatomic, assign) float kelvin;
+@property (nonatomic, assign) float kelvinStrength;
+
 #pragma mark Levels
 - (void)setLevelsRedMin:(CGFloat)min gamma:(CGFloat)mid max:(CGFloat)max minOut:(CGFloat)minOut maxOut:(CGFloat)maxOut;
 - (void)setLevelsRedMin:(CGFloat)min gamma:(CGFloat)mid max:(CGFloat)max;
