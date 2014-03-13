@@ -313,6 +313,18 @@ float absf(float value){
     
     GPUImageAllAdjustmentsInOneFilter* adjustmentFilter = [[GPUImageAllAdjustmentsInOneFilter alloc] init];
     
+    //// Clarity
+    if (_sliderClarity.value != 0.0f) {
+        LOG(@"clarity enabled. %f", _sliderClarity.value);
+        GPUImagePicture* base = [[GPUImagePicture alloc] initWithImage:baseImage];
+        GPUImageClarityFilter* filter = [[GPUImageClarityFilter alloc] init];
+        filter.blurRadiusInPixels = 40.0f;
+        filter.intensity = (_valueClarity + 1.0f);
+        [base addTarget:filter];
+        [base processImage];
+        baseImage = [filter imageFromCurrentlyProcessedOutput];        
+    }
+    
     //// Brightness
     if (_sliderBrightness.value != 0.5f) {
         LOG(@"brightness enabled. %f", _sliderBrightness.value);
@@ -329,13 +341,6 @@ float absf(float value){
     if (_sliderContrast.value != 0.5f) {
         LOG(@"contrast enabled. %f", _sliderContrast.value);
         adjustmentFilter.contrast = _valueContrast;
-    }
-    
-    //// Clarity
-    if (_sliderClarity.value != 0.0f) {
-        LOG(@"clarity enabled. %f", _sliderClarity.value);
-        adjustmentFilter.clarityBlurRadiusInPixels = 40.0f;
-        adjustmentFilter.clarityIntensity = (_valueClarity + 1.0f);
     }
     
     //// Temperature

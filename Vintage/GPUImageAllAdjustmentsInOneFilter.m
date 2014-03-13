@@ -300,9 +300,9 @@ mediump float xyz2labFt(mediump float t){
  mediump vec3 lab2rgb(mediump vec3 color){
      return xyz2rgb(lab2xyz(color));
  }
- mediump vec3 kelvinShift(mediump float kelvin, mediump float strength, mediump vec3 pixel){
-     mediump float fmin = min(min(pixel.r, pixel.g), pixel.b);    //Min. value of RGB
-     mediump float fmax = max(max(pixel.r, pixel.g), pixel.b);    //Max. value of RGB
+ mediump vec3 kelvinShift(const in mediump float klvn, const in mediump float strength, const in mediump vec3 color){
+     mediump float fmin = min(min(color.r, color.g), color.b);    //Min. value of RGB
+     mediump float fmax = max(max(color.r, color.g), color.b);    //Max. value of RGB
      mediump float delta = fmax - fmin;             //Delta RGB value
      
      mediump float luminance = (fmax + fmin) / 2.0; // Luminance
@@ -312,10 +312,10 @@ mediump float xyz2labFt(mediump float t){
      mediump float b = 0.0;
      
      // Calc red
-     if(kelvin <= 66.0){
+     if(klvn <= 66.0){
          r = 255.0;
      }else{
-         r = kelvin - 60.0;
+         r = klvn - 60.0;
          r = 329.698727446 * pow(r, -0.1332047592);
      }
      if(r < 0.0){
@@ -326,8 +326,8 @@ mediump float xyz2labFt(mediump float t){
      }
      
      // Calc green
-     if(kelvin <= 66.0){
-         g = kelvin;
+     if(klvn <= 66.0){
+         g = klvn;
          g = 99.4708025861 * log(g) - 161.1195681661;
      }else{
          g = kelvin - 60.0;
@@ -342,13 +342,13 @@ mediump float xyz2labFt(mediump float t){
      
      
      // Calc blue
-     if(kelvin >= 66.0){
+     if(klvn >= 66.0){
          b = 255.0;
      }else{
-         if(kelvin <= 19.0){
+         if(klvn <= 19.0){
              b = 0.0;
          }else{
-             b = kelvin - 10.0;
+             b = klvn - 10.0;
              b = 138.5177312231 * log(b) - 305.0447927307;
          }
      }
@@ -358,25 +358,31 @@ mediump float xyz2labFt(mediump float t){
      if(b > 255.0){
          b = 255.0;
      }
+     mediump vec3 rgb;
      
-     pixel.r = (1.0 - strength) * pixel.r + r * 0.00392156862 * strength;
-     pixel.g = (1.0 - strength) * pixel.g + g * 0.00392156862 * strength;
-     pixel.b = (1.0 - strength) * pixel.b + b * 0.00392156862 * strength;
+     rgb.r = (1.0 - strength) * color.r + r * 0.00392156862 * strength;
+     rgb.g = (1.0 - strength) * color.g + g * 0.00392156862 * strength;
+     rgb.b = (1.0 - strength) * color.b + b * 0.00392156862 * strength;
      
-     mediump vec3 hsl = rgb2hsl(pixel.rgb);
+     rgb.r = max(min(1.0, rgb.r), 0.0);
+     rgb.g = max(min(1.0, rgb.g), 0.0);
+     rgb.b = max(min(1.0, rgb.b), 0.0);
+     
+     
+     mediump vec3 hsl = rgb2hsl(rgb);
      hsl.z = luminance;
-     pixel.rgb = hsl2rgb(hsl);
+     rgb = hsl2rgb(hsl);
      
-     return pixel;
+     return rgb;
  }
  
- mediump vec3 adjustVibrance(mediump float vibrance, mediump vec3 pixel){
-     mediump vec3 hsv = rgb2hsv(pixel);
+ mediump vec3 adjustVibrance(mediump float vib, mediump vec3 color){
+     mediump vec3 hsv = rgb2hsv(color);
      mediump float x = hsv.y * 2.0 - 1.0;
      mediump float y = hsv.x / 90.0;
      mediump float influence = 1.0 - x * x;
      
-     mediump vec3 lab = rgb2lab(pixel);
+     mediump vec3 lab = rgb2lab(color);
      mediump vec3 baselab = rgb2lab(vec3(252.0/255.0, 226.0/255.0, 196.0/255.0));
      mediump float skin_distance = sqrt((lab.x - baselab.x) * (lab.x - baselab.x) + (lab.y - baselab.y) * (lab.y - baselab.y) + (lab.z - baselab.z) * (lab.z - baselab.z));
      skin_distance /= 376.0;
@@ -397,14 +403,15 @@ mediump float xyz2labFt(mediump float t){
      distance = max(min(distance, 1.0), 0.0);
      
      influence *= distance;
-     hsv.y *= vibrance;
+     hsv.y *= vib;
+     hsv.y = max(min(hsv.y, 1.0), 0.0);
      mediump vec3 rgb = hsv2rgb(hsv);
      
-     pixel.r = influence * rgb.r + (1.0 - influence) * pixel.r;
-     pixel.g = influence * rgb.g + (1.0 - influence) * pixel.g;
-     pixel.b = influence * rgb.b + (1.0 - influence) * pixel.b;
+     rgb.r = influence * rgb.r + (1.0 - influence) * color.r;
+     rgb.g = influence * rgb.g + (1.0 - influence) * color.g;
+     rgb.b = influence * rgb.b + (1.0 - influence) * color.b;
      
-     return pixel;
+     return rgb;
  }
  
  void main()
@@ -419,6 +426,11 @@ mediump float xyz2labFt(mediump float t){
      mediump float tmp;
      mediump float weight;
      
+     //// Kelvin
+     if(kelvinStrength != 0.0){
+         pixel = kelvinShift(kelvin, kelvinStrength, pixel);
+     }
+     
      //// Saturation
      if(saturation != 1.0){
          tmpvec = rgb2hsv(pixel);
@@ -427,6 +439,7 @@ mediump float xyz2labFt(mediump float t){
          weight = 1.0 - x * x;
          
          tmpvec.y *= saturation;
+         tmpvec.y = max(min(tmpvec.y, 1.0), 0.0);
          tmpvec = hsv2rgb(tmpvec);
          
          pixel.r = weight * tmpvec.r + (1.0 - weight) * pixel.r;
@@ -439,34 +452,16 @@ mediump float xyz2labFt(mediump float t){
          pixel = adjustVibrance(vibrance, pixel);
      }
      
-     //// Clarity
-     if(clarityIntensity != 0.0){
-         pixel = vec3(basePixel.rgb * clarityIntensity + blurredImageColor * (1.0 - clarityIntensity));
-         if(basePixel.r < pixel.r){
-             pixel.r = basePixel.r;
-         }
-         if(basePixel.g < pixel.g){
-             pixel.g = basePixel.g;
-         }
-         if(basePixel.b < pixel.b){
-             pixel.b = basePixel.b;
-         }
-     }
-
      //// Brightness
      if(brightness != 0.0){
-         yuv = rgb2yuv(pixel.rgb);
+         yuv = rgb2yuv(pixel);
          lum = yuv.x;
          yuv.x += brightness;
-         if(yuv.x > 1.0){
-             yuv.x = 1.0;
-         }else if(yuv.x < 0.0){
-             yuv.x = 0.0;
-         }
+         yuv.x = max(min(yuv.x, 1.0), 0.0);
          if(brightness > 0.0){
-             pixel.r = pow(pixel.r / lum, 0.6) * yuv.x;
-             pixel.g = pow(pixel.g / lum, 0.6) * yuv.x;
-             pixel.b = pow(pixel.b / lum, 0.6) * yuv.x;
+             pixel.r = max(min(1.0, pow(pixel.r / lum, 0.6) * yuv.x), 0.0);
+             pixel.g = max(min(1.0, pow(pixel.g / lum, 0.6) * yuv.x), 0.0);
+             pixel.b = max(min(1.0, pow(pixel.b / lum, 0.6) * yuv.x), 0.0);
          }else{
              pixel.rgb = yuv2rgb(yuv);
          }
@@ -502,13 +497,6 @@ mediump float xyz2labFt(mediump float t){
          pixel = vec3(((pixel.rgb - vec3(0.5)) * contrast + vec3(0.5)));
      }
      
-     //// Kelvin
-     if(kelvinStrength != 0.0){
-         pixel = kelvinShift(kelvin, kelvinStrength, pixel);
-     }
-     
-    
-
      gl_FragColor = vec4(pixel, basePixel.a);
  }
  );
