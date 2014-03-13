@@ -30,6 +30,7 @@ float absf(float value){
         _isApplying = NO;
         _isSliding = NO;
         _dialogState = DialogStateDidHide;
+        _currentResolution = ImageResolutionMax;
     }
     return self;
 }
@@ -306,24 +307,52 @@ float absf(float value){
     }
 }
 
+- (UIImage*)resizeImage:(UIImage *)image WithResolution:(ImageResolution)resolution
+{
+    if(resolution == ImageResolutionMax){
+        return image;
+    }
+    if(resolution == ImageResolutionMidium){
+        return [image resizedImage:CGSizeMake(roundf(image.size.width / 2.0f), roundf(image.size.height / 2.0f)) interpolationQuality:kCGInterpolationHigh];
+    }
+    if(resolution == ImageResolutionSmall){
+        return [image resizedImage:CGSizeMake(roundf(image.size.width / 4.0f), roundf(image.size.height / 4.0f)) interpolationQuality:kCGInterpolationHigh];
+    }
+    return image;
+}
+
 - (UIImage*)processImage:(UIImage *)inputImage
 {
-    
-    UIImage* baseImage = inputImage;
-    
-    GPUImageAllAdjustmentsInOneFilter* adjustmentFilter = [[GPUImageAllAdjustmentsInOneFilter alloc] init];
-    
+    NSLog(@"Input size: %fx%f", inputImage.size.width, inputImage.size.height);
+    inputImage = [self resizeImage:inputImage WithResolution:_currentResolution];
+    NSLog(@"Resized size: %fx%f", inputImage.size.width, inputImage.size.height);
+    inputImage = [self processImageClarity:inputImage];
+    inputImage = [self processImageAdjustments:inputImage];
+    inputImage = [self processImageEffect:inputImage];
+    inputImage = [self processImageFinal:inputImage];
+    return inputImage;
+}
+
+- (UIImage*)processImageClarity:(UIImage *)inputImage
+{
     //// Clarity
     if (_sliderClarity.value != 0.0f) {
         LOG(@"clarity enabled. %f", _sliderClarity.value);
-        GPUImagePicture* base = [[GPUImagePicture alloc] initWithImage:baseImage];
+        GPUImagePicture* base = [[GPUImagePicture alloc] initWithImage:inputImage];
         GPUImageClarityFilter* filter = [[GPUImageClarityFilter alloc] init];
         filter.blurRadiusInPixels = 40.0f;
         filter.intensity = (_valueClarity + 1.0f);
         [base addTarget:filter];
         [base processImage];
-        baseImage = [filter imageFromCurrentlyProcessedOutput];        
+        inputImage = [filter imageFromCurrentlyProcessedOutput];
     }
+    return inputImage;
+}
+
+- (UIImage*)processImageAdjustments:(UIImage *)inputImage
+{
+    
+    GPUImageAllAdjustmentsInOneFilter* adjustmentFilter = [[GPUImageAllAdjustmentsInOneFilter alloc] init];
     
     //// Brightness
     if (_sliderBrightness.value != 0.5f) {
@@ -362,35 +391,37 @@ float absf(float value){
         adjustmentFilter.vibrance = _valueVibrance;
     }
     
-    GPUImagePicture* base = [[GPUImagePicture alloc] initWithImage:baseImage];
+    GPUImagePicture* base = [[GPUImagePicture alloc] initWithImage:inputImage];
     [base addTarget:adjustmentFilter];
     [base processImage];
-    baseImage = [adjustmentFilter imageFromCurrentlyProcessedOutput];
-    
-    UIImage* imageEffected;
-    @autoreleasepool {
-        GPUImagePicture* base = [[GPUImagePicture alloc] initWithImage:baseImage];
-        GPUImageEffects* effect = [self effect:_effectId];
-        effect.imageToProcess = baseImage;
-        imageEffected = [effect process];
-        GPUImagePicture* overlay = [[GPUImagePicture alloc] initWithImage:imageEffected];
-        imageEffected = [self merge2pictureBase:base overlay:overlay opacity:_valueOpacity];
-    }
+    inputImage = [adjustmentFilter imageFromCurrentlyProcessedOutput];
+    return inputImage;
+}
 
+- (UIImage*)processImageEffect:(UIImage *)inputImage
+{
+    GPUImagePicture* base = [[GPUImagePicture alloc] initWithImage:inputImage];
+    GPUImageEffects* effect = [self effect:_effectId];
+    effect.imageToProcess = inputImage;
+    UIImage* imageEffected = [effect process];
+    GPUImagePicture* overlay = [[GPUImagePicture alloc] initWithImage:imageEffected];
+    imageEffected = [self merge2pictureBase:base overlay:overlay opacity:_valueOpacity];
+    return imageEffected;
+}
+
+- (UIImage*)processImageFinal:(UIImage *)inputImage
+{
     //// Vignette
     if (_sliderVignette.value != 0.0f) {
-        @autoreleasepool {
-            LOG(@"vignette enabled. %f", _sliderVignette.value);
-            GPUImagePicture* base = [[GPUImagePicture alloc] initWithImage:imageEffected];
-            GPUImageVignette2Filter* filter = [[GPUImageVignette2Filter alloc] init];
-            filter.scale = _valueVignette;
-            [base addTarget:filter];
-            [base processImage];
-            imageEffected = [filter imageFromCurrentlyProcessedOutput];
-        }
+        LOG(@"vignette enabled. %f", _sliderVignette.value);
+        GPUImagePicture* base = [[GPUImagePicture alloc] initWithImage:inputImage];
+        GPUImageVignette2Filter* filter = [[GPUImageVignette2Filter alloc] init];
+        filter.scale = _valueVignette;
+        [base addTarget:filter];
+        [base processImage];
+        inputImage = [filter imageFromCurrentlyProcessedOutput];
     }
-    
-    return imageEffected;
+    return inputImage;
 }
 
 - (void)applyEffect
@@ -625,6 +656,14 @@ float absf(float value){
     [_resolutionSelector setY:-_resolutionSelector.frame.size.height];
     [self.view addSubview:_resolutionSelector];
     
+    if(!_saveToView){
+        _saveToView = [[UISaveToView alloc] init];
+        _saveToView.delegate = self;
+    }
+    _saveToView.alpha = 0.0f;
+    [_saveToView setY:[UIScreen screenSize].height];
+    [self.view addSubview:_saveToView];
+    
     CGFloat width = _dialogBgImage.size.width * [UIScreen screenSize].height / _dialogBgImage.size.height;
     CGFloat height = [UIScreen screenSize].height;
     CGRect frame = CGRectMake(0.0f, 0.0f, width, height);
@@ -635,6 +674,7 @@ float absf(float value){
     _dialogBgImageView.hidden = NO;
     
     CGPoint center = _previewImageView.center;
+    CGFloat saveToViewTop = 40.0f + _resolutionSelector.frame.size.height + 40.0f;
     
     [self slideDownAdjustment:_adjustmentCurrent Completion:nil];
     
@@ -644,6 +684,8 @@ float absf(float value){
     [UIView animateWithDuration:0.20f animations:^{
         _resolutionSelector.alpha = 1.0f;
         [_resolutionSelector setY:40.0f];
+        _saveToView.alpha = 1.0f;
+        [_saveToView setY:saveToViewTop];
         [topNavBar setY:-44.0f];
         [bottomNavBar setY:[UIScreen screenSize].height];
         _bgView.frame = frame;
@@ -667,6 +709,8 @@ float absf(float value){
     [UIView animateWithDuration:0.20f animations:^{
         [_resolutionSelector setY:-_resolutionSelector.frame.size.height];
         _resolutionSelector.alpha = 0.0f;
+        [_saveToView setY:[UIScreen screenSize].height];
+        _saveToView.alpha = 0.0f;
         _bgView.frame = frame;
         [topNavBar setY:0.0f];
         [bottomNavBar setY:[UIScreen screenSize].height - 44.0f];
@@ -682,7 +726,7 @@ float absf(float value){
     }];
 }
 
-- (void)saveImage
+- (void)saveImage:(SaveTo)saveTo
 {
     
     if (_isSaving) {
@@ -712,10 +756,16 @@ float absf(float value){
             [SVProgressHUD dismiss];
             [SVProgressHUD showSuccessWithStatus:NSLocalizedString(@"Saved successfully", nil)];
             _isSaving = NO;
+            [_self didSaveImage:saveTo];
         });
         
     });
 
+}
+
+- (void)didSaveImage:(SaveTo)saveTo
+{
+    
 }
 
 - (void)lockAllSliders
@@ -819,7 +869,12 @@ float absf(float value){
 
 - (void)selector:(UIResolutionSelectorView *)selector DidSelectResolution:(ImageResolution)resolution
 {
-    
+    _currentResolution = resolution;
+}
+
+- (void)saveToView:(UISaveToView *)view DidSelectSaveTo:(SaveTo)saveTo
+{
+    [self saveImage:saveTo];
 }
 
 - (void)touchesBeganWithSlider:(UIEditorSliderView *)slider

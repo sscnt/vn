@@ -105,13 +105,14 @@
         top += (i % 2 == 0) ? 0.0 : 1.0 + height;
     }
     
+    
     //// Resize
     __block SelectionViewController* _self = self;
     dispatch_queue_t q_global = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
     dispatch_queue_t q_main = dispatch_get_main_queue();
     dispatch_async(q_global, ^{
-        [_self setValue:[_self.imageOriginal resizedImage:CGSizeMake(width, height) interpolationQuality:kCGInterpolationHigh] forKey:@"_imageResized"];
-        [_self setValue:[_self.imageOriginal resizedImage:CGSizeMake([UIScreen screenSize].width, height * [UIScreen screenSize].width / width) interpolationQuality:kCGInterpolationHigh] forKey:@"_imageResizedForEditor"];
+        [_self setValue:[_self.imageOriginal resizedImage:CGSizeMake(width * [[UIScreen mainScreen] scale], height * [[UIScreen mainScreen] scale]) interpolationQuality:kCGInterpolationHigh] forKey:@"_imageResized"];
+        [_self setValue:[_self.imageOriginal resizedImage:CGSizeMake([UIScreen screenSize].width * [[UIScreen mainScreen] scale], height * [UIScreen screenSize].width / width * [[UIScreen mainScreen] scale]) interpolationQuality:kCGInterpolationHigh] forKey:@"_imageResizedForEditor"];
         dispatch_async(q_main, ^{
             //// Effect
             [_self applyEffectAtIndex:0];

@@ -25,6 +25,7 @@
 #import "GPUImageClarityFilter.h"
 #import "UIEditorDialogBgImageView.h"
 #import "UIResolutionSelectorView.h"
+#import "UISaveToView.h"
 #import "GPUImageAllAdjustmentsInOneFilter.h"
 
 typedef NS_ENUM(NSInteger, AdjustmentViewId){
@@ -41,7 +42,7 @@ typedef NS_ENUM(NSInteger, DialogState){
     DialogStateDidHide,
 };
 
-@interface EditorViewController : UIViewController <UIEditorSliderViewDelegate, UIEditorPreviewDelegate, UIEditorDialogBgImageViewDelegate, UIResolutionSelectorViewDelegate>
+@interface EditorViewController : UIViewController <UIEditorSliderViewDelegate, UIEditorPreviewDelegate, UIEditorDialogBgImageViewDelegate, UIResolutionSelectorViewDelegate, UISaveToViewDelegate>
 {
     UIEditorPreviewImageView* _previewImageView;
     UIEditorSliderView* _sliderOpacity;
@@ -67,6 +68,7 @@ typedef NS_ENUM(NSInteger, DialogState){
     UISliderContainer* _adjustmentCurrent;
     UIEditorDialogBgImageView* _dialogBgImageView;
     UIResolutionSelectorView* _resolutionSelector;
+    UISaveToView* _saveToView;
     CGFloat _valueOpacity;
     CGFloat _valueBrightness;
     CGFloat _valueLevels;
@@ -78,6 +80,7 @@ typedef NS_ENUM(NSInteger, DialogState){
     CGFloat _valueVibrance;
     BOOL _isSaving;
     DialogState _dialogState;
+    ImageResolution _currentResolution;
     BOOL _isApplying;
     BOOL _isSliding;
     UIImage* _blurredImage;
@@ -103,11 +106,17 @@ typedef NS_ENUM(NSInteger, DialogState){
 - (void)lockAllSliders;
 - (void)unlockAllSliders;
 
+- (UIImage*)resizeImage:(UIImage*)image WithResolution:(ImageResolution)resolution;
 - (UIImage*)processImage:(UIImage*)inputImage;
+- (UIImage*)processImageClarity:(UIImage*)inputImage;
+- (UIImage*)processImageAdjustments:(UIImage*)inputImage;
+- (UIImage*)processImageEffect:(UIImage*)inputImage;
+- (UIImage*)processImageFinal:(UIImage*)inputImage;
 
 - (void)showSaveDialog;
 - (void)hideSaveDialog;
-- (void)saveImage;
+- (void)saveImage:(SaveTo)saveTo;
+- (void)didSaveImage:(SaveTo)saveTo;
 
 - (UIImage*)merge2pictureBase:(GPUImagePicture*)basePicture overlay:(GPUImagePicture*)overlayPicture opacity:(CGFloat)opacity;
 - (UIImage*)mergeBaseImage:(UIImage*)baseImage overlayImage:(UIImage*)overlayImage opacity:(CGFloat)opacity blendingMode:(MergeBlendingMode)blendingMode;

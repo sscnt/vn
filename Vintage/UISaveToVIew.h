@@ -7,7 +7,29 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "UISaveToButton.h"
 
-@interface UISaveToVIew : UIView
+typedef NS_ENUM(NSInteger, SaveTo){
+    SaveToCameraRoll = 1,
+    SaveToTwitter,
+    SaveToInstagram,
+    SaveToFacebook
+};
+
+@class UISaveToView;
+
+@protocol UISaveToViewDelegate
+- (void)saveToView:(UISaveToView*)view DidSelectSaveTo:(SaveTo)saveTo;
+@end
+
+
+@interface UISaveToView : UIView
+{
+    UISaveToButton* _buttonCameraRoll;
+}
+
+@property (nonatomic, assign) id<UISaveToViewDelegate> delegate;
+
+- (void)didPressButton:(UISaveToButton*)button;
 
 @end

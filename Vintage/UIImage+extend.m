@@ -40,7 +40,7 @@
             drawTransposed = NO;
     }
     
-    newSize = CGSizeMake(newSize.width * [[UIScreen mainScreen] scale], newSize.height * [[UIScreen mainScreen] scale]);
+    newSize = CGSizeMake(newSize.width, newSize.height);
     
     CGAffineTransform transform = [self transformForOrientation:newSize];
     
