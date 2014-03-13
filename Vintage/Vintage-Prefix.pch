@@ -48,3 +48,4 @@
 #import "UIView+extend.h"
 #import "UIScrollView+extend.h"
 #import "UIImage+extend.h"
+#import "UIPortrateImageView.h"

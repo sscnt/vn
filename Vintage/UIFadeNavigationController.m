@@ -78,4 +78,10 @@
                     animations:animations
                     completion:nil];
 }
+
+- (BOOL)shouldAutorotate
+{
+    return NO;
+}
+
 @end

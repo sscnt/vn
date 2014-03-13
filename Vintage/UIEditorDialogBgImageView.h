@@ -15,7 +15,7 @@
 - (void)touchesEndedWithBackgroundImageView:(UIEditorDialogBgImageView*)slider;
 @end
 
-@interface UIEditorDialogBgImageView : UIImageView
+@interface UIEditorDialogBgImageView : UIPortrateImageView
 
 @property (nonatomic, assign) id<UIEditorDialogBgImageViewDelegate> delegate;
 

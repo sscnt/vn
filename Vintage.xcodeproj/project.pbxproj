@@ -14,6 +14,7 @@
 		581355DC18D04918001CCFDD /* UIResolutionSelectorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 581355DB18D04918001CCFDD /* UIResolutionSelectorView.m */; };
 		581355DF18D04ABC001CCFDD /* UIResolutionSelectButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 581355DE18D04ABC001CCFDD /* UIResolutionSelectButton.m */; };
 		581595E818AEBFB400621C3F /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 581595EA18AEBFB400621C3F /* Localizable.strings */; };
+		5825801318D1FAE900A3020F /* UIPortrateImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5825801218D1FAE900A3020F /* UIPortrateImageView.m */; };
 		5826CEAB18AE14230091E303 /* UIScrollView+extend.m in Sources */ = {isa = PBXBuildFile; fileRef = 5826CEAA18AE14230091E303 /* UIScrollView+extend.m */; };
 		588F11F818AE1FC700787045 /* GPUImagePhotoFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 588F11F718AE1FC700787045 /* GPUImagePhotoFilter.m */; };
 		588F11FC18AE1FEC00787045 /* GPUImageGradientMapFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 588F11FB18AE1FEC00787045 /* GPUImageGradientMapFilter.m */; };
@@ -227,6 +228,8 @@
 		581595E918AEBFB400621C3F /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
 		581595EE18AEBFB800621C3F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		581595EF18AEBFB900621C3F /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
+		5825801118D1FAE900A3020F /* UIPortrateImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIPortrateImageView.h; sourceTree = "<group>"; };
+		5825801218D1FAE900A3020F /* UIPortrateImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIPortrateImageView.m; sourceTree = "<group>"; };
 		5826CEA918AE14230091E303 /* UIScrollView+extend.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+extend.h"; sourceTree = "<group>"; };
 		5826CEAA18AE14230091E303 /* UIScrollView+extend.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+extend.m"; sourceTree = "<group>"; };
 		588F11F618AE1FC700787045 /* GPUImagePhotoFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPUImagePhotoFilter.h; sourceTree = "<group>"; };
@@ -1032,6 +1035,8 @@
 			children = (
 				58FB898E18AE1165001F661B /* UIFadeNavigationController.h */,
 				58FB898F18AE1165001F661B /* UIFadeNavigationController.m */,
+				5825801118D1FAE900A3020F /* UIPortrateImageView.h */,
+				5825801218D1FAE900A3020F /* UIPortrateImageView.m */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -1489,6 +1494,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				58FB1AE318B071EB0003EC79 /* UIEditorPreviewImageView.m in Sources */,
+				5825801318D1FAE900A3020F /* UIPortrateImageView.m in Sources */,
 				58FF481318AE48BB00B978D9 /* GPUEffectWeekend.m in Sources */,
 				58FF480318AE484F00B978D9 /* GPUEffectJoyful.m in Sources */,
 				5891ABDD18B036B100241949 /* UINavigationBarView.m in Sources */,

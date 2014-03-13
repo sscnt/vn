@@ -18,8 +18,8 @@
 
 @interface UIEditorPreviewImageView : UISelectionPreviewImageView
 {
-    UIImageView* _imageViewOriginal;
-    UIImageView* _imageViewBlurred;
+    UIPortrateImageView* _imageViewOriginal;
+    UIPortrateImageView* _imageViewBlurred;
 }
 
 @property (nonatomic, weak) UIImage* imageOriginal;

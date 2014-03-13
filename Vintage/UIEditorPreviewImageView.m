@@ -14,10 +14,10 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
-        _imageViewBlurred = [[UIImageView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, self.frame.size.width, self.frame.size.height)];
+        _imageViewBlurred = [[UIPortrateImageView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, self.frame.size.width, self.frame.size.height)];
         _imageViewBlurred.hidden = YES;
         [self addSubview:_imageViewBlurred];
-        _imageViewOriginal = [[UIImageView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, self.frame.size.width, self.frame.size.height)];
+        _imageViewOriginal = [[UIPortrateImageView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, self.frame.size.width, self.frame.size.height)];
         _imageViewOriginal.hidden = YES;
         [self addSubview:_imageViewOriginal];
         

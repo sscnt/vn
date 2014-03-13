@@ -660,7 +660,7 @@ float absf(float value){
         _resolutionSelector.delegate = self;
         _resolutionSelector.maxImageHeight = _imageOriginal.size.height;
         _resolutionSelector.maxImageWidth = _imageOriginal.size.width;
-        if(_imageOriginal.size.width > 3000.0f){
+        if(_imageOriginal.size.width > 3000.0f || _imageOriginal.size.height > 3000.0f){
             _currentResolution = ImageResolutionMidium;
             [_resolutionSelector setResolution:ImageResolutionMidium];
         }else{
@@ -1022,10 +1022,6 @@ float absf(float value){
 
 - (BOOL)shouldAutorotate
 {
-    return NO;
-}
-
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
     return NO;
 }
 

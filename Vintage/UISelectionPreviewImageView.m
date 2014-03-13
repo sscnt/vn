@@ -18,11 +18,11 @@
         [self setBackgroundColor:[UIColor colorWithWhite:33.0f/255.0f alpha:1.0f]];
         
         //// Original
-        _previewImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, frame.size.width, frame.size.height)];
+        _previewImageView = [[UIPortrateImageView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, frame.size.width, frame.size.height)];
         [self addSubview:_previewImageView];
         
         //// Loading
-        _imageViewLoading = [[UIImageView alloc] initWithImage:[UIImage animatedGIFNamed:@"loading-48"]];
+        _imageViewLoading = [[UIPortrateImageView alloc] initWithImage:[UIImage animatedGIFNamed:@"loading-48"]];
         _imageViewLoading.center = CGPointMake(roundf(frame.size.width / 2.0), roundf(frame.size.height / 2.0));
         [self addSubview:_imageViewLoading];
     }
