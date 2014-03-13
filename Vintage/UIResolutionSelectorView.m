@@ -65,6 +65,25 @@
     [self.delegate selector:self DidSelectResolution:button.tag];
 }
 
+- (void)setResolution:(ImageResolution)resolution
+{
+    _buttonMax.selected = NO;
+    _buttonMidium.selected = NO;
+    _buttonSmall.selected = NO;
+    if(resolution == ImageResolutionMax){
+        _buttonMax.selected = YES;
+        return;
+    }
+    if(resolution == ImageResolutionMidium){
+        _buttonMidium.selected = YES;
+        return;
+    }
+    if(resolution == ImageResolutionSmall){
+        _buttonSmall.selected = YES;
+        return;
+    }
+}
+
 - (void)setMaxImageHeight:(CGFloat)maxImgaeHeight
 {
     _maxImageHeight = maxImgaeHeight;

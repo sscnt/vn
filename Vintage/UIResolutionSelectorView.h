@@ -33,5 +33,6 @@ typedef NS_ENUM(NSInteger, ImageResolution){
 
 - (void)didButtonPress:(UIResolutionSelectButton*)button;
 - (void)updateButtonText;
+- (void)setResolution:(ImageResolution)resolution;
 
 @end

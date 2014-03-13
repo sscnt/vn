@@ -174,7 +174,7 @@
     EditorViewController* controller = [[EditorViewController alloc] init];
     controller.effectId = preview.effectId;
     controller.imageResized = _imageResizedForEditor;
-    controller.imageEffected = preview.previewImageView.image;
+    //controller.imageEffected = preview.previewImageView.image;
     controller.imageOriginal = _imageOriginal;
     if (_isProcessing) {
         controller.waitingForOtherConversion = YES;

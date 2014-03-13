@@ -30,7 +30,7 @@ float absf(float value){
         _isApplying = NO;
         _isSliding = NO;
         _dialogState = DialogStateDidHide;
-        _currentResolution = ImageResolutionMax;
+        _currentResolution = ImageResolutionMidium;
     }
     return self;
 }
@@ -323,9 +323,6 @@ float absf(float value){
 
 - (UIImage*)processImage:(UIImage *)inputImage
 {
-    NSLog(@"Input size: %fx%f", inputImage.size.width, inputImage.size.height);
-    inputImage = [self resizeImage:inputImage WithResolution:_currentResolution];
-    NSLog(@"Resized size: %fx%f", inputImage.size.width, inputImage.size.height);
     inputImage = [self processImageClarity:inputImage];
     inputImage = [self processImageAdjustments:inputImage];
     inputImage = [self processImageEffect:inputImage];
@@ -450,8 +447,6 @@ float absf(float value){
             filter.blurRadiusInPixels = 16.0f;
             [base processImage];
             _dialogBgImage = [filter imageFromCurrentlyProcessedOutput];
-            
-            
         }
         dispatch_async(q_main, ^{
             if(_previewImageView.isPreviewReady){
@@ -651,6 +646,7 @@ float absf(float value){
         _resolutionSelector.delegate = self;
         _resolutionSelector.maxImageHeight = _imageOriginal.size.height;
         _resolutionSelector.maxImageWidth = _imageOriginal.size.width;
+        [_resolutionSelector setResolution:ImageResolutionMidium];
     }
     _resolutionSelector.alpha = 0.0f;
     [_resolutionSelector setY:-_resolutionSelector.frame.size.height];
@@ -702,60 +698,38 @@ float absf(float value){
         return;
     }
     CGRect frame = _previewImageView.frame;
-    __block UIImageView* _bgView = _dialogBgImageView;
     __block EditorViewController* _self = self;
-    __block UINavigationBarView* topNavBar = _topNavigationBar;
-    __block UINavigationBarView* bottomNavBar = _bottomNavigationBar;
     [UIView animateWithDuration:0.20f animations:^{
         [_resolutionSelector setY:-_resolutionSelector.frame.size.height];
         _resolutionSelector.alpha = 0.0f;
         [_saveToView setY:[UIScreen screenSize].height];
         _saveToView.alpha = 0.0f;
-        _bgView.frame = frame;
-        [topNavBar setY:0.0f];
-        [bottomNavBar setY:[UIScreen screenSize].height - 44.0f];
+        _dialogBgImageView.frame = frame;
+        [_topNavigationBar setY:0.0f];
+        [_bottomNavigationBar setY:[UIScreen screenSize].height - 44.0f];
     } completion:^(BOOL finished){
         [_resolutionSelector removeFromSuperview];
         [_self slideUpAdjustment:_adjustmentCurrent Completion:nil];
         [UIView animateWithDuration:0.10f animations:^{
-            _bgView.alpha = 0.0f;
+            _dialogBgImageView.alpha = 0.0f;
         } completion:^(BOOL finished){
             _dialogState = DialogStateDidHide;
-            [_bgView removeFromSuperview];
+            [_dialogBgImageView removeFromSuperview];
         }];
     }];
 }
 
 - (void)saveImage:(SaveTo)saveTo
 {
-    
-    if (_isSaving) {
-        LOG(@"sorry now saving.");
-        return;
-    }
-    if (_isApplying) {
-        return;
-    }
-    if (!_previewImageView.isPreviewReady) {
-        return;
-    }
-    _isSaving = YES;
-    LOG(@"saving...");
-    [SVProgressHUD showWithMaskType:SVProgressHUDMaskTypeClear];
-    
-    __block UIImage* imageOriginal = _imageOriginal;
     __block EditorViewController* _self = self;
     dispatch_queue_t q_global = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
     dispatch_queue_t q_main = dispatch_get_main_queue();
     dispatch_async(q_global, ^{
         
-        UIImage* resultImage = [_self processImage:imageOriginal];
+        UIImage* resultImage = [_self processImage:[_self resizeImage:_imageOriginal WithResolution:_currentResolution]];
         UIImageWriteToSavedPhotosAlbum(resultImage, nil, nil, nil);
         
         dispatch_async(q_main, ^{
-            [SVProgressHUD dismiss];
-            [SVProgressHUD showSuccessWithStatus:NSLocalizedString(@"Saved successfully", nil)];
-            _isSaving = NO;
             [_self didSaveImage:saveTo];
         });
         
@@ -765,7 +739,15 @@ float absf(float value){
 
 - (void)didSaveImage:(SaveTo)saveTo
 {
-    
+    [SVProgressHUD dismiss];
+    [SVProgressHUD showSuccessWithStatus:NSLocalizedString(@"Saved successfully", nil)];
+    __block EditorViewController* _self = self;
+    [UIView animateWithDuration:0.20f animations:^{
+        _resolutionSelector.alpha = 1.0f;
+        _saveToView.alpha = 1.0f;
+    } completion:^(BOOL finished){
+        _isSaving = NO;
+    }];
 }
 
 - (void)lockAllSliders
@@ -874,7 +856,23 @@ float absf(float value){
 
 - (void)saveToView:(UISaveToView *)view DidSelectSaveTo:(SaveTo)saveTo
 {
-    [self saveImage:saveTo];
+    
+    if (_isSaving) {
+        LOG(@"sorry now saving.");
+        return;
+    }
+    _isSaving = YES;
+    LOG(@"saving...");
+
+    __block EditorViewController* _self = self;
+    [UIView animateWithDuration:0.20f animations:^{
+        _resolutionSelector.alpha = 0.30f;
+        _saveToView.alpha = 0.30f;
+    } completion:^(BOOL finished){
+        [_saveToView clearSelected];
+        [SVProgressHUD showWithMaskType:SVProgressHUDMaskTypeClear];
+        [_self saveImage:saveTo];
+    }];
 }
 
 - (void)touchesBeganWithSlider:(UIEditorSliderView *)slider

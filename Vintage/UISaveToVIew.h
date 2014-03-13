@@ -31,5 +31,6 @@ typedef NS_ENUM(NSInteger, SaveTo){
 @property (nonatomic, assign) id<UISaveToViewDelegate> delegate;
 
 - (void)didPressButton:(UISaveToButton*)button;
+- (void)clearSelected;
 
 @end

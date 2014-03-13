@@ -31,16 +31,15 @@
 
 - (void)didPressButton:(UISaveToButton *)button
 {
+    _buttonCameraRoll.selected = NO;
+    
+    button.selected = YES;
     [self.delegate saveToView:self DidSelectSaveTo:button.tag];
 }
 
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect
+- (void)clearSelected
 {
-    // Drawing code
+    _buttonCameraRoll.selected = NO;
 }
-*/
 
 @end
