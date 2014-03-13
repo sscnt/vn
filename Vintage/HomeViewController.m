@@ -274,6 +274,15 @@
         CGContextRelease(ctx);
         CGImageRelease(cgimg);
     }
+    
+    if(image.size.width > 4096.0f){
+        CGFloat height = 4096.0f / image.size.width * image.size.height;
+        image = [image resizedImage:CGSizeMake(4096.0f, height) interpolationQuality:kCGInterpolationHigh];
+    }
+    if(image.size.height > 4096.0f){
+        CGFloat width = 4096.0f / image.size.height * image.size.width;
+        image = [image resizedImage:CGSizeMake(width, 4096) interpolationQuality:kCGInterpolationHigh];
+    }
 
     
     SelectionViewController* controller = [[SelectionViewController alloc] initWithImage:image];

@@ -7,6 +7,7 @@
 //
 
 #import "UISaveToView.h"
+#import "UISaveToButton.h"
 
 @implementation UISaveToView
 
@@ -21,7 +22,7 @@
         
         //// Camera roll
         _buttonCameraRoll = [[UISaveToButton alloc] initWithFrame:CGRectMake(0.0f, 0.0f, frame.size.width, buttonHeight)];
-        _buttonCameraRoll.tag = SaveToCameraRoll;
+        _buttonCameraRoll.saveTo = SaveToCameraRoll;
         [_buttonCameraRoll addTarget:self action:@selector(didPressButton:) forControlEvents:UIControlEventTouchUpInside];
         [_buttonCameraRoll setTitle:NSLocalizedString(@"CAMERA ROLL", Nil) forState:UIControlStateNormal];
         [self addSubview:_buttonCameraRoll];        

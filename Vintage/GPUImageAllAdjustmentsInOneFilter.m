@@ -7,9 +7,7 @@
 //
 
 #import "GPUImageAllAdjustmentsInOneFilter.h"
-#import "GPUImageFilter.h"
-#import "GPUImageTwoInputFilter.h"
-#import "GPUImageGaussianBlurFilter.h"
+
 
 #define GammaCorrection(color, gamma)								pow(color, 1.0 / gamma)
 
@@ -28,10 +26,8 @@
 NSString *const kGPUImageAllAdjustmentsInOneFilterFragmentShaderString = SHADER_STRING
 (
  varying highp vec2 textureCoordinate;
- varying highp vec2 textureCoordinate2;
  
  uniform sampler2D inputImageTexture;
- uniform sampler2D inputImageTexture2;
  
  uniform mediump float brightness;
  uniform mediump float clarityIntensity;
@@ -417,7 +413,6 @@ mediump float xyz2labFt(mediump float t){
  void main()
  {
      mediump vec4 basePixel = texture2D(inputImageTexture, textureCoordinate);
-     mediump vec3 blurredImageColor = texture2D(inputImageTexture2, textureCoordinate2).rgb;
      
      mediump vec3 pixel = basePixel.rgb;
      mediump vec3 yuv;
@@ -507,25 +502,13 @@ mediump float xyz2labFt(mediump float t){
 
 - (id)init;
 {
-    if (!(self = [super init]))
+    
+    if (!(self = [super initWithFragmentShaderFromString:kGPUImageAllAdjustmentsInOneFilterFragmentShaderString]))
     {
-		return nil;
+        return nil;
     }
-    
-    // First pass: apply a variable Gaussian blur
-    blurFilter = [[GPUImageGaussianBlurFilter alloc] init];
-    [self addFilter:blurFilter];
-    
-    // Second pass: combine the blurred image with the original sharp one
-    unsharpMaskFilter = [[GPUImageTwoInputFilter alloc] initWithFragmentShaderFromString:kGPUImageAllAdjustmentsInOneFilterFragmentShaderString];
-    [self addFilter:unsharpMaskFilter];
-    
-    // Texture location 0 needs to be the sharp image for both the blur and the second stage processing
-    [blurFilter addTarget:unsharpMaskFilter atTextureLocation:1];
-    
-    self.initialFilters = [NSArray arrayWithObjects:blurFilter, unsharpMaskFilter, nil];
-    self.terminalFilter = unsharpMaskFilter;
-    
+
+
     //// Brightness
     self.brightness = 0.0f;
     
@@ -557,33 +540,16 @@ mediump float xyz2labFt(mediump float t){
 - (void)setBrightness:(CGFloat)brightness
 {
     _brightness = brightness;
-    [unsharpMaskFilter setFloat:brightness forUniformName:@"brightness"];
-}
-
-#pragma mark Clarity
-- (void)setClarityBlurRadiusInPixels:(CGFloat)clarityBlurRadiusInPixels
-{
-    blurFilter.blurRadiusInPixels = clarityBlurRadiusInPixels;
-}
-
-- (CGFloat)clarityBlurRadiusInPixels
-{
-    return blurFilter.blurRadiusInPixels;
-}
-
-- (void)setClarityIntensity:(CGFloat)clarityIntensity
-{
-    _clarityIntensity = clarityIntensity;
-    [unsharpMaskFilter setFloat:clarityIntensity forUniformName:@"clarityIntensity"];
+    [self setFloat:brightness forUniformName:@"brightness"];
 }
 
 #pragma mark Levels
 - (void)updateUniforms {
-    [unsharpMaskFilter setFloatVec3:levelsMinVector forUniformName:@"levelsMin"];
-    [unsharpMaskFilter setFloatVec3:levelsMidVector forUniformName:@"levelsMid"];
-    [unsharpMaskFilter setFloatVec3:levelsMaxVector forUniformName:@"levelsMax"];
-    [unsharpMaskFilter setFloatVec3:levelsMinOutputVector forUniformName:@"levelsMinOutput"];
-    [unsharpMaskFilter setFloatVec3:levlesMaxOutputVector forUniformName:@"levelsMaxOutput"];
+    [self setFloatVec3:levelsMinVector forUniformName:@"levelsMin"];
+    [self setFloatVec3:levelsMidVector forUniformName:@"levelsMid"];
+    [self setFloatVec3:levelsMaxVector forUniformName:@"levelsMax"];
+    [self setFloatVec3:levelsMinOutputVector forUniformName:@"levelsMinOutput"];
+    [self setFloatVec3:levlesMaxOutputVector forUniformName:@"levelsMaxOutput"];
 }
 
 - (void)setLevelsMin:(CGFloat)min gamma:(CGFloat)mid max:(CGFloat)max minOut:(CGFloat)minOut maxOut:(CGFloat)maxOut {
@@ -643,7 +609,7 @@ mediump float xyz2labFt(mediump float t){
 - (void)setContrast:(CGFloat)newValue;
 {
     _contrast = newValue;
-    [unsharpMaskFilter setFloat:newValue forUniformName:@"contrast"];
+    [self setFloat:newValue forUniformName:@"contrast"];
 }
 
 #pragma mark Kelvin
@@ -658,7 +624,7 @@ mediump float xyz2labFt(mediump float t){
     }
     kelvin /= 100.0f;
     _kelvin = kelvin;
-    [unsharpMaskFilter setFloat:kelvin forUniformName:@"kelvin"];
+    [self setFloat:kelvin forUniformName:@"kelvin"];
 }
 
 - (void)setKelvinStrength:(float)kelvinStrength
@@ -670,7 +636,7 @@ mediump float xyz2labFt(mediump float t){
         kelvinStrength = 0.0f;
     }
     kelvinStrength /= 100.0f;
-    [unsharpMaskFilter setFloat:kelvinStrength forUniformName:@"kelvinStrength"];
+    [self setFloat:kelvinStrength forUniformName:@"kelvinStrength"];
 }
 
 #pragma mark Saturation
@@ -678,7 +644,7 @@ mediump float xyz2labFt(mediump float t){
 - (void)setSaturation:(CGFloat)saturation
 {
     _saturation = MAX(MIN(saturation, 2.0), 0.01);
-    [unsharpMaskFilter setFloat:_saturation forUniformName:@"saturation"];
+    [self setFloat:_saturation forUniformName:@"saturation"];
 }
 
 #pragma mark Vibrance
@@ -686,7 +652,7 @@ mediump float xyz2labFt(mediump float t){
 - (void)setVibrance:(CGFloat)vibrance
 {
     _vibrance = MAX(MIN(vibrance, 2.0), 0.01);
-    [unsharpMaskFilter setFloat:_vibrance forUniformName:@"vibrance"];
+    [self setFloat:_vibrance forUniformName:@"vibrance"];
 }
 
 

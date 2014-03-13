@@ -7,7 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "UISaveToButton.h"
 
 typedef NS_ENUM(NSInteger, SaveTo){
     SaveToCameraRoll = 1,
@@ -17,6 +16,7 @@ typedef NS_ENUM(NSInteger, SaveTo){
 };
 
 @class UISaveToView;
+@class UISaveToButton;
 
 @protocol UISaveToViewDelegate
 - (void)saveToView:(UISaveToView*)view DidSelectSaveTo:(SaveTo)saveTo;

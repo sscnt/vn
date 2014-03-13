@@ -21,5 +21,6 @@ enum {
 @interface UIDevice (extend)
 
 + (UIDeviceResolution)resolution;
++ (BOOL)isIOS6;
 
 @end

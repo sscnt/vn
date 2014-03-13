@@ -21,7 +21,7 @@
         NSArray *langs = [NSLocale preferredLanguages];
         NSString *currentLanguage = [langs objectAtIndex:0];
         if([currentLanguage compare:@"ja"] == NSOrderedSame) {
-            self.titleLabel.font = [UIFont fontWithName:@"rounded-mplus-1p-bold" size:16.0f];
+            self.titleLabel.font = [UIFont fontWithName:@"rounded-mplus-1p-bold" size:18.0f];
             [self setTitleEdgeInsets:UIEdgeInsetsMake(0, 40.0f, 0, 0)];
         } else {
             self.titleLabel.font = [UIFont fontWithName:@"Aller-Bold" size:20.0f];

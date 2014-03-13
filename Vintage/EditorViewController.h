@@ -44,7 +44,6 @@ typedef NS_ENUM(NSInteger, DialogState){
 
 @interface EditorViewController : UIViewController <UIEditorSliderViewDelegate, UIEditorPreviewDelegate, UIEditorDialogBgImageViewDelegate, UIResolutionSelectorViewDelegate, UISaveToViewDelegate>
 {
-    UIEditorPreviewImageView* _previewImageView;
     UIEditorSliderView* _sliderOpacity;
     UIEditorSliderView* _sliderBrightness;
     UIEditorSliderView* _sliderLevels;
@@ -55,20 +54,10 @@ typedef NS_ENUM(NSInteger, DialogState){
     UIEditorSliderView* _sliderSaturation;
     UIEditorSliderView* _sliderVibrance;
     UIEditorSliderView* _sliderCurrentSelected;
-    UINavigationBarView* _topNavigationBar;
-    UINavigationBarView* _bottomNavigationBar;
     UINavigationBarButton* _buttonOpacity;
     UINavigationBarButton* _buttonBrightness;
     UINavigationBarButton* _buttonColor;
     UINavigationBarButton* _buttonContrast;
-    UISliderContainer* _adjustmentOpacity;
-    UISliderContainer* _adjustmentBrightness;
-    UISliderContainer* _adjustmentColor;
-    UISliderContainer* _adjustmentContrast;
-    UISliderContainer* _adjustmentCurrent;
-    UIEditorDialogBgImageView* _dialogBgImageView;
-    UIResolutionSelectorView* _resolutionSelector;
-    UISaveToView* _saveToView;
     CGFloat _valueOpacity;
     CGFloat _valueBrightness;
     CGFloat _valueLevels;
@@ -78,21 +67,32 @@ typedef NS_ENUM(NSInteger, DialogState){
     CGFloat _valueKelvin;
     CGFloat _valueSaturation;
     CGFloat _valueVibrance;
-    BOOL _isSaving;
-    DialogState _dialogState;
     ImageResolution _currentResolution;
-    BOOL _isApplying;
-    BOOL _isSliding;
-    UIImage* _blurredImage;
-    UIImage* _dialogBgImage;
     UILabel* _percentageLabel;
 }
 
+@property (nonatomic, assign) DialogState dialogState;
+@property (nonatomic, assign) BOOL isSaving;
+@property (nonatomic, assign) BOOL isApplying;
+@property (nonatomic, assign) BOOL isSliding;
 @property (nonatomic, assign) EffectId effectId;
 @property (nonatomic, assign) BOOL waitingForOtherConversion;
 @property (nonatomic, weak) UIImage* imageOriginal;
 @property (nonatomic, weak) UIImage* imageResized;
 @property (nonatomic, strong) UIImage* imageEffected;
+@property (nonatomic, strong) UIImage* blurredImage;
+@property (nonatomic, strong) UIImage* dialogBgImage;
+@property (nonatomic, strong) UIResolutionSelectorView* resolutionSelector;
+@property (nonatomic, strong) UISaveToView* saveToView;
+@property (nonatomic, strong) UIEditorDialogBgImageView* dialogBgImageView;
+@property (nonatomic, strong) UINavigationBarView* topNavigationBar;
+@property (nonatomic, strong) UINavigationBarView* bottomNavigationBar;
+@property (nonatomic, weak) UISliderContainer* adjustmentCurrent;
+@property (nonatomic, strong) UIEditorPreviewImageView* previewImageView;
+@property (nonatomic, strong) UISliderContainer* adjustmentOpacity;
+@property (nonatomic, strong) UISliderContainer* adjustmentBrightness;
+@property (nonatomic, strong) UISliderContainer* adjustmentColor;
+@property (nonatomic, strong) UISliderContainer* adjustmentContrast;
 
 - (void)applyEffect;
 - (void)didPressAdjustmentButton:(UINavigationBarButton*)button;

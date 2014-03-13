@@ -323,10 +323,18 @@ float absf(float value){
 
 - (UIImage*)processImage:(UIImage *)inputImage
 {
-    inputImage = [self processImageClarity:inputImage];
-    inputImage = [self processImageAdjustments:inputImage];
-    inputImage = [self processImageEffect:inputImage];
-    inputImage = [self processImageFinal:inputImage];
+    @autoreleasepool {
+        inputImage = [self processImageClarity:inputImage];
+    }
+    @autoreleasepool {
+        inputImage = [self processImageAdjustments:inputImage];
+    }
+    @autoreleasepool {
+        inputImage = [self processImageEffect:inputImage];        
+    }
+    @autoreleasepool {
+        inputImage = [self processImageFinal:inputImage];
+    }
     return inputImage;
 }
 
@@ -339,6 +347,7 @@ float absf(float value){
         GPUImageClarityFilter* filter = [[GPUImageClarityFilter alloc] init];
         filter.blurRadiusInPixels = 40.0f;
         filter.intensity = (_valueClarity + 1.0f);
+        [filter forceProcessingAtSize:inputImage.size];
         [base addTarget:filter];
         [base processImage];
         inputImage = [filter imageFromCurrentlyProcessedOutput];
@@ -348,7 +357,6 @@ float absf(float value){
 
 - (UIImage*)processImageAdjustments:(UIImage *)inputImage
 {
-    
     GPUImageAllAdjustmentsInOneFilter* adjustmentFilter = [[GPUImageAllAdjustmentsInOneFilter alloc] init];
     
     //// Brightness
@@ -388,8 +396,10 @@ float absf(float value){
         adjustmentFilter.vibrance = _valueVibrance;
     }
     
+    [adjustmentFilter forceProcessingAtSize:inputImage.size];
+    
     GPUImagePicture* base = [[GPUImagePicture alloc] initWithImage:inputImage];
-    [base addTarget:adjustmentFilter];
+    [base addTarget:adjustmentFilter atTextureLocation:0];
     [base processImage];
     inputImage = [adjustmentFilter imageFromCurrentlyProcessedOutput];
     return inputImage;
@@ -414,6 +424,7 @@ float absf(float value){
         GPUImagePicture* base = [[GPUImagePicture alloc] initWithImage:inputImage];
         GPUImageVignette2Filter* filter = [[GPUImageVignette2Filter alloc] init];
         filter.scale = _valueVignette;
+        [filter forceProcessingAtSize:inputImage.size];
         [base addTarget:filter];
         [base processImage];
         inputImage = [filter imageFromCurrentlyProcessedOutput];
@@ -435,24 +446,24 @@ float absf(float value){
     dispatch_async(q_global, ^{
         @autoreleasepool {
             
-            _imageEffected = [_self processImage:_imageResized];
+            _self.imageEffected = [_self processImage:_imageResized];
             
             GPUImageGaussianBlurFilter* filter = [[GPUImageGaussianBlurFilter alloc] init];
             filter.blurRadiusInPixels = 8.0f;
             GPUImagePicture* base = [[GPUImagePicture alloc] initWithImage:_imageEffected];
             [base addTarget:filter];
             [base processImage];
-            _blurredImage = [filter imageFromCurrentlyProcessedOutput];
+            _self.blurredImage = [filter imageFromCurrentlyProcessedOutput];
             
             filter.blurRadiusInPixels = 16.0f;
             [base processImage];
-            _dialogBgImage = [filter imageFromCurrentlyProcessedOutput];
+            _self.dialogBgImage = [filter imageFromCurrentlyProcessedOutput];
         }
         dispatch_async(q_main, ^{
-            if(_previewImageView.isPreviewReady){
-                _previewImageView.imageBlurred = _blurredImage;
-                [_previewImageView setPreviewImage:_imageEffected];
-                [_previewImageView toggleBlurredImage:NO WithDuration:0.20f];
+            if(_self.previewImageView.isPreviewReady){
+                _self.previewImageView.imageBlurred = _self.blurredImage;
+                [_self.previewImageView setPreviewImage:_self.imageEffected];
+                [_self.previewImageView toggleBlurredImage:NO WithDuration:0.20f];
                 [_self unlockAllSliders];
             }else{
                 
@@ -461,13 +472,13 @@ float absf(float value){
                 dispatch_async(q_global, ^{
                     
                     dispatch_async(q_main, ^{
-                        _previewImageView.imageOriginal = _imageResized;
-                        _previewImageView.imageBlurred = _blurredImage;
-                        _previewImageView.isPreviewReady = YES;
-                        [_previewImageView setPreviewImage:_imageEffected];
-                        [_previewImageView removeLoadingIndicator];
-                        [_self slideUpAdjustment:_adjustmentOpacity Completion:nil];
-                        _isApplying = NO;
+                        _self.previewImageView.imageOriginal = _self.imageResized;
+                        _self.previewImageView.imageBlurred = _self.blurredImage;
+                        _self.previewImageView.isPreviewReady = YES;
+                        [_self.previewImageView setPreviewImage:_self.imageEffected];
+                        [_self.previewImageView removeLoadingIndicator];
+                        [_self slideUpAdjustment:_self.adjustmentOpacity Completion:nil];
+                        _self.isApplying = NO;
                     });
                 });
             }
@@ -535,11 +546,13 @@ float absf(float value){
         return;
     }
     _isSliding = YES;
+    __block EditorViewController* _self = self;
+    __block UISliderContainer* _adjustment = adjustment;
     [UIView animateWithDuration:0.10f animations:^{
-        adjustment.frame = CGRectMake(adjustment.frame.origin.x, [UIScreen screenSize].height - 44.0f, adjustment.frame.size.width, adjustment.frame.size.height);
+        _adjustment.frame = CGRectMake(_adjustment.frame.origin.x, [UIScreen screenSize].height - 44.0f, _adjustment.frame.size.width, _adjustment.frame.size.height);
     } completion:^(BOOL finished){
-        adjustment.hidden = YES;
-        _isSliding = NO;
+        _adjustment.hidden = YES;
+        _self.isSliding = NO;
         if (completion) {
             completion(finished);
         }
@@ -556,10 +569,11 @@ float absf(float value){
     [adjustment setY:[UIScreen screenSize].height - 44.0f];
     adjustment.hidden = NO;
     _adjustmentCurrent = adjustment;
+    __block EditorViewController* _self = self;
     [UIView animateWithDuration:0.10f animations:^{
-        _adjustmentCurrent.frame = CGRectMake(_adjustmentCurrent.frame.origin.x, [UIScreen screenSize].height - _adjustmentCurrent.bounds.size.height - 44.0f, _adjustmentCurrent.frame.size.width, _adjustmentCurrent.frame.size.height);
+        _self.adjustmentCurrent.frame = CGRectMake(_self.adjustmentCurrent.frame.origin.x, [UIScreen screenSize].height - _self.adjustmentCurrent.bounds.size.height - 44.0f, _self.adjustmentCurrent.frame.size.width, _self.adjustmentCurrent.frame.size.height);
     } completion:^(BOOL finished){
-        _isSliding = NO;
+        _self.isSliding = NO;
         if (completion) {
             completion(finished);
         }
@@ -646,7 +660,13 @@ float absf(float value){
         _resolutionSelector.delegate = self;
         _resolutionSelector.maxImageHeight = _imageOriginal.size.height;
         _resolutionSelector.maxImageWidth = _imageOriginal.size.width;
-        [_resolutionSelector setResolution:ImageResolutionMidium];
+        if(_imageOriginal.size.width > 3000.0f){
+            _currentResolution = ImageResolutionMidium;
+            [_resolutionSelector setResolution:ImageResolutionMidium];
+        }else{
+            _currentResolution = ImageResolutionMax;
+            [_resolutionSelector setResolution:ImageResolutionMax];
+        }
     }
     _resolutionSelector.alpha = 0.0f;
     [_resolutionSelector setY:-_resolutionSelector.frame.size.height];
@@ -673,22 +693,20 @@ float absf(float value){
     CGFloat saveToViewTop = 40.0f + _resolutionSelector.frame.size.height + 40.0f;
     
     [self slideDownAdjustment:_adjustmentCurrent Completion:nil];
-    
-    __block UIImageView* _bgView = _dialogBgImageView;
-    __block UINavigationBarView* topNavBar = _topNavigationBar;
-    __block UINavigationBarView* bottomNavBar = _bottomNavigationBar;
+
+    __block EditorViewController* _self = self;
     [UIView animateWithDuration:0.20f animations:^{
-        _resolutionSelector.alpha = 1.0f;
-        [_resolutionSelector setY:40.0f];
-        _saveToView.alpha = 1.0f;
-        [_saveToView setY:saveToViewTop];
-        [topNavBar setY:-44.0f];
-        [bottomNavBar setY:[UIScreen screenSize].height];
-        _bgView.frame = frame;
-        _bgView.center = center;
-        _bgView.alpha = 1.0f;
+        _self.resolutionSelector.alpha = 1.0f;
+        [_self.resolutionSelector setY:40.0f];
+        _self.saveToView.alpha = 1.0f;
+        [_self.saveToView setY:saveToViewTop];
+        [_self.topNavigationBar setY:-44.0f];
+        [_self.bottomNavigationBar setY:[UIScreen screenSize].height];
+        _self.dialogBgImageView.frame = frame;
+        _self.dialogBgImageView.center = center;
+        _self.dialogBgImageView.alpha = 1.0f;
     } completion:^(BOOL finished){
-        _dialogState = DialogStateDidShow;
+        _self.dialogState = DialogStateDidShow;
     }];
 }
 
@@ -700,21 +718,21 @@ float absf(float value){
     CGRect frame = _previewImageView.frame;
     __block EditorViewController* _self = self;
     [UIView animateWithDuration:0.20f animations:^{
-        [_resolutionSelector setY:-_resolutionSelector.frame.size.height];
-        _resolutionSelector.alpha = 0.0f;
-        [_saveToView setY:[UIScreen screenSize].height];
-        _saveToView.alpha = 0.0f;
-        _dialogBgImageView.frame = frame;
-        [_topNavigationBar setY:0.0f];
-        [_bottomNavigationBar setY:[UIScreen screenSize].height - 44.0f];
+        [_self.resolutionSelector setY:-_self.resolutionSelector.frame.size.height];
+        _self.resolutionSelector.alpha = 0.0f;
+        [_self.saveToView setY:[UIScreen screenSize].height];
+        _self.saveToView.alpha = 0.0f;
+        _self.dialogBgImageView.frame = frame;
+        [_self.topNavigationBar setY:0.0f];
+        [_self.bottomNavigationBar setY:[UIScreen screenSize].height - 44.0f];
     } completion:^(BOOL finished){
-        [_resolutionSelector removeFromSuperview];
+        [_self.resolutionSelector removeFromSuperview];
         [_self slideUpAdjustment:_adjustmentCurrent Completion:nil];
         [UIView animateWithDuration:0.10f animations:^{
-            _dialogBgImageView.alpha = 0.0f;
+            _self.dialogBgImageView.alpha = 0.0f;
         } completion:^(BOOL finished){
-            _dialogState = DialogStateDidHide;
-            [_dialogBgImageView removeFromSuperview];
+            _self.dialogState = DialogStateDidHide;
+            [_self.dialogBgImageView removeFromSuperview];
         }];
     }];
 }
@@ -725,10 +743,11 @@ float absf(float value){
     dispatch_queue_t q_global = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
     dispatch_queue_t q_main = dispatch_get_main_queue();
     dispatch_async(q_global, ^{
-        
-        UIImage* resultImage = [_self processImage:[_self resizeImage:_imageOriginal WithResolution:_currentResolution]];
-        UIImageWriteToSavedPhotosAlbum(resultImage, nil, nil, nil);
-        
+        @autoreleasepool {
+            UIImage* resultImage = [_self resizeImage:_imageOriginal WithResolution:_currentResolution];
+            resultImage = [_self processImage:resultImage];
+            UIImageWriteToSavedPhotosAlbum(resultImage, nil, nil, nil);
+        }
         dispatch_async(q_main, ^{
             [_self didSaveImage:saveTo];
         });
@@ -742,12 +761,17 @@ float absf(float value){
     [SVProgressHUD dismiss];
     [SVProgressHUD showSuccessWithStatus:NSLocalizedString(@"Saved successfully", nil)];
     __block EditorViewController* _self = self;
-    [UIView animateWithDuration:0.20f animations:^{
-        _resolutionSelector.alpha = 1.0f;
-        _saveToView.alpha = 1.0f;
-    } completion:^(BOOL finished){
-        _isSaving = NO;
-    }];
+    double delayInSeconds = 1.0;
+    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
+    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+        [UIView animateWithDuration:0.20f animations:^{
+            _self.resolutionSelector.alpha = 1.0f;
+            _self.saveToView.alpha = 1.0f;
+        } completion:^(BOOL finished){
+            _self.isSaving = NO;
+        }];
+    });
+
 }
 
 - (void)lockAllSliders
@@ -866,10 +890,10 @@ float absf(float value){
 
     __block EditorViewController* _self = self;
     [UIView animateWithDuration:0.20f animations:^{
-        _resolutionSelector.alpha = 0.30f;
-        _saveToView.alpha = 0.30f;
+        _self.resolutionSelector.alpha = 0.30f;
+        _self.saveToView.alpha = 0.30f;
     } completion:^(BOOL finished){
-        [_saveToView clearSelected];
+        [_self.saveToView clearSelected];
         [SVProgressHUD showWithMaskType:SVProgressHUDMaskTypeClear];
         [_self saveImage:saveTo];
     }];

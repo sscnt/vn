@@ -6,16 +6,13 @@
 //  Copyright (c) 2014年 SSC. All rights reserved.
 //
 
-#import "GPUImageFilterGroup.h"
+#import "GPUImageFilter.h"
 
 @class GPUImageGaussianBlurFilter;
 
 
-@interface GPUImageAllAdjustmentsInOneFilter : GPUImageFilterGroup
+@interface GPUImageAllAdjustmentsInOneFilter : GPUImageFilter
 {
-    //// Clarity
-    GPUImageGaussianBlurFilter *blurFilter;
-    GPUImageFilter *unsharpMaskFilter;
     
     //// Levels
     GPUVector3 levelsMinVector, levelsMidVector, levelsMaxVector, levelsMinOutputVector, levlesMaxOutputVector;

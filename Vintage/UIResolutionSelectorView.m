@@ -31,6 +31,7 @@
         NSString *currentLanguage = [langs objectAtIndex:0];
         if([currentLanguage compare:@"ja"] == NSOrderedSame) {
             label.font = [UIFont fontWithName:@"rounded-mplus-1p-bold" size:16.0f];
+            [label setY:3.0f];
         }else{
             label.font = [UIFont fontWithName:@"Aller-Bold" size:16.0f];
             [label setY:3.0f];
@@ -93,6 +94,9 @@
 - (void)setMaxImageWidth:(CGFloat)maxImgaeWidth
 {
     _maxImageWidth = maxImgaeWidth;
+    if(_maxImageWidth > 4096.0f){
+        _maxImageWidth = 4096.0f;
+    }
     [self updateButtonText];
 }
 
@@ -101,6 +105,7 @@
     [_buttonSmall setTitle:[NSString stringWithFormat:@"%@ %dx%d", NSLocalizedString(@"SMALL", nil), (int)_maxImageWidth / 4, (int)_maxImageHeight / 4] forState:UIControlStateNormal];
     [_buttonMidium setTitle:[NSString stringWithFormat:@"%@ %dx%d", NSLocalizedString(@"MEDIUM", nil), (int)_maxImageWidth / 2, (int)_maxImageHeight / 2] forState:UIControlStateNormal];
     [_buttonMax setTitle:[NSString stringWithFormat:@"%@ %dx%d", NSLocalizedString(@"MAX", nil), (int)_maxImageWidth, (int)_maxImageHeight] forState:UIControlStateNormal];
+    
 }
 
 @end

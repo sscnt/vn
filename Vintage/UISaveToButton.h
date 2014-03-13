@@ -7,7 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "UISaveToView.h"
 
 @interface UISaveToButton : UIButton
+{
+    BOOL _selected;
+}
+
+@property (nonatomic, assign) SaveTo saveTo;
 
 @end

@@ -10,6 +10,7 @@
 		5801C55D18B1A60A0059818E /* opacity-60@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5801C55C18B1A60A0059818E /* opacity-60@2x.png */; };
 		5801C56318B1ACB90059818E /* splash@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5801C56118B1ACB90059818E /* splash@2x.png */; };
 		5801C56418B1ACB90059818E /* splash-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5801C56218B1ACB90059818E /* splash-568h@2x.png */; };
+		5806D0ED18D1D57500A14C7B /* photos-38-95@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5806D0EC18D1D57500A14C7B /* photos-38-95@2x.png */; };
 		581355DC18D04918001CCFDD /* UIResolutionSelectorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 581355DB18D04918001CCFDD /* UIResolutionSelectorView.m */; };
 		581355DF18D04ABC001CCFDD /* UIResolutionSelectButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 581355DE18D04ABC001CCFDD /* UIResolutionSelectButton.m */; };
 		581595E818AEBFB400621C3F /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 581595EA18AEBFB400621C3F /* Localizable.strings */; };
@@ -135,8 +136,6 @@
 		58FB899A18AE12B1001F661B /* UIDevice+extend.m in Sources */ = {isa = PBXBuildFile; fileRef = 58FB899318AE12B1001F661B /* UIDevice+extend.m */; };
 		58FB899B18AE12B1001F661B /* UIScreen+extend.m in Sources */ = {isa = PBXBuildFile; fileRef = 58FB899518AE12B1001F661B /* UIScreen+extend.m */; };
 		58FB899C18AE12B1001F661B /* UIView+extend.m in Sources */ = {isa = PBXBuildFile; fileRef = 58FB899718AE12B1001F661B /* UIView+extend.m */; };
-		58FCAD1C18AFA13E001559F0 /* photos-40-40@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 58FCAD1A18AFA13E001559F0 /* photos-40-40@2x.png */; };
-		58FCAD1D18AFA13E001559F0 /* photos-40-70@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 58FCAD1B18AFA13E001559F0 /* photos-40-70@2x.png */; };
 		58FCAD2518AFA81C001559F0 /* SelectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58FCAD2418AFA81C001559F0 /* SelectionViewController.m */; };
 		58FCAD2818AFAD6E001559F0 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58FCAD2718AFAD6E001559F0 /* Crashlytics.framework */; };
 		58FCAD2B18AFAECA001559F0 /* camera-36-40@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 58FCAD2918AFAECA001559F0 /* camera-36-40@2x.png */; };
@@ -150,6 +149,8 @@
 		58FE950A18AF995C005A4DFE /* camera-40-70@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 58FE950818AF995C005A4DFE /* camera-40-70@2x.png */; };
 		58FE950D18AF9BDC005A4DFE /* chunkfive.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 58FE950B18AF9BDC005A4DFE /* chunkfive.ttf */; };
 		58FE950E18AF9BDC005A4DFE /* JockeyOne-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 58FE950C18AF9BDC005A4DFE /* JockeyOne-Regular.ttf */; };
+		58FEDD4E18D1CF0E0073C814 /* photos-38-40@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 58FEDD4D18D1CF0E0073C814 /* photos-38-40@2x.png */; };
+		58FEDD5018D1CF1D0073C814 /* photos-38-70@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 58FEDD4F18D1CF1D0073C814 /* photos-38-70@2x.png */; };
 		58FF47EF18AE478E00B978D9 /* gm1.acv in Resources */ = {isa = PBXBuildFile; fileRef = 58FF47E918AE478E00B978D9 /* gm1.acv */; };
 		58FF47F018AE478E00B978D9 /* gm2.acv in Resources */ = {isa = PBXBuildFile; fileRef = 58FF47EA18AE478E00B978D9 /* gm2.acv */; };
 		58FF47F118AE478E00B978D9 /* gm3.acv in Resources */ = {isa = PBXBuildFile; fileRef = 58FF47EB18AE478E00B978D9 /* gm3.acv */; };
@@ -218,6 +219,7 @@
 		5801C55C18B1A60A0059818E /* opacity-60@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "opacity-60@2x.png"; sourceTree = "<group>"; };
 		5801C56118B1ACB90059818E /* splash@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "splash@2x.png"; sourceTree = "<group>"; };
 		5801C56218B1ACB90059818E /* splash-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "splash-568h@2x.png"; sourceTree = "<group>"; };
+		5806D0EC18D1D57500A14C7B /* photos-38-95@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "photos-38-95@2x.png"; sourceTree = "<group>"; };
 		581355DA18D04918001CCFDD /* UIResolutionSelectorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIResolutionSelectorView.h; sourceTree = "<group>"; };
 		581355DB18D04918001CCFDD /* UIResolutionSelectorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIResolutionSelectorView.m; sourceTree = "<group>"; };
 		581355DD18D04ABC001CCFDD /* UIResolutionSelectButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIResolutionSelectButton.h; sourceTree = "<group>"; };
@@ -401,8 +403,6 @@
 		58FB899518AE12B1001F661B /* UIScreen+extend.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScreen+extend.m"; sourceTree = "<group>"; };
 		58FB899618AE12B1001F661B /* UIView+extend.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+extend.h"; sourceTree = "<group>"; };
 		58FB899718AE12B1001F661B /* UIView+extend.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+extend.m"; sourceTree = "<group>"; };
-		58FCAD1A18AFA13E001559F0 /* photos-40-40@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "photos-40-40@2x.png"; sourceTree = "<group>"; };
-		58FCAD1B18AFA13E001559F0 /* photos-40-70@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "photos-40-70@2x.png"; sourceTree = "<group>"; };
 		58FCAD2318AFA81C001559F0 /* SelectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectionViewController.h; sourceTree = "<group>"; };
 		58FCAD2418AFA81C001559F0 /* SelectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectionViewController.m; sourceTree = "<group>"; };
 		58FCAD2718AFAD6E001559F0 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
@@ -422,6 +422,8 @@
 		58FE950818AF995C005A4DFE /* camera-40-70@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "camera-40-70@2x.png"; sourceTree = "<group>"; };
 		58FE950B18AF9BDC005A4DFE /* chunkfive.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = chunkfive.ttf; sourceTree = "<group>"; };
 		58FE950C18AF9BDC005A4DFE /* JockeyOne-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "JockeyOne-Regular.ttf"; sourceTree = "<group>"; };
+		58FEDD4D18D1CF0E0073C814 /* photos-38-40@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "photos-38-40@2x.png"; sourceTree = "<group>"; };
+		58FEDD4F18D1CF1D0073C814 /* photos-38-70@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "photos-38-70@2x.png"; sourceTree = "<group>"; };
 		58FF47E918AE478E00B978D9 /* gm1.acv */ = {isa = PBXFileReference; lastKnownFileType = file; path = gm1.acv; sourceTree = "<group>"; };
 		58FF47EA18AE478E00B978D9 /* gm2.acv */ = {isa = PBXFileReference; lastKnownFileType = file; path = gm2.acv; sourceTree = "<group>"; };
 		58FF47EB18AE478E00B978D9 /* gm3.acv */ = {isa = PBXFileReference; lastKnownFileType = file; path = gm3.acv; sourceTree = "<group>"; };
@@ -1091,10 +1093,11 @@
 				58F5BE9718B18D2000A6EA5B /* close-60@2x.png */,
 				58FB1AE718B0783D0003EC79 /* save-60@2x.png */,
 				58F7F07918AFE42F00997877 /* loading-48@2x.gif */,
+				5806D0EC18D1D57500A14C7B /* photos-38-95@2x.png */,
+				58FEDD4F18D1CF1D0073C814 /* photos-38-70@2x.png */,
+				58FEDD4D18D1CF0E0073C814 /* photos-38-40@2x.png */,
 				58FCAD2918AFAECA001559F0 /* camera-36-40@2x.png */,
 				58FCAD2A18AFAECA001559F0 /* camera-36-70@2x.png */,
-				58FCAD1A18AFA13E001559F0 /* photos-40-40@2x.png */,
-				58FCAD1B18AFA13E001559F0 /* photos-40-70@2x.png */,
 				58FE950718AF995C005A4DFE /* camera-40-40@2x.png */,
 				58FE950818AF995C005A4DFE /* camera-40-70@2x.png */,
 			);
@@ -1371,7 +1374,6 @@
 				588F121B18AE21C200787045 /* mi3.acv in Resources */,
 				58FB369718AEAFEC00B284FB /* rounded-mplus-1p-regular.ttf in Resources */,
 				58FF47F918AE47D000B978D9 /* sl1.acv in Resources */,
-				58FCAD1C18AFA13E001559F0 /* photos-40-40@2x.png in Resources */,
 				58F4B21918B30538004071A8 /* brightness-60@2x.png in Resources */,
 				588F122818AE21EB00787045 /* sms4.acv in Resources */,
 				58FF483418AE4B3C00B978D9 /* Hzl2.acv in Resources */,
@@ -1400,6 +1402,7 @@
 				581595E818AEBFB400621C3F /* Localizable.strings in Resources */,
 				588F126618AE248E00787045 /* vvv3.acv in Resources */,
 				58FB369818AEAFEC00B284FB /* rounded-mplus-1p-thin.ttf in Resources */,
+				58FEDD5018D1CF1D0073C814 /* photos-38-70@2x.png in Resources */,
 				588F123518AE220500787045 /* gi3.acv in Resources */,
 				58FF480B18AE488B00B978D9 /* wa2.acv in Resources */,
 				58FF481218AE48BB00B978D9 /* wnd.acv in Resources */,
@@ -1415,14 +1418,15 @@
 				588F124F18AE235000787045 /* sc1.acv in Resources */,
 				58FF47FA18AE47D000B978D9 /* sl2.acv in Resources */,
 				588F122718AE21EB00787045 /* sms5.acv in Resources */,
-				58FCAD1D18AFA13E001559F0 /* photos-40-70@2x.png in Resources */,
 				58F14EA818B3013B00D2CD4E /* levels-60@2x.png in Resources */,
+				58FEDD4E18D1CF0E0073C814 /* photos-38-40@2x.png in Resources */,
 				58F883CA18B4EBF6005D30B9 /* brightness-button-alter-60@2x.png in Resources */,
 				58FE950A18AF995C005A4DFE /* camera-40-70@2x.png in Resources */,
 				588F122A18AE21EB00787045 /* sms2.acv in Resources */,
 				58FF47F118AE478E00B978D9 /* gm3.acv in Resources */,
 				58F5BE9818B18D2000A6EA5B /* close-60@2x.png in Resources */,
 				588F127418AE24D300787045 /* cn4.acv in Resources */,
+				5806D0ED18D1D57500A14C7B /* photos-38-95@2x.png in Resources */,
 				588F124518AE22CE00787045 /* pbt.acv in Resources */,
 				58F14EA718B3013B00D2CD4E /* kelvin-60@2x.png in Resources */,
 				5801C56318B1ACB90059818E /* splash@2x.png in Resources */,
