@@ -31,10 +31,16 @@
         NSString *currentLanguage = [langs objectAtIndex:0];
         if([currentLanguage compare:@"ja"] == NSOrderedSame) {
             label.font = [UIFont fontWithName:@"rounded-mplus-1p-bold" size:16.0f];
-            [label setY:3.0f];
+            [label setY:2.0f];
+            if([UIDevice isIOS6]){
+                [label setY:3.0f];
+            }
         }else{
             label.font = [UIFont fontWithName:@"Aller-Bold" size:16.0f];
-            [label setY:3.0f];
+            [label setY:1.0f];
+            if([UIDevice isIOS6]){
+                [label setY:2.0f];
+            }
         }
         [self addSubview:label];
         

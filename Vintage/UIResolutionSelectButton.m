@@ -17,7 +17,7 @@
         // Initialization code
         _selected = NO;
         self.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
-        [self setTitleColor:[UIColor colorWithWhite:1.0f alpha:0.50f] forState:UIControlStateNormal];
+        [self setTitleColor:[UIColor colorWithWhite:1.0f alpha:0.40f] forState:UIControlStateNormal];
         NSArray *langs = [NSLocale preferredLanguages];
         NSString *currentLanguage = [langs objectAtIndex:0];
         if([currentLanguage compare:@"ja"] == NSOrderedSame) {
@@ -36,10 +36,10 @@
 {
     _selected = selected;
     if(selected){
-        [self setTitleColor:[UIColor colorWithWhite:1.0f alpha:0.95f] forState:UIControlStateNormal];
+        [self setTitleColor:[UIColor colorWithWhite:1.0f alpha:0.85f] forState:UIControlStateNormal];
         [self setBackgroundColor:[UIColor colorWithWhite:0.0f alpha:0.50f]];
     }else{
-        [self setTitleColor:[UIColor colorWithWhite:1.0f alpha:0.50f] forState:UIControlStateNormal];
+        [self setTitleColor:[UIColor colorWithWhite:1.0f alpha:0.40f] forState:UIControlStateNormal];
         [self setBackgroundColor:[UIColor clearColor]];
     }
     [self setNeedsDisplay];
@@ -49,9 +49,9 @@
 - (void)drawRect:(CGRect)rect
 {
     //// Color Declarations
-    UIColor* color = [UIColor colorWithWhite:1.0f alpha:0.50f];
+    UIColor* color = [UIColor colorWithWhite:1.0f alpha:0.40f];
     if(_selected){
-        color = [UIColor colorWithWhite:1.0f alpha:0.95f];
+        color = [UIColor colorWithWhite:1.0f alpha:0.85f];
     }
     
     //// Oval Drawing

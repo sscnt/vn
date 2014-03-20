@@ -20,6 +20,7 @@
         [self setBackgroundColor:[UIColor clearColor]];
         NSArray *langs = [NSLocale preferredLanguages];
         NSString *currentLanguage = [langs objectAtIndex:0];
+        [self setTitleColor:[UIColor colorWithWhite:1.0f alpha:0.85f] forState:UIControlStateNormal];
         if([currentLanguage compare:@"ja"] == NSOrderedSame) {
             self.titleLabel.font = [UIFont fontWithName:@"rounded-mplus-1p-bold" size:18.0f];
             [self setTitleEdgeInsets:UIEdgeInsetsMake(2.0f, 22.0f, 0, 0)];
@@ -38,7 +39,7 @@
     _saveTo= saveTo;
     switch (saveTo) {
         case SaveToCameraRoll:
-            [self setImage:[UIImage imageNamed:@"photos-38-95.png"] forState:UIControlStateNormal];            
+            [self setImage:[UIImage imageNamed:@"photos-38-85.png"] forState:UIControlStateNormal];            
             break;
             
         default:

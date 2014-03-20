@@ -11,6 +11,8 @@
 		5801C56318B1ACB90059818E /* splash@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5801C56118B1ACB90059818E /* splash@2x.png */; };
 		5801C56418B1ACB90059818E /* splash-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5801C56218B1ACB90059818E /* splash-568h@2x.png */; };
 		5806D0ED18D1D57500A14C7B /* photos-38-95@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5806D0EC18D1D57500A14C7B /* photos-38-95@2x.png */; };
+		58098FF118D20D6900E8FEB2 /* photos-38-80@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 58098FF018D20D6900E8FEB2 /* photos-38-80@2x.png */; };
+		58098FF618D20D6E00E8FEB2 /* photos-38-85@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 58098FF518D20D6E00E8FEB2 /* photos-38-85@2x.png */; };
 		581355DC18D04918001CCFDD /* UIResolutionSelectorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 581355DB18D04918001CCFDD /* UIResolutionSelectorView.m */; };
 		581355DF18D04ABC001CCFDD /* UIResolutionSelectButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 581355DE18D04ABC001CCFDD /* UIResolutionSelectButton.m */; };
 		581595E818AEBFB400621C3F /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 581595EA18AEBFB400621C3F /* Localizable.strings */; };
@@ -221,6 +223,8 @@
 		5801C56118B1ACB90059818E /* splash@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "splash@2x.png"; sourceTree = "<group>"; };
 		5801C56218B1ACB90059818E /* splash-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "splash-568h@2x.png"; sourceTree = "<group>"; };
 		5806D0EC18D1D57500A14C7B /* photos-38-95@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "photos-38-95@2x.png"; sourceTree = "<group>"; };
+		58098FF018D20D6900E8FEB2 /* photos-38-80@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "photos-38-80@2x.png"; sourceTree = "<group>"; };
+		58098FF518D20D6E00E8FEB2 /* photos-38-85@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "photos-38-85@2x.png"; sourceTree = "<group>"; };
 		581355DA18D04918001CCFDD /* UIResolutionSelectorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIResolutionSelectorView.h; sourceTree = "<group>"; };
 		581355DB18D04918001CCFDD /* UIResolutionSelectorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIResolutionSelectorView.m; sourceTree = "<group>"; };
 		581355DD18D04ABC001CCFDD /* UIResolutionSelectButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIResolutionSelectButton.h; sourceTree = "<group>"; };
@@ -1098,6 +1102,8 @@
 				58F5BE9718B18D2000A6EA5B /* close-60@2x.png */,
 				58FB1AE718B0783D0003EC79 /* save-60@2x.png */,
 				58F7F07918AFE42F00997877 /* loading-48@2x.gif */,
+				58098FF018D20D6900E8FEB2 /* photos-38-80@2x.png */,
+				58098FF518D20D6E00E8FEB2 /* photos-38-85@2x.png */,
 				5806D0EC18D1D57500A14C7B /* photos-38-95@2x.png */,
 				58FEDD4F18D1CF1D0073C814 /* photos-38-70@2x.png */,
 				58FEDD4D18D1CF0E0073C814 /* photos-38-40@2x.png */,
@@ -1424,6 +1430,7 @@
 				58FF47FA18AE47D000B978D9 /* sl2.acv in Resources */,
 				588F122718AE21EB00787045 /* sms5.acv in Resources */,
 				58F14EA818B3013B00D2CD4E /* levels-60@2x.png in Resources */,
+				58098FF118D20D6900E8FEB2 /* photos-38-80@2x.png in Resources */,
 				58FEDD4E18D1CF0E0073C814 /* photos-38-40@2x.png in Resources */,
 				58F883CA18B4EBF6005D30B9 /* brightness-button-alter-60@2x.png in Resources */,
 				58FE950A18AF995C005A4DFE /* camera-40-70@2x.png in Resources */,
@@ -1451,6 +1458,7 @@
 				58FB369518AEAFEC00B284FB /* rounded-mplus-1p-light.ttf in Resources */,
 				58F7453618B186830096EB5D /* Aller_Rg.ttf in Resources */,
 				58F907D218B2D9AE00C7A241 /* opacity-button-60@2x.png in Resources */,
+				58098FF618D20D6E00E8FEB2 /* photos-38-85@2x.png in Resources */,
 				58F883C918B4EBF6005D30B9 /* brightness-alter-60@2x.png in Resources */,
 				58FF480A18AE488B00B978D9 /* wa1.acv in Resources */,
 				58FB369318AEAFEC00B284FB /* rounded-mplus-1p-bold.ttf in Resources */,

@@ -472,19 +472,9 @@ mediump float xyz2labFt(mediump float t){
          }
          weight = 1.0 - pow(tmp, 5.0);
          tmpvec = LevelsControl(pixel, levelsMin, levelsMid, levelsMax, levelsMinOutput, levelsMaxOutput);
-         if(levelsMid.x > 1.0){
-             yuv = rgb2yuv(tmpvec);
-             
-             tmpvec.r = pow(pixel.r / lum, 0.6) * yuv.x;
-             tmpvec.g = pow(pixel.g / lum, 0.6) * yuv.x;
-             tmpvec.b = pow(pixel.b / lum, 0.6) * yuv.x;
-             
-             pixel.r = weight * tmpvec.r + (1.0 - weight) * pixel.r;
-             pixel.g = weight * tmpvec.g + (1.0 - weight) * pixel.g;
-             pixel.b = weight * tmpvec.b + (1.0 - weight) * pixel.g;
-         }else{
-             pixel = tmpvec;
-         }
+         
+         pixel = tmpvec;
+         
      }
      
      //// Contrast
