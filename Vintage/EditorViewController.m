@@ -26,6 +26,7 @@ float absf(float value){
     self = [super init];
     if (self) {
         _valueOpacity = 1.0;
+        _valueFocusDistance = 0.5f;
         _isSaving = NO;
         _isApplying = NO;
         _isSliding = NO;
@@ -180,8 +181,8 @@ float absf(float value){
     _sliderFocusStrength.delegate = self;
     _sliderFocusStrength.title = NSLocalizedString(@"Strength", nil);
     _sliderFocusStrength.iconType = EditorSliderIconTypeFocusStrength;
-    _sliderFocusStrength.titlePosition = SliderViewTitlePositionLeft;
-    _sliderFocusStrength.defaultValue = 0.5f;
+    _sliderFocusStrength.titlePosition = SliderViewTitlePositionCenter;
+    _sliderFocusStrength.defaultValue = 0.0f;
     //////// Adjustment
     _adjustmentFocus = [[UISliderContainer alloc] initWithFrame:CGRectMake(0.0f, 0.0f, [UIScreen screenSize].width, _sliderFocusDistance.bounds.size.height * 2.0f + 20.0f)];
     _adjustmentFocus.tag = AdjustmentViewIdFocus;
@@ -457,6 +458,31 @@ float absf(float value){
         [base addTarget:filter];
         [base processImage];
         inputImage = [filter imageFromCurrentlyProcessedOutput];
+    }
+    //// Focus
+    if (_sliderFocusDistance.value != _sliderFocusDistance.defaultValue || _sliderFocusStrength.value != _sliderFocusStrength.defaultValue) {
+        LOG(@"focus enabled. %f", _sliderFocusStrength.value);
+        GPUImagePicture* base = [[GPUImagePicture alloc] initWithImage:inputImage];
+        GPUImageFocusFilter* filter_s = [[GPUImageFocusFilter alloc] init];
+        filter_s.blurRadiusInPixels = _valueFocusStrength * 3.0f;
+        filter_s.distance = _valueFocusDistance;
+        filter_s.color = 0;
+        [filter_s forceProcessingAtSize:inputImage.size];
+        GPUImageFocusFilter* filter_m = [[GPUImageFocusFilter alloc] init];
+        filter_m.blurRadiusInPixels = _valueFocusStrength * 6.0f;
+        filter_m.distance = _valueFocusDistance / 1.1;
+        filter_m.color = 1;
+        [filter_m forceProcessingAtSize:inputImage.size];
+        GPUImageFocusFilter* filter_l = [[GPUImageFocusFilter alloc] init];
+        filter_l.blurRadiusInPixels = _valueFocusStrength * 12.0f;
+        filter_l.distance = _valueFocusDistance / 1.21;
+        filter_l.color = 2;
+        [filter_l forceProcessingAtSize:inputImage.size];
+        [filter_s addTarget:filter_m];
+        [filter_m addTarget:filter_l];
+        [base addTarget:filter_s];
+        [base processImage];
+        inputImage = [filter_l imageFromCurrentlyProcessedOutput];
     }
     return inputImage;
 }
@@ -1014,6 +1040,12 @@ float absf(float value){
         case EditorSliderIconTypeVibrance:
             _percentageLabel.text = [NSString stringWithFormat:@"%@: %d", NSLocalizedString(@"Vibrance", nil), (int)roundf((slider.value - 0.5f) * 200.0f)];
             break;
+        case EditorSliderIconTypeFocusDistance:
+            _percentageLabel.text = [NSString stringWithFormat:@"%@: %d", NSLocalizedString(@"Distance", nil), (int)roundf(slider.value * 100.0f)];
+            break;
+        case EditorSliderIconTypeFocusStrength:
+            _percentageLabel.text = [NSString stringWithFormat:@"%@: %d", NSLocalizedString(@"Strength", nil), (int)roundf(slider.value * 100.0f)];
+            break;
     }
     
 
@@ -1049,6 +1081,12 @@ float absf(float value){
             break;
         case EditorSliderIconTypeVibrance:
             _valueVibrance = slider.value * 2.0f;
+            break;
+        case EditorSliderIconTypeFocusDistance:
+            _valueFocusDistance = slider.value;
+            break;
+        case EditorSliderIconTypeFocusStrength:
+            _valueFocusStrength = slider.value ;
             break;
     }
 

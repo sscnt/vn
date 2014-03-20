@@ -27,6 +27,7 @@
 #import "UIResolutionSelectorView.h"
 #import "UISaveDialogView.h"
 #import "GPUImageAllAdjustmentsInOneFilter.h"
+#import "GPUImageFocusFilter.h"
 
 typedef NS_ENUM(NSInteger, AdjustmentViewId){
     AdjustmentViewIdOpacity = 1,
@@ -71,6 +72,8 @@ typedef NS_ENUM(NSInteger, DialogState){
     CGFloat _valueKelvin;
     CGFloat _valueSaturation;
     CGFloat _valueVibrance;
+    CGFloat _valueFocusDistance;
+    CGFloat _valueFocusStrength;
     ImageResolution _currentResolution;
     UILabel* _percentageLabel;
 }
