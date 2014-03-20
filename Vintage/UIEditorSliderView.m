@@ -110,6 +110,12 @@
         case EditorSliderIconTypeVibrance:
             _iconImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"color-alter-60.png"]];
             break;
+        case EditorSliderIconTypeFocusDistance:
+            _iconImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"focus-distance-60.png"]];
+            break;
+        case EditorSliderIconTypeFocusStrength:
+            _iconImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"focus-60.png"]];
+            break;
     }
     _iconButton.center = CGPointMake(23.0f + marginLeft, self.bounds.size.height / 2.0f + marginTop);
     _iconImageView.center = CGPointMake(_iconButton.bounds.size.width / 2.0f, _iconButton.bounds.size.height / 2.0f);

@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "UISaveToDialogView.h"
+#import "UISaveDialogView.h"
 
 @interface UISaveToButton : UIButton
 {

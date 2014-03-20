@@ -42,6 +42,9 @@
         case NavigationBarButtonTypeOpacity:
             iconImage = [UIImage imageNamed:@"opacity-button-60.png"];
             break;
+        case NavigationBarButtonTypeFocus:
+            iconImage = [UIImage imageNamed:@"focus-button-60.png"];
+            break;
         default:
             break;
     }

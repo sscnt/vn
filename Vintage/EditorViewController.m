@@ -164,7 +164,31 @@ float absf(float value){
     [_adjustmentColor addSubview:_sliderKelvin];
     _adjustmentColor.hidden = YES;
     [self.view addSubview:_adjustmentColor];
-
+    
+    //////// Focus
+    //////////// Distance
+    _sliderFocusDistance = [[UIEditorSliderView alloc] initWithFrame:CGRectMake(0.0f, 10.0f, [UIScreen screenSize].width, 42.0f)];
+    _sliderFocusDistance.tag = EditorSliderIconTypeFocusDistance;
+    _sliderFocusDistance.delegate = self;
+    _sliderFocusDistance.title = NSLocalizedString(@"Distance", nil);
+    _sliderFocusDistance.iconType = EditorSliderIconTypeFocusDistance;
+    _sliderFocusDistance.titlePosition = SliderViewTitlePositionLeft;
+    _sliderFocusDistance.defaultValue = 0.5f;
+    //////////// Strength
+    _sliderFocusStrength = [[UIEditorSliderView alloc] initWithFrame:CGRectMake(0.0f, 10.0f + _sliderFocusDistance.frame.size.height, [UIScreen screenSize].width, 42.0f)];
+    _sliderFocusStrength.tag = EditorSliderIconTypeFocusStrength;
+    _sliderFocusStrength.delegate = self;
+    _sliderFocusStrength.title = NSLocalizedString(@"Strength", nil);
+    _sliderFocusStrength.iconType = EditorSliderIconTypeFocusStrength;
+    _sliderFocusStrength.titlePosition = SliderViewTitlePositionLeft;
+    _sliderFocusStrength.defaultValue = 0.5f;
+    //////// Adjustment
+    _adjustmentFocus = [[UISliderContainer alloc] initWithFrame:CGRectMake(0.0f, 0.0f, [UIScreen screenSize].width, _sliderFocusDistance.bounds.size.height * 2.0f + 20.0f)];
+    _adjustmentFocus.tag = AdjustmentViewIdFocus;
+    [_adjustmentFocus addSubview:_sliderFocusDistance];
+    [_adjustmentFocus addSubview:_sliderFocusStrength];
+    _adjustmentFocus.hidden = YES;
+    [self.view addSubview:_adjustmentFocus];
     
     //// Bottom Bar
     _bottomNavigationBar = [[UINavigationBarView alloc] initWithPosition:NavigationBarViewPositionBottom];
@@ -201,6 +225,11 @@ float absf(float value){
     [_buttonColor addTarget:self action:@selector(didPressAdjustmentButton:) forControlEvents:UIControlEventTouchUpInside];
     [_bottomNavigationBar appendButtonToLeft:_buttonColor];
     
+    //////// Focus
+    _buttonFocus = [[UINavigationBarButton alloc] initWithType:NavigationBarButtonTypeFocus];
+    _buttonFocus.tag = AdjustmentViewIdFocus;
+    [_buttonFocus addTarget:self action:@selector(didPressAdjustmentButton:) forControlEvents:UIControlEventTouchUpInside];
+    [_bottomNavigationBar appendButtonToLeft:_buttonFocus];
     
     //// Top Bar
     _topNavigationBar = [[UINavigationBarView alloc] initWithPosition:NavigationBarViewPositionTop];
@@ -606,6 +635,7 @@ float absf(float value){
     _buttonBrightness.selected = NO;
     _buttonColor.selected = NO;
     _buttonContrast.selected = NO;
+    _buttonFocus.selected = NO;
     _buttonOpacity.selected = NO;
     button.selected = YES;
     UISliderContainer* adjustment;
@@ -621,6 +651,10 @@ float absf(float value){
             break;
         case AdjustmentViewIdContrast:
             adjustment = _adjustmentContrast;
+            break;
+        case AdjustmentViewIdFocus:
+            adjustment = _adjustmentFocus;
+            break;
         default:
             break;
     }
@@ -672,13 +706,13 @@ float absf(float value){
     [_resolutionSelector setY:-_resolutionSelector.frame.size.height];
     [self.view addSubview:_resolutionSelector];
     
-    if(!_saveToView){
-        _saveToView = [[UISaveToDialogView alloc] init];
-        _saveToView.delegate = self;
+    if(!_saveDialogView){
+        _saveDialogView = [[UISaveDialogView alloc] init];
+        _saveDialogView.delegate = self;
     }
-    _saveToView.alpha = 0.0f;
-    [_saveToView setY:[UIScreen screenSize].height];
-    [self.view addSubview:_saveToView];
+    _saveDialogView.alpha = 0.0f;
+    [_saveDialogView setY:[UIScreen screenSize].height];
+    [self.view addSubview:_saveDialogView];
     
     CGFloat width = _dialogBgImage.size.width * [UIScreen screenSize].height / _dialogBgImage.size.height;
     CGFloat height = [UIScreen screenSize].height;
@@ -698,8 +732,8 @@ float absf(float value){
     [UIView animateWithDuration:0.20f animations:^{
         _self.resolutionSelector.alpha = 1.0f;
         [_self.resolutionSelector setY:40.0f];
-        _self.saveToView.alpha = 1.0f;
-        [_self.saveToView setY:saveToViewTop];
+        _self.saveDialogView.alpha = 1.0f;
+        [_self.saveDialogView setY:saveToViewTop];
         [_self.topNavigationBar setY:-44.0f];
         [_self.bottomNavigationBar setY:[UIScreen screenSize].height];
         _self.dialogBgImageView.frame = frame;
@@ -720,8 +754,8 @@ float absf(float value){
     [UIView animateWithDuration:0.20f animations:^{
         [_self.resolutionSelector setY:-_self.resolutionSelector.frame.size.height];
         _self.resolutionSelector.alpha = 0.0f;
-        [_self.saveToView setY:[UIScreen screenSize].height];
-        _self.saveToView.alpha = 0.0f;
+        [_self.saveDialogView setY:[UIScreen screenSize].height];
+        _self.saveDialogView.alpha = 0.0f;
         _self.dialogBgImageView.frame = frame;
         [_self.topNavigationBar setY:0.0f];
         [_self.bottomNavigationBar setY:[UIScreen screenSize].height - 44.0f];
@@ -766,7 +800,7 @@ float absf(float value){
     dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
         [UIView animateWithDuration:0.20f animations:^{
             _self.resolutionSelector.alpha = 1.0f;
-            _self.saveToView.alpha = 1.0f;
+            _self.saveDialogView.alpha = 1.0f;
         } completion:^(BOOL finished){
             _self.isSaving = NO;
         }];
@@ -878,7 +912,7 @@ float absf(float value){
     _currentResolution = resolution;
 }
 
-- (void)saveToView:(UISaveToDialogView *)view DidSelectSaveTo:(SaveTo)saveTo
+- (void)saveToView:(UISaveDialogView *)view DidSelectSaveTo:(SaveTo)saveTo
 {
     
     if (_isSaving) {
@@ -891,9 +925,9 @@ float absf(float value){
     __block EditorViewController* _self = self;
     [UIView animateWithDuration:0.20f animations:^{
         _self.resolutionSelector.alpha = 0.30f;
-        _self.saveToView.alpha = 0.30f;
+        _self.saveDialogView.alpha = 0.30f;
     } completion:^(BOOL finished){
-        [_self.saveToView clearSelected];
+        [_self.saveDialogView clearSelected];
         [SVProgressHUD showWithMaskType:SVProgressHUDMaskTypeClear];
         [_self saveImage:saveTo];
     }];

@@ -12,7 +12,8 @@ typedef NS_ENUM(NSInteger, NavigationBarButtonType){
     NavigationBarButtonTypeOpacity = 1,
     NavigationBarButtonTypeBrightness,
     NavigationBarButtonTypeContrast,
-    NavigationBarButtonTypeColor
+    NavigationBarButtonTypeColor,
+    NavigationBarButtonTypeFocus
 };
 
 @interface UINavigationBarButton : UIButton

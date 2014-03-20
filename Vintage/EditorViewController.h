@@ -25,14 +25,15 @@
 #import "GPUImageClarityFilter.h"
 #import "UIEditorDialogBgImageView.h"
 #import "UIResolutionSelectorView.h"
-#import "UISaveToDialogView.h"
+#import "UISaveDialogView.h"
 #import "GPUImageAllAdjustmentsInOneFilter.h"
 
 typedef NS_ENUM(NSInteger, AdjustmentViewId){
     AdjustmentViewIdOpacity = 1,
     AdjustmentViewIdBrightness,
+    AdjustmentViewIdContrast,
     AdjustmentViewIdColor,
-    AdjustmentViewIdContrast
+    AdjustmentViewIdFocus
 };
 
 typedef NS_ENUM(NSInteger, DialogState){
@@ -42,7 +43,7 @@ typedef NS_ENUM(NSInteger, DialogState){
     DialogStateDidHide,
 };
 
-@interface EditorViewController : UIViewController <UIEditorSliderViewDelegate, UIEditorPreviewDelegate, UIEditorDialogBgImageViewDelegate, UIResolutionSelectorViewDelegate, UISaveToDialogViewDelegate>
+@interface EditorViewController : UIViewController <UIEditorSliderViewDelegate, UIEditorPreviewDelegate, UIEditorDialogBgImageViewDelegate, UIResolutionSelectorViewDelegate, UISaveDialogViewDelegate>
 {
     UIEditorSliderView* _sliderOpacity;
     UIEditorSliderView* _sliderBrightness;
@@ -53,11 +54,14 @@ typedef NS_ENUM(NSInteger, DialogState){
     UIEditorSliderView* _sliderKelvin;
     UIEditorSliderView* _sliderSaturation;
     UIEditorSliderView* _sliderVibrance;
+    UIEditorSliderView* _sliderFocusDistance;
+    UIEditorSliderView* _sliderFocusStrength;
     UIEditorSliderView* _sliderCurrentSelected;
     UINavigationBarButton* _buttonOpacity;
     UINavigationBarButton* _buttonBrightness;
     UINavigationBarButton* _buttonColor;
     UINavigationBarButton* _buttonContrast;
+    UINavigationBarButton* _buttonFocus;
     CGFloat _valueOpacity;
     CGFloat _valueBrightness;
     CGFloat _valueLevels;
@@ -83,7 +87,7 @@ typedef NS_ENUM(NSInteger, DialogState){
 @property (nonatomic, strong) UIImage* blurredImage;
 @property (nonatomic, strong) UIImage* dialogBgImage;
 @property (nonatomic, strong) UIResolutionSelectorView* resolutionSelector;
-@property (nonatomic, strong) UISaveToDialogView* saveToView;
+@property (nonatomic, strong) UISaveDialogView* saveDialogView;
 @property (nonatomic, strong) UIEditorDialogBgImageView* dialogBgImageView;
 @property (nonatomic, strong) UINavigationBarView* topNavigationBar;
 @property (nonatomic, strong) UINavigationBarView* bottomNavigationBar;
@@ -93,6 +97,7 @@ typedef NS_ENUM(NSInteger, DialogState){
 @property (nonatomic, strong) UISliderContainer* adjustmentBrightness;
 @property (nonatomic, strong) UISliderContainer* adjustmentColor;
 @property (nonatomic, strong) UISliderContainer* adjustmentContrast;
+@property (nonatomic, strong) UISliderContainer* adjustmentFocus;
 
 - (void)applyEffect;
 - (void)didPressAdjustmentButton:(UINavigationBarButton*)button;

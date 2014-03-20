@@ -28,7 +28,9 @@ typedef NS_ENUM(NSInteger, EditorSliderIconType){
     EditorSliderIconTypeClarity,
     EditorSliderIconTypeVignette,
     EditorSliderIconTypeSaturation,
-    EditorSliderIconTypeVibrance
+    EditorSliderIconTypeVibrance,
+    EditorSliderIconTypeFocusDistance,
+    EditorSliderIconTypeFocusStrength
 };
 
 @interface UIEditorSliderView : UIView <UISliderViewDelegate>
