@@ -292,6 +292,7 @@
      uniform sampler2D inputImageTexture;\n\
      uniform highp float texelWidthOffset;\n\
      uniform highp float texelHeightOffset;\n\
+     int blurRadiusPlus1 = %lu;\n\
      int numberOfOffsets = %lu;\n\
      \n\
      varying highp vec2 blurCoordinates[%lu];\n\
@@ -304,9 +305,10 @@
      mediump float d = sqrt(x * x + y * y) / 0.70710678118 + (dist - 1.0);\n\
      mediump float w[%lu];\n\
      mediump float sumOfWeights = 0.0;\n\
-     d = 1.0 / (1.0 + pow(3.0, -d * 20.0 - 10.0 * dist));\n\
-     //d = 2.0 * d;\n\
-     for(int i=0;i<numberOfOffsets;i++){\n\
+     d = 1.0 / (1.0 + pow(3.0, -d * 20.0 - 6.0 * dist));\n\
+     d = 1.0 + 5.0 * d;\n\
+     d = 3.0;\n\
+     for(int i=0;i<blurRadiusPlus1;i++){\n\
         w[i]=(1.0 / sqrt(2.0 * 3.14159265359 * d * d)) * exp(-float(i * i) / (2.0 * d * d));\n\
      if(i==0){\n\
         sumOfWeights += w[i];\n\
@@ -314,7 +316,15 @@
         sumOfWeights += 2.0 * w[i];\n\
      }\n\
      }\n\
-     lowp vec4 sum = vec4(0.0);\n", (unsigned long)(blurRadius + 1), (unsigned long)(1 + (numberOfOptimizedOffsets * 2)), _distance, (unsigned long)(1 + (numberOfOptimizedOffsets * 2))];
+     mediump vec4 sum = vec4(0.0);\n\
+     sum += texture2D(inputImageTexture, blurCoordinates[0]) * w[0] / sumOfWeights;\n\
+     for(int i=0;i<numberOfOffsets;i++){\n\
+        sum += texture2D(inputImageTexture, blurCoordinates[i * 2 + 1]) * (w[i * 2 + 1] + w[i * 2 + 2]) / sumOfWeights;\n\
+        sum += texture2D(inputImageTexture, blurCoordinates[i * 2 + 2]) * (w[i * 2 + 1] + w[i * 2 + 2]) / sumOfWeights;\n\
+     }\n\
+     gl_FragColor = sum;\n\
+     return;\n\
+     \n", (unsigned long)(blurRadius + 1), (unsigned long)numberOfOptimizedOffsets, (unsigned long)(1 + (numberOfOptimizedOffsets * 2)), _distance, (unsigned long)(1 + (numberOfOptimizedOffsets * 2))];
 #else
     [shaderString appendFormat:@"\
      uniform sampler2D inputImageTexture;\n\
@@ -375,7 +385,7 @@
     
     // Footer
     [shaderString appendString:@"\
-     gl_FragColor = vec4(d, d, d, 1.0);\n\
+     gl_FragColor = vec4(sum.rgb, 1.0);\n\
      }\n"];
     
     free(standardGaussianWeights);

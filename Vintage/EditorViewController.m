@@ -469,7 +469,7 @@ float absf(float value){
         GPUImagePicture* base = [[GPUImagePicture alloc] initWithImage:inputImage];
         GPUImageLensBlurFilter* filter = [[GPUImageLensBlurFilter alloc] init];
         filter.distance = _valueFocusDistance;
-        filter.blurRadiusInPixels = 5.0f;
+        filter.blurRadiusInPixels = 6.0f;
         [base addTarget:filter];
         [base processImage];
         inputImage = [filter imageFromCurrentlyProcessedOutput];
