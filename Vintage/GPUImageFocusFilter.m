@@ -24,7 +24,7 @@ NSString *const kGPUImageFocusFilterFragmentShaderString = SHADER_STRING
      mediump float y = textureCoordinate.y - 0.5;
      mediump float d = sqrt(x * x + y * y) / 0.70710678118 + (dist - 1.0);
      
-     d = 1.0 / (1.0 + pow(3.0, -d * 10.0));
+     d = 1.0 / (1.0 + pow(3.0, -d * 20.0 - 10.0 * dist));
      
      gl_FragColor = vec4(sharpImageColor.rgb * (1.0 - d) + blurredImageColor.rgb * d, sharpImageColor.a);
      if(color == 0){
