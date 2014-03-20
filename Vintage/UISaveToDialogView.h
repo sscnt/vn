@@ -15,20 +15,20 @@ typedef NS_ENUM(NSInteger, SaveTo){
     SaveToFacebook
 };
 
-@class UISaveToView;
+@class UISaveToDialogView;
 @class UISaveToButton;
 
-@protocol UISaveToViewDelegate
-- (void)saveToView:(UISaveToView*)view DidSelectSaveTo:(SaveTo)saveTo;
+@protocol UISaveToDialogViewDelegate
+- (void)saveToView:(UISaveToDialogView*)view DidSelectSaveTo:(SaveTo)saveTo;
 @end
 
 
-@interface UISaveToView : UIView
+@interface UISaveToDialogView : UIView
 {
     UISaveToButton* _buttonCameraRoll;
 }
 
-@property (nonatomic, assign) id<UISaveToViewDelegate> delegate;
+@property (nonatomic, assign) id<UISaveToDialogViewDelegate> delegate;
 
 - (void)didPressButton:(UISaveToButton*)button;
 - (void)clearSelected;

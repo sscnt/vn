@@ -6,10 +6,10 @@
 //  Copyright (c) 2014年 SSC. All rights reserved.
 //
 
-#import "UISaveToView.h"
+#import "UISaveToDialogView.h"
 #import "UISaveToButton.h"
 
-@implementation UISaveToView
+@implementation UISaveToDialogView
 
 - (id)init
 {

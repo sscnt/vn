@@ -145,7 +145,7 @@
 		58FCAD2C18AFAECA001559F0 /* camera-36-70@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 58FCAD2A18AFAECA001559F0 /* camera-36-70@2x.png */; };
 		58FCAD3018AFC2D1001559F0 /* UISelectionPreviewImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 58FCAD2F18AFC2D1001559F0 /* UISelectionPreviewImageView.m */; };
 		58FCAD3518AFC725001559F0 /* UIImage+extend.m in Sources */ = {isa = PBXBuildFile; fileRef = 58FCAD3418AFC725001559F0 /* UIImage+extend.m */; };
-		58FD375418D08D4700319BA0 /* UISaveToView.m in Sources */ = {isa = PBXBuildFile; fileRef = 58FD375318D08D4700319BA0 /* UISaveToView.m */; };
+		58FD375418D08D4700319BA0 /* UISaveToDialogView.m in Sources */ = {isa = PBXBuildFile; fileRef = 58FD375318D08D4700319BA0 /* UISaveToDialogView.m */; };
 		58FD375A18D0926C00319BA0 /* UISaveToButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 58FD375918D0926C00319BA0 /* UISaveToButton.m */; };
 		58FD375D18D0A05800319BA0 /* GPUImageAllAdjustmentsInOneFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 58FD375C18D0A05800319BA0 /* GPUImageAllAdjustmentsInOneFilter.m */; };
 		58FE950918AF995C005A4DFE /* camera-40-40@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 58FE950718AF995C005A4DFE /* camera-40-40@2x.png */; };
@@ -419,8 +419,8 @@
 		58FCAD2F18AFC2D1001559F0 /* UISelectionPreviewImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UISelectionPreviewImageView.m; sourceTree = "<group>"; };
 		58FCAD3318AFC725001559F0 /* UIImage+extend.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+extend.h"; sourceTree = "<group>"; };
 		58FCAD3418AFC725001559F0 /* UIImage+extend.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+extend.m"; sourceTree = "<group>"; };
-		58FD375218D08D4700319BA0 /* UISaveToView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UISaveToView.h; sourceTree = "<group>"; };
-		58FD375318D08D4700319BA0 /* UISaveToView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UISaveToView.m; sourceTree = "<group>"; };
+		58FD375218D08D4700319BA0 /* UISaveToDialogView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UISaveToDialogView.h; sourceTree = "<group>"; };
+		58FD375318D08D4700319BA0 /* UISaveToDialogView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UISaveToDialogView.m; sourceTree = "<group>"; };
 		58FD375818D0926C00319BA0 /* UISaveToButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UISaveToButton.h; sourceTree = "<group>"; };
 		58FD375918D0926C00319BA0 /* UISaveToButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UISaveToButton.m; sourceTree = "<group>"; };
 		58FD375B18D0A05800319BA0 /* GPUImageAllAdjustmentsInOneFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPUImageAllAdjustmentsInOneFilter.h; sourceTree = "<group>"; };
@@ -978,8 +978,8 @@
 				581355DB18D04918001CCFDD /* UIResolutionSelectorView.m */,
 				581355DD18D04ABC001CCFDD /* UIResolutionSelectButton.h */,
 				581355DE18D04ABC001CCFDD /* UIResolutionSelectButton.m */,
-				58FD375218D08D4700319BA0 /* UISaveToView.h */,
-				58FD375318D08D4700319BA0 /* UISaveToView.m */,
+				58FD375218D08D4700319BA0 /* UISaveToDialogView.h */,
+				58FD375318D08D4700319BA0 /* UISaveToDialogView.m */,
 				58FD375818D0926C00319BA0 /* UISaveToButton.h */,
 				58FD375918D0926C00319BA0 /* UISaveToButton.m */,
 			);
@@ -1554,7 +1554,7 @@
 				58FCAD2518AFA81C001559F0 /* SelectionViewController.m in Sources */,
 				58FB899A18AE12B1001F661B /* UIDevice+extend.m in Sources */,
 				58FF483518AE4B3C00B978D9 /* GPUEffectHazelnut.m in Sources */,
-				58FD375418D08D4700319BA0 /* UISaveToView.m in Sources */,
+				58FD375418D08D4700319BA0 /* UISaveToDialogView.m in Sources */,
 				58FB899018AE1165001F661B /* UIFadeNavigationController.m in Sources */,
 				588F125018AE235000787045 /* GPUEffectSunsetCarnevale.m in Sources */,
 				58FF47FB18AE47D000B978D9 /* GPUEffectWarmSpringLight.m in Sources */,

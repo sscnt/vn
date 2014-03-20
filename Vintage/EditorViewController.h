@@ -25,7 +25,7 @@
 #import "GPUImageClarityFilter.h"
 #import "UIEditorDialogBgImageView.h"
 #import "UIResolutionSelectorView.h"
-#import "UISaveToView.h"
+#import "UISaveToDialogView.h"
 #import "GPUImageAllAdjustmentsInOneFilter.h"
 
 typedef NS_ENUM(NSInteger, AdjustmentViewId){
@@ -42,7 +42,7 @@ typedef NS_ENUM(NSInteger, DialogState){
     DialogStateDidHide,
 };
 
-@interface EditorViewController : UIViewController <UIEditorSliderViewDelegate, UIEditorPreviewDelegate, UIEditorDialogBgImageViewDelegate, UIResolutionSelectorViewDelegate, UISaveToViewDelegate>
+@interface EditorViewController : UIViewController <UIEditorSliderViewDelegate, UIEditorPreviewDelegate, UIEditorDialogBgImageViewDelegate, UIResolutionSelectorViewDelegate, UISaveToDialogViewDelegate>
 {
     UIEditorSliderView* _sliderOpacity;
     UIEditorSliderView* _sliderBrightness;
@@ -83,7 +83,7 @@ typedef NS_ENUM(NSInteger, DialogState){
 @property (nonatomic, strong) UIImage* blurredImage;
 @property (nonatomic, strong) UIImage* dialogBgImage;
 @property (nonatomic, strong) UIResolutionSelectorView* resolutionSelector;
-@property (nonatomic, strong) UISaveToView* saveToView;
+@property (nonatomic, strong) UISaveToDialogView* saveToView;
 @property (nonatomic, strong) UIEditorDialogBgImageView* dialogBgImageView;
 @property (nonatomic, strong) UINavigationBarView* topNavigationBar;
 @property (nonatomic, strong) UINavigationBarView* bottomNavigationBar;

@@ -673,7 +673,7 @@ float absf(float value){
     [self.view addSubview:_resolutionSelector];
     
     if(!_saveToView){
-        _saveToView = [[UISaveToView alloc] init];
+        _saveToView = [[UISaveToDialogView alloc] init];
         _saveToView.delegate = self;
     }
     _saveToView.alpha = 0.0f;
@@ -878,7 +878,7 @@ float absf(float value){
     _currentResolution = resolution;
 }
 
-- (void)saveToView:(UISaveToView *)view DidSelectSaveTo:(SaveTo)saveTo
+- (void)saveToView:(UISaveToDialogView *)view DidSelectSaveTo:(SaveTo)saveTo
 {
     
     if (_isSaving) {
