@@ -54,7 +54,11 @@ float absf(float value){
     }
     _previewImageView = [[UIEditorPreviewImageView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, width, height)];
     _previewImageView.delegate = self;
-    _previewImageView.center = self.view.center;
+    if([UIDevice resolution] == UIDeviceResolution_iPhoneRetina4){
+        _previewImageView.center = self.view.center;
+    }else{
+        _previewImageView.center = CGPointMake([UIScreen screenSize].width / 2.0f, [UIScreen screenSize].height / 2.0f - MIN(max_height - height, 44.0f));
+    }
     [self.view addSubview:_previewImageView];
     
     //// Sliders
@@ -463,26 +467,11 @@ float absf(float value){
     if (_sliderFocusDistance.value != _sliderFocusDistance.defaultValue || _sliderFocusStrength.value != _sliderFocusStrength.defaultValue) {
         LOG(@"focus enabled. %f", _sliderFocusStrength.value);
         GPUImagePicture* base = [[GPUImagePicture alloc] initWithImage:inputImage];
-        GPUImageFocusFilter* filter_s = [[GPUImageFocusFilter alloc] init];
-        filter_s.blurRadiusInPixels = _valueFocusStrength * 3.0f;
-        filter_s.distance = _valueFocusDistance;
-        filter_s.color = 0;
-        [filter_s forceProcessingAtSize:inputImage.size];
-        GPUImageFocusFilter* filter_m = [[GPUImageFocusFilter alloc] init];
-        filter_m.blurRadiusInPixels = _valueFocusStrength * 6.0f;
-        filter_m.distance = _valueFocusDistance / 1.1;
-        filter_m.color = 1;
-        [filter_m forceProcessingAtSize:inputImage.size];
-        GPUImageFocusFilter* filter_l = [[GPUImageFocusFilter alloc] init];
-        filter_l.blurRadiusInPixels = _valueFocusStrength * 12.0f;
-        filter_l.distance = _valueFocusDistance / 1.21;
-        filter_l.color = 2;
-        [filter_l forceProcessingAtSize:inputImage.size];
-        [filter_s addTarget:filter_m];
-        [filter_m addTarget:filter_l];
-        [base addTarget:filter_s];
+        GPUImageLensBlurFilter* filter = [[GPUImageLensBlurFilter alloc] init];
+        filter.blurRadiusInPixels = 7.0f;
+        [base addTarget:filter];
         [base processImage];
-        inputImage = [filter_l imageFromCurrentlyProcessedOutput];
+        inputImage = [filter imageFromCurrentlyProcessedOutput];
     }
     return inputImage;
 }

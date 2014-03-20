@@ -28,6 +28,7 @@
 #import "UISaveDialogView.h"
 #import "GPUImageAllAdjustmentsInOneFilter.h"
 #import "GPUImageFocusFilter.h"
+#import "GPUImageLensBlurFilter.h"
 
 typedef NS_ENUM(NSInteger, AdjustmentViewId){
     AdjustmentViewIdOpacity = 1,

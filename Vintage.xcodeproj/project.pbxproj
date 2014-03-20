@@ -13,6 +13,7 @@
 		5801C56318B1ACB90059818E /* splash@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5801C56118B1ACB90059818E /* splash@2x.png */; };
 		5801C56418B1ACB90059818E /* splash-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5801C56218B1ACB90059818E /* splash-568h@2x.png */; };
 		5802785D18DAE73B00A80948 /* focus-60@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5802785C18DAE73B00A80948 /* focus-60@2x.png */; };
+		5803DACC18DB56CF00A32D74 /* GPUImageLensBlurFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 5803DACB18DB56CF00A32D74 /* GPUImageLensBlurFilter.m */; };
 		5806D0ED18D1D57500A14C7B /* photos-38-95@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5806D0EC18D1D57500A14C7B /* photos-38-95@2x.png */; };
 		58098FF118D20D6900E8FEB2 /* photos-38-80@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 58098FF018D20D6900E8FEB2 /* photos-38-80@2x.png */; };
 		58098FF618D20D6E00E8FEB2 /* photos-38-85@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 58098FF518D20D6E00E8FEB2 /* photos-38-85@2x.png */; };
@@ -229,6 +230,8 @@
 		5801C56118B1ACB90059818E /* splash@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "splash@2x.png"; sourceTree = "<group>"; };
 		5801C56218B1ACB90059818E /* splash-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "splash-568h@2x.png"; sourceTree = "<group>"; };
 		5802785C18DAE73B00A80948 /* focus-60@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "focus-60@2x.png"; sourceTree = "<group>"; };
+		5803DACA18DB56CF00A32D74 /* GPUImageLensBlurFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPUImageLensBlurFilter.h; sourceTree = "<group>"; };
+		5803DACB18DB56CF00A32D74 /* GPUImageLensBlurFilter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GPUImageLensBlurFilter.m; sourceTree = "<group>"; };
 		5806D0EC18D1D57500A14C7B /* photos-38-95@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "photos-38-95@2x.png"; sourceTree = "<group>"; };
 		58098FF018D20D6900E8FEB2 /* photos-38-80@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "photos-38-80@2x.png"; sourceTree = "<group>"; };
 		58098FF518D20D6E00E8FEB2 /* photos-38-85@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "photos-38-85@2x.png"; sourceTree = "<group>"; };
@@ -1282,6 +1285,8 @@
 				58FD375C18D0A05800319BA0 /* GPUImageAllAdjustmentsInOneFilter.m */,
 				58F5AF9318DB11C100C3D509 /* GPUImageFocusFilter.h */,
 				58F5AF9418DB11C100C3D509 /* GPUImageFocusFilter.m */,
+				5803DACA18DB56CF00A32D74 /* GPUImageLensBlurFilter.h */,
+				5803DACB18DB56CF00A32D74 /* GPUImageLensBlurFilter.m */,
 			);
 			name = GPUImageFilter;
 			sourceTree = "<group>";
@@ -1545,6 +1550,7 @@
 				58FB899B18AE12B1001F661B /* UIScreen+extend.m in Sources */,
 				588F127518AE24D300787045 /* GPUEffectCreamyNoon.m in Sources */,
 				58FCAD3518AFC725001559F0 /* UIImage+extend.m in Sources */,
+				5803DACC18DB56CF00A32D74 /* GPUImageLensBlurFilter.m in Sources */,
 				58FF484618AE513D00B978D9 /* GPUImageLinearDodgeBlendFilter.m in Sources */,
 				5891ABE118B0381800241949 /* UICloseButton.m in Sources */,
 				58FCAD3018AFC2D1001559F0 /* UISelectionPreviewImageView.m in Sources */,
