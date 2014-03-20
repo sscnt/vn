@@ -468,7 +468,8 @@ float absf(float value){
         LOG(@"focus enabled. %f", _sliderFocusStrength.value);
         GPUImagePicture* base = [[GPUImagePicture alloc] initWithImage:inputImage];
         GPUImageLensBlurFilter* filter = [[GPUImageLensBlurFilter alloc] init];
-        filter.blurRadiusInPixels = 7.0f;
+        filter.distance = _valueFocusDistance;
+        filter.blurRadiusInPixels = 5.0f;
         [base addTarget:filter];
         [base processImage];
         inputImage = [filter imageFromCurrentlyProcessedOutput];
