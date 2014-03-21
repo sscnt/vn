@@ -463,17 +463,27 @@ float absf(float value){
         [base processImage];
         inputImage = [filter imageFromCurrentlyProcessedOutput];
     }
+
+    
     //// Focus
     if (_sliderFocusDistance.value != _sliderFocusDistance.defaultValue || _sliderFocusStrength.value != _sliderFocusStrength.defaultValue) {
         LOG(@"focus enabled. %f", _sliderFocusStrength.value);
         GPUImagePicture* base = [[GPUImagePicture alloc] initWithImage:inputImage];
         GPUImageLensBlurFilter* filter = [[GPUImageLensBlurFilter alloc] init];
         filter.distance = _valueFocusDistance;
-        filter.strength = _valueFocusStrength;
+        CGFloat strength = 6.0f * _valueFocusStrength * inputImage.size.width / _imageResized.size.width;
+        if(strength > 25.0f){
+            CGFloat times = ceil(strength / 25.0f);
+            filter.strength = strength / times;
+            filter.blurPasses = (NSInteger)times * 2;
+        }else{
+            filter.strength = strength;
+        }
         [base addTarget:filter];
         [base processImage];
         inputImage = [filter imageFromCurrentlyProcessedOutput];
     }
+    
     return inputImage;
 }
 
@@ -739,7 +749,7 @@ float absf(float value){
     _dialogBgImageView.frame = _previewImageView.frame;
     _dialogBgImageView.hidden = NO;
     
-    CGPoint center = _previewImageView.center;
+    CGPoint center = self.view.center;
     CGFloat saveToViewTop = 40.0f + _resolutionSelector.frame.size.height + 40.0f;
     
     [self slideDownAdjustment:_adjustmentCurrent Completion:nil];
