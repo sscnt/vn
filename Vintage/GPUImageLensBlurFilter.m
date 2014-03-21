@@ -281,6 +281,7 @@
     NSUInteger numberOfOptimizedOffsets = MIN(blurRadius / 2 + (blurRadius % 2), 7);
     NSUInteger trueNumberOfOptimizedOffsets = blurRadius / 2 + (blurRadius % 2);
     LOG(@"++Init");
+    LOG(@"radius: %lu", (unsigned long)blurRadius);
     LOG(@"number: %lu", (unsigned long)numberOfOptimizedOffsets);
     LOG(@"true  : %lu", (unsigned long)trueNumberOfOptimizedOffsets);
     
@@ -294,6 +295,7 @@
      uniform highp float texelHeightOffset;\n\
      int blurRadiusPlus1 = %lu;\n\
      int numberOfOffsets = %lu;\n\
+     int trueNumberOfOffsets = %lu;\n\
      \n\
      varying highp vec2 blurCoordinates[%lu];\n\
      \n\
@@ -302,29 +304,29 @@
      mediump float dist = %f;\n\
      mediump float x = blurCoordinates[0].x - 0.5;\n\
      mediump float y = blurCoordinates[0].y - 0.5;\n\
-     mediump float d = sqrt(x * x + y * y) / 0.70710678118 + (dist - 1.0);\n\
+     //mediump float d = sqrt(x * x + y * y) / 0.70710678118 + (dist - 1.0);\n\
+     mediump float d = abs(y) * 2.0 + (dist / 2.0 - 1.0);\n\
      mediump float w[%lu];\n\
      mediump float sumOfWeights = 0.0;\n\
-     d = 1.0 / (1.0 + pow(3.0, -d * 20.0 - 6.0 * dist));\n\
-     d = 1.0 + 5.0 * d;\n\
-     d = 3.0;\n\
+     d = 1.0 / (1.0 + pow(3.0, -d * 8.0 - 4.0 * dist));\n\
+     d = %f * d;\n\
      for(int i=0;i<blurRadiusPlus1;i++){\n\
         w[i]=(1.0 / sqrt(2.0 * 3.14159265359 * d * d)) * exp(-float(i * i) / (2.0 * d * d));\n\
-     if(i==0){\n\
-        sumOfWeights += w[i];\n\
-     }else{\n\
-        sumOfWeights += 2.0 * w[i];\n\
+        w[i]=min(1.0, w[i]);\n\
+        if(i==0){\n\
+            sumOfWeights += w[i];\n\
+        }else{\n\
+            sumOfWeights += 2.0 * w[i];\n\
+        }\n\
      }\n\
-     }\n\
+     mediump float optimizedWeight;\n\
      mediump vec4 sum = vec4(0.0);\n\
      sum += texture2D(inputImageTexture, blurCoordinates[0]) * w[0] / sumOfWeights;\n\
      for(int i=0;i<numberOfOffsets;i++){\n\
-        sum += texture2D(inputImageTexture, blurCoordinates[i * 2 + 1]) * (w[i * 2 + 1] + w[i * 2 + 2]) / sumOfWeights;\n\
-        sum += texture2D(inputImageTexture, blurCoordinates[i * 2 + 2]) * (w[i * 2 + 1] + w[i * 2 + 2]) / sumOfWeights;\n\
-     }\n\
-     gl_FragColor = sum;\n\
-     return;\n\
-     \n", (unsigned long)(blurRadius + 1), (unsigned long)numberOfOptimizedOffsets, (unsigned long)(1 + (numberOfOptimizedOffsets * 2)), _distance, (unsigned long)(1 + (numberOfOptimizedOffsets * 2))];
+        optimizedWeight = (w[i * 2 + 1] + w[i * 2 + 2]) / sumOfWeights;\n\
+        sum += texture2D(inputImageTexture, blurCoordinates[i * 2 + 1]) * optimizedWeight;\n\
+        sum += texture2D(inputImageTexture, blurCoordinates[i * 2 + 2]) * optimizedWeight;\n\
+     }\n", (unsigned long)(blurRadius + 1), (unsigned long)numberOfOptimizedOffsets, (unsigned long)trueNumberOfOptimizedOffsets, (unsigned long)(1 + (numberOfOptimizedOffsets * 2)), _distance, (unsigned long)(1 + (numberOfOptimizedOffsets * 2)), _strength];
 #else
     [shaderString appendFormat:@"\
      uniform sampler2D inputImageTexture;\n\
@@ -337,7 +339,7 @@
      {\n\
      vec4 sum = vec4(0.0);\n", 1 + (numberOfOptimizedOffsets * 2) ];
 #endif
-    NSLog(@"str:%@",shaderString);
+    /*
     // Inner texture loop
     LOG(@"++Inner Texture Loop");
     [shaderString appendFormat:@"sum += texture2D(inputImageTexture, blurCoordinates[0]) * %f;\n", standardGaussianWeights[0]];
@@ -357,13 +359,24 @@
         LOG(@"[%lu]: %f", (unsigned long)((currentBlurCoordinateIndex * 2) + 1), optimizedWeight);
         LOG(@"[%lu]: %f", (unsigned long)((currentBlurCoordinateIndex * 2) + 2), optimizedWeight);
     }
+     
+     */
     
     // If the number of required samples exceeds the amount we can pass in via varyings, we have to do dependent texture reads in the fragment shader
     if (trueNumberOfOptimizedOffsets > numberOfOptimizedOffsets)
     {
         LOG(@"++Another Texture Loop");
 #if TARGET_IPHONE_SIMULATOR || TARGET_OS_IPHONE
-        [shaderString appendString:@"highp vec2 singleStepOffset = vec2(texelWidthOffset, texelHeightOffset);\n"];
+        
+        [shaderString appendFormat:@"\
+         mediump vec2 singleStepOffset = vec2(texelWidthOffset, texelHeightOffset);\n\
+         mediump float optimizedOffset;\n\
+         for(int i=numberOfOffsets;i<trueNumberOfOffsets;i++){\n\
+            optimizedWeight = (w[i * 2 + 1] + w[i * 2 + 2]) / sumOfWeights;\n\
+            optimizedOffset = (w[i * 2 + 1] * float(i * 2 + 1) + w[i * 2 + 2] * float(i * 2 + 2)) / optimizedWeight;\n\
+            sum += texture2D(inputImageTexture, blurCoordinates[0] + singleStepOffset * optimizedOffset) * optimizedWeight;\n\
+            sum += texture2D(inputImageTexture, blurCoordinates[0] - singleStepOffset * optimizedOffset) * optimizedWeight;\n\
+         }\n"];
 #else
         [shaderString appendString:@"vec2 singleStepOffset = vec2(texelWidthOffset, texelHeightOffset);\n"];
 #endif
@@ -376,8 +389,8 @@
             GLfloat optimizedWeight = firstWeight + secondWeight;
             GLfloat optimizedOffset = (firstWeight * (currentOverlowTextureRead * 2 + 1) + secondWeight * (currentOverlowTextureRead * 2 + 2)) / optimizedWeight;
             
-            [shaderString appendFormat:@"sum += texture2D(inputImageTexture, blurCoordinates[0] + singleStepOffset * %f) * %f;\n", optimizedOffset, optimizedWeight];
-            [shaderString appendFormat:@"sum += texture2D(inputImageTexture, blurCoordinates[0] - singleStepOffset * %f) * %f;\n", optimizedOffset, optimizedWeight];
+            //[shaderString appendFormat:@"sum += texture2D(inputImageTexture, blurCoordinates[0] + singleStepOffset * %f) * %f;\n", optimizedOffset, optimizedWeight];
+            //[shaderString appendFormat:@"sum += texture2D(inputImageTexture, blurCoordinates[0] - singleStepOffset * %f) * %f;\n", optimizedOffset, optimizedWeight];
             LOG(@"[%lu]: %f", (unsigned long)((currentOverlowTextureRead * 2) + 1), optimizedWeight);
             LOG(@"[%lu]: %f", (unsigned long)((currentOverlowTextureRead * 2) + 2), optimizedWeight);
         }
@@ -385,9 +398,10 @@
     
     // Footer
     [shaderString appendString:@"\
-     gl_FragColor = vec4(sum.rgb, 1.0);\n\
+     gl_FragColor = sum;\n\
      }\n"];
-    
+    LOG(@"++Shader");
+    NSLog(@"%@",shaderString);
     free(standardGaussianWeights);
     return shaderString;
 }
@@ -501,6 +515,13 @@
 - (void)setDistance:(CGFloat)distance
 {
     _distance = distance;
+}
+
+- (void)setStrength:(CGFloat)strength
+{
+    _strength = strength;
+    _strength = 3.7 + _strength * 20.0f;
+    self.blurRadiusInPixels = _strength;
 }
 
 // inputRadius for Core Image's CIGaussianBlur is really sigma in the Gaussian equation, so I'm using that for my blur radius, to be consistent

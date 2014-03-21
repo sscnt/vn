@@ -25,6 +25,7 @@
 @property (readwrite, nonatomic) CGFloat blurRadiusAsFractionOfImageHeight;
 
 @property (readwrite, nonatomic) CGFloat distance;
+@property (readwrite, nonatomic) CGFloat strength;
 
 /// The number of times to sequentially blur the incoming image. The more passes, the slower the filter.
 @property(readwrite, nonatomic) NSUInteger blurPasses;
