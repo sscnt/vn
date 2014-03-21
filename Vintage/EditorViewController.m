@@ -470,7 +470,7 @@ float absf(float value){
         LOG(@"focus enabled. %f", _sliderFocusStrength.value);
         GPUImagePicture* base = [[GPUImagePicture alloc] initWithImage:inputImage];
         GPUImageLensBlurFilter* filter = [[GPUImageLensBlurFilter alloc] init];
-        filter.distance = _valueFocusDistance;
+        filter.distance = 1.0 - _valueFocusDistance;
         CGFloat strength = 12.0f * _valueFocusStrength * inputImage.size.width / _imageResized.size.width;
         if(strength > 25.0f){
             CGFloat times = ceil(strength / 25.0f);
