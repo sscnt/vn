@@ -55,7 +55,7 @@ float absf(float value){
     _previewImageView = [[UIEditorPreviewImageView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, width, height)];
     _previewImageView.delegate = self;
     if([UIDevice resolution] == UIDeviceResolution_iPhoneRetina4){
-        _previewImageView.center = self.view.center;
+        _previewImageView.center = CGPointMake([UIScreen screenSize].width / 2.0f, [UIScreen screenSize].height / 2.0f - MAX(([UIScreen screenSize].height - 128.0f - height) / 2.0f, 0.0f));
     }else{
         _previewImageView.center = CGPointMake([UIScreen screenSize].width / 2.0f, [UIScreen screenSize].height / 2.0f - MIN(max_height - height, 44.0f));
     }
