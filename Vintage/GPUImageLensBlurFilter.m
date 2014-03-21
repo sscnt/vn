@@ -287,12 +287,7 @@
     LOG(@"dist  : %f", _distance);
     
     NSMutableString *shaderString = [[NSMutableString alloc] init];
-    
-    // Calculate the number of pixels to sample from by setting a bottom limit for the contribution of the outermost pixel
-    CGFloat minimumWeightToFindEdgeOfSamplingArea = 1.0/256.0;
-    NSUInteger calculatedSampleRadius = floor(sqrt(-2.0 * pow(_blurRadiusInPixels, 2.0) * log(minimumWeightToFindEdgeOfSamplingArea * sqrt(2.0 * M_PI * pow(_blurRadiusInPixels, 2.0))) ));
-    calculatedSampleRadius += calculatedSampleRadius % 2; // There's nothing to gain from handling odd radius sizes, due to the optimizations I use
-    
+
     // Header
 #if TARGET_IPHONE_SIMULATOR || TARGET_OS_IPHONE
     [shaderString appendFormat:@"\
@@ -312,14 +307,22 @@
      mediump float d = abs(y) * 2.0 + (dist / 2.0 - 1.0);\n\
      mediump float w[%lu];\n\
      mediump float sumOfWeights = 0.0;\n\
-     d = 1.0 / (1.0 + pow(3.0, -d * 8.0 - 4.0 * dist));\n\
-     d = 1.0 + %f * d;\n\
+     d = 1.0 / (1.0 + pow(3.0, -d * (6.0 - 3.0 * dist)));\n\
+     d = %f * d;\n\
      //d = 4.0;\n\
      mediump float radius = floor(d + 0.5);\n\
+     if(radius < 1.0){\n\
+        gl_FragColor = texture2D(inputImageTexture, blurCoordinates[0]);\n\
+        return;\n\
+     }\n\
      mediump float calculatedSampleRadius = floor(sqrt(-2.0 * radius * radius * log(1.0 / 256.0 * sqrt(2.0 * 3.14159265359 * radius * radius))));\n\
      calculatedSampleRadius += mod(calculatedSampleRadius, 2.0);\n\
      radius = calculatedSampleRadius;\n\
-     int numberOfOffsets = int(min(floor(radius / 2.0) + mod(radius, 2.0), 7.0));\n\
+     int trueNumberOfOffsets = int(floor(radius / 2.0) + mod(radius, 2.0));\n\
+     int numberOfOffsets = trueNumberOfOffsets;\n\
+     if(numberOfOffsets > 7){\n\
+        numberOfOffsets = 7;\n\
+     }\n\
      int blurRadiusPlus1 = int(radius) + 1;\n\
      for(int i=0;i<blurRadiusPlus1;i++){\n\
         w[i]=(1.0 / sqrt(2.0 * 3.14159265359 * d * d)) * exp(-float(i * i) / (2.0 * d * d));\n\
@@ -337,7 +340,18 @@
         optimizedWeight = (w[i * 2 + 1] + w[i * 2 + 2]) / sumOfWeights;\n\
         sum += texture2D(inputImageTexture, blurCoordinates[i * 2 + 1]) * optimizedWeight;\n\
         sum += texture2D(inputImageTexture, blurCoordinates[i * 2 + 2]) * optimizedWeight;\n\
-     }\n", (unsigned long)trueNumberOfOptimizedOffsets, (unsigned long)(1 + (numberOfOptimizedOffsets * 2)), _distance, (unsigned long)(1 + (numberOfOptimizedOffsets * 2)), _strength];
+     }\n\
+     if(trueNumberOfOffsets>numberOfOffsets){\n\
+        mediump vec2 singleStepOffset = vec2(texelWidthOffset, texelHeightOffset);\n\
+        mediump float optimizedOffset;\n\
+        for(int i=numberOfOffsets;i<trueNumberOfOffsets;i++){\n\
+            optimizedWeight = (w[i * 2 + 1] + w[i * 2 + 2]) / sumOfWeights;\n\
+            optimizedOffset = (w[i * 2 + 1] * float(i * 2 + 1) + w[i * 2 + 2] * float(i * 2 + 2)) / optimizedWeight;\n\
+            sum += texture2D(inputImageTexture, blurCoordinates[0] + singleStepOffset * optimizedOffset) * optimizedWeight;\n\
+            sum += texture2D(inputImageTexture, blurCoordinates[0] - singleStepOffset * optimizedOffset) * optimizedWeight;\n\
+        }\n\
+     }\n\
+     ", (unsigned long)trueNumberOfOptimizedOffsets, (unsigned long)(1 + (numberOfOptimizedOffsets * 2)), _distance, (unsigned long)(1 + (numberOfOptimizedOffsets * 2)), _strength];
 #else
     [shaderString appendFormat:@"\
      uniform sampler2D inputImageTexture;\n\
@@ -411,8 +425,8 @@
     [shaderString appendString:@"\
      gl_FragColor = sum;\n\
      }\n"];
-    LOG(@"++Shader");
-    NSLog(@"%@",shaderString);
+    //LOG(@"++Shader");
+    //NSLog(@"%@",shaderString);
     free(standardGaussianWeights);
     return shaderString;
 }
@@ -532,7 +546,7 @@
 {
     _strength = strength;
     _strength = 1.0 + _strength * 10.0f;
-    self.blurRadiusInPixels = 7.0f;
+    self.blurRadiusInPixels = 20.0f;
 }
 
 // inputRadius for Core Image's CIGaussianBlur is really sigma in the Gaussian equation, so I'm using that for my blur radius, to be consistent
