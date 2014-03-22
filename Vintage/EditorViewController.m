@@ -463,7 +463,7 @@ float absf(float value){
         [base processImage];
         inputImage = [filter imageFromCurrentlyProcessedOutput];
     }
-
+    
     
     //// Focus
     if (_sliderFocusDistance.value != _sliderFocusDistance.defaultValue || _sliderFocusStrength.value != _sliderFocusStrength.defaultValue) {
@@ -483,7 +483,7 @@ float absf(float value){
         [base processImage];
         inputImage = [filter imageFromCurrentlyProcessedOutput];
     }
-    
+
     return inputImage;
 }
 
