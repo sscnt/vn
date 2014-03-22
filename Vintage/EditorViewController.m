@@ -47,7 +47,7 @@ float absf(float value){
     //// Preview
     CGFloat width = [UIScreen screenSize].width;
     CGFloat height = _imageOriginal.size.height * width / _imageOriginal.size.width;
-    CGFloat max_height = [UIScreen screenSize].height - 88.0f - 30.0f;
+    CGFloat max_height = [UIScreen screenSize].height - 176.0f;
     if (height > max_height) {
         width *= max_height / height;
         height = max_height;
@@ -57,7 +57,7 @@ float absf(float value){
     if([UIDevice resolution] == UIDeviceResolution_iPhoneRetina4){
         _previewImageView.center = CGPointMake([UIScreen screenSize].width / 2.0f, [UIScreen screenSize].height / 2.0f - MAX(([UIScreen screenSize].height - 128.0f - height) / 2.0f, 0.0f));
     }else{
-        _previewImageView.center = CGPointMake([UIScreen screenSize].width / 2.0f, [UIScreen screenSize].height / 2.0f - MIN(max_height - height, 44.0f));
+        _previewImageView.center = CGPointMake([UIScreen screenSize].width / 2.0f, [UIScreen screenSize].height / 2.0f - MIN(MAX(([UIScreen screenSize].height - height - 118.0f) / 2.0f, 0.0f), 44.0f));
     }
     [self.view addSubview:_previewImageView];
     
