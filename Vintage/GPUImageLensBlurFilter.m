@@ -363,65 +363,28 @@
      {\n\
      vec4 sum = vec4(0.0);\n", 1 + (numberOfOptimizedOffsets * 2) ];
 #endif
-    /*
-     // Inner texture loop
-     LOG(@"++Inner Texture Loop");
-     [shaderString appendFormat:@"sum += texture2D(inputImageTexture, blurCoordinates[0]) * %f;\n", standardGaussianWeights[0]];
-     LOG(@"[%d]: %f", 0, standardGaussianWeights[0]);
-     
-     for (NSUInteger currentBlurCoordinateIndex = 0; currentBlurCoordinateIndex < numberOfOptimizedOffsets; currentBlurCoordinateIndex++)
-     {
-     GLfloat firstWeight = standardGaussianWeights[currentBlurCoordinateIndex * 2 + 1];
-     GLfloat secondWeight = standardGaussianWeights[currentBlurCoordinateIndex * 2 + 2];
-     GLfloat optimizedWeight = firstWeight + secondWeight;
-     
-     [shaderString appendFormat:@"sum += texture2D(inputImageTexture, blurCoordinates[%lu]) * (w[%lu] + w[%lu + 1]) / sumOfWeights;// * %f;\n", (unsigned long)((currentBlurCoordinateIndex * 2) + 1), (unsigned long)((currentBlurCoordinateIndex * 2) + 1), (unsigned long)((currentBlurCoordinateIndex * 2) + 1), optimizedWeight];
-     [shaderString appendFormat:@"sum += texture2D(inputImageTexture, blurCoordinates[%lu]) * (w[%lu] + w[%lu - 1]) / sumOfWeights;// * %f;\n", (unsigned long)((currentBlurCoordinateIndex * 2) + 2), (unsigned long)((currentBlurCoordinateIndex * 2) + 2), (unsigned long)((currentBlurCoordinateIndex * 2) + 2), optimizedWeight];
-     
-     //[shaderString appendFormat:@"sum += texture2D(inputImageTexture, blurCoordinates[%lu]) * %f;\n", (unsigned long)((currentBlurCoordinateIndex * 2) + 1), optimizedWeight];
-     //[shaderString appendFormat:@"sum += texture2D(inputImageTexture, blurCoordinates[%lu]) * %f;\n", (unsigned long)((currentBlurCoordinateIndex * 2) + 2), optimizedWeight];
-     LOG(@"[%lu]: %f", (unsigned long)((currentBlurCoordinateIndex * 2) + 1), optimizedWeight);
-     LOG(@"[%lu]: %f", (unsigned long)((currentBlurCoordinateIndex * 2) + 2), optimizedWeight);
-     }
-     
-     */
-    
     // If the number of required samples exceeds the amount we can pass in via varyings, we have to do dependent texture reads in the fragment shader
     if (trueNumberOfOptimizedOffsets > numberOfOptimizedOffsets)
     {
         LOG(@"++Another Texture Loop");
 #if TARGET_IPHONE_SIMULATOR || TARGET_OS_IPHONE
-        
-        //[shaderString appendFormat:@"\
-        mediump vec2 singleStepOffset = vec2(texelWidthOffset, texelHeightOffset);\n\
-        mediump float optimizedOffset;\n\
-        for(int i=numberOfOffsets;i<trueNumberOfOffsets;i++){\n\
-        optimizedWeight = (w[i * 2 + 1] + w[i * 2 + 2]) / sumOfWeights;\n\
-        optimizedOffset = (w[i * 2 + 1] * float(i * 2 + 1) + w[i * 2 + 2] * float(i * 2 + 2)) / optimizedWeight;\n\
-        sum += texture2D(inputImageTexture, blurCoordinates[0] + singleStepOffset * optimizedOffset) * optimizedWeight;\n\
-        sum += texture2D(inputImageTexture, blurCoordinates[0] - singleStepOffset * optimizedOffset) * optimizedWeight;\n\
-        }\n"];
+
 #else
         [shaderString appendString:@"vec2 singleStepOffset = vec2(texelWidthOffset, texelHeightOffset);\n"];
 #endif
         
-        for (NSUInteger currentOverlowTextureRead = numberOfOptimizedOffsets; currentOverlowTextureRead < trueNumberOfOptimizedOffsets; currentOverlowTextureRead++)
-        {
-            GLfloat firstWeight = standardGaussianWeights[currentOverlowTextureRead * 2 + 1];
-            GLfloat secondWeight = standardGaussianWeights[currentOverlowTextureRead * 2 + 2];
-            
-            GLfloat optimizedWeight = firstWeight + secondWeight;
-            GLfloat optimizedOffset = (firstWeight * (currentOverlowTextureRead * 2 + 1) + secondWeight * (currentOverlowTextureRead * 2 + 2)) / optimizedWeight;
-            
-            //[shaderString appendFormat:@"sum += texture2D(inputImageTexture, blurCoordinates[0] + singleStepOffset * %f) * %f;\n", optimizedOffset, optimizedWeight];
-            //[shaderString appendFormat:@"sum += texture2D(inputImageTexture, blurCoordinates[0] - singleStepOffset * %f) * %f;\n", optimizedOffset, optimizedWeight];
-            //LOG(@"[%lu]: %f", (unsigned long)((currentOverlowTextureRead * 2) + 1), optimizedWeight);
-            //LOG(@"[%lu]: %f", (unsigned long)((currentOverlowTextureRead * 2) + 2), optimizedWeight);
-        }
+
     }
     
     // Footer
     [shaderString appendString:@"\
+     if(d < 1.5){\n\
+        mediump vec4 pixel = texture2D(inputImageTexture, blurCoordinates[0]);\n\
+        mediump vec4 blured = log(sum) / 6.0;\n\
+        blured.rgb = blured.rgb * (d - 0.5) + pixel.rgb * (1.0 - d + 0.5);\n\
+        gl_FragColor = vec4(blured.rgb, 1.0);\n\
+        return;\n\
+     }\n\
      gl_FragColor = log(sum) / 6.0;\n\
      }\n"];
     //LOG(@"++Shader");
