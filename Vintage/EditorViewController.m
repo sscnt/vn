@@ -471,7 +471,7 @@ float absf(float value){
         GPUImagePicture* base = [[GPUImagePicture alloc] initWithImage:inputImage];
         GPUImageLensBlurFilter* filter = [[GPUImageLensBlurFilter alloc] init];
         filter.distance = 1.0 - _valueFocusDistance;
-        CGFloat strength = 12.0f * _valueFocusStrength * inputImage.size.width / _imageResized.size.width;
+        CGFloat strength = 8.0f * _valueFocusStrength * inputImage.size.width / _imageResized.size.width;
         if(strength > 20.0f){
             CGFloat times = ceil(strength / 20.0f);
             filter.strength = strength / times;
