@@ -472,8 +472,8 @@ float absf(float value){
         GPUImageLensBlurFilter* filter = [[GPUImageLensBlurFilter alloc] init];
         filter.distance = 1.0 - _valueFocusDistance;
         CGFloat strength = 12.0f * _valueFocusStrength * inputImage.size.width / _imageResized.size.width;
-        if(strength > 25.0f){
-            CGFloat times = ceil(strength / 25.0f);
+        if(strength > 20.0f){
+            CGFloat times = ceil(strength / 20.0f);
             filter.strength = strength / times;
             filter.blurPasses = (NSInteger)times * 2;
         }else{
