@@ -21,9 +21,10 @@
         self.backgroundColor = [UIColor clearColor];
         
         //// Rotation
+        _rotationDistance = 50.0f;
         _rotationView = [[UIFocusRotationControlView alloc] init];
         _rotationView.delegate = self;
-        _rotationView.center = CGPointMake(self.frame.size.width / 2.0f + 40.0f, self.frame.size.height / 2.0f - 40.0f);
+        _rotationView.center = CGPointMake(self.frame.size.width / 2.0f + _rotationDistance * cosf(M_PI / 4.0f), self.frame.size.height / 2.0f - _rotationDistance * sinf(M_PI / 4.0f));
         [self addSubview:_rotationView];
         
         //// Movement
@@ -47,17 +48,58 @@
 
 - (void)rotation:(UIFocusRotationControlView *)view didDragX:(CGFloat)x y:(CGFloat)y
 {
-    LOG(@"Rotation: %fx%f", x, y);
+    CGFloat degrees;
+    CGFloat rv_angle = _angle + M_PI / 4.0f;
+    CGPoint rcenter = CGPointMake(_rotationDistance * cosf(rv_angle) + _movementView.center.x, _movementView.center.y - _rotationDistance * sinf(rv_angle));
+    //LOG(@"%fx%f; %fx%f", rcenter.x, rcenter.y, _rotationView.center.x, _rotationView.center.y);
+    CGFloat _x = (x + ((rcenter.x - 10.0f) - _movementView.center.x));
+    CGFloat _y = (y + ((rcenter.y + 10.0f) - _movementView.center.y));
+    //LOG(@"%fx%f", _x, _y);
+    CGFloat new_angle;
+    if(_x == 0.0f){
+        if(_y > 0.0f){
+            new_angle = M_PI_2;
+        }else{
+            new_angle = M_PI * 3.0 / 4.0f;
+        }
+    }else{
+        if(_x < 0.0f){
+            if(_y < 0.0f){
+                new_angle = atanf(-_y / -_x) + M_PI;
+            
+            }else{
+                new_angle = M_PI - atanf(_y / -_x);
+                
+            }
+        }else{
+            if(_y < 0.0f){
+                new_angle = M_PI * 2.0f - atanf(-_y / _x);
+                
+            }else{
+                new_angle = atanf(_y / _x);
+            }
+        }
+    }
+    new_angle += M_PI / 4.0f;
+    if(new_angle > M_PI * 2.0f){
+        new_angle -= M_PI * 2.0f;
+    }
+    degrees = new_angle * (180 / M_PI);
+    //self.transform = CGAffineTransformMakeRotation(_previousAngle + new_angle);
+    LOG(@"%fx%f; %f",_x, _y, degrees);
 }
 
-- (void)rotation:(UIFocusRotationControlView *)view touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+- (void)rotationTouchesBegan:(UIFocusRotationControlView *)view
 {
+    LOG(@"rotationTouchesBegan");
     _previousAngle = _angle;
 }
 
-- (void)rotation:(UIFocusRotationControlView *)view touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
+- (void)rotationTouchesEnded:(UIFocusRotationControlView *)view
 {
-    
+    LOG(@"rotationTouchesEnded");
+    _angle = atan2f(self.transform.b, self.transform.a);
+    LOG(@"%f", _angle * (180 / M_PI));
 }
 
 - (void)movement:(UIFocusMovementControlView *)view didDragX:(CGFloat)x y:(CGFloat)y
@@ -81,14 +123,16 @@
     self.center = new_center;
 }
 
-- (void)movement:(UIFocusMovementControlView *)view touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+- (void)movementTouchesBegan:(UIFocusMovementControlView *)view
 {
+    LOG(@"movementTouchesBegan");
     _previousCenter = self.center;
 }
 
-- (void)movement:(UIFocusMovementControlView *)view touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
+- (void)movementTouchesEnded:(UIFocusMovementControlView *)view
 {
-    
+    LOG(@"movementTouchesEnded");
+    _position = self.center;
 }
 
 - (UIView*)hitTest:(CGPoint)point withEvent:(UIEvent *)event

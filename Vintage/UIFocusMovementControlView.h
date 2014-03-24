@@ -12,8 +12,8 @@
 
 @protocol UIFocusMovementControlViewDelegate
 - (void)movement:(UIFocusMovementControlView*)view didDragX:(CGFloat)x y:(CGFloat)y;
-- (void)movement:(UIFocusMovementControlView *)view touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event;
-- (void)movement:(UIFocusMovementControlView *)view touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event;
+- (void)movementTouchesBegan:(UIFocusMovementControlView *)view;
+- (void)movementTouchesEnded:(UIFocusMovementControlView *)view;
 @end
 
 @interface UIFocusMovementControlView : UIView <UIGestureRecognizerDelegate>

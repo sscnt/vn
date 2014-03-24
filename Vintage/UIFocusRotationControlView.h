@@ -12,8 +12,8 @@
 
 @protocol UIFocusRotationControlViewDelegate
 - (void)rotation:(UIFocusRotationControlView*)view didDragX:(CGFloat)x y:(CGFloat)y;
-- (void)rotation:(UIFocusRotationControlView*)view touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event;
-- (void)rotation:(UIFocusRotationControlView*)view touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event;
+- (void)rotationTouchesBegan:(UIFocusRotationControlView*)view;
+- (void)rotationTouchesEnded:(UIFocusRotationControlView*)view;
 @end
 
 @interface UIFocusRotationControlView : UIView <UIGestureRecognizerDelegate>

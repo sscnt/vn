@@ -29,23 +29,30 @@
 - (void)didDrag:(UIPanGestureRecognizer *)sender
 {
     CGPoint transitionPoint = [sender translationInView:self];
-    [self.delegate movement:self didDragX:transitionPoint.x y:transitionPoint.y];
+    switch (sender.state) {
+        case UIGestureRecognizerStatePossible:
+            break;
+        case UIGestureRecognizerStateBegan:
+            break;
+        case UIGestureRecognizerStateChanged:
+            [self.delegate movement:self didDragX:transitionPoint.x y:transitionPoint.y];
+            break;
+        case UIGestureRecognizerStateEnded:
+            [self.delegate movementTouchesEnded:self];
+            break;
+        case UIGestureRecognizerStateCancelled:
+            [self.delegate movementTouchesEnded:self];
+            break;
+        case UIGestureRecognizerStateFailed:
+            break;
+    }
 }
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
-    [self.delegate movement:self touchesBegan:touches withEvent:event];
+    [self.delegate movementTouchesBegan:self];
 }
 
-- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
-{
-    [self.delegate movement:self touchesEnded:touches withEvent:event];
-}
-
-- (void)touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event
-{
-    [self.delegate movement:self touchesEnded:touches withEvent:event];
-}
 
 - (void)drawRect:(CGRect)rect
 {
