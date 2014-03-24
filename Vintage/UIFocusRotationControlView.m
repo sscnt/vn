@@ -61,7 +61,7 @@
     
     //// Oval Drawing
     CGFloat ovalRadius = 6.0f;
-    UIBezierPath* ovalPath = [UIBezierPath bezierPathWithOvalInRect: CGRectMake(rect.size.width / 2.0f - ovalRadius - 10.0f, rect.size.height / 2.0f - ovalRadius + 10.0f, ovalRadius * 2.0f, ovalRadius * 2.0f)];
+    UIBezierPath* ovalPath = [UIBezierPath bezierPathWithOvalInRect: CGRectMake(rect.size.width / 2.0f - ovalRadius, rect.size.height / 2.0f - ovalRadius, ovalRadius * 2.0f, ovalRadius * 2.0f)];
     [color setStroke];
     ovalPath.lineWidth = 3;
     [ovalPath stroke];

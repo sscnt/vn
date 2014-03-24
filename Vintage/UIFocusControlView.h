@@ -25,7 +25,8 @@ typedef NS_ENUM(NSInteger, FocusType){
 
 @interface UIFocusControlView : UIView <UIFocusRotationControlViewDelegate, UIFocusMovementControlViewDelegate>
 {
-    CGPoint _previousCenter;
+    CGPoint _previousMovementCenter;
+    CGPoint _previousRotationCenter;
     CGFloat _previousAngle;
     CGFloat _rotationDistance;
     UIFocusMovementControlView* _movementView;

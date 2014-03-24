@@ -16,7 +16,7 @@
     if (self) {
         //// 12時の方向を0
         _angle = 0.0f;
-        _defaultPosition = self.center;
+        _defaultPosition = CGPointMake(self.bounds.size.width / 2.0f, self.bounds.size.height / 2.0f);
         _position = _defaultPosition;
         self.backgroundColor = [UIColor clearColor];
         
@@ -33,9 +33,35 @@
         _movementView.center = CGPointMake(self.frame.size.width / 2.0f, self.frame.size.height / 2.0f);
         [self addSubview:_movementView];
         
+        self.angle = M_PI / 3.0f;
     }
     return self;
 }
+
+- (void)setAngle:(CGFloat)angle
+{
+    _angle = angle;
+    CGFloat rvangle = _angle + M_PI / 4.0f;
+    CGFloat y = _rotationDistance * sinf(rvangle);
+    CGFloat x = _rotationDistance * cosf(rvangle);
+    //// Convert to Movement local
+    CGFloat _x = x * 0.0f + y * 1.0;
+    CGFloat _y = x * -1.0 + y * 0.0f;
+    //// Convert to View local
+    _x += _movementView.center.x;
+    _y += _movementView.center.y;
+    _rotationView.center = CGPointMake(_x, _y);
+    [self setNeedsDisplay];
+}
+
+- (void)setPosition:(CGPoint)position
+{
+    CGFloat y = position.y - _movementView.center.y;
+    CGFloat x = position.x - _movementView.center.x;
+    _movementView.center = position;
+    _rotationView.center = CGPointMake(_rotationView.center.x + x, _rotationView.center.y + y);
+}
+
 - (void)setActive:(BOOL)active
 {
     _active = active;
@@ -48,67 +74,66 @@
 
 - (void)rotation:(UIFocusRotationControlView *)view didDragX:(CGFloat)x y:(CGFloat)y
 {
-    CGFloat degrees;
-    CGFloat rv_angle = _angle + M_PI / 4.0f;
-    CGPoint rcenter = CGPointMake(_rotationDistance * cosf(rv_angle) + _movementView.center.x, _movementView.center.y - _rotationDistance * sinf(rv_angle));
-    //LOG(@"%fx%f; %fx%f", rcenter.x, rcenter.y, _rotationView.center.x, _rotationView.center.y);
-    CGFloat _x = (x + ((rcenter.x - 10.0f) - _movementView.center.x));
-    CGFloat _y = (y + ((rcenter.y + 10.0f) - _movementView.center.y));
-    //LOG(@"%fx%f", _x, _y);
-    CGFloat new_angle;
-    if(_x == 0.0f){
-        if(_y > 0.0f){
-            new_angle = M_PI_2;
-        }else{
-            new_angle = M_PI * 3.0 / 4.0f;
-        }
-    }else{
-        if(_x < 0.0f){
-            if(_y < 0.0f){
-                new_angle = atanf(-_y / -_x) + M_PI;
-            
-            }else{
-                new_angle = M_PI - atanf(_y / -_x);
-                
-            }
-        }else{
-            if(_y < 0.0f){
-                new_angle = M_PI * 2.0f - atanf(-_y / _x);
-                
-            }else{
-                new_angle = atanf(_y / _x);
-            }
-        }
+    //// Convert to Movement local
+    CGFloat _rvx = _previousRotationCenter.x - _movementView.center.x;
+    CGFloat _rvy = _previousRotationCenter.y - _movementView.center.y;
+    CGFloat _tx = _rvx + x;
+    CGFloat _ty = _rvy + y;
+    
+    //// Convert to 結ぶ線をy軸
+    CGFloat __angle = -(_previousAngle + M_PI / 4.0f);
+    CGFloat __x = _tx * cosf(__angle) - _ty * sinf(__angle);
+
+
+    CGFloat _rvtx = _rvx - _tx;
+    CGFloat _rvty = _rvy - _ty;
+    
+    CGFloat a = sqrt(_rvx * _rvx + _rvy * _rvy);
+    CGFloat b = sqrt(_tx * _tx + _ty * _ty);
+    CGFloat c = sqrt(_rvtx * _rvtx + _rvty * _rvty);
+    
+    CGFloat cos = (c * c - b * b - a * a) / (-2.0f * a * b);
+    CGFloat radian = acosf(cos);
+    if(__x < 0.0){
+        radian = M_PI * 2.0f - radian;
     }
-    new_angle += M_PI / 4.0f;
-    if(new_angle > M_PI * 2.0f){
-        new_angle -= M_PI * 2.0f;
+    
+    //// Convert to Movement local
+    radian += _previousAngle;
+    if(radian > M_PI * 2.0f){
+        radian -= M_PI * 2.0f;
     }
-    degrees = new_angle * (180 / M_PI);
-    //self.transform = CGAffineTransformMakeRotation(_previousAngle + new_angle);
-    LOG(@"%fx%f; %f",_x, _y, degrees);
+    
+    CGFloat degree = radian * (180.0f / M_PI);
+    LOG(@"%f", degree);
+    
+    self.angle = radian;
+
+    
+    //LOG(@"%fx%f, %fx%f", _rvx, _rvy, _tx, _ty);
+    
 }
 
 - (void)rotationTouchesBegan:(UIFocusRotationControlView *)view
 {
     LOG(@"rotationTouchesBegan");
+    _previousRotationCenter = _rotationView.center;
     _previousAngle = _angle;
 }
 
 - (void)rotationTouchesEnded:(UIFocusRotationControlView *)view
 {
     LOG(@"rotationTouchesEnded");
-    _angle = atan2f(self.transform.b, self.transform.a);
-    LOG(@"%f", _angle * (180 / M_PI));
 }
 
 - (void)movement:(UIFocusMovementControlView *)view didDragX:(CGFloat)x y:(CGFloat)y
 {
-    CGPoint new_center = CGPointMake(_previousCenter.x + x, _previousCenter.y + y);
-    CGFloat max_y = _defaultPosition.y + self.frame.size.height / 2.0f - _movementView.frame.size.height / 2.0f;
-    CGFloat min_y = _defaultPosition.y - self.frame.size.height / 2.0f + _movementView.frame.size.height / 2.0f;
-    CGFloat max_x = _defaultPosition.x + self.frame.size.width / 2.0f - _movementView.frame.size.width / 2.0f;
-    CGFloat min_x = _defaultPosition.x - self.frame.size.width / 2.0f + _movementView.frame.size.width / 2.0f;
+    LOG(@"%fx%f", x, y);
+    CGPoint new_center = CGPointMake(_previousMovementCenter.x + x, _previousMovementCenter.y + y);
+    CGFloat max_y = self.frame.size.height - _movementView.frame.size.height / 2.0f;
+    CGFloat min_y = _movementView.frame.size.height / 2.0f;
+    CGFloat max_x = self.frame.size.width - _movementView.frame.size.width / 2.0f;
+    CGFloat min_x = _movementView.frame.size.width / 2.0f;
     if(new_center.x > max_x){
         new_center = CGPointMake(max_x, new_center.y);
     }else if(new_center.x < min_x){
@@ -119,20 +144,20 @@
     }else if(new_center.y < min_y){
         new_center = CGPointMake(new_center.x, min_y);
     }
-    LOG(@"Movement: %fx%f", new_center.x, new_center.y);
-    self.center = new_center;
+    //LOG(@"Movement: %fx%f", new_center.x, new_center.y);
+    self.position = new_center;
 }
 
 - (void)movementTouchesBegan:(UIFocusMovementControlView *)view
 {
     LOG(@"movementTouchesBegan");
-    _previousCenter = self.center;
+    _previousMovementCenter = _position;
 }
 
 - (void)movementTouchesEnded:(UIFocusMovementControlView *)view
 {
     LOG(@"movementTouchesEnded");
-    _position = self.center;
+    _position = _movementView.center;
 }
 
 - (UIView*)hitTest:(CGPoint)point withEvent:(UIEvent *)event
@@ -152,7 +177,19 @@
 // An empty implementation adversely affects performance during animation.
 - (void)drawRect:(CGRect)rect
 {
+    //// Color Declarations
+    UIColor* color = [UIColor colorWithRed: 0.992 green: 0.616 blue: 0 alpha: 1];
     
+    //// Bezier Drawing
+    CGFloat strokeLength = rect.size.width;
+    UIBezierPath* bezierPath = [UIBezierPath bezierPath];
+    [bezierPath moveToPoint: CGPointMake(0.0f, rect.size.height / 4.0f)];
+    [bezierPath addLineToPoint: CGPointMake(rect.size.width, rect.size.height / 4.0f)];
+    [color setStroke];
+    bezierPath.lineWidth = 3;
+    [bezierPath stroke];
+    
+
 }
 
 
