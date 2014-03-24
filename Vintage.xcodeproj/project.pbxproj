@@ -144,6 +144,8 @@
 		58FB899A18AE12B1001F661B /* UIDevice+extend.m in Sources */ = {isa = PBXBuildFile; fileRef = 58FB899318AE12B1001F661B /* UIDevice+extend.m */; };
 		58FB899B18AE12B1001F661B /* UIScreen+extend.m in Sources */ = {isa = PBXBuildFile; fileRef = 58FB899518AE12B1001F661B /* UIScreen+extend.m */; };
 		58FB899C18AE12B1001F661B /* UIView+extend.m in Sources */ = {isa = PBXBuildFile; fileRef = 58FB899718AE12B1001F661B /* UIView+extend.m */; };
+		58FC498818E069FF00371084 /* UIFocusControlView.m in Sources */ = {isa = PBXBuildFile; fileRef = 58FC498718E069FF00371084 /* UIFocusControlView.m */; };
+		58FC498E18E0730900371084 /* UIFocusRotationControlView.m in Sources */ = {isa = PBXBuildFile; fileRef = 58FC498D18E0730900371084 /* UIFocusRotationControlView.m */; };
 		58FCAD2518AFA81C001559F0 /* SelectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58FCAD2418AFA81C001559F0 /* SelectionViewController.m */; };
 		58FCAD2818AFAD6E001559F0 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58FCAD2718AFAD6E001559F0 /* Crashlytics.framework */; };
 		58FCAD2B18AFAECA001559F0 /* camera-36-40@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 58FCAD2918AFAECA001559F0 /* camera-36-40@2x.png */; };
@@ -422,6 +424,10 @@
 		58FB899518AE12B1001F661B /* UIScreen+extend.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScreen+extend.m"; sourceTree = "<group>"; };
 		58FB899618AE12B1001F661B /* UIView+extend.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+extend.h"; sourceTree = "<group>"; };
 		58FB899718AE12B1001F661B /* UIView+extend.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+extend.m"; sourceTree = "<group>"; };
+		58FC498618E069FF00371084 /* UIFocusControlView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIFocusControlView.h; sourceTree = "<group>"; };
+		58FC498718E069FF00371084 /* UIFocusControlView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIFocusControlView.m; sourceTree = "<group>"; };
+		58FC498C18E0730900371084 /* UIFocusRotationControlView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIFocusRotationControlView.h; sourceTree = "<group>"; };
+		58FC498D18E0730900371084 /* UIFocusRotationControlView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIFocusRotationControlView.m; sourceTree = "<group>"; };
 		58FCAD2318AFA81C001559F0 /* SelectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectionViewController.h; sourceTree = "<group>"; };
 		58FCAD2418AFA81C001559F0 /* SelectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectionViewController.m; sourceTree = "<group>"; };
 		58FCAD2718AFAD6E001559F0 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
@@ -994,6 +1000,10 @@
 				58FD375318D08D4700319BA0 /* UISaveDialogView.m */,
 				58FD375818D0926C00319BA0 /* UISaveToButton.h */,
 				58FD375918D0926C00319BA0 /* UISaveToButton.m */,
+				58FC498618E069FF00371084 /* UIFocusControlView.h */,
+				58FC498718E069FF00371084 /* UIFocusControlView.m */,
+				58FC498C18E0730900371084 /* UIFocusRotationControlView.h */,
+				58FC498D18E0730900371084 /* UIFocusRotationControlView.m */,
 			);
 			name = Editor;
 			sourceTree = "<group>";
@@ -1540,6 +1550,7 @@
 				58F767C818AD6F4900015FBA /* HomeViewController.m in Sources */,
 				58F6A1B818B3A63E00C722BA /* GPUImageTumblinLevelsFilter.m in Sources */,
 				58FF481718AE490D00B978D9 /* GPUEffectOldTone.m in Sources */,
+				58FC498E18E0730900371084 /* UIFocusRotationControlView.m in Sources */,
 				58F767C218AD6F4900015FBA /* AppDelegate.m in Sources */,
 				58F8127D18B3398500941C18 /* GPUImageDarkerColorBlendFilter.m in Sources */,
 				588F121018AE20A100787045 /* GPUImageGradientColorGenerator.m in Sources */,
@@ -1561,6 +1572,7 @@
 				58F767BE18AD6F4900015FBA /* main.m in Sources */,
 				58F4FF8918B07D1200C338B3 /* SVProgressHUD.m in Sources */,
 				588F125F18AE245D00787045 /* GPUEffectCavalleriaRusticana.m in Sources */,
+				58FC498818E069FF00371084 /* UIFocusControlView.m in Sources */,
 				588F124618AE22CE00787045 /* GPUEffectPinkBubbleTea.m in Sources */,
 				5891ABD818B0312B00241949 /* EditorViewController.m in Sources */,
 				588F11FC18AE1FEC00787045 /* GPUImageGradientMapFilter.m in Sources */,

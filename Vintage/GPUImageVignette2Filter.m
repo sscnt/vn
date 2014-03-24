@@ -63,9 +63,9 @@ NSString *const kGPUImageVignette2FilterFragmentShaderString = SHADER_STRING
      mediump float color;
      
      //// Multiply
-     pixel.r = result.r * pixel.r * (1.0 - d) + d * pixel.r;
-     pixel.g = result.g * pixel.g * (1.0 - d) + d * pixel.g;
-     pixel.b = result.b * pixel.b * (1.0 - d) + d * pixel.b;
+     pixel.r = result.r * pixel.r * result.r * (1.0 - d) + d * pixel.r;
+     pixel.g = result.g * pixel.g * result.g * (1.0 - d) + d * pixel.g;
+     pixel.b = result.b * pixel.b * result.b * (1.0 - d) + d * pixel.b;
      
      // Save the result
      gl_FragColor = pixel;

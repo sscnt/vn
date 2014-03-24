@@ -29,6 +29,7 @@
 #import "GPUImageAllAdjustmentsInOneFilter.h"
 #import "GPUImageFocusFilter.h"
 #import "GPUImageLensBlurFilter.h"
+#import "UIFocusControlView.h"
 
 typedef NS_ENUM(NSInteger, AdjustmentViewId){
     AdjustmentViewIdOpacity = 1,
@@ -102,6 +103,7 @@ typedef NS_ENUM(NSInteger, DialogState){
 @property (nonatomic, strong) UISliderContainer* adjustmentColor;
 @property (nonatomic, strong) UISliderContainer* adjustmentContrast;
 @property (nonatomic, strong) UISliderContainer* adjustmentFocus;
+@property (nonatomic, strong) UIFocusControlView* focusControlView;
 
 - (void)applyEffect;
 - (void)didPressAdjustmentButton:(UINavigationBarButton*)button;

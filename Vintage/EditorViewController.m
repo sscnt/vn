@@ -47,7 +47,7 @@ float absf(float value){
     //// Preview
     CGFloat width = [UIScreen screenSize].width;
     CGFloat height = _imageOriginal.size.height * width / _imageOriginal.size.width;
-    CGFloat max_height = [UIScreen screenSize].height - 176.0f;
+    CGFloat max_height = [UIScreen screenSize].height - 220.0f;
     if (height > max_height) {
         width *= max_height / height;
         height = max_height;
@@ -57,7 +57,7 @@ float absf(float value){
     if([UIDevice resolution] == UIDeviceResolution_iPhoneRetina4){
         _previewImageView.center = CGPointMake([UIScreen screenSize].width / 2.0f, [UIScreen screenSize].height / 2.0f - MAX(([UIScreen screenSize].height - 128.0f - height) / 2.0f, 0.0f));
     }else{
-        _previewImageView.center = CGPointMake([UIScreen screenSize].width / 2.0f, [UIScreen screenSize].height / 2.0f - MIN(MAX(([UIScreen screenSize].height - height - 118.0f) / 2.0f, 0.0f), 44.0f));
+        _previewImageView.center = CGPointMake([UIScreen screenSize].width / 2.0f, [UIScreen screenSize].height / 2.0f - MIN(MAX(([UIScreen screenSize].height - height - 118.0f) / 2.0f, 0.0f), 66.0f));
     }
     [self.view addSubview:_previewImageView];
     
@@ -243,6 +243,11 @@ float absf(float value){
     [buttonClose addTarget:self action:@selector(didPressCloseButton) forControlEvents:UIControlEventTouchUpInside];
     [_topNavigationBar appendButtonToLeft:buttonClose];
     [self.view addSubview:_topNavigationBar];
+    
+    //// Focus Control
+    _focusControlView = [[UIFocusControlView alloc] initWithFrame:_previewImageView.frame];
+    _focusControlView.hidden = YES;
+    [self.view addSubview:_focusControlView];
     
     
     //// Label
@@ -664,6 +669,7 @@ float absf(float value){
     _buttonFocus.selected = NO;
     _buttonOpacity.selected = NO;
     button.selected = YES;
+    _focusControlView.hidden = YES;
     UISliderContainer* adjustment;
     switch (button.tag) {
         case AdjustmentViewIdOpacity:
@@ -679,6 +685,7 @@ float absf(float value){
             adjustment = _adjustmentContrast;
             break;
         case AdjustmentViewIdFocus:
+            _focusControlView.hidden = NO;
             adjustment = _adjustmentFocus;
             break;
         default:
@@ -753,6 +760,10 @@ float absf(float value){
     CGFloat saveToViewTop = 40.0f + _resolutionSelector.frame.size.height + 40.0f;
     
     [self slideDownAdjustment:_adjustmentCurrent Completion:nil];
+    
+    if(_adjustmentCurrent == _adjustmentFocus){
+        _focusControlView.hidden = YES;
+    }
 
     __block EditorViewController* _self = self;
     [UIView animateWithDuration:0.20f animations:^{
@@ -793,6 +804,9 @@ float absf(float value){
         } completion:^(BOOL finished){
             _self.dialogState = DialogStateDidHide;
             [_self.dialogBgImageView removeFromSuperview];
+            if(_self.adjustmentCurrent == _self.adjustmentFocus){
+                _self.focusControlView.hidden = NO;
+            }
         }];
     }];
 }
