@@ -146,6 +146,7 @@
 		58FB899C18AE12B1001F661B /* UIView+extend.m in Sources */ = {isa = PBXBuildFile; fileRef = 58FB899718AE12B1001F661B /* UIView+extend.m */; };
 		58FC498818E069FF00371084 /* UIFocusControlView.m in Sources */ = {isa = PBXBuildFile; fileRef = 58FC498718E069FF00371084 /* UIFocusControlView.m */; };
 		58FC498E18E0730900371084 /* UIFocusRotationControlView.m in Sources */ = {isa = PBXBuildFile; fileRef = 58FC498D18E0730900371084 /* UIFocusRotationControlView.m */; };
+		58FC499118E079DC00371084 /* UIFocusMovementControlView.m in Sources */ = {isa = PBXBuildFile; fileRef = 58FC499018E079DC00371084 /* UIFocusMovementControlView.m */; };
 		58FCAD2518AFA81C001559F0 /* SelectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58FCAD2418AFA81C001559F0 /* SelectionViewController.m */; };
 		58FCAD2818AFAD6E001559F0 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58FCAD2718AFAD6E001559F0 /* Crashlytics.framework */; };
 		58FCAD2B18AFAECA001559F0 /* camera-36-40@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 58FCAD2918AFAECA001559F0 /* camera-36-40@2x.png */; };
@@ -428,6 +429,8 @@
 		58FC498718E069FF00371084 /* UIFocusControlView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIFocusControlView.m; sourceTree = "<group>"; };
 		58FC498C18E0730900371084 /* UIFocusRotationControlView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIFocusRotationControlView.h; sourceTree = "<group>"; };
 		58FC498D18E0730900371084 /* UIFocusRotationControlView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIFocusRotationControlView.m; sourceTree = "<group>"; };
+		58FC498F18E079DC00371084 /* UIFocusMovementControlView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIFocusMovementControlView.h; sourceTree = "<group>"; };
+		58FC499018E079DC00371084 /* UIFocusMovementControlView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIFocusMovementControlView.m; sourceTree = "<group>"; };
 		58FCAD2318AFA81C001559F0 /* SelectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectionViewController.h; sourceTree = "<group>"; };
 		58FCAD2418AFA81C001559F0 /* SelectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectionViewController.m; sourceTree = "<group>"; };
 		58FCAD2718AFAD6E001559F0 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
@@ -1004,6 +1007,8 @@
 				58FC498718E069FF00371084 /* UIFocusControlView.m */,
 				58FC498C18E0730900371084 /* UIFocusRotationControlView.h */,
 				58FC498D18E0730900371084 /* UIFocusRotationControlView.m */,
+				58FC498F18E079DC00371084 /* UIFocusMovementControlView.h */,
+				58FC499018E079DC00371084 /* UIFocusMovementControlView.m */,
 			);
 			name = Editor;
 			sourceTree = "<group>";
@@ -1556,6 +1561,7 @@
 				588F121018AE20A100787045 /* GPUImageGradientColorGenerator.m in Sources */,
 				58F6A1B218B39FA500C722BA /* GPUimageTumblinBrightnessFilter.m in Sources */,
 				58FF485618AE586F00B978D9 /* GPUAdjustmentsWhiteBalance.m in Sources */,
+				58FC499118E079DC00371084 /* UIFocusMovementControlView.m in Sources */,
 				58F2738418B4971C003056E9 /* GPUImageNaturalSaturationFilter.m in Sources */,
 				58F907D018B2D26200C7A241 /* UINavigationBarButton.m in Sources */,
 				58FB899B18AE12B1001F661B /* UIScreen+extend.m in Sources */,

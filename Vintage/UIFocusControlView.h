@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "UIFocusRotationControlView.h"
+#import "UIFocusMovementControlView.h"
 
 typedef NS_ENUM(NSInteger, FocusType){
     FocusTypeTopAndBottom = 1,
@@ -22,7 +23,13 @@ typedef NS_ENUM(NSInteger, FocusType){
 - (void)focus:(UIFocusControlView*)view didPositionChange:(CGFloat)angle;
 @end
 
-@interface UIFocusControlView : UIView <UIFocusRotationControlViewDelegate>
+@interface UIFocusControlView : UIView <UIFocusRotationControlViewDelegate, UIFocusMovementControlViewDelegate>
+{
+    CGPoint _previousCenter;
+    CGFloat _previousAngle;
+    UIFocusMovementControlView* _movementView;
+    UIFocusRotationControlView* _rotationView;
+}
 
 @property (nonatomic, assign) CGPoint defaultPosition;
 @property (nonatomic, assign) CGPoint position;

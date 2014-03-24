@@ -1,14 +1,14 @@
 //
-//  UIFocusRotationControlView.m
+//  UIFocusMovementControlView.m
 //  Vintage
 //
 //  Created by SSC on 2014/03/24.
 //  Copyright (c) 2014年 SSC. All rights reserved.
 //
 
-#import "UIFocusRotationControlView.h"
+#import "UIFocusMovementControlView.h"
 
-@implementation UIFocusRotationControlView
+@implementation UIFocusMovementControlView
 
 - (id)init
 {
@@ -21,6 +21,7 @@
         recognizer.maximumNumberOfTouches = 1;
         recognizer.delegate = self;
         [self addGestureRecognizer:recognizer];
+
     }
     return self;
 }
@@ -28,22 +29,22 @@
 - (void)didDrag:(UIPanGestureRecognizer *)sender
 {
     CGPoint transitionPoint = [sender translationInView:self];
-    [self.delegate rotation:self didDragX:transitionPoint.x y:transitionPoint.y];
+    [self.delegate movement:self didDragX:transitionPoint.x y:transitionPoint.y];
 }
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
-    [self.delegate rotation:self touchesBegan:touches withEvent:event];
+    [self.delegate movement:self touchesBegan:touches withEvent:event];
 }
 
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
 {
-    [self.delegate rotation:self touchesEnded:touches withEvent:event];
+    [self.delegate movement:self touchesEnded:touches withEvent:event];
 }
 
 - (void)touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event
 {
-    [self.delegate rotation:self touchesEnded:touches withEvent:event];
+    [self.delegate movement:self touchesEnded:touches withEvent:event];
 }
 
 - (void)drawRect:(CGRect)rect
@@ -53,12 +54,17 @@
     UIColor* color = [UIColor colorWithRed: 0.992 green: 0.616 blue: 0 alpha: 1];
     
     //// Oval Drawing
-    CGFloat ovalRadius = 6.0f;
-    UIBezierPath* ovalPath = [UIBezierPath bezierPathWithOvalInRect: CGRectMake(rect.size.width / 2.0f - ovalRadius - 10.0f, rect.size.height / 2.0f - ovalRadius + 10.0f, ovalRadius * 2.0f, ovalRadius * 2.0f)];
+    CGFloat ovalRadius = 15.0f;
+    UIBezierPath* ovalPath = [UIBezierPath bezierPathWithOvalInRect: CGRectMake(rect.size.width / 2.0f - ovalRadius, rect.size.height / 2.0f - ovalRadius, ovalRadius * 2.0f, ovalRadius * 2.0f)];
     [color setStroke];
     ovalPath.lineWidth = 3;
     [ovalPath stroke];
-
+    ovalRadius = 10.0f;
+    ovalPath = [UIBezierPath bezierPathWithOvalInRect: CGRectMake(rect.size.width / 2.0f - ovalRadius, rect.size.height / 2.0f - ovalRadius, ovalRadius * 2.0f, ovalRadius * 2.0f)];
+    [color setStroke];
+    ovalPath.lineWidth = 2;
+    [ovalPath stroke];
+    ovalRadius = 6.0f;
 }
 
 

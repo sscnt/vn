@@ -39,6 +39,9 @@ float absf(float value){
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    if ([self.navigationController respondsToSelector:@selector(interactivePopGestureRecognizer)]) {
+        self.navigationController.interactivePopGestureRecognizer.enabled = NO;
+    }
     
     //// Layout
     [self.view setBackgroundColor:[UIColor colorWithWhite:26.0f/255.0f alpha:1.0]];
