@@ -249,6 +249,7 @@ float absf(float value){
     
     //// Focus Control
     _focusControlView = [[UIFocusControlView alloc] initWithFrame:_previewImageView.frame];
+    _focusControlView.type = FocusTypeTopAndBottom;
     _focusControlView.hidden = YES;
     [self.view addSubview:_focusControlView];
     

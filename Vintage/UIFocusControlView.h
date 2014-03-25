@@ -38,5 +38,6 @@ typedef NS_ENUM(NSInteger, FocusType){
 @property (nonatomic, assign) CGFloat distance;
 @property (nonatomic, assign) CGFloat angle;
 @property (nonatomic, assign) BOOL active;
+@property (nonatomic, assign) FocusType type;
 
 @end

@@ -33,7 +33,8 @@
         _movementView.center = CGPointMake(self.frame.size.width / 2.0f, self.frame.size.height / 2.0f);
         [self addSubview:_movementView];
         
-        self.angle = M_PI / 3.0f;
+        self.angle = 0.0f;
+        self.clipsToBounds = YES;
     }
     return self;
 }
@@ -60,6 +61,7 @@
     CGFloat x = position.x - _movementView.center.x;
     _movementView.center = position;
     _rotationView.center = CGPointMake(_rotationView.center.x + x, _rotationView.center.y + y);
+    [self setNeedsDisplay];
 }
 
 - (void)setActive:(BOOL)active
@@ -128,7 +130,7 @@
 
 - (void)movement:(UIFocusMovementControlView *)view didDragX:(CGFloat)x y:(CGFloat)y
 {
-    LOG(@"%fx%f", x, y);
+    //LOG(@"%fx%f", x, y);
     CGPoint new_center = CGPointMake(_previousMovementCenter.x + x, _previousMovementCenter.y + y);
     CGFloat max_y = self.frame.size.height - _movementView.frame.size.height / 2.0f;
     CGFloat min_y = _movementView.frame.size.height / 2.0f;
@@ -177,20 +179,98 @@
 // An empty implementation adversely affects performance during animation.
 - (void)drawRect:(CGRect)rect
 {
+    switch (_type) {
+        case FocusTypeCircle:
+        {
+            
+        }
+            break;
+        case FocusTypeTopAndBottom:
+            [self drawRectTopAndBottom:rect];
+            break;
+        case FocusTypeTopOnly:
+        {
+            
+        }
+            break;
+        default:
+            break;
+    }
+}
+
+- (void)drawRectTopAndBottom:(CGRect)rect
+{
+    
     //// Color Declarations
     UIColor* color = [UIColor colorWithRed: 0.992 green: 0.616 blue: 0 alpha: 1];
     
+    CGFloat width = (_movementView.center.x > _defaultPosition.x) ? _movementView.center.x : self.bounds.size.width - _movementView.center.x;
+    CGFloat height = (_movementView.center.y > _defaultPosition.y) ? _movementView.center.y : self.bounds.size.height - _movementView.center.y;
+    
+    int area = (int)floorf(_angle / (M_PI / 2.0f));
+    CGFloat angle;
+    switch (area) {
+        case 0:
+            angle = _angle;
+            break;
+        case 1:
+            angle = M_PI - _angle;
+            break;
+        case 2:
+            angle = _angle - M_PI;
+            break;
+        case 3:
+            angle = M_PI - (_angle - M_PI);
+            break;
+    }
+    CGFloat taikakuLength;
+    CGFloat x, y;
+    CGFloat limitAngle = atanf(width / height);
+    if (angle < limitAngle) {
+        taikakuLength = height / cosf(angle);
+    }else{
+        taikakuLength = width / cosf(M_PI / 2.0f - angle);
+    }
+    CGFloat degree = angle * 180.0f / M_PI;
+    taikakuLength *= 0.90f;
+    if (angle < limitAngle) {
+        x = taikakuLength * sinf(angle);
+        y = -taikakuLength * cosf(angle);
+    }else{
+        angle = M_PI / 2.0f - angle;
+        x = taikakuLength * cosf(angle);
+        y = -taikakuLength * sinf(angle);
+    }
+    switch (area) {
+        case 0:
+            
+            break;
+        case 1:
+            y = -y;
+            break;
+        case 2:
+            x = -x;
+            y = -y;
+            break;
+        case 3:
+            x = -x;
+            break;
+    }
+    x += _movementView.center.x;
+    y += _movementView.center.y;
+    
+    //// Oval Drawing
+    UIBezierPath* ovalPath = [UIBezierPath bezierPathWithOvalInRect: CGRectMake(x - 20.0f, y - 20.0f, 40, 40)];
+    [color setFill];
+    [ovalPath fill];
+    
     //// Bezier Drawing
-    CGFloat strokeLength = rect.size.width;
     UIBezierPath* bezierPath = [UIBezierPath bezierPath];
-    [bezierPath moveToPoint: CGPointMake(0.0f, rect.size.height / 4.0f)];
+    [bezierPath moveToPoint: CGPointMake(0.0f, rect.size.height / 10.0f)];
     [bezierPath addLineToPoint: CGPointMake(rect.size.width, rect.size.height / 4.0f)];
     [color setStroke];
     bezierPath.lineWidth = 3;
     [bezierPath stroke];
-    
-
 }
-
 
 @end
