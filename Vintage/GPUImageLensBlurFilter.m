@@ -291,23 +291,41 @@
     
     // Header
 #if TARGET_IPHONE_SIMULATOR || TARGET_OS_IPHONE
+
+    
     [shaderString appendFormat:@"\
      uniform sampler2D inputImageTexture;\n\
      uniform highp float texelWidthOffset;\n\
      uniform highp float texelHeightOffset;\n\
      \n\
      varying highp vec2 blurCoordinates[%lu];\n\
+     mediump float M_PI = 3.14159265359;\n\
      \n\
      void main()\n\
      {\n\
+     int type = %d;\n\
+     mediump vec2 position = vec2(%f, %f);\n\
      mediump float dist = %f;\n\
-     mediump float x = blurCoordinates[0].x - 0.5;\n\
-     mediump float y = blurCoordinates[0].y - 0.5;\n\
-     //mediump float d = sqrt(x * x + y * y) / 0.70710678118 + (dist - 1.0);\n\
-     mediump float d = abs(y) * 2.0 + (dist / 2.0 - 1.0);\n\
+     mediump float x = blurCoordinates[0].x - position.x;\n\
+     mediump float y = blurCoordinates[0].y - position.y;\n\
+     mediump float d = 0.0;\n\
+     if(type == 1){\n\
+        mediump float angle = %f;\n\
+        mediump float _y = x * sin(-angle) + y * cos(-angle);\n\
+        mediump float maxY = x * sin(-angle) + y * cos(-angle);\n\
+        d = abs(_y) * 2.0 + (dist / 2.0 - 1.0);\n\
+        \n\
+     }else if(type == 2){\n\
+        d = y * 2.0 + (dist / 2.0 - 1.0);\n\
+        if(d < 0.0){\n\
+            d = 0.0;\n\
+        }\n\
+     }else if(type == 3){\n\
+        d = sqrt(x * x + y * y) / 0.70710678118 + (dist - 1.0);\n\
+     }\n\
      mediump float w[%lu];\n\
      mediump float sumOfWeights = 0.0;\n\
-     d = 1.0 / (1.0 + pow(3.0, -d * (6.0 - 3.0 * dist)));\n\
+     d = 1.0 / (1.0 + pow(2.0, -d * (6.0 - 3.0 * dist)));\n\
      d = %f * d;\n\
      mediump float radius = floor(d + 0.5);\n\
      if(radius < 1.0){\n\
@@ -350,7 +368,7 @@
      sum += exp(6.0 * texture2D(inputImageTexture, blurCoordinates[0] - singleStepOffset * optimizedOffset)) * optimizedWeight;\n\
      }\n\
      }\n\
-     ", (unsigned long)(1 + (numberOfOptimizedOffsets * 2)), _distance, (unsigned long)(1 + blurRadius), _strength];
+     ", (unsigned long)(1 + (numberOfOptimizedOffsets * 2)), _type, _position.x, _position.y, _distance, _angle, (unsigned long)(1 + blurRadius), _strength];
 #else
     [shaderString appendFormat:@"\
      uniform sampler2D inputImageTexture;\n\
@@ -388,7 +406,7 @@
      gl_FragColor = log(sum) / 6.0;\n\
      }\n"];
     //LOG(@"++Shader");
-    //NSLog(@"%@",shaderString);
+    NSLog(@"%@",shaderString);
     free(standardGaussianWeights);
     return shaderString;
 }

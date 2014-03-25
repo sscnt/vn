@@ -46,7 +46,7 @@ typedef NS_ENUM(NSInteger, DialogState){
     DialogStateDidHide,
 };
 
-@interface EditorViewController : UIViewController <UIEditorSliderViewDelegate, UIEditorPreviewDelegate, UIEditorDialogBgImageViewDelegate, UIResolutionSelectorViewDelegate, UISaveDialogViewDelegate>
+@interface EditorViewController : UIViewController <UIEditorSliderViewDelegate, UIEditorPreviewDelegate, UIEditorDialogBgImageViewDelegate, UIResolutionSelectorViewDelegate, UISaveDialogViewDelegate, UIFocusControlViewDelegate>
 {
     UIEditorSliderView* _sliderOpacity;
     UIEditorSliderView* _sliderBrightness;
@@ -76,6 +76,8 @@ typedef NS_ENUM(NSInteger, DialogState){
     CGFloat _valueVibrance;
     CGFloat _valueFocusDistance;
     CGFloat _valueFocusStrength;
+    CGFloat _valueFocusAngle;
+    CGPoint _valueFocusPosition;
     ImageResolution _currentResolution;
     UILabel* _percentageLabel;
 }

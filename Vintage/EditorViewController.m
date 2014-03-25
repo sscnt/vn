@@ -27,6 +27,8 @@ float absf(float value){
     if (self) {
         _valueOpacity = 1.0;
         _valueFocusDistance = 0.5f;
+        _valueFocusAngle = 0.0f;
+        _valueFocusPosition = CGPointMake(0.50f, 0.50f);
         _isSaving = NO;
         _isApplying = NO;
         _isSliding = NO;
@@ -251,6 +253,7 @@ float absf(float value){
     _focusControlView = [[UIFocusControlView alloc] initWithFrame:_previewImageView.frame];
     _focusControlView.type = FocusTypeTopAndBottom;
     _focusControlView.hidden = YES;
+    _focusControlView.delegate = self;
     [self.view addSubview:_focusControlView];
     
     
@@ -461,25 +464,16 @@ float absf(float value){
 
 - (UIImage*)processImageFinal:(UIImage *)inputImage
 {
-    //// Vignette
-    if (_sliderVignette.value != 0.0f) {
-        LOG(@"vignette enabled. %f", _sliderVignette.value);
-        GPUImagePicture* base = [[GPUImagePicture alloc] initWithImage:inputImage];
-        GPUImageVignette2Filter* filter = [[GPUImageVignette2Filter alloc] init];
-        filter.scale = _valueVignette;
-        [filter forceProcessingAtSize:inputImage.size];
-        [base addTarget:filter];
-        [base processImage];
-        inputImage = [filter imageFromCurrentlyProcessedOutput];
-    }
-    
     
     //// Focus
-    if (_sliderFocusDistance.value != _sliderFocusDistance.defaultValue || _sliderFocusStrength.value != _sliderFocusStrength.defaultValue) {
+    if (_sliderFocusStrength.value != _sliderFocusStrength.defaultValue) {
         LOG(@"focus enabled. %f", _sliderFocusStrength.value);
         GPUImagePicture* base = [[GPUImagePicture alloc] initWithImage:inputImage];
         GPUImageLensBlurFilter* filter = [[GPUImageLensBlurFilter alloc] init];
         filter.distance = 1.0 - _valueFocusDistance;
+        filter.type = _focusControlView.type;
+        filter.position = _valueFocusPosition;
+        filter.angle = _valueFocusAngle;
         CGFloat strength = 8.0f * _valueFocusStrength * inputImage.size.width / _imageResized.size.width;
         if(strength > 20.0f){
             CGFloat times = ceil(strength / 20.0f);
@@ -492,6 +486,19 @@ float absf(float value){
         [base processImage];
         inputImage = [filter imageFromCurrentlyProcessedOutput];
     }
+    
+    //// Vignette
+    if (_sliderVignette.value != 0.0f) {
+        LOG(@"vignette enabled. %f", _sliderVignette.value);
+        GPUImagePicture* base = [[GPUImagePicture alloc] initWithImage:inputImage];
+        GPUImageVignette2Filter* filter = [[GPUImageVignette2Filter alloc] init];
+        filter.scale = _valueVignette;
+        [filter forceProcessingAtSize:inputImage.size];
+        [base addTarget:filter];
+        [base processImage];
+        inputImage = [filter imageFromCurrentlyProcessedOutput];
+    }
+    
 
     return inputImage;
 }
@@ -930,14 +937,46 @@ float absf(float value){
     }
 }
 
+- (void)focus:(UIFocusControlView *)view didAngleChange:(CGFloat)angle
+{
+    _valueFocusAngle = angle;
+    if (_isApplying) {
+        return;
+    }
+    [self lockAllSliders];
+    [self applyEffect];
+}
+
+- (void)focus:(UIFocusControlView *)view didPositionChange:(CGPoint)position
+{
+    _valueFocusPosition = position;
+    if (_isApplying) {
+        return;
+    }
+    [self lockAllSliders];
+    [self applyEffect];
+}
+- (BOOL)focusShouldChange
+{
+    if(_previewImageView.isPreviewReady == NO){
+        return NO;
+    }
+    if(_isApplying){
+        return NO;
+    }
+    return YES;
+}
+
 - (void)touchesBeganWithBackgroundImageView:(UIEditorDialogBgImageView *)slider
 {
     
 }
+
 - (void)touchesEndedWithBackgroundImageView:(UIEditorDialogBgImageView *)slider
 {
     [self hideSaveDialog];
 }
+
 - (void)slider:(UIEditorSliderView*)slider DidValueChange:(CGFloat)value
 {
     if (_isApplying) {
@@ -1106,6 +1145,7 @@ float absf(float value){
             break;
         case EditorSliderIconTypeFocusDistance:
             _valueFocusDistance = slider.value;
+            _focusControlView.distance = slider.value;
             break;
         case EditorSliderIconTypeFocusStrength:
             _valueFocusStrength = slider.value ;

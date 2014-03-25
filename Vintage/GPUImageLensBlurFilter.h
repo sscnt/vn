@@ -1,4 +1,5 @@
 #import "GPUImageTwoPassTextureSamplingFilter.h"
+#import "UIFocusControlView.h"
 
 /** A Gaussian blur filter
  Interpolated optimization based on Daniel Rákos' work at http://rastergrid.com/blog/2010/09/efficient-gaussian-blur-with-linear-sampling/
@@ -26,6 +27,9 @@
 
 @property (readwrite, nonatomic) CGFloat distance;
 @property (readwrite, nonatomic) CGFloat strength;
+@property (readwrite, nonatomic) CGPoint position;
+@property (readwrite, nonatomic) CGFloat angle;
+@property (readwrite, nonatomic) FocusType type;
 
 /// The number of times to sequentially blur the incoming image. The more passes, the slower the filter.
 @property(readwrite, nonatomic) NSUInteger blurPasses;

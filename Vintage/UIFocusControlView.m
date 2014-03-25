@@ -83,6 +83,9 @@
 
 - (void)rotation:(UIFocusRotationControlView *)view didDragX:(CGFloat)x y:(CGFloat)y
 {
+    if(![self.delegate focusShouldChange]){
+        return;
+    }
     //// Convert to Movement local
     CGFloat _rvx = _previousRotationCenter.x - _movementView.center.x;
     CGFloat _rvy = _previousRotationCenter.y - _movementView.center.y;
@@ -100,6 +103,10 @@
     CGFloat a = sqrt(_rvx * _rvx + _rvy * _rvy);
     CGFloat b = sqrt(_tx * _tx + _ty * _ty);
     CGFloat c = sqrt(_rvtx * _rvtx + _rvty * _rvty);
+    
+    if(a * b == 0.0f){
+        return;
+    }
     
     CGFloat cos = (c * c - b * b - a * a) / (-2.0f * a * b);
     CGFloat radian = acosf(cos);
@@ -125,6 +132,9 @@
 
 - (void)rotationTouchesBegan:(UIFocusRotationControlView *)view
 {
+    if(![self.delegate focusShouldChange]){
+        return;
+    }
     LOG(@"rotationTouchesBegan");
     _previousRotationCenter = _rotationView.center;
     _previousAngle = _angle;
@@ -133,10 +143,14 @@
 - (void)rotationTouchesEnded:(UIFocusRotationControlView *)view
 {
     LOG(@"rotationTouchesEnded");
+    [self.delegate focus:self didAngleChange:_angle];
 }
 
 - (void)movement:(UIFocusMovementControlView *)view didDragX:(CGFloat)x y:(CGFloat)y
 {
+    if(![self.delegate focusShouldChange]){
+        return;
+    }
     //LOG(@"%fx%f", x, y);
     CGPoint new_center = CGPointMake(_previousMovementCenter.x + x, _previousMovementCenter.y + y);
     CGFloat max_y = self.frame.size.height - _movementView.frame.size.height / 2.0f;
@@ -159,6 +173,9 @@
 
 - (void)movementTouchesBegan:(UIFocusMovementControlView *)view
 {
+    if(![self.delegate focusShouldChange]){
+        return;
+    }
     LOG(@"movementTouchesBegan");
     _previousMovementCenter = _position;
 }
@@ -167,6 +184,8 @@
 {
     LOG(@"movementTouchesEnded");
     _position = _movementView.center;
+    CGPoint convertedPosition = CGPointMake(_movementView.center.x / self.bounds.size.width, _movementView.center.y / self.bounds.size.height);
+    [self.delegate focus:self didPositionChange:convertedPosition];
 }
 
 - (UIView*)hitTest:(CGPoint)point withEvent:(UIEvent *)event

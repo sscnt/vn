@@ -20,7 +20,8 @@ typedef NS_ENUM(NSInteger, FocusType){
 
 @protocol UIFocusControlViewDelegate
 - (void)focus:(UIFocusControlView*)view didAngleChange:(CGFloat)angle;
-- (void)focus:(UIFocusControlView*)view didPositionChange:(CGFloat)angle;
+- (void)focus:(UIFocusControlView*)view didPositionChange:(CGPoint)position;
+- (BOOL)focusShouldChange;
 @end
 
 @interface UIFocusControlView : UIView <UIFocusRotationControlViewDelegate, UIFocusMovementControlViewDelegate>
@@ -39,5 +40,6 @@ typedef NS_ENUM(NSInteger, FocusType){
 @property (nonatomic, assign) CGFloat angle;
 @property (nonatomic, assign) BOOL active;
 @property (nonatomic, assign) FocusType type;
+@property (nonatomic, assign) id<UIFocusControlViewDelegate> delegate;
 
 @end
