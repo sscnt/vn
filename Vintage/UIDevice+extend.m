@@ -39,6 +39,13 @@
     return resolution;
 }
 
++ (NSString*) machineName{
+    struct utsname systemInfo;
+    uname(&systemInfo);
+    NSString *result = [NSString stringWithCString:systemInfo.machine encoding:NSUTF8StringEncoding];
+    return result;
+}
+
 + (BOOL)isIOS6
 {
     NSArray  *aOsVersions = [[[UIDevice currentDevice]systemVersion] componentsSeparatedByString:@"."];
@@ -49,4 +56,26 @@
     }
     return YES;
 }
+
++ (BOOL) isiPad {
+    return UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPad;
+}
+
++ (BOOL)underIPhone5s
+{
+    NSError *error = nil;
+    NSString* name = [UIDevice machineName];
+    NSString *pattern = @"iPhone([0-9]+),";
+    NSRegularExpression *regexp = [NSRegularExpression regularExpressionWithPattern:pattern options:0 error:&error];
+    NSTextCheckingResult *match = [regexp firstMatchInString:name options:0 range:NSMakeRange(0, name.length)];
+
+    if(match.numberOfRanges == 2){
+        int version = [[name substringWithRange:[match rangeAtIndex:1]] intValue];
+        if(version >= 6.0){
+            return NO;
+        }
+    }
+    return YES;
+}
+
 @end

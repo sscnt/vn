@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <sys/utsname.h>
 
 enum {
     UIDeviceResolution_Unknown           = 0,
@@ -22,5 +23,6 @@ enum {
 
 + (UIDeviceResolution)resolution;
 + (BOOL)isIOS6;
-
++ (BOOL)isiPad;
++ (BOOL)underIPhone5s;
 @end

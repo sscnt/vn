@@ -326,12 +326,13 @@
      \n\
      varying highp vec2 blurCoordinates[%lu];\n\
      mediump float M_PI = 3.14159265359;\n\
-     \n\
-     void main()\n\
-     {\n\
      int type = %d;\n\
      mediump vec2 position = vec2(%f, %f);\n\
      mediump float dist = %f;\n\
+     mediump float strength = %f;\n\
+     \n\
+     void main()\n\
+     {\n\
      mediump float x = blurCoordinates[0].x - position.x;\n\
      mediump float y = blurCoordinates[0].y - position.y;\n\
      mediump float d = 0.0;\n\
@@ -339,7 +340,7 @@
         mediump float angle = %f;\n\
         mediump float _y = x * sin(-angle) + y * cos(-angle);\n\
         mediump float maxY = %f;\n\
-        d = 2.0 * abs(_y) / maxY;\n\
+        d = abs(_y) / maxY;\n\
         \n\
      }else if(type == 2){\n\
         d = y * 2.0 + (dist / 2.0 - 1.0);\n\
@@ -352,9 +353,8 @@
      mediump float w[%lu];\n\
      mediump float sumOfWeights = 0.0;\n\
      //d = 1.0 / (1.0 + pow(2.71828182846, -d * (6.0 - 3.0 * dist)));\n\
-     mediump float strength = %f;\n\
      if(d < dist){\n\
-        d = 0.4;\n\
+        d = 0.0;\n\
      }else{\n\
         d = d - dist;\n\
         d = strength * d;\n\
@@ -400,7 +400,7 @@
      sum += exp(6.0 * texture2D(inputImageTexture, blurCoordinates[0] - singleStepOffset * optimizedOffset)) * optimizedWeight;\n\
      }\n\
      }\n\
-     ", (unsigned long)(1 + (numberOfOptimizedOffsets * 2)), _type, _position.x, _position.y, _distance, _angle, taikakuLength, (unsigned long)(1 + blurRadius), _strength];
+     ", (unsigned long)(1 + (numberOfOptimizedOffsets * 2)), _type, _position.x, _position.y, _distance, _strength, _angle, taikakuLength, (unsigned long)(1 + blurRadius)];
 #else
     [shaderString appendFormat:@"\
      uniform sampler2D inputImageTexture;\n\

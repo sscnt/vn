@@ -108,8 +108,8 @@
 
 - (void)updateButtonText
 {
-    [_buttonSmall setTitle:[NSString stringWithFormat:@"%@ %dx%d", NSLocalizedString(@"SMALL", nil), (int)_maxImageWidth / 4, (int)_maxImageHeight / 4] forState:UIControlStateNormal];
-    [_buttonMidium setTitle:[NSString stringWithFormat:@"%@ %dx%d", NSLocalizedString(@"MEDIUM", nil), (int)_maxImageWidth / 2, (int)_maxImageHeight / 2] forState:UIControlStateNormal];
+    [_buttonSmall setTitle:[NSString stringWithFormat:@"%@ %dx%d", NSLocalizedString(@"SMALL", nil), (int)(_maxImageWidth / 3.0f), (int)(_maxImageHeight / 3.0f)] forState:UIControlStateNormal];
+    [_buttonMidium setTitle:[NSString stringWithFormat:@"%@ %dx%d", NSLocalizedString(@"MEDIUM", nil), (int)(_maxImageWidth / 1.5f), (int)(_maxImageHeight / 1.5f)] forState:UIControlStateNormal];
     [_buttonMax setTitle:[NSString stringWithFormat:@"%@ %dx%d", NSLocalizedString(@"MAX", nil), (int)_maxImageWidth, (int)_maxImageHeight] forState:UIControlStateNormal];
     
 }

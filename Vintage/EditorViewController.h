@@ -78,6 +78,7 @@ typedef NS_ENUM(NSInteger, DialogState){
     CGFloat _valueFocusStrength;
     CGFloat _valueFocusAngle;
     CGPoint _valueFocusPosition;
+    CGFloat _maxImageLength;
     ImageResolution _currentResolution;
     UILabel* _percentageLabel;
 }

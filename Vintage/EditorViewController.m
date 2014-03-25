@@ -25,6 +25,7 @@ float absf(float value){
 {
     self = [super init];
     if (self) {
+        _maxImageLength = 2400.0f;
         _valueOpacity = 1.0;
         _valueFocusDistance = 0.5f;
         _valueFocusAngle = 0.0f;
@@ -356,7 +357,19 @@ float absf(float value){
 - (UIImage*)resizeImage:(UIImage *)image WithResolution:(ImageResolution)resolution
 {
     if(resolution == ImageResolutionMax){
-        return image;
+        if([UIDevice underIPhone5s]){
+            CGFloat width, height;
+            if(image.size.width > image.size.height){
+                height = image.size.height * _maxImageLength / image.size.width;
+                width = _maxImageLength;
+            }else{
+                width = image.size.width * _maxImageLength / image.size.height;
+                height = _maxImageLength;
+            }
+            return [image resizedImage:CGSizeMake(width, height) interpolationQuality:kCGInterpolationHigh];
+        }else{
+            return image;
+        }
     }
     if(resolution == ImageResolutionMidium){
         return [image resizedImage:CGSizeMake(roundf(image.size.width / 2.0f), roundf(image.size.height / 2.0f)) interpolationQuality:kCGInterpolationHigh];
@@ -474,7 +487,7 @@ float absf(float value){
         filter.type = _focusControlView.type;
         filter.position = _valueFocusPosition;
         filter.angle = _valueFocusAngle;
-        CGFloat strength = 8.0f * _valueFocusStrength * inputImage.size.width / _imageResized.size.width;
+        CGFloat strength = 16.0f * _valueFocusStrength * inputImage.size.width / _imageResized.size.width;
         if(strength > 20.0f){
             CGFloat times = ceil(strength / 20.0f);
             filter.blurPasses = (NSInteger)times * 2;
@@ -736,8 +749,19 @@ float absf(float value){
     if(!_resolutionSelector){
         _resolutionSelector = [[UIResolutionSelectorView alloc] init];
         _resolutionSelector.delegate = self;
-        _resolutionSelector.maxImageHeight = _imageOriginal.size.height;
-        _resolutionSelector.maxImageWidth = _imageOriginal.size.width;
+        
+        if([UIDevice underIPhone5s]){
+            if(_imageOriginal.size.width > _imageOriginal.size.height){
+                _resolutionSelector.maxImageHeight = _imageOriginal.size.height * _maxImageLength / _imageOriginal.size.width;
+                _resolutionSelector.maxImageWidth = _maxImageLength;
+            }else{
+                _resolutionSelector.maxImageWidth = _imageOriginal.size.width * _maxImageLength / _imageOriginal.size.height;
+                _resolutionSelector.maxImageHeight = _maxImageLength;
+            }
+        }else{
+            _resolutionSelector.maxImageHeight = _imageOriginal.size.height;
+            _resolutionSelector.maxImageWidth = _imageOriginal.size.width;
+        }
         if(_imageOriginal.size.width > 3000.0f || _imageOriginal.size.height > 3000.0f){
             _currentResolution = ImageResolutionMidium;
             [_resolutionSelector setResolution:ImageResolutionMidium];
