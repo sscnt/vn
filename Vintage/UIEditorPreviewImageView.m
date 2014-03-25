@@ -67,6 +67,10 @@
             
         }];
     }else{
+        if(_imageViewBlurred.hidden){
+            [self.delegate previewIsReady:_self];
+            return;
+        }
         _imageViewBlurred.alpha = 1.0f;
         _imageViewBlurred.hidden = NO;
         [UIView animateWithDuration:duration animations:^{

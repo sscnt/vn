@@ -339,14 +339,12 @@
      if(type == 1){\n\
         mediump float angle = %f;\n\
         mediump float _y = x * sin(-angle) + y * cos(-angle);\n\
-        mediump float maxY = %f;\n\
-        d = abs(_y) / maxY;\n\
+        d = abs(_y) / %F;\n\
         \n\
      }else if(type == 2){\n\
-        d = y * 2.0 + (dist / 2.0 - 1.0);\n\
-        if(d < 0.0){\n\
-            d = 0.0;\n\
-        }\n\
+        mediump float angle = %f;\n\
+        mediump float _y = x * sin(-angle) + y * cos(-angle);\n\
+        d = _y / %F;\n\
      }else if(type == 3){\n\
         d = sqrt(x * x + y * y) / 0.70710678118 + (dist - 1.0);\n\
      }\n\
@@ -400,7 +398,7 @@
      sum += exp(6.0 * texture2D(inputImageTexture, blurCoordinates[0] - singleStepOffset * optimizedOffset)) * optimizedWeight;\n\
      }\n\
      }\n\
-     ", (unsigned long)(1 + (numberOfOptimizedOffsets * 2)), _type, _position.x, _position.y, _distance, _strength, _angle, taikakuLength, (unsigned long)(1 + blurRadius)];
+     ", (unsigned long)(1 + (numberOfOptimizedOffsets * 2)), _type, _position.x, _position.y, _distance, _strength, _angle, taikakuLength, _angle, taikakuLength, (unsigned long)(1 + blurRadius)];
 #else
     [shaderString appendFormat:@"\
      uniform sampler2D inputImageTexture;\n\

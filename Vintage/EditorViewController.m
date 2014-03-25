@@ -252,7 +252,7 @@ float absf(float value){
     
     //// Focus Control
     _focusControlView = [[UIFocusControlView alloc] initWithFrame:_previewImageView.frame];
-    _focusControlView.type = FocusTypeTopAndBottom;
+    _focusControlView.type = FocusTypeTopOnly;
     _focusControlView.hidden = YES;
     _focusControlView.delegate = self;
     [self.view addSubview:_focusControlView];
@@ -885,6 +885,9 @@ float absf(float value){
 
 - (void)lockAllSliders
 {
+    if(_adjustmentCurrent.locked){
+        return;
+    }
     _adjustmentCurrent.locked = YES;
     if(_adjustmentCurrent == _adjustmentBrightness){
         _sliderBrightness.locked = YES;
@@ -1042,6 +1045,16 @@ float absf(float value){
         [SVProgressHUD showWithMaskType:SVProgressHUDMaskTypeClear];
         [_self saveImage:saveTo];
     }];
+}
+
+- (void)focusTouchesBegan:(UIFocusControlView *)view
+{
+    if (_isApplying) {
+        return;
+    }
+    LOG(@"touchstart");
+    [_previewImageView toggleBlurredImage:YES WithDuration:0.10f];
+    [self lockAllSliders];
 }
 
 - (void)touchesBeganWithSlider:(UIEditorSliderView *)slider

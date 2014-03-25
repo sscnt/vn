@@ -138,6 +138,7 @@
     LOG(@"rotationTouchesBegan");
     _previousRotationCenter = _rotationView.center;
     _previousAngle = _angle;
+    [self.delegate focusTouchesBegan:self];
 }
 
 - (void)rotationTouchesEnded:(UIFocusRotationControlView *)view
@@ -178,6 +179,7 @@
     }
     LOG(@"movementTouchesBegan");
     _previousMovementCenter = _position;
+    [self.delegate focusTouchesBegan:self];
 }
 
 - (void)movementTouchesEnded:(UIFocusMovementControlView *)view
@@ -215,9 +217,7 @@
             [self drawRectTopAndBottom:rect];
             break;
         case FocusTypeTopOnly:
-        {
-            
-        }
+            [self drawRectTopOnly:rect];
             break;
         default:
             break;
@@ -328,5 +328,15 @@
     [self drawLineAtDistance:small Angle:_angle Rect:rect LineWidth:1.0f];
     [self drawLineAtDistance:small Angle:_angle + M_PI Rect:rect LineWidth:1.0f];
 }
+
+- (void)drawRectTopOnly:(CGRect)rect
+{
+    CGFloat medium = 0.55f + 0.2f * _distance;
+    CGFloat small = 0.25 + 0.4f * _distance;
+    [self drawLineAtDistance:0.85f Angle:_angle + M_PI Rect:rect LineWidth:5.0f];
+    [self drawLineAtDistance:medium Angle:_angle + M_PI Rect:rect LineWidth:2.0f];
+    [self drawLineAtDistance:small Angle:_angle + M_PI Rect:rect LineWidth:1.0f];
+}
+
 
 @end

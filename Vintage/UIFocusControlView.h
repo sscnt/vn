@@ -19,6 +19,7 @@ typedef NS_ENUM(NSInteger, FocusType){
 @class UIFocusControlView;
 
 @protocol UIFocusControlViewDelegate
+- (void)focusTouchesBegan:(UIFocusControlView*)view;
 - (void)focus:(UIFocusControlView*)view didAngleChange:(CGFloat)angle;
 - (void)focus:(UIFocusControlView*)view didPositionChange:(CGPoint)position;
 - (BOOL)focusShouldChange;
