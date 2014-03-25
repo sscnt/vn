@@ -16,6 +16,7 @@
     if (self) {
         //// 12時の方向を0
         _angle = 0.0f;
+        _distance = 0.50f;
         _defaultPosition = CGPointMake(self.bounds.size.width / 2.0f, self.bounds.size.height / 2.0f);
         _position = _defaultPosition;
         self.backgroundColor = [UIColor clearColor];
@@ -61,6 +62,12 @@
     CGFloat x = position.x - _movementView.center.x;
     _movementView.center = position;
     _rotationView.center = CGPointMake(_rotationView.center.x + x, _rotationView.center.y + y);
+    [self setNeedsDisplay];
+}
+
+- (void)setDistance:(CGFloat)distance
+{
+    _distance = distance;
     [self setNeedsDisplay];
 }
 
@@ -198,48 +205,50 @@
     }
 }
 
-- (void)drawRectTopAndBottom:(CGRect)rect
+- (void)drawLineAtDistance:(CGFloat)distance Angle:(CGFloat)angle Rect:(CGRect)rect LineWidth:(CGFloat)lineWidth
 {
     
+    if (angle > M_PI * 2.0f) {
+        angle -= M_PI * 2.0f;
+    }
     //// Color Declarations
     UIColor* color = [UIColor colorWithRed: 0.992 green: 0.616 blue: 0 alpha: 1];
     
     CGFloat width = (_movementView.center.x > _defaultPosition.x) ? _movementView.center.x : self.bounds.size.width - _movementView.center.x;
     CGFloat height = (_movementView.center.y > _defaultPosition.y) ? _movementView.center.y : self.bounds.size.height - _movementView.center.y;
-    
-    int area = (int)floorf(_angle / (M_PI / 2.0f));
-    CGFloat angle;
+    int area = (int)floorf(angle / (M_PI / 2.0f));
+    CGFloat __angle;
     switch (area) {
         case 0:
-            angle = _angle;
+            __angle = angle;
             break;
         case 1:
-            angle = M_PI - _angle;
+            __angle = M_PI - angle;
             break;
         case 2:
-            angle = _angle - M_PI;
+            __angle = angle - M_PI;
             break;
         case 3:
-            angle = M_PI - (_angle - M_PI);
+            __angle = M_PI - (angle - M_PI);
             break;
     }
     CGFloat taikakuLength;
     CGFloat x, y;
     CGFloat limitAngle = atanf(width / height);
-    if (angle < limitAngle) {
-        taikakuLength = height / cosf(angle);
+    if (__angle < limitAngle) {
+        taikakuLength = sqrt(width * width + height * height) * cosf(limitAngle - __angle);
     }else{
-        taikakuLength = width / cosf(M_PI / 2.0f - angle);
+        taikakuLength = sqrt(width * width + height * height) * cosf(__angle - limitAngle);
     }
-    CGFloat degree = angle * 180.0f / M_PI;
-    taikakuLength *= 0.90f;
-    if (angle < limitAngle) {
-        x = taikakuLength * sinf(angle);
-        y = -taikakuLength * cosf(angle);
+    CGFloat degree = __angle * 180.0f / M_PI;
+    taikakuLength *= distance;
+    if (__angle < limitAngle) {
+        x = taikakuLength * sinf(__angle);
+        y = -taikakuLength * cosf(__angle);
     }else{
-        angle = M_PI / 2.0f - angle;
-        x = taikakuLength * cosf(angle);
-        y = -taikakuLength * sinf(angle);
+        __angle = M_PI / 2.0f - __angle;
+        x = taikakuLength * cosf(__angle);
+        y = -taikakuLength * sinf(__angle);
     }
     switch (area) {
         case 0:
@@ -267,10 +276,10 @@
     CGFloat endX = lineLength / 2.0f;
     CGFloat endY = 0.0f;
     
-    CGFloat _startX = startX * cosf(_angle) - startY * sinf(_angle);
-    CGFloat _startY = startX * sinf(_angle) + startY * cosf(_angle);
-    CGFloat _endX = endX * cosf(_angle) - endY * sinf(_angle);
-    CGFloat _endY = endX * sinf(_angle) + endY * cosf(_angle);
+    CGFloat _startX = startX * cosf(angle) - startY * sinf(angle);
+    CGFloat _startY = startX * sinf(angle) + startY * cosf(angle);
+    CGFloat _endX = endX * cosf(angle) - endY * sinf(angle);
+    CGFloat _endY = endX * sinf(angle) + endY * cosf(angle);
     
     //// Convert to View local
     _startX += x;
@@ -284,8 +293,21 @@
     [bezierPath moveToPoint: CGPointMake(_startX, _startY)];
     [bezierPath addLineToPoint: CGPointMake(_endX, _endY)];
     [color setStroke];
-    bezierPath.lineWidth = 5;
+    bezierPath.lineWidth = lineWidth;
     [bezierPath stroke];
+
+}
+
+- (void)drawRectTopAndBottom:(CGRect)rect
+{
+    CGFloat medium = 0.55f + 0.2f * _distance;
+    CGFloat small = 0.25 + 0.2f * _distance;
+    [self drawLineAtDistance:0.90f Angle:_angle Rect:rect LineWidth:5.0f];
+    [self drawLineAtDistance:0.90f Angle:_angle + M_PI Rect:rect LineWidth:5.0f];
+    [self drawLineAtDistance:medium Angle:_angle Rect:rect LineWidth:3.0f];
+    [self drawLineAtDistance:medium Angle:_angle + M_PI Rect:rect LineWidth:3.0f];
+    [self drawLineAtDistance:small Angle:_angle Rect:rect LineWidth:1.0f];
+    [self drawLineAtDistance:small Angle:_angle + M_PI Rect:rect LineWidth:1.0f];
 }
 
 @end

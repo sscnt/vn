@@ -943,7 +943,11 @@ float absf(float value){
     if (_isApplying) {
         return;
     }
-    [self showCurrentValueWithSlider:slider];
+    if(slider.tag == EditorSliderIconTypeFocusDistance){
+        _focusControlView.distance = slider.value;
+    }else{
+        [self showCurrentValueWithSlider:slider];
+    }
 }
 
 - (void)didPressCloseButton
