@@ -293,6 +293,32 @@
 #if TARGET_IPHONE_SIMULATOR || TARGET_OS_IPHONE
 
     
+    CGFloat width = (_position.x > 0.50f) ? _position.x : 1.0 - _position.x;
+    CGFloat height = (_position.y > 0.50f) ? _position.y : 1.0 - _position.y;
+    int area = (int)floorf(_angle / (M_PI / 2.0f));
+    CGFloat __angle;
+    switch (area) {
+        case 0:
+            __angle = _angle;
+            break;
+        case 1:
+            __angle = M_PI - _angle;
+            break;
+        case 2:
+            __angle = _angle - M_PI;
+            break;
+        case 3:
+            __angle = M_PI - (_angle - M_PI);
+            break;
+    }
+    CGFloat taikakuLength;
+    CGFloat limitAngle = atanf(width / height);
+    if (__angle < limitAngle) {
+        taikakuLength = sqrt(width * width + height * height) * cosf(limitAngle - __angle);
+    }else{
+        taikakuLength = sqrt(width * width + height * height) * cosf(__angle - limitAngle);
+    }
+
     [shaderString appendFormat:@"\
      uniform sampler2D inputImageTexture;\n\
      uniform highp float texelWidthOffset;\n\
@@ -312,8 +338,8 @@
      if(type == 1){\n\
         mediump float angle = %f;\n\
         mediump float _y = x * sin(-angle) + y * cos(-angle);\n\
-        mediump float maxY = x * sin(-angle) + y * cos(-angle);\n\
-        d = abs(_y) * 2.0 + (dist / 2.0 - 1.0);\n\
+        mediump float maxY = %f;\n\
+        d = 2.0 * abs(_y) / maxY;\n\
         \n\
      }else if(type == 2){\n\
         d = y * 2.0 + (dist / 2.0 - 1.0);\n\
@@ -325,8 +351,14 @@
      }\n\
      mediump float w[%lu];\n\
      mediump float sumOfWeights = 0.0;\n\
-     d = 1.0 / (1.0 + pow(2.0, -d * (6.0 - 3.0 * dist)));\n\
-     d = %f * d;\n\
+     //d = 1.0 / (1.0 + pow(2.71828182846, -d * (6.0 - 3.0 * dist)));\n\
+     mediump float strength = %f;\n\
+     if(d < dist){\n\
+        d = 0.4;\n\
+     }else{\n\
+        d = d - dist;\n\
+        d = strength * d;\n\
+     }\n\
      mediump float radius = floor(d + 0.5);\n\
      if(radius < 1.0){\n\
      gl_FragColor = texture2D(inputImageTexture, blurCoordinates[0]);\n\
@@ -368,7 +400,7 @@
      sum += exp(6.0 * texture2D(inputImageTexture, blurCoordinates[0] - singleStepOffset * optimizedOffset)) * optimizedWeight;\n\
      }\n\
      }\n\
-     ", (unsigned long)(1 + (numberOfOptimizedOffsets * 2)), _type, _position.x, _position.y, _distance, _angle, (unsigned long)(1 + blurRadius), _strength];
+     ", (unsigned long)(1 + (numberOfOptimizedOffsets * 2)), _type, _position.x, _position.y, _distance, _angle, taikakuLength, (unsigned long)(1 + blurRadius), _strength];
 #else
     [shaderString appendFormat:@"\
      uniform sampler2D inputImageTexture;\n\
@@ -406,7 +438,7 @@
      gl_FragColor = log(sum) / 6.0;\n\
      }\n"];
     //LOG(@"++Shader");
-    NSLog(@"%@",shaderString);
+    //NSLog(@"%@",shaderString);
     free(standardGaussianWeights);
     return shaderString;
 }
@@ -717,25 +749,24 @@
 {
     // 7.0 is the limit for blur size for hardcoded varying offsets
     
-    if (round(newValue) != _blurRadiusInPixels)
-    {
-        _blurRadiusInPixels = round(newValue); // For now, only do integral sigmas
-        
-        // Calculate the number of pixels to sample from by setting a bottom limit for the contribution of the outermost pixel
-        CGFloat minimumWeightToFindEdgeOfSamplingArea = 1.0/256.0;
-        NSUInteger calculatedSampleRadius = floor(sqrt(-2.0 * pow(_blurRadiusInPixels, 2.0) * log(minimumWeightToFindEdgeOfSamplingArea * sqrt(2.0 * M_PI * pow(_blurRadiusInPixels, 2.0))) ));
-        calculatedSampleRadius += calculatedSampleRadius % 2; // There's nothing to gain from handling odd radius sizes, due to the optimizations I use
-        
-        //        NSLog(@"Blur radius: %f, calculated sample radius: %d", _blurRadiusInPixels, calculatedSampleRadius);
-        //
-        NSString *newGaussianBlurVertexShader = [self vertexShaderForOptimizedBlurOfRadius:calculatedSampleRadius sigma:_blurRadiusInPixels];
-        NSString *newGaussianBlurFragmentShader = [self fragmentShaderForOptimizedBlurOfRadius:calculatedSampleRadius sigma:_blurRadiusInPixels];
-        
-        //        NSLog(@"Optimized vertex shader: \n%@", newGaussianBlurVertexShader);
-        //        NSLog(@"Optimized fragment shader: \n%@", newGaussianBlurFragmentShader);
-        //
-        [self switchToVertexShader:newGaussianBlurVertexShader fragmentShader:newGaussianBlurFragmentShader];
-    }
+    
+    _blurRadiusInPixels = round(newValue); // For now, only do integral sigmas
+    
+    // Calculate the number of pixels to sample from by setting a bottom limit for the contribution of the outermost pixel
+    CGFloat minimumWeightToFindEdgeOfSamplingArea = 1.0/256.0;
+    NSUInteger calculatedSampleRadius = floor(sqrt(-2.0 * pow(_blurRadiusInPixels, 2.0) * log(minimumWeightToFindEdgeOfSamplingArea * sqrt(2.0 * M_PI * pow(_blurRadiusInPixels, 2.0))) ));
+    calculatedSampleRadius += calculatedSampleRadius % 2; // There's nothing to gain from handling odd radius sizes, due to the optimizations I use
+    
+    //        NSLog(@"Blur radius: %f, calculated sample radius: %d", _blurRadiusInPixels, calculatedSampleRadius);
+    //
+    NSString *newGaussianBlurVertexShader = [self vertexShaderForOptimizedBlurOfRadius:calculatedSampleRadius sigma:_blurRadiusInPixels];
+    NSString *newGaussianBlurFragmentShader = [self fragmentShaderForOptimizedBlurOfRadius:calculatedSampleRadius sigma:_blurRadiusInPixels];
+    
+    //        NSLog(@"Optimized vertex shader: \n%@", newGaussianBlurVertexShader);
+    //        NSLog(@"Optimized fragment shader: \n%@", newGaussianBlurFragmentShader);
+    //
+    [self switchToVertexShader:newGaussianBlurVertexShader fragmentShader:newGaussianBlurFragmentShader];
+    
     shouldResizeBlurRadiusWithImageSize = NO;
 }
 
