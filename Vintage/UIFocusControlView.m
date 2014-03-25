@@ -301,11 +301,11 @@
 - (void)drawRectTopAndBottom:(CGRect)rect
 {
     CGFloat medium = 0.55f + 0.2f * _distance;
-    CGFloat small = 0.25 + 0.2f * _distance;
-    [self drawLineAtDistance:0.90f Angle:_angle Rect:rect LineWidth:5.0f];
-    [self drawLineAtDistance:0.90f Angle:_angle + M_PI Rect:rect LineWidth:5.0f];
-    [self drawLineAtDistance:medium Angle:_angle Rect:rect LineWidth:3.0f];
-    [self drawLineAtDistance:medium Angle:_angle + M_PI Rect:rect LineWidth:3.0f];
+    CGFloat small = 0.25 + 0.4f * _distance;
+    [self drawLineAtDistance:0.85f Angle:_angle Rect:rect LineWidth:5.0f];
+    [self drawLineAtDistance:0.85f Angle:_angle + M_PI Rect:rect LineWidth:5.0f];
+    [self drawLineAtDistance:medium Angle:_angle Rect:rect LineWidth:2.0f];
+    [self drawLineAtDistance:medium Angle:_angle + M_PI Rect:rect LineWidth:2.0f];
     [self drawLineAtDistance:small Angle:_angle Rect:rect LineWidth:1.0f];
     [self drawLineAtDistance:small Angle:_angle + M_PI Rect:rect LineWidth:1.0f];
 }
