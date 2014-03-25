@@ -259,17 +259,32 @@
     x += _movementView.center.x;
     y += _movementView.center.y;
     
-    //// Oval Drawing
-    UIBezierPath* ovalPath = [UIBezierPath bezierPathWithOvalInRect: CGRectMake(x - 20.0f, y - 20.0f, 40, 40)];
-    [color setFill];
-    [ovalPath fill];
+    CGFloat lineLength = sqrt(4.0 * self.bounds.size.width * self.bounds.size.width + 4.0 * self.bounds.size.height * self.bounds.size.height);
+    
+    //// Movement local
+    CGFloat startX = -lineLength / 2.0f;
+    CGFloat startY = 0.0f;
+    CGFloat endX = lineLength / 2.0f;
+    CGFloat endY = 0.0f;
+    
+    CGFloat _startX = startX * cosf(_angle) - startY * sinf(_angle);
+    CGFloat _startY = startX * sinf(_angle) + startY * cosf(_angle);
+    CGFloat _endX = endX * cosf(_angle) - endY * sinf(_angle);
+    CGFloat _endY = endX * sinf(_angle) + endY * cosf(_angle);
+    
+    //// Convert to View local
+    _startX += x;
+    _endX += x;
+    _startY += y;
+    _endY += y;
+    
     
     //// Bezier Drawing
     UIBezierPath* bezierPath = [UIBezierPath bezierPath];
-    [bezierPath moveToPoint: CGPointMake(0.0f, rect.size.height / 10.0f)];
-    [bezierPath addLineToPoint: CGPointMake(rect.size.width, rect.size.height / 4.0f)];
+    [bezierPath moveToPoint: CGPointMake(_startX, _startY)];
+    [bezierPath addLineToPoint: CGPointMake(_endX, _endY)];
     [color setStroke];
-    bezierPath.lineWidth = 3;
+    bezierPath.lineWidth = 5;
     [bezierPath stroke];
 }
 
