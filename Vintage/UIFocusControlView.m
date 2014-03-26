@@ -34,7 +34,9 @@
         _movementView.center = CGPointMake(self.frame.size.width / 2.0f, self.frame.size.height / 2.0f);
         [self addSubview:_movementView];
         
+        _type = FocusTypeTopAndBottom;
         self.angle = 0.0f;
+        self.active = NO;
         self.clipsToBounds = YES;
     }
     return self;
@@ -79,6 +81,12 @@
     }else{
         self.alpha = 0.40f;
     }
+}
+
+- (void)setType:(FocusType)type
+{
+    _type = type;
+    [self setNeedsDisplay];
 }
 
 - (void)rotation:(UIFocusRotationControlView *)view didDragX:(CGFloat)x y:(CGFloat)y
@@ -138,6 +146,7 @@
     LOG(@"rotationTouchesBegan");
     _previousRotationCenter = _rotationView.center;
     _previousAngle = _angle;
+    self.active = YES;
     [self.delegate focusTouchesBegan:self];
 }
 
@@ -145,6 +154,7 @@
 {
     LOG(@"rotationTouchesEnded");
     [self.delegate focus:self didAngleChange:_angle];
+    self.active = NO;
 }
 
 - (void)movement:(UIFocusMovementControlView *)view didDragX:(CGFloat)x y:(CGFloat)y
@@ -179,6 +189,7 @@
     }
     LOG(@"movementTouchesBegan");
     _previousMovementCenter = _position;
+    self.active = YES;
     [self.delegate focusTouchesBegan:self];
 }
 
@@ -187,6 +198,7 @@
     LOG(@"movementTouchesEnded");
     _position = _movementView.center;
     CGPoint convertedPosition = CGPointMake(_movementView.center.x / self.bounds.size.width, _movementView.center.y / self.bounds.size.height);
+    self.active = NO;
     [self.delegate focus:self didPositionChange:convertedPosition];
 }
 

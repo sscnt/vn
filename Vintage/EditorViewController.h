@@ -30,6 +30,7 @@
 #import "GPUImageFocusFilter.h"
 #import "GPUImageLensBlurFilter.h"
 #import "UIFocusControlView.h"
+#import "UIFocusTypeSelectButton.h"
 
 typedef NS_ENUM(NSInteger, AdjustmentViewId){
     AdjustmentViewIdOpacity = 1,
@@ -81,6 +82,7 @@ typedef NS_ENUM(NSInteger, DialogState){
     CGFloat _maxImageLength;
     ImageResolution _currentResolution;
     UILabel* _percentageLabel;
+    FocusType _currentSelectedFocusType;
 }
 
 @property (nonatomic, assign) DialogState dialogState;
@@ -107,6 +109,9 @@ typedef NS_ENUM(NSInteger, DialogState){
 @property (nonatomic, strong) UISliderContainer* adjustmentContrast;
 @property (nonatomic, strong) UISliderContainer* adjustmentFocus;
 @property (nonatomic, strong) UIFocusControlView* focusControlView;
+@property (nonatomic, strong) UIFocusTypeSelectButton* focusTypeButtonTopAndBottom;
+@property (nonatomic, strong) UIFocusTypeSelectButton* focusTypeButtonTopOnly;
+@property (nonatomic, strong) UIFocusTypeSelectButton* focusTypeButtonCircle;
 
 - (void)applyEffect;
 - (void)didPressAdjustmentButton:(UINavigationBarButton*)button;

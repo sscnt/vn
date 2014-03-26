@@ -26,6 +26,7 @@ float absf(float value){
     self = [super init];
     if (self) {
         _maxImageLength = 2400.0f;
+        _currentSelectedFocusType = FocusTypeTopAndBottom;
         _valueOpacity = 1.0;
         _valueFocusDistance = 0.5f;
         _valueFocusAngle = 0.0f;
@@ -177,8 +178,22 @@ float absf(float value){
     [self.view addSubview:_adjustmentColor];
     
     //////// Focus
+    //////////// Buttons
+    CGFloat focusTypeButtonBetween = 50.0f;
+    CGFloat viewCenter = [UIScreen screenSize].width / 2.0f;
+    CGFloat focusTypeButtonsAreaHeight = 40.0f;
+    _focusTypeButtonTopAndBottom = [[UIFocusTypeSelectButton alloc] initWithType:FocusTypeTopAndBottom];
+    [_focusTypeButtonTopAndBottom addTarget:self action:@selector(didPressFocusTypeButton:) forControlEvents:UIControlEventTouchUpInside];
+    _focusTypeButtonTopAndBottom.center = CGPointMake(viewCenter - focusTypeButtonBetween, focusTypeButtonsAreaHeight / 2.0f);
+    _focusTypeButtonTopAndBottom.selected = YES;
+    _focusTypeButtonTopOnly = [[UIFocusTypeSelectButton alloc] initWithType:FocusTypeTopOnly];
+    [_focusTypeButtonTopOnly addTarget:self action:@selector(didPressFocusTypeButton:) forControlEvents:UIControlEventTouchUpInside];
+    _focusTypeButtonTopOnly.center = CGPointMake(viewCenter, focusTypeButtonsAreaHeight / 2.0f);
+    _focusTypeButtonCircle = [[UIFocusTypeSelectButton alloc] initWithType:FocusTypeCircle];
+    [_focusTypeButtonCircle addTarget:self action:@selector(didPressFocusTypeButton:) forControlEvents:UIControlEventTouchUpInside];
+    _focusTypeButtonCircle.center = CGPointMake(viewCenter + focusTypeButtonBetween, focusTypeButtonsAreaHeight / 2.0f);
     //////////// Distance
-    _sliderFocusDistance = [[UIEditorSliderView alloc] initWithFrame:CGRectMake(0.0f, 10.0f, [UIScreen screenSize].width, 42.0f)];
+    _sliderFocusDistance = [[UIEditorSliderView alloc] initWithFrame:CGRectMake(0.0f, 10.0f + focusTypeButtonsAreaHeight, [UIScreen screenSize].width, 42.0f)];
     _sliderFocusDistance.tag = EditorSliderIconTypeFocusDistance;
     _sliderFocusDistance.delegate = self;
     _sliderFocusDistance.title = NSLocalizedString(@"Distance", nil);
@@ -186,7 +201,7 @@ float absf(float value){
     _sliderFocusDistance.titlePosition = SliderViewTitlePositionLeft;
     _sliderFocusDistance.defaultValue = 0.5f;
     //////////// Strength
-    _sliderFocusStrength = [[UIEditorSliderView alloc] initWithFrame:CGRectMake(0.0f, 10.0f + _sliderFocusDistance.frame.size.height, [UIScreen screenSize].width, 42.0f)];
+    _sliderFocusStrength = [[UIEditorSliderView alloc] initWithFrame:CGRectMake(0.0f, 10.0f + focusTypeButtonsAreaHeight + _sliderFocusDistance.frame.size.height, [UIScreen screenSize].width, 42.0f)];
     _sliderFocusStrength.tag = EditorSliderIconTypeFocusStrength;
     _sliderFocusStrength.delegate = self;
     _sliderFocusStrength.title = NSLocalizedString(@"Strength", nil);
@@ -194,8 +209,11 @@ float absf(float value){
     _sliderFocusStrength.titlePosition = SliderViewTitlePositionCenter;
     _sliderFocusStrength.defaultValue = 0.0f;
     //////// Adjustment
-    _adjustmentFocus = [[UISliderContainer alloc] initWithFrame:CGRectMake(0.0f, 0.0f, [UIScreen screenSize].width, _sliderFocusDistance.bounds.size.height * 2.0f + 20.0f)];
+    _adjustmentFocus = [[UISliderContainer alloc] initWithFrame:CGRectMake(0.0f, 0.0f, [UIScreen screenSize].width, _sliderFocusDistance.bounds.size.height * 2.0f + 20.0f + focusTypeButtonsAreaHeight)];
     _adjustmentFocus.tag = AdjustmentViewIdFocus;
+    [_adjustmentFocus addSubview:_focusTypeButtonTopAndBottom];
+    [_adjustmentFocus addSubview:_focusTypeButtonTopOnly];
+    [_adjustmentFocus addSubview:_focusTypeButtonCircle];
     [_adjustmentFocus addSubview:_sliderFocusDistance];
     [_adjustmentFocus addSubview:_sliderFocusStrength];
     _adjustmentFocus.hidden = YES;
@@ -252,7 +270,7 @@ float absf(float value){
     
     //// Focus Control
     _focusControlView = [[UIFocusControlView alloc] initWithFrame:_previewImageView.frame];
-    _focusControlView.type = FocusTypeTopOnly;
+    _focusControlView.type = _currentSelectedFocusType;
     _focusControlView.hidden = YES;
     _focusControlView.delegate = self;
     [self.view addSubview:_focusControlView];
@@ -484,7 +502,7 @@ float absf(float value){
         GPUImagePicture* base = [[GPUImagePicture alloc] initWithImage:inputImage];
         GPUImageLensBlurFilter* filter = [[GPUImageLensBlurFilter alloc] init];
         filter.distance = _valueFocusDistance;
-        filter.type = _focusControlView.type;
+        filter.type = _currentSelectedFocusType;
         filter.position = _valueFocusPosition;
         filter.angle = _valueFocusAngle;
         CGFloat strength = 16.0f * _valueFocusStrength * inputImage.size.width / _imageResized.size.width;
@@ -678,6 +696,21 @@ float absf(float value){
 }
 
 #pragma mark events
+
+- (void)didPressFocusTypeButton:(UIFocusTypeSelectButton*)button
+{
+    if (_isApplying) {
+        return;
+    }
+    _focusTypeButtonCircle.selected = NO;
+    _focusTypeButtonTopAndBottom.selected = NO;
+    _focusTypeButtonTopOnly.selected = NO;
+    button.selected = YES;
+    _currentSelectedFocusType = button.type;
+    _focusControlView.type = button.type;
+    [self lockAllSliders];
+    [self applyEffect];
+}
 
 - (void)didPressAdjustmentButton:(UINavigationBarButton *)button
 {

@@ -200,6 +200,7 @@
 		58FF485818AE586F00B978D9 /* GPUAdjustmentsSaturation.m in Sources */ = {isa = PBXBuildFile; fileRef = 58FF485318AE586F00B978D9 /* GPUAdjustmentsSaturation.m */; };
 		58FF485918AE586F00B978D9 /* GPUAdjustmentsBrightness.m in Sources */ = {isa = PBXBuildFile; fileRef = 58FF485518AE586F00B978D9 /* GPUAdjustmentsBrightness.m */; };
 		58FF485C18AE589F00B978D9 /* GPUPhotoFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 58FF485B18AE589F00B978D9 /* GPUPhotoFilter.m */; };
+		58FFCC8918E2B2F900C6A9CE /* UIFocusTypeSelectButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 58FFCC8818E2B2F900C6A9CE /* UIFocusTypeSelectButton.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -509,6 +510,8 @@
 		58FF485518AE586F00B978D9 /* GPUAdjustmentsBrightness.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GPUAdjustmentsBrightness.m; sourceTree = "<group>"; };
 		58FF485A18AE589F00B978D9 /* GPUPhotoFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPUPhotoFilter.h; sourceTree = "<group>"; };
 		58FF485B18AE589F00B978D9 /* GPUPhotoFilter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GPUPhotoFilter.m; sourceTree = "<group>"; };
+		58FFCC8718E2B2F900C6A9CE /* UIFocusTypeSelectButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIFocusTypeSelectButton.h; sourceTree = "<group>"; };
+		58FFCC8818E2B2F900C6A9CE /* UIFocusTypeSelectButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIFocusTypeSelectButton.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1009,6 +1012,8 @@
 				58FC498D18E0730900371084 /* UIFocusRotationControlView.m */,
 				58FC498F18E079DC00371084 /* UIFocusMovementControlView.h */,
 				58FC499018E079DC00371084 /* UIFocusMovementControlView.m */,
+				58FFCC8718E2B2F900C6A9CE /* UIFocusTypeSelectButton.h */,
+				58FFCC8818E2B2F900C6A9CE /* UIFocusTypeSelectButton.m */,
 			);
 			name = Editor;
 			sourceTree = "<group>";
@@ -1540,6 +1545,7 @@
 			files = (
 				58FB1AE318B071EB0003EC79 /* UIEditorPreviewImageView.m in Sources */,
 				5825801318D1FAE900A3020F /* UIPortrateImageView.m in Sources */,
+				58FFCC8918E2B2F900C6A9CE /* UIFocusTypeSelectButton.m in Sources */,
 				58FF481318AE48BB00B978D9 /* GPUEffectWeekend.m in Sources */,
 				58FF480318AE484F00B978D9 /* GPUEffectJoyful.m in Sources */,
 				5891ABDD18B036B100241949 /* UINavigationBarView.m in Sources */,
