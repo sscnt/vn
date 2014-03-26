@@ -38,6 +38,7 @@
 {
     
     UIColor* fillColor = [UIColor colorWithWhite:26.0f/255.0f alpha:0.60f];
+    UIColor* sepColor = [UIColor colorWithWhite:26.0f/255.0f alpha:1.0f];
     CGFloat radius = 12.0f;
     if(_selected){
         radius = 16.0f;
@@ -65,7 +66,7 @@
     //// Oval Drawing
     radius = 11.0f;
     ovalPath = [UIBezierPath bezierPathWithOvalInRect: CGRectMake(rect.size.width / 2.0f - radius, rect.size.height / 2.0f - radius, radius * 2.0f, radius * 2.0f)];
-    [[UIColor blackColor] setStroke];
+    [sepColor setStroke];
     ovalPath.lineWidth = 3;
     [ovalPath stroke];
     

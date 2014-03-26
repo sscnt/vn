@@ -76,11 +76,7 @@
 - (void)setActive:(BOOL)active
 {
     _active = active;
-    if(active){
-        self.alpha = 1.0f;
-    }else{
-        self.alpha = 0.40f;
-    }
+    [self setNeedsDisplay];
 }
 
 - (void)setType:(FocusType)type
@@ -241,13 +237,18 @@
         angle -= M_PI * 2.0f;
     }
     //// Color Declarations
-    UIColor* color = [UIColor colorWithRed: 0.992 green: 0.616 blue: 0 alpha: 1];
+    CGFloat alpha = 1.0f;
+    if (!_active) {
+        alpha = 0.40f;
+    }
+    UIColor* color = [UIColor colorWithRed: 0.992 green: 0.616 blue: 0 alpha: alpha];
     
     CGFloat width = (_movementView.center.x > _defaultPosition.x) ? _movementView.center.x : self.bounds.size.width - _movementView.center.x;
     CGFloat height = (_movementView.center.y > _defaultPosition.y) ? _movementView.center.y : self.bounds.size.height - _movementView.center.y;
     int area = (int)floorf(angle / (M_PI / 2.0f));
     CGFloat __angle;
     switch (area) {
+        case 4:
         case 0:
             __angle = angle;
             break;
@@ -355,7 +356,12 @@
     CGFloat width = (centerX > _defaultPosition.x) ? centerX : self.bounds.size.width - centerX;
     CGFloat height = (centerY > _defaultPosition.y) ? centerY : self.bounds.size.height - centerY;
     CGFloat maxRadius = sqrt(width * width + height * height);
-    UIColor* color = [UIColor colorWithRed: 0.992 green: 0.616 blue: 0 alpha: 1];
+    
+    CGFloat alpha = 1.0f;
+    if (!_active) {
+        alpha = 0.40f;
+    }
+    UIColor* color = [UIColor colorWithRed: 0.992 green: 0.616 blue: 0 alpha: alpha];
     
     
     //// Oval Drawing

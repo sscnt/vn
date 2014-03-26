@@ -327,7 +327,7 @@
      \n\
      varying highp vec2 blurCoordinates[%lu];\n\
      mediump float M_PI = 3.14159265359;\n\
-     int type = %d;\n\
+     int type = %ld;\n\
      mediump vec2 position = vec2(%f, %f);\n\
      mediump float dist = %f;\n\
      mediump float strength = %f;\n\
@@ -351,11 +351,13 @@
      }\n\
      mediump float w[%lu];\n\
      mediump float sumOfWeights = 0.0;\n\
-     //d = 1.0 / (1.0 + pow(2.71828182846, -d * (6.0 - 3.0 * dist)));\n\
      if(d < dist){\n\
         d = 0.0;\n\
      }else{\n\
         d = d - dist;\n\
+        //d = d / (1.0 - dist);\n\
+        //d = 1.0 / (1.0 + exp((2.0 * d - 1.0) * (-6.0)));\n\
+        d = pow(d, 1.8);\n\
         d = strength * d;\n\
      }\n\
      mediump float radius = floor(d + 0.5);\n\
