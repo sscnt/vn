@@ -64,11 +64,13 @@
     }
     
     //// Oval Drawing
+    /*
     radius = 11.0f;
     ovalPath = [UIBezierPath bezierPathWithOvalInRect: CGRectMake(rect.size.width / 2.0f - radius, rect.size.height / 2.0f - radius, radius * 2.0f, radius * 2.0f)];
     [sepColor setStroke];
     ovalPath.lineWidth = 3;
     [ovalPath stroke];
+    */
     
     radius = 12.0f;
     ovalPath = [UIBezierPath bezierPathWithOvalInRect: CGRectMake(rect.size.width / 2.0f - radius, rect.size.height / 2.0f - radius, radius * 2.0f, radius * 2.0f)];
@@ -98,7 +100,7 @@
     
     
     //// Bezier Drawing
-    radius = 7.0f;
+    radius = 10.0f;
     UIBezierPath* bezierPath = [UIBezierPath bezierPath];
     [bezierPath moveToPoint: CGPointMake(centerX - radius, centerY + 7.0f)];
     [bezierPath addLineToPoint: CGPointMake(centerX + radius, centerY + 7.0f)];
@@ -141,7 +143,7 @@
     
     
     //// Bezier Drawing
-    radius = 7.0f;
+    radius = 10.0f;
     UIBezierPath* bezierPath = [UIBezierPath bezierPath];
     [bezierPath moveToPoint: CGPointMake(centerX - radius, centerY + 7.0f)];
     [bezierPath addLineToPoint: CGPointMake(centerX + radius, centerY + 7.0f)];
