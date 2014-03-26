@@ -17,6 +17,9 @@
 @end
 
 @interface UIFocusMovementControlView : UIView <UIGestureRecognizerDelegate>
+{
+    BOOL _dragStarted;
+}
 
 @property (nonatomic, assign) id<UIFocusMovementControlViewDelegate> delegate;
 

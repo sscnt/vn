@@ -999,6 +999,7 @@ float absf(float value){
 
 - (void)focus:(UIFocusControlView *)view didAngleChange:(CGFloat)angle
 {
+    LOG(@"focusAngleDidChange");
     _valueFocusAngle = angle;
     if (_isApplying) {
         return;
@@ -1009,6 +1010,7 @@ float absf(float value){
 
 - (void)focus:(UIFocusControlView *)view didPositionChange:(CGPoint)position
 {
+    LOG(@"focusRotationDidChange");
     _valueFocusPosition = position;
     if (_isApplying) {
         return;
@@ -1016,6 +1018,7 @@ float absf(float value){
     [self lockAllSliders];
     [self applyEffect];
 }
+
 - (BOOL)focusShouldChange
 {
     if(_previewImageView.isPreviewReady == NO){

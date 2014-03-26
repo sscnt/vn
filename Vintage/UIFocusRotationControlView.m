@@ -16,6 +16,7 @@
     self = [super initWithFrame:frame];
     if (self) {
         self.backgroundColor = [UIColor clearColor];
+        _dragStarted = NO;
         
         UIPanGestureRecognizer* recognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(didDrag:)];
         recognizer.maximumNumberOfTouches = 1;
@@ -27,6 +28,7 @@
 
 - (void)didDrag:(UIPanGestureRecognizer *)sender
 {
+    _dragStarted = YES;
     CGPoint transitionPoint = [sender translationInView:self];
     switch (sender.state) {
         case UIGestureRecognizerStatePossible:
@@ -49,7 +51,15 @@
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
+    _dragStarted = NO;
     [self.delegate rotationTouchesBegan:self];
+}
+
+- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    if(!_dragStarted){
+        [self.delegate rotationTouchesEnded:self];
+    }
 }
 
 

@@ -17,6 +17,9 @@
 @end
 
 @interface UIFocusRotationControlView : UIView <UIGestureRecognizerDelegate>
+{
+    BOOL _dragStarted;
+}
 
 @property (nonatomic, assign) id<UIFocusRotationControlViewDelegate> delegate;
 

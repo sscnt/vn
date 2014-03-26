@@ -318,6 +318,7 @@
     }else{
         taikakuLength = sqrt(width * width + height * height) * cosf(__angle - limitAngle);
     }
+    CGFloat maxRadius = sqrt(width * width + height * height);
 
     [shaderString appendFormat:@"\
      uniform sampler2D inputImageTexture;\n\
@@ -346,7 +347,7 @@
         mediump float _y = x * sin(-angle) + y * cos(-angle);\n\
         d = _y / %F;\n\
      }else if(type == 3){\n\
-        d = sqrt(x * x + y * y) / 0.70710678118 + (dist - 1.0);\n\
+        d = sqrt(x * x + y * y) / %f;\n\
      }\n\
      mediump float w[%lu];\n\
      mediump float sumOfWeights = 0.0;\n\
@@ -398,7 +399,7 @@
      sum += exp(6.0 * texture2D(inputImageTexture, blurCoordinates[0] - singleStepOffset * optimizedOffset)) * optimizedWeight;\n\
      }\n\
      }\n\
-     ", (unsigned long)(1 + (numberOfOptimizedOffsets * 2)), _type, _position.x, _position.y, _distance, _strength, _angle, taikakuLength, _angle, taikakuLength, (unsigned long)(1 + blurRadius)];
+     ", (unsigned long)(1 + (numberOfOptimizedOffsets * 2)), _type, _position.x, _position.y, _distance, _strength, _angle, taikakuLength, _angle, taikakuLength, maxRadius, (unsigned long)(1 + blurRadius)];
 #else
     [shaderString appendFormat:@"\
      uniform sampler2D inputImageTexture;\n\

@@ -170,7 +170,7 @@
     
     
     //// Bezier Drawing
-    radius = 8.0f;
+    radius = 7.0f;
     UIBezierPath* ovalPath = [UIBezierPath bezierPathWithOvalInRect: CGRectMake(centerX - radius, centerY - radius, radius * 2.0f, radius * 2.0f)];
     [color setStroke];
     [ovalPath stroke];
@@ -178,10 +178,10 @@
     [ovalPath stroke];
     
     //// Bezier Drawing
-    radius = 4.0f;
+    radius = 3.0f;
     ovalPath = [UIBezierPath bezierPathWithOvalInRect: CGRectMake(centerX - radius, centerY - radius, radius * 2.0f, radius * 2.0f)];
-    [color setStroke];
-    [ovalPath stroke];
+    [color setFill];
+    [ovalPath fill];
     ovalPath.lineWidth = 1;
     [ovalPath stroke];
     

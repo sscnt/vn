@@ -221,9 +221,7 @@
 {
     switch (_type) {
         case FocusTypeCircle:
-        {
-            
-        }
+            [self drawRectCircle:rect];
             break;
         case FocusTypeTopAndBottom:
             [self drawRectTopAndBottom:rect];
@@ -239,7 +237,7 @@
 - (void)drawLineAtDistance:(CGFloat)distance Angle:(CGFloat)angle Rect:(CGRect)rect LineWidth:(CGFloat)lineWidth
 {
     
-    if (angle > M_PI * 2.0f) {
+    if (angle >= M_PI * 2.0f) {
         angle -= M_PI * 2.0f;
     }
     //// Color Declarations
@@ -350,5 +348,34 @@
     [self drawLineAtDistance:small Angle:_angle + M_PI Rect:rect LineWidth:1.0f];
 }
 
+- (void)drawCircleAtDistance:(CGFloat)distance Rect:(CGRect)rect LineWidth:(CGFloat)lineWidth
+{
+    CGFloat centerX = _movementView.center.x;
+    CGFloat centerY = _movementView.center.y;
+    CGFloat width = (centerX > _defaultPosition.x) ? centerX : self.bounds.size.width - centerX;
+    CGFloat height = (centerY > _defaultPosition.y) ? centerY : self.bounds.size.height - centerY;
+    CGFloat maxRadius = sqrt(width * width + height * height);
+    UIColor* color = [UIColor colorWithRed: 0.992 green: 0.616 blue: 0 alpha: 1];
+    
+    
+    //// Oval Drawing
+    CGFloat radius = maxRadius * distance;
+    UIBezierPath* ovalPath = [UIBezierPath bezierPathWithOvalInRect: CGRectMake(centerX - radius, centerY - radius, radius * 2.0f, radius * 2.0f)];
+    [color setStroke];
+    ovalPath.lineWidth = lineWidth;
+    [ovalPath stroke];
+    
+
+}
+
+- (void)drawRectCircle:(CGRect)rect
+{
+    CGFloat medium = 0.55f + 0.2f * _distance;
+    CGFloat small = 0.25 + 0.4f * _distance;
+    [self drawCircleAtDistance:0.85f Rect:rect LineWidth:5.0f];
+    [self drawCircleAtDistance:medium Rect:rect LineWidth:2.0f];
+    [self drawCircleAtDistance:small Rect:rect LineWidth:1.0f];
+    
+}
 
 @end
