@@ -48,14 +48,6 @@
 {
     [super viewDidLoad];
     
-    //// Init
-    _numberOfEffects = 22;
-    _arrayPreviews = [NSMutableArray array];
-    CGFloat width = ([UIScreen screenSize].width - 3.0f) / 2.0f;
-    CGFloat height = roundf(self.imageOriginal.size.height * width / self.imageOriginal.size.width);
-    _scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, self.view.bounds.size.width, self.view.bounds.size.height)];
-    [_scrollView setContentSize:CGSizeMake([UIScreen screenSize].width, ceilf((CGFloat)_numberOfEffects / 2.0f) * height + ceilf((CGFloat)_numberOfEffects / 2.0f) + 44.0f)];
-    
     //// Effects
     _arrayEffects = [NSMutableArray array];
     [_arrayEffects addObject:[[GPUEffectVintageFilm alloc] init]];
@@ -80,7 +72,16 @@
     [_arrayEffects addObject:[[GPUEffectWarmAutumn alloc] init]];
     [_arrayEffects addObject:[[GPUEffectSunsetCarnevale alloc] init]];
     [_arrayEffects addObject:[[GPUEffectWarmSpringLight alloc] init]];
-    
+    [_arrayEffects addObject:[[GPUEffectVampire alloc] init]];
+
+    //// Init
+    _numberOfEffects = (int)[_arrayEffects count];
+    _arrayPreviews = [NSMutableArray array];
+    CGFloat width = ([UIScreen screenSize].width - 3.0f) / 2.0f;
+    CGFloat height = roundf(self.imageOriginal.size.height * width / self.imageOriginal.size.width);
+    _scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, self.view.bounds.size.width, self.view.bounds.size.height)];
+    [_scrollView setContentSize:CGSizeMake([UIScreen screenSize].width, ceilf((CGFloat)_numberOfEffects / 2.0f) * height + ceilf((CGFloat)_numberOfEffects / 2.0f) + 44.0f)];
+        
     //// Layout
     [self.view setBackgroundColor:[UIColor colorWithWhite:26.0f/255.0f alpha:1.0]];
     [self.view addSubview:_scrollView];

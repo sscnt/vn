@@ -43,7 +43,8 @@ typedef NS_ENUM(NSInteger, EffectId){
     EffectIdFaerieVintage,
     EffectIdGirder,
     EffectIdSummers,
-    EffectIdMiami
+    EffectIdMiami,
+    EffectIdVampire
 };
 
 typedef NS_ENUM(NSInteger, MergeBlendingMode){

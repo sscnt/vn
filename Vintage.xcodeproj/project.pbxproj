@@ -14,6 +14,8 @@
 		5801C56418B1ACB90059818E /* splash-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5801C56218B1ACB90059818E /* splash-568h@2x.png */; };
 		5802785D18DAE73B00A80948 /* focus-60@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5802785C18DAE73B00A80948 /* focus-60@2x.png */; };
 		5803DACC18DB56CF00A32D74 /* GPUImageLensBlurFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 5803DACB18DB56CF00A32D74 /* GPUImageLensBlurFilter.m */; };
+		58066C1618E4490300EDDBBE /* GPUEffectVampire.m in Sources */ = {isa = PBXBuildFile; fileRef = 58066C1518E4490300EDDBBE /* GPUEffectVampire.m */; };
+		58066C1918E46DD600EDDBBE /* vmp.acv in Resources */ = {isa = PBXBuildFile; fileRef = 58066C1818E46DD600EDDBBE /* vmp.acv */; };
 		5806D0ED18D1D57500A14C7B /* photos-38-95@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5806D0EC18D1D57500A14C7B /* photos-38-95@2x.png */; };
 		58098FF118D20D6900E8FEB2 /* photos-38-80@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 58098FF018D20D6900E8FEB2 /* photos-38-80@2x.png */; };
 		58098FF618D20D6E00E8FEB2 /* photos-38-85@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 58098FF518D20D6E00E8FEB2 /* photos-38-85@2x.png */; };
@@ -236,6 +238,9 @@
 		5802785C18DAE73B00A80948 /* focus-60@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "focus-60@2x.png"; sourceTree = "<group>"; };
 		5803DACA18DB56CF00A32D74 /* GPUImageLensBlurFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPUImageLensBlurFilter.h; sourceTree = "<group>"; };
 		5803DACB18DB56CF00A32D74 /* GPUImageLensBlurFilter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GPUImageLensBlurFilter.m; sourceTree = "<group>"; };
+		58066C1418E4490300EDDBBE /* GPUEffectVampire.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPUEffectVampire.h; sourceTree = "<group>"; };
+		58066C1518E4490300EDDBBE /* GPUEffectVampire.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GPUEffectVampire.m; sourceTree = "<group>"; };
+		58066C1818E46DD600EDDBBE /* vmp.acv */ = {isa = PBXFileReference; lastKnownFileType = file; path = vmp.acv; sourceTree = "<group>"; };
 		5806D0EC18D1D57500A14C7B /* photos-38-95@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "photos-38-95@2x.png"; sourceTree = "<group>"; };
 		58098FF018D20D6900E8FEB2 /* photos-38-80@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "photos-38-80@2x.png"; sourceTree = "<group>"; };
 		58098FF518D20D6E00E8FEB2 /* photos-38-85@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "photos-38-85@2x.png"; sourceTree = "<group>"; };
@@ -565,6 +570,24 @@
 			name = Home;
 			sourceTree = "<group>";
 		};
+		58066C1318E4472800EDDBBE /* Vampire */ = {
+			isa = PBXGroup;
+			children = (
+				58066C1718E46DBB00EDDBBE /* Curves */,
+				58066C1418E4490300EDDBBE /* GPUEffectVampire.h */,
+				58066C1518E4490300EDDBBE /* GPUEffectVampire.m */,
+			);
+			name = Vampire;
+			sourceTree = "<group>";
+		};
+		58066C1718E46DBB00EDDBBE /* Curves */ = {
+			isa = PBXGroup;
+			children = (
+				58066C1818E46DD600EDDBBE /* vmp.acv */,
+			);
+			name = Curves;
+			sourceTree = "<group>";
+		};
 		588F11EE18AE1F4E00787045 /* Effects */ = {
 			isa = PBXGroup;
 			children = (
@@ -579,6 +602,7 @@
 		588F11F218AE1F5500787045 /* 1.0 */ = {
 			isa = PBXGroup;
 			children = (
+				58066C1318E4472800EDDBBE /* Vampire */,
 				58FF483C18AE4C7800B978D9 /* Haze3 */,
 				58FF482E18AE4B1E00B978D9 /* Hazelnut */,
 				58FF482818AE4A0B00B978D9 /* VintageFilm */,
@@ -1412,6 +1436,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				58066C1918E46DD600EDDBBE /* vmp.acv in Resources */,
 				588F125E18AE245D00787045 /* cr1.acv in Resources */,
 				588F123718AE220500787045 /* gi1.acv in Resources */,
 				58FF480218AE484F00B978D9 /* jf2.acv in Resources */,
@@ -1602,6 +1627,7 @@
 				58FCAD2518AFA81C001559F0 /* SelectionViewController.m in Sources */,
 				58FB899A18AE12B1001F661B /* UIDevice+extend.m in Sources */,
 				58FF483518AE4B3C00B978D9 /* GPUEffectHazelnut.m in Sources */,
+				58066C1618E4490300EDDBBE /* GPUEffectVampire.m in Sources */,
 				58FD375418D08D4700319BA0 /* UISaveDialogView.m in Sources */,
 				58FB899018AE1165001F661B /* UIFadeNavigationController.m in Sources */,
 				588F125018AE235000787045 /* GPUEffectSunsetCarnevale.m in Sources */,

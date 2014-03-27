@@ -369,6 +369,9 @@ float absf(float value){
         case EffectIdWeekend:
             return [[GPUEffectWeekend alloc] init];
             break;
+        case EffectIdVampire:
+            return [[GPUEffectVampire alloc] init];
+            break;
     }
 }
 
