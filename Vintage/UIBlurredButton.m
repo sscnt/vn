@@ -20,7 +20,7 @@
         NSArray *langs = [NSLocale preferredLanguages];
         NSString *currentLanguage = [langs objectAtIndex:0];
         if([currentLanguage compare:@"ja"] == NSOrderedSame) {
-            self.titleLabel.font = [UIFont fontWithName:@"rounded-mplus-1p-bold" size:16.0f];
+            self.titleLabel.font = [UIFont fontWithName:@"mplus-1c-bold" size:16.0f];
             [self setTitleEdgeInsets:UIEdgeInsetsMake(2.0f, 0.0f, 0.0f, -6.0f)];
             [self setImageEdgeInsets:UIEdgeInsetsMake(0.0f, 0.0f, 0.0f, 5.0)];
         } else {

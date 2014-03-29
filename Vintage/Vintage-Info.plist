@@ -26,6 +26,11 @@
 	<true/>
 	<key>UIAppFonts</key>
 	<array>
+		<string>mplus-1c-heavy.ttf</string>
+		<string>mplus-1c-bold.ttf</string>
+		<string>mplus-1c-regular.ttf</string>
+		<string>mplus-1c-medium.ttf</string>
+		<string>mplus-1c-light.ttf</string>
 		<string>AllerDisplay.ttf</string>
 		<string>Aller_Rg.ttf</string>
 		<string>Aller_Lt.ttf</string>

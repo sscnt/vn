@@ -372,6 +372,9 @@ float absf(float value){
         case EffectIdVampire:
             return [[GPUEffectVampire alloc] init];
             break;
+        case EffectIdAutumnVintage:
+            return [[GPUEffectAutumnVintage alloc] init];
+            break;
     }
 }
 
@@ -571,21 +574,13 @@ float absf(float value){
                 [_self.previewImageView toggleBlurredImage:NO WithDuration:0.20f];
                 [_self unlockAllSliders];
             }else{
-                
-                dispatch_queue_t q_global = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
-                dispatch_queue_t q_main = dispatch_get_main_queue();
-                dispatch_async(q_global, ^{
-                    
-                    dispatch_async(q_main, ^{
-                        _self.previewImageView.imageOriginal = _self.imageResized;
-                        _self.previewImageView.imageBlurred = _self.blurredImage;
-                        _self.previewImageView.isPreviewReady = YES;
-                        [_self.previewImageView setPreviewImage:_self.imageEffected];
-                        [_self.previewImageView removeLoadingIndicator];
-                        [_self slideUpAdjustment:_self.adjustmentOpacity Completion:nil];
-                        _self.isApplying = NO;
-                    });
-                });
+                _self.previewImageView.imageOriginal = _self.imageResized;
+                _self.previewImageView.imageBlurred = _self.blurredImage;
+                _self.previewImageView.isPreviewReady = YES;
+                [_self.previewImageView setPreviewImage:_self.imageEffected];
+                [_self.previewImageView removeLoadingIndicator];
+                [_self slideUpAdjustment:_self.adjustmentOpacity Completion:nil];
+                _self.isApplying = NO;
             }
         });
         

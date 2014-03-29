@@ -21,3 +21,4 @@
 #import "GPUEffectSummers.h"
 #import "GPUEffectGirder.h"
 #import "GPUEffectVampire.h"
+#import "GPUEffectAutumnVintage.h"

@@ -73,6 +73,7 @@
     [_arrayEffects addObject:[[GPUEffectSunsetCarnevale alloc] init]];
     [_arrayEffects addObject:[[GPUEffectWarmSpringLight alloc] init]];
     [_arrayEffects addObject:[[GPUEffectVampire alloc] init]];
+    [_arrayEffects addObject:[[GPUEffectAutumnVintage alloc] init]];
 
     //// Init
     _numberOfEffects = (int)[_arrayEffects count];

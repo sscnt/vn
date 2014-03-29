@@ -18,6 +18,7 @@
         self.backgroundColor = [UIColor clearColor];
 
         UIImageView* view = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"close-60.png"]];
+        view.alpha = 0.90f;
         view.center = CGPointMake(frame.size.width / 2.0f, frame.size.height / 2.0f);
         [self addSubview:view];
     }

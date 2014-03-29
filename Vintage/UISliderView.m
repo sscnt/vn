@@ -27,7 +27,7 @@
         NSArray *langs = [NSLocale preferredLanguages];
         NSString *currentLanguage = [langs objectAtIndex:0];
         if([currentLanguage compare:@"ja"] == NSOrderedSame) {
-            _titleLabel.font = [UIFont fontWithName:@"rounded-mplus-1p-bold" size:15.0f];
+            _titleLabel.font = [UIFont fontWithName:@"mplus-1c-bold" size:15.0f];
         } else {
             _titleLabel.font = [UIFont fontWithName:@"Aller-Bold" size:16.0f];
         }
@@ -146,6 +146,13 @@
             _titleLabel.center = CGPointMake(self.bounds.size.width / 2.0f, self.bounds.size.height / 2.0f);
             break;
     }
+    NSArray *langs = [NSLocale preferredLanguages];
+    NSString *currentLanguage = [langs objectAtIndex:0];
+    if([currentLanguage compare:@"ja"] == NSOrderedSame) {
+        _titleLabel.center = CGPointMake(_titleLabel.center.x, _titleLabel.center.y + 1.0f);
+    } else {
+    }
+
 }
 
 - (void)setAlpha:(CGFloat)alpha

@@ -22,7 +22,7 @@
         NSString *currentLanguage = [langs objectAtIndex:0];
         [self setTitleColor:[UIColor colorWithWhite:1.0f alpha:0.85f] forState:UIControlStateNormal];
         if([currentLanguage compare:@"ja"] == NSOrderedSame) {
-            self.titleLabel.font = [UIFont fontWithName:@"rounded-mplus-1p-bold" size:18.0f];
+            self.titleLabel.font = [UIFont fontWithName:@"mplus-1c-bold" size:18.0f];
             [self setTitleEdgeInsets:UIEdgeInsetsMake(2.0f, 22.0f, 0, 0)];
             [self setImageEdgeInsets:UIEdgeInsetsMake(0.0f, 14.0f, 0.0f, 0.0)];
         } else {

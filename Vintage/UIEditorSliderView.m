@@ -92,7 +92,7 @@
             _iconImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"levels-60.png"]];
             break;
         case EditorSliderIconTypeBrightness:
-            _iconImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"brightness-alter-60.png"]];
+            _iconImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"brightness-60.png"]];
             break;
         case EditorSliderIconTypeClarity:
             _iconImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"clarity-60.png"]];
@@ -105,10 +105,10 @@
             _iconImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"vignette-60.png"]];
             break;
         case EditorSliderIconTypeSaturation:
-            _iconImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"color-button-60.png"]];
+            _iconImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"saturation-60.png"]];
             break;
         case EditorSliderIconTypeVibrance:
-            _iconImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"color-alter-60.png"]];
+            _iconImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"vibrance-60.png"]];
             break;
         case EditorSliderIconTypeFocusDistance:
             _iconImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"focus-distance-60.png"]];

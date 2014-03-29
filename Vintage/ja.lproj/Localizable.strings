@@ -7,7 +7,7 @@
 */
 
 "CAMERA" = "カメラ";
-"PHOTOS" = "写真を選択";
+"PHOTOS" = "写真";
 "EFFECTS" = "エフェクトを選択";
 "Camera is not available." = "カメラを利用できません。";
 "Error" = "エラー";

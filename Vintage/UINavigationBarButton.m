@@ -31,7 +31,7 @@
     UIImage* iconImage;
     switch (_type) {
         case NavigationBarButtonTypeBrightness:
-            iconImage = [UIImage imageNamed:@"brightness-button-alter-60.png"];
+            iconImage = [UIImage imageNamed:@"brightness-button-60.png"];
             break;
         case NavigationBarButtonTypeColor:
             iconImage = [UIImage imageNamed:@"color-button-alter-60.png"];
@@ -49,7 +49,7 @@
             break;
     }
     _iconImageView = [[UIImageView alloc] initWithImage:iconImage];
-    _iconImageView.center = CGPointMake(self.bounds.size.width / 2.0f, self.bounds.size.height / 2.0f);
+    _iconImageView.center = CGPointMake(self.bounds.size.width / 2.0f, self.bounds.size.height / 2.0f + 1.0f);
     _iconImageView.alpha = 0.70f;
     [self addSubview:_iconImageView];
 }
