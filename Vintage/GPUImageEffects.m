@@ -98,7 +98,7 @@
         blending = [[GPUImageColorBlendFilter alloc] init];
     }
     if(mode == MergeBlendingModeHue){
-        blending = [[GPUImageHueBlendFilter alloc] init];
+        blending = [[GPUImageHueBlendAltFIlter alloc] init];
     }
     if(mode == MergeBlendingModeColorBurn){
         blending = [[GPUImageColorBurnBlendFilter alloc] init];

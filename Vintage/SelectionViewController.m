@@ -80,8 +80,19 @@
     _arrayPreviews = [NSMutableArray array];
     CGFloat width = ([UIScreen screenSize].width - 3.0f) / 2.0f;
     CGFloat height = roundf(self.imageOriginal.size.height * width / self.imageOriginal.size.width);
+    CGFloat cropHeight = 0.0f;
+    CGFloat rectHeight = height;
+    BOOL crop = NO;
+    CGRect cropRect = CGRectMake(0.0f, 0.0f, 0.0f, 0.0f);
+    if (height > width) {
+        cropHeight = width;
+        rectHeight = cropHeight;
+        CGFloat scale = [[UIScreen mainScreen] scale];
+        cropRect = CGRectMake(0.0f, (height - width) / 2.0f * scale, width * scale, cropHeight * scale);
+        crop = YES;
+    }
     _scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, self.view.bounds.size.width, self.view.bounds.size.height)];
-    [_scrollView setContentSize:CGSizeMake([UIScreen screenSize].width, ceilf((CGFloat)_numberOfEffects / 2.0f) * height + ceilf((CGFloat)_numberOfEffects / 2.0f) + 44.0f)];
+    [_scrollView setContentSize:CGSizeMake([UIScreen screenSize].width, ceilf((CGFloat)_numberOfEffects / 2.0f) * rectHeight + ceilf((CGFloat)_numberOfEffects / 2.0f) + 44.0f)];
         
     //// Layout
     [self.view setBackgroundColor:[UIColor colorWithWhite:26.0f/255.0f alpha:1.0]];
@@ -99,12 +110,13 @@
     CGRect rect;
     for (int i = 0; i < _numberOfEffects; i++) {
         left = (i % 2 == 0) ? 1.0 : left * 2.0 + width;
-        rect = CGRectMake(left, top, width, height);
+        rect = CGRectMake(left, top, width, rectHeight);
         UISelectionPreviewImageView* preview = [[UISelectionPreviewImageView alloc] initWithFrame:rect];
         [preview addTarget:self action:@selector(didSelectPreview:) forControlEvents:UIControlEventTouchUpInside];
         [_scrollView addSubview:preview];
         [_arrayPreviews addObject:preview];
-        top += (i % 2 == 0) ? 0.0 : 1.0 + height;
+        top += (i % 2 == 0) ? 0.0 : 1.0 + rectHeight;
+
     }
     
     
@@ -113,8 +125,15 @@
     dispatch_queue_t q_global = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
     dispatch_queue_t q_main = dispatch_get_main_queue();
     dispatch_async(q_global, ^{
-        [_self setValue:[_self.imageOriginal resizedImage:CGSizeMake(width * [[UIScreen mainScreen] scale], height * [[UIScreen mainScreen] scale]) interpolationQuality:kCGInterpolationHigh] forKey:@"_imageResized"];
-        [_self setValue:[_self.imageOriginal resizedImage:CGSizeMake([UIScreen screenSize].width * [[UIScreen mainScreen] scale], height * [UIScreen screenSize].width / width * [[UIScreen mainScreen] scale]) interpolationQuality:kCGInterpolationHigh] forKey:@"_imageResizedForEditor"];
+        @autoreleasepool {
+            if(crop){
+                UIImage* croppedImage = [_self.imageOriginal resizedImage:CGSizeMake(width * [[UIScreen mainScreen] scale], height * [[UIScreen mainScreen] scale]) interpolationQuality:kCGInterpolationHigh];
+                [_self setValue:[croppedImage croppedImage:cropRect] forKey:@"_imageResized"];
+            }else{
+                [_self setValue:[_self.imageOriginal resizedImage:CGSizeMake(width * [[UIScreen mainScreen] scale], height * [[UIScreen mainScreen] scale]) interpolationQuality:kCGInterpolationHigh] forKey:@"_imageResized"];
+            }
+            [_self setValue:[_self.imageOriginal resizedImage:CGSizeMake([UIScreen screenSize].width * [[UIScreen mainScreen] scale], height * [UIScreen screenSize].width / width * [[UIScreen mainScreen] scale]) interpolationQuality:kCGInterpolationHigh] forKey:@"_imageResizedForEditor"];
+        }
         dispatch_async(q_main, ^{
             //// Effect
             [_self applyEffectAtIndex:0];

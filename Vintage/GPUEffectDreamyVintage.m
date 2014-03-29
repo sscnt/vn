@@ -27,9 +27,9 @@
     // Contrast
     @autoreleasepool {
         GPUImageContrastFilter* contrastFilter = [[GPUImageContrastFilter alloc] init];
-        contrastFilter.contrast = 1.18f;
+        contrastFilter.contrast = 1.08f;
         
-        resultImage = [self mergeBaseImage:resultImage overlayFilter:contrastFilter opacity:1.0f blendingMode:MergeBlendingModeNormal];
+        //resultImage = [self mergeBaseImage:resultImage overlayFilter:contrastFilter opacity:1.0f blendingMode:MergeBlendingModeNormal];
     }
     
     // Gradient Map
@@ -55,7 +55,7 @@
         
         resultImage = [self mergeBaseImage:resultImage overlayFilter:curveFilter opacity:1.0f blendingMode:MergeBlendingModeNormal];
     }
-    
     return resultImage;
 }
+
 @end
