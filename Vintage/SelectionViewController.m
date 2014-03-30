@@ -62,7 +62,8 @@
     [_arrayEffects addObject:[[GPUEffectFaerieVintage alloc] init]];
     [_arrayEffects addObject:[[GPUEffectHazelnut alloc] init]];    
     [_arrayEffects addObject:[[GPUEffectGentleMemories alloc] init]];
-    [_arrayEffects addObject:[[GPUEffectVintage1 alloc] init]];
+    [_arrayEffects addObject:[[GPUEffectAutumnVintage alloc] init]];
+    //[_arrayEffects addObject:[[GPUEffectVintage1 alloc] init]];
     [_arrayEffects addObject:[[GPUEffectBeachVintage alloc] init]];
     [_arrayEffects addObject:[[GPUEffectDreamyVintage alloc] init]];
     [_arrayEffects addObject:[[GPUEffectCreamyNoon alloc] init]];
@@ -72,8 +73,7 @@
     [_arrayEffects addObject:[[GPUEffectWarmAutumn alloc] init]];
     [_arrayEffects addObject:[[GPUEffectSunsetCarnevale alloc] init]];
     [_arrayEffects addObject:[[GPUEffectWarmSpringLight alloc] init]];
-    [_arrayEffects addObject:[[GPUEffectVampire alloc] init]];
-    [_arrayEffects addObject:[[GPUEffectAutumnVintage alloc] init]];
+    //[_arrayEffects addObject:[[GPUEffectVampire alloc] init]];
 
     //// Init
     _numberOfEffects = (int)[_arrayEffects count];

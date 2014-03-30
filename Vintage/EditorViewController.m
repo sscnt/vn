@@ -25,7 +25,6 @@ float absf(float value){
 {
     self = [super init];
     if (self) {
-        _maxImageLength = 2400.0f;
         _currentSelectedFocusType = FocusTypeTopAndBottom;
         _valueOpacity = 1.0;
         _valueFocusDistance = 0.5f;
@@ -38,6 +37,12 @@ float absf(float value){
         _currentResolution = ImageResolutionMidium;
     }
     return self;
+}
+
+- (void)setImageOriginal:(UIImage *)imageOriginal
+{
+    _imageOriginal = imageOriginal;
+    _maxImageLength = MIN(2400.0f, MAX(_imageOriginal.size.width, _imageOriginal.size.height));
 }
 
 - (void)viewDidLoad

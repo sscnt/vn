@@ -33,7 +33,11 @@
         NSString *currentLanguage = [langs objectAtIndex:0];
         if([currentLanguage compare:@"ja"] == NSOrderedSame) {
             _titleLabel.font = [UIFont fontWithName:@"mplus-1c-bold" size:16.0f];
-            _titleLabel.center = CGPointMake(_titleLabel.center.x, _titleLabel.center.y + 1.0f);
+            if([UIDevice isIOS6]){
+                _titleLabel.center = CGPointMake(_titleLabel.center.x, _titleLabel.center.y + 1.0f);                
+            }else{
+                
+            }
         } else {
             _titleLabel.font = [UIFont fontWithName:@"Aller-Bold" size:18.0f];
         }

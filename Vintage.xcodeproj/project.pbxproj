@@ -20,7 +20,6 @@
 		5806E53718E51A4B00E64D02 /* av4.acv in Resources */ = {isa = PBXBuildFile; fileRef = 5806E53318E51A4B00E64D02 /* av4.acv */; };
 		58098FF118D20D6900E8FEB2 /* photos-38-80@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 58098FF018D20D6900E8FEB2 /* photos-38-80@2x.png */; };
 		58098FF618D20D6E00E8FEB2 /* photos-38-85@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 58098FF518D20D6E00E8FEB2 /* photos-38-85@2x.png */; };
-		580DFFB418E5C61C00DD96A1 /* opacity-button-60@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 580DFFB318E5C61C00DD96A1 /* opacity-button-60@2x.png */; };
 		581355DC18D04918001CCFDD /* UIResolutionSelectorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 581355DB18D04918001CCFDD /* UIResolutionSelectorView.m */; };
 		581355DF18D04ABC001CCFDD /* UIResolutionSelectButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 581355DE18D04ABC001CCFDD /* UIResolutionSelectButton.m */; };
 		581595E818AEBFB400621C3F /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 581595EA18AEBFB400621C3F /* Localizable.strings */; };
@@ -87,6 +86,7 @@
 		5891ABD818B0312B00241949 /* EditorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5891ABD718B0312B00241949 /* EditorViewController.m */; };
 		5891ABDD18B036B100241949 /* UINavigationBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5891ABDC18B036B100241949 /* UINavigationBarView.m */; };
 		5891ABE118B0381800241949 /* UICloseButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 5891ABE018B0381800241949 /* UICloseButton.m */; };
+		589466BA18E86B0300083C09 /* opacity-button-60@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 589466B918E86B0300083C09 /* opacity-button-60@2x.png */; };
 		589749A018CD8A90002D9969 /* UISliderContainer.m in Sources */ = {isa = PBXBuildFile; fileRef = 5897499F18CD8A90002D9969 /* UISliderContainer.m */; };
 		58F2737E18B46D2E003056E9 /* GPUImageVibranceFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F2737D18B46D2E003056E9 /* GPUImageVibranceFilter.m */; };
 		58F2738418B4971C003056E9 /* GPUImageNaturalSaturationFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F2738318B4971C003056E9 /* GPUImageNaturalSaturationFilter.m */; };
@@ -254,7 +254,6 @@
 		5806E53318E51A4B00E64D02 /* av4.acv */ = {isa = PBXFileReference; lastKnownFileType = file; path = av4.acv; sourceTree = "<group>"; };
 		58098FF018D20D6900E8FEB2 /* photos-38-80@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "photos-38-80@2x.png"; sourceTree = "<group>"; };
 		58098FF518D20D6E00E8FEB2 /* photos-38-85@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "photos-38-85@2x.png"; sourceTree = "<group>"; };
-		580DFFB318E5C61C00DD96A1 /* opacity-button-60@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "opacity-button-60@2x.png"; sourceTree = "<group>"; };
 		581355DA18D04918001CCFDD /* UIResolutionSelectorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIResolutionSelectorView.h; sourceTree = "<group>"; };
 		581355DB18D04918001CCFDD /* UIResolutionSelectorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIResolutionSelectorView.m; sourceTree = "<group>"; };
 		581355DD18D04ABC001CCFDD /* UIResolutionSelectButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIResolutionSelectButton.h; sourceTree = "<group>"; };
@@ -350,6 +349,7 @@
 		5891ABDC18B036B100241949 /* UINavigationBarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UINavigationBarView.m; sourceTree = "<group>"; };
 		5891ABDF18B0381800241949 /* UICloseButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UICloseButton.h; sourceTree = "<group>"; };
 		5891ABE018B0381800241949 /* UICloseButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UICloseButton.m; sourceTree = "<group>"; };
+		589466B918E86B0300083C09 /* opacity-button-60@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "opacity-button-60@2x.png"; sourceTree = "<group>"; };
 		5897499E18CD8A90002D9969 /* UISliderContainer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UISliderContainer.h; sourceTree = "<group>"; };
 		5897499F18CD8A90002D9969 /* UISliderContainer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UISliderContainer.m; sourceTree = "<group>"; };
 		58F2737C18B46D2E003056E9 /* GPUImageVibranceFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPUImageVibranceFilter.h; sourceTree = "<group>"; };
@@ -1192,7 +1192,7 @@
 		58FE950118AF95EA005A4DFE /* Icons */ = {
 			isa = PBXGroup;
 			children = (
-				580DFFB318E5C61C00DD96A1 /* opacity-button-60@2x.png */,
+				589466B918E86B0300083C09 /* opacity-button-60@2x.png */,
 				58FBAD5518E5C2D800AF1120 /* color-button-alter-60@2x.png */,
 				58FBAD5318E5C1ED00AF1120 /* close-60@2x.png */,
 				58FBAD4918E5C1E200AF1120 /* kelvin-60@2x.png */,
@@ -1527,7 +1527,6 @@
 				58FF480C18AE488B00B978D9 /* wa3.acv in Resources */,
 				58F767CA18AD6F4900015FBA /* Images.xcassets in Resources */,
 				58F7452C18B1847C0096EB5D /* bebasneue.ttf in Resources */,
-				580DFFB418E5C61C00DD96A1 /* opacity-button-60@2x.png in Resources */,
 				58FBAD5218E5C1E200AF1120 /* vibrance-60@2x.png in Resources */,
 				58FE950E18AF9BDC005A4DFE /* JockeyOne-Regular.ttf in Resources */,
 				58FF481D18AE49DC00B978D9 /* Vintage11.acv in Resources */,
@@ -1539,6 +1538,7 @@
 				58FB369818AEAFEC00B284FB /* rounded-mplus-1p-thin.ttf in Resources */,
 				5835DDD918E5A81700F374D5 /* save-cloud-60@2x.png in Resources */,
 				5835DDC918E5A66600F374D5 /* contrast-button-60@2x.png in Resources */,
+				589466BA18E86B0300083C09 /* opacity-button-60@2x.png in Resources */,
 				58FEDD5018D1CF1D0073C814 /* photos-38-70@2x.png in Resources */,
 				588F123518AE220500787045 /* gi3.acv in Resources */,
 				58FBAD5618E5C2D800AF1120 /* color-button-alter-60@2x.png in Resources */,

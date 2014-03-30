@@ -149,7 +149,9 @@
     NSArray *langs = [NSLocale preferredLanguages];
     NSString *currentLanguage = [langs objectAtIndex:0];
     if([currentLanguage compare:@"ja"] == NSOrderedSame) {
-        _titleLabel.center = CGPointMake(_titleLabel.center.x, _titleLabel.center.y + 1.0f);
+        if([UIDevice isIOS6]){
+            _titleLabel.center = CGPointMake(_titleLabel.center.x, _titleLabel.center.y + 1.0f);
+        }
     } else {
     }
 

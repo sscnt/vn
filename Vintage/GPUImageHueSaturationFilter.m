@@ -10,6 +10,7 @@
 
 @implementation GPUImageHueSaturationFilter
 
+#if TARGET_IPHONE_SIMULATOR || TARGET_OS_IPHONE
 NSString *const kGPUImageHueSaturationFilterFragmentShaderString = SHADER_STRING
 (
  precision highp float;
@@ -205,33 +206,37 @@ NSString *const kGPUImageHueSaturationFilterFragmentShaderString = SHADER_STRING
  void main()
  {
      mediump vec4 pixel   = texture2D(inputImageTexture, textureCoordinate);
-     mediump vec3 inputHsv = rgb2hsv(pixel.rgb);
-     
+
      if(colorize == 1){
          mediump vec3 hsl = rgb2hsl(pixel.rgb);
          hsl.x = hue;
          hsl.y = saturation;
          hsl.z += lightness;
          hsl.z = min(1.0, max(0.0, hsl.z));
-         mediump vec3 rgb = hsl2rgb(hsl);
-         pixel.rgb = rgb;
+         pixel.rgb = hsl2rgb(hsl);
      } else {
          mediump vec3 hsl = rgb2hsl(pixel.rgb);
          hsl.x += hue;
-         hsl.x = mod(hsl.x, 360.0);
-         if(hsl.x < 0.0)
-             hsl.x = 360.0 - hsl.x;
-         hsl.y += saturation;
+         if(hsl.x < 0.0){
+             hsl.x = 1.0 + hsl.x;
+         }else if(hsl.x > 1.0){
+             hsl.x = hsl.x - 1.0;
+         }
+         mediump float weight = hsl.y * 2.0 - 1.0;
+         weight = 1.0 - weight * weight;
+         hsl.y += saturation * weight;
          hsl.y = min(1.0, max(0.0, hsl.y));
          hsl.z += lightness;
          hsl.z = min(1.0, max(0.0, hsl.z));
-         mediump vec3 rgb = hsl2rgb(hsl);
-         pixel.rgb = rgb;
+         pixel.rgb = hsl2rgb(hsl);
      }
 
      gl_FragColor = pixel;
  }
  );
+
+#else
+#endif
 
 
 - (id)init;

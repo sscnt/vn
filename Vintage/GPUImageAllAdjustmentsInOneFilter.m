@@ -449,11 +449,15 @@ mediump float xyz2labFt(mediump float t){
      
      //// Brightness
      if(brightness != 0.0){
-         yuv = rgb2yuv(pixel);
-         lum = yuv.x;
-         yuv.x += brightness;
-         yuv.x = max(min(yuv.x, 1.0), 0.0);
-         pixel.rgb = yuv2rgb(yuv);
+         if(brightness > 0.0){
+             yuv = rgb2yuv(pixel);
+             lum = yuv.x;
+             yuv.x += brightness;
+             yuv.x = max(min(yuv.x, 1.0), 0.0);
+             pixel.rgb = yuv2rgb(yuv);
+         }else{
+             pixel.rgb = pixel.rgb * pow(2.0, brightness * 4.0);
+         }
      }
      
      //// Levels

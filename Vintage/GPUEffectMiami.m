@@ -26,7 +26,6 @@
         
         resultImage = [self mergeBaseImage:resultImage overlayFilter:hueSaturation opacity:1.0f blendingMode:MergeBlendingModeNormal];
     }
-
     
     // Levels
     @autoreleasepool {
@@ -35,6 +34,7 @@
         
         resultImage = [self mergeBaseImage:resultImage overlayFilter:levelsFilter opacity:1.0f blendingMode:MergeBlendingModeNormal];
     }
+    
     
     // Fill Layer
     @autoreleasepool {
