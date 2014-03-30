@@ -48,7 +48,11 @@
     
     [picture addTarget:blending];
     [picture processImage];
-    return [blending imageFromCurrentlyProcessedOutput];
+    UIImage* mergedImage = [blending imageFromCurrentlyProcessedOutput];
+    [picture removeAllTargets];
+    [overlayFilter removeAllTargets];
+    [opacityFilter removeAllTargets];
+    return mergedImage;
 
 }
 
@@ -104,7 +108,7 @@
         blending = [[GPUImageColorBurnBlendFilter alloc] init];
     }
     if(mode == MergeBlendingModeSaturation){
-        blending = [[GPUImageSaturationBlendFilter alloc] init];
+        blending = [[GPUImageSaturationBlendAltFilter alloc] init];
     }
     if(mode == MergeBlendingModeDifference){
         blending = [[GPUImageDifferenceBlendFilter alloc] init];

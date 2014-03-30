@@ -35,7 +35,7 @@
     @autoreleasepool {
         GPUImageHueSaturationFilter* hueSaturation = [[GPUImageHueSaturationFilter alloc] init];
         hueSaturation.hue = 0.0f;
-        hueSaturation.saturation = -30.0f;
+        hueSaturation.saturation = -15.0f;
         hueSaturation.lightness = 0.0f;
         hueSaturation.colorize =  NO;
         
@@ -56,6 +56,7 @@
         photoFilter.strength = 10.0f;
         resultImage = [self mergeBaseImage:resultImage overlayFilter:photoFilter opacity:1.0f blendingMode:MergeBlendingModeNormal];
     }
+    
     
     // Fill Layer
     @autoreleasepool {

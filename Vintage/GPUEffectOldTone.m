@@ -35,6 +35,8 @@
         [base processImage];
         
         resultImage = [mixerFilter imageFromCurrentlyProcessedOutput];
+        [base removeAllTargets];
+        [selectiveColor removeAllTargets];
     }
     
     // Fill Layer
@@ -75,6 +77,7 @@
         
         resultImage = [self mergeBaseImage:resultImage overlayFilter:colorBalance opacity:0.20f blendingMode:MergeBlendingModeNormal];
     }
+    
     
     // Selective Color
     @autoreleasepool {
@@ -214,6 +217,7 @@
         resultImage = [self mergeBaseImage:resultImage overlayFilter:solidColor opacity:0.14 blendingMode:MergeBlendingModeColorDodge];
     }
     
+    
     // Color Balance
     @autoreleasepool {
         GPUImageColorBalanceFilter* colorBalance = [[GPUImageColorBalanceFilter alloc] init];
@@ -262,7 +266,7 @@
         GPUImageSolidColorGenerator* solidColor = [[GPUImageSolidColorGenerator alloc] init];
         [solidColor setColorRed:97.0f/255.0f green:86.0f/255.0f blue:59.0f/255.0 alpha:1.0f];
         
-        resultImage = [self mergeBaseImage:resultImage overlayFilter:solidColor opacity:0.17 blendingMode:MergeBlendingModeSaturation];
+        resultImage = [self mergeBaseImage:resultImage overlayFilter:solidColor opacity:1.0f blendingMode:MergeBlendingModeSaturation];
     }
     
     // Fill Layer
@@ -272,6 +276,7 @@
         
         resultImage = [self mergeBaseImage:resultImage overlayFilter:solidColor opacity:0.05 blendingMode:MergeBlendingModeDifference];
     }
+    
     
     // Fill Layer
     @autoreleasepool {

@@ -20,6 +20,7 @@
 #import "GPUImageLinearDodgeBlendFilter.h"
 #import "GPUImageDarkerColorBlendFilter.h"
 #import "GPUImageHueBlendAltFIlter.h"
+#import "GPUImageSaturationBlendAltFilter.h"
 
 
 typedef NS_ENUM(NSInteger, EffectId){

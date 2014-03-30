@@ -20,7 +20,7 @@
     @autoreleasepool {
         GPUImageHueSaturationFilter* hueSaturation = [[GPUImageHueSaturationFilter alloc] init];
         hueSaturation.hue = 0.0f;
-        hueSaturation.saturation = 10.0f;
+        hueSaturation.saturation = 6.0f;
         hueSaturation.lightness = 0.0f;
         hueSaturation.colorize =  NO;
         
@@ -63,13 +63,6 @@
         
         resultImage = [self mergeBaseImage:resultImage overlayFilter:gradientColor opacity:0.50f blendingMode:MergeBlendingModeOverlay];
     }
-    // Contrast
-    @autoreleasepool {
-        GPUImageContrastFilter* contrastFilter = [[GPUImageContrastFilter alloc] init];
-        contrastFilter.contrast = 1.03f;
-        
-        resultImage = [self mergeBaseImage:resultImage overlayFilter:contrastFilter opacity:1.0f blendingMode:MergeBlendingModeNormal];
-    }
     
     // Curve
     @autoreleasepool {
@@ -103,6 +96,7 @@
         resultImage = [self mergeBaseImage:resultImage overlayFilter:levelsFilter opacity:1.0f blendingMode:MergeBlendingModeNormal];
     }
     
+    
     // Curve
     @autoreleasepool {
         GPUImageToneCurveFilter* curveFilter = [[GPUImageToneCurveFilter alloc] initWithACV:@"mi3"];
@@ -131,7 +125,17 @@
         GPUImageContrastFilter* contrastFilter = [[GPUImageContrastFilter alloc] init];
         contrastFilter.contrast = 0.97;
         
-        resultImage = [self mergeBaseImage:resultImage overlayFilter:contrastFilter opacity:1.0f blendingMode:MergeBlendingModeNormal];
+        GPUImageBrightnessFilter* brightnessFilter = [[GPUImageBrightnessFilter alloc] init];
+        brightnessFilter.brightness = 0.06f;
+        
+        [contrastFilter addTarget:brightnessFilter];
+        
+        GPUImagePicture* base = [[GPUImagePicture alloc] initWithImage:resultImage];
+        [base addTarget:contrastFilter];
+        [base processImage];
+        resultImage = [brightnessFilter imageFromCurrentlyProcessedOutput];
+        [base removeAllTargets];
+        [contrastFilter removeAllTargets];
     }
     
     return resultImage;
