@@ -22,3 +22,5 @@
 #import "GPUEffectGirder.h"
 #import "GPUEffectVampire.h"
 #import "GPUEffectAutumnVintage.h"
+#import "GPUEffectBokehileVintage.h"
+#import "GPUEffectBokehileVintage2.h"

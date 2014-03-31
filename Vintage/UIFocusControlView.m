@@ -114,6 +114,11 @@
     
     CGFloat cos = (c * c - b * b - a * a) / (-2.0f * a * b);
     CGFloat radian = acosf(cos);
+    if (isnan(radian)) {
+        LOG(@"Nan!");
+        return;
+    }
+
     if(__x < 0.0){
         radian = M_PI * 2.0f - radian;
     }
@@ -126,7 +131,7 @@
     
     CGFloat degree = radian * (180.0f / M_PI);
     LOG(@"%f", degree);
-    
+        
     self.angle = radian;
 
     

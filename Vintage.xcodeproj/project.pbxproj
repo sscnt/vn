@@ -98,6 +98,13 @@
 		58F4FF8918B07D1200C338B3 /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F4FF8718B07D1200C338B3 /* SVProgressHUD.m */; };
 		58F4FF8D18B0936000C338B3 /* UISliderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F4FF8C18B0936000C338B3 /* UISliderView.m */; };
 		58F4FF9018B093A100C338B3 /* UISliderThumbView.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F4FF8F18B093A100C338B3 /* UISliderThumbView.m */; };
+		58F54B9718E93F81003BE41A /* GPUEffectBokehileVintage.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F54B9618E93F81003BE41A /* GPUEffectBokehileVintage.m */; };
+		58F54B9A18E93FDC003BE41A /* bv1.acv in Resources */ = {isa = PBXBuildFile; fileRef = 58F54B9918E93FDC003BE41A /* bv1.acv */; };
+		58F54B9C18E942BF003BE41A /* bv2.acv in Resources */ = {isa = PBXBuildFile; fileRef = 58F54B9B18E942BF003BE41A /* bv2.acv */; };
+		58F54BA018E9475D003BE41A /* GPUEffectBokehileVintage2.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F54B9F18E9475D003BE41A /* GPUEffectBokehileVintage2.m */; };
+		58F54BA318E948FF003BE41A /* bv3.acv in Resources */ = {isa = PBXBuildFile; fileRef = 58F54BA218E948FF003BE41A /* bv3.acv */; };
+		58F54BA518E94932003BE41A /* bv4.acv in Resources */ = {isa = PBXBuildFile; fileRef = 58F54BA418E94932003BE41A /* bv4.acv */; };
+		58F54BA718E949B6003BE41A /* bv5.acv in Resources */ = {isa = PBXBuildFile; fileRef = 58F54BA618E949B6003BE41A /* bv5.acv */; };
 		58F5563918AE16EB008B2857 /* UIBlurredButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F5563818AE16EB008B2857 /* UIBlurredButton.m */; };
 		58F5AF9518DB11C100C3D509 /* GPUImageFocusFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F5AF9418DB11C100C3D509 /* GPUImageFocusFilter.m */; };
 		58F696FC18AD799B006F2089 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58F696FB18AD799B006F2089 /* CoreMedia.framework */; };
@@ -372,6 +379,15 @@
 		58F4FF8C18B0936000C338B3 /* UISliderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UISliderView.m; sourceTree = "<group>"; };
 		58F4FF8E18B093A100C338B3 /* UISliderThumbView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UISliderThumbView.h; sourceTree = "<group>"; };
 		58F4FF8F18B093A100C338B3 /* UISliderThumbView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UISliderThumbView.m; sourceTree = "<group>"; };
+		58F54B9518E93F81003BE41A /* GPUEffectBokehileVintage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPUEffectBokehileVintage.h; sourceTree = "<group>"; };
+		58F54B9618E93F81003BE41A /* GPUEffectBokehileVintage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GPUEffectBokehileVintage.m; sourceTree = "<group>"; };
+		58F54B9918E93FDC003BE41A /* bv1.acv */ = {isa = PBXFileReference; lastKnownFileType = file; path = bv1.acv; sourceTree = "<group>"; };
+		58F54B9B18E942BF003BE41A /* bv2.acv */ = {isa = PBXFileReference; lastKnownFileType = file; path = bv2.acv; sourceTree = "<group>"; };
+		58F54B9E18E9475D003BE41A /* GPUEffectBokehileVintage2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPUEffectBokehileVintage2.h; sourceTree = "<group>"; };
+		58F54B9F18E9475D003BE41A /* GPUEffectBokehileVintage2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GPUEffectBokehileVintage2.m; sourceTree = "<group>"; };
+		58F54BA218E948FF003BE41A /* bv3.acv */ = {isa = PBXFileReference; lastKnownFileType = file; path = bv3.acv; sourceTree = "<group>"; };
+		58F54BA418E94932003BE41A /* bv4.acv */ = {isa = PBXFileReference; lastKnownFileType = file; path = bv4.acv; sourceTree = "<group>"; };
+		58F54BA618E949B6003BE41A /* bv5.acv */ = {isa = PBXFileReference; lastKnownFileType = file; path = bv5.acv; sourceTree = "<group>"; };
 		58F5563718AE16EB008B2857 /* UIBlurredButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIBlurredButton.h; sourceTree = "<group>"; };
 		58F5563818AE16EB008B2857 /* UIBlurredButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIBlurredButton.m; sourceTree = "<group>"; };
 		58F5AF9318DB11C100C3D509 /* GPUImageFocusFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPUImageFocusFilter.h; sourceTree = "<group>"; };
@@ -644,6 +660,8 @@
 		588F11F218AE1F5500787045 /* 1.0 */ = {
 			isa = PBXGroup;
 			children = (
+				58F54B9D18E94747003BE41A /* Boke VIntage 2 */,
+				58F54B9418E93F58003BE41A /* Boke VIntage */,
 				5806E52818E511B500E64D02 /* Autumn Vintage */,
 				58066C1318E4472800EDDBBE /* Vampire */,
 				58FF483C18AE4C7800B978D9 /* Haze3 */,
@@ -920,6 +938,45 @@
 				58F4FF8F18B093A100C338B3 /* UISliderThumbView.m */,
 			);
 			name = Slider;
+			sourceTree = "<group>";
+		};
+		58F54B9418E93F58003BE41A /* Boke VIntage */ = {
+			isa = PBXGroup;
+			children = (
+				58F54B9818E93FBF003BE41A /* Curves */,
+				58F54B9518E93F81003BE41A /* GPUEffectBokehileVintage.h */,
+				58F54B9618E93F81003BE41A /* GPUEffectBokehileVintage.m */,
+			);
+			name = "Boke VIntage";
+			sourceTree = "<group>";
+		};
+		58F54B9818E93FBF003BE41A /* Curves */ = {
+			isa = PBXGroup;
+			children = (
+				58F54B9B18E942BF003BE41A /* bv2.acv */,
+				58F54B9918E93FDC003BE41A /* bv1.acv */,
+			);
+			name = Curves;
+			sourceTree = "<group>";
+		};
+		58F54B9D18E94747003BE41A /* Boke VIntage 2 */ = {
+			isa = PBXGroup;
+			children = (
+				58F54BA118E948F4003BE41A /* Curves */,
+				58F54B9E18E9475D003BE41A /* GPUEffectBokehileVintage2.h */,
+				58F54B9F18E9475D003BE41A /* GPUEffectBokehileVintage2.m */,
+			);
+			name = "Boke VIntage 2";
+			sourceTree = "<group>";
+		};
+		58F54BA118E948F4003BE41A /* Curves */ = {
+			isa = PBXGroup;
+			children = (
+				58F54BA618E949B6003BE41A /* bv5.acv */,
+				58F54BA418E94932003BE41A /* bv4.acv */,
+				58F54BA218E948FF003BE41A /* bv3.acv */,
+			);
+			name = Curves;
 			sourceTree = "<group>";
 		};
 		58F5563218AE16A8008B2857 /* UIComponents */ = {
@@ -1493,6 +1550,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				58F54BA318E948FF003BE41A /* bv3.acv in Resources */,
 				58066C1918E46DD600EDDBBE /* vmp.acv in Resources */,
 				588F125E18AE245D00787045 /* cr1.acv in Resources */,
 				588F123718AE220500787045 /* gi1.acv in Resources */,
@@ -1514,6 +1572,7 @@
 				58F7453518B186830096EB5D /* Aller_Lt.ttf in Resources */,
 				58FBAD4518E5C19400AF1120 /* brightness-button-60@2x.png in Resources */,
 				58FE950918AF995C005A4DFE /* camera-40-40@2x.png in Resources */,
+				58F54B9A18E93FDC003BE41A /* bv1.acv in Resources */,
 				58F7F07A18AFE42F00997877 /* loading-48@2x.gif in Resources */,
 				5820DCCB18E6B15B00F4B23D /* mplus-1c-bold.ttf in Resources */,
 				58FB898218AE1031001F661B /* home@2x.jpg in Resources */,
@@ -1559,10 +1618,12 @@
 				58FF47FA18AE47D000B978D9 /* sl2.acv in Resources */,
 				588F122718AE21EB00787045 /* sms5.acv in Resources */,
 				58098FF118D20D6900E8FEB2 /* photos-38-80@2x.png in Resources */,
+				58F54B9C18E942BF003BE41A /* bv2.acv in Resources */,
 				58FEDD4E18D1CF0E0073C814 /* photos-38-40@2x.png in Resources */,
 				5806E53618E51A4B00E64D02 /* av3.acv in Resources */,
 				58FE950A18AF995C005A4DFE /* camera-40-70@2x.png in Resources */,
 				588F122A18AE21EB00787045 /* sms2.acv in Resources */,
+				58F54BA718E949B6003BE41A /* bv5.acv in Resources */,
 				58FF47F118AE478E00B978D9 /* gm3.acv in Resources */,
 				588F127418AE24D300787045 /* cn4.acv in Resources */,
 				5806D0ED18D1D57500A14C7B /* photos-38-95@2x.png in Resources */,
@@ -1589,6 +1650,7 @@
 				58FB369318AEAFEC00B284FB /* rounded-mplus-1p-bold.ttf in Resources */,
 				58FF47F218AE478E00B978D9 /* gm4.acv in Resources */,
 				5835DDCC18E5A66600F374D5 /* focus-distance-60@2x.png in Resources */,
+				58F54BA518E94932003BE41A /* bv4.acv in Resources */,
 				58FF482618AE49F800B978D9 /* Vintage22.acv in Resources */,
 				58FF480118AE484F00B978D9 /* jf1.acv in Resources */,
 				5806E53418E51A4B00E64D02 /* av1.acv in Resources */,
@@ -1649,10 +1711,12 @@
 				58F767C818AD6F4900015FBA /* HomeViewController.m in Sources */,
 				58F6A1B818B3A63E00C722BA /* GPUImageTumblinLevelsFilter.m in Sources */,
 				58FF481718AE490D00B978D9 /* GPUEffectOldTone.m in Sources */,
+				58F54BA018E9475D003BE41A /* GPUEffectBokehileVintage2.m in Sources */,
 				58FC498E18E0730900371084 /* UIFocusRotationControlView.m in Sources */,
 				58F767C218AD6F4900015FBA /* AppDelegate.m in Sources */,
 				58F8127D18B3398500941C18 /* GPUImageDarkerColorBlendFilter.m in Sources */,
 				588F121018AE20A100787045 /* GPUImageGradientColorGenerator.m in Sources */,
+				58F54B9718E93F81003BE41A /* GPUEffectBokehileVintage.m in Sources */,
 				58F6A1B218B39FA500C722BA /* GPUimageTumblinBrightnessFilter.m in Sources */,
 				58FF485618AE586F00B978D9 /* GPUAdjustmentsWhiteBalance.m in Sources */,
 				58FA943A18E6EEC700A30AB6 /* GPUImageHueBlendAltFIlter.m in Sources */,
@@ -1868,7 +1932,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "0433B521-C64E-46A9-A472-250E210DE2EA";
+				PROVISIONING_PROFILE = "C5142C7A-87F6-4ABF-BD55-B1AC54ADEE81";
 				USER_HEADER_SEARCH_PATHS = "./GPUImage/framework/**";
 				WRAPPER_EXTENSION = app;
 			};

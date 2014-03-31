@@ -52,6 +52,9 @@
     _arrayEffects = [NSMutableArray array];
     [_arrayEffects addObject:[[GPUEffectVintageFilm alloc] init]];
     [_arrayEffects addObject:[[GPUEffectHaze3 alloc] init]];
+    [_arrayEffects addObject:[[GPUEffectAutumnVintage alloc] init]];
+    [_arrayEffects addObject:[[GPUEffectBokehileVintage alloc] init]];
+    [_arrayEffects addObject:[[GPUEffectBokehileVintage2 alloc] init]];
     [_arrayEffects addObject:[[GPUEffectVintage2 alloc] init]];
     [_arrayEffects addObject:[[GPUEffectWeekend alloc] init]];
     [_arrayEffects addObject:[[GPUEffectVividVintage alloc] init]];
@@ -62,8 +65,6 @@
     [_arrayEffects addObject:[[GPUEffectFaerieVintage alloc] init]];
     [_arrayEffects addObject:[[GPUEffectHazelnut alloc] init]];    
     [_arrayEffects addObject:[[GPUEffectGentleMemories alloc] init]];
-    [_arrayEffects addObject:[[GPUEffectAutumnVintage alloc] init]];
-    //[_arrayEffects addObject:[[GPUEffectVintage1 alloc] init]];
     [_arrayEffects addObject:[[GPUEffectBeachVintage alloc] init]];
     [_arrayEffects addObject:[[GPUEffectDreamyVintage alloc] init]];
     [_arrayEffects addObject:[[GPUEffectCreamyNoon alloc] init]];
@@ -73,7 +74,7 @@
     [_arrayEffects addObject:[[GPUEffectWarmAutumn alloc] init]];
     [_arrayEffects addObject:[[GPUEffectSunsetCarnevale alloc] init]];
     [_arrayEffects addObject:[[GPUEffectWarmSpringLight alloc] init]];
-    //[_arrayEffects addObject:[[GPUEffectVampire alloc] init]];
+    [_arrayEffects addObject:[[GPUEffectVampire alloc] init]];
 
     //// Init
     _numberOfEffects = (int)[_arrayEffects count];
@@ -165,9 +166,11 @@
             dispatch_queue_t q_global = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
             dispatch_queue_t q_main = dispatch_get_main_queue();
             dispatch_async(q_global, ^{
-                effect.imageToProcess = imageToProcess;
-                imageApplied = [effect process];
-                preview.effectId = effect.effectId;
+                @autoreleasepool {
+                    effect.imageToProcess = imageToProcess;
+                    imageApplied = [effect process];
+                    preview.effectId = effect.effectId;
+                }
                 dispatch_async(q_main, ^{
                     [preview removeLoadingIndicator];
                     [preview setPreviewImage:imageApplied WithDuration:0.20f];

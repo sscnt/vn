@@ -380,6 +380,12 @@ float absf(float value){
         case EffectIdAutumnVintage:
             return [[GPUEffectAutumnVintage alloc] init];
             break;
+        case EffectIdBokehileVintage:
+            return [[GPUEffectBokehileVintage alloc] init];
+            break;
+        case EffectIdBokehileVintage2:
+            return [[GPUEffectBokehileVintage2 alloc] init];
+            break;
     }
 }
 

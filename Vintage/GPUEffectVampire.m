@@ -85,6 +85,7 @@
         resultImage = [self mergeBaseImage:resultImage overlayFilter:selectiveColor opacity:1.0f blendingMode:MergeBlendingModeNormal];
     }
     
+    // Channel Mixer
     @autoreleasepool {
         GPUImageChannelMixerFilter* mixerFilter = [[GPUImageChannelMixerFilter alloc] init];
         [mixerFilter setRedChannelRed:108 Green:-8 Blue:0 Constant:0];

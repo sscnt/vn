@@ -109,7 +109,7 @@
         [gradientMap addColorRed:41.0f Green:10.0f Blue:89.0f Opacity:100.0f Location:0 Midpoint:50];
         [gradientMap addColorRed:255.0f Green:124.0f Blue:0.0f Opacity:100.0f Location:4096 Midpoint:50];
         
-        resultImage = [self mergeBaseImage:resultImage overlayFilter:gradientMap opacity:0.020f blendingMode:MergeBlendingModeHue];
+        resultImage = [self mergeBaseImage:resultImage overlayFilter:gradientMap opacity:0.40f blendingMode:MergeBlendingModeHue];
     }
     
     
@@ -136,13 +136,13 @@
         resultImage = [self mergeBaseImage:resultImage overlayFilter:colorBalance opacity:1.0f blendingMode:MergeBlendingModeNormal];
     }
     
+    
     // Curve
     @autoreleasepool {
         GPUImageToneCurveFilter* curveFilter = [[GPUImageToneCurveFilter alloc] initWithACV:@"av4"];
         
         resultImage = [self mergeBaseImage:resultImage overlayFilter:curveFilter opacity:1.0f blendingMode:MergeBlendingModeNormal];
     }
-    
     
     // Color Balance
     @autoreleasepool {
@@ -164,7 +164,7 @@
         [colorBalance setHighlights:highlights];
         colorBalance.preserveLuminosity = YES;
         
-        resultImage = [self mergeBaseImage:resultImage overlayFilter:colorBalance opacity:1.0f blendingMode:MergeBlendingModeNormal];
+        resultImage = [self mergeBaseImage:resultImage overlayFilter:colorBalance opacity:0.55f blendingMode:MergeBlendingModeOverlay];
     }
     return resultImage;
 }
