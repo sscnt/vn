@@ -54,7 +54,6 @@
     [_arrayEffects addObject:[[GPUEffectHaze3 alloc] init]];
     [_arrayEffects addObject:[[GPUEffectAutumnVintage alloc] init]];
     [_arrayEffects addObject:[[GPUEffectBokehileVintage alloc] init]];
-    [_arrayEffects addObject:[[GPUEffectBokehileVintage2 alloc] init]];
     [_arrayEffects addObject:[[GPUEffectVintage2 alloc] init]];
     [_arrayEffects addObject:[[GPUEffectWeekend alloc] init]];
     [_arrayEffects addObject:[[GPUEffectVividVintage alloc] init]];
@@ -75,6 +74,7 @@
     [_arrayEffects addObject:[[GPUEffectSunsetCarnevale alloc] init]];
     [_arrayEffects addObject:[[GPUEffectWarmSpringLight alloc] init]];
     [_arrayEffects addObject:[[GPUEffectVampire alloc] init]];
+    [_arrayEffects addObject:[[GPUEffectBokehileVintage2 alloc] init]];
 
     //// Init
     _numberOfEffects = (int)[_arrayEffects count];
@@ -168,8 +168,23 @@
             dispatch_async(q_global, ^{
                 @autoreleasepool {
                     effect.imageToProcess = imageToProcess;
-                    imageApplied = [effect process];
+                    UIImage* img = [effect process];
+                    GPUImagePicture* basePicture = [[GPUImagePicture alloc] initWithImage:imageToProcess];
+                    GPUImagePicture* overlayPicture = [[GPUImagePicture alloc] initWithImage:img];
+                    GPUImageOpacityFilter* opacity = [[GPUImageOpacityFilter alloc] init];
+                    opacity.opacity = effect.defaultOpacity;
+                    GPUImageNormalBlendFilter* blend = [[GPUImageNormalBlendFilter alloc] init];
+                    [opacity addTarget:blend atTextureLocation:1];
+                    [overlayPicture addTarget:opacity];
+                    [basePicture addTarget:blend];
+                    [overlayPicture processImage];
+                    [basePicture processImage];
+                    img = [blend imageFromCurrentlyProcessedOutput];
+                    [basePicture removeAllTargets];
+                    [overlayPicture removeAllTargets];
+                    [opacity removeAllTargets];
                     preview.effectId = effect.effectId;
+                    imageApplied = [[UIImage alloc] initWithCGImage:img.CGImage];
                 }
                 dispatch_async(q_main, ^{
                     [preview removeLoadingIndicator];

@@ -77,6 +77,8 @@ typedef NS_ENUM(NSInteger, MergeBlendingMode){
 
 @property (nonatomic, weak) UIImage* imageToProcess;
 @property (nonatomic, assign) EffectId effectId;
+@property (nonatomic, assign) CGFloat defaultOpacity;
+@property (nonatomic, assign) CGFloat faceOpacity;
 
 - (UIImage*)process;
 - (UIImage*)mergeBaseImage:(UIImage*)baseImage overlayImage:(UIImage*)overlayImage opacity:(CGFloat)opacity blendingMode:(MergeBlendingMode)blendingMode;
