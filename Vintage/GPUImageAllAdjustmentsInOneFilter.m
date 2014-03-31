@@ -431,7 +431,7 @@ mediump float xyz2labFt(mediump float t){
      if(saturation != 1.0){
          tmpvec = rgb2hsv(pixel);
          mediump float x = tmpvec.y * 2.0 - 1.0;
-         mediump float y = tmpvec.x / 90.0;
+         //mediump float y = tmpvec.x / 90.0;
          weight = 1.0 - x * x;
          
          tmpvec.y *= saturation;
@@ -451,28 +451,30 @@ mediump float xyz2labFt(mediump float t){
      //// Brightness
      if(brightness != 0.0){
          if(brightness > 0.0){
-             yuv = rgb2yuv(pixel);
-             lum = yuv.x;
-             yuv.x += brightness;
-             yuv.x = max(min(yuv.x, 1.0), 0.0);
-             pixel.rgb = yuv2rgb(yuv);
+             pixel.rgb = log(exp(4.0 * pixel.rgb * (1.0 + brightness * 1.3) / 4.0));
+             //yuv = rgb2yuv(pixel);
+             //lum = yuv.x;
+             //yuv.x += brightness;
+             //yuv.x = max(min(yuv.x, 1.0), 0.0);
+             //pixel.rgb = yuv2rgb(yuv);
          }else{
-             pixel.rgb = pixel.rgb * pow(2.0, brightness * 4.0);
+             //pixel.rgb = pixel.rgb * pow(2.0, brightness * 4.0);
+             pixel.rgb = log(exp(4.0 * pixel.rgb * (1.0 + brightness) / 4.0));
          }
      }
      
      //// Levels
      if(levelsMid.x < 0.99 || levelsMid.x > 1.01){
-         yuv = rgb2yuv(pixel.rgb);
-         lum = yuv.x;
-         tmp = lum - 0.3;
-         if(tmp < 0.0){
-             tmp = 0.0;
-         }
-         weight = 1.0 - pow(tmp, 5.0);
-         tmpvec = LevelsControl(pixel, levelsMin, levelsMid, levelsMax, levelsMinOutput, levelsMaxOutput);
+         //yuv = rgb2yuv(pixel.rgb);
+         //lum = yuv.x;
+         //tmp = lum - 0.3;
+         //if(tmp < 0.0){
+         //    tmp = 0.0;
+         //}
+         //weight = 1.0 - pow(tmp, 5.0);
+         pixel = LevelsControl(pixel, levelsMin, levelsMid, levelsMax, levelsMinOutput, levelsMaxOutput);
          
-         pixel = tmpvec;
+         //pixel = tmpvec;
          
      }
      
