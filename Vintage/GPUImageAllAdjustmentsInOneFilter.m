@@ -297,11 +297,12 @@ mediump float xyz2labFt(mediump float t){
      return xyz2rgb(lab2xyz(color));
  }
  mediump vec3 kelvinShift(const in mediump float klvn, const in mediump float strength, const in mediump vec3 color){
-     mediump float fmin = min(min(color.r, color.g), color.b);    //Min. value of RGB
-     mediump float fmax = max(max(color.r, color.g), color.b);    //Max. value of RGB
-     mediump float delta = fmax - fmin;             //Delta RGB value
+
+     mediump float luminance = max(max(color.r, color.g), color.b);
      
-     mediump float luminance = (fmax + fmin) / 2.0; // Luminance
+     if(luminance == 0.0){
+         return color;
+     }
      
      mediump float r = 0.0;
      mediump float g = 0.0;
@@ -356,18 +357,18 @@ mediump float xyz2labFt(mediump float t){
      }
      mediump vec3 rgb;
      
-     rgb.r = (1.0 - strength) * color.r + r * 0.00392156862 * strength;
-     rgb.g = (1.0 - strength) * color.g + g * 0.00392156862 * strength;
-     rgb.b = (1.0 - strength) * color.b + b * 0.00392156862 * strength;
+     rgb.r = (1.0 - strength) * color.r + r / 255.0 * strength;
+     rgb.g = (1.0 - strength) * color.g + g / 255.0 * strength;
+     rgb.b = (1.0 - strength) * color.b + b / 255.0 * strength;
      
      rgb.r = max(min(1.0, rgb.r), 0.0);
      rgb.g = max(min(1.0, rgb.g), 0.0);
      rgb.b = max(min(1.0, rgb.b), 0.0);
      
      
-     mediump vec3 hsl = rgb2hsl(rgb);
-     hsl.z = luminance;
-     rgb = hsl2rgb(hsl);
+     rgb = rgb2hsv(rgb);
+     rgb.z = luminance;
+     rgb = hsv2rgb(rgb);
      
      return rgb;
  }
