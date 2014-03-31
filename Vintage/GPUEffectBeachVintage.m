@@ -10,6 +10,16 @@
 
 @implementation GPUEffectBeachVintage
 
+- (id)init
+{
+    self = [super init];
+    if(self){
+        self.defaultOpacity = 0.90f;
+        self.faceOpacity = 0.60f;
+    }
+    return self;
+}
+
 - (UIImage*)process
 {
     self.effectId = EffectIdBeachVintage;

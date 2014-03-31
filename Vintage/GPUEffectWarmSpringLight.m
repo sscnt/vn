@@ -10,6 +10,16 @@
 
 @implementation GPUEffectWarmSpringLight
 
+- (id)init
+{
+    self = [super init];
+    if(self){
+        self.defaultOpacity = 1.0f;
+        self.faceOpacity = 0.80f;
+    }
+    return self;
+}
+
 - (UIImage*)process
 {
     self.effectId = EffectIdWarmSpringLight;
@@ -31,6 +41,23 @@
         
         
         resultImage = [self mergeBaseImage:resultImage overlayFilter:selectiveColor opacity:1.0f blendingMode:MergeBlendingModeNormal];
+    }
+    
+    
+    // Fill Layer
+    @autoreleasepool {
+        GPUImageGradientColorGenerator* gradientColor = [[GPUImageGradientColorGenerator alloc] init];
+        [gradientColor forceProcessingAtSize:CGSizeMake(resultImage.size.width, resultImage.size.height)];
+        [gradientColor setStyle:GradientStyleLinear];
+        [gradientColor setAngleDegree:-135];
+        [gradientColor setScalePercent:150];
+        [gradientColor setOffsetX:0.0f Y:0.0f];
+        [gradientColor addColorRed:145.0f Green:64.0f Blue:20.0f Opacity:100.0f Location:0 Midpoint:50];
+        [gradientColor addColorRed:255.0f Green:240.0f Blue:117.0f Opacity:100.0f Location:1229 Midpoint:50];
+        [gradientColor addColorRed:161.0f Green:120.0f Blue:117.0f Opacity:100.0f Location:2999 Midpoint:50];
+        [gradientColor addColorRed:161.0f Green:120.0f Blue:117.0f Opacity:100.0f Location:4096 Midpoint:50];
+        
+        resultImage = [self mergeBaseImage:resultImage overlayFilter:gradientColor opacity:0.40f blendingMode:MergeBlendingModeHardLight];
     }
     
     // Channel Mixer

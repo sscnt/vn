@@ -10,6 +10,16 @@
 
 @implementation GPUEffectSunsetCarnevale
 
+- (id)init
+{
+    self = [super init];
+    if(self){
+        self.defaultOpacity = 0.70f;
+        self.faceOpacity = 0.50f;
+    }
+    return self;
+}
+
 - (UIImage*)process
 {
     self.effectId = EffectIdSunsetCarnevale;

@@ -10,6 +10,17 @@
 
 @implementation GPUEffectMiami
 
+- (id)init
+{
+    self = [super init];
+    if(self){
+        self.defaultOpacity = 0.80f;
+        self.faceOpacity = 0.65f;
+    }
+    return self;
+}
+
+
 - (UIImage*)process
 {
     self.effectId = EffectIdMiami;

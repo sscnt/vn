@@ -10,6 +10,16 @@
 
 @implementation GPUEffectBokehileVintage2
 
+- (id)init
+{
+    self = [super init];
+    if(self){
+        self.defaultOpacity = 0.90f;
+        self.faceOpacity = 0.80f;
+    }
+    return self;
+}
+
 - (UIImage*)process
 {
     
