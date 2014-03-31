@@ -37,6 +37,11 @@
     }
 }
 
+- (void)setOpacity:(CGFloat)opacity
+{
+    _opacity = opacity;
+}
+
 - (void)setPreviewImage:(UIImage *)image
 {
     _previewImageView.image = image;

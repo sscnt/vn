@@ -10,6 +10,16 @@
 
 @implementation GPUEffectJoyful
 
+- (id)init
+{
+    self = [super init];
+    if(self){
+        self.defaultOpacity = 1.0f;
+        self.faceOpacity = 0.80f;
+    }
+    return self;
+}
+
 - (UIImage*)process
 {
     self.effectId = EffectIdJoyful;

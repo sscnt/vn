@@ -68,12 +68,12 @@
     [_arrayEffects addObject:[[GPUEffectBeachVintage alloc] init]];
     [_arrayEffects addObject:[[GPUEffectDreamyVintage alloc] init]];
     [_arrayEffects addObject:[[GPUEffectCreamyNoon alloc] init]];
-    [_arrayEffects addObject:[[GPUEffectJoyful alloc] init]];
+    [_arrayEffects addObject:[[GPUEffectWarmSpringLight alloc] init]];
     [_arrayEffects addObject:[[GPUEffectPinkBubbleTea alloc] init]];
     [_arrayEffects addObject:[[GPUEffectSummers alloc] init]];
+    [_arrayEffects addObject:[[GPUEffectJoyful alloc] init]];
     [_arrayEffects addObject:[[GPUEffectWarmAutumn alloc] init]];
     [_arrayEffects addObject:[[GPUEffectSunsetCarnevale alloc] init]];
-    [_arrayEffects addObject:[[GPUEffectWarmSpringLight alloc] init]];
     //[_arrayEffects addObject:[[GPUEffectBokehileVintage2 alloc] init]];
     //[_arrayEffects addObject:[[GPUEffectVampire alloc] init]];
 
