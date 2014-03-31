@@ -24,6 +24,7 @@
         _paused = NO;
         _viewDidOnceAppear = NO;
         _editorViewController = nil;
+        _faceDetected = NO;
     }
     return self;
 }
@@ -172,19 +173,23 @@
                     GPUImagePicture* basePicture = [[GPUImagePicture alloc] initWithImage:imageToProcess];
                     GPUImagePicture* overlayPicture = [[GPUImagePicture alloc] initWithImage:img];
                     GPUImageOpacityFilter* opacity = [[GPUImageOpacityFilter alloc] init];
-                    opacity.opacity = effect.defaultOpacity;
+                    if(_self.faceDetected){
+                        opacity.opacity = effect.faceOpacity;
+                    }else{
+                        opacity.opacity = effect.defaultOpacity;
+                    }
                     GPUImageNormalBlendFilter* blend = [[GPUImageNormalBlendFilter alloc] init];
                     [opacity addTarget:blend atTextureLocation:1];
                     [overlayPicture addTarget:opacity];
                     [basePicture addTarget:blend];
                     [overlayPicture processImage];
                     [basePicture processImage];
-                    img = [blend imageFromCurrentlyProcessedOutput];
+                    imageApplied = [blend imageFromCurrentlyProcessedOutput];
                     [basePicture removeAllTargets];
                     [overlayPicture removeAllTargets];
                     [opacity removeAllTargets];
                     preview.effectId = effect.effectId;
-                    imageApplied = [[UIImage alloc] initWithCGImage:img.CGImage];
+                    preview.opacity = opacity.opacity;
                 }
                 dispatch_async(q_main, ^{
                     [preview removeLoadingIndicator];
@@ -215,6 +220,8 @@
     controller.imageResized = _imageResizedForEditor;
     //controller.imageEffected = preview.previewImageView.image;
     controller.imageOriginal = _imageOriginal;
+    controller.valueOpacity = preview.opacity;
+    
     if (_isProcessing) {
         controller.waitingForOtherConversion = YES;
     }

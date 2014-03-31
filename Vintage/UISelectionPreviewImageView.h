@@ -15,6 +15,7 @@
 }
 
 @property (nonatomic, assign) EffectId effectId;
+@property (nonatomic, assign) CGFloat opacity;
 @property (nonatomic, assign) BOOL isPreviewReady;
 @property (nonatomic, strong) UIImageView* previewImageView;
 

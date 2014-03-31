@@ -66,7 +66,6 @@ typedef NS_ENUM(NSInteger, DialogState){
     UINavigationBarButton* _buttonColor;
     UINavigationBarButton* _buttonContrast;
     UINavigationBarButton* _buttonFocus;
-    CGFloat _valueOpacity;
     CGFloat _valueBrightness;
     CGFloat _valueLevels;
     CGFloat _valueVignette;
@@ -85,6 +84,7 @@ typedef NS_ENUM(NSInteger, DialogState){
     FocusType _currentSelectedFocusType;
 }
 
+@property (nonatomic, assign) CGFloat valueOpacity;
 @property (nonatomic, assign) DialogState dialogState;
 @property (nonatomic, assign) BOOL isSaving;
 @property (nonatomic, assign) BOOL isApplying;

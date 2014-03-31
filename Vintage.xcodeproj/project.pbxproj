@@ -134,6 +134,7 @@
 		58F767DB18AD6F4900015FBA /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 58F767D918AD6F4900015FBA /* InfoPlist.strings */; };
 		58F767DD18AD6F4900015FBA /* VintageTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F767DC18AD6F4900015FBA /* VintageTests.m */; };
 		58F78B1518AE6D97004510AC /* libGPUImage.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 58F78B1218AE6D1F004510AC /* libGPUImage.a */; };
+		58F7A94A18E9A371001F242C /* CoreImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58F7A94918E9A371001F242C /* CoreImage.framework */; };
 		58F7F07A18AFE42F00997877 /* loading-48@2x.gif in Resources */ = {isa = PBXBuildFile; fileRef = 58F7F07918AFE42F00997877 /* loading-48@2x.gif */; };
 		58F8127D18B3398500941C18 /* GPUImageDarkerColorBlendFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F8127C18B3398500941C18 /* GPUImageDarkerColorBlendFilter.m */; };
 		58F8128018B343D200941C18 /* GPUImageVignette2Filter.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F8127F18B343D200941C18 /* GPUImageVignette2Filter.m */; };
@@ -429,6 +430,7 @@
 		58F78AD518AEB3290099A85F /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		58F78AD618AEB32A0099A85F /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		58F78B0B18AE6D1E004510AC /* GPUImage.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = GPUImage.xcodeproj; path = GPUImage/framework/GPUImage.xcodeproj; sourceTree = "<group>"; };
+		58F7A94918E9A371001F242C /* CoreImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreImage.framework; path = System/Library/Frameworks/CoreImage.framework; sourceTree = SDKROOT; };
 		58F7F07918AFE42F00997877 /* loading-48@2x.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "loading-48@2x.gif"; sourceTree = "<group>"; };
 		58F8127B18B3398500941C18 /* GPUImageDarkerColorBlendFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPUImageDarkerColorBlendFilter.h; sourceTree = "<group>"; };
 		58F8127C18B3398500941C18 /* GPUImageDarkerColorBlendFilter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GPUImageDarkerColorBlendFilter.m; sourceTree = "<group>"; };
@@ -561,6 +563,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				58F7A94A18E9A371001F242C /* CoreImage.framework in Frameworks */,
 				58F78B1518AE6D97004510AC /* libGPUImage.a in Frameworks */,
 				58F6970418AD79C3006F2089 /* QuartzCore.framework in Frameworks */,
 				58F6970218AD79B9006F2089 /* AVFoundation.framework in Frameworks */,
@@ -1023,6 +1026,7 @@
 		58F767B018AD6F4800015FBA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				58F7A94918E9A371001F242C /* CoreImage.framework */,
 				58FCAD2718AFAD6E001559F0 /* Crashlytics.framework */,
 				58F78B0B18AE6D1E004510AC /* GPUImage.xcodeproj */,
 				58F6970318AD79C3006F2089 /* QuartzCore.framework */,

@@ -45,6 +45,11 @@ float absf(float value){
     _maxImageLength = MIN(2400.0f, MAX(_imageOriginal.size.width, _imageOriginal.size.height));
 }
 
+- (void)setValueOpacity:(CGFloat)valueOpacity
+{
+    _valueOpacity = valueOpacity;
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -82,6 +87,7 @@ float absf(float value){
     _sliderOpacity.iconType = EditorSliderIconTypeOpacity;
     _sliderOpacity.titlePosition = SliderViewTitlePositionCenter;
     _sliderOpacity.defaultValue = 1.0f;
+    _sliderOpacity.value = _valueOpacity;
     //////// Adjustment
     _adjustmentOpacity = [[UISliderContainer alloc] initWithFrame:CGRectMake(0.0f, 0.0f, [UIScreen screenSize].width, _sliderOpacity.bounds.size.height + 20.0f)];
     _adjustmentOpacity.tag = AdjustmentViewIdOpacity;

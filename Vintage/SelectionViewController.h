@@ -28,6 +28,7 @@
     __weak EditorViewController* _editorViewController;
 }
 
+@property (nonatomic, assign) BOOL faceDetected;
 @property (nonatomic, strong) UIImage* imageOriginal;
 
 - (id)initWithImage:(UIImage*)image;

@@ -284,9 +284,21 @@
         image = [image resizedImage:CGSizeMake(width, 4096) interpolationQuality:kCGInterpolationHigh];
     }
 
+    //// Detect faces
+    UIImage* image2detect = [image resizedImage:CGSizeMake(640.0f, image.size.height * 640.0f / image.size.width) interpolationQuality:kCGInterpolationHigh];
+    NSDictionary *options = [NSDictionary dictionaryWithObject:CIDetectorAccuracyHigh forKey:CIDetectorAccuracy];
+    CIDetector *detector = [CIDetector detectorOfType:CIDetectorTypeFace context:nil options:options];
+    CIImage *ciImage = [[CIImage alloc] initWithCGImage:image2detect.CGImage];
+    NSDictionary *imageOptions = [NSDictionary dictionaryWithObject:[NSNumber numberWithInt:1] forKey:CIDetectorImageOrientation];
+    NSArray *array = [detector featuresInImage:ciImage options:imageOptions];
+    
     
     SelectionViewController* controller = [[SelectionViewController alloc] initWithImage:image];
     controller.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+    if([array count] > 0){
+        LOG(@"Face detected!");
+        controller.faceDetected = YES;
+    }
     [self.navigationController pushViewController:controller animated:NO];
 }
 
