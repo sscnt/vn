@@ -398,18 +398,22 @@ float absf(float value){
 - (UIImage*)resizeImage:(UIImage *)image WithResolution:(ImageResolution)resolution
 {
     if(resolution == ImageResolutionMax){
-        if([UIDevice underIPhone5s]){
-            CGFloat width, height;
-            if(image.size.width > image.size.height){
-                height = image.size.height * _maxImageLength / image.size.width;
-                width = _maxImageLength;
-            }else{
-                width = image.size.width * _maxImageLength / image.size.height;
-                height = _maxImageLength;
-            }
-            return [image resizedImage:CGSizeMake(width, height) interpolationQuality:kCGInterpolationHigh];
-        }else{
+        if([UIDevice isiPad]){
             return image;
+        }else{
+            if([UIDevice underIPhone5s]){
+                CGFloat width, height;
+                if(image.size.width > image.size.height){
+                    height = image.size.height * _maxImageLength / image.size.width;
+                    width = _maxImageLength;
+                }else{
+                    width = image.size.width * _maxImageLength / image.size.height;
+                    height = _maxImageLength;
+                }
+                return [image resizedImage:CGSizeMake(width, height) interpolationQuality:kCGInterpolationHigh];
+            }else{
+                return image;
+            }
         }
     }
     if(resolution == ImageResolutionMidium){
@@ -451,6 +455,7 @@ float absf(float value){
         [base addTarget:filter];
         [base processImage];
         inputImage = [filter imageFromCurrentlyProcessedOutput];
+        [base removeAllTargets];
     }
     return inputImage;
 }
@@ -502,6 +507,7 @@ float absf(float value){
     [base addTarget:adjustmentFilter atTextureLocation:0];
     [base processImage];
     inputImage = [adjustmentFilter imageFromCurrentlyProcessedOutput];
+    [base removeAllTargets];
     return inputImage;
 }
 
@@ -798,17 +804,22 @@ float absf(float value){
         _resolutionSelector = [[UIResolutionSelectorView alloc] init];
         _resolutionSelector.delegate = self;
         
-        if([UIDevice underIPhone5s]){
-            if(_imageOriginal.size.width > _imageOriginal.size.height){
-                _resolutionSelector.maxImageHeight = _imageOriginal.size.height * _maxImageLength / _imageOriginal.size.width;
-                _resolutionSelector.maxImageWidth = _maxImageLength;
-            }else{
-                _resolutionSelector.maxImageWidth = _imageOriginal.size.width * _maxImageLength / _imageOriginal.size.height;
-                _resolutionSelector.maxImageHeight = _maxImageLength;
-            }
-        }else{
+        if([UIDevice isiPad]){
             _resolutionSelector.maxImageHeight = _imageOriginal.size.height;
             _resolutionSelector.maxImageWidth = _imageOriginal.size.width;
+        }else{
+            if([UIDevice underIPhone5s]){
+                if(_imageOriginal.size.width > _imageOriginal.size.height){
+                    _resolutionSelector.maxImageHeight = _imageOriginal.size.height * _maxImageLength / _imageOriginal.size.width;
+                    _resolutionSelector.maxImageWidth = _maxImageLength;
+                }else{
+                    _resolutionSelector.maxImageWidth = _imageOriginal.size.width * _maxImageLength / _imageOriginal.size.height;
+                    _resolutionSelector.maxImageHeight = _maxImageLength;
+                }
+            }else{
+                _resolutionSelector.maxImageHeight = _imageOriginal.size.height;
+                _resolutionSelector.maxImageWidth = _imageOriginal.size.width;
+            }
         }
         if(_imageOriginal.size.width > 3000.0f || _imageOriginal.size.height > 3000.0f){
             _currentResolution = ImageResolutionMidium;

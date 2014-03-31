@@ -57,8 +57,13 @@
     return YES;
 }
 
-+ (BOOL) isiPad {
-    return UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPad;
++ (BOOL) isiPad {NSString *deviceModel = (NSString*)[UIDevice currentDevice].model;
+    
+    if ([[deviceModel substringWithRange:NSMakeRange(0, 4)] isEqualToString:@"iPad"]) {
+        return YES;
+    }
+    return NO;
+    //return UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPad;
 }
 
 + (BOOL)underIPhone5s
