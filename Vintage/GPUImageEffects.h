@@ -25,7 +25,9 @@
 
 typedef NS_ENUM(NSInteger, EffectId){
     EffectIdHaze3 = 1,
+    EffectIdHaze3Pink,
     EffectIdHazelnut,
+    EffectIdHazelnutPink,
     EffectIdVintageFilm,
     EffectIdVintage2,
     EffectIdVintage1,
@@ -51,7 +53,8 @@ typedef NS_ENUM(NSInteger, EffectId){
     EffectIdBokehileVintage,
     EffectIdBokehileVintage2,
     EffectIdGoodMorning,
-    EffectIdVintageBaby
+    EffectIdVintageBaby,
+    EffectIdDreamyCreamy
 };
 
 typedef NS_ENUM(NSInteger, MergeBlendingMode){

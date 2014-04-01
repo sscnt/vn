@@ -1,6 +1,8 @@
 #import "GPUEffectHaze3.h"
+#import "GPUEffectHaze3Pink.h"
 #import "GPUEffectVintageFilm.h"
 #import "GPUEffectHazelnut.h"
+#import "GPUEffectHazelnutPink.h"
 #import "GPUEffectVintage1.h"
 #import "GPUEffectVintage2.h"
 #import "GPUEffectOldTone.h"
@@ -26,3 +28,4 @@
 #import "GPUEffectBokehileVintage2.h"
 #import "GPUEffectGoodMorning.h"
 #import "GPUEffectVintageBaby.h"
+#import "GPUEffectDreamyCreamy.h"

@@ -39,7 +39,7 @@
     _saveTo= saveTo;
     switch (saveTo) {
         case SaveToCameraRoll:
-            [self setImage:[UIImage imageNamed:@"photos-38-85.png"] forState:UIControlStateNormal];            
+            [self setImage:[UIImage imageNamed:@"photos-36-85.png"] forState:UIControlStateNormal];            
             break;
             
         default:

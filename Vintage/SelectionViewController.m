@@ -53,18 +53,20 @@
     _arrayEffects = [NSMutableArray array];
     [_arrayEffects addObject:[[GPUEffectVintageFilm alloc] init]];
     [_arrayEffects addObject:[[GPUEffectHaze3 alloc] init]];
+    [_arrayEffects addObject:[[GPUEffectHaze3Pink alloc] init]];
     [_arrayEffects addObject:[[GPUEffectAutumnVintage alloc] init]];
     [_arrayEffects addObject:[[GPUEffectGoodMorning alloc] init]];
     [_arrayEffects addObject:[[GPUEffectBokehileVintage alloc] init]];
     [_arrayEffects addObject:[[GPUEffectVintage2 alloc] init]];
     [_arrayEffects addObject:[[GPUEffectWeekend alloc] init]];
+    [_arrayEffects addObject:[[GPUEffectHazelnutPink alloc] init]];
     [_arrayEffects addObject:[[GPUEffectVividVintage alloc] init]];
     [_arrayEffects addObject:[[GPUEffectOldTone alloc] init]];
     [_arrayEffects addObject:[[GPUEffectMiami alloc] init]];
     [_arrayEffects addObject:[[GPUEffectGirder alloc] init]];
     [_arrayEffects addObject:[[GPUEffectCavalleriaRusticana alloc] init]];
     [_arrayEffects addObject:[[GPUEffectFaerieVintage alloc] init]];
-    [_arrayEffects addObject:[[GPUEffectHazelnut alloc] init]];    
+    [_arrayEffects addObject:[[GPUEffectHazelnut alloc] init]];
     [_arrayEffects addObject:[[GPUEffectGentleMemories alloc] init]];
     [_arrayEffects addObject:[[GPUEffectBeachVintage alloc] init]];
     [_arrayEffects addObject:[[GPUEffectDreamyVintage alloc] init]];
@@ -77,6 +79,7 @@
     [_arrayEffects addObject:[[GPUEffectSunsetCarnevale alloc] init]];
     [_arrayEffects addObject:[[GPUEffectBokehileVintage2 alloc] init]];
     [_arrayEffects addObject:[[GPUEffectVintageBaby alloc] init]];
+    [_arrayEffects addObject:[[GPUEffectDreamyCreamy alloc] init]];
     [_arrayEffects addObject:[[GPUEffectVampire alloc] init]];
 
     //// Init

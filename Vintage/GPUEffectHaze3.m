@@ -10,9 +10,17 @@
 
 @implementation GPUEffectHaze3
 
+- (id)init
+{
+    self = [super init];
+    if(self){
+        self.effectId = EffectIdHaze3;
+    }
+    return self;
+}
+
 - (UIImage*)process
 {
-    self.effectId = EffectIdHaze3;
     
     UIImage* resultImage = self.imageToProcess;
     
@@ -32,6 +40,10 @@
         [pictureOriginal processImage];
         [pictureBlur processImage];
         resultImage = [overlayFilter imageFromCurrentlyProcessedOutput];
+        [pictureBlur removeAllTargets];
+        [pictureOriginal removeAllTargets];
+        [opacityFilter removeAllTargets];
+        [blurFilter removeAllTargets];
     }
 
     // Fill
@@ -45,6 +57,8 @@
         [pictureOriginal addTarget:exclusionFilter];
         [pictureOriginal processImage];
         resultImage = [exclusionFilter imageFromCurrentlyProcessedOutput];
+        [pictureOriginal removeAllTargets];
+        [solidGen removeAllTargets];
     }
 
     return resultImage;

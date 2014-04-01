@@ -44,8 +44,8 @@
             [self setImage:[UIImage imageNamed:@"camera-36-40.png"] forState:UIControlStateHighlighted];
             break;
         case BlurredButtonIconTypePhotos:
-            [self setImage:[UIImage imageNamed:@"photos-38-70.png"] forState:UIControlStateNormal];
-            [self setImage:[UIImage imageNamed:@"photos-38-40.png"] forState:UIControlStateHighlighted];
+            [self setImage:[UIImage imageNamed:@"photos-36-70.png"] forState:UIControlStateNormal];
+            [self setImage:[UIImage imageNamed:@"photos-36-40.png"] forState:UIControlStateHighlighted];
             break;
         default:
             break;
