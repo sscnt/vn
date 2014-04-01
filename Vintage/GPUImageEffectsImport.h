@@ -24,3 +24,5 @@
 #import "GPUEffectAutumnVintage.h"
 #import "GPUEffectBokehileVintage.h"
 #import "GPUEffectBokehileVintage2.h"
+#import "GPUEffectGoodMorning.h"
+#import "GPUEffectVintageBaby.h"

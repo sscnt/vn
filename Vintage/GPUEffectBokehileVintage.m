@@ -32,6 +32,7 @@
         resultImage = [self mergeBaseImage:resultImage overlayFilter:solidColor opacity:0.25f blendingMode:MergeBlendingModeSoftLight];
     }
     
+    // Gradient
     @autoreleasepool {
         GPUImageGradientColorGenerator* gradientColor = [[GPUImageGradientColorGenerator alloc] init];
         [gradientColor forceProcessingAtSize:CGSizeMake(resultImage.size.width, resultImage.size.height)];

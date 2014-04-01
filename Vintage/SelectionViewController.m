@@ -53,7 +53,8 @@
     _arrayEffects = [NSMutableArray array];
     [_arrayEffects addObject:[[GPUEffectVintageFilm alloc] init]];
     [_arrayEffects addObject:[[GPUEffectHaze3 alloc] init]];
-    //[_arrayEffects addObject:[[GPUEffectAutumnVintage alloc] init]];
+    [_arrayEffects addObject:[[GPUEffectAutumnVintage alloc] init]];
+    [_arrayEffects addObject:[[GPUEffectGoodMorning alloc] init]];
     [_arrayEffects addObject:[[GPUEffectBokehileVintage alloc] init]];
     [_arrayEffects addObject:[[GPUEffectVintage2 alloc] init]];
     [_arrayEffects addObject:[[GPUEffectWeekend alloc] init]];
@@ -74,8 +75,9 @@
     [_arrayEffects addObject:[[GPUEffectJoyful alloc] init]];
     [_arrayEffects addObject:[[GPUEffectWarmAutumn alloc] init]];
     [_arrayEffects addObject:[[GPUEffectSunsetCarnevale alloc] init]];
-    //[_arrayEffects addObject:[[GPUEffectBokehileVintage2 alloc] init]];
-    //[_arrayEffects addObject:[[GPUEffectVampire alloc] init]];
+    [_arrayEffects addObject:[[GPUEffectBokehileVintage2 alloc] init]];
+    [_arrayEffects addObject:[[GPUEffectVintageBaby alloc] init]];
+    [_arrayEffects addObject:[[GPUEffectVampire alloc] init]];
 
     //// Init
     _numberOfEffects = (int)[_arrayEffects count];

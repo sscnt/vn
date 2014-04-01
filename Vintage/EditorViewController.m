@@ -392,6 +392,12 @@ float absf(float value){
         case EffectIdBokehileVintage2:
             return [[GPUEffectBokehileVintage2 alloc] init];
             break;
+        case EffectIdGoodMorning:
+            return [[GPUEffectGoodMorning alloc] init];
+            break;
+        case EffectIdVintageBaby:
+            return [[GPUEffectVintageBaby alloc] init];
+            break;
     }
 }
 
