@@ -473,6 +473,11 @@ mediump float xyz2labFt(mediump float t){
          //}
          //weight = 1.0 - pow(tmp, 5.0);
          pixel = LevelsControl(pixel, levelsMin, levelsMid, levelsMax, levelsMinOutput, levelsMaxOutput);
+         //if(levelsMid.x > 1.0){
+             //tmpvec = exp(4.0 * vec3(0.5));
+             //pixel = vec3(log((exp(4.0 * pixel.rgb) - exp(4.0 * vec3(0.5))) * (1.0 + (levelsMid.x - 1.0) / 3.0) + exp(4.0 * vec3(0.5))) / 4.0);
+             //pixel = vec3((pixel.rgb - vec3(0.5)) * (1.0 + (levelsMid.x - 1.0) / 3.0) + vec3(0.5));
+         //}
          
          //pixel = tmpvec;
          

@@ -59,8 +59,8 @@
     [_arrayEffects addObject:[[GPUEffectBokehileVintage alloc] init]];
     [_arrayEffects addObject:[[GPUEffectVintage2 alloc] init]];
     [_arrayEffects addObject:[[GPUEffectWeekend alloc] init]];
-    [_arrayEffects addObject:[[GPUEffectHazelnutPink alloc] init]];
     [_arrayEffects addObject:[[GPUEffectVividVintage alloc] init]];
+    [_arrayEffects addObject:[[GPUEffectHazelnutPink alloc] init]];
     [_arrayEffects addObject:[[GPUEffectOldTone alloc] init]];
     [_arrayEffects addObject:[[GPUEffectMiami alloc] init]];
     [_arrayEffects addObject:[[GPUEffectGirder alloc] init]];
