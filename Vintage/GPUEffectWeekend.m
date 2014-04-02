@@ -26,14 +26,6 @@
     
     UIImage* resultImage = self.imageToProcess;
     
-    // Contrast
-    @autoreleasepool {
-        GPUImageContrastFilter* contrastFilter = [[GPUImageContrastFilter alloc] init];
-        contrastFilter.contrast = 1.05;
-        
-        resultImage = [self mergeBaseImage:resultImage overlayFilter:contrastFilter opacity:1.0f blendingMode:MergeBlendingModeNormal];
-    }
-    
     // Hue / Saturation
     @autoreleasepool {
         GPUImageHueSaturationFilter* hueSaturation = [[GPUImageHueSaturationFilter alloc] init];

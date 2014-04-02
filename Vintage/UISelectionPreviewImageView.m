@@ -69,6 +69,16 @@
     }
 }
 
+- (void)reset
+{
+    _isPreviewReady = NO;
+    _previewImageView.image = nil;
+    
+    _imageViewLoading = [[UIPortrateImageView alloc] initWithImage:[UIImage animatedGIFNamed:@"loading-48"]];
+    _imageViewLoading.center = CGPointMake(roundf(self.frame.size.width / 2.0), roundf(self.frame.size.height / 2.0));
+    [self addSubview:_imageViewLoading];
+}
+
 /*
 // Only override drawRect: if you perform custom drawing.
 // An empty implementation adversely affects performance during animation.

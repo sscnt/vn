@@ -26,7 +26,7 @@
             [self setTitleEdgeInsets:UIEdgeInsetsMake(2.0f, 22.0f, 0, 0)];
             [self setImageEdgeInsets:UIEdgeInsetsMake(0.0f, 14.0f, 0.0f, 0.0)];
         } else {
-            self.titleLabel.font = [UIFont fontWithName:@"Aller-Bold" size:20.0f];
+            self.titleLabel.font = [UIFont fontWithName:@"Aller-Bold" size:19.0f];
             [self setTitleEdgeInsets:UIEdgeInsetsMake(2.0f, 22.0f, 0, 0)];
             [self setImageEdgeInsets:UIEdgeInsetsMake(0.0f, 14.0f, 0.0f, 0.0)];
         }

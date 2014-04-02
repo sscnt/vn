@@ -17,6 +17,7 @@
 {
     BOOL _paused;
     BOOL _isProcessing;
+    BOOL _forceRestart;
     BOOL _viewDidOnceAppear;
     int _currentProcessingIndex;
     int _numberOfEffects;
@@ -36,5 +37,7 @@
 
 - (void)didSelectPreview:(UISelectionPreviewImageView*)preview;
 - (void)didPressCloseButton;
+
+- (void)reset;
 
 @end

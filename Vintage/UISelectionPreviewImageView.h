@@ -22,5 +22,6 @@
 - (void)removeLoadingIndicator;
 - (void)setPreviewImage:(UIImage*)image;
 - (void)setPreviewImage:(UIImage*)image WithDuration:(CGFloat)duration;
+- (void)reset;
 
 @end

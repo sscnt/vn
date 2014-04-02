@@ -22,6 +22,7 @@
         _imageOriginal = image;
         _isProcessing = NO;
         _paused = NO;
+        _forceRestart = NO;
         _viewDidOnceAppear = NO;
         _editorViewController = nil;
         _faceDetected = NO;
@@ -32,6 +33,11 @@
 - (void)viewDidAppear:(BOOL)animated
 {
     _paused = NO;
+    if (_forceRestart) {
+        LOG(@"force restart");
+        [self applyEffectAtIndex:0];
+        return;
+    }
     if (_currentProcessingIndex > 0 && _viewDidOnceAppear) {
         LOG(@"resumed.");
         [self applyEffectAtIndex:_currentProcessingIndex + 1];
@@ -206,6 +212,8 @@
                 
             });
         }
+    }else{
+        _forceRestart = NO;
     }
 }
 
@@ -248,6 +256,18 @@
 - (BOOL)shouldAutorotate
 {
     return NO;
+}
+
+- (void)reset
+{
+    _paused = YES;
+    for (int i = 0; i < _numberOfEffects; i++) {
+        UISelectionPreviewImageView* preview = [_arrayPreviews objectAtIndex:i];
+        [preview reset];
+    }
+    _paused = NO;
+    _currentProcessingIndex = 0;
+    _forceRestart = YES;
 }
 
 - (void)didReceiveMemoryWarning

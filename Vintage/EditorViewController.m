@@ -304,7 +304,7 @@ float absf(float value){
     NSArray *langs = [NSLocale preferredLanguages];
     NSString *currentLanguage = [langs objectAtIndex:0];
     if([currentLanguage compare:@"ja"] == NSOrderedSame) {
-        _percentageLabel.font = [UIFont fontWithName:@"rounded-mplus-1p-bold" size:20.0f];
+        _percentageLabel.font = [UIFont fontWithName:@"mplus-1c-bold" size:20.0f];
     } else {
         _percentageLabel.font = [UIFont fontWithName:@"Aller-Bold" size:20.0f];
     }
@@ -460,7 +460,7 @@ float absf(float value){
         inputImage = [self processImageAdjustments:inputImage];
     }
     @autoreleasepool {
-        inputImage = [self processImageEffect:inputImage];        
+        inputImage = [self processImageEffect:inputImage];
     }
     @autoreleasepool {
         inputImage = [self processImageFinal:inputImage];
@@ -493,7 +493,7 @@ float absf(float value){
         @autoreleasepool {
             GPUImagePicture* base = [[GPUImagePicture alloc] initWithImage:inputImage];
             GPUImageGaussianBlurFilter* blur = [[GPUImageGaussianBlurFilter alloc] init];
-            CGFloat strength = 20.0f * _valueHaze * inputImage.size.width / _imageResized.size.width + 5.0f;
+            CGFloat strength = 18.0f * _valueHaze * inputImage.size.width / _imageResized.size.width + 5.0f;
             blur.blurRadiusInPixels = strength;
             GPUImageOpacityFilter* opacity = [[GPUImageOpacityFilter alloc] init];
             opacity.opacity = 0.50f * powf(_valueHaze, 1.0f / 6.0f);
@@ -1387,7 +1387,7 @@ float absf(float value){
     if([UIDevice canOpenTwitter]){
         if(_latestSavedImage){
             SLComposeViewController *vc = [SLComposeViewController composeViewControllerForServiceType:SLServiceTypeTwitter];
-            [vc setInitialText:@" #VintageApp "];
+            [vc setInitialText:@""];
             [vc addImage:_latestSavedImage];
             [self presentViewController:vc animated:YES completion:nil];
         }else{
@@ -1447,6 +1447,7 @@ float absf(float value){
 {
     _previewImageView.delegate = nil;
     _sliderBrightness.delegate = nil;
+    _sliderHaze.delegate = nil;
     _sliderClarity.delegate = nil;
     _sliderContrast.delegate = nil;
     _sliderKelvin.delegate = nil;
@@ -1455,14 +1456,27 @@ float absf(float value){
     _sliderSaturation.delegate = nil;
     _sliderVibrance.delegate = nil;
     _sliderVignette.delegate = nil;
+    _sliderFocusDistance.delegate = nil;
+    _sliderFocusStrength.delegate = nil;
     _dialogBgImageView.delegate = nil;
     _resolutionSelector.delegate = nil;
+    _saveDialogView.delegate = nil;
+    _focusControlView.delegate = nil;
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+    LOG(@"++Memory Worning.");
+    LOG(@"++Releasing All Previews");
+    
+    NSArray* naviary = [self.navigationController viewControllers];
+    NSInteger current = [naviary count] - 1;
+    UIViewController* prev = (UIViewController*)[naviary objectAtIndex:current-1];
+    if([prev respondsToSelector:@selector(reset)]){
+        [prev performSelector:@selector(reset)];
+    }
 }
 
 @end
