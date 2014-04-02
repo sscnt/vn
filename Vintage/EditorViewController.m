@@ -899,6 +899,7 @@ float absf(float value){
     if(_dialogState != DialogStateDidShow){
         return;
     }
+    self.latestSavedImage = nil;
     CGRect frame = _previewImageView.frame;
     __block EditorViewController* _self = self;
     [UIView animateWithDuration:0.20f animations:^{
@@ -934,6 +935,7 @@ float absf(float value){
             UIImage* resultImage = [_self resizeImage:_imageOriginal WithResolution:_currentResolution];
             resultImage = [_self processImage:resultImage];
             UIImageWriteToSavedPhotosAlbum(resultImage, nil, nil, nil);
+            _self.latestSavedImage = resultImage;
         }
         dispatch_async(q_main, ^{
             [_self didSaveImage:saveTo];
@@ -945,8 +947,17 @@ float absf(float value){
 
 - (void)didSaveImage:(SaveTo)saveTo
 {
-    [SVProgressHUD dismiss];
-    [SVProgressHUD showSuccessWithStatus:NSLocalizedString(@"Saved successfully", nil)];
+    switch (saveTo) {
+        case SaveToCameraRoll:
+            [SVProgressHUD dismiss];
+            [SVProgressHUD showSuccessWithStatus:NSLocalizedString(@"Saved successfully", nil)];
+            break;
+        case SaveToInstagram:
+            [self shareOnInstagram];
+            break;
+        default:
+            break;
+    }
     __block EditorViewController* _self = self;
     double delayInSeconds = 1.0;
     dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
@@ -1105,14 +1116,28 @@ float absf(float value){
 - (void)selector:(UIResolutionSelectorView *)selector DidSelectResolution:(ImageResolution)resolution
 {
     _currentResolution = resolution;
+    self.latestSavedImage = nil;
 }
 
 - (void)saveToView:(UISaveDialogView *)view DidSelectSaveTo:(SaveTo)saveTo
 {
-    
     if (_isSaving) {
         LOG(@"sorry now saving.");
         return;
+    }
+    switch (saveTo) {
+        case SaveToCameraRoll:
+            
+            break;
+        case SaveToInstagram:
+            if(_latestSavedImage){
+                [self shareOnInstagram];
+                return;
+            }
+            break;
+        default:
+            return;
+            break;
     }
     _isSaving = YES;
     LOG(@"saving...");
@@ -1270,6 +1295,62 @@ float absf(float value){
             break;
     }
 
+}
+
+#pragma mark - UIDocumentInteractionControllerDelegate
+
+- (void)documentInteractionController:(UIDocumentInteractionController *)controller
+        willBeginSendingToApplication:(NSString *)application
+{
+    
+}
+
+- (void)documentInteractionController:(UIDocumentInteractionController *)controller
+           didEndSendingToApplication:(NSString *)application
+{
+
+}
+
+- (void) documentInteractionControllerDidDismissOpenInMenu: (UIDocumentInteractionController *) controller
+{
+
+}
+
+#pragma mark Share
+
+- (void)shareOnInstagram
+{
+    if([UIDevice canOpenInstagram]){
+        if([self openInstagram]){
+            return;
+        }
+    }else{
+        UIAlertView* alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Error", nil) message:NSLocalizedString(@"Instagram not installed.", nil) delegate:self cancelButtonTitle:NSLocalizedString(@"Close", nil) otherButtonTitles:nil];
+        [alert show];
+    }
+}
+
+- (BOOL)openInstagram
+{
+    if(!_latestSavedImage){
+        return NO;
+    }
+    [SVProgressHUD showWithMaskType:SVProgressHUDMaskTypeClear];
+    __block EditorViewController* _self = self;
+    __block ShareInstagramViewController *instagramViewController = [[ShareInstagramViewController alloc] init];    dispatch_queue_t q_global = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+    dispatch_queue_t q_main = dispatch_get_main_queue();
+    dispatch_async(q_global, ^{
+        @autoreleasepool {
+            [instagramViewController setImage:_latestSavedImage];
+        }
+        dispatch_async(q_main, ^{
+            [SVProgressHUD dismiss];
+            [_self.view addSubview:instagramViewController.view];
+            [_self addChildViewController:instagramViewController];
+        });
+        
+    });
+    return YES;
 }
 
 - (BOOL)shouldAutorotate

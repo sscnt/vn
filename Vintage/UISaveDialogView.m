@@ -14,18 +14,25 @@
 - (id)init
 {
     CGFloat buttonHeight = 50.0f;
-    CGRect frame = CGRectMake(20.0f, 0.0f, [UIScreen screenSize].width - 40.0f, buttonHeight * 1.0f);
+    CGRect frame = CGRectMake(20.0f, 0.0f, [UIScreen screenSize].width - 40.0f, buttonHeight * 2.0f + 1.0f);
     self = [super initWithFrame:frame];
     if (self) {
         // Initialization code
-        self.backgroundColor = [UIColor colorWithWhite:0.0f alpha:0.70f];
+        //self.backgroundColor = [UIColor colorWithWhite:0.0f alpha:0.70f];
         
         //// Camera roll
         _buttonCameraRoll = [[UISaveToButton alloc] initWithFrame:CGRectMake(0.0f, 0.0f, frame.size.width, buttonHeight)];
         _buttonCameraRoll.saveTo = SaveToCameraRoll;
         [_buttonCameraRoll addTarget:self action:@selector(didPressButton:) forControlEvents:UIControlEventTouchUpInside];
         [_buttonCameraRoll setTitle:NSLocalizedString(@"CAMERA ROLL", Nil) forState:UIControlStateNormal];
-        [self addSubview:_buttonCameraRoll];        
+        [self addSubview:_buttonCameraRoll];
+        
+        //// Camera roll
+        _buttonInstagram = [[UISaveToButton alloc] initWithFrame:CGRectMake(0.0f, [_buttonCameraRoll bottom] + 1.0f, frame.size.width, buttonHeight)];
+        _buttonInstagram.saveTo = SaveToInstagram;
+        [_buttonInstagram addTarget:self action:@selector(didPressButton:) forControlEvents:UIControlEventTouchUpInside];
+        [_buttonInstagram setTitle:NSLocalizedString(@"INSTAGRAM", Nil) forState:UIControlStateNormal];
+        [self addSubview:_buttonInstagram];
     }
     return self;
 }
@@ -35,7 +42,7 @@
     _buttonCameraRoll.selected = NO;
     
     button.selected = YES;
-    [self.delegate saveToView:self DidSelectSaveTo:button.tag];
+    [self.delegate saveToView:self DidSelectSaveTo:button.saveTo];
 }
 
 - (void)clearSelected

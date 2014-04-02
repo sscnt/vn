@@ -25,4 +25,6 @@ enum {
 + (BOOL)isIOS6;
 + (BOOL)isiPad;
 + (BOOL)underIPhone5s;
++ (BOOL)canOpenInstagram;
+
 @end

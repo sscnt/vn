@@ -31,6 +31,7 @@
 #import "GPUImageLensBlurFilter.h"
 #import "UIFocusControlView.h"
 #import "UIFocusTypeSelectButton.h"
+#import "ShareInstagramViewController.h"
 
 typedef NS_ENUM(NSInteger, AdjustmentViewId){
     AdjustmentViewIdOpacity = 1,
@@ -47,7 +48,7 @@ typedef NS_ENUM(NSInteger, DialogState){
     DialogStateDidHide,
 };
 
-@interface EditorViewController : UIViewController <UIEditorSliderViewDelegate, UIEditorPreviewDelegate, UIEditorDialogBgImageViewDelegate, UIResolutionSelectorViewDelegate, UISaveDialogViewDelegate, UIFocusControlViewDelegate>
+@interface EditorViewController : UIViewController <UIEditorSliderViewDelegate, UIEditorPreviewDelegate, UIEditorDialogBgImageViewDelegate, UIResolutionSelectorViewDelegate, UISaveDialogViewDelegate, UIFocusControlViewDelegate, UIDocumentInteractionControllerDelegate>
 {
     UIEditorSliderView* _sliderOpacity;
     UIEditorSliderView* _sliderBrightness;
@@ -82,6 +83,7 @@ typedef NS_ENUM(NSInteger, DialogState){
     ImageResolution _currentResolution;
     UILabel* _percentageLabel;
     FocusType _currentSelectedFocusType;
+    UIDocumentInteractionController* _interactionController;
 }
 
 @property (nonatomic, assign) CGFloat valueOpacity;
@@ -96,6 +98,7 @@ typedef NS_ENUM(NSInteger, DialogState){
 @property (nonatomic, strong) UIImage* imageEffected;
 @property (nonatomic, strong) UIImage* blurredImage;
 @property (nonatomic, strong) UIImage* dialogBgImage;
+@property (nonatomic, strong) UIImage* latestSavedImage;
 @property (nonatomic, strong) UIResolutionSelectorView* resolutionSelector;
 @property (nonatomic, strong) UISaveDialogView* saveDialogView;
 @property (nonatomic, strong) UIEditorDialogBgImageView* dialogBgImageView;

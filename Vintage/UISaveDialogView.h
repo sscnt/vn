@@ -26,6 +26,7 @@ typedef NS_ENUM(NSInteger, SaveTo){
 @interface UISaveDialogView : UIView
 {
     UISaveToButton* _buttonCameraRoll;
+    UISaveToButton* _buttonInstagram;
 }
 
 @property (nonatomic, assign) id<UISaveDialogViewDelegate> delegate;

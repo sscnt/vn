@@ -17,7 +17,7 @@
         // Initialization code
         _selected = NO;
         self.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
-        [self setBackgroundColor:[UIColor clearColor]];
+        self.backgroundColor = [UIColor colorWithWhite:0.0f alpha:0.70f];
         NSArray *langs = [NSLocale preferredLanguages];
         NSString *currentLanguage = [langs objectAtIndex:0];
         [self setTitleColor:[UIColor colorWithWhite:1.0f alpha:0.85f] forState:UIControlStateNormal];
@@ -36,10 +36,13 @@
 }
 - (void)setSaveTo:(SaveTo)saveTo
 {
-    _saveTo= saveTo;
+    _saveTo = saveTo;
     switch (saveTo) {
         case SaveToCameraRoll:
-            [self setImage:[UIImage imageNamed:@"photos-36-85.png"] forState:UIControlStateNormal];            
+            [self setImage:[UIImage imageNamed:@"photos-36-85.png"] forState:UIControlStateNormal];
+            break;
+        case SaveToInstagram:
+            [self setImage:[UIImage imageNamed:@"camera-36-85.png"] forState:UIControlStateNormal];
             break;
             
         default:
@@ -52,7 +55,8 @@
     if(highlighted){
         [self setBackgroundColor:[UIColor colorWithWhite:0.0f alpha:0.90f]];
     }else{
-        [self setBackgroundColor:[UIColor clearColor]];
+        //[self setBackgroundColor:[UIColor clearColor]];
+        self.backgroundColor = [UIColor colorWithWhite:0.0f alpha:0.70f];
     }
     
 }
@@ -62,7 +66,8 @@
     if(selected){
         [self setBackgroundColor:[UIColor colorWithWhite:0.0f alpha:0.90f]];
     }else{
-        [self setBackgroundColor:[UIColor clearColor]];
+        //[self setBackgroundColor:[UIColor clearColor]];
+        self.backgroundColor = [UIColor colorWithWhite:0.0f alpha:0.70f];
     }
 }
 
