@@ -44,6 +44,9 @@
         case SaveToInstagram:
             [self setImage:[UIImage imageNamed:@"camera-36-85.png"] forState:UIControlStateNormal];
             break;
+        case SaveToTwitter:
+            [self setImage:[UIImage imageNamed:@"twitter-36-85.png"] forState:UIControlStateNormal];
+            break;
             
         default:
             break;

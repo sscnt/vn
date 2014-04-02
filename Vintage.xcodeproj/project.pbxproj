@@ -14,6 +14,8 @@
 		5804027518EBD06A00914B59 /* camera-36-70@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5804027318EBD06A00914B59 /* camera-36-70@2x.png */; };
 		5804027A18EBD7E000914B59 /* camera-36-85@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5804027918EBD7E000914B59 /* camera-36-85@2x.png */; };
 		5804027F18EBFA9300914B59 /* ShareInstagramViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5804027E18EBFA9300914B59 /* ShareInstagramViewController.m */; };
+		5804028218EC00D800914B59 /* twitter-36-85@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5804028118EC00D800914B59 /* twitter-36-85@2x.png */; };
+		5804028418EC054000914B59 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5804028318EC054000914B59 /* Social.framework */; };
 		58066C1618E4490300EDDBBE /* GPUEffectVampire.m in Sources */ = {isa = PBXBuildFile; fileRef = 58066C1518E4490300EDDBBE /* GPUEffectVampire.m */; };
 		58066C1918E46DD600EDDBBE /* vmp.acv in Resources */ = {isa = PBXBuildFile; fileRef = 58066C1818E46DD600EDDBBE /* vmp.acv */; };
 		5806E52F18E512B700E64D02 /* GPUEffectAutumnVintage.m in Sources */ = {isa = PBXBuildFile; fileRef = 5806E52E18E512B700E64D02 /* GPUEffectAutumnVintage.m */; };
@@ -268,6 +270,8 @@
 		5804027918EBD7E000914B59 /* camera-36-85@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "camera-36-85@2x.png"; sourceTree = "<group>"; };
 		5804027D18EBFA9300914B59 /* ShareInstagramViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShareInstagramViewController.h; sourceTree = "<group>"; };
 		5804027E18EBFA9300914B59 /* ShareInstagramViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShareInstagramViewController.m; sourceTree = "<group>"; };
+		5804028118EC00D800914B59 /* twitter-36-85@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "twitter-36-85@2x.png"; sourceTree = "<group>"; };
+		5804028318EC054000914B59 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		58066C1418E4490300EDDBBE /* GPUEffectVampire.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPUEffectVampire.h; sourceTree = "<group>"; };
 		58066C1518E4490300EDDBBE /* GPUEffectVampire.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GPUEffectVampire.m; sourceTree = "<group>"; };
 		58066C1818E46DD600EDDBBE /* vmp.acv */ = {isa = PBXFileReference; lastKnownFileType = file; path = vmp.acv; sourceTree = "<group>"; };
@@ -593,6 +597,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5804028418EC054000914B59 /* Social.framework in Frameworks */,
 				58F7A94A18E9A371001F242C /* CoreImage.framework in Frameworks */,
 				58F78B1518AE6D97004510AC /* libGPUImage.a in Frameworks */,
 				58F6970418AD79C3006F2089 /* QuartzCore.framework in Frameworks */,
@@ -1173,6 +1178,7 @@
 		58F767B018AD6F4800015FBA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				5804028318EC054000914B59 /* Social.framework */,
 				58F7A94918E9A371001F242C /* CoreImage.framework */,
 				58FCAD2718AFAD6E001559F0 /* Crashlytics.framework */,
 				58F78B0B18AE6D1E004510AC /* GPUImage.xcodeproj */,
@@ -1429,6 +1435,7 @@
 				5804027218EBD06A00914B59 /* camera-36-40@2x.png */,
 				5804027318EBD06A00914B59 /* camera-36-70@2x.png */,
 				5804027918EBD7E000914B59 /* camera-36-85@2x.png */,
+				5804028118EC00D800914B59 /* twitter-36-85@2x.png */,
 			);
 			name = Icons;
 			sourceTree = "<group>";
@@ -1798,6 +1805,7 @@
 				588F126718AE248E00787045 /* vvv1.acv in Resources */,
 				58FB369518AEAFEC00B284FB /* rounded-mplus-1p-light.ttf in Resources */,
 				58F7453618B186830096EB5D /* Aller_Rg.ttf in Resources */,
+				5804028218EC00D800914B59 /* twitter-36-85@2x.png in Resources */,
 				5820DCCF18E6B15B00F4B23D /* mplus-1c-regular.ttf in Resources */,
 				58FF480A18AE488B00B978D9 /* wa1.acv in Resources */,
 				5804027418EBD06A00914B59 /* camera-36-40@2x.png in Resources */,

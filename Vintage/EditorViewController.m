@@ -767,19 +767,24 @@ float absf(float value){
     switch (button.tag) {
         case AdjustmentViewIdOpacity:
             adjustment = _adjustmentOpacity;
+            [_topNavigationBar setTitle:NSLocalizedString(@"OPACITY", nil)];
             break;
         case AdjustmentViewIdBrightness:
             adjustment = _adjustmentBrightness;
+            [_topNavigationBar setTitle:NSLocalizedString(@"BRIGHTNESS", nil)];
             break;
         case AdjustmentViewIdColor:
             adjustment = _adjustmentColor;
+            [_topNavigationBar setTitle:NSLocalizedString(@"SATURATION", nil)];
             break;
         case AdjustmentViewIdContrast:
             adjustment = _adjustmentContrast;
+            [_topNavigationBar setTitle:NSLocalizedString(@"CONTRAST", nil)];
             break;
         case AdjustmentViewIdFocus:
             _focusControlView.hidden = NO;
             adjustment = _adjustmentFocus;
+            [_topNavigationBar setTitle:NSLocalizedString(@"TILT-SHIFT", nil)];
             break;
         default:
             break;
@@ -925,6 +930,8 @@ float absf(float value){
     }];
 }
 
+#pragma mark Saving image
+
 - (void)saveImage:(SaveTo)saveTo
 {
     __block EditorViewController* _self = self;
@@ -954,6 +961,10 @@ float absf(float value){
             break;
         case SaveToInstagram:
             [self shareOnInstagram];
+            break;
+        case SaveToTwitter:
+            [SVProgressHUD dismiss];
+            [self shareOnTwitter];
             break;
         default:
             break;
@@ -1132,6 +1143,12 @@ float absf(float value){
         case SaveToInstagram:
             if(_latestSavedImage){
                 [self shareOnInstagram];
+                return;
+            }
+            break;
+        case SaveToTwitter:
+            if(_latestSavedImage){
+                [self shareOnTwitter];
                 return;
             }
             break;
@@ -1317,6 +1334,19 @@ float absf(float value){
 }
 
 #pragma mark Share
+
+- (void)shareOnTwitter
+{
+    if(_latestSavedImage){
+        SLComposeViewController *vc = [SLComposeViewController composeViewControllerForServiceType:SLServiceTypeTwitter];
+        [vc setInitialText:@" #VintageApp "];
+        [vc addImage:_latestSavedImage];
+        [self presentViewController:vc animated:YES completion:nil];
+    }else{
+        UIAlertView* alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Error", nil) message:NSLocalizedString(@"Could not save the image.", nil) delegate:self cancelButtonTitle:NSLocalizedString(@"Close", nil) otherButtonTitles:nil];
+        [alert show];
+    }
+}
 
 - (void)shareOnInstagram
 {

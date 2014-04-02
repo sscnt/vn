@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <Social/Social.h>
 #import "GPUImageEffectsImport.h"
 #import "GPUImageEffects.h"
 #import "UINavigationBarView.h"
