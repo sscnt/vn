@@ -91,4 +91,12 @@
     return NO;
 }
 
++ (BOOL)canOpenTwitter{
+    NSURL *instagramURL = [NSURL URLWithString:@"twitter://app"];
+    if ([[UIApplication sharedApplication] canOpenURL:instagramURL]) {
+        return YES;
+    }
+    return NO;
+}
+
 @end

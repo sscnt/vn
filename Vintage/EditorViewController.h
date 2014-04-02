@@ -52,6 +52,7 @@ typedef NS_ENUM(NSInteger, DialogState){
 @interface EditorViewController : UIViewController <UIEditorSliderViewDelegate, UIEditorPreviewDelegate, UIEditorDialogBgImageViewDelegate, UIResolutionSelectorViewDelegate, UISaveDialogViewDelegate, UIFocusControlViewDelegate, UIDocumentInteractionControllerDelegate>
 {
     UIEditorSliderView* _sliderOpacity;
+    UIEditorSliderView* _sliderHaze;
     UIEditorSliderView* _sliderBrightness;
     UIEditorSliderView* _sliderLevels;
     UIEditorSliderView* _sliderVignette;
@@ -68,6 +69,7 @@ typedef NS_ENUM(NSInteger, DialogState){
     UINavigationBarButton* _buttonColor;
     UINavigationBarButton* _buttonContrast;
     UINavigationBarButton* _buttonFocus;
+    CGFloat _valueHaze;
     CGFloat _valueBrightness;
     CGFloat _valueLevels;
     CGFloat _valueVignette;

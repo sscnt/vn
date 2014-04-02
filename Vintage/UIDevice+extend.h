@@ -26,5 +26,6 @@ enum {
 + (BOOL)isiPad;
 + (BOOL)underIPhone5s;
 + (BOOL)canOpenInstagram;
++ (BOOL)canOpenTwitter;
 
 @end

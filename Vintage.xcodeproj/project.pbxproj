@@ -175,6 +175,7 @@
 		58FB899A18AE12B1001F661B /* UIDevice+extend.m in Sources */ = {isa = PBXBuildFile; fileRef = 58FB899318AE12B1001F661B /* UIDevice+extend.m */; };
 		58FB899B18AE12B1001F661B /* UIScreen+extend.m in Sources */ = {isa = PBXBuildFile; fileRef = 58FB899518AE12B1001F661B /* UIScreen+extend.m */; };
 		58FB899C18AE12B1001F661B /* UIView+extend.m in Sources */ = {isa = PBXBuildFile; fileRef = 58FB899718AE12B1001F661B /* UIView+extend.m */; };
+		58FBAB4A18EC311E00F0BA1F /* haze-60@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 58FBAB4918EC311E00F0BA1F /* haze-60@2x.png */; };
 		58FBAD4518E5C19400AF1120 /* brightness-button-60@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 58FBAD4418E5C19400AF1120 /* brightness-button-60@2x.png */; };
 		58FBAD4E18E5C1E200AF1120 /* kelvin-60@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 58FBAD4918E5C1E200AF1120 /* kelvin-60@2x.png */; };
 		58FBAD4F18E5C1E200AF1120 /* opacity-60@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 58FBAD4A18E5C1E200AF1120 /* opacity-60@2x.png */; };
@@ -502,6 +503,7 @@
 		58FB899518AE12B1001F661B /* UIScreen+extend.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScreen+extend.m"; sourceTree = "<group>"; };
 		58FB899618AE12B1001F661B /* UIView+extend.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+extend.h"; sourceTree = "<group>"; };
 		58FB899718AE12B1001F661B /* UIView+extend.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+extend.m"; sourceTree = "<group>"; };
+		58FBAB4918EC311E00F0BA1F /* haze-60@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "haze-60@2x.png"; sourceTree = "<group>"; };
 		58FBAD4418E5C19400AF1120 /* brightness-button-60@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "brightness-button-60@2x.png"; sourceTree = "<group>"; };
 		58FBAD4918E5C1E200AF1120 /* kelvin-60@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "kelvin-60@2x.png"; sourceTree = "<group>"; };
 		58FBAD4A18E5C1E200AF1120 /* opacity-60@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "opacity-60@2x.png"; sourceTree = "<group>"; };
@@ -1417,6 +1419,7 @@
 				58FBAD4A18E5C1E200AF1120 /* opacity-60@2x.png */,
 				58FBAD4C18E5C1E200AF1120 /* saturation-60@2x.png */,
 				58FBAD4D18E5C1E200AF1120 /* vibrance-60@2x.png */,
+				58FBAB4918EC311E00F0BA1F /* haze-60@2x.png */,
 				58FBAD4418E5C19400AF1120 /* brightness-button-60@2x.png */,
 				5835DDD618E5A80D00F374D5 /* vignette-60@2x.png */,
 				5835DDB518E5A66600F374D5 /* brightness-60@2x.png */,
@@ -1818,6 +1821,7 @@
 				5806E53418E51A4B00E64D02 /* av1.acv in Resources */,
 				58FBAD4E18E5C1E200AF1120 /* kelvin-60@2x.png in Resources */,
 				58F657F118EA7AD00097DA30 /* mo1.acv in Resources */,
+				58FBAB4A18EC311E00F0BA1F /* haze-60@2x.png in Resources */,
 				5835DDC418E5A66600F374D5 /* brightness-60@2x.png in Resources */,
 				5820DCCC18E6B15B00F4B23D /* mplus-1c-heavy.ttf in Resources */,
 				5835DDC818E5A66600F374D5 /* contrast-60@2x.png in Resources */,

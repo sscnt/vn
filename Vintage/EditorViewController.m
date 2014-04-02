@@ -27,6 +27,7 @@ float absf(float value){
     if (self) {
         _currentSelectedFocusType = FocusTypeTopAndBottom;
         _valueOpacity = 1.0;
+        _valueHaze = 0.0f;
         _valueFocusDistance = 0.5f;
         _valueFocusAngle = 0.0f;
         _valueFocusPosition = CGPointMake(0.50f, 0.50f);
@@ -88,10 +89,20 @@ float absf(float value){
     _sliderOpacity.titlePosition = SliderViewTitlePositionCenter;
     _sliderOpacity.defaultValue = 1.0f;
     _sliderOpacity.value = _valueOpacity;
+    //////// Haze
+    _sliderHaze = [[UIEditorSliderView alloc] initWithFrame:CGRectMake(0.0f, 10.0f + _sliderOpacity.frame.size.height, [UIScreen screenSize].width, 42.0f)];
+    _sliderHaze.tag = EditorSliderIconTypeHaze;
+    _sliderHaze.delegate = self;
+    _sliderHaze.title = NSLocalizedString(@"Haze", nil);
+    _sliderHaze.iconType = EditorSliderIconTypeHaze;
+    _sliderHaze.titlePosition = SliderViewTitlePositionCenter;
+    _sliderHaze.defaultValue = 0.0f;
+    _sliderHaze.value = _valueHaze;
     //////// Adjustment
-    _adjustmentOpacity = [[UISliderContainer alloc] initWithFrame:CGRectMake(0.0f, 0.0f, [UIScreen screenSize].width, _sliderOpacity.bounds.size.height + 20.0f)];
+    _adjustmentOpacity = [[UISliderContainer alloc] initWithFrame:CGRectMake(0.0f, 0.0f, [UIScreen screenSize].width, _sliderOpacity.bounds.size.height * 2.0f + 20.0f)];
     _adjustmentOpacity.tag = AdjustmentViewIdOpacity;
     [_adjustmentOpacity addSubview:_sliderOpacity];
+    [_adjustmentOpacity addSubview:_sliderHaze];
     _adjustmentOpacity.hidden = YES;
     [self.view addSubview:_adjustmentOpacity];
     
@@ -477,6 +488,28 @@ float absf(float value){
 
 - (UIImage*)processImageAdjustments:(UIImage *)inputImage
 {
+    if (_sliderHaze.value != _sliderHaze.defaultValue) {
+        LOG(@"haze enabled. %f", _sliderHaze.value);
+        @autoreleasepool {
+            GPUImagePicture* base = [[GPUImagePicture alloc] initWithImage:inputImage];
+            GPUImageGaussianBlurFilter* blur = [[GPUImageGaussianBlurFilter alloc] init];
+            CGFloat strength = 20.0f * _valueHaze * inputImage.size.width / _imageResized.size.width + 5.0f;
+            blur.blurRadiusInPixels = strength;
+            GPUImageOpacityFilter* opacity = [[GPUImageOpacityFilter alloc] init];
+            opacity.opacity = 0.50f * powf(_valueHaze, 1.0f / 6.0f);
+            [blur addTarget:opacity];
+            GPUImageNormalBlendFilter* normal = [[GPUImageNormalBlendFilter alloc] init];
+            [opacity addTarget:normal atTextureLocation:1];
+            [base addTarget:normal];
+            [base addTarget:blur];
+            [base processImage];
+            inputImage = [normal imageFromCurrentlyProcessedOutput];
+            [base removeAllTargets];
+            [blur removeAllTargets];
+            [opacity removeAllTargets];
+        }
+    }
+    
     GPUImageAllAdjustmentsInOneFilter* adjustmentFilter = [[GPUImageAllAdjustmentsInOneFilter alloc] init];
     
     //// Brightness
@@ -1145,9 +1178,17 @@ float absf(float value){
                 [self shareOnInstagram];
                 return;
             }
+            if(![UIDevice canOpenInstagram]){
+                [self shareOnInstagram];
+                return;
+            }
             break;
         case SaveToTwitter:
             if(_latestSavedImage){
+                [self shareOnTwitter];
+                return;
+            }
+            if(![UIDevice canOpenTwitter]){
                 [self shareOnTwitter];
                 return;
             }
@@ -1252,6 +1293,9 @@ float absf(float value){
         case EditorSliderIconTypeOpacity:
             _percentageLabel.text = [NSString stringWithFormat:@"%@: %d", NSLocalizedString(@"Opacity", nil), (int)roundf(slider.value * 100.0f)];
             break;
+        case EditorSliderIconTypeHaze:
+            _percentageLabel.text = [NSString stringWithFormat:@"%@: %d", NSLocalizedString(@"Haze", nil), (int)roundf(slider.value * 100.0f)];
+            break;
         case EditorSliderIconTypeVignette:
             _percentageLabel.text = [NSString stringWithFormat:@"%@: %d", NSLocalizedString(@"Vignette", nil), (int)roundf(slider.value * 100.0f)];
             break;
@@ -1293,6 +1337,9 @@ float absf(float value){
             break;
         case EditorSliderIconTypeOpacity:
             _valueOpacity = slider.value;
+            break;
+        case EditorSliderIconTypeHaze:
+            _valueHaze = slider.value;
             break;
         case EditorSliderIconTypeVignette:
             _valueVignette = slider.value;
@@ -1337,13 +1384,20 @@ float absf(float value){
 
 - (void)shareOnTwitter
 {
-    if(_latestSavedImage){
-        SLComposeViewController *vc = [SLComposeViewController composeViewControllerForServiceType:SLServiceTypeTwitter];
-        [vc setInitialText:@" #VintageApp "];
-        [vc addImage:_latestSavedImage];
-        [self presentViewController:vc animated:YES completion:nil];
+    if([UIDevice canOpenTwitter]){
+        if(_latestSavedImage){
+            SLComposeViewController *vc = [SLComposeViewController composeViewControllerForServiceType:SLServiceTypeTwitter];
+            [vc setInitialText:@" #VintageApp "];
+            [vc addImage:_latestSavedImage];
+            [self presentViewController:vc animated:YES completion:nil];
+        }else{
+            [SVProgressHUD dismiss];
+            UIAlertView* alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Error", nil) message:NSLocalizedString(@"Could not save the image.", nil) delegate:self cancelButtonTitle:NSLocalizedString(@"Close", nil) otherButtonTitles:nil];
+            [alert show];
+        }
     }else{
-        UIAlertView* alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Error", nil) message:NSLocalizedString(@"Could not save the image.", nil) delegate:self cancelButtonTitle:NSLocalizedString(@"Close", nil) otherButtonTitles:nil];
+        [SVProgressHUD dismiss];
+        UIAlertView* alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Error", nil) message:NSLocalizedString(@"Twitter not installed.", nil) delegate:self cancelButtonTitle:NSLocalizedString(@"Close", nil) otherButtonTitles:nil];
         [alert show];
     }
 }
@@ -1355,6 +1409,7 @@ float absf(float value){
             return;
         }
     }else{
+        [SVProgressHUD dismiss];
         UIAlertView* alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Error", nil) message:NSLocalizedString(@"Instagram not installed.", nil) delegate:self cancelButtonTitle:NSLocalizedString(@"Close", nil) otherButtonTitles:nil];
         [alert show];
     }

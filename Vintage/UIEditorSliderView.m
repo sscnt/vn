@@ -85,6 +85,9 @@
         case EditorSliderIconTypeOpacity:
             _iconImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"opacity-60.png"]];
             break;
+        case EditorSliderIconTypeHaze:
+            _iconImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"haze-60.png"]];
+            break;
         case EditorSliderIconTypeKelvin:
             _iconImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"kelvin-60.png"]];
             break;
