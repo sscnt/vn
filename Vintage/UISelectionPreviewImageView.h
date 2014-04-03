@@ -14,6 +14,7 @@
     UIImageView* _imageViewLoading;
 }
 
+@property (nonatomic, assign) BOOL drawImage;
 @property (nonatomic, assign) EffectId effectId;
 @property (nonatomic, assign) CGFloat opacity;
 @property (nonatomic, assign) BOOL isPreviewReady;

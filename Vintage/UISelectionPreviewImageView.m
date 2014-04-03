@@ -14,6 +14,7 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
+        _drawImage = NO;
         _isPreviewReady = NO;
         [self setBackgroundColor:[UIColor colorWithWhite:33.0f/255.0f alpha:1.0f]];
         
@@ -45,6 +46,7 @@
 - (void)setPreviewImage:(UIImage *)image
 {
     _previewImageView.image = image;
+    [self setNeedsDisplay];
 }
 
 - (void)setPreviewImage:(UIImage *)image WithDuration:(CGFloat)duration
@@ -52,10 +54,12 @@
     _previewImageView.image = image;
     _previewImageView.alpha = 0.0f;
     _previewImageView.hidden = NO;
+    __block UISelectionPreviewImageView* _self = self;
     [UIView animateWithDuration:duration animations:^{
-        _previewImageView.alpha = 1.0f;
+        _self.previewImageView.alpha = 1.0f;
     } completion:^(BOOL finished){
-        
+        _self.drawImage = YES;
+        [_self setNeedsDisplay];
     }];
 }
 
@@ -71,21 +75,29 @@
 
 - (void)reset
 {
+    _drawImage = NO;
     _isPreviewReady = NO;
     _previewImageView.image = nil;
+    if(_imageViewLoading){
+        [_imageViewLoading removeFromSuperview];
+        _imageViewLoading = nil;
+    }
     
     _imageViewLoading = [[UIPortrateImageView alloc] initWithImage:[UIImage animatedGIFNamed:@"loading-48"]];
     _imageViewLoading.center = CGPointMake(roundf(self.frame.size.width / 2.0), roundf(self.frame.size.height / 2.0));
     [self addSubview:_imageViewLoading];
 }
 
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
+
 - (void)drawRect:(CGRect)rect
 {
-    // Drawing code
+    LOG(@"drawRect");
+    if(_drawImage && self.previewImageView.image){
+        [self.previewImageView.image drawInRect:rect];
+        self.previewImageView.image = nil;
+    }
+    _drawImage = NO;
 }
-*/
+
 
 @end

@@ -14,18 +14,95 @@
 
 @implementation SelectionViewController
 
-- (id)initWithImage:(UIImage *)image
+- (id)init
 {
     self = [super init];
     if (self) {
         _currentProcessingIndex = 0;
-        _imageOriginal = image;
         _isProcessing = NO;
         _paused = NO;
         _forceRestart = NO;
         _viewDidOnceAppear = NO;
         _editorViewController = nil;
         _faceDetected = NO;
+        
+        //// Effects
+        _arrayEffects = [NSMutableArray array];
+        [_arrayEffects addObject:[[GPUEffectVintageFilm alloc] init]];
+        [_arrayEffects addObject:[[GPUEffectHaze3 alloc] init]];
+        [_arrayEffects addObject:[[GPUEffectHaze3Pink alloc] init]];
+        [_arrayEffects addObject:[[GPUEffectAutumnVintage alloc] init]];
+        [_arrayEffects addObject:[[GPUEffectGoodMorning alloc] init]];
+        [_arrayEffects addObject:[[GPUEffectBokehileVintage alloc] init]];
+        [_arrayEffects addObject:[[GPUEffectVintage2 alloc] init]];
+        [_arrayEffects addObject:[[GPUEffectWeekend alloc] init]];
+        [_arrayEffects addObject:[[GPUEffectVividVintage alloc] init]];
+        [_arrayEffects addObject:[[GPUEffectHazelnutPink alloc] init]];
+        [_arrayEffects addObject:[[GPUEffectOldTone alloc] init]];
+        [_arrayEffects addObject:[[GPUEffectMiami alloc] init]];
+        [_arrayEffects addObject:[[GPUEffectGirder alloc] init]];
+        [_arrayEffects addObject:[[GPUEffectCavalleriaRusticana alloc] init]];
+        [_arrayEffects addObject:[[GPUEffectFaerieVintage alloc] init]];
+        [_arrayEffects addObject:[[GPUEffectHazelnut alloc] init]];
+        [_arrayEffects addObject:[[GPUEffectGentleMemories alloc] init]];
+        [_arrayEffects addObject:[[GPUEffectBeachVintage alloc] init]];
+        [_arrayEffects addObject:[[GPUEffectDreamyVintage alloc] init]];
+        [_arrayEffects addObject:[[GPUEffectCreamyNoon alloc] init]];
+        [_arrayEffects addObject:[[GPUEffectWarmSpringLight alloc] init]];
+        [_arrayEffects addObject:[[GPUEffectPinkBubbleTea alloc] init]];
+        [_arrayEffects addObject:[[GPUEffectSummers alloc] init]];
+        [_arrayEffects addObject:[[GPUEffectJoyful alloc] init]];
+        [_arrayEffects addObject:[[GPUEffectWarmAutumn alloc] init]];
+        [_arrayEffects addObject:[[GPUEffectSunsetCarnevale alloc] init]];
+        [_arrayEffects addObject:[[GPUEffectBokehileVintage2 alloc] init]];
+        [_arrayEffects addObject:[[GPUEffectVintageBaby alloc] init]];
+        [_arrayEffects addObject:[[GPUEffectDreamyCreamy alloc] init]];
+        [_arrayEffects addObject:[[GPUEffectVampire alloc] init]];
+        
+        //// Init
+        _numberOfEffects = (int)[_arrayEffects count];
+        _arrayPreviews = [NSMutableArray array];
+        CGSize originalImageSize = [CurrentImage originalImageSize];
+        CGFloat width = ([UIScreen screenSize].width - 3.0f) / 2.0f;
+        CGFloat height = roundf(originalImageSize.height * width / originalImageSize.width);
+        CGFloat cropHeight = 0.0f;
+        CGFloat rectHeight = height;
+        BOOL crop = NO;
+        CGRect cropRect = CGRectMake(0.0f, 0.0f, 0.0f, 0.0f);
+        if (height > width) {
+            cropHeight = width;
+            rectHeight = cropHeight;
+            CGFloat scale = [[UIScreen mainScreen] scale];
+            cropRect = CGRectMake(0.0f, (height - width) / 2.0f * scale, width * scale, cropHeight * scale);
+            crop = YES;
+        }
+        _scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, self.view.bounds.size.width, self.view.bounds.size.height)];
+        [_scrollView setContentSize:CGSizeMake([UIScreen screenSize].width, ceilf((CGFloat)_numberOfEffects / 2.0f) * rectHeight + ceilf((CGFloat)_numberOfEffects / 2.0f) + 44.0f)];
+        
+        //// Layout
+        [self.view setBackgroundColor:[UIColor colorWithWhite:26.0f/255.0f alpha:1.0]];
+        [self.view addSubview:_scrollView];
+        UINavigationBarView* bar = [[UINavigationBarView alloc] initWithPosition:NavigationBarViewPositionTop];
+        UICloseButton* buttonClose = [[UICloseButton alloc] init];
+        [buttonClose addTarget:self action:@selector(didPressCloseButton) forControlEvents:UIControlEventTouchUpInside];
+        [bar appendButtonToLeft:buttonClose];
+        [bar setTitle:NSLocalizedString(@"EFFECTS", nil)];
+        [self.view addSubview:bar];
+        
+        //// Preview
+        CGFloat left = 1.0;
+        CGFloat top = 44.0f;
+        CGRect rect;
+        for (int i = 0; i < _numberOfEffects; i++) {
+            left = (i % 2 == 0) ? 1.0 : left * 2.0 + width;
+            rect = CGRectMake(left, top, width, rectHeight);
+            UISelectionPreviewImageView* preview = [[UISelectionPreviewImageView alloc] initWithFrame:rect];
+            [preview addTarget:self action:@selector(didSelectPreview:) forControlEvents:UIControlEventTouchUpInside];
+            [_scrollView addSubview:preview];
+            [_arrayPreviews addObject:preview];
+            top += (i % 2 == 0) ? 0.0 : 1.0 + rectHeight;
+            
+        }
     }
     return self;
 }
@@ -55,44 +132,18 @@
 {
     [super viewDidLoad];
     
-    //// Effects
-    _arrayEffects = [NSMutableArray array];
-    [_arrayEffects addObject:[[GPUEffectVintageFilm alloc] init]];
-    [_arrayEffects addObject:[[GPUEffectHaze3 alloc] init]];
-    [_arrayEffects addObject:[[GPUEffectHaze3Pink alloc] init]];
-    [_arrayEffects addObject:[[GPUEffectAutumnVintage alloc] init]];
-    [_arrayEffects addObject:[[GPUEffectGoodMorning alloc] init]];
-    [_arrayEffects addObject:[[GPUEffectBokehileVintage alloc] init]];
-    [_arrayEffects addObject:[[GPUEffectVintage2 alloc] init]];
-    [_arrayEffects addObject:[[GPUEffectWeekend alloc] init]];
-    [_arrayEffects addObject:[[GPUEffectVividVintage alloc] init]];
-    [_arrayEffects addObject:[[GPUEffectHazelnutPink alloc] init]];
-    [_arrayEffects addObject:[[GPUEffectOldTone alloc] init]];
-    [_arrayEffects addObject:[[GPUEffectMiami alloc] init]];
-    [_arrayEffects addObject:[[GPUEffectGirder alloc] init]];
-    [_arrayEffects addObject:[[GPUEffectCavalleriaRusticana alloc] init]];
-    [_arrayEffects addObject:[[GPUEffectFaerieVintage alloc] init]];
-    [_arrayEffects addObject:[[GPUEffectHazelnut alloc] init]];
-    [_arrayEffects addObject:[[GPUEffectGentleMemories alloc] init]];
-    [_arrayEffects addObject:[[GPUEffectBeachVintage alloc] init]];
-    [_arrayEffects addObject:[[GPUEffectDreamyVintage alloc] init]];
-    [_arrayEffects addObject:[[GPUEffectCreamyNoon alloc] init]];
-    [_arrayEffects addObject:[[GPUEffectWarmSpringLight alloc] init]];
-    [_arrayEffects addObject:[[GPUEffectPinkBubbleTea alloc] init]];
-    [_arrayEffects addObject:[[GPUEffectSummers alloc] init]];
-    [_arrayEffects addObject:[[GPUEffectJoyful alloc] init]];
-    [_arrayEffects addObject:[[GPUEffectWarmAutumn alloc] init]];
-    [_arrayEffects addObject:[[GPUEffectSunsetCarnevale alloc] init]];
-    [_arrayEffects addObject:[[GPUEffectBokehileVintage2 alloc] init]];
-    [_arrayEffects addObject:[[GPUEffectVintageBaby alloc] init]];
-    [_arrayEffects addObject:[[GPUEffectDreamyCreamy alloc] init]];
-    [_arrayEffects addObject:[[GPUEffectVampire alloc] init]];
+}
 
-    //// Init
-    _numberOfEffects = (int)[_arrayEffects count];
-    _arrayPreviews = [NSMutableArray array];
+- (void)startApplying
+{
+    if (_imageResized) {
+        [self applyEffectAtIndex:0];
+        return;
+    }
+    
+    CGSize originalImageSize = [CurrentImage originalImageSize];
     CGFloat width = ([UIScreen screenSize].width - 3.0f) / 2.0f;
-    CGFloat height = roundf(self.imageOriginal.size.height * width / self.imageOriginal.size.width);
+    CGFloat height = roundf(originalImageSize.height * width / originalImageSize.width);
     CGFloat cropHeight = 0.0f;
     CGFloat rectHeight = height;
     BOOL crop = NO;
@@ -104,34 +155,6 @@
         cropRect = CGRectMake(0.0f, (height - width) / 2.0f * scale, width * scale, cropHeight * scale);
         crop = YES;
     }
-    _scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, self.view.bounds.size.width, self.view.bounds.size.height)];
-    [_scrollView setContentSize:CGSizeMake([UIScreen screenSize].width, ceilf((CGFloat)_numberOfEffects / 2.0f) * rectHeight + ceilf((CGFloat)_numberOfEffects / 2.0f) + 44.0f)];
-        
-    //// Layout
-    [self.view setBackgroundColor:[UIColor colorWithWhite:26.0f/255.0f alpha:1.0]];
-    [self.view addSubview:_scrollView];
-    UINavigationBarView* bar = [[UINavigationBarView alloc] initWithPosition:NavigationBarViewPositionTop];
-    UICloseButton* buttonClose = [[UICloseButton alloc] init];
-    [buttonClose addTarget:self action:@selector(didPressCloseButton) forControlEvents:UIControlEventTouchUpInside];
-    [bar appendButtonToLeft:buttonClose];
-    [bar setTitle:NSLocalizedString(@"EFFECTS", nil)];
-    [self.view addSubview:bar];
-    
-    //// Preview
-    CGFloat left = 1.0;
-    CGFloat top = 44.0f;
-    CGRect rect;
-    for (int i = 0; i < _numberOfEffects; i++) {
-        left = (i % 2 == 0) ? 1.0 : left * 2.0 + width;
-        rect = CGRectMake(left, top, width, rectHeight);
-        UISelectionPreviewImageView* preview = [[UISelectionPreviewImageView alloc] initWithFrame:rect];
-        [preview addTarget:self action:@selector(didSelectPreview:) forControlEvents:UIControlEventTouchUpInside];
-        [_scrollView addSubview:preview];
-        [_arrayPreviews addObject:preview];
-        top += (i % 2 == 0) ? 0.0 : 1.0 + rectHeight;
-
-    }
-    
     
     //// Resize
     __block SelectionViewController* _self = self;
@@ -140,12 +163,11 @@
     dispatch_async(q_global, ^{
         @autoreleasepool {
             if(crop){
-                UIImage* croppedImage = [_self.imageOriginal resizedImage:CGSizeMake(width * [[UIScreen mainScreen] scale], height * [[UIScreen mainScreen] scale]) interpolationQuality:kCGInterpolationHigh];
-                [_self setValue:[croppedImage croppedImage:cropRect] forKey:@"_imageResized"];
+                UIImage* croppedImage = [[CurrentImage resizedImageForEditor] resizedImage:CGSizeMake(width * [[UIScreen mainScreen] scale], height * [[UIScreen mainScreen] scale]) interpolationQuality:kCGInterpolationHigh];
+                _self.imageResized = [croppedImage croppedImage:cropRect];
             }else{
-                [_self setValue:[_self.imageOriginal resizedImage:CGSizeMake(width * [[UIScreen mainScreen] scale], height * [[UIScreen mainScreen] scale]) interpolationQuality:kCGInterpolationHigh] forKey:@"_imageResized"];
+                _self.imageResized = [[CurrentImage resizedImageForEditor] resizedImage:CGSizeMake(width * [[UIScreen mainScreen] scale], height * [[UIScreen mainScreen] scale]) interpolationQuality:kCGInterpolationHigh];
             }
-            [_self setValue:[_self.imageOriginal resizedImage:CGSizeMake([UIScreen screenSize].width * [[UIScreen mainScreen] scale], height * [UIScreen screenSize].width / width * [[UIScreen mainScreen] scale]) interpolationQuality:kCGInterpolationHigh] forKey:@"_imageResizedForEditor"];
         }
         dispatch_async(q_main, ^{
             //// Effect
@@ -230,9 +252,6 @@
     _paused = YES;
     EditorViewController* controller = [[EditorViewController alloc] init];
     controller.effectId = preview.effectId;
-    controller.imageResized = _imageResizedForEditor;
-    //controller.imageEffected = preview.previewImageView.image;
-    controller.imageOriginal = _imageOriginal;
     controller.valueOpacity = preview.opacity;
     
     if (_isProcessing) {

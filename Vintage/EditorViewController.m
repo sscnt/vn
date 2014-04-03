@@ -36,15 +36,14 @@ float absf(float value){
         _isSliding = NO;
         _dialogState = DialogStateDidHide;
         _currentResolution = ImageResolutionMidium;
+        _imageResized = [CurrentImage resizedImageForEditor];
+        
+        CGSize originalImageSize = [CurrentImage originalImageSize];
+        _maxImageLength = MIN(MAX_IMAGE_LENGTH_FOR_OLD_DEVICE, MAX(originalImageSize.width, originalImageSize.height));
     }
     return self;
 }
 
-- (void)setImageOriginal:(UIImage *)imageOriginal
-{
-    _imageOriginal = imageOriginal;
-    _maxImageLength = MIN(2400.0f, MAX(_imageOriginal.size.width, _imageOriginal.size.height));
-}
 
 - (void)setValueOpacity:(CGFloat)valueOpacity
 {
@@ -63,8 +62,9 @@ float absf(float value){
 
     
     //// Preview
+    CGSize originalImageSize = [CurrentImage originalImageSize];
     CGFloat width = [UIScreen screenSize].width;
-    CGFloat height = _imageOriginal.size.height * width / _imageOriginal.size.width;
+    CGFloat height = originalImageSize.height * width / originalImageSize.width;
     CGFloat max_height = [UIScreen screenSize].height - 254.0f;
     if (height > max_height) {
         width *= max_height / height;
@@ -492,21 +492,17 @@ float absf(float value){
         LOG(@"haze enabled. %f", _sliderHaze.value);
         @autoreleasepool {
             GPUImagePicture* base = [[GPUImagePicture alloc] initWithImage:inputImage];
-            GPUImageGaussianBlurFilter* blur = [[GPUImageGaussianBlurFilter alloc] init];
+
+            GPUImageHazyFilter* blur = [[GPUImageHazyFilter alloc] init];
             CGFloat strength = 18.0f * _valueHaze * inputImage.size.width / _imageResized.size.width + 5.0f;
+            blur.opacity = 0.40f * powf(_valueHaze, 1.0f / 6.0f);
             blur.blurRadiusInPixels = strength;
-            GPUImageOpacityFilter* opacity = [[GPUImageOpacityFilter alloc] init];
-            opacity.opacity = 0.50f * powf(_valueHaze, 1.0f / 6.0f);
-            [blur addTarget:opacity];
-            GPUImageNormalBlendFilter* normal = [[GPUImageNormalBlendFilter alloc] init];
-            [opacity addTarget:normal atTextureLocation:1];
-            [base addTarget:normal];
+            
+            [blur forceProcessingAtSize:inputImage.size];
             [base addTarget:blur];
             [base processImage];
-            inputImage = [normal imageFromCurrentlyProcessedOutput];
+            inputImage = [blur imageFromCurrentlyProcessedOutput];
             [base removeAllTargets];
-            [blur removeAllTargets];
-            [opacity removeAllTargets];
         }
     }
     
@@ -624,12 +620,11 @@ float absf(float value){
     dispatch_queue_t q_main = dispatch_get_main_queue();
     dispatch_async(q_global, ^{
         @autoreleasepool {
-            
-            _self.imageEffected = [_self processImage:_imageResized];
+            _self.imageEffected = [_self processImage:_self.imageResized];
             
             GPUImageGaussianBlurFilter* filter = [[GPUImageGaussianBlurFilter alloc] init];
             filter.blurRadiusInPixels = 8.0f;
-            GPUImagePicture* base = [[GPUImagePicture alloc] initWithImage:_imageEffected];
+            GPUImagePicture* base = [[GPUImagePicture alloc] initWithImage:_self.imageEffected];
             [base addTarget:filter];
             [base processImage];
             _self.blurredImage = [filter imageFromCurrentlyProcessedOutput];
@@ -637,6 +632,7 @@ float absf(float value){
             filter.blurRadiusInPixels = 16.0f;
             [base processImage];
             _self.dialogBgImage = [filter imageFromCurrentlyProcessedOutput];
+            LOG(@"finished");
         }
         dispatch_async(q_main, ^{
             if(_self.previewImageView.isPreviewReady){
@@ -857,24 +853,26 @@ float absf(float value){
         _resolutionSelector = [[UIResolutionSelectorView alloc] init];
         _resolutionSelector.delegate = self;
         
+        CGSize originalImageSize = [CurrentImage originalImageSize];
+        
         if([UIDevice isiPad]){
-            _resolutionSelector.maxImageHeight = _imageOriginal.size.height;
-            _resolutionSelector.maxImageWidth = _imageOriginal.size.width;
+            _resolutionSelector.maxImageHeight = originalImageSize.height;
+            _resolutionSelector.maxImageWidth = originalImageSize.width;
         }else{
             if([UIDevice underIPhone5s]){
-                if(_imageOriginal.size.width > _imageOriginal.size.height){
-                    _resolutionSelector.maxImageHeight = _imageOriginal.size.height * _maxImageLength / _imageOriginal.size.width;
+                if(originalImageSize.width > originalImageSize.height){
+                    _resolutionSelector.maxImageHeight = originalImageSize.height * _maxImageLength / originalImageSize.width;
                     _resolutionSelector.maxImageWidth = _maxImageLength;
                 }else{
-                    _resolutionSelector.maxImageWidth = _imageOriginal.size.width * _maxImageLength / _imageOriginal.size.height;
+                    _resolutionSelector.maxImageWidth = originalImageSize.width * _maxImageLength / originalImageSize.height;
                     _resolutionSelector.maxImageHeight = _maxImageLength;
                 }
             }else{
-                _resolutionSelector.maxImageHeight = _imageOriginal.size.height;
-                _resolutionSelector.maxImageWidth = _imageOriginal.size.width;
+                _resolutionSelector.maxImageHeight = originalImageSize.height;
+                _resolutionSelector.maxImageWidth = originalImageSize.width;
             }
         }
-        if(_imageOriginal.size.width > 3000.0f || _imageOriginal.size.height > 3000.0f){
+        if(originalImageSize.width > 3000.0f || originalImageSize.height > 3000.0f){
             _currentResolution = ImageResolutionMidium;
             [_resolutionSelector setResolution:ImageResolutionMidium];
         }else{
@@ -937,7 +935,6 @@ float absf(float value){
     if(_dialogState != DialogStateDidShow){
         return;
     }
-    self.latestSavedImage = nil;
     CGRect frame = _previewImageView.frame;
     __block EditorViewController* _self = self;
     [UIView animateWithDuration:0.20f animations:^{
@@ -968,16 +965,26 @@ float absf(float value){
 - (void)saveImage:(SaveTo)saveTo
 {
     __block EditorViewController* _self = self;
+    __block NSInteger errorCode = 0;
     dispatch_queue_t q_global = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
     dispatch_queue_t q_main = dispatch_get_main_queue();
     dispatch_async(q_global, ^{
         @autoreleasepool {
-            UIImage* resultImage = [_self resizeImage:_imageOriginal WithResolution:_currentResolution];
-            resultImage = [_self processImage:resultImage];
-            UIImageWriteToSavedPhotosAlbum(resultImage, nil, nil, nil);
-            _self.latestSavedImage = resultImage;
+            UIImage* image = [CurrentImage originalImage];
+            if(image){
+                image = [_self resizeImage:image WithResolution:_currentResolution];
+                image = [_self processImage:image];
+                UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil);
+                [CurrentImage saveLastSavedImage:image];
+            }else{
+                errorCode = 1;
+            }
         }
         dispatch_async(q_main, ^{
+            if(errorCode == 1){
+                UIAlertView* alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Error", nil) message:NSLocalizedString(@"Could not save the image.", nil) delegate:self cancelButtonTitle:NSLocalizedString(@"Close", nil) otherButtonTitles:nil];
+                [alert show];
+            }
             [_self didSaveImage:saveTo];
         });
         
@@ -1160,7 +1167,7 @@ float absf(float value){
 - (void)selector:(UIResolutionSelectorView *)selector DidSelectResolution:(ImageResolution)resolution
 {
     _currentResolution = resolution;
-    self.latestSavedImage = nil;
+    [CurrentImage deleteLastSavedImage];
 }
 
 - (void)saveToView:(UISaveDialogView *)view DidSelectSaveTo:(SaveTo)saveTo
@@ -1174,7 +1181,7 @@ float absf(float value){
             
             break;
         case SaveToInstagram:
-            if(_latestSavedImage){
+            if([CurrentImage lastSavedImageExists]){
                 [self shareOnInstagram];
                 return;
             }
@@ -1184,7 +1191,7 @@ float absf(float value){
             }
             break;
         case SaveToTwitter:
-            if(_latestSavedImage){
+            if([CurrentImage lastSavedImageExists]){
                 [self shareOnTwitter];
                 return;
             }
@@ -1385,10 +1392,10 @@ float absf(float value){
 - (void)shareOnTwitter
 {
     if([UIDevice canOpenTwitter]){
-        if(_latestSavedImage){
+        if([CurrentImage lastSavedImageExists]){
             SLComposeViewController *vc = [SLComposeViewController composeViewControllerForServiceType:SLServiceTypeTwitter];
             [vc setInitialText:@""];
-            [vc addImage:_latestSavedImage];
+            [vc addImage:[CurrentImage lastSavedImage]];
             [self presentViewController:vc animated:YES completion:nil];
         }else{
             [SVProgressHUD dismiss];
@@ -1417,7 +1424,7 @@ float absf(float value){
 
 - (BOOL)openInstagram
 {
-    if(!_latestSavedImage){
+    if(![CurrentImage lastSavedImageExists]){
         return NO;
     }
     [SVProgressHUD showWithMaskType:SVProgressHUDMaskTypeClear];
@@ -1426,7 +1433,7 @@ float absf(float value){
     dispatch_queue_t q_main = dispatch_get_main_queue();
     dispatch_async(q_global, ^{
         @autoreleasepool {
-            [instagramViewController setImage:_latestSavedImage];
+            [instagramViewController setImage:[CurrentImage lastSavedImage]];
         }
         dispatch_async(q_main, ^{
             [SVProgressHUD dismiss];

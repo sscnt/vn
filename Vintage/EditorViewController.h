@@ -33,6 +33,8 @@
 #import "UIFocusControlView.h"
 #import "UIFocusTypeSelectButton.h"
 #import "ShareInstagramViewController.h"
+#import "GPUImageHazyFilter.h"
+#import "CurrentImage.h"
 
 typedef NS_ENUM(NSInteger, AdjustmentViewId){
     AdjustmentViewIdOpacity = 1,
@@ -96,12 +98,10 @@ typedef NS_ENUM(NSInteger, DialogState){
 @property (nonatomic, assign) BOOL isSliding;
 @property (nonatomic, assign) EffectId effectId;
 @property (nonatomic, assign) BOOL waitingForOtherConversion;
-@property (nonatomic, weak) UIImage* imageOriginal;
-@property (nonatomic, weak) UIImage* imageResized;
+@property (nonatomic, strong) UIImage* imageResized;
 @property (nonatomic, strong) UIImage* imageEffected;
 @property (nonatomic, strong) UIImage* blurredImage;
 @property (nonatomic, strong) UIImage* dialogBgImage;
-@property (nonatomic, strong) UIImage* latestSavedImage;
 @property (nonatomic, strong) UIResolutionSelectorView* resolutionSelector;
 @property (nonatomic, strong) UISaveDialogView* saveDialogView;
 @property (nonatomic, strong) UIEditorDialogBgImageView* dialogBgImageView;

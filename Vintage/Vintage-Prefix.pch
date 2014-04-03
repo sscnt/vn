@@ -43,6 +43,8 @@
 @end
 #endif
 
+#define MAX_IMAGE_LENGTH_FOR_OLD_DEVICE 2400
+
 #import "UIDevice+extend.h"
 #import "UIScreen+extend.h"
 #import "UIView+extend.h"

@@ -17,6 +17,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [CurrentImage clean];
 
     //// Background Image
     UIImage* imageBg;
@@ -275,31 +276,82 @@
         CGImageRelease(cgimg);
     }
     
-    if(image.size.width > 4096.0f){
-        CGFloat height = 4096.0f / image.size.width * image.size.height;
-        image = [image resizedImage:CGSizeMake(4096.0f, height) interpolationQuality:kCGInterpolationHigh];
-    }
-    if(image.size.height > 4096.0f){
-        CGFloat width = 4096.0f / image.size.height * image.size.width;
-        image = [image resizedImage:CGSizeMake(width, 4096) interpolationQuality:kCGInterpolationHigh];
+    CGFloat maxLength = 4096.0f;
+    if([UIDevice isiPad]){
+
+    }else{
+        if([UIDevice underIPhone5s]){
+            maxLength = MAX_IMAGE_LENGTH_FOR_OLD_DEVICE;
+        }else{
+
+        }
     }
 
-    //// Detect faces
-    UIImage* image2detect = [image resizedImage:CGSizeMake(640.0f, image.size.height * 640.0f / image.size.width) interpolationQuality:kCGInterpolationHigh];
-    NSDictionary *options = [NSDictionary dictionaryWithObject:CIDetectorAccuracyHigh forKey:CIDetectorAccuracy];
-    CIDetector *detector = [CIDetector detectorOfType:CIDetectorTypeFace context:nil options:options];
-    CIImage *ciImage = [[CIImage alloc] initWithCGImage:image2detect.CGImage];
-    NSDictionary *imageOptions = [NSDictionary dictionaryWithObject:[NSNumber numberWithInt:1] forKey:CIDetectorImageOrientation];
-    NSArray *array = [detector featuresInImage:ciImage options:imageOptions];
-    
-    
-    SelectionViewController* controller = [[SelectionViewController alloc] initWithImage:image];
-    controller.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
-    if([array count] > 0){
-        LOG(@"Face detected!");
-        controller.faceDetected = YES;
+    if(image.size.width > maxLength){
+        @autoreleasepool {
+            CGFloat height = maxLength / image.size.width * image.size.height;
+            image = [image resizedImage:CGSizeMake(maxLength, height) interpolationQuality:kCGInterpolationHigh];
+        }
     }
+    if(image.size.height > maxLength){
+        @autoreleasepool {
+            CGFloat width = maxLength / image.size.height * image.size.width;
+            image = [image resizedImage:CGSizeMake(width, maxLength) interpolationQuality:kCGInterpolationHigh];
+        }
+    }
+    
+    [CurrentImage sharedManager].originalImageSize = image.size;
+    
+    //// Present
+    __block SelectionViewController* controller = [[SelectionViewController alloc] init];
+    controller.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
     [self.navigationController pushViewController:controller animated:NO];
+    
+    __block UIImage* originalImage = image;
+    
+    __block NSInteger errorCode = 1;
+    
+    dispatch_queue_t q_global = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+    dispatch_queue_t q_main = dispatch_get_main_queue();
+    dispatch_async(q_global, ^{
+        @autoreleasepool {
+            
+            //// Save to home dir
+            if([CurrentImage saveOriginalImage:originalImage]){
+                //// for editor image
+                CGFloat width = [UIScreen screenSize].width * [[UIScreen mainScreen] scale];
+                UIImage* imageForEditor = [originalImage resizedImage:CGSizeMake(width, originalImage.size.height * width / originalImage.size.width) interpolationQuality:kCGInterpolationHigh];
+                if([CurrentImage saveResizedEditorImage:imageForEditor]){
+                    //// Detect faces
+                    NSDictionary *options = [NSDictionary dictionaryWithObject:CIDetectorAccuracyHigh forKey:CIDetectorAccuracy];
+                    CIDetector *detector = [CIDetector detectorOfType:CIDetectorTypeFace context:nil options:options];
+                    CIImage *ciImage = [[CIImage alloc] initWithCGImage:imageForEditor.CGImage];
+                    NSDictionary *imageOptions = [NSDictionary dictionaryWithObject:[NSNumber numberWithInt:1] forKey:CIDetectorImageOrientation];
+                    NSArray *array = [detector featuresInImage:ciImage options:imageOptions];
+                    
+                    if([array count] > 0){
+                        LOG(@"Face detected!");
+                        controller.faceDetected = YES;
+                    }
+                    errorCode = 0;
+                }
+            }
+            
+
+        }
+        dispatch_async(q_main, ^{
+            if (errorCode == 0) {
+                [controller startApplying];
+            }else{
+                UIAlertView* alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Error", nil) message:NSLocalizedString(@"Storage is full.", nil) delegate:self cancelButtonTitle:NSLocalizedString(@"Close", nil) otherButtonTitles:nil];
+                [alert show];
+            }
+        });
+    });
+
+    
+    
+    
 }
 
 - (BOOL)shouldAutorotate

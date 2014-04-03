@@ -17,7 +17,7 @@
 
 - (void)openInstagram {
     
-    NSString *filePath = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents/image.igo"];
+    NSString *filePath = [NSHomeDirectory() stringByAppendingPathComponent:@"tmp/image.igo"];
     NSURL *fileURL = [NSURL fileURLWithPath:filePath];
     
     self.interactionController = [UIDocumentInteractionController interactionControllerWithURL:fileURL];
@@ -46,8 +46,8 @@
 
 - (void)setImage:(UIImage *)image
 {
-    NSData *imageData = UIImageJPEGRepresentation(image, 0.75f);
-    NSString *filePath = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents/image.igo"];
+    NSData *imageData = UIImageJPEGRepresentation(image, 0.99f);
+    NSString *filePath = [NSHomeDirectory() stringByAppendingPathComponent:@"tmp/image.igo"];
     [imageData writeToFile:filePath atomically:YES];
 }
 

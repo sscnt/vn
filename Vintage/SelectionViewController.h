@@ -12,6 +12,7 @@
 #import "EditorViewController.h"
 #import "UINavigationBarView.h"
 #import "UICloseButton.h"
+#import "CurrentImage.h"
 
 @interface SelectionViewController : UIViewController <UINavigationControllerDelegate>
 {
@@ -21,8 +22,6 @@
     BOOL _viewDidOnceAppear;
     int _currentProcessingIndex;
     int _numberOfEffects;
-    UIImage* _imageResized;
-    UIImage* _imageResizedForEditor;
     NSMutableArray* _arrayPreviews;
     NSMutableArray* _arrayEffects;
     UIScrollView* _scrollView;
@@ -30,9 +29,9 @@
 }
 
 @property (nonatomic, assign) BOOL faceDetected;
-@property (nonatomic, strong) UIImage* imageOriginal;
+@property (nonatomic, strong) UIImage* imageResized;
 
-- (id)initWithImage:(UIImage*)image;
+- (void)startApplying;
 - (void)applyEffectAtIndex:(int)index;
 
 - (void)didSelectPreview:(UISelectionPreviewImageView*)preview;
