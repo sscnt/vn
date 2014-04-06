@@ -93,7 +93,7 @@ float absf(float value){
     _sliderHaze = [[UIEditorSliderView alloc] initWithFrame:CGRectMake(0.0f, 10.0f + _sliderOpacity.frame.size.height, [UIScreen screenSize].width, 42.0f)];
     _sliderHaze.tag = EditorSliderIconTypeHaze;
     _sliderHaze.delegate = self;
-    _sliderHaze.title = NSLocalizedString(@"Haze", nil);
+    _sliderHaze.title = NSLocalizedString(@"Soft Focus", nil);
     _sliderHaze.iconType = EditorSliderIconTypeHaze;
     _sliderHaze.titlePosition = SliderViewTitlePositionCenter;
     _sliderHaze.defaultValue = 0.0f;
@@ -932,6 +932,7 @@ float absf(float value){
 
 - (void)hideSaveDialog
 {
+    [CurrentImage deleteLastSavedImage];
     if(_dialogState != DialogStateDidShow){
         return;
     }

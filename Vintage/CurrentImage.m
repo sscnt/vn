@@ -100,7 +100,6 @@ NSString* const pathForLastSavedImage = @"tmp/last_saved_image";
 {
     NSString *filePath = [NSHomeDirectory() stringByAppendingPathComponent:pathForLastSavedImage];
     NSFileManager *filemgr = [NSFileManager defaultManager];
-    NSURL *pathurl = [NSURL fileURLWithPath:filePath];
     
     if( [filemgr fileExistsAtPath:filePath] ){
         return YES;

@@ -21,7 +21,6 @@
 + (BOOL)saveOriginalImage:(UIImage*)image;
 + (BOOL)saveResizedEditorImage:(UIImage*)image;
 + (BOOL)saveLastSavedImage:(UIImage*)image;
-+ (BOOL)deleteLastSavedImage;
 + (CGSize)originalImageSize;
 + (void)setOriginalImageSize:(CGSize)size;
 + (BOOL)deleteImageAtPath:(NSString*)path;
