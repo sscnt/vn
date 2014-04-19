@@ -8,12 +8,6 @@
 
 
 #import "Processor.h"
-#define ARC4RANDOM_MAX      0x100000000
-
-float randFloat(float a, float b)
-{
-    return ((b-a)*((float)arc4random()/ARC4RANDOM_MAX))+a;
-}
 
 float absf(float v){
     if (v < 0.0f) {
@@ -72,6 +66,11 @@ static Processor* sharedProcessor = nil;
 
 + (UIImage *)executeWithCurrentOriginalImage
 {
+    return [self executeWithCurrentOriginalImage];
+}
+
+- (UIImage *)executeWithCurrentOriginalImage
+{
     return nil;
 }
 
@@ -94,7 +93,7 @@ static Processor* sharedProcessor = nil;
     
     GPUImagePicture* basePicture = [[GPUImagePicture alloc] initWithImage:baseImage];
     
-    id blending = [VnEffect effectByBlendMode:blendingMode];
+    id blending = [Processor effectByBlendMode:blendingMode];
     [opacityFilter addTarget:blending atTextureLocation:1];
     
     [basePicture addTarget:blending];
@@ -113,7 +112,7 @@ static Processor* sharedProcessor = nil;
     GPUImagePicture* picture = [[GPUImagePicture alloc] initWithImage:baseImage];
     [picture addTarget:overlayFilter];
     
-    id blending = [VnEffect effectByBlendMode:blendingMode];
+    id blending = [Processor effectByBlendMode:blendingMode];
     [opacityFilter addTarget:blending atTextureLocation:1];
     
     [picture addTarget:blending];
@@ -125,4 +124,67 @@ static Processor* sharedProcessor = nil;
     return mergedImage;
     
 }
+
++ (id)effectByBlendMode:(VnBlendingMode)mode
+{
+    id blending;
+    if(mode == VnBlendingModeNormal){
+        blending = [[VnBlendingNormal alloc] init];
+    }
+    if(mode == VnBlendingModeDarken){
+        blending = [[VnBlendingDarken alloc] init];
+    }
+    if(mode == VnBlendingModeMultiply){
+        blending = [[VnBlendingMultiply alloc] init];
+    }
+    if(mode == VnBlendingModeScreen){
+        blending = [[VnBlendingScreen alloc] init];
+    }
+    if(mode == VnBlendingModeSoftLight){
+        blending = [[VnBlendingSoftLight alloc] init];
+    }
+    if(mode == VnBlendingModeLighten){
+        blending = [[VnBlendingLighten alloc] init];
+    }
+    if(mode == VnBlendingModeHardLight){
+        blending = [[VnBlendingHardLight alloc] init];
+    }
+    if(mode == VnBlendingModeVividLight){
+        blending = [[VnBlendingVividLight alloc] init];
+    }
+    if(mode == VnBlendingModeOverlay){
+        blending = [[VnBlendingOverlay alloc] init];
+    }
+    if(mode == VnBlendingModeColorDodge){
+        blending = [[VnBlendingColorDodge alloc] init];
+    }
+    if(mode == VnBlendingModeLinearDodge){
+        blending = [[VnBlendingLinearDodge alloc] init];
+    }
+    if(mode == VnBlendingModeDarkerColor){
+        blending = [[VnBlendingDarkerColor alloc] init];
+    }
+    if(mode == VnBlendingModeExclusion){
+        blending = [[VnBlendingExclusion alloc] init];
+    }
+    if(mode == VnBlendingModeColor){
+        blending = [[VnBlendingColor alloc] init];
+    }
+    if(mode == VnBlendingModeHue){
+        blending = [[VnBlendingHue alloc] init];
+    }
+    if(mode == VnBlendingModeColorBurn){
+        blending = [[VnBlendingColorBurn alloc] init];
+    }
+    if(mode == VnBlendingModeSaturation){
+        blending = [[VnBlendingSaturation alloc] init];
+    }
+    if(mode == VnBlendingModeDifference){
+        blending = [[VnBlendingDifference alloc] init];
+    }
+    return blending;
+}
+
+
+
 @end

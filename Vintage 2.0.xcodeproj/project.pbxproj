@@ -26,6 +26,7 @@
 		58325DB619027A19000A3D0E /* VnBlendingHue.m in Sources */ = {isa = PBXBuildFile; fileRef = 58325DB519027A19000A3D0E /* VnBlendingHue.m */; };
 		58325DB919027AAB000A3D0E /* VnBlendingColorBurn.m in Sources */ = {isa = PBXBuildFile; fileRef = 58325DB819027AAB000A3D0E /* VnBlendingColorBurn.m */; };
 		58325DBC19027B47000A3D0E /* VnBlendingSaturation.m in Sources */ = {isa = PBXBuildFile; fileRef = 58325DBB19027B47000A3D0E /* VnBlendingSaturation.m */; };
+		58325DC119027DD4000A3D0E /* VnFilterBrightness.m in Sources */ = {isa = PBXBuildFile; fileRef = 58325DC019027DD4000A3D0E /* VnFilterBrightness.m */; };
 		58F17A5E19020A530038DF34 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 58F17A6019020A530038DF34 /* Localizable.strings */; };
 		58F17A6619020B380038DF34 /* CurrentImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F17A6519020B380038DF34 /* CurrentImage.m */; };
 		58F17A7219020BEC0038DF34 /* UIDevice+extend.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F17A6919020BEC0038DF34 /* UIDevice+extend.m */; };
@@ -143,6 +144,8 @@
 		58325DB819027AAB000A3D0E /* VnBlendingColorBurn.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VnBlendingColorBurn.m; sourceTree = "<group>"; };
 		58325DBA19027B47000A3D0E /* VnBlendingSaturation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VnBlendingSaturation.h; sourceTree = "<group>"; };
 		58325DBB19027B47000A3D0E /* VnBlendingSaturation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VnBlendingSaturation.m; sourceTree = "<group>"; };
+		58325DBF19027DD4000A3D0E /* VnFilterBrightness.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VnFilterBrightness.h; sourceTree = "<group>"; };
+		58325DC019027DD4000A3D0E /* VnFilterBrightness.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VnFilterBrightness.m; sourceTree = "<group>"; };
 		58F17A5919020A120038DF34 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Main.strings; sourceTree = "<group>"; };
 		58F17A5A19020A120038DF34 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		58F17A5B19020A120038DF34 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -273,6 +276,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		58325DBD19027DAC000A3D0E /* 1.0 */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = 1.0;
+			sourceTree = "<group>";
+		};
+		58325DBE19027DB1000A3D0E /* 2.0 */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = 2.0;
+			sourceTree = "<group>";
+		};
 		58F17A6219020AA80038DF34 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
@@ -342,12 +359,12 @@
 		58F79C5118FFAE6000C0D2E1 /* Vintage 2.0 */ = {
 			isa = PBXGroup;
 			children = (
+				58F17A6719020BDD0038DF34 /* Categories */,
 				58FD076D19025A4D0005E74E /* VnFilters */,
 				58FD076C19025A3A0005E74E /* VnBlendings */,
 				58FD070A190240F60005E74E /* GPUimageFilter */,
 				58FD0706190240B80005E74E /* VnEffects */,
 				58FD077319025CAC0005E74E /* VnPhotoFilters */,
-				58F17A6719020BDD0038DF34 /* Categories */,
 				58F17A6219020AA80038DF34 /* Shared */,
 				58F79C5A18FFAE6000C0D2E1 /* AppDelegate.h */,
 				58F79C5B18FFAE6000C0D2E1 /* AppDelegate.m */,
@@ -395,6 +412,8 @@
 			children = (
 				58FD076F19025A860005E74E /* VnEffect.h */,
 				58FD077019025A860005E74E /* VnEffect.m */,
+				58325DBE19027DB1000A3D0E /* 2.0 */,
+				58325DBD19027DAC000A3D0E /* 1.0 */,
 			);
 			name = VnEffects;
 			sourceTree = "<group>";
@@ -509,6 +528,8 @@
 		58FD076D19025A4D0005E74E /* VnFilters */ = {
 			isa = PBXGroup;
 			children = (
+				58325DBF19027DD4000A3D0E /* VnFilterBrightness.h */,
+				58325DC019027DD4000A3D0E /* VnFilterBrightness.m */,
 			);
 			name = VnFilters;
 			sourceTree = "<group>";
@@ -660,6 +681,7 @@
 				58325D951902711F000A3D0E /* VnBlendingSoftLight.m in Sources */,
 				58FD073B1902410D0005E74E /* GPUAdjustmentsWhiteBalance.m in Sources */,
 				58325DB919027AAB000A3D0E /* VnBlendingColorBurn.m in Sources */,
+				58325DC119027DD4000A3D0E /* VnFilterBrightness.m in Sources */,
 				58F17A7519020BEC0038DF34 /* UIScrollView+extend.m in Sources */,
 				58FD073F1902410D0005E74E /* GPUKelvinFilter.m in Sources */,
 				58FD074A1902410D0005E74E /* GPUImageClarityFilter.m in Sources */,

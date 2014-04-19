@@ -17,8 +17,5 @@
 @property (nonatomic, assign) CGFloat faceOpacity;
 
 - (UIImage*)process;
-- (UIImage*)mergeBaseImage:(UIImage*)baseImage overlayImage:(UIImage*)overlayImage opacity:(CGFloat)opacity blendingMode:(VnBlendingMode)blendingMode;
-- (UIImage*)mergeBaseImage:(UIImage*)baseImage overlayFilter:(GPUImageFilter*)overlayFilter opacity:(CGFloat)opacity blendingMode:(VnBlendingMode)blendingMode;
-+ (id)effectByBlendMode:(VnBlendingMode)mode;
 
 @end

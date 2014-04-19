@@ -212,9 +212,7 @@ NSString *const kVnBlendingSaturationFragmentShaderString = SHADER_STRING
          b = p;
      }
      return vec3(r, g, b);
-     
  }
- 
  
  void main()
  {
