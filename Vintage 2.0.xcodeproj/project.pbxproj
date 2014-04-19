@@ -55,6 +55,7 @@
 		58FA3A491902C4F90070B4B8 /* VnViewControllerEditor.m in Sources */ = {isa = PBXBuildFile; fileRef = 58FA3A481902C4F90070B4B8 /* VnViewControllerEditor.m */; };
 		58FA3A4C1902C5270070B4B8 /* VnViewControllerExport.m in Sources */ = {isa = PBXBuildFile; fileRef = 58FA3A4B1902C5270070B4B8 /* VnViewControllerExport.m */; };
 		58FA3A4F1902C5670070B4B8 /* VnViewControllerTiltShift.m in Sources */ = {isa = PBXBuildFile; fileRef = 58FA3A4E1902C5670070B4B8 /* VnViewControllerTiltShift.m */; };
+		58FA3A521902D2D70070B4B8 /* VnViewControllerRoot.m in Sources */ = {isa = PBXBuildFile; fileRef = 58FA3A511902D2D70070B4B8 /* VnViewControllerRoot.m */; };
 		58FD07051902405C0005E74E /* VnProcessor.m in Sources */ = {isa = PBXBuildFile; fileRef = 58FD07041902405C0005E74E /* VnProcessor.m */; };
 		58FD075F190241920005E74E /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58FD075E190241920005E74E /* AssetsLibrary.framework */; };
 		58FD07611902419D0005E74E /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58FD07601902419D0005E74E /* Social.framework */; };
@@ -179,6 +180,8 @@
 		58FA3A4B1902C5270070B4B8 /* VnViewControllerExport.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VnViewControllerExport.m; sourceTree = "<group>"; };
 		58FA3A4D1902C5670070B4B8 /* VnViewControllerTiltShift.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VnViewControllerTiltShift.h; sourceTree = "<group>"; };
 		58FA3A4E1902C5670070B4B8 /* VnViewControllerTiltShift.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VnViewControllerTiltShift.m; sourceTree = "<group>"; };
+		58FA3A501902D2D70070B4B8 /* VnViewControllerRoot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VnViewControllerRoot.h; sourceTree = "<group>"; };
+		58FA3A511902D2D70070B4B8 /* VnViewControllerRoot.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VnViewControllerRoot.m; sourceTree = "<group>"; };
 		58FD07031902405C0005E74E /* VnProcessor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VnProcessor.h; sourceTree = "<group>"; };
 		58FD07041902405C0005E74E /* VnProcessor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VnProcessor.m; sourceTree = "<group>"; };
 		58FD0753190241690005E74E /* GPUImage.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = GPUImage.xcodeproj; path = GPUImage/framework/GPUImage.xcodeproj; sourceTree = "<group>"; };
@@ -359,6 +362,8 @@
 		58FA3A461902C4CD0070B4B8 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				58FA3A501902D2D70070B4B8 /* VnViewControllerRoot.h */,
+				58FA3A511902D2D70070B4B8 /* VnViewControllerRoot.m */,
 				58F79C6018FFAE6000C0D2E1 /* VnViewControllerHome.h */,
 				58F79C6118FFAE6000C0D2E1 /* VnViewControllerHome.m */,
 				58FA3A471902C4F90070B4B8 /* VnViewControllerEditor.h */,
@@ -602,6 +607,7 @@
 				58325D98190271A9000A3D0E /* VnBlendingLighten.m in Sources */,
 				58FA3A491902C4F90070B4B8 /* VnViewControllerEditor.m in Sources */,
 				58325DA4190276AC000A3D0E /* VnBlendingColorDodge.m in Sources */,
+				58FA3A521902D2D70070B4B8 /* VnViewControllerRoot.m in Sources */,
 				58325DB019027908000A3D0E /* VnBlendingDarkerColor.m in Sources */,
 				58FA3A4C1902C5270070B4B8 /* VnViewControllerExport.m in Sources */,
 				58325DAD1902787B000A3D0E /* VnBlendingColor.m in Sources */,
