@@ -8,6 +8,24 @@
 
 /* Begin PBXBuildFile section */
 		58325D8619026926000A3D0E /* libGPUImage.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 58FD075A1902416A0005E74E /* libGPUImage.a */; };
+		58325D8919026D7D000A3D0E /* VnBlendingNormal.m in Sources */ = {isa = PBXBuildFile; fileRef = 58325D8819026D7D000A3D0E /* VnBlendingNormal.m */; };
+		58325D8C19026F5B000A3D0E /* VnBlendingDarken.m in Sources */ = {isa = PBXBuildFile; fileRef = 58325D8B19026F5B000A3D0E /* VnBlendingDarken.m */; };
+		58325D8F19026FDD000A3D0E /* VnBlendingMultiply.m in Sources */ = {isa = PBXBuildFile; fileRef = 58325D8E19026FDD000A3D0E /* VnBlendingMultiply.m */; };
+		58325D9219027053000A3D0E /* VnBlendingScreen.m in Sources */ = {isa = PBXBuildFile; fileRef = 58325D9119027053000A3D0E /* VnBlendingScreen.m */; };
+		58325D951902711F000A3D0E /* VnBlendingSoftLight.m in Sources */ = {isa = PBXBuildFile; fileRef = 58325D941902711F000A3D0E /* VnBlendingSoftLight.m */; };
+		58325D98190271A9000A3D0E /* VnBlendingLighten.m in Sources */ = {isa = PBXBuildFile; fileRef = 58325D97190271A9000A3D0E /* VnBlendingLighten.m */; };
+		58325D9B1902724E000A3D0E /* VnBlendingHardLight.m in Sources */ = {isa = PBXBuildFile; fileRef = 58325D9A1902724E000A3D0E /* VnBlendingHardLight.m */; };
+		58325D9E190272F9000A3D0E /* VnBlendingVividLight.m in Sources */ = {isa = PBXBuildFile; fileRef = 58325D9D190272F9000A3D0E /* VnBlendingVividLight.m */; };
+		58325DA1190274A2000A3D0E /* VnBlendingOverlay.m in Sources */ = {isa = PBXBuildFile; fileRef = 58325DA0190274A2000A3D0E /* VnBlendingOverlay.m */; };
+		58325DA4190276AC000A3D0E /* VnBlendingColorDodge.m in Sources */ = {isa = PBXBuildFile; fileRef = 58325DA3190276AC000A3D0E /* VnBlendingColorDodge.m */; };
+		58325DA71902774A000A3D0E /* VnBlendingDifference.m in Sources */ = {isa = PBXBuildFile; fileRef = 58325DA61902774A000A3D0E /* VnBlendingDifference.m */; };
+		58325DAA190277DC000A3D0E /* VnBlendingLinearDodge.m in Sources */ = {isa = PBXBuildFile; fileRef = 58325DA9190277DC000A3D0E /* VnBlendingLinearDodge.m */; };
+		58325DAD1902787B000A3D0E /* VnBlendingColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 58325DAC1902787B000A3D0E /* VnBlendingColor.m */; };
+		58325DB019027908000A3D0E /* VnBlendingDarkerColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 58325DAF19027908000A3D0E /* VnBlendingDarkerColor.m */; };
+		58325DB3190279B2000A3D0E /* VnBlendingExclusion.m in Sources */ = {isa = PBXBuildFile; fileRef = 58325DB2190279B2000A3D0E /* VnBlendingExclusion.m */; };
+		58325DB619027A19000A3D0E /* VnBlendingHue.m in Sources */ = {isa = PBXBuildFile; fileRef = 58325DB519027A19000A3D0E /* VnBlendingHue.m */; };
+		58325DB919027AAB000A3D0E /* VnBlendingColorBurn.m in Sources */ = {isa = PBXBuildFile; fileRef = 58325DB819027AAB000A3D0E /* VnBlendingColorBurn.m */; };
+		58325DBC19027B47000A3D0E /* VnBlendingSaturation.m in Sources */ = {isa = PBXBuildFile; fileRef = 58325DBB19027B47000A3D0E /* VnBlendingSaturation.m */; };
 		58F17A5E19020A530038DF34 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 58F17A6019020A530038DF34 /* Localizable.strings */; };
 		58F17A6619020B380038DF34 /* CurrentImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F17A6519020B380038DF34 /* CurrentImage.m */; };
 		58F17A7219020BEC0038DF34 /* UIDevice+extend.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F17A6919020BEC0038DF34 /* UIDevice+extend.m */; };
@@ -89,6 +107,42 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		58325D8719026D7D000A3D0E /* VnBlendingNormal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VnBlendingNormal.h; sourceTree = "<group>"; };
+		58325D8819026D7D000A3D0E /* VnBlendingNormal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VnBlendingNormal.m; sourceTree = "<group>"; };
+		58325D8A19026F5B000A3D0E /* VnBlendingDarken.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VnBlendingDarken.h; sourceTree = "<group>"; };
+		58325D8B19026F5B000A3D0E /* VnBlendingDarken.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VnBlendingDarken.m; sourceTree = "<group>"; };
+		58325D8D19026FDD000A3D0E /* VnBlendingMultiply.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VnBlendingMultiply.h; sourceTree = "<group>"; };
+		58325D8E19026FDD000A3D0E /* VnBlendingMultiply.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VnBlendingMultiply.m; sourceTree = "<group>"; };
+		58325D9019027053000A3D0E /* VnBlendingScreen.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VnBlendingScreen.h; sourceTree = "<group>"; };
+		58325D9119027053000A3D0E /* VnBlendingScreen.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VnBlendingScreen.m; sourceTree = "<group>"; };
+		58325D931902711F000A3D0E /* VnBlendingSoftLight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VnBlendingSoftLight.h; sourceTree = "<group>"; };
+		58325D941902711F000A3D0E /* VnBlendingSoftLight.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VnBlendingSoftLight.m; sourceTree = "<group>"; };
+		58325D96190271A9000A3D0E /* VnBlendingLighten.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VnBlendingLighten.h; sourceTree = "<group>"; };
+		58325D97190271A9000A3D0E /* VnBlendingLighten.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VnBlendingLighten.m; sourceTree = "<group>"; };
+		58325D991902724E000A3D0E /* VnBlendingHardLight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VnBlendingHardLight.h; sourceTree = "<group>"; };
+		58325D9A1902724E000A3D0E /* VnBlendingHardLight.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VnBlendingHardLight.m; sourceTree = "<group>"; };
+		58325D9C190272F9000A3D0E /* VnBlendingVividLight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VnBlendingVividLight.h; sourceTree = "<group>"; };
+		58325D9D190272F9000A3D0E /* VnBlendingVividLight.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VnBlendingVividLight.m; sourceTree = "<group>"; };
+		58325D9F190274A2000A3D0E /* VnBlendingOverlay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VnBlendingOverlay.h; sourceTree = "<group>"; };
+		58325DA0190274A2000A3D0E /* VnBlendingOverlay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VnBlendingOverlay.m; sourceTree = "<group>"; };
+		58325DA2190276AC000A3D0E /* VnBlendingColorDodge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VnBlendingColorDodge.h; sourceTree = "<group>"; };
+		58325DA3190276AC000A3D0E /* VnBlendingColorDodge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VnBlendingColorDodge.m; sourceTree = "<group>"; };
+		58325DA51902774A000A3D0E /* VnBlendingDifference.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VnBlendingDifference.h; sourceTree = "<group>"; };
+		58325DA61902774A000A3D0E /* VnBlendingDifference.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VnBlendingDifference.m; sourceTree = "<group>"; };
+		58325DA8190277DC000A3D0E /* VnBlendingLinearDodge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VnBlendingLinearDodge.h; sourceTree = "<group>"; };
+		58325DA9190277DC000A3D0E /* VnBlendingLinearDodge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VnBlendingLinearDodge.m; sourceTree = "<group>"; };
+		58325DAB1902787B000A3D0E /* VnBlendingColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VnBlendingColor.h; sourceTree = "<group>"; };
+		58325DAC1902787B000A3D0E /* VnBlendingColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VnBlendingColor.m; sourceTree = "<group>"; };
+		58325DAE19027908000A3D0E /* VnBlendingDarkerColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VnBlendingDarkerColor.h; sourceTree = "<group>"; };
+		58325DAF19027908000A3D0E /* VnBlendingDarkerColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VnBlendingDarkerColor.m; sourceTree = "<group>"; };
+		58325DB1190279B2000A3D0E /* VnBlendingExclusion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VnBlendingExclusion.h; sourceTree = "<group>"; };
+		58325DB2190279B2000A3D0E /* VnBlendingExclusion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VnBlendingExclusion.m; sourceTree = "<group>"; };
+		58325DB419027A19000A3D0E /* VnBlendingHue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VnBlendingHue.h; sourceTree = "<group>"; };
+		58325DB519027A19000A3D0E /* VnBlendingHue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VnBlendingHue.m; sourceTree = "<group>"; };
+		58325DB719027AAA000A3D0E /* VnBlendingColorBurn.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VnBlendingColorBurn.h; sourceTree = "<group>"; };
+		58325DB819027AAB000A3D0E /* VnBlendingColorBurn.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VnBlendingColorBurn.m; sourceTree = "<group>"; };
+		58325DBA19027B47000A3D0E /* VnBlendingSaturation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VnBlendingSaturation.h; sourceTree = "<group>"; };
+		58325DBB19027B47000A3D0E /* VnBlendingSaturation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VnBlendingSaturation.m; sourceTree = "<group>"; };
 		58F17A5919020A120038DF34 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Main.strings; sourceTree = "<group>"; };
 		58F17A5A19020A120038DF34 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		58F17A5B19020A120038DF34 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -412,6 +466,42 @@
 		58FD076C19025A3A0005E74E /* VnBlendings */ = {
 			isa = PBXGroup;
 			children = (
+				58325D8719026D7D000A3D0E /* VnBlendingNormal.h */,
+				58325D8819026D7D000A3D0E /* VnBlendingNormal.m */,
+				58325D8A19026F5B000A3D0E /* VnBlendingDarken.h */,
+				58325D8B19026F5B000A3D0E /* VnBlendingDarken.m */,
+				58325D8D19026FDD000A3D0E /* VnBlendingMultiply.h */,
+				58325D8E19026FDD000A3D0E /* VnBlendingMultiply.m */,
+				58325D9019027053000A3D0E /* VnBlendingScreen.h */,
+				58325D9119027053000A3D0E /* VnBlendingScreen.m */,
+				58325D931902711F000A3D0E /* VnBlendingSoftLight.h */,
+				58325D941902711F000A3D0E /* VnBlendingSoftLight.m */,
+				58325D96190271A9000A3D0E /* VnBlendingLighten.h */,
+				58325D97190271A9000A3D0E /* VnBlendingLighten.m */,
+				58325D991902724E000A3D0E /* VnBlendingHardLight.h */,
+				58325D9A1902724E000A3D0E /* VnBlendingHardLight.m */,
+				58325D9C190272F9000A3D0E /* VnBlendingVividLight.h */,
+				58325D9D190272F9000A3D0E /* VnBlendingVividLight.m */,
+				58325D9F190274A2000A3D0E /* VnBlendingOverlay.h */,
+				58325DA0190274A2000A3D0E /* VnBlendingOverlay.m */,
+				58325DA2190276AC000A3D0E /* VnBlendingColorDodge.h */,
+				58325DA3190276AC000A3D0E /* VnBlendingColorDodge.m */,
+				58325DA51902774A000A3D0E /* VnBlendingDifference.h */,
+				58325DA61902774A000A3D0E /* VnBlendingDifference.m */,
+				58325DA8190277DC000A3D0E /* VnBlendingLinearDodge.h */,
+				58325DA9190277DC000A3D0E /* VnBlendingLinearDodge.m */,
+				58325DAB1902787B000A3D0E /* VnBlendingColor.h */,
+				58325DAC1902787B000A3D0E /* VnBlendingColor.m */,
+				58325DAE19027908000A3D0E /* VnBlendingDarkerColor.h */,
+				58325DAF19027908000A3D0E /* VnBlendingDarkerColor.m */,
+				58325DB1190279B2000A3D0E /* VnBlendingExclusion.h */,
+				58325DB2190279B2000A3D0E /* VnBlendingExclusion.m */,
+				58325DB419027A19000A3D0E /* VnBlendingHue.h */,
+				58325DB519027A19000A3D0E /* VnBlendingHue.m */,
+				58325DB719027AAA000A3D0E /* VnBlendingColorBurn.h */,
+				58325DB819027AAB000A3D0E /* VnBlendingColorBurn.m */,
+				58325DBA19027B47000A3D0E /* VnBlendingSaturation.h */,
+				58325DBB19027B47000A3D0E /* VnBlendingSaturation.m */,
 			);
 			name = VnBlendings;
 			sourceTree = "<group>";
@@ -553,38 +643,56 @@
 			buildActionMask = 2147483647;
 			files = (
 				58FD07501902410D0005E74E /* GPUImageReplaceColorFilter.m in Sources */,
+				58325DB3190279B2000A3D0E /* VnBlendingExclusion.m in Sources */,
+				58325DA71902774A000A3D0E /* VnBlendingDifference.m in Sources */,
 				58FD074F1902410D0005E74E /* GPUImageHazyFilter.m in Sources */,
 				58FD077119025A860005E74E /* VnEffect.m in Sources */,
 				58F17A7219020BEC0038DF34 /* UIDevice+extend.m in Sources */,
 				58F17A7419020BEC0038DF34 /* UIView+extend.m in Sources */,
 				58F17A7319020BEC0038DF34 /* UIScreen+extend.m in Sources */,
+				58325D9B1902724E000A3D0E /* VnBlendingHardLight.m in Sources */,
+				58325DAA190277DC000A3D0E /* VnBlendingLinearDodge.m in Sources */,
 				58FD07481902410D0005E74E /* GPUImageVibranceFilter.m in Sources */,
 				58FD07471902410D0005E74E /* GPUImageTumblinLevelsFilter.m in Sources */,
 				58F17A7619020BEC0038DF34 /* UIImage+extend.m in Sources */,
 				58FD073C1902410D0005E74E /* GPULevelsImageFilter.m in Sources */,
 				58FD074B1902410D0005E74E /* GPUImageAllAdjustmentsInOneFilter.m in Sources */,
+				58325D951902711F000A3D0E /* VnBlendingSoftLight.m in Sources */,
 				58FD073B1902410D0005E74E /* GPUAdjustmentsWhiteBalance.m in Sources */,
+				58325DB919027AAB000A3D0E /* VnBlendingColorBurn.m in Sources */,
 				58F17A7519020BEC0038DF34 /* UIScrollView+extend.m in Sources */,
 				58FD073F1902410D0005E74E /* GPUKelvinFilter.m in Sources */,
 				58FD074A1902410D0005E74E /* GPUImageClarityFilter.m in Sources */,
+				58325D9219027053000A3D0E /* VnBlendingScreen.m in Sources */,
 				58FD07401902410D0005E74E /* GPUImageVividLightBlendFilter.m in Sources */,
 				58FD074C1902410D0005E74E /* GPUImageFocusFilter.m in Sources */,
 				58FD07421902410D0005E74E /* GPUImageLinearLightBlendFilter.m in Sources */,
+				58325D8F19026FDD000A3D0E /* VnBlendingMultiply.m in Sources */,
 				58FD073E1902410D0005E74E /* GPUAdjustmentsBrightness.m in Sources */,
+				58325DBC19027B47000A3D0E /* VnBlendingSaturation.m in Sources */,
 				58FD07451902410D0005E74E /* GPUImageVignette2Filter.m in Sources */,
+				58325D8C19026F5B000A3D0E /* VnBlendingDarken.m in Sources */,
+				58325D98190271A9000A3D0E /* VnBlendingLighten.m in Sources */,
+				58325DA4190276AC000A3D0E /* VnBlendingColorDodge.m in Sources */,
 				58FD07431902410D0005E74E /* GPUPhotoFilter.m in Sources */,
 				58FD07411902410D0005E74E /* GPUImageLinearDodgeBlendFilter.m in Sources */,
 				58FD074D1902410D0005E74E /* GPUImageHueBlendAltFIlter.m in Sources */,
+				58325DB019027908000A3D0E /* VnBlendingDarkerColor.m in Sources */,
 				58FD07491902410D0005E74E /* GPUImageNaturalSaturationFilter.m in Sources */,
 				58FD073D1902410D0005E74E /* GPUAdjustmentsSaturation.m in Sources */,
+				58325DAD1902787B000A3D0E /* VnBlendingColor.m in Sources */,
 				58F79C6218FFAE6000C0D2E1 /* ViewController.m in Sources */,
+				58325D9E190272F9000A3D0E /* VnBlendingVividLight.m in Sources */,
 				58FD07051902405C0005E74E /* Processor.m in Sources */,
 				58FD07441902410D0005E74E /* GPUImageDarkerColorBlendFilter.m in Sources */,
 				58F79C5C18FFAE6000C0D2E1 /* AppDelegate.m in Sources */,
+				58325D8919026D7D000A3D0E /* VnBlendingNormal.m in Sources */,
 				58FD07521902410D0005E74E /* GPUImageLensMotionBlurFilter.m in Sources */,
 				58F79C5818FFAE6000C0D2E1 /* main.m in Sources */,
+				58325DA1190274A2000A3D0E /* VnBlendingOverlay.m in Sources */,
 				58FD074E1902410D0005E74E /* GPUImageSaturationBlendAltFilter.m in Sources */,
 				58F17A6619020B380038DF34 /* CurrentImage.m in Sources */,
+				58325DB619027A19000A3D0E /* VnBlendingHue.m in Sources */,
 				58FD07461902410D0005E74E /* GPUimageTumblinBrightnessFilter.m in Sources */,
 				58FD07511902410D0005E74E /* GPUImageNormalBlendBasedOnSkinColorFIlter.m in Sources */,
 			);
