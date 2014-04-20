@@ -45,6 +45,10 @@
 		58F5A71E19041BEF0028D6D2 /* VnViewEditorEffectsPresets.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F5A71D19041BEF0028D6D2 /* VnViewEditorEffectsPresets.m */; };
 		58F5A72119041C1F0028D6D2 /* VnViewEditorEffectsOpacity.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F5A72019041C1F0028D6D2 /* VnViewEditorEffectsOpacity.m */; };
 		58F5A72419041C310028D6D2 /* VnViewEditorEffectsHistory.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F5A72319041C310028D6D2 /* VnViewEditorEffectsHistory.m */; };
+		58F5A72819041F000028D6D2 /* Bg-Portrait.png in Resources */ = {isa = PBXBuildFile; fileRef = 58F5A72719041F000028D6D2 /* Bg-Portrait.png */; };
+		58F5A72A19041F080028D6D2 /* Bg-Portrait@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 58F5A72919041F080028D6D2 /* Bg-Portrait@2x.png */; };
+		58F5A72D19041F110028D6D2 /* Default-Portrait.png in Resources */ = {isa = PBXBuildFile; fileRef = 58F5A72B19041F110028D6D2 /* Default-Portrait.png */; };
+		58F5A72E19041F110028D6D2 /* Default-Portrait@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 58F5A72C19041F110028D6D2 /* Default-Portrait@2x.png */; };
 		58F6DE8C19039A1E00FC96D7 /* home-camera@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 58F6DE8A19039A1E00FC96D7 /* home-camera@2x.png */; };
 		58F79C4C18FFAE6000C0D2E1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58F79C4B18FFAE6000C0D2E1 /* Foundation.framework */; };
 		58F79C4E18FFAE6000C0D2E1 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58F79C4D18FFAE6000C0D2E1 /* CoreGraphics.framework */; };
@@ -178,6 +182,10 @@
 		58F5A72019041C1F0028D6D2 /* VnViewEditorEffectsOpacity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VnViewEditorEffectsOpacity.m; sourceTree = "<group>"; };
 		58F5A72219041C310028D6D2 /* VnViewEditorEffectsHistory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VnViewEditorEffectsHistory.h; sourceTree = "<group>"; };
 		58F5A72319041C310028D6D2 /* VnViewEditorEffectsHistory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VnViewEditorEffectsHistory.m; sourceTree = "<group>"; };
+		58F5A72719041F000028D6D2 /* Bg-Portrait.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Bg-Portrait.png"; sourceTree = "<group>"; };
+		58F5A72919041F080028D6D2 /* Bg-Portrait@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Bg-Portrait@2x.png"; sourceTree = "<group>"; };
+		58F5A72B19041F110028D6D2 /* Default-Portrait.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Portrait.png"; sourceTree = "<group>"; };
+		58F5A72C19041F110028D6D2 /* Default-Portrait@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Portrait@2x.png"; sourceTree = "<group>"; };
 		58F6DE8A19039A1E00FC96D7 /* home-camera@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "home-camera@2x.png"; sourceTree = "<group>"; };
 		58F79C4818FFAE6000C0D2E1 /* Vintage 2.0.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Vintage 2.0.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		58F79C4B18FFAE6000C0D2E1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -274,7 +282,11 @@
 				58F5A70F1903F8CA0028D6D2 /* home-photos@2x.png */,
 				58F6DE8A19039A1E00FC96D7 /* home-camera@2x.png */,
 				5807F59419035DF5009FEA3C /* Bg-568h@2x.png */,
+				58F5A72719041F000028D6D2 /* Bg-Portrait.png */,
+				58F5A72919041F080028D6D2 /* Bg-Portrait@2x.png */,
 				5807F59519035DF5009FEA3C /* Default-568h@2x.png */,
+				58F5A72B19041F110028D6D2 /* Default-Portrait.png */,
+				58F5A72C19041F110028D6D2 /* Default-Portrait@2x.png */,
 			);
 			name = Home;
 			sourceTree = "<group>";
@@ -377,6 +389,13 @@
 			name = Effects;
 			sourceTree = "<group>";
 		};
+		58F5A72519041CA00028D6D2 /* iPad */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = iPad;
+			sourceTree = "<group>";
+		};
 		58F79C3F18FFAE6000C0D2E1 = {
 			isa = PBXGroup;
 			children = (
@@ -418,6 +437,7 @@
 		58F79C5118FFAE6000C0D2E1 /* Vintage 2.0 */ = {
 			isa = PBXGroup;
 			children = (
+				58F5A72519041CA00028D6D2 /* iPad */,
 				58F17A6719020BDD0038DF34 /* Categories */,
 				58FD076D19025A4D0005E74E /* VnFilters */,
 				58FD076C19025A3A0005E74E /* VnBlendings */,
@@ -669,13 +689,17 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				58F5A72819041F000028D6D2 /* Bg-Portrait.png in Resources */,
 				58F79C6418FFAE6000C0D2E1 /* Images.xcassets in Resources */,
 				58F17A5E19020A530038DF34 /* Localizable.strings in Resources */,
+				58F5A72A19041F080028D6D2 /* Bg-Portrait@2x.png in Resources */,
 				58F5A7101903F8CA0028D6D2 /* home-photos@2x.png in Resources */,
 				58F79C5618FFAE6000C0D2E1 /* InfoPlist.strings in Resources */,
 				58F79C5F18FFAE6000C0D2E1 /* Main.storyboard in Resources */,
 				5807F59619035DF5009FEA3C /* Bg-568h@2x.png in Resources */,
 				5807F59719035DF5009FEA3C /* Default-568h@2x.png in Resources */,
+				58F5A72D19041F110028D6D2 /* Default-Portrait.png in Resources */,
+				58F5A72E19041F110028D6D2 /* Default-Portrait@2x.png in Resources */,
 				58F6DE8C19039A1E00FC96D7 /* home-camera@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -877,12 +901,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Vintage 2.0/Vintage 2.0-Prefix.pch";
 				INFOPLIST_FILE = "Vintage 2.0/Vintage 2.0-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
 				USER_HEADER_SEARCH_PATHS = "./GPUImage/framework/**";
 				WRAPPER_EXTENSION = app;
 			};
@@ -893,12 +919,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Vintage 2.0/Vintage 2.0-Prefix.pch";
 				INFOPLIST_FILE = "Vintage 2.0/Vintage 2.0-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
 				USER_HEADER_SEARCH_PATHS = "./GPUImage/framework/**";
 				WRAPPER_EXTENSION = app;
 			};

@@ -27,12 +27,19 @@
     [self.view addSubview:_bgView];
     
     //// Button
+    CGFloat x = 40.0f;
     CGFloat padding = 176.0f;
     if ([UIDevice resolution] == UIDeviceResolution_iPhoneRetina4) {
         padding = 132.0f;
+    }else if([UIDevice resolution] == UIDeviceResolution_iPadStandard){
+        x = 264.0f;
+        padding = 228.0f + 156.0f;
+    }else if([UIDevice resolution] == UIDeviceResolution_iPadRetina){
+        x = 264.0f;
+        padding = 228.0f + 156.0f;
     }
     CGFloat buttonDiam = 100.0f;
-    _photosButton = [[VnButtonHomeSource alloc] initWithFrame:CGRectMake(40.0f, [UIScreen height] - padding, buttonDiam, buttonDiam)];
+    _photosButton = [[VnButtonHomeSource alloc] initWithFrame:CGRectMake(x, [UIScreen height] - padding, buttonDiam, buttonDiam)];
     _photosButton.iconType = VnButtonHomeSourceIconTypePhotos;
     [_photosButton addTarget:self action:@selector(didPressButton:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:_photosButton];
