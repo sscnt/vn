@@ -10,10 +10,20 @@
 
 @implementation VnViewControllerEditor
 
+- (id)init
+{
+    self = [super init];
+    if (self) {
+        _viewManager = [[VnEditorViewManager alloc] init];
+        _viewManager.view = self.view;
+    }
+    return self;
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    [_viewManager layout];
 }
 
 - (void)didFinishResizing

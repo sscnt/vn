@@ -18,9 +18,6 @@
 {
     [super viewDidLoad];
     
-    CGSize screenSize  = [UIScreen mainScreen].bounds.size;
-    LOG_SIZE(screenSize);
-    
     //// Background Image
     _bgView = [[VnViewHomeBg alloc] initWithFrame:self.view.bounds];
     _bgView.type = VnViewHomeBgTypeGeneral;

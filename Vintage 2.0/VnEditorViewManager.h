@@ -11,9 +11,6 @@
 
 
 @interface VnEditorViewManager : NSObject
-{
-    VnEditorSliderManager* _sliderManager;
-}
 
 @property (nonatomic, weak) UIView* view;
 
