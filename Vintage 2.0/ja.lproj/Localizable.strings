@@ -1,0 +1,19 @@
+"Temperature" = "温度";
+"Opacity" = "適用量";
+"Brightness" = "明るさ";
+"OPACITY" = "適用量";
+"EDIT" = "編集";
+
+"TWITTER" = "Twitter";
+"INSTAGRAM" = "Instagram";
+
+"Camera is not available." = "カメラを利用できません。";
+"Error" = "エラー";
+"Saved successfully" = "保存しました";
+
+"TWITTER" = "Twitter";
+"INSTAGRAM" = "Instagram";
+"CAMERA ROLL" = "カメラロールへ保存";
+
+"no_access_to_your_photos" = "写真およびビデオへのアクセス権がありません。iPhoneの「設定」から、「プライバシー」→「写真」→「Winterpix」をオンにしてください。";
+"no_access_due_to_parental_controls" = "写真およびビデオへのアクセス権がありません。ペアレンタルコントロールによりブロックされている可能性があります。";

@@ -23,9 +23,18 @@ enum {
 
 + (UIDeviceResolution)resolution;
 + (BOOL)isIOS6;
++ (BOOL)isIOS5;
++ (BOOL)underIOS7;
 + (BOOL)isiPad;
 + (BOOL)underIPhone5s;
++ (BOOL)isIPhone5;
++ (BOOL)isIPhone5s;
++ (BOOL)underIPhone5;
 + (BOOL)canOpenInstagram;
 + (BOOL)canOpenTwitter;
++ (BOOL)isCurrentLanguageJapanese;
+
+
++ (BOOL)addSkipBackupAttributeToItemAtURL:(NSURL *)URL;
 
 @end

@@ -10,4 +10,6 @@
 
 @interface VnViewControllerEditor : UIViewController
 
+- (void)didFinishResizing;
+
 @end

@@ -50,7 +50,33 @@
 {
     NSArray  *aOsVersions = [[[UIDevice currentDevice]systemVersion] componentsSeparatedByString:@"."];
     NSInteger iOsVersionMajor  = [[aOsVersions objectAtIndex:0] intValue];
-    if (iOsVersionMajor == 7)
+    if (iOsVersionMajor >= 7)
+    {
+        return NO;
+    }
+    if (iOsVersionMajor < 6)
+    {
+        return NO;
+    }
+    return YES;
+}
+
++ (BOOL)underIOS7
+{
+    NSArray  *aOsVersions = [[[UIDevice currentDevice]systemVersion] componentsSeparatedByString:@"."];
+    NSInteger iOsVersionMajor  = [[aOsVersions objectAtIndex:0] intValue];
+    if (iOsVersionMajor < 7)
+    {
+        return YES;
+    }
+    return NO;
+}
+
++ (BOOL)isIOS5
+{
+    NSArray  *aOsVersions = [[[UIDevice currentDevice]systemVersion] componentsSeparatedByString:@"."];
+    NSInteger iOsVersionMajor  = [[aOsVersions objectAtIndex:0] intValue];
+    if (iOsVersionMajor >= 6)
     {
         return NO;
     }
@@ -73,10 +99,61 @@
     NSString *pattern = @"iPhone([0-9]+),";
     NSRegularExpression *regexp = [NSRegularExpression regularExpressionWithPattern:pattern options:0 error:&error];
     NSTextCheckingResult *match = [regexp firstMatchInString:name options:0 range:NSMakeRange(0, name.length)];
-
+    
     if(match.numberOfRanges == 2){
         int version = [[name substringWithRange:[match rangeAtIndex:1]] intValue];
         if(version >= 6.0){
+            return NO;
+        }
+    }
+    return YES;
+}
+
++ (BOOL)underIPhone5
+{
+    NSError *error = nil;
+    NSString* name = [UIDevice machineName];
+    NSString *pattern = @"iPhone([0-9]+),";
+    NSRegularExpression *regexp = [NSRegularExpression regularExpressionWithPattern:pattern options:0 error:&error];
+    NSTextCheckingResult *match = [regexp firstMatchInString:name options:0 range:NSMakeRange(0, name.length)];
+    
+    if(match.numberOfRanges == 2){
+        int version = [[name substringWithRange:[match rangeAtIndex:1]] intValue];
+        if(version >= 5.0){
+            return NO;
+        }
+    }
+    return YES;
+}
+
++ (BOOL)isIPhone5
+{
+    NSError *error = nil;
+    NSString* name = [UIDevice machineName];
+    NSString *pattern = @"iPhone([0-9]+),";
+    NSRegularExpression *regexp = [NSRegularExpression regularExpressionWithPattern:pattern options:0 error:&error];
+    NSTextCheckingResult *match = [regexp firstMatchInString:name options:0 range:NSMakeRange(0, name.length)];
+    
+    if(match.numberOfRanges == 2){
+        int version = [[name substringWithRange:[match rangeAtIndex:1]] intValue];
+        if(version == 5.0){
+            return NO;
+        }
+    }
+    return YES;
+}
+
++ (BOOL)isIPhone5s
+{
+    NSError *error = nil;
+    NSString* name = [UIDevice machineName];
+    NSString *pattern = @"iPhone([0-9]+),";
+    NSRegularExpression *regexp = [NSRegularExpression regularExpressionWithPattern:pattern options:0 error:&error];
+    NSTextCheckingResult *match = [regexp firstMatchInString:name options:0 range:NSMakeRange(0, name.length)];
+    
+    if(match.numberOfRanges == 2){
+        int version = [[name substringWithRange:[match rangeAtIndex:1]] intValue];
+        if(version == 6.0){
             return NO;
         }
     }
@@ -97,6 +174,29 @@
         return YES;
     }
     return NO;
+}
+
++ (BOOL)isCurrentLanguageJapanese
+{
+    NSArray *langs = [NSLocale preferredLanguages];
+    NSString *currentLanguage = [langs objectAtIndex:0];
+    if([currentLanguage compare:@"ja"] == NSOrderedSame) {
+        return YES;
+    }
+    return NO;
+}
+
+
++ (BOOL)addSkipBackupAttributeToItemAtURL:(NSURL *)URL
+{
+    assert([[NSFileManager defaultManager] fileExistsAtPath: [URL path]]);
+    
+    NSError *error = nil;
+    BOOL success = [URL setResourceValue:[NSNumber numberWithBool: YES] forKey: NSURLIsExcludedFromBackupKey error: &error];
+    if(!success){
+        LOG(@"Error excluding %@ from backup %@", [URL lastPathComponent], error);
+    }
+    return success;
 }
 
 @end

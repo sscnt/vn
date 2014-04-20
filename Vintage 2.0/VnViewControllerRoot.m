@@ -26,7 +26,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    [self.navigationBar setHidden:YES];
+    VnViewControllerHome* controller = [[VnViewControllerHome alloc] init];
+    [self pushViewController:controller animated:NO];
 }
 
 - (void)didReceiveMemoryWarning

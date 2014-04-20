@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5807F59619035DF5009FEA3C /* Bg-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5807F59419035DF5009FEA3C /* Bg-568h@2x.png */; };
+		5807F59719035DF5009FEA3C /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5807F59519035DF5009FEA3C /* Default-568h@2x.png */; };
+		5807F59F19036317009FEA3C /* UIHomeBgView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5807F59C19036317009FEA3C /* UIHomeBgView.m */; };
+		5807F5A019036317009FEA3C /* UIHomeSourceButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 5807F59E19036317009FEA3C /* UIHomeSourceButton.m */; };
+		5807F5A319036363009FEA3C /* home-camera@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5807F5A119036363009FEA3C /* home-camera@2x.png */; };
+		5807F5A419036363009FEA3C /* home-photos@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5807F5A219036363009FEA3C /* home-photos@2x.png */; };
+		5807F5A719036588009FEA3C /* UIDevice+extend.m in Sources */ = {isa = PBXBuildFile; fileRef = 5807F5A619036588009FEA3C /* UIDevice+extend.m */; };
 		58325D8619026926000A3D0E /* libGPUImage.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 58FD075A1902416A0005E74E /* libGPUImage.a */; };
 		58325D8919026D7D000A3D0E /* VnBlendingNormal.m in Sources */ = {isa = PBXBuildFile; fileRef = 58325D8819026D7D000A3D0E /* VnBlendingNormal.m */; };
 		58325D8C19026F5B000A3D0E /* VnBlendingDarken.m in Sources */ = {isa = PBXBuildFile; fileRef = 58325D8B19026F5B000A3D0E /* VnBlendingDarken.m */; };
@@ -29,7 +36,6 @@
 		58325DC119027DD4000A3D0E /* VnFilterBrightness.m in Sources */ = {isa = PBXBuildFile; fileRef = 58325DC019027DD4000A3D0E /* VnFilterBrightness.m */; };
 		58F17A5E19020A530038DF34 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 58F17A6019020A530038DF34 /* Localizable.strings */; };
 		58F17A6619020B380038DF34 /* VnCurrentImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F17A6519020B380038DF34 /* VnCurrentImage.m */; };
-		58F17A7219020BEC0038DF34 /* UIDevice+extend.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F17A6919020BEC0038DF34 /* UIDevice+extend.m */; };
 		58F17A7319020BEC0038DF34 /* UIScreen+extend.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F17A6B19020BEC0038DF34 /* UIScreen+extend.m */; };
 		58F17A7419020BEC0038DF34 /* UIView+extend.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F17A6D19020BEC0038DF34 /* UIView+extend.m */; };
 		58F17A7519020BEC0038DF34 /* UIScrollView+extend.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F17A6F19020BEC0038DF34 /* UIScrollView+extend.m */; };
@@ -92,6 +98,16 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5807F59419035DF5009FEA3C /* Bg-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Bg-568h@2x.png"; sourceTree = "<group>"; };
+		5807F59519035DF5009FEA3C /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		5807F59B19036317009FEA3C /* UIHomeBgView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIHomeBgView.h; sourceTree = "<group>"; };
+		5807F59C19036317009FEA3C /* UIHomeBgView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIHomeBgView.m; sourceTree = "<group>"; };
+		5807F59D19036317009FEA3C /* UIHomeSourceButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIHomeSourceButton.h; sourceTree = "<group>"; };
+		5807F59E19036317009FEA3C /* UIHomeSourceButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIHomeSourceButton.m; sourceTree = "<group>"; };
+		5807F5A119036363009FEA3C /* home-camera@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "home-camera@2x.png"; sourceTree = "<group>"; };
+		5807F5A219036363009FEA3C /* home-photos@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "home-photos@2x.png"; sourceTree = "<group>"; };
+		5807F5A519036588009FEA3C /* UIDevice+extend.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIDevice+extend.h"; sourceTree = "<group>"; };
+		5807F5A619036588009FEA3C /* UIDevice+extend.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIDevice+extend.m"; sourceTree = "<group>"; };
 		58325D8719026D7D000A3D0E /* VnBlendingNormal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VnBlendingNormal.h; sourceTree = "<group>"; };
 		58325D8819026D7D000A3D0E /* VnBlendingNormal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VnBlendingNormal.m; sourceTree = "<group>"; };
 		58325D8A19026F5B000A3D0E /* VnBlendingDarken.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VnBlendingDarken.h; sourceTree = "<group>"; };
@@ -137,8 +153,6 @@
 		58F17A6119020A560038DF34 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
 		58F17A6419020B380038DF34 /* VnCurrentImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VnCurrentImage.h; sourceTree = "<group>"; };
 		58F17A6519020B380038DF34 /* VnCurrentImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VnCurrentImage.m; sourceTree = "<group>"; };
-		58F17A6819020BEC0038DF34 /* UIDevice+extend.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIDevice+extend.h"; sourceTree = "<group>"; };
-		58F17A6919020BEC0038DF34 /* UIDevice+extend.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIDevice+extend.m"; sourceTree = "<group>"; };
 		58F17A6A19020BEC0038DF34 /* UIScreen+extend.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScreen+extend.h"; sourceTree = "<group>"; };
 		58F17A6B19020BEC0038DF34 /* UIScreen+extend.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScreen+extend.m"; sourceTree = "<group>"; };
 		58F17A6C19020BEC0038DF34 /* UIView+extend.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+extend.h"; sourceTree = "<group>"; };
@@ -228,6 +242,44 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5807F58F19035A25009FEA3C /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				5807F59319035A47009FEA3C /* Home */,
+			);
+			name = Images;
+			sourceTree = "<group>";
+		};
+		5807F59319035A47009FEA3C /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				5807F5A119036363009FEA3C /* home-camera@2x.png */,
+				5807F5A219036363009FEA3C /* home-photos@2x.png */,
+				5807F59419035DF5009FEA3C /* Bg-568h@2x.png */,
+				5807F59519035DF5009FEA3C /* Default-568h@2x.png */,
+			);
+			name = Home;
+			sourceTree = "<group>";
+		};
+		5807F599190362D4009FEA3C /* UIViews */ = {
+			isa = PBXGroup;
+			children = (
+				5807F59A190362ED009FEA3C /* Home */,
+			);
+			name = UIViews;
+			sourceTree = "<group>";
+		};
+		5807F59A190362ED009FEA3C /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				5807F59B19036317009FEA3C /* UIHomeBgView.h */,
+				5807F59C19036317009FEA3C /* UIHomeBgView.m */,
+				5807F59D19036317009FEA3C /* UIHomeSourceButton.h */,
+				5807F59E19036317009FEA3C /* UIHomeSourceButton.m */,
+			);
+			name = Home;
+			sourceTree = "<group>";
+		};
 		58325DBD19027DAC000A3D0E /* 1.0 */ = {
 			isa = PBXGroup;
 			children = (
@@ -258,8 +310,8 @@
 		58F17A6719020BDD0038DF34 /* Categories */ = {
 			isa = PBXGroup;
 			children = (
-				58F17A6819020BEC0038DF34 /* UIDevice+extend.h */,
-				58F17A6919020BEC0038DF34 /* UIDevice+extend.m */,
+				5807F5A519036588009FEA3C /* UIDevice+extend.h */,
+				5807F5A619036588009FEA3C /* UIDevice+extend.m */,
 				58F17A6A19020BEC0038DF34 /* UIScreen+extend.h */,
 				58F17A6B19020BEC0038DF34 /* UIScreen+extend.m */,
 				58F17A6C19020BEC0038DF34 /* UIView+extend.h */,
@@ -319,7 +371,9 @@
 				58FD0706190240B80005E74E /* VnEffects */,
 				58FD077319025CAC0005E74E /* VnPhotoFilters */,
 				58F17A6219020AA80038DF34 /* Shared */,
+				5807F599190362D4009FEA3C /* UIViews */,
 				58FA3A461902C4CD0070B4B8 /* ViewControllers */,
+				5807F58F19035A25009FEA3C /* Images */,
 				58F79C5A18FFAE6000C0D2E1 /* AppDelegate.h */,
 				58F79C5B18FFAE6000C0D2E1 /* AppDelegate.m */,
 				58F79C5D18FFAE6000C0D2E1 /* Main.storyboard */,
@@ -563,8 +617,12 @@
 			files = (
 				58F79C6418FFAE6000C0D2E1 /* Images.xcassets in Resources */,
 				58F17A5E19020A530038DF34 /* Localizable.strings in Resources */,
+				5807F5A419036363009FEA3C /* home-photos@2x.png in Resources */,
 				58F79C5618FFAE6000C0D2E1 /* InfoPlist.strings in Resources */,
 				58F79C5F18FFAE6000C0D2E1 /* Main.storyboard in Resources */,
+				5807F59619035DF5009FEA3C /* Bg-568h@2x.png in Resources */,
+				5807F59719035DF5009FEA3C /* Default-568h@2x.png in Resources */,
+				5807F5A319036363009FEA3C /* home-camera@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -588,8 +646,8 @@
 				58FA3A421902B78A0070B4B8 /* VnBlendingLinearLight.m in Sources */,
 				58FD077119025A860005E74E /* VnEffect.m in Sources */,
 				58FA3A4F1902C5670070B4B8 /* VnViewControllerTiltShift.m in Sources */,
+				5807F5A719036588009FEA3C /* UIDevice+extend.m in Sources */,
 				58FA3A3C190293A30070B4B8 /* VnFilterLevels.m in Sources */,
-				58F17A7219020BEC0038DF34 /* UIDevice+extend.m in Sources */,
 				58F17A7419020BEC0038DF34 /* UIView+extend.m in Sources */,
 				58F17A7319020BEC0038DF34 /* UIScreen+extend.m in Sources */,
 				58325D9B1902724E000A3D0E /* VnBlendingHardLight.m in Sources */,
@@ -600,7 +658,9 @@
 				58325DC119027DD4000A3D0E /* VnFilterBrightness.m in Sources */,
 				58F17A7519020BEC0038DF34 /* UIScrollView+extend.m in Sources */,
 				58325D9219027053000A3D0E /* VnBlendingScreen.m in Sources */,
+				5807F59F19036317009FEA3C /* UIHomeBgView.m in Sources */,
 				58FA3A451902B9A00070B4B8 /* VnSliderManager.m in Sources */,
+				5807F5A019036317009FEA3C /* UIHomeSourceButton.m in Sources */,
 				58325D8F19026FDD000A3D0E /* VnBlendingMultiply.m in Sources */,
 				58325DBC19027B47000A3D0E /* VnBlendingSaturation.m in Sources */,
 				58325D8C19026F5B000A3D0E /* VnBlendingDarken.m in Sources */,
