@@ -22,8 +22,8 @@
     LOG_SIZE(screenSize);
     
     //// Background Image
-    _bgView = [[UIHomeBgView alloc] initWithFrame:self.view.bounds];
-    _bgView.type = UIHomeBgViewBgTypeBg;
+    _bgView = [[VnViewHomeBg alloc] initWithFrame:self.view.bounds];
+    _bgView.type = VnViewHomeBgTypeGeneral;
     [self.view addSubview:_bgView];
     
     //// Button
@@ -32,24 +32,24 @@
         padding = 132.0f;
     }
     CGFloat buttonDiam = 100.0f;
-    _photosButton = [[UIHomeSourceButton alloc] initWithFrame:CGRectMake(40.0f, [UIScreen height] - padding, buttonDiam, buttonDiam)];
-    _photosButton.iconType = UIHomeSourceButtonIconTypePhotos;
+    _photosButton = [[VnButtonHomeSource alloc] initWithFrame:CGRectMake(40.0f, [UIScreen height] - padding, buttonDiam, buttonDiam)];
+    _photosButton.iconType = VnButtonHomeSourceIconTypePhotos;
     [_photosButton addTarget:self action:@selector(didPressButton:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:_photosButton];
-    _cameraButton = [[UIHomeSourceButton alloc] initWithFrame:CGRectMake([_photosButton right] + 40.0f, [UIScreen height] - padding, buttonDiam, buttonDiam)];
-    _cameraButton.iconType = UIHomeSourceButtonIconTypeCamera;
+    _cameraButton = [[VnButtonHomeSource alloc] initWithFrame:CGRectMake([_photosButton right] + 40.0f, [UIScreen height] - padding, buttonDiam, buttonDiam)];
+    _cameraButton.iconType = VnButtonHomeSourceIconTypeCamera;
     [_cameraButton addTarget:self action:@selector(didPressButton:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:_cameraButton];
     
     
     //// Splash Image
-    _splashView = [[UIHomeBgView alloc] initWithFrame:self.view.bounds];
-    _splashView.type = UIHomeBgViewBgTypeSplash;
+    _splashView = [[VnViewHomeBg alloc] initWithFrame:self.view.bounds];
+    _splashView.type = VnViewHomeBgTypeSplash;
     [self.view addSubview:_splashView];;
     
     
     //// Animate
-    __block UIHomeBgView* _s = _splashView;
+    __block VnViewHomeBg* _s = _splashView;
     [UIView animateWithDuration:0.30f delay:1.0f options:UIViewAnimationOptionCurveLinear animations:^{
         _s.alpha = 0.0f;
     } completion:^(BOOL finished){
@@ -62,7 +62,7 @@
 
 #pragma mark button events
 
-- (void)didPressButton:(UIHomeSourceButton *)sender
+- (void)didPressButton:(VnButtonHomeSource *)sender
 {
     
     ALAuthorizationStatus status = [ALAssetsLibrary authorizationStatus];
@@ -78,12 +78,11 @@
         
     }
     
-    
     switch (sender.iconType) {
-        case UIHomeSourceButtonIconTypeCamera:
+        case VnButtonHomeSourceIconTypeCamera:
             [self didPressCameraButton];
             break;
-        case UIHomeSourceButtonIconTypePhotos:
+        case VnButtonHomeSourceIconTypePhotos:
             [self didPressPhotosButton];
             break;
         default:

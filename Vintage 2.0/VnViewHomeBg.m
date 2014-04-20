@@ -6,9 +6,9 @@
 //  Copyright (c) 2014年 SSC. All rights reserved.
 //
 
-#import "UIHomeBgView.h"
+#import "VnViewHomeBg.h"
 
-@implementation UIHomeBgView
+@implementation VnViewHomeBg
 
 - (id)initWithFrame:(CGRect)frame
 {
@@ -25,14 +25,14 @@
     LOG(@"drawRect!");
     NSString* filename;
     
-    if (_type == UIHomeBgViewBgTypeSplash) {
+    if (_type == VnViewHomeBgTypeSplash) {
         if ([UIDevice resolution] == UIDeviceResolution_iPhoneRetina4) {
             filename = @"Default@2x.png";
         }else if([UIDevice resolution] == UIDeviceResolution_iPhoneRetina5){
             filename = @"Default-568h@2x.png";
         }
         
-    }else if(_type == UIHomeBgViewBgTypeBg){
+    }else if(_type == VnViewHomeBgTypeGeneral){
         if ([UIDevice resolution] == UIDeviceResolution_iPhoneRetina4) {
             filename = @"Bg@2x.png";
         }else if([UIDevice resolution] == UIDeviceResolution_iPhoneRetina5){

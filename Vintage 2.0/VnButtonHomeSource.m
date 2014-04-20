@@ -6,9 +6,9 @@
 //  Copyright (c) 2014年 SSC. All rights reserved.
 //
 
-#import "UIHomeSourceButton.h"
+#import "VnButtonHomeSource.h"
 
-@implementation UIHomeSourceButton
+@implementation VnButtonHomeSource
 
 - (id)initWithFrame:(CGRect)frame
 {
@@ -19,15 +19,15 @@
     return self;
 }
 
-- (void)setIconType:(UIHomeSourceButtonIconType)iconType
+- (void)setIconType:(VnButtonHomeSourceIconType)iconType
 {
     _iconType = iconType;
     UIImage* iconImage;
     switch (iconType) {
-        case UIHomeSourceButtonIconTypeCamera:
+        case VnButtonHomeSourceIconTypeCamera:
             iconImage = [UIImage imageNamed:@"home-camera.png"];
             break;
-        case UIHomeSourceButtonIconTypePhotos:
+        case VnButtonHomeSourceIconTypePhotos:
             iconImage = [UIImage imageNamed:@"home-photos.png"];
             break;
         default:
@@ -53,7 +53,7 @@
 {
     //// Color Declarations
     UIColor* color = [UIColor colorWithRed: 0 green: 0 blue: 0 alpha: 0.0f];
-    UIColor* color2 = [UIColor colorWithRed: 1 green: 1 blue: 1 alpha: 0.60f];
+    UIColor* color2 = [UIColor colorWithRed: 1 green: 1 blue: 1 alpha: 0.70f];
     
     //// Oval Drawing
     UIBezierPath* ovalPath = [UIBezierPath bezierPathWithOvalInRect: CGRectMake(2.0f, 2.0f, rect.size.width - 4.0f, rect.size.height - 4.0f)];

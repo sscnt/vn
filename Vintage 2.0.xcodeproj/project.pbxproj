@@ -9,10 +9,8 @@
 /* Begin PBXBuildFile section */
 		5807F59619035DF5009FEA3C /* Bg-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5807F59419035DF5009FEA3C /* Bg-568h@2x.png */; };
 		5807F59719035DF5009FEA3C /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5807F59519035DF5009FEA3C /* Default-568h@2x.png */; };
-		5807F59F19036317009FEA3C /* UIHomeBgView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5807F59C19036317009FEA3C /* UIHomeBgView.m */; };
-		5807F5A019036317009FEA3C /* UIHomeSourceButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 5807F59E19036317009FEA3C /* UIHomeSourceButton.m */; };
-		5807F5A319036363009FEA3C /* home-camera@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5807F5A119036363009FEA3C /* home-camera@2x.png */; };
-		5807F5A419036363009FEA3C /* home-photos@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5807F5A219036363009FEA3C /* home-photos@2x.png */; };
+		5807F59F19036317009FEA3C /* VnViewHomeBg.m in Sources */ = {isa = PBXBuildFile; fileRef = 5807F59C19036317009FEA3C /* VnViewHomeBg.m */; };
+		5807F5A019036317009FEA3C /* VnButtonHomeSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 5807F59E19036317009FEA3C /* VnButtonHomeSource.m */; };
 		5807F5A719036588009FEA3C /* UIDevice+extend.m in Sources */ = {isa = PBXBuildFile; fileRef = 5807F5A619036588009FEA3C /* UIDevice+extend.m */; };
 		58325D8619026926000A3D0E /* libGPUImage.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 58FD075A1902416A0005E74E /* libGPUImage.a */; };
 		58325D8919026D7D000A3D0E /* VnBlendingNormal.m in Sources */ = {isa = PBXBuildFile; fileRef = 58325D8819026D7D000A3D0E /* VnBlendingNormal.m */; };
@@ -40,6 +38,14 @@
 		58F17A7419020BEC0038DF34 /* UIView+extend.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F17A6D19020BEC0038DF34 /* UIView+extend.m */; };
 		58F17A7519020BEC0038DF34 /* UIScrollView+extend.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F17A6F19020BEC0038DF34 /* UIScrollView+extend.m */; };
 		58F17A7619020BEC0038DF34 /* UIImage+extend.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F17A7119020BEC0038DF34 /* UIImage+extend.m */; };
+		58F51B471903820700B8E976 /* VnBoolean.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F51B461903820700B8E976 /* VnBoolean.m */; };
+		58F5A7101903F8CA0028D6D2 /* home-photos@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 58F5A70F1903F8CA0028D6D2 /* home-photos@2x.png */; };
+		58F5A71619040B9C0028D6D2 /* VnCurrentSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F5A71519040B9C0028D6D2 /* VnCurrentSettings.m */; };
+		58F5A71A19040EFB0028D6D2 /* VnEditorViewManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F5A71919040EFB0028D6D2 /* VnEditorViewManager.m */; };
+		58F5A71E19041BEF0028D6D2 /* VnViewEditorEffectsPresets.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F5A71D19041BEF0028D6D2 /* VnViewEditorEffectsPresets.m */; };
+		58F5A72119041C1F0028D6D2 /* VnViewEditorEffectsOpacity.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F5A72019041C1F0028D6D2 /* VnViewEditorEffectsOpacity.m */; };
+		58F5A72419041C310028D6D2 /* VnViewEditorEffectsHistory.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F5A72319041C310028D6D2 /* VnViewEditorEffectsHistory.m */; };
+		58F6DE8C19039A1E00FC96D7 /* home-camera@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 58F6DE8A19039A1E00FC96D7 /* home-camera@2x.png */; };
 		58F79C4C18FFAE6000C0D2E1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58F79C4B18FFAE6000C0D2E1 /* Foundation.framework */; };
 		58F79C4E18FFAE6000C0D2E1 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58F79C4D18FFAE6000C0D2E1 /* CoreGraphics.framework */; };
 		58F79C5018FFAE6000C0D2E1 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58F79C4F18FFAE6000C0D2E1 /* UIKit.framework */; };
@@ -57,7 +63,7 @@
 		58FA3A3C190293A30070B4B8 /* VnFilterLevels.m in Sources */ = {isa = PBXBuildFile; fileRef = 58FA3A3B190293A30070B4B8 /* VnFilterLevels.m */; };
 		58FA3A3F1902B2740070B4B8 /* VnFilterTemperature.m in Sources */ = {isa = PBXBuildFile; fileRef = 58FA3A3E1902B2740070B4B8 /* VnFilterTemperature.m */; };
 		58FA3A421902B78A0070B4B8 /* VnBlendingLinearLight.m in Sources */ = {isa = PBXBuildFile; fileRef = 58FA3A411902B78A0070B4B8 /* VnBlendingLinearLight.m */; };
-		58FA3A451902B9A00070B4B8 /* VnSliderManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 58FA3A441902B9A00070B4B8 /* VnSliderManager.m */; };
+		58FA3A451902B9A00070B4B8 /* VnEditorSliderManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 58FA3A441902B9A00070B4B8 /* VnEditorSliderManager.m */; };
 		58FA3A491902C4F90070B4B8 /* VnViewControllerEditor.m in Sources */ = {isa = PBXBuildFile; fileRef = 58FA3A481902C4F90070B4B8 /* VnViewControllerEditor.m */; };
 		58FA3A4C1902C5270070B4B8 /* VnViewControllerExport.m in Sources */ = {isa = PBXBuildFile; fileRef = 58FA3A4B1902C5270070B4B8 /* VnViewControllerExport.m */; };
 		58FA3A4F1902C5670070B4B8 /* VnViewControllerTiltShift.m in Sources */ = {isa = PBXBuildFile; fileRef = 58FA3A4E1902C5670070B4B8 /* VnViewControllerTiltShift.m */; };
@@ -100,12 +106,10 @@
 /* Begin PBXFileReference section */
 		5807F59419035DF5009FEA3C /* Bg-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Bg-568h@2x.png"; sourceTree = "<group>"; };
 		5807F59519035DF5009FEA3C /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
-		5807F59B19036317009FEA3C /* UIHomeBgView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIHomeBgView.h; sourceTree = "<group>"; };
-		5807F59C19036317009FEA3C /* UIHomeBgView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIHomeBgView.m; sourceTree = "<group>"; };
-		5807F59D19036317009FEA3C /* UIHomeSourceButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIHomeSourceButton.h; sourceTree = "<group>"; };
-		5807F59E19036317009FEA3C /* UIHomeSourceButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIHomeSourceButton.m; sourceTree = "<group>"; };
-		5807F5A119036363009FEA3C /* home-camera@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "home-camera@2x.png"; sourceTree = "<group>"; };
-		5807F5A219036363009FEA3C /* home-photos@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "home-photos@2x.png"; sourceTree = "<group>"; };
+		5807F59B19036317009FEA3C /* VnViewHomeBg.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VnViewHomeBg.h; sourceTree = "<group>"; };
+		5807F59C19036317009FEA3C /* VnViewHomeBg.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VnViewHomeBg.m; sourceTree = "<group>"; };
+		5807F59D19036317009FEA3C /* VnButtonHomeSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VnButtonHomeSource.h; sourceTree = "<group>"; };
+		5807F59E19036317009FEA3C /* VnButtonHomeSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VnButtonHomeSource.m; sourceTree = "<group>"; };
 		5807F5A519036588009FEA3C /* UIDevice+extend.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIDevice+extend.h"; sourceTree = "<group>"; };
 		5807F5A619036588009FEA3C /* UIDevice+extend.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIDevice+extend.m"; sourceTree = "<group>"; };
 		58325D8719026D7D000A3D0E /* VnBlendingNormal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VnBlendingNormal.h; sourceTree = "<group>"; };
@@ -161,6 +165,20 @@
 		58F17A6F19020BEC0038DF34 /* UIScrollView+extend.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+extend.m"; sourceTree = "<group>"; };
 		58F17A7019020BEC0038DF34 /* UIImage+extend.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+extend.h"; sourceTree = "<group>"; };
 		58F17A7119020BEC0038DF34 /* UIImage+extend.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+extend.m"; sourceTree = "<group>"; };
+		58F51B451903820700B8E976 /* VnBoolean.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VnBoolean.h; sourceTree = "<group>"; };
+		58F51B461903820700B8E976 /* VnBoolean.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VnBoolean.m; sourceTree = "<group>"; };
+		58F5A70F1903F8CA0028D6D2 /* home-photos@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "home-photos@2x.png"; sourceTree = "<group>"; };
+		58F5A71419040B9C0028D6D2 /* VnCurrentSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VnCurrentSettings.h; sourceTree = "<group>"; };
+		58F5A71519040B9C0028D6D2 /* VnCurrentSettings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VnCurrentSettings.m; sourceTree = "<group>"; };
+		58F5A71819040EFB0028D6D2 /* VnEditorViewManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VnEditorViewManager.h; sourceTree = "<group>"; };
+		58F5A71919040EFB0028D6D2 /* VnEditorViewManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VnEditorViewManager.m; sourceTree = "<group>"; };
+		58F5A71C19041BEF0028D6D2 /* VnViewEditorEffectsPresets.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VnViewEditorEffectsPresets.h; sourceTree = "<group>"; };
+		58F5A71D19041BEF0028D6D2 /* VnViewEditorEffectsPresets.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VnViewEditorEffectsPresets.m; sourceTree = "<group>"; };
+		58F5A71F19041C1F0028D6D2 /* VnViewEditorEffectsOpacity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VnViewEditorEffectsOpacity.h; sourceTree = "<group>"; };
+		58F5A72019041C1F0028D6D2 /* VnViewEditorEffectsOpacity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VnViewEditorEffectsOpacity.m; sourceTree = "<group>"; };
+		58F5A72219041C310028D6D2 /* VnViewEditorEffectsHistory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VnViewEditorEffectsHistory.h; sourceTree = "<group>"; };
+		58F5A72319041C310028D6D2 /* VnViewEditorEffectsHistory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VnViewEditorEffectsHistory.m; sourceTree = "<group>"; };
+		58F6DE8A19039A1E00FC96D7 /* home-camera@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "home-camera@2x.png"; sourceTree = "<group>"; };
 		58F79C4818FFAE6000C0D2E1 /* Vintage 2.0.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Vintage 2.0.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		58F79C4B18FFAE6000C0D2E1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		58F79C4D18FFAE6000C0D2E1 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -186,8 +204,8 @@
 		58FA3A3E1902B2740070B4B8 /* VnFilterTemperature.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VnFilterTemperature.m; sourceTree = "<group>"; };
 		58FA3A401902B78A0070B4B8 /* VnBlendingLinearLight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VnBlendingLinearLight.h; sourceTree = "<group>"; };
 		58FA3A411902B78A0070B4B8 /* VnBlendingLinearLight.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VnBlendingLinearLight.m; sourceTree = "<group>"; };
-		58FA3A431902B9A00070B4B8 /* VnSliderManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VnSliderManager.h; sourceTree = "<group>"; };
-		58FA3A441902B9A00070B4B8 /* VnSliderManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VnSliderManager.m; sourceTree = "<group>"; };
+		58FA3A431902B9A00070B4B8 /* VnEditorSliderManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VnEditorSliderManager.h; sourceTree = "<group>"; };
+		58FA3A441902B9A00070B4B8 /* VnEditorSliderManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VnEditorSliderManager.m; sourceTree = "<group>"; };
 		58FA3A471902C4F90070B4B8 /* VnViewControllerEditor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VnViewControllerEditor.h; sourceTree = "<group>"; };
 		58FA3A481902C4F90070B4B8 /* VnViewControllerEditor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VnViewControllerEditor.m; sourceTree = "<group>"; };
 		58FA3A4A1902C5270070B4B8 /* VnViewControllerExport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VnViewControllerExport.h; sourceTree = "<group>"; };
@@ -253,8 +271,8 @@
 		5807F59319035A47009FEA3C /* Home */ = {
 			isa = PBXGroup;
 			children = (
-				5807F5A119036363009FEA3C /* home-camera@2x.png */,
-				5807F5A219036363009FEA3C /* home-photos@2x.png */,
+				58F5A70F1903F8CA0028D6D2 /* home-photos@2x.png */,
+				58F6DE8A19039A1E00FC96D7 /* home-camera@2x.png */,
 				5807F59419035DF5009FEA3C /* Bg-568h@2x.png */,
 				5807F59519035DF5009FEA3C /* Default-568h@2x.png */,
 			);
@@ -264,6 +282,7 @@
 		5807F599190362D4009FEA3C /* UIViews */ = {
 			isa = PBXGroup;
 			children = (
+				58F51B4B19038FCD00B8E976 /* Editor */,
 				5807F59A190362ED009FEA3C /* Home */,
 			);
 			name = UIViews;
@@ -272,10 +291,10 @@
 		5807F59A190362ED009FEA3C /* Home */ = {
 			isa = PBXGroup;
 			children = (
-				5807F59B19036317009FEA3C /* UIHomeBgView.h */,
-				5807F59C19036317009FEA3C /* UIHomeBgView.m */,
-				5807F59D19036317009FEA3C /* UIHomeSourceButton.h */,
-				5807F59E19036317009FEA3C /* UIHomeSourceButton.m */,
+				5807F59B19036317009FEA3C /* VnViewHomeBg.h */,
+				5807F59C19036317009FEA3C /* VnViewHomeBg.m */,
+				5807F59D19036317009FEA3C /* VnButtonHomeSource.h */,
+				5807F59E19036317009FEA3C /* VnButtonHomeSource.m */,
 			);
 			name = Home;
 			sourceTree = "<group>";
@@ -301,8 +320,10 @@
 				58FD07041902405C0005E74E /* VnProcessor.m */,
 				58F17A6419020B380038DF34 /* VnCurrentImage.h */,
 				58F17A6519020B380038DF34 /* VnCurrentImage.m */,
-				58FA3A431902B9A00070B4B8 /* VnSliderManager.h */,
-				58FA3A441902B9A00070B4B8 /* VnSliderManager.m */,
+				58F51B451903820700B8E976 /* VnBoolean.h */,
+				58F51B461903820700B8E976 /* VnBoolean.m */,
+				58F5A71419040B9C0028D6D2 /* VnCurrentSettings.h */,
+				58F5A71519040B9C0028D6D2 /* VnCurrentSettings.m */,
 			);
 			name = Shared;
 			sourceTree = "<group>";
@@ -322,6 +343,38 @@
 				58F17A7119020BEC0038DF34 /* UIImage+extend.m */,
 			);
 			name = Categories;
+			sourceTree = "<group>";
+		};
+		58F51B4B19038FCD00B8E976 /* Editor */ = {
+			isa = PBXGroup;
+			children = (
+				58F5A71B19041BAA0028D6D2 /* Effects */,
+			);
+			name = Editor;
+			sourceTree = "<group>";
+		};
+		58F5A71719040C9A0028D6D2 /* ViewManager */ = {
+			isa = PBXGroup;
+			children = (
+				58FA3A431902B9A00070B4B8 /* VnEditorSliderManager.h */,
+				58FA3A441902B9A00070B4B8 /* VnEditorSliderManager.m */,
+				58F5A71819040EFB0028D6D2 /* VnEditorViewManager.h */,
+				58F5A71919040EFB0028D6D2 /* VnEditorViewManager.m */,
+			);
+			name = ViewManager;
+			sourceTree = "<group>";
+		};
+		58F5A71B19041BAA0028D6D2 /* Effects */ = {
+			isa = PBXGroup;
+			children = (
+				58F5A71C19041BEF0028D6D2 /* VnViewEditorEffectsPresets.h */,
+				58F5A71D19041BEF0028D6D2 /* VnViewEditorEffectsPresets.m */,
+				58F5A71F19041C1F0028D6D2 /* VnViewEditorEffectsOpacity.h */,
+				58F5A72019041C1F0028D6D2 /* VnViewEditorEffectsOpacity.m */,
+				58F5A72219041C310028D6D2 /* VnViewEditorEffectsHistory.h */,
+				58F5A72319041C310028D6D2 /* VnViewEditorEffectsHistory.m */,
+			);
+			name = Effects;
 			sourceTree = "<group>";
 		};
 		58F79C3F18FFAE6000C0D2E1 = {
@@ -371,6 +424,7 @@
 				58FD0706190240B80005E74E /* VnEffects */,
 				58FD077319025CAC0005E74E /* VnPhotoFilters */,
 				58F17A6219020AA80038DF34 /* Shared */,
+				58F5A71719040C9A0028D6D2 /* ViewManager */,
 				5807F599190362D4009FEA3C /* UIViews */,
 				58FA3A461902C4CD0070B4B8 /* ViewControllers */,
 				5807F58F19035A25009FEA3C /* Images */,
@@ -617,12 +671,12 @@
 			files = (
 				58F79C6418FFAE6000C0D2E1 /* Images.xcassets in Resources */,
 				58F17A5E19020A530038DF34 /* Localizable.strings in Resources */,
-				5807F5A419036363009FEA3C /* home-photos@2x.png in Resources */,
+				58F5A7101903F8CA0028D6D2 /* home-photos@2x.png in Resources */,
 				58F79C5618FFAE6000C0D2E1 /* InfoPlist.strings in Resources */,
 				58F79C5F18FFAE6000C0D2E1 /* Main.storyboard in Resources */,
 				5807F59619035DF5009FEA3C /* Bg-568h@2x.png in Resources */,
 				5807F59719035DF5009FEA3C /* Default-568h@2x.png in Resources */,
-				5807F5A319036363009FEA3C /* home-camera@2x.png in Resources */,
+				58F6DE8C19039A1E00FC96D7 /* home-camera@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -647,25 +701,30 @@
 				58FD077119025A860005E74E /* VnEffect.m in Sources */,
 				58FA3A4F1902C5670070B4B8 /* VnViewControllerTiltShift.m in Sources */,
 				5807F5A719036588009FEA3C /* UIDevice+extend.m in Sources */,
+				58F5A72119041C1F0028D6D2 /* VnViewEditorEffectsOpacity.m in Sources */,
 				58FA3A3C190293A30070B4B8 /* VnFilterLevels.m in Sources */,
 				58F17A7419020BEC0038DF34 /* UIView+extend.m in Sources */,
 				58F17A7319020BEC0038DF34 /* UIScreen+extend.m in Sources */,
 				58325D9B1902724E000A3D0E /* VnBlendingHardLight.m in Sources */,
 				58325DAA190277DC000A3D0E /* VnBlendingLinearDodge.m in Sources */,
 				58F17A7619020BEC0038DF34 /* UIImage+extend.m in Sources */,
+				58F51B471903820700B8E976 /* VnBoolean.m in Sources */,
 				58325D951902711F000A3D0E /* VnBlendingSoftLight.m in Sources */,
 				58325DB919027AAB000A3D0E /* VnBlendingColorBurn.m in Sources */,
 				58325DC119027DD4000A3D0E /* VnFilterBrightness.m in Sources */,
 				58F17A7519020BEC0038DF34 /* UIScrollView+extend.m in Sources */,
 				58325D9219027053000A3D0E /* VnBlendingScreen.m in Sources */,
-				5807F59F19036317009FEA3C /* UIHomeBgView.m in Sources */,
-				58FA3A451902B9A00070B4B8 /* VnSliderManager.m in Sources */,
-				5807F5A019036317009FEA3C /* UIHomeSourceButton.m in Sources */,
+				5807F59F19036317009FEA3C /* VnViewHomeBg.m in Sources */,
+				58FA3A451902B9A00070B4B8 /* VnEditorSliderManager.m in Sources */,
+				5807F5A019036317009FEA3C /* VnButtonHomeSource.m in Sources */,
 				58325D8F19026FDD000A3D0E /* VnBlendingMultiply.m in Sources */,
 				58325DBC19027B47000A3D0E /* VnBlendingSaturation.m in Sources */,
 				58325D8C19026F5B000A3D0E /* VnBlendingDarken.m in Sources */,
+				58F5A71619040B9C0028D6D2 /* VnCurrentSettings.m in Sources */,
 				58325D98190271A9000A3D0E /* VnBlendingLighten.m in Sources */,
 				58FA3A491902C4F90070B4B8 /* VnViewControllerEditor.m in Sources */,
+				58F5A71E19041BEF0028D6D2 /* VnViewEditorEffectsPresets.m in Sources */,
+				58F5A72419041C310028D6D2 /* VnViewEditorEffectsHistory.m in Sources */,
 				58325DA4190276AC000A3D0E /* VnBlendingColorDodge.m in Sources */,
 				58FA3A521902D2D70070B4B8 /* VnViewControllerRoot.m in Sources */,
 				58325DB019027908000A3D0E /* VnBlendingDarkerColor.m in Sources */,
@@ -676,6 +735,7 @@
 				58FD07051902405C0005E74E /* VnProcessor.m in Sources */,
 				58F79C5C18FFAE6000C0D2E1 /* AppDelegate.m in Sources */,
 				58325D8919026D7D000A3D0E /* VnBlendingNormal.m in Sources */,
+				58F5A71A19040EFB0028D6D2 /* VnEditorViewManager.m in Sources */,
 				58FA3A3F1902B2740070B4B8 /* VnFilterTemperature.m in Sources */,
 				58F79C5818FFAE6000C0D2E1 /* main.m in Sources */,
 				58325DA1190274A2000A3D0E /* VnBlendingOverlay.m in Sources */,

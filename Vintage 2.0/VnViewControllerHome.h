@@ -8,19 +8,19 @@
 
 #import <UIKit/UIKit.h>
 #import <AssetsLibrary/AssetsLibrary.h>
-#import "UIHomeBgView.h"
-#import "UIHomeSourceButton.h"
+#import "VnViewHomeBg.h"
+#import "VnButtonHomeSource.h"
 #import "VnViewControllerEditor.h"
 
 @interface VnViewControllerHome : UIViewController <UINavigationControllerDelegate, UIImagePickerControllerDelegate>
 {
-    UIHomeBgView* _bgView;
-    UIHomeBgView* _splashView;
-    UIHomeSourceButton* _photosButton;
-    UIHomeSourceButton* _cameraButton;
+    VnViewHomeBg* _bgView;
+    VnViewHomeBg* _splashView;
+    VnButtonHomeSource* _photosButton;
+    VnButtonHomeSource* _cameraButton;
 }
 
-- (void)didPressButton:(UIHomeSourceButton*)sender;
+- (void)didPressButton:(VnButtonHomeSource*)sender;
 
 - (void)didPressCameraButton;
 - (void)didPressPhotosButton;

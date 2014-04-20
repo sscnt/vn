@@ -7,8 +7,12 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "VnEditorViewManager.h"
 
 @interface VnViewControllerEditor : UIViewController
+{
+    VnEditorViewManager* _viewManager;
+}
 
 - (void)didFinishResizing;
 
