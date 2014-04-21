@@ -131,3 +131,4 @@ typedef NS_ENUM(NSInteger, VnBlendingMode){
 #import "VnProcessor.h"
 #import "VnBoolean.h"
 #import "VnEditorSliderManager.h"
+#import "VnEditorViewManager.h"

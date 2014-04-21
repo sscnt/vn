@@ -16,6 +16,8 @@
 
 @interface VnProcessor : NSObject
 
++ (VnProcessor*)instance;
+
 @property (nonatomic, assign) BOOL faceDetected;
 @property (nonatomic, assign) float opacity;
 @property (nonatomic, assign) float temp;

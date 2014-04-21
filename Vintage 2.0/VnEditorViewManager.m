@@ -44,4 +44,9 @@ static VnEditorViewManager* sharedVnEditorViewManager = nil;
     return self;
 }
 
+- (void)layout
+{
+    
+}
+
 @end

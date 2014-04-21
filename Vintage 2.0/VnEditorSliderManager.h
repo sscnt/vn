@@ -10,4 +10,6 @@
 
 @interface VnEditorSliderManager : NSObject
 
++ (VnEditorSliderManager*)instance;
+
 @end

@@ -18,23 +18,17 @@
 {
     [super viewDidLoad];
     
+    CGSize screenSize = [UIScreen screenSize];
+    
     //// Background Image
     _bgView = [[VnViewHomeBg alloc] initWithFrame:self.view.bounds];
     _bgView.type = VnViewHomeBgTypeGeneral;
     [self.view addSubview:_bgView];
     
     //// Button
-    CGFloat x = 40.0f;
-    CGFloat padding = 176.0f;
-    if ([UIDevice resolution] == UIDeviceResolution_iPhoneRetina4) {
-        padding = 132.0f;
-    }else if([UIDevice resolution] == UIDeviceResolution_iPadStandard){
-        x = 264.0f;
-        padding = 228.0f + 156.0f;
-    }else if([UIDevice resolution] == UIDeviceResolution_iPadRetina){
-        x = 264.0f;
-        padding = 228.0f + 156.0f;
-    }
+    CGFloat x = (screenSize.width - 240.0f) / 2.0f;
+    CGFloat padding = (screenSize.height - 568.0f) / 2.0f + 176.0f;
+
     CGFloat buttonDiam = 100.0f;
     _photosButton = [[VnButtonHomeSource alloc] initWithFrame:CGRectMake(x, [UIScreen height] - padding, buttonDiam, buttonDiam)];
     _photosButton.iconType = VnButtonHomeSourceIconTypePhotos;

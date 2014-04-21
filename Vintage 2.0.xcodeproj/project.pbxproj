@@ -12,6 +12,8 @@
 		5807F59F19036317009FEA3C /* VnViewHomeBg.m in Sources */ = {isa = PBXBuildFile; fileRef = 5807F59C19036317009FEA3C /* VnViewHomeBg.m */; };
 		5807F5A019036317009FEA3C /* VnButtonHomeSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 5807F59E19036317009FEA3C /* VnButtonHomeSource.m */; };
 		5807F5A719036588009FEA3C /* UIDevice+extend.m in Sources */ = {isa = PBXBuildFile; fileRef = 5807F5A619036588009FEA3C /* UIDevice+extend.m */; };
+		5811B9DA1904BFD000D4155C /* Bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5811B9D91904BFD000D4155C /* Bg@2x.png */; };
+		5811B9DC1904BFD900D4155C /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5811B9DB1904BFD900D4155C /* Default@2x.png */; };
 		58325D8619026926000A3D0E /* libGPUImage.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 58FD075A1902416A0005E74E /* libGPUImage.a */; };
 		58325D8919026D7D000A3D0E /* VnBlendingNormal.m in Sources */ = {isa = PBXBuildFile; fileRef = 58325D8819026D7D000A3D0E /* VnBlendingNormal.m */; };
 		58325D8C19026F5B000A3D0E /* VnBlendingDarken.m in Sources */ = {isa = PBXBuildFile; fileRef = 58325D8B19026F5B000A3D0E /* VnBlendingDarken.m */; };
@@ -119,6 +121,8 @@
 		5807F59E19036317009FEA3C /* VnButtonHomeSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VnButtonHomeSource.m; sourceTree = "<group>"; };
 		5807F5A519036588009FEA3C /* UIDevice+extend.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIDevice+extend.h"; sourceTree = "<group>"; };
 		5807F5A619036588009FEA3C /* UIDevice+extend.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIDevice+extend.m"; sourceTree = "<group>"; };
+		5811B9D91904BFD000D4155C /* Bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Bg@2x.png"; sourceTree = "<group>"; };
+		5811B9DB1904BFD900D4155C /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		58325D8719026D7D000A3D0E /* VnBlendingNormal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VnBlendingNormal.h; sourceTree = "<group>"; };
 		58325D8819026D7D000A3D0E /* VnBlendingNormal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VnBlendingNormal.m; sourceTree = "<group>"; };
 		58325D8A19026F5B000A3D0E /* VnBlendingDarken.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VnBlendingDarken.h; sourceTree = "<group>"; };
@@ -290,9 +294,11 @@
 			children = (
 				58F5A70F1903F8CA0028D6D2 /* home-photos@2x.png */,
 				58F6DE8A19039A1E00FC96D7 /* home-camera@2x.png */,
+				5811B9D91904BFD000D4155C /* Bg@2x.png */,
 				5807F59419035DF5009FEA3C /* Bg-568h@2x.png */,
 				58F5A72719041F000028D6D2 /* Bg-Portrait.png */,
 				58F5A72919041F080028D6D2 /* Bg-Portrait@2x.png */,
+				5811B9DB1904BFD900D4155C /* Default@2x.png */,
 				5807F59519035DF5009FEA3C /* Default-568h@2x.png */,
 				58F5A72B19041F110028D6D2 /* Default-Portrait.png */,
 				58F5A72C19041F110028D6D2 /* Default-Portrait@2x.png */,
@@ -721,6 +727,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				58F5A72819041F000028D6D2 /* Bg-Portrait.png in Resources */,
+				5811B9DA1904BFD000D4155C /* Bg@2x.png in Resources */,
 				58F79C6418FFAE6000C0D2E1 /* Images.xcassets in Resources */,
 				58F17A5E19020A530038DF34 /* Localizable.strings in Resources */,
 				58F5A72A19041F080028D6D2 /* Bg-Portrait@2x.png in Resources */,
@@ -731,6 +738,7 @@
 				5807F59719035DF5009FEA3C /* Default-568h@2x.png in Resources */,
 				58F5A72D19041F110028D6D2 /* Default-Portrait.png in Resources */,
 				58F5A72E19041F110028D6D2 /* Default-Portrait@2x.png in Resources */,
+				5811B9DC1904BFD900D4155C /* Default@2x.png in Resources */,
 				58F6DE8C19039A1E00FC96D7 /* home-camera@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -935,13 +943,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Toshiki Nakanishi (WRHUFP3254)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Vintage 2.0/Vintage 2.0-Prefix.pch";
 				INFOPLIST_FILE = "Vintage 2.0/Vintage 2.0-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "7ED7CE3C-6919-4791-974C-3C54E6DF0C9E";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				USER_HEADER_SEARCH_PATHS = "./GPUImage/framework/**";
 				WRAPPER_EXTENSION = app;
@@ -953,13 +962,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Toshiki Nakanishi (7FY9ETDU35)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Vintage 2.0/Vintage 2.0-Prefix.pch";
 				INFOPLIST_FILE = "Vintage 2.0/Vintage 2.0-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "B7637FC5-E793-42B1-B937-690FE81A89A6";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				USER_HEADER_SEARCH_PATHS = "./GPUImage/framework/**";
 				WRAPPER_EXTENSION = app;

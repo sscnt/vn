@@ -14,6 +14,8 @@
 
 @property (nonatomic, weak) UIView* view;
 
++ (VnEditorViewManager*)instance;
+
 - (void)layout;
 
 @end

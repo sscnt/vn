@@ -11,6 +11,7 @@
 @interface VnBoolean : NSObject
 
 @property (nonatomic, assign) BOOL homeSettingsScrolling;
+
 + (BOOL)homeSettingsScrolling;
 + (void)setHomeSettingsScrolling:(BOOL)flag;
 

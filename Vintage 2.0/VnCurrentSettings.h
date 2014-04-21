@@ -15,6 +15,7 @@ typedef NS_ENUM(NSInteger, VnCurrentSettingsWorkspaceType){
 
 @interface VnCurrentSettings : NSObject
 
-@property (nonatomic, assign) VnCurrentSettingsWorkspaceType workspaceType;
++ (VnCurrentSettingsWorkspaceType)workspaceType;
++ (void)setWorkspaceType:(VnCurrentSettingsWorkspaceType)workspaceType;
 
 @end

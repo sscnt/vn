@@ -43,4 +43,18 @@ static VnCurrentSettings* sharedVnCurrentSettings = nil;
     }
     return self;
 }
+
+#pragma mark workspace
+
++ (VnCurrentSettingsWorkspaceType)workspaceType
+{
+    return VnCurrentSettingsWorkspaceTypeEssentials;
+}
+
++ (void)setWorkspaceType:(VnCurrentSettingsWorkspaceType)workspaceType
+{
+    
+}
+
+
 @end

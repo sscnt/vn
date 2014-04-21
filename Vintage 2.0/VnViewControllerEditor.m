@@ -14,8 +14,7 @@
 {
     self = [super init];
     if (self) {
-        _viewManager = [[VnEditorViewManager alloc] init];
-        _viewManager.view = self.view;
+        
     }
     return self;
 }
@@ -23,7 +22,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [_viewManager layout];
+    VnEditorViewManager* manager = [VnEditorViewManager instance];
+    manager.view = self.view;
+    [manager layout];
 }
 
 - (void)didFinishResizing
