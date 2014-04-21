@@ -10,9 +10,10 @@
 
 @interface VnBoolean : NSObject
 
-@property (nonatomic, assign) BOOL homeSettingsScrolling;
++ (VnBoolean*)instance;
 
-+ (BOOL)homeSettingsScrolling;
-+ (void)setHomeSettingsScrolling:(BOOL)flag;
++ (BOOL)isEditorToolBarButtonTouchable;
+
+@property (nonatomic, assign) BOOL homeSettingsScrolling;
 
 @end

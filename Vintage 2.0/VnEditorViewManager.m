@@ -56,7 +56,7 @@ static VnEditorViewManager* sharedVnEditorViewManager = nil;
 
 - (void)layout
 {
-    self.view.backgroundColor = [UIColor colorWithRed:s255(28.0f) green:s255(26.0f) blue:s255(26.0f) alpha:1.0f];
+    self.view.backgroundColor = [UIColor colorWithRed:s255(26.0f) green:s255(24.0f) blue:s255(24.0f) alpha:1.0f];
     [self layoutToolBar];
 }
 

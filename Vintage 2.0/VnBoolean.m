@@ -44,16 +44,11 @@ static VnBoolean* sharedVnBoolean = nil;
     return self;
 }
 
-#pragma mark home
+#pragma mark editor
 
-+ (BOOL)homeSettingsScrolling
++ (BOOL)isEditorToolBarButtonTouchable
 {
-    return [VnBoolean instance].homeSettingsScrolling;
-}
-
-+ (void)setHomeSettingsScrolling:(BOOL)flag
-{
-    [VnBoolean instance].homeSettingsScrolling = flag;
+    return YES;
 }
 
 @end
