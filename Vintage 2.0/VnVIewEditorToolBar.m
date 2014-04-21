@@ -12,7 +12,7 @@
 
 - (id)init
 {
-    CGRect frame = CGRectMake(0.0f, 0.0f, [UIScreen width], 44.0f);
+    CGRect frame = CGRectMake(0.0f, 0.0f, [UIScreen width], 50.0f);
     self = [super initWithFrame:frame];
     if (self) {
         _right = 0.0f;
@@ -26,6 +26,31 @@
     [button setX:_right];
     [self addSubview:button];
     _right = [button right];
+}
+
+- (void)drawRect:(CGRect)rect
+{
+    //// Color Declarations
+    UIColor* color = [UIColor colorWithRed:s255(2.0f) green:s255(0.0f) blue:s255(0.0f) alpha:0.10f];
+    
+    //// Bezier Drawing
+    UIBezierPath* bezierPath = [UIBezierPath bezierPath];
+    [bezierPath moveToPoint: CGPointMake(0, 0)];
+    [bezierPath addLineToPoint: CGPointMake(rect.size.width, 0)];
+    [color setStroke];
+    bezierPath.lineWidth = 1;
+    [bezierPath stroke];
+    
+    //// Bezier Drawing
+    bezierPath = [UIBezierPath bezierPath];
+    [bezierPath moveToPoint: CGPointMake(0, rect.size.height)];
+    [bezierPath addLineToPoint: CGPointMake(rect.size.width, rect.size.height)];
+    [color setStroke];
+    bezierPath.lineWidth = 1;
+    [bezierPath stroke];
+    
+    
+
 }
 
 @end

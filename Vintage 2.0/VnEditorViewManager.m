@@ -56,7 +56,7 @@ static VnEditorViewManager* sharedVnEditorViewManager = nil;
 
 - (void)layout
 {
-    self.view.backgroundColor = [UIColor colorWithRed:s255(20.0f) green:s255(20.0f) blue:s255(20.0f) alpha:1.0f];
+    self.view.backgroundColor = [UIColor colorWithRed:s255(28.0f) green:s255(26.0f) blue:s255(26.0f) alpha:1.0f];
     [self layoutToolBar];
 }
 
@@ -64,12 +64,12 @@ static VnEditorViewManager* sharedVnEditorViewManager = nil;
 {
     //// Tool Bar
     _toolBar = [[VnVIewEditorToolBar alloc] init];
-    float height = 44.0f * 3.0f;
+    float height = [_toolBar height] * 3.0f;
     if ([UIDevice isiPad]) {
-        height = 44.0f * 6.0f;
+        height = [_toolBar height] * 6.0f;
     } else {
         if ([UIDevice resolution] == UIDeviceResolution_iPhoneRetina4) {
-            height = 44.0f * 2.0f;
+            height = [_toolBar height] * 2.0f;
         } else {
             
         }
