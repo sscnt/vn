@@ -39,6 +39,42 @@
     return resolution;
 }
 
++ (UIDeviceMachineType)machineType
+{
+    NSError *error = nil;
+    NSString* name = [UIDevice machineName];
+    NSString *pattern = @"iPhone([0-9]+),";
+    NSRegularExpression *regexp = [NSRegularExpression regularExpressionWithPattern:pattern options:0 error:&error];
+    NSTextCheckingResult *match = [regexp firstMatchInString:name options:0 range:NSMakeRange(0, name.length)];
+    
+    if(match.numberOfRanges == 2){
+        int version = [[name substringWithRange:[match rangeAtIndex:1]] intValue];
+        switch (version) {
+            case 1:
+                
+                break;
+            case 2:
+                
+                break;
+            case 3:
+                return UIDeviceMachineType_iPhone4;
+                break;
+            case 4:
+                return UIDeviceMachineType_iPhone4s;
+                break;
+            case 5:
+                return UIDeviceMachineType_iPhone5;
+                break;
+            case 6:
+                return UIDeviceMachineType_iPhone5s;
+                break;
+            default:
+                break;
+        }
+    }
+    return 0;
+}
+
 + (NSString*) machineName{
     struct utsname systemInfo;
     uname(&systemInfo);
@@ -120,6 +156,23 @@
     if(match.numberOfRanges == 2){
         int version = [[name substringWithRange:[match rangeAtIndex:1]] intValue];
         if(version >= 5.0){
+            return NO;
+        }
+    }
+    return YES;
+}
+
++ (BOOL)underIPhone4s
+{
+    NSError *error = nil;
+    NSString* name = [UIDevice machineName];
+    NSString *pattern = @"iPhone([0-9]+),";
+    NSRegularExpression *regexp = [NSRegularExpression regularExpressionWithPattern:pattern options:0 error:&error];
+    NSTextCheckingResult *match = [regexp firstMatchInString:name options:0 range:NSMakeRange(0, name.length)];
+    
+    if(match.numberOfRanges == 2){
+        int version = [[name substringWithRange:[match rangeAtIndex:1]] intValue];
+        if(version >= 4.0){
             return NO;
         }
     }

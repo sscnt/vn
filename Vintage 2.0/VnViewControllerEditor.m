@@ -29,7 +29,8 @@
 
 - (void)didFinishResizing
 {
-    
+    VnEditorViewManager* manager = [VnEditorViewManager instance];
+    [manager setPreviewImage:[VnCurrentImage resizedImageForEditor]];
 }
 
 - (void)didReceiveMemoryWarning

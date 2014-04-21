@@ -235,16 +235,22 @@
     if([UIDevice isiPad]){
         
     }else{
-        if([UIDevice underIPhone5s]){
-            if([UIDevice underIPhone5]){
+        UIDeviceMachineType machine = [UIDevice machineType];
+        switch (machine) {
+            case UIDeviceMachineType_iPhone4:
+                maxLength = MAX_IMAGE_LENGTH_FOR_IPHONE_4;
+                break;
+            case UIDeviceMachineType_iPhone4s:
                 maxLength = MAX_IMAGE_LENGTH_FOR_IPHONE_4S;
-            }else{
+                break;
+            case UIDeviceMachineType_iPhone5:
                 maxLength = MAX_IMAGE_LENGTH_FOR_IPHONE_5;
-            }
-        }else{
-            if ([UIDevice isIPhone5s]) {
+                break;
+            case UIDeviceMachineType_iPhone5s:
                 maxLength = MAX_IMAGE_LENGTH_FOR_IPHONE_5S;
-            }
+                break;
+            default:
+                break;
         }
     }
     

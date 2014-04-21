@@ -140,15 +140,23 @@ NSString* const pathForDialogBgImage = @"tmp/dialog_bg_image";
 
 + (CGSize)editorImageSize
 {
+    CGSize size = [VnCurrentImage editorImageViewSize];
+    return CGSizeMake(size.width * [[UIScreen mainScreen] scale], size.height * [[UIScreen mainScreen] scale]);
+}
+
++ (CGSize)editorImageViewSize
+{
+    CGRect bounds = [VnEditorViewManager previewBounds];
     CGSize originalImageSize = [VnCurrentImage originalImageSize];
-    CGFloat width = [UIScreen screenSize].width;
-    CGFloat height = originalImageSize.height * width / originalImageSize.width;
-    CGFloat max_height = [UIScreen screenSize].height - 254.0f;
-    if (height > max_height) {
-        width *= max_height / height;
-        height = max_height;
+    float width, height;
+    if (originalImageSize.width > originalImageSize.height) {
+        height = bounds.size.height;
+        width = originalImageSize.width * height / originalImageSize.height;
+    } else {
+        width = bounds.size.width;
+        height = originalImageSize.height * width / originalImageSize.width;
     }
-    return CGSizeMake(width * [[UIScreen mainScreen] scale], height * [[UIScreen mainScreen] scale]);
+    return CGSizeMake(width, height);
 }
 
 + (BOOL)lastSavedImageExists

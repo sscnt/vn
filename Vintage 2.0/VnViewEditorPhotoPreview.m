@@ -15,9 +15,17 @@
     self = [super initWithFrame:frame];
     if (self) {
         _scrollView = [[UIScrollView alloc] initWithFrame:self.bounds];
+        _scrollView.contentSize = [VnCurrentImage editorImageViewSize];
+        _imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, [VnCurrentImage editorImageViewSize].width, [VnCurrentImage editorImageViewSize].height)];
+        [_scrollView addSubview:_imageView];
         [self addSubview:_scrollView];
     }
     return self;
+}
+
+- (void)setImage:(UIImage *)image
+{
+    _imageView.image = image;
 }
 
 /*

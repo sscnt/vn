@@ -30,6 +30,7 @@
 + (BOOL)saveDialogBgImage:(UIImage*)image;
 + (CGSize)originalImageSize;
 + (CGSize)editorImageSize;
++ (CGSize)editorImageViewSize;
 + (BOOL)deleteImageAtPath:(NSString*)path;
 + (BOOL)deleteLastSavedImage;
 + (BOOL)deleteOriginalImage;

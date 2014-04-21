@@ -144,4 +144,11 @@ static VnEditorViewManager* sharedVnEditorViewManager = nil;
     [self.view addSubview:_photoPreview];
 }
 
+#pragma mark setter
+
+- (void)setPreviewImage:(UIImage *)image
+{
+    _photoPreview.image = image;
+}
+
 @end

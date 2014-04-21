@@ -18,10 +18,18 @@ enum {
     UIDeviceResolution_iPadRetina        = 5     // iPad 3 Retina Display            (2048x1536px)
 }; typedef NSUInteger UIDeviceResolution;
 
+typedef NS_ENUM(NSInteger, UIDeviceMachineType){
+    UIDeviceMachineType_iPhone4 = 1,
+    UIDeviceMachineType_iPhone4s,
+    UIDeviceMachineType_iPhone5,
+    UIDeviceMachineType_iPhone5s
+};
+
 
 @interface UIDevice (extend)
 
 + (UIDeviceResolution)resolution;
++ (UIDeviceMachineType)machineType;
 + (BOOL)isIOS6;
 + (BOOL)isIOS5;
 + (BOOL)underIOS7;
@@ -30,6 +38,7 @@ enum {
 + (BOOL)isIPhone5;
 + (BOOL)isIPhone5s;
 + (BOOL)underIPhone5;
++ (BOOL)underIPhone4s;
 + (BOOL)canOpenInstagram;
 + (BOOL)canOpenTwitter;
 + (BOOL)isCurrentLanguageJapanese;
