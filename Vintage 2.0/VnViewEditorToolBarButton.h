@@ -14,14 +14,9 @@
 - (void)didToolBarButtonTouchUpInside:(VnViewEditorToolBarButton*)button;
 @end
 
-
-typedef NS_ENUM(NSInteger, VnViewEditorToolBarButtonType){
-    VnViewEditorToolBarButtonTypeEffect = 1
-};
-
 @interface VnViewEditorToolBarButton : UIButton
 
-@property (nonatomic, assign) VnViewEditorToolBarButtonType type;
+@property (nonatomic, assign) VnAdjustmentToolId toolId;
 @property (nonatomic, strong) NSMutableArray* childButtons;
 @property (nonatomic, weak) id<VnViewEditorToolBarButtonDelegate> delegate;
 

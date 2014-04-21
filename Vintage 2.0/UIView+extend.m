@@ -10,6 +10,16 @@
 
 @implementation UIView (extend)
 
+- (CGFloat)height
+{
+    return self.bounds.size.height;
+}
+
+- (CGFloat)width
+{
+    return self.bounds.size.width;
+}
+
 -(CGFloat)bottom
 {
     return self.frame.origin.y + self.bounds.size.height;

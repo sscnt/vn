@@ -293,6 +293,7 @@
 		5807F58F19035A25009FEA3C /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				58348AF41904EEA30054294B /* Editor */,
 				5807F59319035A47009FEA3C /* Home */,
 			);
 			name = Images;
@@ -347,6 +348,13 @@
 			children = (
 			);
 			name = 2.0;
+			sourceTree = "<group>";
+		};
+		58348AF41904EEA30054294B /* Editor */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Editor;
 			sourceTree = "<group>";
 		};
 		58F17A6219020AA80038DF34 /* Shared */ = {

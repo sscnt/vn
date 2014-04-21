@@ -53,7 +53,28 @@ static VnEditorViewManager* sharedVnEditorViewManager = nil;
 
 - (void)layoutToolBar
 {
-    self.toolBar = [[VnVIewEditorToolBar alloc] init];
+    //// Tool Bar
+    _toolBar = [[VnVIewEditorToolBar alloc] init];
+    float height = 44.0f * 3.0f;
+    if ([UIDevice isiPad]) {
+        height = 44.0f * 6.0f;
+    } else {
+        if ([UIDevice resolution] == UIDeviceResolution_iPhoneRetina4) {
+            height = 44.0f * 2.0f;
+        } else {
+            
+        }
+    }
+    [_toolBar setY:[UIScreen height] - height - [_toolBar height]];
+    [self.view addSubview:_toolBar];
+    
+    //// Tool Bar Button
+    VnViewEditorToolBarButton* button;
+    
+    //////// Effects
+    button = [[VnViewEditorToolBarButton alloc] init];
+    button.toolId = VnAdjustmentToolIdEffects;
+    [_toolBar appendButton:button];
 }
 
 @end

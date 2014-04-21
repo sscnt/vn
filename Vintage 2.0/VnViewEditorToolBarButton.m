@@ -17,6 +17,7 @@
     if (self) {
         _childButtons = [NSMutableArray array];
         self.delegate = [VnEditorButtonManager instance];
+        self.backgroundColor = [UIColor redColor];
         [self addTarget:self action:@selector(didTouchUpInside) forControlEvents:UIControlEventTouchUpInside];
     }
     return self;
@@ -25,8 +26,8 @@
 - (void)setIcon
 {
     UIImage* iconImage;
-    switch (_type) {
-        case VnViewEditorToolBarButtonTypeEffect:
+    switch (self.toolId) {
+        case VnAdjustmentToolIdEffects:
             
             break;            
         default:

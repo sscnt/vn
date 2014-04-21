@@ -37,6 +37,8 @@
 #define LOG_RECT(p)
 #endif
 
+#define s255(v) v/255.0
+
 
 #define MAX_IMAGE_LENGTH 4096
 #define MAX_IMAGE_LENGTH_FOR_IPHONE_5S 4096
@@ -44,7 +46,11 @@
 #define MAX_IMAGE_LENGTH_FOR_IPHONE_4S 1920
 #define MAX_IMAGE_LENGTH_FOR_IPHONE_4 1920
 
-
+typedef NS_ENUM(NSInteger, VnAdjustmentToolId){
+    VnAdjustmentToolIdEffects = 1,
+    VnAdjustmentToolIdEffectOpacity,
+    VnAdjustmentToolIdEffectHistory
+};
 
 typedef NS_ENUM(NSInteger, VnEffectId){
     VnEffectIdHaze3 = 1,

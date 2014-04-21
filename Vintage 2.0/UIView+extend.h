@@ -9,6 +9,8 @@
 #import <UIKit/UIKit.h>
 
 @interface UIView (extend)
+- (CGFloat)height;
+- (CGFloat)width;
 - (CGFloat)bottom;
 - (CGFloat)right;
 - (void)setShadow;
