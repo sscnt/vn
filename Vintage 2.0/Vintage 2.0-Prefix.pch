@@ -49,7 +49,10 @@
 typedef NS_ENUM(NSInteger, VnAdjustmentToolId){
     VnAdjustmentToolIdEffects = 1,
     VnAdjustmentToolIdEffectOpacity,
-    VnAdjustmentToolIdEffectHistory
+    VnAdjustmentToolIdEffectHistory,
+    VnAdjustmentToolIdTextures,
+    VnAdjustmentToolIdTextureOpacity,
+    VnAdjustmentToolIdTextureHistory
 };
 
 typedef NS_ENUM(NSInteger, VnEffectId){

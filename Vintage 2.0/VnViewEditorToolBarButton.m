@@ -17,10 +17,16 @@
     if (self) {
         _childButtons = [NSMutableArray array];
         self.delegate = [VnEditorButtonManager instance];
-        self.backgroundColor = [UIColor redColor];
+        self.backgroundColor = [UIColor clearColor];
         [self addTarget:self action:@selector(didTouchUpInside) forControlEvents:UIControlEventTouchUpInside];
     }
     return self;
+}
+
+- (void)setToolId:(VnAdjustmentToolId)toolId
+{
+    _toolId = toolId;
+    [self setIcon];
 }
 
 - (void)setIcon
@@ -28,15 +34,23 @@
     UIImage* iconImage;
     switch (self.toolId) {
         case VnAdjustmentToolIdEffects:
-            
-            break;            
+            iconImage = [UIImage imageNamed:@"a.png"];
+            break;
+        case VnAdjustmentToolIdTextures:
+            iconImage = [UIImage imageNamed:@"b.png"];
+            break;
         default:
             break;
     }
-    UIImageView* iconImageView = [[UIImageView alloc] initWithFrame:self.bounds];
+    UIImageView* iconImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 30.0f, 30.0f)];
+    iconImageView.center = self.center;
     iconImageView.image = iconImage;
     [self addSubview:iconImageView];
 }
+
+#pragma mark flag
+
+
 
 #pragma mark event
 

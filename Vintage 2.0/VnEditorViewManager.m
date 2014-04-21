@@ -39,15 +39,24 @@ static VnEditorViewManager* sharedVnEditorViewManager = nil;
 {
     self = [super init];
     if (self) {
-        
+        _toolBarButtons = [NSMutableDictionary dictionary];
+        _adjustmentToolViwes = [NSMutableDictionary dictionary];
     }
     return self;
+}
+
+#pragma mark manager
+
+- (void)registerButton:(VnViewEditorToolBarButton *)button
+{
+    [_toolBarButtons setObject:button forKey:[NSString stringWithFormat:@"%ld", button.toolId]];
 }
 
 #pragma mark layout
 
 - (void)layout
 {
+    self.view.backgroundColor = [UIColor colorWithRed:s255(20.0f) green:s255(20.0f) blue:s255(20.0f) alpha:1.0f];
     [self layoutToolBar];
 }
 
@@ -74,6 +83,13 @@ static VnEditorViewManager* sharedVnEditorViewManager = nil;
     //////// Effects
     button = [[VnViewEditorToolBarButton alloc] init];
     button.toolId = VnAdjustmentToolIdEffects;
+    [self registerButton:button];
+    [_toolBar appendButton:button];
+    
+    //////// Textures
+    button = [[VnViewEditorToolBarButton alloc] init];
+    button.toolId = VnAdjustmentToolIdTextures;
+    [self registerButton:button];
     [_toolBar appendButton:button];
 }
 

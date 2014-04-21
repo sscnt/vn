@@ -15,12 +15,15 @@
 @interface VnEditorViewManager : NSObject
 
 @property (nonatomic, weak) UIView* view;
-
 @property (nonatomic, strong) VnVIewEditorToolBar* toolBar;
+@property (nonatomic, strong) NSMutableDictionary* toolBarButtons;
+@property (nonatomic, strong) NSMutableDictionary* adjustmentToolViwes;
 
 + (VnEditorViewManager*)instance;
 
 - (void)layout;
 - (void)layoutToolBar;
+
+- (void)registerButton:(VnViewEditorToolBarButton*)button;
 
 @end
