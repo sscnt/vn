@@ -18,6 +18,7 @@
         _childButtons = [NSMutableArray array];
         self.delegate = [VnEditorButtonManager instance];
         self.backgroundColor = [UIColor clearColor];
+        self.alpha = 0.80f;
         [self addTarget:self action:@selector(didTouchUpInside) forControlEvents:UIControlEventTouchUpInside];
     }
     return self;
@@ -38,6 +39,12 @@
             break;
         case VnAdjustmentToolIdTextures:
             iconImage = [UIImage imageNamed:@"b.png"];
+            break;
+        case VnAdjustmentToolIdTextureOpacity:
+            iconImage = [UIImage imageNamed:@"e.png"];
+            break;
+        case VnAdjustmentToolIdEffectHistory:
+            iconImage = [UIImage imageNamed:@"f.png"];
             break;
         default:
             break;

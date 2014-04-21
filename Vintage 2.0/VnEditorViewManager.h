@@ -9,13 +9,14 @@
 #import <Foundation/Foundation.h>
 #import "VnEditorSliderManager.h"
 #import "VnViewEditorToolBarButton.h"
-#import "VnVIewEditorToolBar.h"
+#import "VnVIewEditorToolBarGreate.h"
+#import "VnViewEditorPhotoPreview.h"
 
 
 @interface VnEditorViewManager : NSObject
 
 @property (nonatomic, weak) UIView* view;
-@property (nonatomic, strong) VnVIewEditorToolBar* toolBar;
+@property (nonatomic, strong) VnVIewEditorToolBarGreate* toolBar;
 @property (nonatomic, strong) NSMutableDictionary* toolBarButtons;
 @property (nonatomic, strong) NSMutableDictionary* adjustmentToolViwes;
 
@@ -25,5 +26,6 @@
 - (void)layoutToolBar;
 
 - (void)registerButton:(VnViewEditorToolBarButton*)button;
+- (VnViewEditorToolBarButton*)buttonByToolId:(VnAdjustmentToolId)toolId;
 
 @end

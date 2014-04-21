@@ -6,9 +6,9 @@
 //  Copyright (c) 2014年 SSC. All rights reserved.
 //
 
-#import "VnVIewEditorToolBar.h"
+#import "VnVIewEditorToolBarGreate.h"
 
-@implementation VnVIewEditorToolBar
+@implementation VnVIewEditorToolBarGreate
 
 - (id)init
 {
@@ -23,6 +23,9 @@
 
 - (void)appendButton:(VnViewEditorToolBarButton *)button
 {
+    if (!button) {
+        return;
+    }
     [button setX:_right];
     [self addSubview:button];
     _right = [button right];

@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5801F0A819052A510065BE66 /* c@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5801F0A619052A510065BE66 /* c@2x.png */; };
+		5801F0A919052A510065BE66 /* d@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5801F0A719052A510065BE66 /* d@2x.png */; };
+		5801F0AF19052D2E0065BE66 /* e@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5801F0AD19052D2E0065BE66 /* e@2x.png */; };
+		5801F0B019052D2E0065BE66 /* f@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5801F0AE19052D2E0065BE66 /* f@2x.png */; };
 		5807F59619035DF5009FEA3C /* Bg-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5807F59419035DF5009FEA3C /* Bg-568h@2x.png */; };
 		5807F59719035DF5009FEA3C /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5807F59519035DF5009FEA3C /* Default-568h@2x.png */; };
 		5807F59F19036317009FEA3C /* VnViewHomeBg.m in Sources */ = {isa = PBXBuildFile; fileRef = 5807F59C19036317009FEA3C /* VnViewHomeBg.m */; };
@@ -15,7 +19,7 @@
 		5811B9DA1904BFD000D4155C /* Bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5811B9D91904BFD000D4155C /* Bg@2x.png */; };
 		5811B9DC1904BFD900D4155C /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5811B9DB1904BFD900D4155C /* Default@2x.png */; };
 		5811B9E11904D21D00D4155C /* VnEditorButtonManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5811B9E01904D21D00D4155C /* VnEditorButtonManager.m */; };
-		5811B9E41904D2FA00D4155C /* VnVIewEditorToolBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 5811B9E31904D2FA00D4155C /* VnVIewEditorToolBar.m */; };
+		5811B9E41904D2FA00D4155C /* VnVIewEditorToolBarGreate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5811B9E31904D2FA00D4155C /* VnVIewEditorToolBarGreate.m */; };
 		5811B9E71904D77300D4155C /* VnViewEditorToolBarButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 5811B9E61904D77300D4155C /* VnViewEditorToolBarButton.m */; };
 		58325D8619026926000A3D0E /* libGPUImage.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 58FD075A1902416A0005E74E /* libGPUImage.a */; };
 		58325D8919026D7D000A3D0E /* VnBlendingNormal.m in Sources */ = {isa = PBXBuildFile; fileRef = 58325D8819026D7D000A3D0E /* VnBlendingNormal.m */; };
@@ -43,6 +47,7 @@
 		58F17A7419020BEC0038DF34 /* UIView+extend.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F17A6D19020BEC0038DF34 /* UIView+extend.m */; };
 		58F17A7519020BEC0038DF34 /* UIScrollView+extend.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F17A6F19020BEC0038DF34 /* UIScrollView+extend.m */; };
 		58F17A7619020BEC0038DF34 /* UIImage+extend.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F17A7119020BEC0038DF34 /* UIImage+extend.m */; };
+		58F2F471190550B3006A2860 /* VnViewEditorPhotoPreview.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F2F470190550B3006A2860 /* VnViewEditorPhotoPreview.m */; };
 		58F51B471903820700B8E976 /* VnBoolean.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F51B461903820700B8E976 /* VnBoolean.m */; };
 		58F5A7101903F8CA0028D6D2 /* home-photos@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 58F5A70F1903F8CA0028D6D2 /* home-photos@2x.png */; };
 		58F5A71619040B9C0028D6D2 /* VnCurrentSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F5A71519040B9C0028D6D2 /* VnCurrentSettings.m */; };
@@ -119,6 +124,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5801F0A619052A510065BE66 /* c@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "c@2x.png"; sourceTree = "<group>"; };
+		5801F0A719052A510065BE66 /* d@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "d@2x.png"; sourceTree = "<group>"; };
+		5801F0AD19052D2E0065BE66 /* e@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "e@2x.png"; sourceTree = "<group>"; };
+		5801F0AE19052D2E0065BE66 /* f@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "f@2x.png"; sourceTree = "<group>"; };
 		5807F59419035DF5009FEA3C /* Bg-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Bg-568h@2x.png"; sourceTree = "<group>"; };
 		5807F59519035DF5009FEA3C /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		5807F59B19036317009FEA3C /* VnViewHomeBg.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VnViewHomeBg.h; sourceTree = "<group>"; };
@@ -131,8 +140,8 @@
 		5811B9DB1904BFD900D4155C /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		5811B9DF1904D21D00D4155C /* VnEditorButtonManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VnEditorButtonManager.h; sourceTree = "<group>"; };
 		5811B9E01904D21D00D4155C /* VnEditorButtonManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VnEditorButtonManager.m; sourceTree = "<group>"; };
-		5811B9E21904D2FA00D4155C /* VnVIewEditorToolBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VnVIewEditorToolBar.h; sourceTree = "<group>"; };
-		5811B9E31904D2FA00D4155C /* VnVIewEditorToolBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VnVIewEditorToolBar.m; sourceTree = "<group>"; };
+		5811B9E21904D2FA00D4155C /* VnVIewEditorToolBarGreate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VnVIewEditorToolBarGreate.h; sourceTree = "<group>"; };
+		5811B9E31904D2FA00D4155C /* VnVIewEditorToolBarGreate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VnVIewEditorToolBarGreate.m; sourceTree = "<group>"; };
 		5811B9E51904D77300D4155C /* VnViewEditorToolBarButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VnViewEditorToolBarButton.h; sourceTree = "<group>"; };
 		5811B9E61904D77300D4155C /* VnViewEditorToolBarButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VnViewEditorToolBarButton.m; sourceTree = "<group>"; };
 		58325D8719026D7D000A3D0E /* VnBlendingNormal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VnBlendingNormal.h; sourceTree = "<group>"; };
@@ -188,6 +197,8 @@
 		58F17A6F19020BEC0038DF34 /* UIScrollView+extend.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+extend.m"; sourceTree = "<group>"; };
 		58F17A7019020BEC0038DF34 /* UIImage+extend.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+extend.h"; sourceTree = "<group>"; };
 		58F17A7119020BEC0038DF34 /* UIImage+extend.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+extend.m"; sourceTree = "<group>"; };
+		58F2F46F190550B3006A2860 /* VnViewEditorPhotoPreview.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VnViewEditorPhotoPreview.h; sourceTree = "<group>"; };
+		58F2F470190550B3006A2860 /* VnViewEditorPhotoPreview.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VnViewEditorPhotoPreview.m; sourceTree = "<group>"; };
 		58F51B451903820700B8E976 /* VnBoolean.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VnBoolean.h; sourceTree = "<group>"; };
 		58F51B461903820700B8E976 /* VnBoolean.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VnBoolean.m; sourceTree = "<group>"; };
 		58F5A70F1903F8CA0028D6D2 /* home-photos@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "home-photos@2x.png"; sourceTree = "<group>"; };
@@ -361,6 +372,10 @@
 			children = (
 				58F974341904F3F3007199FE /* a@2x.png */,
 				58F974351904F3F3007199FE /* b@2x.png */,
+				5801F0A619052A510065BE66 /* c@2x.png */,
+				5801F0A719052A510065BE66 /* d@2x.png */,
+				5801F0AD19052D2E0065BE66 /* e@2x.png */,
+				5801F0AE19052D2E0065BE66 /* f@2x.png */,
 				58F9742F1904F0FF007199FE /* test@2x.png */,
 			);
 			name = Editor;
@@ -402,10 +417,12 @@
 		58F51B4B19038FCD00B8E976 /* Editor */ = {
 			isa = PBXGroup;
 			children = (
-				5811B9E21904D2FA00D4155C /* VnVIewEditorToolBar.h */,
-				5811B9E31904D2FA00D4155C /* VnVIewEditorToolBar.m */,
+				5811B9E21904D2FA00D4155C /* VnVIewEditorToolBarGreate.h */,
+				5811B9E31904D2FA00D4155C /* VnVIewEditorToolBarGreate.m */,
 				5811B9E51904D77300D4155C /* VnViewEditorToolBarButton.h */,
 				5811B9E61904D77300D4155C /* VnViewEditorToolBarButton.m */,
+				58F2F46F190550B3006A2860 /* VnViewEditorPhotoPreview.h */,
+				58F2F470190550B3006A2860 /* VnViewEditorPhotoPreview.m */,
 				58F5A71B19041BAA0028D6D2 /* Effects */,
 			);
 			name = Editor;
@@ -760,15 +777,19 @@
 			files = (
 				58F5A72819041F000028D6D2 /* Bg-Portrait.png in Resources */,
 				5811B9DA1904BFD000D4155C /* Bg@2x.png in Resources */,
+				5801F0B019052D2E0065BE66 /* f@2x.png in Resources */,
+				5801F0A819052A510065BE66 /* c@2x.png in Resources */,
 				58F79C6418FFAE6000C0D2E1 /* Images.xcassets in Resources */,
 				58F974371904F3F3007199FE /* b@2x.png in Resources */,
 				58F17A5E19020A530038DF34 /* Localizable.strings in Resources */,
+				5801F0AF19052D2E0065BE66 /* e@2x.png in Resources */,
 				58F5A72A19041F080028D6D2 /* Bg-Portrait@2x.png in Resources */,
 				58F5A7101903F8CA0028D6D2 /* home-photos@2x.png in Resources */,
 				58F974361904F3F3007199FE /* a@2x.png in Resources */,
 				58F974301904F0FF007199FE /* test@2x.png in Resources */,
 				58F79C5618FFAE6000C0D2E1 /* InfoPlist.strings in Resources */,
 				58F79C5F18FFAE6000C0D2E1 /* Main.storyboard in Resources */,
+				5801F0A919052A510065BE66 /* d@2x.png in Resources */,
 				5807F59619035DF5009FEA3C /* Bg-568h@2x.png in Resources */,
 				5807F59719035DF5009FEA3C /* Default-568h@2x.png in Resources */,
 				58F5A72D19041F110028D6D2 /* Default-Portrait.png in Resources */,
@@ -801,7 +822,7 @@
 				5807F5A719036588009FEA3C /* UIDevice+extend.m in Sources */,
 				58F5A72119041C1F0028D6D2 /* VnViewEditorEffectsOpacity.m in Sources */,
 				58FA3A3C190293A30070B4B8 /* VnFilterLevels.m in Sources */,
-				5811B9E41904D2FA00D4155C /* VnVIewEditorToolBar.m in Sources */,
+				5811B9E41904D2FA00D4155C /* VnVIewEditorToolBarGreate.m in Sources */,
 				58F64979190426D8000E2AC5 /* VnModelEffect.m in Sources */,
 				58F17A7419020BEC0038DF34 /* UIView+extend.m in Sources */,
 				58F17A7319020BEC0038DF34 /* UIScreen+extend.m in Sources */,
@@ -828,6 +849,7 @@
 				58FA3A491902C4F90070B4B8 /* VnViewControllerEditor.m in Sources */,
 				58F5A71E19041BEF0028D6D2 /* VnViewEditorEffectsPresets.m in Sources */,
 				58F5A72419041C310028D6D2 /* VnViewEditorEffectsHistory.m in Sources */,
+				58F2F471190550B3006A2860 /* VnViewEditorPhotoPreview.m in Sources */,
 				58325DA4190276AC000A3D0E /* VnBlendingColorDodge.m in Sources */,
 				5811B9E11904D21D00D4155C /* VnEditorButtonManager.m in Sources */,
 				58FA3A521902D2D70070B4B8 /* VnViewControllerRoot.m in Sources */,

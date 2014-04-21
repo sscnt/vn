@@ -41,6 +41,27 @@ static VnEditorViewManager* sharedVnEditorViewManager = nil;
     if (self) {
         _toolBarButtons = [NSMutableDictionary dictionary];
         _adjustmentToolViwes = [NSMutableDictionary dictionary];
+        
+        VnViewEditorToolBarButton* button;
+        //////// Effects
+        button = [[VnViewEditorToolBarButton alloc] init];
+        button.toolId = VnAdjustmentToolIdEffects;
+        [self registerButton:button];
+        
+        //////// Textures
+        button = [[VnViewEditorToolBarButton alloc] init];
+        button.toolId = VnAdjustmentToolIdTextures;
+        [self registerButton:button];
+        
+        //////// Textures
+        button = [[VnViewEditorToolBarButton alloc] init];
+        button.toolId = VnAdjustmentToolIdEffectHistory;
+        [self registerButton:button];
+        
+        //////// Textures
+        button = [[VnViewEditorToolBarButton alloc] init];
+        button.toolId = VnAdjustmentToolIdTextureOpacity;
+        [self registerButton:button];
     }
     return self;
 }
@@ -50,6 +71,11 @@ static VnEditorViewManager* sharedVnEditorViewManager = nil;
 - (void)registerButton:(VnViewEditorToolBarButton *)button
 {
     [_toolBarButtons setObject:button forKey:[NSString stringWithFormat:@"%ld", button.toolId]];
+}
+
+- (VnViewEditorToolBarButton *)buttonByToolId:(VnAdjustmentToolId)toolId
+{
+    return (VnViewEditorToolBarButton*)[_toolBarButtons objectForKey:[NSString stringWithFormat:@"%ld", toolId]];
 }
 
 #pragma mark layout
@@ -63,7 +89,7 @@ static VnEditorViewManager* sharedVnEditorViewManager = nil;
 - (void)layoutToolBar
 {
     //// Tool Bar
-    _toolBar = [[VnVIewEditorToolBar alloc] init];
+    _toolBar = [[VnVIewEditorToolBarGreate alloc] init];
     float height = [_toolBar height] * 3.0f;
     if ([UIDevice isiPad]) {
         height = [_toolBar height] * 6.0f;
@@ -77,20 +103,18 @@ static VnEditorViewManager* sharedVnEditorViewManager = nil;
     [_toolBar setY:[UIScreen height] - height - [_toolBar height]];
     [self.view addSubview:_toolBar];
     
-    //// Tool Bar Button
-    VnViewEditorToolBarButton* button;
     
-    //////// Effects
-    button = [[VnViewEditorToolBarButton alloc] init];
-    button.toolId = VnAdjustmentToolIdEffects;
-    [self registerButton:button];
-    [_toolBar appendButton:button];
+    //// Effects
+    [_toolBar appendButton:[self buttonByToolId:VnAdjustmentToolIdEffects]];
     
-    //////// Textures
-    button = [[VnViewEditorToolBarButton alloc] init];
-    button.toolId = VnAdjustmentToolIdTextures;
-    [self registerButton:button];
-    [_toolBar appendButton:button];
+    //// Textures
+    [_toolBar appendButton:[self buttonByToolId:VnAdjustmentToolIdTextures]];
+    
+    //// Textures
+    [_toolBar appendButton:[self buttonByToolId:VnAdjustmentToolIdTextureOpacity]];
+    
+    //// Textures
+    [_toolBar appendButton:[self buttonByToolId:VnAdjustmentToolIdEffectHistory]];
 }
 
 @end
