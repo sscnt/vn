@@ -44,9 +44,16 @@ static VnEditorViewManager* sharedVnEditorViewManager = nil;
     return self;
 }
 
+#pragma mark layout
+
 - (void)layout
 {
-    
+    [self layoutToolBar];
+}
+
+- (void)layoutToolBar
+{
+    self.toolBar = [[VnVIewEditorToolBar alloc] init];
 }
 
 @end

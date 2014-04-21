@@ -8,14 +8,19 @@
 
 #import <Foundation/Foundation.h>
 #import "VnEditorSliderManager.h"
+#import "VnViewEditorToolBarButton.h"
+#import "VnVIewEditorToolBar.h"
 
 
 @interface VnEditorViewManager : NSObject
 
 @property (nonatomic, weak) UIView* view;
 
+@property (nonatomic, strong) VnVIewEditorToolBar* toolBar;
+
 + (VnEditorViewManager*)instance;
 
 - (void)layout;
+- (void)layoutToolBar;
 
 @end
