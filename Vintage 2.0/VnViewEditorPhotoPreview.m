@@ -16,6 +16,8 @@
     if (self) {
         _scrollView = [[UIScrollView alloc] initWithFrame:self.bounds];
         _scrollView.contentSize = [VnCurrentImage editorImageViewSize];
+        _scrollView.showsHorizontalScrollIndicator = NO;
+        _scrollView.showsVerticalScrollIndicator = NO;
         _imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, [VnCurrentImage editorImageViewSize].width, [VnCurrentImage editorImageViewSize].height)];
         [_scrollView addSubview:_imageView];
         [self addSubview:_scrollView];
