@@ -12,7 +12,7 @@
 
 - (id)init
 {
-    CGRect frame = CGRectMake(0.0f, 0.0f, 50.0f, 50.0f);
+    CGRect frame = CGRectMake(0.0f, 0.0f, [VnCurrentSettings barHeight], [VnCurrentSettings barHeight]);
     self = [super initWithFrame:frame];
     if (self) {
         _childButtons = [NSMutableArray array];

@@ -84,12 +84,13 @@ static VnEditorViewManager* sharedVnEditorViewManager = nil;
 {
     self.view.backgroundColor = [UIColor colorWithRed:s255(26.0f) green:s255(24.0f) blue:s255(24.0f) alpha:1.0f];
     [self layoutToolBar];
+    [self layoutPreview];
 }
 
 - (void)layoutToolBar
 {
     //// Tool Bar
-    _toolBar = [[VnVIewEditorToolBarGreate alloc] init];
+    _toolBar = [[VnViewEditorToolBar alloc] init];
     float height = [_toolBar height] * 3.0f;
     if ([UIDevice isiPad]) {
         height = [_toolBar height] * 6.0f;
@@ -115,6 +116,32 @@ static VnEditorViewManager* sharedVnEditorViewManager = nil;
     
     //// Textures
     [_toolBar appendButton:[self buttonByToolId:VnAdjustmentToolIdEffectHistory]];
+}
+
++ (CGRect)previewBounds
+{
+    float barh = [VnCurrentSettings barHeight];
+    float adjh = barh * 3.0f;
+    if ([UIDevice isiPad]) {
+        adjh = barh * 6.0f;
+    } else {
+        if ([UIDevice resolution] == UIDeviceResolution_iPhoneRetina4) {
+            adjh = barh * 2.0f;
+        } else {
+            
+        }
+    }
+    
+    float height = [UIScreen height] - barh - adjh - barh;
+    CGRect bounds = CGRectMake(0.0f, 0.0f, [UIScreen width], height);
+    return bounds;
+}
+
+- (void)layoutPreview
+{
+    _photoPreview = [[VnViewEditorPhotoPreview alloc] initWithFrame:[VnEditorViewManager previewBounds]];
+    [_photoPreview setY:[VnCurrentSettings barHeight]];
+    [self.view addSubview:_photoPreview];
 }
 
 @end

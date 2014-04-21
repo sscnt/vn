@@ -137,6 +137,7 @@ typedef NS_ENUM(NSInteger, VnBlendingMode){
 #import "UIScrollView+extend.h"
 #import "UIImage+extend.h"
 #import "VnCurrentImage.h"
+#import "VnCurrentSettings.h"
 #import "VnProcessor.h"
 #import "VnBoolean.h"
 #import "VnEditorSliderManager.h"

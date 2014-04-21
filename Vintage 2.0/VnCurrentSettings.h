@@ -17,5 +17,6 @@ typedef NS_ENUM(NSInteger, VnCurrentSettingsWorkspaceType){
 
 + (VnCurrentSettingsWorkspaceType)workspaceType;
 + (void)setWorkspaceType:(VnCurrentSettingsWorkspaceType)workspaceType;
++ (float)barHeight;
 
 @end

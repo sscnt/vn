@@ -56,5 +56,11 @@ static VnCurrentSettings* sharedVnCurrentSettings = nil;
     
 }
 
+#pragma mark appearance
+
++ (float)barHeight
+{
+    return 50.0f;
+}
 
 @end

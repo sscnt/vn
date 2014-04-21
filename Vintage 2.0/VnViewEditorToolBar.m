@@ -6,13 +6,13 @@
 //  Copyright (c) 2014年 SSC. All rights reserved.
 //
 
-#import "VnVIewEditorToolBarGreate.h"
+#import "VnViewEditorToolBar.h"
 
-@implementation VnVIewEditorToolBarGreate
+@implementation VnViewEditorToolBar
 
 - (id)init
 {
-    CGRect frame = CGRectMake(0.0f, 0.0f, [UIScreen width], 50.0f);
+    CGRect frame = CGRectMake(0.0f, 0.0f, [UIScreen width], [VnCurrentSettings barHeight]);
     self = [super initWithFrame:frame];
     if (self) {
         _right = 0.0f;

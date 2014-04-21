@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "VnViewEditorToolBarButton.h"
 
-@interface VnVIewEditorToolBarGreate : UIView
+@interface VnViewEditorToolBar : UIView
 {
     float _right;
 }

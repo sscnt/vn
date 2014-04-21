@@ -14,7 +14,8 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
-        // Initialization code
+        _scrollView = [[UIScrollView alloc] initWithFrame:self.bounds];
+        [self addSubview:_scrollView];
     }
     return self;
 }

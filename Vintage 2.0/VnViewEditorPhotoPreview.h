@@ -10,4 +10,7 @@
 
 @interface VnViewEditorPhotoPreview : UIView
 
+@property (nonatomic, strong) UIScrollView* scrollView;
+@property (nonatomic, strong) UIImage* image;
+
 @end
