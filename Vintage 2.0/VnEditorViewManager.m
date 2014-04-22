@@ -50,7 +50,7 @@ static VnEditorViewManager* sharedVnEditorViewManager = nil;
         
         //////// Textures
         button = [[VnViewEditorToolBarButton alloc] init];
-        button.toolId = VnAdjustmentToolIdTextures;
+        button.toolId = VnAdjustmentToolIdEffectOpacity;
         [self registerButton:button];
         
         //////// Textures
@@ -110,10 +110,7 @@ static VnEditorViewManager* sharedVnEditorViewManager = nil;
     [_toolBar appendButton:[self buttonByToolId:VnAdjustmentToolIdEffects]];
     
     //// Textures
-    [_toolBar appendButton:[self buttonByToolId:VnAdjustmentToolIdTextures]];
-    
-    //// Textures
-    [_toolBar appendButton:[self buttonByToolId:VnAdjustmentToolIdTextureOpacity]];
+    [_toolBar appendButton:[self buttonByToolId:VnAdjustmentToolIdEffectOpacity]];
     
     //// Textures
     [_toolBar appendButton:[self buttonByToolId:VnAdjustmentToolIdEffectHistory]];

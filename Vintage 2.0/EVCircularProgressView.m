@@ -121,7 +121,7 @@
         self.shapeLayer.lineWidth = 3;
         
         self.shapeLayer.path = [UIBezierPath bezierPathWithArcCenter:CGPointMake(CGRectGetMidX(self.bounds), CGRectGetMidY(self.bounds))
-                                                              radius:self.bounds.size.width/2 - 2
+                                                              radius:self.bounds.size.width/2 - 3
                                                           startAngle:3*M_PI_2
                                                             endAngle:3*M_PI_2 + 2*M_PI
                                                            clockwise:YES].CGPath;
