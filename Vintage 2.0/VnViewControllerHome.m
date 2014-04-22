@@ -291,8 +291,8 @@
                 [_self dispatchResizingProgress:0.20f];
                 
                 //// for editor image
-                UIImage* imageForEditor = [originalImage resizedImage:[VnCurrentImage editorImageSize] interpolationQuality:kCGInterpolationHigh];
-                if([VnCurrentImage saveResizedEditorImage:imageForEditor]){
+                UIImage* imageForEditor = [originalImage resizedImage:[VnCurrentImage previewImageSize] interpolationQuality:kCGInterpolationHigh];
+                if([VnCurrentImage saveOriginalPreviewImage:imageForEditor]){
                     
                     //// Progress
                     [_self dispatchResizingProgress:0.40f];

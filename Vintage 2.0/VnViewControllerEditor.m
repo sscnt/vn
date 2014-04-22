@@ -31,7 +31,7 @@
 {
     [VnEditorProgressManager setResizingProgress:1.0f];
     VnEditorViewManager* manager = [VnEditorViewManager instance];
-    [manager setPreviewImage:[VnCurrentImage resizedImageForEditor]];
+    [manager setPreviewImage:[VnCurrentImage originalPreviewImage]];
 }
 
 - (void)didReceiveMemoryWarning

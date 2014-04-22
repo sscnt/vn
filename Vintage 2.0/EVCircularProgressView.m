@@ -43,8 +43,6 @@
     CGContextSetStrokeColorWithColor(ctx, self.tintColor.CGColor);
     
     CGContextStrokeEllipseInRect(ctx, CGRectInset(self.bounds, 1, 1));
-    
-    CGContextFillRect(ctx, CGRectMake(CGRectGetMidX(self.bounds) - 4, CGRectGetMidY(self.bounds) - 4, 8, 8));
 }
 
 @end

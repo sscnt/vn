@@ -15,11 +15,13 @@
     self = [super initWithFrame:frame];
     if (self) {
         _scrollView = [[UIScrollView alloc] initWithFrame:self.bounds];
-        _scrollView.contentSize = [VnCurrentImage editorImageViewSize];
+        _scrollView.contentSize = [VnCurrentImage previewImageViewSize];
         _scrollView.showsHorizontalScrollIndicator = NO;
         _scrollView.showsVerticalScrollIndicator = NO;
-        _imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, [VnCurrentImage editorImageViewSize].width, [VnCurrentImage editorImageViewSize].height)];
+        _imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, [VnCurrentImage previewImageViewSize].width, [VnCurrentImage previewImageViewSize].height)];
         [_scrollView addSubview:_imageView];
+        [_scrollView setContentOffset:CGPointMake(([VnCurrentImage previewImageViewSize].width - frame.size.width) / 2.0f, ([VnCurrentImage previewImageViewSize].height - frame.size.height) / 2.0f)];
+        LOG_POINT(CGPointMake(([VnCurrentImage previewImageViewSize].width - frame.size.width) / 2.0f, ([VnCurrentImage previewImageViewSize].height - frame.size.height) / 2.0f));
         [self addSubview:_scrollView];
     }
     return self;

@@ -55,7 +55,7 @@ NSString* const pathForDialogBgImage = @"tmp/dialog_bg_image";
     return nil;
 }
 
-+ (UIImage*)resizedImageForEditor
++ (UIImage*)originalPreviewImage
 {
     NSString *filePath = [NSHomeDirectory() stringByAppendingPathComponent:pathForEditorImage];
     return [self imageAtPath:filePath];
@@ -79,13 +79,13 @@ NSString* const pathForDialogBgImage = @"tmp/dialog_bg_image";
     return [self imageAtPath:filePath];
 }
 
-+ (UIImage *)resizedBlurredImageForEditor
++ (UIImage *)blurredPreviewImage
 {
     NSString *filePath = [NSHomeDirectory() stringByAppendingPathComponent:pathForEditorBlurredImage];
     return [self imageAtPath:filePath];
 }
 
-+ (UIImage *)resizedProcessedImageForEditor
++ (UIImage *)processedPreviewImage
 {
     NSString *filePath = [NSHomeDirectory() stringByAppendingPathComponent:pathForEditorProcessedImage];
     return [self imageAtPath:filePath];
@@ -98,7 +98,7 @@ NSString* const pathForDialogBgImage = @"tmp/dialog_bg_image";
     return [imageData writeToFile:filePath atomically:YES];
 }
 
-+ (BOOL)saveResizedEditorImage:(UIImage*)image
++ (BOOL)saveOriginalPreviewImage:(UIImage*)image
 {
     NSData *imageData = UIImageJPEGRepresentation(image, 0.99f);
     NSString *filePath = [NSHomeDirectory() stringByAppendingPathComponent:pathForEditorImage];
@@ -119,14 +119,14 @@ NSString* const pathForDialogBgImage = @"tmp/dialog_bg_image";
     return [imageData writeToFile:filePath atomically:YES];
 }
 
-+ (BOOL)saveResizedBlurredEditorImage:(UIImage *)image
++ (BOOL)saveBlurredPreviewImage:(UIImage *)image
 {
     NSData *imageData = UIImageJPEGRepresentation(image, 0.99f);
     NSString *filePath = [NSHomeDirectory() stringByAppendingPathComponent:pathForEditorBlurredImage];
     return [imageData writeToFile:filePath atomically:YES];
 }
 
-+ (BOOL)saveResizedProcessedEditorImage:(UIImage *)image
++ (BOOL)saveProcessedPreviewImage:(UIImage *)image
 {
     NSData *imageData = UIImageJPEGRepresentation(image, 0.99f);
     NSString *filePath = [NSHomeDirectory() stringByAppendingPathComponent:pathForEditorProcessedImage];
@@ -138,13 +138,13 @@ NSString* const pathForDialogBgImage = @"tmp/dialog_bg_image";
     return [self instance].originalImageSize;
 }
 
-+ (CGSize)editorImageSize
++ (CGSize)previewImageSize
 {
-    CGSize size = [VnCurrentImage editorImageViewSize];
+    CGSize size = [VnCurrentImage previewImageViewSize];
     return CGSizeMake(size.width * [[UIScreen mainScreen] scale], size.height * [[UIScreen mainScreen] scale]);
 }
 
-+ (CGSize)editorImageViewSize
++ (CGSize)previewImageViewSize
 {
     CGRect bounds = [VnEditorViewManager previewBounds];
     CGSize originalImageSize = [VnCurrentImage originalImageSize];
@@ -205,7 +205,7 @@ NSString* const pathForDialogBgImage = @"tmp/dialog_bg_image";
     return [self deleteImageAtPath:filePath];
 }
 
-+ (BOOL)deleteResizedForEditorImage
++ (BOOL)deleteOriginalPreviewImage
 {
     NSString *filePath = [NSHomeDirectory() stringByAppendingPathComponent:pathForEditorImage];
     return [self deleteImageAtPath:filePath];
@@ -217,13 +217,13 @@ NSString* const pathForDialogBgImage = @"tmp/dialog_bg_image";
     return [self deleteImageAtPath:filePath];
 }
 
-+ (BOOL)deleteResizedBlurredForEditorImage
++ (BOOL)deleteBlurredPreviewImage
 {
     NSString *filePath = [NSHomeDirectory() stringByAppendingPathComponent:pathForEditorBlurredImage];
     return [self deleteImageAtPath:filePath];
 }
 
-+ (BOOL)deleteResizedProcessedForEditorImage
++ (BOOL)deleteProcessedPreviewImage
 {
     NSString *filePath = [NSHomeDirectory() stringByAppendingPathComponent:pathForEditorProcessedImage];
     return [self deleteImageAtPath:filePath];
@@ -231,12 +231,12 @@ NSString* const pathForDialogBgImage = @"tmp/dialog_bg_image";
 
 + (void)clean
 {
-    [VnCurrentImage deleteResizedForEditorImage];
+    [VnCurrentImage deleteOriginalPreviewImage];
     [VnCurrentImage deleteOriginalImage];
     [VnCurrentImage deleteLastSavedImage];
     [VnCurrentImage deleteDialogBgImage];
-    [VnCurrentImage deleteResizedBlurredForEditorImage];
-    [VnCurrentImage deleteResizedProcessedForEditorImage];
+    [VnCurrentImage deleteBlurredPreviewImage];
+    [VnCurrentImage deleteProcessedPreviewImage];
 }
 
 @end
