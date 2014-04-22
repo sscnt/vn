@@ -83,6 +83,7 @@ static VnEditorViewManager* sharedVnEditorViewManager = nil;
 - (void)layout
 {
     self.view.backgroundColor = [UIColor colorWithRed:s255(26.0f) green:s255(24.0f) blue:s255(24.0f) alpha:1.0f];
+    [self layoutNavigationBar];
     [self layoutToolBar];
     [self layoutPreview];
 }
@@ -118,6 +119,14 @@ static VnEditorViewManager* sharedVnEditorViewManager = nil;
     [_toolBar appendButton:[self buttonByToolId:VnAdjustmentToolIdEffectHistory]];
 }
 
+- (void)layoutNavigationBar
+{
+    //// Navigation Bar
+    _navigationBar = [[VnViewEditorToolBar alloc] init];
+    [self.view addSubview:_navigationBar];
+
+}
+
 + (CGRect)previewBounds
 {
     float barh = [VnCurrentSettings barHeight];
@@ -139,9 +148,15 @@ static VnEditorViewManager* sharedVnEditorViewManager = nil;
 
 - (void)layoutPreview
 {
+    //// Preview
     _photoPreview = [[VnViewEditorPhotoPreview alloc] initWithFrame:[VnEditorViewManager previewBounds]];
     [_photoPreview setY:[VnCurrentSettings barHeight]];
     [self.view addSubview:_photoPreview];
+    
+    //// Progress
+    _resizingProgressView = [[VnViewProgress alloc] initWithFrame:[VnEditorViewManager previewBounds]];
+    [_resizingProgressView setY:[VnCurrentSettings barHeight]];
+    [self.view addSubview:_resizingProgressView];
 }
 
 #pragma mark setter
@@ -149,6 +164,8 @@ static VnEditorViewManager* sharedVnEditorViewManager = nil;
 - (void)setPreviewImage:(UIImage *)image
 {
     _photoPreview.image = image;
+    [_resizingProgressView removeFromSuperview];
+    _resizingProgressView = nil;
 }
 
 @end

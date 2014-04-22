@@ -29,4 +29,6 @@
 
 - (void)goToEditorViewControllerWithImage:(UIImage*)image;
 
+- (void)dispatchResizingProgress:(float)progress;
+
 @end

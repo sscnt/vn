@@ -63,4 +63,11 @@ static VnCurrentSettings* sharedVnCurrentSettings = nil;
     return 50.0f;
 }
 
+#pragma mark progress
+
++ (float)circularProgressRadius
+{
+    return 18.0f;
+}
+
 @end

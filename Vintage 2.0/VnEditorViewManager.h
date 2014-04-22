@@ -11,20 +11,24 @@
 #import "VnViewEditorToolBarButton.h"
 #import "VnViewEditorToolBar.h"
 #import "VnViewEditorPhotoPreview.h"
+#import "VnViewProgress.h"
 
 
 @interface VnEditorViewManager : NSObject
 
 @property (nonatomic, weak) UIView* view;
 @property (nonatomic, strong) VnViewEditorToolBar* toolBar;
+@property (nonatomic, strong) VnViewEditorToolBar* navigationBar;
 @property (nonatomic, strong) NSMutableDictionary* toolBarButtons;
 @property (nonatomic, strong) NSMutableDictionary* adjustmentToolViwes;
 @property (nonatomic, strong) VnViewEditorPhotoPreview* photoPreview;
+@property (nonatomic, strong) VnViewProgress* resizingProgressView;
 
 + (VnEditorViewManager*)instance;
 + (CGRect)previewBounds;
 
 - (void)layout;
+- (void)layoutNavigationBar;
 - (void)layoutToolBar;
 - (void)layoutPreview;
 

@@ -271,9 +271,9 @@
     
     
     //// Present
+    __block VnViewControllerHome* _self = self;
     __block VnViewControllerEditor* controller = [[VnViewControllerEditor alloc] init];
-    controller.modalTransitionStyle = UIModalPresentationPageSheet;
-    [self.navigationController pushViewController:controller animated:NO];
+    [self.navigationController pushViewController:controller animated:YES];
     
     __block UIImage* originalImage = image;
     
@@ -286,9 +286,16 @@
             
             //// Save to home dir
             if([VnCurrentImage saveOriginalImage:originalImage]){
+                
+                //// Progress
+                [_self dispatchResizingProgress:0.20f];
+                
                 //// for editor image
                 UIImage* imageForEditor = [originalImage resizedImage:[VnCurrentImage editorImageSize] interpolationQuality:kCGInterpolationHigh];
                 if([VnCurrentImage saveResizedEditorImage:imageForEditor]){
+                    
+                    //// Progress
+                    [_self dispatchResizingProgress:0.40f];
                     
                     //// Detect faces
                     NSDictionary *options = [NSDictionary dictionaryWithObject:CIDetectorAccuracyHigh forKey:CIDetectorAccuracy];
@@ -302,6 +309,9 @@
                         [VnProcessor instance].faceDetected = YES;
                     }
                     
+                    //// Progress
+                    [_self dispatchResizingProgress:0.80f];
+                    
                     errorCode = 0;
                 }
             }
@@ -314,6 +324,15 @@
                 [alert show];
             }
         });
+    });
+}
+
+- (void)dispatchResizingProgress:(float)progress
+{
+    __block float _progress = progress;
+    dispatch_queue_t q_main = dispatch_get_main_queue();
+    dispatch_async(q_main, ^{
+        [VnEditorProgressManager setResizingProgress:_progress];
     });
 }
 
