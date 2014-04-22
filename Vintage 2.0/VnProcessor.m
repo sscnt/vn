@@ -18,22 +18,22 @@ float absf(float v){
 
 @implementation VnProcessor
 
-static VnProcessor* sharedProcessor = nil;
+static VnProcessor* sharedVnProcessor = nil;
 
 + (VnProcessor*)instance {
 	@synchronized(self) {
-		if (sharedProcessor == nil) {
-			sharedProcessor = [[self alloc] init];
+		if (sharedVnProcessor == nil) {
+			sharedVnProcessor = [[self alloc] init];
 		}
 	}
-	return sharedProcessor;
+	return sharedVnProcessor;
 }
 
 + (id)allocWithZone:(NSZone *)zone {
 	@synchronized(self) {
-		if (sharedProcessor == nil) {
-			sharedProcessor = [super allocWithZone:zone];
-			return sharedProcessor;
+		if (sharedVnProcessor == nil) {
+			sharedVnProcessor = [super allocWithZone:zone];
+			return sharedVnProcessor;
 		}
 	}
 	return nil;

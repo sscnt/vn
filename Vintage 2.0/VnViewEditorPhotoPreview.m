@@ -18,10 +18,12 @@
         _scrollView.contentSize = [VnCurrentImage previewImageViewSize];
         _scrollView.showsHorizontalScrollIndicator = NO;
         _scrollView.showsVerticalScrollIndicator = NO;
+        _scrollView.delegate = self;
+        _scrollView.maximumZoomScale = 1.0f;
+        _scrollView.minimumZoomScale = MIN(1.0, MIN(frame.size.width / [VnCurrentImage previewImageViewSize].width, frame.size.height / [VnCurrentImage previewImageViewSize].height));
         _imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, [VnCurrentImage previewImageViewSize].width, [VnCurrentImage previewImageViewSize].height)];
         [_scrollView addSubview:_imageView];
         [_scrollView setContentOffset:CGPointMake(([VnCurrentImage previewImageViewSize].width - frame.size.width) / 2.0f, ([VnCurrentImage previewImageViewSize].height - frame.size.height) / 2.0f)];
-        LOG_POINT(CGPointMake(([VnCurrentImage previewImageViewSize].width - frame.size.width) / 2.0f, ([VnCurrentImage previewImageViewSize].height - frame.size.height) / 2.0f));
         [self addSubview:_scrollView];
     }
     return self;
@@ -32,13 +34,29 @@
     _imageView.image = image;
 }
 
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect
+#pragma mark delegate
+
+- (UIView *)viewForZoomingInScrollView:(UIScrollView *)scrollView
 {
-    // Drawing code
+    return _imageView;
 }
-*/
+
+- (void)scrollViewDidZoom:(UIScrollView *)scrollView
+{
+    CGFloat y = MAX(0.0f, self.frame.size.height - scrollView.contentSize.height);
+    CGFloat x = MAX(0.0f, self.frame.size.width - scrollView.contentSize.width);
+    [scrollView setX:x / 2.0f];
+    [scrollView setY:y / 2.0f];
+}
+
+- (void)scrollViewDidEndZooming:(UIScrollView *)scrollView withView:(UIView *)view atScale:(CGFloat)scale
+{
+    
+}
+
+- (void)dealloc
+{
+    _scrollView.delegate = nil;
+}
 
 @end

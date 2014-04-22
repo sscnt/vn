@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface VnViewEditorPhotoPreview : UIView
+@interface VnViewEditorPhotoPreview : UIView <UIScrollViewDelegate>
 
 @property (nonatomic, strong) UIScrollView* scrollView;
 @property (nonatomic, strong) UIImageView* imageView;

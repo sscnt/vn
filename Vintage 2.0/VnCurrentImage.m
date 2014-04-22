@@ -10,7 +10,8 @@
 
 @implementation VnCurrentImage
 
-static VnCurrentImage* sharedCurrentImage = nil;
+static VnCurrentImage* sharedVnCurrentImage = nil;
+
 NSString* const pathForOriginalImage = @"tmp/original_image";
 NSString* const pathForPreviewImage = @"tmp/preview_image";
 NSString* const pathForBlurredPreviewImage = @"tmp/blurred_preview_image";
@@ -20,18 +21,18 @@ NSString* const pathForDialogBgImage = @"tmp/dialog_bg_image";
 
 + (VnCurrentImage*)instance {
 	@synchronized(self) {
-		if (sharedCurrentImage == nil) {
-			sharedCurrentImage = [[self alloc] init];
+		if (sharedVnCurrentImage == nil) {
+			sharedVnCurrentImage = [[self alloc] init];
 		}
 	}
-	return sharedCurrentImage;
+	return sharedVnCurrentImage;
 }
 
 + (id)allocWithZone:(NSZone *)zone {
 	@synchronized(self) {
-		if (sharedCurrentImage == nil) {
-			sharedCurrentImage = [super allocWithZone:zone];
-			return sharedCurrentImage;
+		if (sharedVnCurrentImage == nil) {
+			sharedVnCurrentImage = [super allocWithZone:zone];
+			return sharedVnCurrentImage;
 		}
 	}
 	return nil;

@@ -66,6 +66,8 @@
 		58F6497C19042829000E2AC5 /* VnModelPhotoFIlter.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F6497B19042829000E2AC5 /* VnModelPhotoFIlter.m */; };
 		58F6497F19042837000E2AC5 /* VnModelTexture.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F6497E19042837000E2AC5 /* VnModelTexture.m */; };
 		58F6DE8C19039A1E00FC96D7 /* home-camera@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 58F6DE8A19039A1E00FC96D7 /* home-camera@2x.png */; };
+		58F79165190626F8009F0FF5 /* VnProcessingQueueManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F79164190626F8009F0FF5 /* VnProcessingQueueManager.m */; };
+		58F7916B190627B7009F0FF5 /* VnModelProcessingQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F7916A190627B7009F0FF5 /* VnModelProcessingQueue.m */; };
 		58F79C4C18FFAE6000C0D2E1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58F79C4B18FFAE6000C0D2E1 /* Foundation.framework */; };
 		58F79C4E18FFAE6000C0D2E1 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58F79C4D18FFAE6000C0D2E1 /* CoreGraphics.framework */; };
 		58F79C5018FFAE6000C0D2E1 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58F79C4F18FFAE6000C0D2E1 /* UIKit.framework */; };
@@ -232,6 +234,10 @@
 		58F6497D19042837000E2AC5 /* VnModelTexture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VnModelTexture.h; sourceTree = "<group>"; };
 		58F6497E19042837000E2AC5 /* VnModelTexture.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VnModelTexture.m; sourceTree = "<group>"; };
 		58F6DE8A19039A1E00FC96D7 /* home-camera@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "home-camera@2x.png"; sourceTree = "<group>"; };
+		58F79163190626F8009F0FF5 /* VnProcessingQueueManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VnProcessingQueueManager.h; sourceTree = "<group>"; };
+		58F79164190626F8009F0FF5 /* VnProcessingQueueManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VnProcessingQueueManager.m; sourceTree = "<group>"; };
+		58F79169190627B6009F0FF5 /* VnModelProcessingQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VnModelProcessingQueue.h; sourceTree = "<group>"; };
+		58F7916A190627B7009F0FF5 /* VnModelProcessingQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VnModelProcessingQueue.m; sourceTree = "<group>"; };
 		58F79C4818FFAE6000C0D2E1 /* Vintage 2.0.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Vintage 2.0.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		58F79C4B18FFAE6000C0D2E1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		58F79C4D18FFAE6000C0D2E1 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -400,6 +406,8 @@
 				58F5A71719040C9A0028D6D2 /* ViewManager */,
 				58FD07031902405C0005E74E /* VnProcessor.h */,
 				58FD07041902405C0005E74E /* VnProcessor.m */,
+				58F79163190626F8009F0FF5 /* VnProcessingQueueManager.h */,
+				58F79164190626F8009F0FF5 /* VnProcessingQueueManager.m */,
 				58F17A6419020B380038DF34 /* VnCurrentImage.h */,
 				58F17A6519020B380038DF34 /* VnCurrentImage.m */,
 				58F51B451903820700B8E976 /* VnBoolean.h */,
@@ -476,12 +484,14 @@
 			name = iPad;
 			sourceTree = "<group>";
 		};
-		58F64975190426AC000E2AC5 /* UIModels */ = {
+		58F64975190426AC000E2AC5 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				58F79169190627B6009F0FF5 /* VnModelProcessingQueue.h */,
+				58F7916A190627B7009F0FF5 /* VnModelProcessingQueue.m */,
 				58F64976190426B7000E2AC5 /* Editor */,
 			);
-			name = UIModels;
+			name = Models;
 			sourceTree = "<group>";
 		};
 		58F64976190426B7000E2AC5 /* Editor */ = {
@@ -545,7 +555,7 @@
 				58FD0706190240B80005E74E /* VnEffects */,
 				58FD077319025CAC0005E74E /* VnPhotoFilters */,
 				58F17A6219020AA80038DF34 /* Shared */,
-				58F64975190426AC000E2AC5 /* UIModels */,
+				58F64975190426AC000E2AC5 /* Models */,
 				5807F599190362D4009FEA3C /* UIViews */,
 				58FA3A461902C4CD0070B4B8 /* ViewControllers */,
 				5807F58F19035A25009FEA3C /* Images */,
@@ -863,6 +873,7 @@
 				588FDECC19060B6D00ECA2C4 /* VnEditorProgressManager.m in Sources */,
 				58325D98190271A9000A3D0E /* VnBlendingLighten.m in Sources */,
 				58F6497F19042837000E2AC5 /* VnModelTexture.m in Sources */,
+				58F7916B190627B7009F0FF5 /* VnModelProcessingQueue.m in Sources */,
 				58FA3A491902C4F90070B4B8 /* VnViewControllerEditor.m in Sources */,
 				58F5A71E19041BEF0028D6D2 /* VnViewEditorEffectsPresets.m in Sources */,
 				588FDEC31905FFAA00ECA2C4 /* VnViewProgress.m in Sources */,
@@ -883,6 +894,7 @@
 				58FA3A3F1902B2740070B4B8 /* VnFilterTemperature.m in Sources */,
 				58F79C5818FFAE6000C0D2E1 /* main.m in Sources */,
 				58325DA1190274A2000A3D0E /* VnBlendingOverlay.m in Sources */,
+				58F79165190626F8009F0FF5 /* VnProcessingQueueManager.m in Sources */,
 				58F17A6619020B380038DF34 /* VnCurrentImage.m in Sources */,
 				58325DB619027A19000A3D0E /* VnBlendingHue.m in Sources */,
 			);
