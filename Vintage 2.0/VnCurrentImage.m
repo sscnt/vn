@@ -12,9 +12,9 @@
 
 static VnCurrentImage* sharedCurrentImage = nil;
 NSString* const pathForOriginalImage = @"tmp/original_image";
-NSString* const pathForEditorImage = @"tmp/editor_image";
-NSString* const pathForEditorBlurredImage = @"tmp/editor_blurred_image";
-NSString* const pathForEditorProcessedImage = @"tmp/editor_processed_image";
+NSString* const pathForPreviewImage = @"tmp/preview_image";
+NSString* const pathForBlurredPreviewImage = @"tmp/blurred_preview_image";
+NSString* const pathForProcessedPreviewImage = @"tmp/processed_preview_image";
 NSString* const pathForLastSavedImage = @"tmp/last_saved_image";
 NSString* const pathForDialogBgImage = @"tmp/dialog_bg_image";
 
@@ -57,7 +57,7 @@ NSString* const pathForDialogBgImage = @"tmp/dialog_bg_image";
 
 + (UIImage*)originalPreviewImage
 {
-    NSString *filePath = [NSHomeDirectory() stringByAppendingPathComponent:pathForEditorImage];
+    NSString *filePath = [NSHomeDirectory() stringByAppendingPathComponent:pathForPreviewImage];
     return [self imageAtPath:filePath];
 }
 
@@ -81,13 +81,13 @@ NSString* const pathForDialogBgImage = @"tmp/dialog_bg_image";
 
 + (UIImage *)blurredPreviewImage
 {
-    NSString *filePath = [NSHomeDirectory() stringByAppendingPathComponent:pathForEditorBlurredImage];
+    NSString *filePath = [NSHomeDirectory() stringByAppendingPathComponent:pathForBlurredPreviewImage];
     return [self imageAtPath:filePath];
 }
 
 + (UIImage *)processedPreviewImage
 {
-    NSString *filePath = [NSHomeDirectory() stringByAppendingPathComponent:pathForEditorProcessedImage];
+    NSString *filePath = [NSHomeDirectory() stringByAppendingPathComponent:pathForProcessedPreviewImage];
     return [self imageAtPath:filePath];
 }
 
@@ -101,7 +101,7 @@ NSString* const pathForDialogBgImage = @"tmp/dialog_bg_image";
 + (BOOL)saveOriginalPreviewImage:(UIImage*)image
 {
     NSData *imageData = UIImageJPEGRepresentation(image, 0.99f);
-    NSString *filePath = [NSHomeDirectory() stringByAppendingPathComponent:pathForEditorImage];
+    NSString *filePath = [NSHomeDirectory() stringByAppendingPathComponent:pathForPreviewImage];
     return [imageData writeToFile:filePath atomically:YES];
 }
 
@@ -122,14 +122,14 @@ NSString* const pathForDialogBgImage = @"tmp/dialog_bg_image";
 + (BOOL)saveBlurredPreviewImage:(UIImage *)image
 {
     NSData *imageData = UIImageJPEGRepresentation(image, 0.99f);
-    NSString *filePath = [NSHomeDirectory() stringByAppendingPathComponent:pathForEditorBlurredImage];
+    NSString *filePath = [NSHomeDirectory() stringByAppendingPathComponent:pathForBlurredPreviewImage];
     return [imageData writeToFile:filePath atomically:YES];
 }
 
 + (BOOL)saveProcessedPreviewImage:(UIImage *)image
 {
     NSData *imageData = UIImageJPEGRepresentation(image, 0.99f);
-    NSString *filePath = [NSHomeDirectory() stringByAppendingPathComponent:pathForEditorProcessedImage];
+    NSString *filePath = [NSHomeDirectory() stringByAppendingPathComponent:pathForProcessedPreviewImage];
     return [imageData writeToFile:filePath atomically:YES];
 }
 
@@ -207,7 +207,7 @@ NSString* const pathForDialogBgImage = @"tmp/dialog_bg_image";
 
 + (BOOL)deleteOriginalPreviewImage
 {
-    NSString *filePath = [NSHomeDirectory() stringByAppendingPathComponent:pathForEditorImage];
+    NSString *filePath = [NSHomeDirectory() stringByAppendingPathComponent:pathForPreviewImage];
     return [self deleteImageAtPath:filePath];
 }
 
@@ -219,13 +219,13 @@ NSString* const pathForDialogBgImage = @"tmp/dialog_bg_image";
 
 + (BOOL)deleteBlurredPreviewImage
 {
-    NSString *filePath = [NSHomeDirectory() stringByAppendingPathComponent:pathForEditorBlurredImage];
+    NSString *filePath = [NSHomeDirectory() stringByAppendingPathComponent:pathForBlurredPreviewImage];
     return [self deleteImageAtPath:filePath];
 }
 
 + (BOOL)deleteProcessedPreviewImage
 {
-    NSString *filePath = [NSHomeDirectory() stringByAppendingPathComponent:pathForEditorProcessedImage];
+    NSString *filePath = [NSHomeDirectory() stringByAppendingPathComponent:pathForProcessedPreviewImage];
     return [self deleteImageAtPath:filePath];
 }
 

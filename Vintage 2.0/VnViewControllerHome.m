@@ -14,6 +14,12 @@
 
 @implementation VnViewControllerHome
 
+- (void)viewDidAppear:(BOOL)animated
+{
+    LOG(@"Cleaned images.");
+    [VnCurrentImage clean];
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -157,6 +163,7 @@
 - (void)goToEditorViewControllerWithImage:(UIImage *)image
 {
     [VnProcessor reset];
+    [VnCurrentImage clean];
     if (image.imageOrientation == UIImageOrientationUp){
         
     }else{
