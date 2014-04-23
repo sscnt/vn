@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import <CommonCrypto/CommonDigest.h>
+#import "VnObjectProcessingQueue.h"
 
 @protocol VnProcessingQueueManagerDelegate
 - (void)queueDidFinished:(VnObjectProcessingQueue*)queue;

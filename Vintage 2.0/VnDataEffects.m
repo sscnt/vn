@@ -39,13 +39,14 @@ static VnDataEffects* sharedVnDataEffects = nil;
 {
     self = [super init];
     if (self) {
-        _effectsList = [NSMutableArray array];
+        [self initEffectsList];
     }
     return self;
 }
 
 - (void)initEffectsList
 {
+    _effectsList = [NSMutableArray array];
     VnObjectEffect* effect;
     
     //// Haze 3
@@ -65,6 +66,14 @@ static VnDataEffects* sharedVnDataEffects = nil;
 + (int)effectsCount
 {
     return (int)[[VnDataEffects instance].effectsList count];
+}
+
++ (VnObjectEffect *)effectAtIndex:(int)index
+{
+    if (index < [VnDataEffects effectsCount]) {
+        return (VnObjectEffect*)[[VnDataEffects instance].effectsList objectAtIndex:index];
+    }
+    return nil;
 }
 
 @end

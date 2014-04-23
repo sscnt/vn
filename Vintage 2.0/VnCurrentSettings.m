@@ -74,7 +74,7 @@ static VnCurrentSettings* sharedVnCurrentSettings = nil;
 
 + (UIColor *)buttonIconNormalColor
 {
-    return [UIColor colorWithWhite:1.0f alpha:0.90f];
+    return [UIColor colorWithWhite:1.0f alpha:0.80f];
 }
 
 + (UIColor *)buttonIconHighlightedColor
@@ -89,7 +89,7 @@ static VnCurrentSettings* sharedVnCurrentSettings = nil;
 
 + (UIColor *)buttonHighlightedBgColor
 {
-    return [UIColor colorWithRed:s255(26.0f) green:s255(24.0f) blue:s255(24.0f) alpha:1.0f];
+    return [UIColor colorWithRed:s255(20.0f) green:s255(18.0f) blue:s255(18.0f) alpha:1.0f];
 }
 
 @end

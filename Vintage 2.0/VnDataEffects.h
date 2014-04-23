@@ -14,8 +14,8 @@
 
 + (VnDataEffects*)instance;
 + (int)effectsCount;
++ (VnObjectEffect*)effectAtIndex:(int)index;
+
 
 - (void)initEffectsList;
-- (VnObjectEffect*)effectAtIndex:(int)index;
-
 @end

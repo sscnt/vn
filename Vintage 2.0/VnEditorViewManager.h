@@ -12,6 +12,7 @@
 #import "VnViewEditorToolBar.h"
 #import "VnViewEditorPhotoPreview.h"
 #import "VnViewProgress.h"
+#import "VnViewEditorEffectPresetsListView.h"
 
 @protocol VnEditorViewManagerDelegate
 - (void)adjustmentToolViewDidChange:(VnAdjustmentToolId)toolId;
@@ -30,15 +31,21 @@
 
 + (VnEditorViewManager*)instance;
 + (CGRect)previewBounds;
++ (CGRect)adjustmentToolViewFrame;
++ (CGRect)thumbnailViewBounds;
++ (CGRect)thumbnailImageBounds;
 
 - (void)layout;
 - (void)layoutNavigationBar;
 - (void)layoutToolBar;
 - (void)layoutPreview;
+- (void)layoutAdjustmentEffects;
 
 - (void)setPreviewImage:(UIImage*)image;
 
 - (void)openAdjustmentToolView:(VnAdjustmentToolId)toolId;
+- (id)adjustmentToolViewByToolId:(VnAdjustmentToolId)toolId;
+- (void)registerAdjustmentToolView:(id)view ByToolId:(VnAdjustmentToolId)toolId;
 
 - (void)registerButton:(VnViewEditorToolBarButton*)button;
 - (VnViewEditorToolBarButton*)buttonByToolId:(VnAdjustmentToolId)toolId;

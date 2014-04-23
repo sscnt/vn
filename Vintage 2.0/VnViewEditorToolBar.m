@@ -16,6 +16,11 @@
     self = [super initWithFrame:frame];
     if (self) {
         _right = 0.0f;
+        _view = [[UIScrollView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, frame.size.width, frame.size.height)];
+        _view.showsVerticalScrollIndicator = NO;
+        _view.showsHorizontalScrollIndicator = NO;
+        _view.bounces = NO;
+        [self addSubview:_view];
         self.backgroundColor = [UIColor colorWithRed:s255(37.0f) green:s255(35.0f) blue:s255(35.0f) alpha:1.0];
     }
     return self;
@@ -27,8 +32,11 @@
         return;
     }
     [button setX:_right];
-    [self addSubview:button];
+    [self.view addSubview:button];
     _right = [button right];
+    if (_right > self.view.contentSize.width) {
+        _view.contentSize = CGSizeMake(_right, self.view.contentSize.height);
+    }
 }
 
 @end
