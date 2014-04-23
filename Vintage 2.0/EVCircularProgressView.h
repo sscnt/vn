@@ -34,6 +34,8 @@
 
 @property (nonatomic, strong) UIColor *progressTintColor;
 
+- (instancetype)initWithRadius:(float)radius;
+
 // Set the value of the progress property, optionally animating the change
 
 - (void)setProgress:(float)progress animated:(BOOL)animated;

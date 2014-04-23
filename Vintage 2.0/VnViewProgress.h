@@ -17,6 +17,8 @@
 @property (nonatomic) float progress;
 @property (nonatomic, strong) UIColor *progressTintColor;
 
+- (id)initWithFrame:(CGRect)frame Radius:(float)radius;
+
 - (void)setProgress:(float)progress animated:(BOOL)animated;
 
 @end

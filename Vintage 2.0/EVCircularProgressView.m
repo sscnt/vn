@@ -60,9 +60,9 @@
     UIColor *_progressTintColor;
 }
 
-- (instancetype)init
+- (instancetype)initWithRadius:(float)radius
 {
-    self = [super initWithFrame:CGRectMake(0, 0, [VnCurrentSettings circularProgressRadius] * 2.0f, [VnCurrentSettings circularProgressRadius] * 2.0f)];
+    self = [super initWithFrame:CGRectMake(0, 0, radius * 2.0f, radius * 2.0f)];
     
     if (self) {
         [self commonInit];

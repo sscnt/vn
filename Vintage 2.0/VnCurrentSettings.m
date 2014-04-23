@@ -65,9 +65,14 @@ static VnCurrentSettings* sharedVnCurrentSettings = nil;
 
 #pragma mark progress
 
-+ (float)circularProgressRadius
++ (float)previewProgressRadius
 {
     return 18.0f;
+}
+
++ (float)thumbnailProgressRadius
+{
+    return 12.0f;
 }
 
 #pragma mark button color

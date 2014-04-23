@@ -14,7 +14,7 @@
 {
     self = [super initWithFrame:[VnEditorViewManager thumbnailViewBounds]];
     if (self) {
-        _progressView = [[VnViewProgress alloc] initWithFrame:[VnEditorViewManager thumbnailImageBounds]];
+        _progressView = [[VnViewProgress alloc] initWithFrame:[VnEditorViewManager thumbnailImageBounds] Radius:[VnCurrentSettings thumbnailProgressRadius]];
         [self addSubview:_progressView];
     }
     return self;

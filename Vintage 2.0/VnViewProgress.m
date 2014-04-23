@@ -10,12 +10,12 @@
 
 @implementation VnViewProgress
 
-- (id)initWithFrame:(CGRect)frame
+- (id)initWithFrame:(CGRect)frame Radius:(float)radius
 {
     self = [super initWithFrame:frame];
     if (self) {
         self.backgroundColor = [UIColor clearColor];
-        _progressView = [[EVCircularProgressView alloc] init];
+        _progressView = [[EVCircularProgressView alloc] initWithRadius:radius];
         _progressView.progressTintColor = [UIColor colorWithWhite:1.0f alpha:0.80f];
         _progressView.progress = 0.0f;
         _progressView.center = self.center;

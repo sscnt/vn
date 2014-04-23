@@ -143,7 +143,7 @@ static VnEditorViewManager* sharedVnEditorViewManager = nil;
     [self.view addSubview:_photoPreview];
     
     //// Progress
-    _resizingProgressView = [[VnViewProgress alloc] initWithFrame:[VnEditorViewManager previewBounds]];
+    _resizingProgressView = [[VnViewProgress alloc] initWithFrame:[VnEditorViewManager previewBounds] Radius:[VnCurrentSettings previewProgressRadius]];
     [_resizingProgressView setY:[VnCurrentSettings barHeight]];
     [self.view addSubview:_resizingProgressView];
 }
