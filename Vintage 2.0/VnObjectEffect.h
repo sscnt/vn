@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface VnModelEffect : NSObject
+@interface VnObjectEffect : NSObject
 
 @property (nonatomic, assign) VnEffectId effectId;
 @property (nonatomic, strong) UIImage* previewImage;

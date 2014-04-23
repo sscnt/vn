@@ -6,8 +6,8 @@
 //  Copyright (c) 2014年 SSC. All rights reserved.
 //
 
-#import "VnModelPhotoFIlter.h"
+#import "VnObjectPhotoFIlterGreate.h"
 
-@implementation VnModelPhotoFIlter
+@implementation VnObjectPhotoFIlterGreate
 
 @end

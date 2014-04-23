@@ -8,8 +8,11 @@
 
 #import <Foundation/Foundation.h>
 
-@interface VnModelProcessingQueue : NSObject
+@interface VnObjectProcessingQueue : NSObject
 
 @property (nonatomic, strong) NSString* queueId;
+@property (nonatomic, assign) VnAdjustmentToolId toolId;
+@property (nonatomic, strong) UIImage* image;
+@property (nonatomic, assign) VnEffectId effectId;
 
 @end

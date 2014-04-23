@@ -13,9 +13,13 @@
 #import "VnViewEditorPhotoPreview.h"
 #import "VnViewProgress.h"
 
+@protocol VnEditorViewManagerDelegate
+- (void)adjustmentToolViewDidChange:(VnAdjustmentToolId)toolId;
+@end
 
 @interface VnEditorViewManager : NSObject
 
+@property (nonatomic, weak) id<VnEditorViewManagerDelegate> delegate;
 @property (nonatomic, weak) UIView* view;
 @property (nonatomic, strong) VnViewEditorToolBar* toolBar;
 @property (nonatomic, strong) VnViewEditorToolBar* navigationBar;

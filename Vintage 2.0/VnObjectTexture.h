@@ -1,5 +1,5 @@
 //
-//  VnModelPhotoFIlter.h
+//  VnModelTexture.h
 //  Vintage 2.0
 //
 //  Created by SSC on 2014/04/21.
@@ -8,6 +8,6 @@
 
 #import <Foundation/Foundation.h>
 
-@interface VnModelPhotoFIlter : NSObject
+@interface VnObjectTexture : NSObject
 
 @end

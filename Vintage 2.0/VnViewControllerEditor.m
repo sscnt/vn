@@ -24,6 +24,7 @@
     [super viewDidLoad];
     VnEditorViewManager* vm = [VnEditorViewManager instance];
     vm.view = self.view;
+    vm.delegate = self;
     [vm layout];
     
     VnProcessingQueueManager* qm = [VnProcessingQueueManager instance];
@@ -35,11 +36,19 @@
     [VnEditorProgressManager setResizingProgress:1.0f];
     VnEditorViewManager* vm = [VnEditorViewManager instance];
     [vm setPreviewImage:[VnCurrentImage originalPreviewImage]];
+    [vm openAdjustmentToolView:VnAdjustmentToolIdEffects];
 }
 
-#pragma mark delegate
+#pragma mark view delegate
 
-- (void)queueDidFinished:(VnModelProcessingQueue *)queue
+- (void)adjustmentToolViewDidChange:(VnAdjustmentToolId)toolId
+{
+    
+}
+
+#pragma mark queue delegate
+
+- (void)queueDidFinished:(VnObjectProcessingQueue *)queue
 {
     
 }
