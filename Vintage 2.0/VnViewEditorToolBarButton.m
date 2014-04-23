@@ -15,8 +15,6 @@
     CGRect frame = CGRectMake(0.0f, 0.0f, [VnCurrentSettings barHeight], [VnCurrentSettings barHeight]);
     self = [super initWithFrame:frame];
     if (self) {
-        self.highlighted = NO;
-        self.enabled = NO;
         _childButtons = [NSMutableArray array];
         self.delegate = [VnEditorButtonManager instance];
         self.backgroundColor = [UIColor clearColor];
@@ -29,6 +27,23 @@
 - (void)setToolId:(VnAdjustmentToolId)toolId
 {
     _toolId = toolId;
+    [self setNeedsDisplay];
+}
+
+- (void)setSelected:(BOOL)selected
+{
+    [super setSelected:selected];
+    if (selected) {
+        self.backgroundColor = [VnCurrentSettings buttonHighlightedBgColor];
+    } else {
+        self.backgroundColor = [UIColor clearColor];
+    }
+    [self setNeedsDisplay];
+}
+
+- (void)setColored:(BOOL)colored
+{
+    _colored = colored;
     [self setNeedsDisplay];
 }
 
@@ -47,7 +62,13 @@
 
 - (UIColor *)fillColor
 {
-    return [UIColor colorWithWhite:1.0f alpha:0.80f];
+    if(self.selected){
+        return [VnCurrentSettings buttonIconHighlightedColor];
+    }
+    if(self.colored){
+        return [VnCurrentSettings buttonIconColoredColor];
+    }
+    return [VnCurrentSettings buttonIconNormalColor];
 }
 
 - (void)drawRect:(CGRect)rect

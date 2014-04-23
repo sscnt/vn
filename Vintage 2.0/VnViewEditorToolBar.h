@@ -13,6 +13,7 @@
 {
     float _right;
 }
+@property (nonatomic, strong) UIScrollView* view;
 
 - (void)appendButton:(VnViewEditorToolBarButton*)button;
 

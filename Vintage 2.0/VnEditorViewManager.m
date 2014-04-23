@@ -70,12 +70,22 @@ static VnEditorViewManager* sharedVnEditorViewManager = nil;
 
 - (void)registerButton:(VnViewEditorToolBarButton *)button
 {
-    [_toolBarButtons setObject:button forKey:[NSString stringWithFormat:@"%ld", button.toolId]];
+    [_toolBarButtons setObject:button forKey:[NSString stringWithFormat:@"%d", (int)button.toolId]];
 }
 
 - (VnViewEditorToolBarButton *)buttonByToolId:(VnAdjustmentToolId)toolId
 {
-    return (VnViewEditorToolBarButton*)[_toolBarButtons objectForKey:[NSString stringWithFormat:@"%ld", toolId]];
+    return (VnViewEditorToolBarButton*)[_toolBarButtons objectForKey:[NSString stringWithFormat:@"%d", (int)toolId]];
+}
+
+- (void)unselectAllButtons
+{
+    for (NSString* key in [_toolBarButtons allKeys]) {
+        @autoreleasepool {
+            VnViewEditorToolBarButton* button = [self buttonByToolId:(VnAdjustmentToolId)[key intValue]];
+            button.selected = NO;
+        }
+    }
 }
 
 #pragma mark layout
@@ -154,6 +164,17 @@ static VnEditorViewManager* sharedVnEditorViewManager = nil;
     _resizingProgressView = [[VnViewProgress alloc] initWithFrame:[VnEditorViewManager previewBounds]];
     [_resizingProgressView setY:[VnCurrentSettings barHeight]];
     [self.view addSubview:_resizingProgressView];
+}
+
+#pragma mark adjustment tool
+
+- (void)openAdjustmentToolView:(VnAdjustmentToolId)toolId
+{
+    [self unselectAllButtons];
+    VnViewEditorToolBarButton* button = [self buttonByToolId:toolId];
+    if (button) {
+        button.selected = YES;
+    }
 }
 
 #pragma mark setter

@@ -20,4 +20,9 @@ typedef NS_ENUM(NSInteger, VnCurrentSettingsWorkspaceType){
 + (float)barHeight;
 + (float)circularProgressRadius;
 
++ (UIColor*)buttonIconNormalColor;
++ (UIColor*)buttonIconHighlightedColor;
++ (UIColor*)buttonIconColoredColor;
++ (UIColor*)buttonHighlightedBgColor;
+
 @end

@@ -22,16 +22,26 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    VnEditorViewManager* manager = [VnEditorViewManager instance];
-    manager.view = self.view;
-    [manager layout];
+    VnEditorViewManager* vm = [VnEditorViewManager instance];
+    vm.view = self.view;
+    [vm layout];
+    
+    VnProcessingQueueManager* qm = [VnProcessingQueueManager instance];
+    qm.delegate = self;
 }
 
 - (void)didFinishResizing
 {
     [VnEditorProgressManager setResizingProgress:1.0f];
-    VnEditorViewManager* manager = [VnEditorViewManager instance];
-    [manager setPreviewImage:[VnCurrentImage originalPreviewImage]];
+    VnEditorViewManager* vm = [VnEditorViewManager instance];
+    [vm setPreviewImage:[VnCurrentImage originalPreviewImage]];
+}
+
+#pragma mark delegate
+
+- (void)queueDidFinished:(VnModelProcessingQueue *)queue
+{
+    
 }
 
 - (void)didReceiveMemoryWarning

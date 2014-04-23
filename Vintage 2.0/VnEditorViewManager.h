@@ -34,7 +34,10 @@
 
 - (void)setPreviewImage:(UIImage*)image;
 
+- (void)openAdjustmentToolView:(VnAdjustmentToolId)toolId;
+
 - (void)registerButton:(VnViewEditorToolBarButton*)button;
 - (VnViewEditorToolBarButton*)buttonByToolId:(VnAdjustmentToolId)toolId;
+- (void)unselectAllButtons;
 
 @end

@@ -70,4 +70,26 @@ static VnCurrentSettings* sharedVnCurrentSettings = nil;
     return 18.0f;
 }
 
+#pragma mark button color
+
++ (UIColor *)buttonIconNormalColor
+{
+    return [UIColor colorWithWhite:1.0f alpha:0.90f];
+}
+
++ (UIColor *)buttonIconHighlightedColor
+{
+    return [UIColor colorWithWhite:1.0f alpha:1.0f];
+}
+
++ (UIColor *)buttonIconColoredColor
+{
+    return [UIColor colorWithRed:s255(231.0f) green:s255(173.0f) blue:s255(13.0f) alpha:1.0f];
+}
+
++ (UIColor *)buttonHighlightedBgColor
+{
+    return [UIColor colorWithRed:s255(26.0f) green:s255(24.0f) blue:s255(24.0f) alpha:1.0f];
+}
+
 @end

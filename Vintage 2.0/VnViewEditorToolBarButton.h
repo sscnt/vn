@@ -19,8 +19,7 @@
 @property (nonatomic, assign) VnAdjustmentToolId toolId;
 @property (nonatomic, strong) NSMutableArray* childButtons;
 @property (nonatomic, weak) id<VnViewEditorToolBarButtonDelegate> delegate;
-@property (nonatomic, assign) BOOL highlighted;
-@property (nonatomic, assign) BOOL enabled;
+@property (nonatomic, assign) BOOL colored;
 
 - (void)didTouchUpInside;
 

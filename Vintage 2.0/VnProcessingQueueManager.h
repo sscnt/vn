@@ -10,10 +10,16 @@
 #import <CommonCrypto/CommonDigest.h>
 #import "VnModelProcessingQueue.h"
 
+@protocol VnProcessingQueueManagerDelegate
+- (void)queueDidFinished:(VnModelProcessingQueue*)queue;
+@end
+
 @interface VnProcessingQueueManager : NSObject
 {
     NSMutableArray* _queue;
 }
+
+@property (nonatomic, weak) id<VnProcessingQueueManagerDelegate> delegate;
 
 + (VnProcessingQueueManager*)instance;
 + (NSString*)generateQueueId;
