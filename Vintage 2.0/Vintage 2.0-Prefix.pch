@@ -131,6 +131,9 @@ typedef NS_ENUM(NSInteger, VnBlendingMode){
 #import "VnBlendingSaturation.h"
 #import "VnBlendingLinearLight.h"
 
+#import "VnAdjustmentLayerGradientColorFill.h"
+#import "VnAdjustmentLayerColorBalance.h"
+
 #import "UIDevice+extend.h"
 #import "UIScreen+extend.h"
 #import "UIView+extend.h"
@@ -147,5 +150,5 @@ typedef NS_ENUM(NSInteger, VnBlendingMode){
 #import "VnProcessingQueueManager.h"
 #import "VnObjectEffect.h"
 #import "VnObjectTexture.h"
-#import "VnObjectPhotoFIlterGreate.h"
+#import "VnObjectPhotoFilter.h"
 #import "VnObjectProcessingQueue.h"

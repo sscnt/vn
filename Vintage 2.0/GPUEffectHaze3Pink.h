@@ -6,8 +6,8 @@
 //  Copyright (c) 2014年 SSC. All rights reserved.
 //
 
-#import "GPUEffectHaze3.h"
+#import "VnEffect.h"
 
-@interface GPUEffectHaze3Pink : GPUEffectHaze3
+@interface GPUEffectHaze3Pink : VnEffect
 
 @end

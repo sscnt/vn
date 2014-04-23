@@ -14,7 +14,7 @@
 {
     self = [super init];
     if(self){
-        self.effectId = EffectIdHaze3;
+        self.effectId = VnEffectIdHaze3;
     }
     return self;
 }

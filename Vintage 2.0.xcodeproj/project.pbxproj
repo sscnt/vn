@@ -49,6 +49,8 @@
 		58F17A7519020BEC0038DF34 /* UIScrollView+extend.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F17A6F19020BEC0038DF34 /* UIScrollView+extend.m */; };
 		58F17A7619020BEC0038DF34 /* UIImage+extend.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F17A7119020BEC0038DF34 /* UIImage+extend.m */; };
 		58F2F471190550B3006A2860 /* VnViewEditorPhotoPreview.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F2F470190550B3006A2860 /* VnViewEditorPhotoPreview.m */; };
+		58F3A78E1907C6A600896D01 /* VnAdjustmentLayerGradientColorFill.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F3A78D1907C6A600896D01 /* VnAdjustmentLayerGradientColorFill.m */; };
+		58F3A7921907C72700896D01 /* VnAdjustmentLayerColorBalance.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F3A7911907C72700896D01 /* VnAdjustmentLayerColorBalance.m */; };
 		58F51B471903820700B8E976 /* VnBoolean.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F51B461903820700B8E976 /* VnBoolean.m */; };
 		58F5A7101903F8CA0028D6D2 /* home-photos@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 58F5A70F1903F8CA0028D6D2 /* home-photos@2x.png */; };
 		58F5A71619040B9C0028D6D2 /* VnCurrentSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F5A71519040B9C0028D6D2 /* VnCurrentSettings.m */; };
@@ -61,7 +63,7 @@
 		58F5A72D19041F110028D6D2 /* Default-Portrait.png in Resources */ = {isa = PBXBuildFile; fileRef = 58F5A72B19041F110028D6D2 /* Default-Portrait.png */; };
 		58F5A72E19041F110028D6D2 /* Default-Portrait@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 58F5A72C19041F110028D6D2 /* Default-Portrait@2x.png */; };
 		58F64979190426D8000E2AC5 /* VnObjectEffect.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F64978190426D8000E2AC5 /* VnObjectEffect.m */; };
-		58F6497C19042829000E2AC5 /* VnObjectPhotoFIlterGreate.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F6497B19042829000E2AC5 /* VnObjectPhotoFIlterGreate.m */; };
+		58F6497C19042829000E2AC5 /* VnObjectPhotoFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F6497B19042829000E2AC5 /* VnObjectPhotoFilter.m */; };
 		58F6497F19042837000E2AC5 /* VnObjectTexture.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F6497E19042837000E2AC5 /* VnObjectTexture.m */; };
 		58F6DE8C19039A1E00FC96D7 /* home-camera@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 58F6DE8A19039A1E00FC96D7 /* home-camera@2x.png */; };
 		58F79165190626F8009F0FF5 /* VnProcessingQueueManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F79164190626F8009F0FF5 /* VnProcessingQueueManager.m */; };
@@ -206,6 +208,10 @@
 		58F17A7119020BEC0038DF34 /* UIImage+extend.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+extend.m"; sourceTree = "<group>"; };
 		58F2F46F190550B3006A2860 /* VnViewEditorPhotoPreview.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VnViewEditorPhotoPreview.h; sourceTree = "<group>"; };
 		58F2F470190550B3006A2860 /* VnViewEditorPhotoPreview.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VnViewEditorPhotoPreview.m; sourceTree = "<group>"; };
+		58F3A78C1907C6A600896D01 /* VnAdjustmentLayerGradientColorFill.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VnAdjustmentLayerGradientColorFill.h; sourceTree = "<group>"; };
+		58F3A78D1907C6A600896D01 /* VnAdjustmentLayerGradientColorFill.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VnAdjustmentLayerGradientColorFill.m; sourceTree = "<group>"; };
+		58F3A7901907C72700896D01 /* VnAdjustmentLayerColorBalance.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VnAdjustmentLayerColorBalance.h; sourceTree = "<group>"; };
+		58F3A7911907C72700896D01 /* VnAdjustmentLayerColorBalance.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VnAdjustmentLayerColorBalance.m; sourceTree = "<group>"; };
 		58F51B451903820700B8E976 /* VnBoolean.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VnBoolean.h; sourceTree = "<group>"; };
 		58F51B461903820700B8E976 /* VnBoolean.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VnBoolean.m; sourceTree = "<group>"; };
 		58F5A70F1903F8CA0028D6D2 /* home-photos@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "home-photos@2x.png"; sourceTree = "<group>"; };
@@ -225,8 +231,8 @@
 		58F5A72C19041F110028D6D2 /* Default-Portrait@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Portrait@2x.png"; sourceTree = "<group>"; };
 		58F64977190426D8000E2AC5 /* VnObjectEffect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VnObjectEffect.h; sourceTree = "<group>"; };
 		58F64978190426D8000E2AC5 /* VnObjectEffect.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VnObjectEffect.m; sourceTree = "<group>"; };
-		58F6497A19042829000E2AC5 /* VnObjectPhotoFIlterGreate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VnObjectPhotoFIlterGreate.h; sourceTree = "<group>"; };
-		58F6497B19042829000E2AC5 /* VnObjectPhotoFIlterGreate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VnObjectPhotoFIlterGreate.m; sourceTree = "<group>"; };
+		58F6497A19042829000E2AC5 /* VnObjectPhotoFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VnObjectPhotoFilter.h; sourceTree = "<group>"; };
+		58F6497B19042829000E2AC5 /* VnObjectPhotoFilter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VnObjectPhotoFilter.m; sourceTree = "<group>"; };
 		58F6497D19042837000E2AC5 /* VnObjectTexture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VnObjectTexture.h; sourceTree = "<group>"; };
 		58F6497E19042837000E2AC5 /* VnObjectTexture.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VnObjectTexture.m; sourceTree = "<group>"; };
 		58F6DE8A19039A1E00FC96D7 /* home-camera@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "home-camera@2x.png"; sourceTree = "<group>"; };
@@ -437,6 +443,33 @@
 			name = Categories;
 			sourceTree = "<group>";
 		};
+		58F3A78A1907C67A00896D01 /* VnAdjustmentLayers */ = {
+			isa = PBXGroup;
+			children = (
+				58F3A78F1907C71A00896D01 /* Color Balance */,
+				58F3A78B1907C69700896D01 /* Gradient Color */,
+			);
+			name = VnAdjustmentLayers;
+			sourceTree = "<group>";
+		};
+		58F3A78B1907C69700896D01 /* Gradient Color */ = {
+			isa = PBXGroup;
+			children = (
+				58F3A78C1907C6A600896D01 /* VnAdjustmentLayerGradientColorFill.h */,
+				58F3A78D1907C6A600896D01 /* VnAdjustmentLayerGradientColorFill.m */,
+			);
+			name = "Gradient Color";
+			sourceTree = "<group>";
+		};
+		58F3A78F1907C71A00896D01 /* Color Balance */ = {
+			isa = PBXGroup;
+			children = (
+				58F3A7901907C72700896D01 /* VnAdjustmentLayerColorBalance.h */,
+				58F3A7911907C72700896D01 /* VnAdjustmentLayerColorBalance.m */,
+			);
+			name = "Color Balance";
+			sourceTree = "<group>";
+		};
 		58F51B4B19038FCD00B8E976 /* Editor */ = {
 			isa = PBXGroup;
 			children = (
@@ -501,8 +534,8 @@
 			children = (
 				58F64977190426D8000E2AC5 /* VnObjectEffect.h */,
 				58F64978190426D8000E2AC5 /* VnObjectEffect.m */,
-				58F6497A19042829000E2AC5 /* VnObjectPhotoFIlterGreate.h */,
-				58F6497B19042829000E2AC5 /* VnObjectPhotoFIlterGreate.m */,
+				58F6497A19042829000E2AC5 /* VnObjectPhotoFilter.h */,
+				58F6497B19042829000E2AC5 /* VnObjectPhotoFilter.m */,
 				58F6497D19042837000E2AC5 /* VnObjectTexture.h */,
 				58F6497E19042837000E2AC5 /* VnObjectTexture.m */,
 			);
@@ -552,6 +585,7 @@
 			children = (
 				58F5A72519041CA00028D6D2 /* iPad */,
 				58F17A6719020BDD0038DF34 /* Categories */,
+				58F3A78A1907C67A00896D01 /* VnAdjustmentLayers */,
 				58FD076D19025A4D0005E74E /* VnFilters */,
 				58FD076C19025A3A0005E74E /* VnBlendings */,
 				58FD0706190240B80005E74E /* VnEffects */,
@@ -840,6 +874,7 @@
 				58FD077119025A860005E74E /* VnEffect.m in Sources */,
 				58FA3A4F1902C5670070B4B8 /* VnViewControllerTiltShift.m in Sources */,
 				5807F5A719036588009FEA3C /* UIDevice+extend.m in Sources */,
+				58F3A7921907C72700896D01 /* VnAdjustmentLayerColorBalance.m in Sources */,
 				58F5A72119041C1F0028D6D2 /* VnViewEditorEffectsOpacity.m in Sources */,
 				58FA3A3C190293A30070B4B8 /* VnFilterLevels.m in Sources */,
 				5811B9E41904D2FA00D4155C /* VnViewEditorToolBar.m in Sources */,
@@ -859,7 +894,7 @@
 				58F17A7519020BEC0038DF34 /* UIScrollView+extend.m in Sources */,
 				58325D9219027053000A3D0E /* VnBlendingScreen.m in Sources */,
 				583092C41907BE65007F2989 /* GPUEffectHaze3.m in Sources */,
-				58F6497C19042829000E2AC5 /* VnObjectPhotoFIlterGreate.m in Sources */,
+				58F6497C19042829000E2AC5 /* VnObjectPhotoFilter.m in Sources */,
 				5807F59F19036317009FEA3C /* VnViewHomeBg.m in Sources */,
 				58FA3A451902B9A00070B4B8 /* VnEditorSliderManager.m in Sources */,
 				5807F5A019036317009FEA3C /* VnButtonHomeSource.m in Sources */,
@@ -872,6 +907,7 @@
 				58325D98190271A9000A3D0E /* VnBlendingLighten.m in Sources */,
 				58F6497F19042837000E2AC5 /* VnObjectTexture.m in Sources */,
 				58F7916B190627B7009F0FF5 /* VnObjectProcessingQueue.m in Sources */,
+				58F3A78E1907C6A600896D01 /* VnAdjustmentLayerGradientColorFill.m in Sources */,
 				58FA3A491902C4F90070B4B8 /* VnViewControllerEditor.m in Sources */,
 				58F5A71E19041BEF0028D6D2 /* VnViewEditorEffectsPresets.m in Sources */,
 				588FDEC31905FFAA00ECA2C4 /* VnViewProgress.m in Sources */,

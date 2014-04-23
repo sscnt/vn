@@ -16,5 +16,6 @@
 + (int)effectsCount;
 
 - (void)initEffectsList;
+- (VnObjectEffect*)effectAtIndex:(int)index;
 
 @end
