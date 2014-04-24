@@ -18,6 +18,7 @@
 {
     LOG(@"Cleaned images.");
     [VnCurrentImage clean];
+    [VnEditorViewManager clean];
 }
 
 - (void)viewDidLoad

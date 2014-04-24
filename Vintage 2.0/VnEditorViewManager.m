@@ -41,29 +41,39 @@ static VnEditorViewManager* sharedVnEditorViewManager = nil;
     if (self) {
         _toolBarButtons = [NSMutableDictionary dictionary];
         _adjustmentToolViwes = [NSMutableDictionary dictionary];
-        
-        VnViewEditorToolBarButton* button;
-        //////// Effects
-        button = [[VnViewEditorToolBarButton alloc] init];
-        button.toolId = VnAdjustmentToolIdEffects;
-        [self registerButton:button];
-        
-        //////// Textures
-        button = [[VnViewEditorToolBarButton alloc] init];
-        button.toolId = VnAdjustmentToolIdEffectOpacity;
-        [self registerButton:button];
-        
-        //////// Textures
-        button = [[VnViewEditorToolBarButton alloc] init];
-        button.toolId = VnAdjustmentToolIdEffectHistory;
-        [self registerButton:button];
-        
-        //////// Textures
-        button = [[VnViewEditorToolBarButton alloc] init];
-        button.toolId = VnAdjustmentToolIdTextureOpacity;
-        [self registerButton:button];
     }
     return self;
+}
+
+// commonInit - clean
+- (void)commonInit
+{
+    [self initButtons];
+}
+
+- (void)initButtons
+{
+    
+    VnViewEditorToolBarButton* button;
+    //////// Effects
+    button = [[VnViewEditorToolBarButton alloc] init];
+    button.toolId = VnAdjustmentToolIdEffects;
+    [self registerButton:button];
+    
+    //////// Textures
+    button = [[VnViewEditorToolBarButton alloc] init];
+    button.toolId = VnAdjustmentToolIdEffectOpacity;
+    [self registerButton:button];
+    
+    //////// Textures
+    button = [[VnViewEditorToolBarButton alloc] init];
+    button.toolId = VnAdjustmentToolIdEffectHistory;
+    [self registerButton:button];
+    
+    //////// Textures
+    button = [[VnViewEditorToolBarButton alloc] init];
+    button.toolId = VnAdjustmentToolIdTextureOpacity;
+    [self registerButton:button];
 }
 
 #pragma mark manager
@@ -88,6 +98,16 @@ static VnEditorViewManager* sharedVnEditorViewManager = nil;
     }
 }
 
+- (void)hideAllAdjustmentTools
+{
+    for (NSString* key in [_adjustmentToolViwes allKeys]) {
+        @autoreleasepool {
+            UIView* view = [self adjustmentToolViewByToolId:(VnAdjustmentToolId)[key intValue]];
+            view.hidden = YES;
+        }
+    }
+}
+
 #pragma mark layout
 
 - (void)layout
@@ -102,6 +122,16 @@ static VnEditorViewManager* sharedVnEditorViewManager = nil;
 {
     //// Tool Bar
     _toolBar = [[VnViewEditorToolBar alloc] init];
+    
+    //// Effects
+    [_toolBar appendButton:[self buttonByToolId:VnAdjustmentToolIdEffects]];
+    
+    //// Textures
+    [_toolBar appendButton:[self buttonByToolId:VnAdjustmentToolIdEffectOpacity]];
+    
+    //// Textures
+    [_toolBar appendButton:[self buttonByToolId:VnAdjustmentToolIdEffectHistory]];
+    
     float height = [_toolBar height] * 3.0f;
     if ([UIDevice isiPad]) {
         height = [_toolBar height] * 6.0f;
@@ -114,16 +144,6 @@ static VnEditorViewManager* sharedVnEditorViewManager = nil;
     }
     [_toolBar setY:[UIScreen height] - height - [_toolBar height]];
     [self.view addSubview:_toolBar];
-    
-    
-    //// Effects
-    [_toolBar appendButton:[self buttonByToolId:VnAdjustmentToolIdEffects]];
-    
-    //// Textures
-    [_toolBar appendButton:[self buttonByToolId:VnAdjustmentToolIdEffectOpacity]];
-    
-    //// Textures
-    [_toolBar appendButton:[self buttonByToolId:VnAdjustmentToolIdEffectHistory]];
 }
 
 - (void)layoutNavigationBar
@@ -151,7 +171,8 @@ static VnEditorViewManager* sharedVnEditorViewManager = nil;
 - (void)layoutAdjustmentEffects
 {
     if ([self adjustmentToolViewByToolId:VnAdjustmentToolIdEffects] == nil) {
-        VnViewEditorEffectPresetsListView* view = [[VnViewEditorEffectPresetsListView alloc] initWithFrame:[VnEditorViewManager adjustmentToolViewFrame]];
+        UIView* wrapper = [[UIView alloc] initWithFrame:[VnEditorViewManager adjustmentToolViewFrame]];
+        VnViewEditorEffectPresetsListView* view = [[VnViewEditorEffectPresetsListView alloc] initWithFrame:[VnEditorViewManager adjustmentToolViewBounds]];
         
         for (int i = 0; i < [VnDataEffects effectsCount]; i++) {
             VnObjectEffect* efx = [VnDataEffects effectAtIndex:i];
@@ -159,9 +180,9 @@ static VnEditorViewManager* sharedVnEditorViewManager = nil;
                 [view addItemByEffectObject:efx];
             }
         }
-        
-        [self.view addSubview:view];
-        [self registerAdjustmentToolView:view ByToolId:VnAdjustmentToolIdEffects];
+        [wrapper addSubview:view];
+        [self.view addSubview:wrapper];
+        [self registerAdjustmentToolView:wrapper ByToolId:VnAdjustmentToolIdEffects];
     }
 }
 
@@ -200,13 +221,18 @@ static VnEditorViewManager* sharedVnEditorViewManager = nil;
             
         }
     }
-    CGRect bounds = CGRectMake(0.0f, 0.0f, adjh / 1.61803398875, adjh);
+    CGRect bounds = CGRectMake(0.0f, 0.0f, adjh / 1.20f, adjh);
     return bounds;
+}
+
++ (float)thumbnailViewPadding
+{
+    return 10.0f;
 }
 
 + (CGRect)thumbnailImageBounds
 {
-    float padding = 10.0f;
+    float padding = [VnEditorViewManager thumbnailViewPadding];
     
     float barh = [VnCurrentSettings barHeight];
     float adjh = barh * 3.0f;
@@ -219,7 +245,7 @@ static VnEditorViewManager* sharedVnEditorViewManager = nil;
             
         }
     }
-    float width = adjh / 1.61803398875 - padding * 2.0f;
+    float width = adjh / 1.20f - padding * 2.0f;
     CGRect bounds = CGRectMake(0.0f, 0.0f, width, width);
     return bounds;
 }
@@ -242,9 +268,15 @@ static VnEditorViewManager* sharedVnEditorViewManager = nil;
     return bounds;
 }
 
++ (CGRect)adjustmentToolViewBounds
+{
+    CGRect bounds = CGRectMake(0.0f, 0.0f, [VnEditorViewManager adjustmentToolViewFrame].size.width, [VnEditorViewManager adjustmentToolViewFrame].size.height);
+    return bounds;
+}
+
 #pragma mark adjustment tool
 
-- (void)registerAdjustmentToolView:(id)view ByToolId:(VnAdjustmentToolId)toolId
+- (void)registerAdjustmentToolView:(UIView*)view ByToolId:(VnAdjustmentToolId)toolId
 {
     [_adjustmentToolViwes setObject:view forKey:[NSString stringWithFormat:@"%d", (int)toolId]];
 }
@@ -257,18 +289,22 @@ static VnEditorViewManager* sharedVnEditorViewManager = nil;
 - (void)openAdjustmentToolView:(VnAdjustmentToolId)toolId
 {
     [self unselectAllButtons];
+    [self hideAllAdjustmentTools];
     VnViewEditorToolBarButton* button = [self buttonByToolId:toolId];
     if (button) {
         button.selected = YES;
     }
+    UIView* view;
     switch (toolId) {
         case VnAdjustmentToolIdEffects:
             [self layoutAdjustmentEffects];
+            view = [self adjustmentToolViewByToolId:VnAdjustmentToolIdEffects];
             break;
             
         default:
             break;
     }
+    [view setHidden:NO];
     [self.delegate adjustmentToolViewDidChange:toolId];
 }
 
@@ -279,6 +315,42 @@ static VnEditorViewManager* sharedVnEditorViewManager = nil;
     _photoPreview.image = image;
     [_resizingProgressView removeFromSuperview];
     _resizingProgressView = nil;
+}
+
++ (void)clean
+{
+    [[VnEditorViewManager instance] clean];
+}
+
+- (void)clean
+{
+    
+    for (NSString* key in [_toolBarButtons allKeys]) {
+        @autoreleasepool {
+            VnViewEditorToolBarButton* button = [self buttonByToolId:(VnAdjustmentToolId)[key intValue]];
+            [button removeFromSuperview];
+        }
+    }
+
+    for (NSString* key in [_adjustmentToolViwes allKeys]) {
+        @autoreleasepool {
+            UIView* view = [self adjustmentToolViewByToolId:(VnAdjustmentToolId)[key intValue]];
+            [view removeFromSuperview];
+        }
+    }
+    [_adjustmentToolViwes removeAllObjects];
+    [_toolBarButtons removeAllObjects];
+    [_toolBar removeFromSuperview];
+    _toolBar = nil;
+    [_photoPreview removeFromSuperview];
+    _photoPreview = nil;
+    [_navigationBar removeFromSuperview];
+    _navigationBar = nil;
+    if (_resizingProgressView) {
+        [_resizingProgressView removeFromSuperview];
+        _resizingProgressView = nil;
+    }
+    
 }
 
 @end

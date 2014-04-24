@@ -12,8 +12,10 @@
 
 @interface VnViewEditorEffectPresetItemView : UIView
 {
+    UIImageView* _imageView;
     VnViewProgress* _progressView;
 }
+@property (nonatomic, strong) UIImage* image;
 
 - (id)initWithEffect:(VnObjectEffect*)effect;
 - (void)removeProgress;

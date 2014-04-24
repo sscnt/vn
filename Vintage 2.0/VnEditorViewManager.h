@@ -32,8 +32,15 @@
 + (VnEditorViewManager*)instance;
 + (CGRect)previewBounds;
 + (CGRect)adjustmentToolViewFrame;
++ (CGRect)adjustmentToolViewBounds;
 + (CGRect)thumbnailViewBounds;
++ (float)thumbnailViewPadding;
 + (CGRect)thumbnailImageBounds;
++ (void)clean;
+- (void)clean;
+
+- (void)commonInit;
+- (void)initButtons;
 
 - (void)layout;
 - (void)layoutNavigationBar;
@@ -44,11 +51,14 @@
 - (void)setPreviewImage:(UIImage*)image;
 
 - (void)openAdjustmentToolView:(VnAdjustmentToolId)toolId;
-- (id)adjustmentToolViewByToolId:(VnAdjustmentToolId)toolId;
-- (void)registerAdjustmentToolView:(id)view ByToolId:(VnAdjustmentToolId)toolId;
+- (UIView*)adjustmentToolViewByToolId:(VnAdjustmentToolId)toolId;
+- (void)registerAdjustmentToolView:(UIView*)view ByToolId:(VnAdjustmentToolId)toolId;
+- (void)hideAllAdjustmentTools;
 
 - (void)registerButton:(VnViewEditorToolBarButton*)button;
 - (VnViewEditorToolBarButton*)buttonByToolId:(VnAdjustmentToolId)toolId;
 - (void)unselectAllButtons;
+
+
 
 @end

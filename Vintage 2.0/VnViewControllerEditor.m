@@ -25,6 +25,7 @@
     VnEditorViewManager* vm = [VnEditorViewManager instance];
     vm.view = self.view;
     vm.delegate = self;
+    [vm commonInit];
     [vm layout];
     
     VnProcessingQueueManager* qm = [VnProcessingQueueManager instance];
@@ -57,6 +58,12 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)dealloc
+{
+    VnEditorViewManager* vm = [VnEditorViewManager instance];
+    [vm clean];
 }
 
 @end
