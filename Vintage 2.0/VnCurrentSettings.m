@@ -77,6 +77,11 @@ static VnCurrentSettings* sharedVnCurrentSettings = nil;
 
 #pragma mark button color
 
++ (UIColor *)barBgColor
+{
+    return [UIColor colorWithRed:s255(37.0f) green:s255(35.0f) blue:s255(35.0f) alpha:1.0];
+}
+
 + (UIColor *)buttonIconNormalColor
 {
     return [UIColor colorWithWhite:1.0f alpha:0.80f];

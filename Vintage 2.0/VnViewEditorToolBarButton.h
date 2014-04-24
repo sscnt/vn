@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "VnViewEditorToolBarButtonBgView.h"
 
 @class VnViewEditorToolBarButton;
 
@@ -20,15 +21,10 @@
 @property (nonatomic, strong) NSMutableArray* childButtons;
 @property (nonatomic, weak) id<VnViewEditorToolBarButtonDelegate> delegate;
 @property (nonatomic, assign) BOOL colored;
+@property (nonatomic, strong) VnViewEditorToolBarButtonBgView* view;
 
 - (void)didTouchUpInside;
-
-- (UIColor*)fillColor;
-- (void)drawRectEffects:(CGRect)rect;
-- (void)drawRectEffectOpacity:(CGRect)rect;
-- (void)drawRectEffectHistroy:(CGRect)rect;
-- (void)drawRectTextures:(CGRect)rect;
-- (void)drawRectTextureOpacity:(CGRect)rect;
-- (void)drawRectTextureHistroy:(CGRect)rect;
+- (void)addChildButton:(VnViewEditorToolBarButton*)button;
+- (int)childButtonsCount;
 
 @end

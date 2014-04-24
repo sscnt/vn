@@ -55,20 +55,22 @@ static VnEditorViewManager* sharedVnEditorViewManager = nil;
 {
     
     VnViewEditorToolBarButton* button;
+    VnViewEditorToolBarButton* parent;
+    
     //////// Effects
-    button = [[VnViewEditorToolBarButton alloc] init];
-    button.toolId = VnAdjustmentToolIdEffects;
-    [self registerButton:button];
+    parent = [[VnViewEditorToolBarButton alloc] init];
+    parent.toolId = VnAdjustmentToolIdEffects;
+    [self registerButton:parent];
     
     //////// Textures
     button = [[VnViewEditorToolBarButton alloc] init];
     button.toolId = VnAdjustmentToolIdEffectOpacity;
-    [self registerButton:button];
+    [parent addChildButton:button];
     
     //////// Textures
     button = [[VnViewEditorToolBarButton alloc] init];
     button.toolId = VnAdjustmentToolIdEffectHistory;
-    [self registerButton:button];
+    [parent addChildButton:button];
     
     //////// Textures
     button = [[VnViewEditorToolBarButton alloc] init];
@@ -116,6 +118,7 @@ static VnEditorViewManager* sharedVnEditorViewManager = nil;
     [self layoutNavigationBar];
     [self layoutToolBar];
     [self layoutPreview];
+    [self.view bringSubviewToFront:_toolBar];
 }
 
 - (void)layoutToolBar
@@ -132,17 +135,7 @@ static VnEditorViewManager* sharedVnEditorViewManager = nil;
     //// Textures
     [_toolBar appendButton:[self buttonByToolId:VnAdjustmentToolIdEffectHistory]];
     
-    float height = [_toolBar height] * 3.0f;
-    if ([UIDevice isiPad]) {
-        height = [_toolBar height] * 6.0f;
-    } else {
-        if ([UIDevice resolution] == UIDeviceResolution_iPhoneRetina4) {
-            height = [_toolBar height] * 2.0f;
-        } else {
-            
-        }
-    }
-    [_toolBar setY:[UIScreen height] - height - [_toolBar height]];
+    [_toolBar setY:[VnEditorViewManager toolBarDefaultY]];
     [self.view addSubview:_toolBar];
 }
 
@@ -187,6 +180,21 @@ static VnEditorViewManager* sharedVnEditorViewManager = nil;
 }
 
 #pragma mark view sizes
+
++ (float)toolBarDefaultY
+{
+    float height = [VnCurrentSettings barHeight] * 3.0f;
+    if ([UIDevice isiPad]) {
+        height = [VnCurrentSettings barHeight] * 6.0f;
+    } else {
+        if ([UIDevice resolution] == UIDeviceResolution_iPhoneRetina4) {
+            height = [VnCurrentSettings barHeight] * 2.0f;
+        } else {
+            
+        }
+    }
+    return [UIScreen height] - height - [VnCurrentSettings barHeight];
+}
 
 + (CGRect)previewBounds
 {
@@ -299,6 +307,11 @@ static VnEditorViewManager* sharedVnEditorViewManager = nil;
     if (button) {
         button.selected = YES;
     }
+    int childCount = [button childButtonsCount];
+    int stage = childCount + 1;
+    _toolBar.stage = stage;
+    [_toolBar setY:[VnEditorViewManager toolBarDefaultY] - (float)childCount * [VnCurrentSettings barHeight]];
+    
     UIView* view;
     switch (toolId) {
         case VnAdjustmentToolIdEffects:

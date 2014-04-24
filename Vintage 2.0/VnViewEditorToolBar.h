@@ -8,12 +8,14 @@
 
 #import <UIKit/UIKit.h>
 #import "VnViewEditorToolBarButton.h"
+#import "VnViewHitThroughScroll.h"
 
 @interface VnViewEditorToolBar : UIView
 {
     float _right;
 }
-@property (nonatomic, strong) UIScrollView* view;
+@property (nonatomic, strong) VnViewHitThroughScroll* view;
+@property (nonatomic, assign) int stage;
 
 - (void)appendButton:(VnViewEditorToolBarButton*)button;
 

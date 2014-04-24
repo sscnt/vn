@@ -21,6 +21,7 @@ typedef NS_ENUM(NSInteger, VnCurrentSettingsWorkspaceType){
 + (float)previewProgressRadius;
 + (float)thumbnailProgressRadius;
 
++ (UIColor*)barBgColor;
 + (UIColor*)buttonIconNormalColor;
 + (UIColor*)buttonIconHighlightedColor;
 + (UIColor*)buttonIconColoredColor;

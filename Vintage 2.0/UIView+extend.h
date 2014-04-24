@@ -9,15 +9,15 @@
 #import <UIKit/UIKit.h>
 
 @interface UIView (extend)
-- (CGFloat)height;
-- (CGFloat)width;
-- (CGFloat)bottom;
-- (CGFloat)right;
+- (float)height;
+- (float)width;
+- (float)bottom;
+- (float)right;
 - (void)setShadow;
-- (void)setX:(CGFloat)x;
-- (void)setY:(CGFloat)y;
-- (void)setCenterX:(CGFloat)x;
-- (void)setCenterY:(CGFloat)y;
+- (void)setX:(float)x;
+- (void)setY:(float)y;
+- (void)setCenterX:(float)x;
+- (void)setCenterY:(float)y;
 - (void)setWidth:(NSInteger)width;
 - (void)setHeight:(NSInteger)height;
 - (void)setOrigin:(CGPoint)point;

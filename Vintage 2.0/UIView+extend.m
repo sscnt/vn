@@ -10,21 +10,21 @@
 
 @implementation UIView (extend)
 
-- (CGFloat)height
+- (float)height
 {
     return self.bounds.size.height;
 }
 
-- (CGFloat)width
+- (float)width
 {
     return self.bounds.size.width;
 }
 
--(CGFloat)bottom
+-(float)bottom
 {
     return self.frame.origin.y + self.bounds.size.height;
 }
--(CGFloat)right
+-(float)right
 {
     return self.frame.origin.x + self.frame.size.width;
 }
@@ -41,31 +41,31 @@
     self.layer.shadowOpacity = 0.15;
 }
 
--(void)setX:(CGFloat)x
+-(void)setX:(float)x
 {
     self.frame = CGRectMake( x, self.frame.origin.y, self.frame.size.width, self.frame.size.height );
 }
 
-- (void)setY:(CGFloat)y
+- (void)setY:(float)y
 {
     self.frame = CGRectMake( self.frame.origin.x, y, self.frame.size.width, self.frame.size.height );
 }
-- (void)setCenterX:(CGFloat)x
+- (void)setCenterX:(float)x
 {
     self.center = CGPointMake(x, self.center.y);
 }
 
--(void) setCenterY:(CGFloat)y
+-(void) setCenterY:(float)y
 {
     self.center = CGPointMake(self.center.x, y);
 }
 
-- (void)setWidth:(NSInteger)width
+- (void)setWidth:(float)width
 {
     self.frame = CGRectMake( self.frame.origin.x, self.frame.origin.y, width, self.frame.size.height );
 }
 
-- (void)setHeight:(NSInteger)height
+- (void)setHeight:(float)height
 {
     self.frame = CGRectMake( self.frame.origin.x, self.frame.origin.y, self.frame.size.width, height );
 }

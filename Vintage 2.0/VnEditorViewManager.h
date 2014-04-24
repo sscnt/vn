@@ -36,6 +36,8 @@
 + (CGRect)thumbnailViewBounds;
 + (float)thumbnailViewPaddingTop;
 + (float)thumbnailViewPaddingLeft;
++ (float)toolBarDefaultY;
++ (float)toolBarDefaultX;
 + (CGRect)thumbnailImageBounds;
 + (void)clean;
 - (void)clean;
