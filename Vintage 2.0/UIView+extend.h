@@ -18,8 +18,8 @@
 - (void)setY:(float)y;
 - (void)setCenterX:(float)x;
 - (void)setCenterY:(float)y;
-- (void)setWidth:(NSInteger)width;
-- (void)setHeight:(NSInteger)height;
+- (void)setWidth:(float)width;
+- (void)setHeight:(float)height;
 - (void)setOrigin:(CGPoint)point;
 - (void)setSize:(CGSize)size;
 

@@ -17,6 +17,7 @@
         self.showsVerticalScrollIndicator = NO;
         self.showsHorizontalScrollIndicator = NO;
         self.bounces = YES;
+        self.userInteractionEnabled = YES;
         self.backgroundColor = [UIColor clearColor];
     }
     return self;
@@ -29,6 +30,11 @@
         return nil;
     }
     return view;
+}
+
+- (BOOL)touchesShouldCancelInContentView:(UIView *)view
+{
+    return ![view isKindOfClass:[UIButton class]];
 }
 
 @end

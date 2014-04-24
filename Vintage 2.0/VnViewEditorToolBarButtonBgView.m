@@ -17,9 +17,20 @@
         // Initialization code
         _selected = NO;
         _colored = NO;
-        self.backgroundColor = [UIColor clearColor];
+        self.userInteractionEnabled = NO;
+        self.backgroundColor = [VnCurrentSettings barBgColor];
     }
     return self;
+}
+
+- (void)setSelected:(BOOL)selected
+{
+    _selected = selected;
+    if (selected) {
+        self.backgroundColor = [VnCurrentSettings buttonHighlightedBgColor];
+    } else {
+        self.backgroundColor = [VnCurrentSettings barBgColor];
+    }
 }
 
 #pragma mark drawrect
@@ -41,10 +52,34 @@
         case VnAdjustmentToolIdEffects:
             [self drawRectEffects:rect];
             break;
+        case VnAdjustmentToolIdEffectHistory:
+            [self drawRectEffectHistroy:rect];
+            break;
         case VnAdjustmentToolIdEffectOpacity:
             [self drawRectEffectOpacity:rect];
             break;
-        case VnAdjustmentToolIdEffectHistory:
+        case VnAdjustmentToolIdTextures:
+            [self drawRectEffectHistroy:rect];
+            break;
+        case VnAdjustmentToolIdTextureHistory:
+            [self drawRectEffectHistroy:rect];
+            break;
+        case VnAdjustmentToolIdTextureOpacity:
+            [self drawRectEffectHistroy:rect];
+            break;
+        case VnAdjustmentToolIdPhotoFilters:
+            [self drawRectEffectHistroy:rect];
+            break;
+        case VnAdjustmentToolIdPhotoFilterHistory:
+            [self drawRectEffectHistroy:rect];
+            break;
+        case VnAdjustmentToolIdPhotoFilterOpacity:
+            [self drawRectEffectHistroy:rect];
+            break;
+        case VnAdjustmentToolIdBrightness:
+            [self drawRectEffectHistroy:rect];
+            break;
+        case VnAdjustmentToolIdLevels:
             [self drawRectEffectHistroy:rect];
             break;
         default:

@@ -22,10 +22,11 @@
 @property (nonatomic, weak) id<VnViewEditorToolBarButtonDelegate> delegate;
 @property (nonatomic, assign) BOOL colored;
 @property (nonatomic, assign) BOOL childButtonsHidden;
+@property (nonatomic, assign) BOOL isChild;
 @property (nonatomic, strong) VnViewEditorToolBarButtonBgView* view;
 @property (nonatomic, assign) int stage;
 
-- (void)didTouchUpInside;
+- (void)didTouchUpInside:(VnViewEditorToolBarButton*)sender;
 - (void)addChildButton:(VnViewEditorToolBarButton*)button;
 - (int)childButtonsCount;
 - (void)layoutChildButtons;

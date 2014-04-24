@@ -39,7 +39,8 @@ static VnEditorButtonManager* sharedVnEditorButtonManager = nil;
 
 - (void)didToolBarButtonTouchUpInside:(VnViewEditorToolBarButton *)button
 {
-    
+    VnEditorViewManager* vm = [VnEditorViewManager instance];
+    [vm openAdjustmentToolView:button.toolId];
 }
 
 @end

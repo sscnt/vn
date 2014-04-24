@@ -52,7 +52,24 @@ typedef NS_ENUM(NSInteger, VnAdjustmentToolId){
     VnAdjustmentToolIdEffectHistory,
     VnAdjustmentToolIdTextures,
     VnAdjustmentToolIdTextureOpacity,
-    VnAdjustmentToolIdTextureHistory
+    VnAdjustmentToolIdTextureHistory,
+    VnAdjustmentToolIdPhotoFilters,
+    VnAdjustmentToolIdPhotoFilterOpacity,
+    VnAdjustmentToolIdPhotoFilterHistory,
+    VnAdjustmentToolIdBrightness,
+    VnAdjustmentToolIdVignette,
+    VnAdjustmentToolIdLevels,
+    VnAdjustmentToolIdContrast,
+    VnAdjustmentToolIdLocalContrast,
+    VnAdjustmentToolIdSharpness,
+    VnAdjustmentToolIdSaturation,
+    VnAdjustmentToolIdVibrance,
+    VnAdjustmentToolIdTemperature,
+    VnAdjustmentToolIdTint,
+    VnAdjustmentToolIdHue,
+    VnAdjustmentToolIdLightness,
+    VnAdjustmentToolIdShadowAndHighlight,
+    VnAdjustmentToolIdBlacksAndWhites
 };
 
 typedef NS_ENUM(NSInteger, VnEffectId){

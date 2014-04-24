@@ -62,19 +62,54 @@ static VnEditorViewManager* sharedVnEditorViewManager = nil;
     parent.toolId = VnAdjustmentToolIdEffects;
     [self registerButton:parent];
     
-    //////// Textures
+    //////// Effects History
+    button = [[VnViewEditorToolBarButton alloc] init];
+    button.toolId = VnAdjustmentToolIdEffectHistory;
+    [parent addChildButton:button];
+    
+    //////// Effects Opacity
     button = [[VnViewEditorToolBarButton alloc] init];
     button.toolId = VnAdjustmentToolIdEffectOpacity;
     [parent addChildButton:button];
     
     //////// Textures
     button = [[VnViewEditorToolBarButton alloc] init];
-    button.toolId = VnAdjustmentToolIdEffectHistory;
-    [parent addChildButton:button];
+    button.toolId = VnAdjustmentToolIdTextures;
+    [self registerButton:button];
     
-    //////// Textures
+    //////// Textures History
+    button = [[VnViewEditorToolBarButton alloc] init];
+    button.toolId = VnAdjustmentToolIdTextureHistory;
+    [self registerButton:button];
+    
+    //////// Textures Opacity
     button = [[VnViewEditorToolBarButton alloc] init];
     button.toolId = VnAdjustmentToolIdTextureOpacity;
+    [self registerButton:button];
+    
+    //////// Photo Filter
+    button = [[VnViewEditorToolBarButton alloc] init];
+    button.toolId = VnAdjustmentToolIdPhotoFilters;
+    [self registerButton:button];
+    
+    //////// Photo Filter History
+    button = [[VnViewEditorToolBarButton alloc] init];
+    button.toolId = VnAdjustmentToolIdPhotoFilterHistory;
+    [self registerButton:button];
+    
+    //////// Photo Filter Opacity
+    button = [[VnViewEditorToolBarButton alloc] init];
+    button.toolId = VnAdjustmentToolIdPhotoFilterOpacity;
+    [self registerButton:button];
+    
+    //////// Brightness
+    button = [[VnViewEditorToolBarButton alloc] init];
+    button.toolId = VnAdjustmentToolIdBrightness;
+    [self registerButton:button];
+    
+    //////// Levels
+    button = [[VnViewEditorToolBarButton alloc] init];
+    button.toolId = VnAdjustmentToolIdLevels;
     [self registerButton:button];
 }
 
@@ -131,13 +166,14 @@ static VnEditorViewManager* sharedVnEditorViewManager = nil;
     [_toolBar appendButton:[self buttonByToolId:VnAdjustmentToolIdEffects]];
     
     //// Textures
-    [_toolBar appendButton:[self buttonByToolId:VnAdjustmentToolIdEffectOpacity]];
+    [_toolBar appendButton:[self buttonByToolId:VnAdjustmentToolIdTextures]];
     
-    //// Textures
-    [_toolBar appendButton:[self buttonByToolId:VnAdjustmentToolIdEffectHistory]];
+    //// Photo Filters
+    [_toolBar appendButton:[self buttonByToolId:VnAdjustmentToolIdPhotoFilters]];
     
     [_toolBar setY:[VnEditorViewManager toolBarDefaultY]];
     [self.view addSubview:_toolBar];
+    
 }
 
 - (void)layoutNavigationBar
@@ -166,6 +202,7 @@ static VnEditorViewManager* sharedVnEditorViewManager = nil;
 {
     if ([self adjustmentToolViewByToolId:VnAdjustmentToolIdEffects] == nil) {
         UIView* wrapper = [[UIView alloc] initWithFrame:[VnEditorViewManager adjustmentToolViewFrame]];
+        wrapper.userInteractionEnabled = YES;
         VnViewEditorEffectPresetsListView* view = [[VnViewEditorEffectPresetsListView alloc] initWithFrame:[VnEditorViewManager adjustmentToolViewBounds]];
         
         for (int i = 0; i < [VnDataEffects effectsCount]; i++) {
@@ -303,17 +340,21 @@ static VnEditorViewManager* sharedVnEditorViewManager = nil;
 - (void)openAdjustmentToolView:(VnAdjustmentToolId)toolId
 {
     [self unselectAllButtons];
-    [self hideAllAdjustmentTools];
     VnViewEditorToolBarButton* button = [self buttonByToolId:toolId];
-    if (button) {
-        button.selected = YES;
+    if (button == nil) {
+        return;
     }
-    button.childButtonsHidden = !button.childButtonsHidden;
-    int childCount = [button childButtonsCount];
-    int stage = childCount + 1;
-    _toolBar.stage = stage;
-    [_toolBar setY:[VnEditorViewManager toolBarDefaultY] - (float)childCount * [VnCurrentSettings barHeight]];
-    
+    if (button.isChild) {
+        
+    }else{
+        button.childButtonsHidden = !button.childButtonsHidden;
+        int childCount = [button childButtonsCount];
+        int stage = childCount + 1;
+        _toolBar.stage = stage;
+        [_toolBar setY:[VnEditorViewManager toolBarDefaultY] - (float)childCount * [VnCurrentSettings barHeight]];
+    }
+    [self hideAllAdjustmentTools];
+    button.selected = YES;    
     UIView* view;
     switch (toolId) {
         case VnAdjustmentToolIdEffects:

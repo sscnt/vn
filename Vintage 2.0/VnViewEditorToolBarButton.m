@@ -19,9 +19,10 @@
         [self addSubview:_view];
         _childButtons = [NSMutableArray array];
         self.delegate = [VnEditorButtonManager instance];
-        self.backgroundColor = [VnCurrentSettings barBgColor];
-        [self addTarget:self action:@selector(didTouchUpInside) forControlEvents:UIControlEventTouchUpInside];
+        self.backgroundColor = [UIColor clearColor];
+        [self addTarget:self action:@selector(didTouchUpInside:) forControlEvents:UIControlEventTouchUpInside];
         _childButtonsHidden = YES;
+        _isChild = NO;
     }
     return self;
 }
@@ -35,12 +36,6 @@
 
 - (void)setSelected:(BOOL)selected
 {
-    [super setSelected:selected];
-    if (selected) {
-        self.backgroundColor = [VnCurrentSettings buttonHighlightedBgColor];
-    } else {
-        self.backgroundColor = [VnCurrentSettings barBgColor];
-    }
     _view.selected = selected;
     [_view setNeedsDisplay];
 }
@@ -56,9 +51,14 @@
 - (void)setStage:(int)stage
 {
     _stage = stage;
-    [self setHeight:(float)stage * [VnCurrentSettings barHeight]];
-    [_view setY:(float)(stage - 1) * [VnCurrentSettings barHeight]];
-    [self layoutChildButtons];
+    if (_childButtonsHidden) {
+        [self setHeight:[VnCurrentSettings barHeight]];
+        [self setY:(float)(stage - 1) * [VnCurrentSettings barHeight]];
+    }else{
+        [self setHeight:(float)stage * [VnCurrentSettings barHeight]];
+        [self layoutChildButtons];
+        [_view setY:(float)(stage - 1) * [VnCurrentSettings barHeight]];
+    }
 }
 
 #pragma mark children
@@ -71,6 +71,7 @@
 - (void)addChildButton:(VnViewEditorToolBarButton *)button
 {
     if (button) {
+        button.isChild = YES;
         [_childButtons addObject:button];
         
         // test
@@ -87,7 +88,8 @@
         if (![button isDescendantOfView:self]) {
             [self addSubview:button];
         }
-        button.hidden = _childButtonsHidden;
+        //button.hidden = _childButtonsHidden;
+        button.transform = CGAffineTransformMakeRotation(M_PI / 4.0f);
         [button setY:(float)i * [VnCurrentSettings barHeight]];
         i++;
     }
@@ -97,7 +99,8 @@
 - (void)setChildButtonsHidden:(BOOL)childButtonsHidden
 {
     for (VnViewEditorToolBarButton* button in _childButtons) {
-        button.hidden = childButtonsHidden;
+        //button.hidden = childButtonsHidden;
+        button.transform = CGAffineTransformMakeRotation(M_PI / 2.0f);
     }
     _childButtonsHidden = childButtonsHidden;
 }
@@ -108,7 +111,7 @@
 
 #pragma mark event
 
-- (void)didTouchUpInside
+- (void)didTouchUpInside:(VnViewEditorToolBarButton *)sender
 {
     [self.delegate didToolBarButtonTouchUpInside:self];
 }
