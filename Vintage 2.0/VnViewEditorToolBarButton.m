@@ -19,9 +19,9 @@
         [self addSubview:_view];
         _childButtons = [NSMutableArray array];
         self.delegate = [VnEditorButtonManager instance];
-        self.backgroundColor = [UIColor clearColor];
-        self.alpha = 0.80f;
+        self.backgroundColor = [VnCurrentSettings barBgColor];
         [self addTarget:self action:@selector(didTouchUpInside) forControlEvents:UIControlEventTouchUpInside];
+        _childButtonsHidden = YES;
     }
     return self;
 }
@@ -39,7 +39,7 @@
     if (selected) {
         self.backgroundColor = [VnCurrentSettings buttonHighlightedBgColor];
     } else {
-        self.backgroundColor = [UIColor clearColor];
+        self.backgroundColor = [VnCurrentSettings barBgColor];
     }
     _view.selected = selected;
     [_view setNeedsDisplay];
@@ -50,6 +50,15 @@
     _colored = colored;
     _view.colored = colored;
     [_view setNeedsDisplay];
+}
+
+
+- (void)setStage:(int)stage
+{
+    _stage = stage;
+    [self setHeight:(float)stage * [VnCurrentSettings barHeight]];
+    [_view setY:(float)(stage - 1) * [VnCurrentSettings barHeight]];
+    [self layoutChildButtons];
 }
 
 #pragma mark children
@@ -67,7 +76,30 @@
         // test
         [button setY:-[self height] / 2.0f];
         [self addSubview:button];
+        [self layoutChildButtons];
     }
+}
+
+- (void)layoutChildButtons
+{
+    int i = 0;
+    for (VnViewEditorToolBarButton* button in _childButtons) {
+        if (![button isDescendantOfView:self]) {
+            [self addSubview:button];
+        }
+        button.hidden = _childButtonsHidden;
+        [button setY:(float)i * [VnCurrentSettings barHeight]];
+        i++;
+    }
+    [self bringSubviewToFront:_view];
+}
+
+- (void)setChildButtonsHidden:(BOOL)childButtonsHidden
+{
+    for (VnViewEditorToolBarButton* button in _childButtons) {
+        button.hidden = childButtonsHidden;
+    }
+    _childButtonsHidden = childButtonsHidden;
 }
 
 #pragma mark flag

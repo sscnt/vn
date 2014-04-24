@@ -16,7 +16,7 @@
     if (self) {
         self.showsVerticalScrollIndicator = NO;
         self.showsHorizontalScrollIndicator = NO;
-        self.bounces = NO;
+        self.bounces = YES;
         self.backgroundColor = [UIColor clearColor];
     }
     return self;

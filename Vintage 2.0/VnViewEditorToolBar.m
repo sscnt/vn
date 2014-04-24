@@ -30,9 +30,9 @@
     [self setHeight:(float)stage * [VnCurrentSettings barHeight]];
     [_view setHeight:(float)stage * [VnCurrentSettings barHeight]];
     
-    for (UIView* view in [_view subviews])
+    for (VnViewEditorToolBarButton* button in [_view subviews])
     {
-        [view setY:(float)(stage - 1) * [VnCurrentSettings barHeight]];
+        button.stage = stage;
     }
     
     [self setNeedsDisplay];

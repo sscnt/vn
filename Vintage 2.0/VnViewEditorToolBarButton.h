@@ -21,10 +21,13 @@
 @property (nonatomic, strong) NSMutableArray* childButtons;
 @property (nonatomic, weak) id<VnViewEditorToolBarButtonDelegate> delegate;
 @property (nonatomic, assign) BOOL colored;
+@property (nonatomic, assign) BOOL childButtonsHidden;
 @property (nonatomic, strong) VnViewEditorToolBarButtonBgView* view;
+@property (nonatomic, assign) int stage;
 
 - (void)didTouchUpInside;
 - (void)addChildButton:(VnViewEditorToolBarButton*)button;
 - (int)childButtonsCount;
+- (void)layoutChildButtons;
 
 @end

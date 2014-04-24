@@ -96,6 +96,7 @@ static VnEditorViewManager* sharedVnEditorViewManager = nil;
         @autoreleasepool {
             VnViewEditorToolBarButton* button = [self buttonByToolId:(VnAdjustmentToolId)[key intValue]];
             button.selected = NO;
+            button.childButtonsHidden = YES;
         }
     }
 }
@@ -307,6 +308,7 @@ static VnEditorViewManager* sharedVnEditorViewManager = nil;
     if (button) {
         button.selected = YES;
     }
+    button.childButtonsHidden = !button.childButtonsHidden;
     int childCount = [button childButtonsCount];
     int stage = childCount + 1;
     _toolBar.stage = stage;
