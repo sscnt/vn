@@ -16,8 +16,8 @@
     if (self) {
         _imageView = [[UIImageView alloc] initWithFrame:[VnEditorViewManager thumbnailImageBounds]];
         _imageView.backgroundColor = [UIColor blackColor];
-        [_imageView setX:[VnEditorViewManager thumbnailViewPadding]];
-        [_imageView setY:[VnEditorViewManager thumbnailViewPadding]];
+        [_imageView setX:[VnEditorViewManager thumbnailViewPaddingLeft]];
+        [_imageView setY:[VnEditorViewManager thumbnailViewPaddingTop]];
         [self addSubview:_imageView];
         _progressView = [[VnViewProgress alloc] initWithFrame:[VnEditorViewManager thumbnailImageBounds] Radius:[VnCurrentSettings thumbnailProgressRadius]];
         [_imageView addSubview:_progressView];

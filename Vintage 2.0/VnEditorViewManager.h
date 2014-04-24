@@ -34,7 +34,8 @@
 + (CGRect)adjustmentToolViewFrame;
 + (CGRect)adjustmentToolViewBounds;
 + (CGRect)thumbnailViewBounds;
-+ (float)thumbnailViewPadding;
++ (float)thumbnailViewPaddingTop;
++ (float)thumbnailViewPaddingLeft;
 + (CGRect)thumbnailImageBounds;
 + (void)clean;
 - (void)clean;
