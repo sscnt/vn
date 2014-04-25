@@ -29,13 +29,17 @@
     _stage = stage;
     [self setHeight:(float)stage * [VnCurrentSettings barHeight]];
     [_view setHeight:(float)stage * [VnCurrentSettings barHeight]];
-    
-    for (VnViewEditorToolBarButton* button in [_view subviews])
-    {
-        button.stage = stage;
-    }
-    
     [self setNeedsDisplay];
+}
+
+- (void)openButton:(VnViewEditorToolBarButton *)button
+{
+    for(VnViewEditorToolBarButton* button in [_view subviews]){
+        button.stage = 1;
+        [button setY:(float)(_stage - 1) * [VnCurrentSettings barHeight]];
+    }
+    button.stage = _stage;
+    [button setY:0.0f];
 }
 
 - (void)appendButton:(VnViewEditorToolBarButton *)button

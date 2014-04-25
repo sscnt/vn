@@ -18,5 +18,6 @@
 @property (nonatomic, assign) int stage;
 
 - (void)appendButton:(VnViewEditorToolBarButton*)button;
+- (void)openButton:(VnViewEditorToolBarButton*)button;
 
 @end

@@ -18,6 +18,8 @@
 - (void)drawRectEffects:(CGRect)rect;
 - (void)drawRectEffectOpacity:(CGRect)rect;
 - (void)drawRectEffectHistroy:(CGRect)rect;
+- (void)drawRectBrightness:(CGRect)rect;
+- (void)drawRectLevels:(CGRect)rect;
 - (void)drawRectTextures:(CGRect)rect;
 - (void)drawRectTextureOpacity:(CGRect)rect;
 - (void)drawRectTextureHistroy:(CGRect)rect;

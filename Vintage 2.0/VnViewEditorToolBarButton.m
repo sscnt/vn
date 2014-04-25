@@ -51,13 +51,12 @@
 - (void)setStage:(int)stage
 {
     _stage = stage;
+    [self setHeight:(float)stage * [VnCurrentSettings barHeight]];
+    [_view setY:(float)(stage - 1) * [VnCurrentSettings barHeight]];
     if (_childButtonsHidden) {
-        [self setHeight:[VnCurrentSettings barHeight]];
-        [self setY:(float)(stage - 1) * [VnCurrentSettings barHeight]];
+        
     }else{
-        [self setHeight:(float)stage * [VnCurrentSettings barHeight]];
         [self layoutChildButtons];
-        [_view setY:(float)(stage - 1) * [VnCurrentSettings barHeight]];
     }
 }
 
@@ -88,8 +87,7 @@
         if (![button isDescendantOfView:self]) {
             [self addSubview:button];
         }
-        //button.hidden = _childButtonsHidden;
-        button.transform = CGAffineTransformMakeRotation(M_PI / 4.0f);
+        button.hidden = _childButtonsHidden;
         [button setY:(float)i * [VnCurrentSettings barHeight]];
         i++;
     }
@@ -98,9 +96,10 @@
 
 - (void)setChildButtonsHidden:(BOOL)childButtonsHidden
 {
-    for (VnViewEditorToolBarButton* button in _childButtons) {
-        //button.hidden = childButtonsHidden;
-        button.transform = CGAffineTransformMakeRotation(M_PI / 2.0f);
+    if ([self childButtonsCount] > 0) {
+        for (VnViewEditorToolBarButton* button in _childButtons) {
+            button.hidden = childButtonsHidden;
+        }
     }
     _childButtonsHidden = childButtonsHidden;
 }

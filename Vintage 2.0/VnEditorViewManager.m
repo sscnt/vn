@@ -132,6 +132,7 @@ static VnEditorViewManager* sharedVnEditorViewManager = nil;
             VnViewEditorToolBarButton* button = [self buttonByToolId:(VnAdjustmentToolId)[key intValue]];
             button.selected = NO;
             button.childButtonsHidden = YES;
+            button.stage = 1;
         }
     }
 }
@@ -166,10 +167,10 @@ static VnEditorViewManager* sharedVnEditorViewManager = nil;
     [_toolBar appendButton:[self buttonByToolId:VnAdjustmentToolIdEffects]];
     
     //// Textures
-    [_toolBar appendButton:[self buttonByToolId:VnAdjustmentToolIdTextures]];
+    [_toolBar appendButton:[self buttonByToolId:VnAdjustmentToolIdBrightness]];
     
     //// Photo Filters
-    [_toolBar appendButton:[self buttonByToolId:VnAdjustmentToolIdPhotoFilters]];
+    [_toolBar appendButton:[self buttonByToolId:VnAdjustmentToolIdLevels]];
     
     [_toolBar setY:[VnEditorViewManager toolBarDefaultY]];
     [self.view addSubview:_toolBar];
@@ -339,7 +340,6 @@ static VnEditorViewManager* sharedVnEditorViewManager = nil;
 
 - (void)openAdjustmentToolView:(VnAdjustmentToolId)toolId
 {
-    [self unselectAllButtons];
     VnViewEditorToolBarButton* button = [self buttonByToolId:toolId];
     if (button == nil) {
         return;
@@ -347,10 +347,12 @@ static VnEditorViewManager* sharedVnEditorViewManager = nil;
     if (button.isChild) {
         
     }else{
+        [self unselectAllButtons];
         button.childButtonsHidden = !button.childButtonsHidden;
         int childCount = [button childButtonsCount];
         int stage = childCount + 1;
         _toolBar.stage = stage;
+        [_toolBar openButton:button];
         [_toolBar setY:[VnEditorViewManager toolBarDefaultY] - (float)childCount * [VnCurrentSettings barHeight]];
     }
     [self hideAllAdjustmentTools];
