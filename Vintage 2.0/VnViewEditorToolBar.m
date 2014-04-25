@@ -30,6 +30,9 @@
     [self setHeight:(float)stage * [VnCurrentSettings barHeight]];
     [_view setHeight:(float)stage * [VnCurrentSettings barHeight]];
     [self setNeedsDisplay];
+    if (_currentOpeningButton) {
+        [self openButton:_currentOpeningButton];
+    }
 }
 
 - (void)openButton:(VnViewEditorToolBarButton *)button
@@ -40,6 +43,7 @@
     }
     button.stage = _stage;
     [button setY:0.0f];
+    _currentOpeningButton = button;
 }
 
 - (void)appendButton:(VnViewEditorToolBarButton *)button

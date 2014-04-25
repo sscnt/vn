@@ -71,10 +71,9 @@
 {
     if (button) {
         button.isChild = YES;
+        button.parentButton = self;
         [_childButtons addObject:button];
         
-        // test
-        [button setY:-[self height] / 2.0f];
         [self addSubview:button];
         [self layoutChildButtons];
     }

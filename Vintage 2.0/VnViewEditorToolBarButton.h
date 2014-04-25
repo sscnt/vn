@@ -20,6 +20,7 @@
 @property (nonatomic, assign) VnAdjustmentToolId toolId;
 @property (nonatomic, strong) NSMutableArray* childButtons;
 @property (nonatomic, weak) id<VnViewEditorToolBarButtonDelegate> delegate;
+@property (nonatomic, weak) VnViewEditorToolBarButton* parentButton;
 @property (nonatomic, assign) BOOL colored;
 @property (nonatomic, assign) BOOL childButtonsHidden;
 @property (nonatomic, assign) BOOL isChild;

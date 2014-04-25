@@ -66,11 +66,13 @@ static VnEditorViewManager* sharedVnEditorViewManager = nil;
     button = [[VnViewEditorToolBarButton alloc] init];
     button.toolId = VnAdjustmentToolIdEffectHistory;
     [parent addChildButton:button];
+    [self registerButton:button];
     
     //////// Effects Opacity
     button = [[VnViewEditorToolBarButton alloc] init];
     button.toolId = VnAdjustmentToolIdEffectOpacity;
     [parent addChildButton:button];
+    [self registerButton:button];
     
     //////// Textures
     button = [[VnViewEditorToolBarButton alloc] init];
@@ -132,7 +134,6 @@ static VnEditorViewManager* sharedVnEditorViewManager = nil;
             VnViewEditorToolBarButton* button = [self buttonByToolId:(VnAdjustmentToolId)[key intValue]];
             button.selected = NO;
             button.childButtonsHidden = YES;
-            button.stage = 1;
         }
     }
 }
@@ -340,21 +341,26 @@ static VnEditorViewManager* sharedVnEditorViewManager = nil;
 
 - (void)openAdjustmentToolView:(VnAdjustmentToolId)toolId
 {
+    [self unselectAllButtons];
     VnViewEditorToolBarButton* button = [self buttonByToolId:toolId];
     if (button == nil) {
         return;
     }
+    int childCount = [button childButtonsCount];
     if (button.isChild) {
-        
+        VnViewEditorToolBarButton* parent = button.parentButton;
+        if (parent) {
+            parent.childButtonsHidden = NO;
+            [_toolBar openButton:parent];
+            childCount = [parent childButtonsCount];
+        }
     }else{
-        [self unselectAllButtons];
         button.childButtonsHidden = !button.childButtonsHidden;
-        int childCount = [button childButtonsCount];
-        int stage = childCount + 1;
-        _toolBar.stage = stage;
         [_toolBar openButton:button];
-        [_toolBar setY:[VnEditorViewManager toolBarDefaultY] - (float)childCount * [VnCurrentSettings barHeight]];
     }
+    int stage = childCount + 1;
+    _toolBar.stage = stage;
+    [_toolBar setY:[VnEditorViewManager toolBarDefaultY] - (float)childCount * [VnCurrentSettings barHeight]];
     [self hideAllAdjustmentTools];
     button.selected = YES;    
     UIView* view;

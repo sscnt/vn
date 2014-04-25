@@ -16,6 +16,7 @@
 }
 @property (nonatomic, strong) VnViewHitThroughScroll* view;
 @property (nonatomic, assign) int stage;
+@property (nonatomic, weak) VnViewEditorToolBarButton* currentOpeningButton;
 
 - (void)appendButton:(VnViewEditorToolBarButton*)button;
 - (void)openButton:(VnViewEditorToolBarButton*)button;
