@@ -7,15 +7,17 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "VnEffect.h"
+#import "GPUImage.h"
+
 
 @protocol VnProcessorDelegate <NSObject>
 @optional
-
+- (void)processorDidFinishProcessing:(UIImage*)image;
 @end
 
 @interface VnProcessor : NSObject
 
+@property (nonatomic, assign) VnEffectId effectId;
 @property (nonatomic, assign) BOOL faceDetected;
 @property (nonatomic, assign) float opacity;
 @property (nonatomic, assign) float temp;
@@ -100,6 +102,12 @@
 
 + (UIImage*)executeWithImage:(UIImage*)image;
 - (UIImage*)executeWithImage:(UIImage*)image;
+
++ (UIImage*)applyEffect:(UIImage*)image;
+- (UIImage*)applyEffect:(UIImage*)image;
+
++ (UIImage*)applyEffect:(VnEffectId)effectId ToImage:(UIImage*)image;
+- (UIImage*)applyEffect:(VnEffectId)effectId ToImage:(UIImage*)image;
 
 + (UIImage*)executeWithCurrentOriginalImage;
 - (UIImage*)executeWithCurrentOriginalImage;

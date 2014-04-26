@@ -13,6 +13,7 @@
 static VnCurrentImage* sharedVnCurrentImage = nil;
 
 NSString* const pathForOriginalImage = @"tmp/original_image";
+NSString* const pathForTmpImage = @"tmp/tmp_image";
 NSString* const pathForPreviewImage = @"tmp/preview_image";
 NSString* const pathForBlurredPreviewImage = @"tmp/blurred_preview_image";
 NSString* const pathForProcessedPreviewImage = @"tmp/processed_preview_image";
@@ -59,6 +60,12 @@ NSString* const pathForDialogBgImage = @"tmp/dialog_bg_image";
 + (UIImage*)originalPreviewImage
 {
     NSString *filePath = [NSHomeDirectory() stringByAppendingPathComponent:pathForPreviewImage];
+    return [self imageAtPath:filePath];
+}
+
++ (UIImage*)tmpImage
+{
+    NSString *filePath = [NSHomeDirectory() stringByAppendingPathComponent:pathForTmpImage];
     return [self imageAtPath:filePath];
 }
 
@@ -117,6 +124,13 @@ NSString* const pathForDialogBgImage = @"tmp/dialog_bg_image";
 {
     NSData *imageData = UIImageJPEGRepresentation(image, 0.99f);
     NSString *filePath = [NSHomeDirectory() stringByAppendingPathComponent:pathForDialogBgImage];
+    return [imageData writeToFile:filePath atomically:YES];
+}
+
++ (BOOL)saveTmpImage:(UIImage *)image
+{
+    NSData *imageData = UIImageJPEGRepresentation(image, 0.99f);
+    NSString *filePath = [NSHomeDirectory() stringByAppendingPathComponent:pathForTmpImage];
     return [imageData writeToFile:filePath atomically:YES];
 }
 
@@ -200,6 +214,12 @@ NSString* const pathForDialogBgImage = @"tmp/dialog_bg_image";
     return [self deleteImageAtPath:filePath];
 }
 
++ (BOOL)deleteTmpImage
+{
+    NSString *filePath = [NSHomeDirectory() stringByAppendingPathComponent:pathForTmpImage];
+    return [self deleteImageAtPath:filePath];
+}
+
 + (BOOL)deleteOriginalImage
 {
     NSString *filePath = [NSHomeDirectory() stringByAppendingPathComponent:pathForOriginalImage];
@@ -238,6 +258,7 @@ NSString* const pathForDialogBgImage = @"tmp/dialog_bg_image";
     [VnCurrentImage deleteDialogBgImage];
     [VnCurrentImage deleteBlurredPreviewImage];
     [VnCurrentImage deleteProcessedPreviewImage];
+    [VnCurrentImage deleteTmpImage];
 }
 
 @end

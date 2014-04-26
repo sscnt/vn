@@ -84,6 +84,34 @@ static VnProcessor* sharedVnProcessor = nil;
     return nil;
 }
 
+#pragma mark apply
+#pragma mark apply effects
+
++ (UIImage *)applyEffect:(UIImage *)image
+{
+    return [[VnProcessor instance] applyEffect:image];
+}
+
+- (UIImage *)applyEffect:(UIImage *)image
+{
+    return [self applyEffect:_effectId ToImage:image];
+}
+
++ (UIImage *)applyEffect:(VnEffectId)effectId ToImage:(UIImage *)image
+{
+    return [[VnProcessor instance] applyEffect:effectId ToImage:image];
+}
+
+- (UIImage *)applyEffect:(VnEffectId)effectId ToImage:(UIImage *)image
+{
+    if (effectId == VnEffectIdHaze3) {
+        
+    } else if(effectId == VnEffectIdHaze3Pink) {
+        
+    }
+    return nil;
+}
+
 + (UIImage*)mergeBaseImage:(UIImage *)baseImage overlayImage:(UIImage *)overlayImage opacity:(CGFloat)opacity blendingMode:(VnBlendingMode)blendingMode
 {
     GPUImagePicture* overlayPicture = [[GPUImagePicture alloc] initWithImage:overlayImage];

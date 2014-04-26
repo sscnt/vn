@@ -277,7 +277,6 @@
     
     [VnCurrentImage instance].originalImageSize = image.size;
     
-    
     //// Present
     __block VnViewControllerHome* _self = self;
     __block VnViewControllerEditor* controller = [[VnViewControllerEditor alloc] init];

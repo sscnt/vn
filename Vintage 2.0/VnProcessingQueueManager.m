@@ -77,9 +77,72 @@ static VnProcessingQueueManager* sharedVnProcessingQueue = nil;
 - (void)addQueue:(VnObjectProcessingQueue *)queue
 {
     [_queueList addObject:queue];
+    if (_processing == NO) {
+        [self processQueue];
+    }
 }
 
+- (void)processQueue
+{
+    _processing = YES;
+    __block VnProcessingQueueManager* _self = self;
+    __block VnObjectProcessingQueue* queue;
+    
+    dispatch_queue_t q_global = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+    dispatch_queue_t q_main = dispatch_get_main_queue();
+    dispatch_async(q_global, ^{
+        @autoreleasepool {
+            queue = [_self shiftQueue];
+            if (queue) {
+                switch (queue.type) {
+                    case VnObjectProcessingQueueTypePreset:
+                        [_self processQueueTypePreset:queue];
+                        break;
+                    case VnObjectProcessingQueueTypePreview:
+                        [_self processQueueTypePreview:queue];
+                        break;
+                    default:
+                        break;
+                }
+            }
+        }
+        dispatch_async(q_main, ^{
+            [_self.delegate queueDidFinished:queue];
+        });
+    });
+}
+
+- (void)processQueueTypePreview:(VnObjectProcessingQueue *)queue
+{
+    
+}
+
+- (void)processQueueTypePreset:(VnObjectProcessingQueue *)queue
+{
+    UIImage* image = queue.image;
+    if (queue.effectId != 0) {
+        image = [VnProcessor applyEffect:queue.effectId ToImage:queue.image];
+    }
+    queue.image = image;
+}
+
+
 #pragma mark shift
+
++ (VnObjectProcessingQueue *)shiftQueue
+{
+    return [[VnProcessingQueueManager instance] shiftQueue];
+}
+
+- (VnObjectProcessingQueue *)shiftQueue
+{
+    if ([_queueList count] == 0) {
+        return nil;
+    }
+    VnObjectProcessingQueue* queue = [_queueList objectAtIndex:0];
+    [_queueList removeObjectAtIndex:0];
+    return queue;
+}
 
 + (VnObjectProcessingQueue *)shiftEffectQueue
 {
@@ -100,6 +163,7 @@ static VnProcessingQueueManager* sharedVnProcessingQueue = nil;
 
 - (void)commonInit
 {
+    _processing = NO;
     _queueList = [NSMutableArray array];
     _effectsPresetQueueList = [NSMutableArray array];
     VnObjectProcessingQueue* queue;
@@ -107,11 +171,13 @@ static VnProcessingQueueManager* sharedVnProcessingQueue = nil;
     queue = [[VnObjectProcessingQueue alloc] init];
     queue.effectId = VnEffectIdHaze3;
     queue.toolId = VnAdjustmentToolIdEffects;
+    queue.type = VnObjectProcessingQueueTypePreset;
     [_effectsPresetQueueList addObject:queue];
     
     queue = [[VnObjectProcessingQueue alloc] init];
     queue.effectId = VnEffectIdHaze3Pink;
     queue.toolId = VnAdjustmentToolIdEffects;
+    queue.type = VnObjectProcessingQueueTypePreset;
     [_effectsPresetQueueList addObject:queue];
 }
 

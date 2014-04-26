@@ -126,4 +126,16 @@
     return blending;
 }
 
+- (void)mergeAndSaveTmpImageWithOverlayImage:(UIImage *)overlayImage opacity:(CGFloat)opacity blendingMode:(VnBlendingMode)blendingMode
+{
+    UIImage* image = [VnProcessor mergeBaseImage:[VnCurrentImage tmpImage] overlayImage:overlayImage opacity:opacity blendingMode:blendingMode];
+    [VnCurrentImage saveTmpImage:image];
+}
+
+- (void)mergeAndSaveTmpImageWithOverlayFilter:(GPUImageFilter *)overlayFilter opacity:(CGFloat)opacity blendingMode:(VnBlendingMode)blendingMode
+{
+    UIImage* image = [VnProcessor mergeBaseImage:[VnCurrentImage tmpImage] overlayFilter:overlayFilter opacity:opacity blendingMode:blendingMode];
+    [VnCurrentImage saveTmpImage:image];
+}
+
 @end

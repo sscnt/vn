@@ -21,14 +21,21 @@
 }
 
 @property (nonatomic, weak) id<VnProcessingQueueManagerDelegate> delegate;
+@property (nonatomic, assign) BOOL processing;
 
 + (VnProcessingQueueManager*)instance;
 + (NSString*)generateQueueId;
 + (NSString*)makeQueueIdFromSeeds:(NSString*)input;
++ (VnObjectProcessingQueue*)shiftQueue;
+- (VnObjectProcessingQueue*)shiftQueue;
 + (VnObjectProcessingQueue*)shiftEffectQueue;
 - (VnObjectProcessingQueue*)shiftEffectQueue;
 + (void)addQueue:(VnObjectProcessingQueue*)queue;
 - (void)addQueue:(VnObjectProcessingQueue*)queue;
+
+- (void)processQueue;
+- (void)processQueueTypePreset:(VnObjectProcessingQueue*)queue;
+- (void)processQueueTypePreview:(VnObjectProcessingQueue*)queue;
 
 - (void)commonInit;
 - (void)reset;

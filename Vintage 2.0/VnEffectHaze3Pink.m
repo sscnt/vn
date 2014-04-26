@@ -6,9 +6,9 @@
 //  Copyright (c) 2014年 SSC. All rights reserved.
 //
 
-#import "GPUEffectHaze3Pink.h"
+#import "VnEffectHaze3Pink.h"
 
-@implementation GPUEffectHaze3Pink
+@implementation VnEffectHaze3Pink
 
 - (id)init
 {
@@ -22,13 +22,13 @@
 - (UIImage*)process
 {
     
-    UIImage* resultImage = [super process];
+    [VnCurrentImage saveTmpImage:self.imageToProcess];
     
     // Curve
     @autoreleasepool {
         GPUImageToneCurveFilter* curveFilter = [[GPUImageToneCurveFilter alloc] initWithACV:@"hzlp1"];
         
-        resultImage = [VnProcessor mergeBaseImage:resultImage overlayFilter:curveFilter opacity:0.30f blendingMode:VnBlendingModeNormal];
+        [self mergeAndSaveTmpImageWithOverlayFilter:curveFilter opacity:0.30f blendingMode:VnBlendingModeNormal];
     }
     
     // Fill Layer
@@ -36,13 +36,14 @@
         GPUImageSolidColorGenerator* solidColor = [[GPUImageSolidColorGenerator alloc] init];
         [solidColor setColorRed:0.0f/255.0f green:8.0f/255.0f blue:28.0f/255.0 alpha:1.0f];
         
-        resultImage = [VnProcessor mergeBaseImage:resultImage overlayFilter:solidColor opacity:0.80f blendingMode:VnBlendingModeExclusion];
+        [self mergeAndSaveTmpImageWithOverlayFilter:solidColor opacity:0.80f blendingMode:VnBlendingModeExclusion];
     }
     
     // Gradient
     @autoreleasepool {
+        UIImage* image = [VnCurrentImage tmpImage];
         VnAdjustmentLayerGradientColorFill* gradientColor = [[VnAdjustmentLayerGradientColorFill alloc] init];
-        [gradientColor forceProcessingAtSize:CGSizeMake(resultImage.size.width, resultImage.size.height)];
+        [gradientColor forceProcessingAtSize:CGSizeMake(image.size.width, image.size.height)];
         [gradientColor setStyle:GradientStyleRadial];
         [gradientColor setAngleDegree:0];
         [gradientColor setScalePercent:150];
@@ -50,7 +51,7 @@
         [gradientColor addColorRed:255.0f Green:229.0f Blue:183.0f Opacity:100.0f Location:0 Midpoint:50];
         [gradientColor addColorRed:128.0f Green:123.0f Blue:59.0f Opacity:0.0f Location:4096 Midpoint:50];
         
-        resultImage = [VnProcessor mergeBaseImage:resultImage overlayFilter:gradientColor opacity:0.38f blendingMode:VnBlendingModeOverlay];
+        [self mergeAndSaveTmpImageWithOverlayFilter:gradientColor opacity:0.38f blendingMode:VnBlendingModeOverlay];
     }
     
     // Color Balance
@@ -73,7 +74,7 @@
         [colorBalance setHighlights:highlights];
         colorBalance.preserveLuminosity = YES;
         
-        resultImage = [VnProcessor mergeBaseImage:resultImage overlayFilter:colorBalance opacity:1.0f blendingMode:VnBlendingModeNormal];
+        [self mergeAndSaveTmpImageWithOverlayFilter:colorBalance opacity:1.0f blendingMode:VnBlendingModeNormal];
     }
     
     // Fill Layer
@@ -81,7 +82,7 @@
         GPUImageSolidColorGenerator* solidColor = [[GPUImageSolidColorGenerator alloc] init];
         [solidColor setColorRed:0.0f/255.0f green:50.0f/255.0f blue:175.0f/255.0 alpha:1.0f];
         
-        resultImage = [VnProcessor mergeBaseImage:resultImage overlayFilter:solidColor opacity:0.05f blendingMode:VnBlendingModeColor];
+        [self mergeAndSaveTmpImageWithOverlayFilter:solidColor opacity:0.05f blendingMode:VnBlendingModeColor];
     }
     
     
@@ -90,26 +91,25 @@
         GPUImageSolidColorGenerator* solidColor = [[GPUImageSolidColorGenerator alloc] init];
         [solidColor setColorRed:177.0f/255.0f green:175.0f/255.0f blue:3.0f/255.0 alpha:1.0f];
         
-        resultImage = [VnProcessor mergeBaseImage:resultImage overlayFilter:solidColor opacity:0.1f blendingMode:VnBlendingModeHue];
+        [self mergeAndSaveTmpImageWithOverlayFilter:solidColor opacity:0.10f blendingMode:VnBlendingModeHue];
     }
     
     // Curve
     @autoreleasepool {
         GPUImageToneCurveFilter* curveFilter = [[GPUImageToneCurveFilter alloc] initWithACV:@"hzlp2"];
         
-        resultImage = [VnProcessor mergeBaseImage:resultImage overlayFilter:curveFilter opacity:1.0f blendingMode:VnBlendingModeNormal];
+        [self mergeAndSaveTmpImageWithOverlayFilter:curveFilter opacity:1.0f blendingMode:VnBlendingModeNormal];
     }
     
     // Fill Layer
     @autoreleasepool {
         GPUImageSolidColorGenerator* solidColor = [[GPUImageSolidColorGenerator alloc] init];
         [solidColor setColorRed:255.0f/255.0f green:255.0f/255.0f blue:255.0f/255.0 alpha:1.0f];
-        
-        resultImage = [VnProcessor mergeBaseImage:resultImage overlayFilter:solidColor opacity:0.15f blendingMode:VnBlendingModeHue];
+    
+        [self mergeAndSaveTmpImageWithOverlayFilter:solidColor opacity:0.15f blendingMode:VnBlendingModeHue];
     }
     
-    
-    return resultImage;
+    return [VnCurrentImage tmpImage];
 }
 
 @end

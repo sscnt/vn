@@ -8,6 +8,6 @@
 
 #import "VnEffect.h"
 
-@interface GPUEffectHaze3Pink : VnEffect
+@interface VnEffectHaze3Pink : VnEffect
 
 @end

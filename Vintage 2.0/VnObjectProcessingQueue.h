@@ -8,8 +8,15 @@
 
 #import <Foundation/Foundation.h>
 
+
+typedef NS_ENUM(NSInteger, VnObjectProcessingQueueType){
+    VnObjectProcessingQueueTypePreset = 1,
+    VnObjectProcessingQueueTypePreview
+};
+
 @interface VnObjectProcessingQueue : NSObject
 
+@property (nonatomic, assign) VnObjectProcessingQueueType type;
 @property (nonatomic, strong) NSString* queueId;
 @property (nonatomic, assign) VnAdjustmentToolId toolId;
 @property (nonatomic, strong) UIImage* image;
