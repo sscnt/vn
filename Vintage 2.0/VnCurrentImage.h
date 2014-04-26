@@ -23,6 +23,7 @@
 + (UIImage*)originalImage;
 + (UIImage*)lastSavedImage;
 + (UIImage*)dialogBgImage;
++ (UIImage*)presetBaseImage;
 + (BOOL)saveTmpImage:(UIImage*)image;
 + (BOOL)saveOriginalImage:(UIImage*)image;
 + (BOOL)saveOriginalPreviewImage:(UIImage*)image;
@@ -30,9 +31,11 @@
 + (BOOL)saveBlurredPreviewImage:(UIImage*)image;
 + (BOOL)saveLastSavedImage:(UIImage*)image;
 + (BOOL)saveDialogBgImage:(UIImage*)image;
++ (BOOL)savePrestBaseImage:(UIImage*)image;
 + (CGSize)originalImageSize;
 + (CGSize)previewImageSize;
 + (CGSize)previewImageViewSize;
++ (CGSize)presetBaseImageSize;
 + (BOOL)deleteImageAtPath:(NSString*)path;
 + (BOOL)deleteTmpImage;
 + (BOOL)deleteLastSavedImage;
@@ -41,6 +44,7 @@
 + (BOOL)deleteOriginalPreviewImage;
 + (BOOL)deleteProcessedPreviewImage;
 + (BOOL)deleteBlurredPreviewImage;
++ (BOOL)deletePresetBaseImage;
 + (void)clean;
 
 @end

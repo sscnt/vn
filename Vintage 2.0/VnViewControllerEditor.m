@@ -54,7 +54,7 @@
 
 - (void)queueDidFinished:(VnObjectProcessingQueue *)queue
 {
-    
+    LOG(@"Queue did finished.");
 }
 
 - (void)didReceiveMemoryWarning

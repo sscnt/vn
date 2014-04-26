@@ -298,8 +298,8 @@
                 [_self dispatchResizingProgress:0.20f];
                 
                 //// for editor image
-                UIImage* imageForEditor = [originalImage resizedImage:[VnCurrentImage previewImageSize] interpolationQuality:kCGInterpolationHigh];
-                if([VnCurrentImage saveOriginalPreviewImage:imageForEditor]){
+                UIImage* image = [originalImage resizedImage:[VnCurrentImage previewImageSize] interpolationQuality:kCGInterpolationHigh];
+                if([VnCurrentImage saveOriginalPreviewImage:image]){
                     
                     //// Progress
                     [_self dispatchResizingProgress:0.40f];
@@ -307,7 +307,7 @@
                     //// Detect faces
                     NSDictionary *options = [NSDictionary dictionaryWithObject:CIDetectorAccuracyHigh forKey:CIDetectorAccuracy];
                     CIDetector *detector = [CIDetector detectorOfType:CIDetectorTypeFace context:nil options:options];
-                    CIImage *ciImage = [[CIImage alloc] initWithCGImage:imageForEditor.CGImage];
+                    CIImage *ciImage = [[CIImage alloc] initWithCGImage:image.CGImage];
                     NSDictionary *imageOptions = [NSDictionary dictionaryWithObject:[NSNumber numberWithInt:1] forKey:CIDetectorImageOrientation];
                     NSArray *array = [detector featuresInImage:ciImage options:imageOptions];
                     
@@ -321,6 +321,27 @@
                     
                     errorCode = 0;
                 }
+                
+                //// for preset image
+                CGSize presetImageSizeWithAspect = [VnCurrentImage presetBaseImageSize];
+                if (image.size.width > image.size.height) {
+                    presetImageSizeWithAspect.width = image.size.width * presetImageSizeWithAspect.height / image.size.height;
+                } else {
+                    presetImageSizeWithAspect.height = image.size.width * presetImageSizeWithAspect.width / image.size.width;
+                }
+                image = [image resizedImage:presetImageSizeWithAspect interpolationQuality:kCGInterpolationHigh];
+                float x = 0.0f;
+                float y = 0.0f;
+                CGSize presetImageSize = [VnCurrentImage presetBaseImageSize];
+                if (image.size.width > image.size.height) {
+                    x = (image.size.width - presetImageSize.width) / 2.0f;
+                } else {
+                    y = (image.size.height - presetImageSize.height) / 2.0f;
+                }
+                image = [image croppedImage:CGRectMake(x, y, presetImageSize.width, presetImageSize.height)];
+                [VnCurrentImage savePrestBaseImage:image];
+                [self dispatchResizingProgress:1.0f];
+                
             }
         }
         dispatch_async(q_main, ^{

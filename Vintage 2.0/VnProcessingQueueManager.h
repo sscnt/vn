@@ -37,6 +37,8 @@
 - (void)processQueueTypePreset:(VnObjectProcessingQueue*)queue;
 - (void)processQueueTypePreview:(VnObjectProcessingQueue*)queue;
 
+- (void)didFinishProcessingQueue:(VnObjectProcessingQueue*)queue;
+
 - (void)commonInit;
 - (void)reset;
 

@@ -84,6 +84,10 @@ static VnProcessingQueueManager* sharedVnProcessingQueue = nil;
 
 - (void)processQueue
 {
+    if ([_queueList count] == 0) {
+        _processing = NO;
+        return;
+    }
     _processing = YES;
     __block VnProcessingQueueManager* _self = self;
     __block VnObjectProcessingQueue* queue;
@@ -107,9 +111,18 @@ static VnProcessingQueueManager* sharedVnProcessingQueue = nil;
             }
         }
         dispatch_async(q_main, ^{
-            [_self.delegate queueDidFinished:queue];
+            [_self didFinishProcessingQueue:queue];
         });
     });
+}
+
+- (void)didFinishProcessingQueue:(VnObjectProcessingQueue *)queue
+{
+    [self.delegate queueDidFinished:queue];
+    _processing = NO;
+    if ([_queueList count] != 0) {
+        [self processQueue];
+    }
 }
 
 - (void)processQueueTypePreview:(VnObjectProcessingQueue *)queue
@@ -141,6 +154,9 @@ static VnProcessingQueueManager* sharedVnProcessingQueue = nil;
     }
     VnObjectProcessingQueue* queue = [_queueList objectAtIndex:0];
     [_queueList removeObjectAtIndex:0];
+    if (queue.type == VnObjectProcessingQueueTypePreset) {
+        queue.image = [VnCurrentImage presetBaseImage];
+    }
     return queue;
 }
 

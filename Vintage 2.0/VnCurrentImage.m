@@ -19,6 +19,7 @@ NSString* const pathForBlurredPreviewImage = @"tmp/blurred_preview_image";
 NSString* const pathForProcessedPreviewImage = @"tmp/processed_preview_image";
 NSString* const pathForLastSavedImage = @"tmp/last_saved_image";
 NSString* const pathForDialogBgImage = @"tmp/dialog_bg_image";
+NSString* const pathForPresetBaseImage = @"tmp/preset_base_image";
 
 + (VnCurrentImage*)instance {
 	@synchronized(self) {
@@ -87,6 +88,12 @@ NSString* const pathForDialogBgImage = @"tmp/dialog_bg_image";
     return [self imageAtPath:filePath];
 }
 
++ (UIImage*)presetBaseImage
+{
+    NSString *filePath = [NSHomeDirectory() stringByAppendingPathComponent:pathForPresetBaseImage];
+    return [self imageAtPath:filePath];
+}
+
 + (UIImage *)blurredPreviewImage
 {
     NSString *filePath = [NSHomeDirectory() stringByAppendingPathComponent:pathForBlurredPreviewImage];
@@ -117,6 +124,13 @@ NSString* const pathForDialogBgImage = @"tmp/dialog_bg_image";
 {
     NSData *imageData = UIImageJPEGRepresentation(image, 0.99f);
     NSString *filePath = [NSHomeDirectory() stringByAppendingPathComponent:pathForLastSavedImage];
+    return [imageData writeToFile:filePath atomically:YES];
+}
+
++ (BOOL)savePrestBaseImage:(UIImage *)image
+{
+    NSData *imageData = UIImageJPEGRepresentation(image, 0.99f);
+    NSString *filePath = [NSHomeDirectory() stringByAppendingPathComponent:pathForPresetBaseImage];
     return [imageData writeToFile:filePath atomically:YES];
 }
 
@@ -157,6 +171,12 @@ NSString* const pathForDialogBgImage = @"tmp/dialog_bg_image";
 {
     CGSize size = [VnCurrentImage previewImageViewSize];
     return CGSizeMake(size.width * [[UIScreen mainScreen] scale], size.height * [[UIScreen mainScreen] scale]);
+}
+
++ (CGSize)presetBaseImageSize
+{
+    CGRect bounds = [VnEditorViewManager presetImageBounds];
+    return CGSizeMake(bounds.size.width * [[UIScreen mainScreen] scale], bounds.size.height * [[UIScreen mainScreen] scale]);
 }
 
 + (CGSize)previewImageViewSize
@@ -250,6 +270,12 @@ NSString* const pathForDialogBgImage = @"tmp/dialog_bg_image";
     return [self deleteImageAtPath:filePath];
 }
 
++ (BOOL)deletePresetBaseImage
+{
+    NSString *filePath = [NSHomeDirectory() stringByAppendingPathComponent:pathForProcessedPreviewImage];
+    return [self deleteImageAtPath:filePath];
+}
+
 + (void)clean
 {
     [VnCurrentImage deleteOriginalPreviewImage];
@@ -259,6 +285,7 @@ NSString* const pathForDialogBgImage = @"tmp/dialog_bg_image";
     [VnCurrentImage deleteBlurredPreviewImage];
     [VnCurrentImage deleteProcessedPreviewImage];
     [VnCurrentImage deleteTmpImage];
+    [VnCurrentImage deletePresetBaseImage];
 }
 
 @end

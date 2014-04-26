@@ -255,7 +255,7 @@ static VnEditorViewManager* sharedVnEditorViewManager = nil;
     return bounds;
 }
 
-+ (CGRect)thumbnailViewBounds
++ (CGRect)presetImageViewBounds
 {
     
     float barh = [VnCurrentSettings barHeight];
@@ -273,19 +273,19 @@ static VnEditorViewManager* sharedVnEditorViewManager = nil;
     return bounds;
 }
 
-+ (float)thumbnailViewPaddingTop
++ (float)presetImageViewPaddingTop
 {
     return 10.0f;
 }
 
-+ (float)thumbnailViewPaddingLeft
++ (float)presetViewPaddingLeft
 {
     return 5.0f;
 }
 
-+ (CGRect)thumbnailImageBounds
++ (CGRect)presetImageBounds
 {
-    float padding = [VnEditorViewManager thumbnailViewPaddingLeft];
+    float padding = [VnEditorViewManager presetViewPaddingLeft];
     
     float barh = [VnCurrentSettings barHeight];
     float adjh = barh * 3.0f;

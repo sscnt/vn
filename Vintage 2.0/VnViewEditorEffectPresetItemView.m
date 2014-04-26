@@ -12,14 +12,14 @@
 
 - (id)initWithEffect:(VnObjectEffect *)effect
 {
-    self = [super initWithFrame:[VnEditorViewManager thumbnailViewBounds]];
+    self = [super initWithFrame:[VnEditorViewManager presetImageViewBounds]];
     if (self) {
-        _imageView = [[UIImageView alloc] initWithFrame:[VnEditorViewManager thumbnailImageBounds]];
+        _imageView = [[UIImageView alloc] initWithFrame:[VnEditorViewManager presetImageBounds]];
         _imageView.backgroundColor = [UIColor blackColor];
-        [_imageView setX:[VnEditorViewManager thumbnailViewPaddingLeft]];
-        [_imageView setY:[VnEditorViewManager thumbnailViewPaddingTop]];
+        [_imageView setX:[VnEditorViewManager presetViewPaddingLeft]];
+        [_imageView setY:[VnEditorViewManager presetImageViewPaddingTop]];
         [self addSubview:_imageView];
-        _progressView = [[VnViewProgress alloc] initWithFrame:[VnEditorViewManager thumbnailImageBounds] Radius:[VnCurrentSettings thumbnailProgressRadius]];
+        _progressView = [[VnViewProgress alloc] initWithFrame:[VnEditorViewManager presetImageBounds] Radius:[VnCurrentSettings thumbnailProgressRadius]];
         [_imageView addSubview:_progressView];
     }
     return self;

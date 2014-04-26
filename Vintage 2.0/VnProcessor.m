@@ -104,10 +104,18 @@ static VnProcessor* sharedVnProcessor = nil;
 
 - (UIImage *)applyEffect:(VnEffectId)effectId ToImage:(UIImage *)image
 {
+    if (image == nil) {
+        return nil;
+    }
     if (effectId == VnEffectIdHaze3) {
-        
-    } else if(effectId == VnEffectIdHaze3Pink) {
-        
+        VnEffectHaze3* effect = [[VnEffectHaze3 alloc] init];
+        effect.imageToProcess = image;
+        return [effect process];
+    }
+    if(effectId == VnEffectIdHaze3Pink) {
+        VnEffectHaze3Pink* effect = [[VnEffectHaze3Pink alloc] init];
+        effect.imageToProcess = image;
+        return [effect process];
     }
     return nil;
 }

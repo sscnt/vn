@@ -23,7 +23,7 @@
         _itemViews = [NSMutableDictionary dictionary];
         self.backgroundColor = [UIColor clearColor];
         
-        _right = [VnEditorViewManager thumbnailViewPaddingLeft] * 2.0f;
+        _right = [VnEditorViewManager presetViewPaddingLeft] * 2.0f;
     }
     return self;
 }
@@ -33,9 +33,9 @@
     VnViewEditorEffectPresetItemView* item = [self itemViewByEffectId:effect.effectId];
     if (item == nil) {
         item = [[VnViewEditorEffectPresetItemView alloc] initWithEffect:effect];
-        [item setX:_right - [VnEditorViewManager thumbnailViewPaddingLeft]];
+        [item setX:_right - [VnEditorViewManager presetViewPaddingLeft]];
         [self.view addSubview:item];
-        _right = [item right] + [VnEditorViewManager thumbnailViewPaddingLeft];
+        _right = [item right] + [VnEditorViewManager presetViewPaddingLeft];
         if (_right > self.view.contentSize.width) {
             self.view.contentSize = CGSizeMake(_right, self.view.contentSize.height);
         }
