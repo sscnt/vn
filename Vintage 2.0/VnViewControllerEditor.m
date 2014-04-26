@@ -38,6 +38,9 @@
     VnEditorViewManager* vm = [VnEditorViewManager instance];
     [vm setPreviewImage:[VnCurrentImage originalPreviewImage]];
     [vm openAdjustmentToolView:VnAdjustmentToolIdEffects];
+    
+    VnObjectProcessingQueue* queue = [VnProcessingQueueManager shiftEffectQueue];
+    [VnProcessingQueueManager addQueue:queue];    
 }
 
 #pragma mark view delegate

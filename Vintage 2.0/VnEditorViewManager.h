@@ -28,6 +28,7 @@
 @property (nonatomic, strong) NSMutableDictionary* adjustmentToolViwes;
 @property (nonatomic, strong) VnViewEditorPhotoPreview* photoPreview;
 @property (nonatomic, strong) VnViewProgress* resizingProgressView;
+@property (nonatomic, assign) VnAdjustmentToolId currentToolId;
 
 + (VnEditorViewManager*)instance;
 + (CGRect)previewBounds;

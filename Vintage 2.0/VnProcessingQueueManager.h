@@ -16,7 +16,8 @@
 
 @interface VnProcessingQueueManager : NSObject
 {
-    NSMutableArray* _queue;
+    NSMutableArray* _queueList;
+    NSMutableArray* _effectsPresetQueueList;
 }
 
 @property (nonatomic, weak) id<VnProcessingQueueManagerDelegate> delegate;
@@ -24,5 +25,12 @@
 + (VnProcessingQueueManager*)instance;
 + (NSString*)generateQueueId;
 + (NSString*)makeQueueIdFromSeeds:(NSString*)input;
++ (VnObjectProcessingQueue*)shiftEffectQueue;
+- (VnObjectProcessingQueue*)shiftEffectQueue;
++ (void)addQueue:(VnObjectProcessingQueue*)queue;
+- (void)addQueue:(VnObjectProcessingQueue*)queue;
+
+- (void)commonInit;
+- (void)reset;
 
 @end

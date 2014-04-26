@@ -374,6 +374,7 @@ static VnEditorViewManager* sharedVnEditorViewManager = nil;
             break;
     }
     [view setHidden:NO];
+    _currentToolId = toolId;
     [self.delegate adjustmentToolViewDidChange:toolId];
 }
 
