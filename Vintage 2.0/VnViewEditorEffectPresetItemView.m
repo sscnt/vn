@@ -25,9 +25,14 @@
     return self;
 }
 
+- (void)setImage:(UIImage *)image
+{
+    _imageView.image = image;
+}
+
 - (void)removeProgress
 {
-    
+    [_progressView removeFromSuperview];
 }
 
 @end

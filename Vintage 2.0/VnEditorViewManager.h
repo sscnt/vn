@@ -31,6 +31,7 @@
 @property (nonatomic, assign) VnAdjustmentToolId currentToolId;
 
 + (VnEditorViewManager*)instance;
++ (VnAdjustmentToolId)currentToolId;
 + (CGRect)previewBounds;
 + (CGRect)adjustmentToolViewFrame;
 + (CGRect)adjustmentToolViewBounds;
@@ -53,6 +54,8 @@
 - (void)layoutAdjustmentEffects;
 
 - (void)setPreviewImage:(UIImage*)image;
++ (void)setProcessedPresetImage:(UIImage*)image ToEffect:(VnEffectId)effectId;
+- (VnViewEditorEffectPresetItemView*)presetItemViewByEffectId:(VnEffectId)effectId;
 
 - (void)openAdjustmentToolView:(VnAdjustmentToolId)toolId;
 - (UIView*)adjustmentToolViewByToolId:(VnAdjustmentToolId)toolId;

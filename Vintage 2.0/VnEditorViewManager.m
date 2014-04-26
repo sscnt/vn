@@ -45,6 +45,11 @@ static VnEditorViewManager* sharedVnEditorViewManager = nil;
     return self;
 }
 
++ (VnAdjustmentToolId)currentToolId
+{
+    return [VnEditorViewManager instance].currentToolId;
+}
+
 // commonInit - clean
 - (void)commonInit
 {
@@ -378,13 +383,35 @@ static VnEditorViewManager* sharedVnEditorViewManager = nil;
     [self.delegate adjustmentToolViewDidChange:toolId];
 }
 
-#pragma mark setter
+#pragma mark setter preview
 
 - (void)setPreviewImage:(UIImage *)image
 {
     _photoPreview.image = image;
     [_resizingProgressView removeFromSuperview];
     _resizingProgressView = nil;
+}
+
+#pragma mark setter preset effects
+
++ (void)setProcessedPresetImage:(UIImage *)image ToEffect:(VnEffectId)effectId
+{
+    VnViewEditorEffectPresetItemView* view = [[VnEditorViewManager instance] presetItemViewByEffectId:effectId];
+    if (view) {
+        [view removeProgress];
+        view.image = image;
+    }
+}
+
+- (VnViewEditorEffectPresetItemView *)presetItemViewByEffectId:(VnEffectId)effectId
+{
+    UIView* view = [self adjustmentToolViewByToolId:VnAdjustmentToolIdEffects];
+    for (id subview in [view subviews]) {
+        if ([subview isKindOfClass:[VnViewEditorEffectPresetsListView class]]) {
+            return [(VnViewEditorEffectPresetsListView*)subview itemViewByEffectId:effectId];
+        }
+    }
+    return nil;
 }
 
 + (void)clean

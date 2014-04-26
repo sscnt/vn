@@ -27,8 +27,9 @@
     vm.delegate = self;
     [vm commonInit];
     [vm layout];
-    
+
     VnProcessingQueueManager* qm = [VnProcessingQueueManager instance];
+    [qm commonInit];
     qm.delegate = self;
 }
 
@@ -55,6 +56,29 @@
 - (void)queueDidFinished:(VnObjectProcessingQueue *)queue
 {
     LOG(@"Queue did finished.");
+    if (queue.type == VnObjectProcessingQueueTypePreset) {
+        if (queue.effectId != 0) {
+            [VnEditorViewManager setProcessedPresetImage:queue.image ToEffect:queue.effectId];
+        }
+    } else {
+        
+    }
+    VnObjectProcessingQueue* nextQueue;
+    //// add other
+    switch ([VnEditorViewManager currentToolId]) {
+        case VnAdjustmentToolIdEffects:
+        {
+            nextQueue = [VnProcessingQueueManager shiftEffectQueue];
+        }
+            break;
+            
+        default:
+            break;
+    }
+    if (nextQueue) {
+        [VnProcessingQueueManager addQueue:nextQueue];
+        
+    }
 }
 
 - (void)didReceiveMemoryWarning
@@ -67,6 +91,12 @@
 {
     VnEditorViewManager* vm = [VnEditorViewManager instance];
     [vm clean];
+    vm.delegate = nil;
+    vm.view = nil;
+    
+    VnProcessingQueueManager* qm = [VnProcessingQueueManager instance];
+    [qm reset];
+    qm.delegate = nil;
 }
 
 @end

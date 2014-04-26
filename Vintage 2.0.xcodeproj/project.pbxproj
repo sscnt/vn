@@ -17,6 +17,8 @@
 		5811B9E11904D21D00D4155C /* VnEditorButtonManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5811B9E01904D21D00D4155C /* VnEditorButtonManager.m */; };
 		5811B9E41904D2FA00D4155C /* VnViewEditorToolBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 5811B9E31904D2FA00D4155C /* VnViewEditorToolBar.m */; };
 		5811B9E71904D77300D4155C /* VnViewEditorToolBarButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 5811B9E61904D77300D4155C /* VnViewEditorToolBarButton.m */; };
+		581794C9190C056100A12825 /* hzlp2.acv in Resources */ = {isa = PBXBuildFile; fileRef = 581794C7190C056100A12825 /* hzlp2.acv */; };
+		581794CA190C056100A12825 /* hzlp1.acv in Resources */ = {isa = PBXBuildFile; fileRef = 581794C8190C056100A12825 /* hzlp1.acv */; };
 		583092C41907BE65007F2989 /* VnEffectHaze3.m in Sources */ = {isa = PBXBuildFile; fileRef = 583092C31907BE65007F2989 /* VnEffectHaze3.m */; };
 		583092C81907BE79007F2989 /* VnEffectHaze3Pink.m in Sources */ = {isa = PBXBuildFile; fileRef = 583092C71907BE79007F2989 /* VnEffectHaze3Pink.m */; };
 		58325D8619026926000A3D0E /* libGPUImage.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 58FD075A1902416A0005E74E /* libGPUImage.a */; };
@@ -146,6 +148,8 @@
 		5811B9E31904D2FA00D4155C /* VnViewEditorToolBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VnViewEditorToolBar.m; sourceTree = "<group>"; };
 		5811B9E51904D77300D4155C /* VnViewEditorToolBarButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VnViewEditorToolBarButton.h; sourceTree = "<group>"; };
 		5811B9E61904D77300D4155C /* VnViewEditorToolBarButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VnViewEditorToolBarButton.m; sourceTree = "<group>"; };
+		581794C7190C056100A12825 /* hzlp2.acv */ = {isa = PBXFileReference; lastKnownFileType = file; path = hzlp2.acv; sourceTree = "<group>"; };
+		581794C8190C056100A12825 /* hzlp1.acv */ = {isa = PBXFileReference; lastKnownFileType = file; path = hzlp1.acv; sourceTree = "<group>"; };
 		583092C21907BE65007F2989 /* VnEffectHaze3.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VnEffectHaze3.h; sourceTree = "<group>"; };
 		583092C31907BE65007F2989 /* VnEffectHaze3.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VnEffectHaze3.m; sourceTree = "<group>"; };
 		583092C61907BE79007F2989 /* VnEffectHaze3Pink.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VnEffectHaze3Pink.h; sourceTree = "<group>"; };
@@ -379,6 +383,15 @@
 				5807F59E19036317009FEA3C /* VnButtonHomeSource.m */,
 			);
 			name = Home;
+			sourceTree = "<group>";
+		};
+		581794C6190C052E00A12825 /* Curves */ = {
+			isa = PBXGroup;
+			children = (
+				581794C7190C056100A12825 /* hzlp2.acv */,
+				581794C8190C056100A12825 /* hzlp1.acv */,
+			);
+			name = Curves;
 			sourceTree = "<group>";
 		};
 		583092BE1907BE4E007F2989 /* Haze 3 */ = {
@@ -695,6 +708,7 @@
 			children = (
 				58FD076F19025A860005E74E /* VnEffect.h */,
 				58FD077019025A860005E74E /* VnEffect.m */,
+				581794C6190C052E00A12825 /* Curves */,
 				58325DBD19027DAC000A3D0E /* 1.0 */,
 				58325DBE19027DB1000A3D0E /* 2.0 */,
 			);
@@ -875,6 +889,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				581794CA190C056100A12825 /* hzlp1.acv in Resources */,
 				58F5A72819041F000028D6D2 /* Bg-Portrait.png in Resources */,
 				5811B9DA1904BFD000D4155C /* Bg@2x.png in Resources */,
 				58F79C6418FFAE6000C0D2E1 /* Images.xcassets in Resources */,
@@ -888,6 +903,7 @@
 				58F5A72D19041F110028D6D2 /* Default-Portrait.png in Resources */,
 				58F5A72E19041F110028D6D2 /* Default-Portrait@2x.png in Resources */,
 				5811B9DC1904BFD900D4155C /* Default@2x.png in Resources */,
+				581794C9190C056100A12825 /* hzlp2.acv in Resources */,
 				58F6DE8C19039A1E00FC96D7 /* home-camera@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -39,6 +39,7 @@
         if (_right > self.view.contentSize.width) {
             self.view.contentSize = CGSizeMake(_right, self.view.contentSize.height);
         }
+        [_itemViews setObject:item forKey:[NSString stringWithFormat:@"%d", (int)effect.effectId]];
     }
 }
 
