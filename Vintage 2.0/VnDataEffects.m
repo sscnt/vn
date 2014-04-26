@@ -49,19 +49,19 @@ static VnDataEffects* sharedVnDataEffects = nil;
     _effectsList = [NSMutableArray array];
     VnObjectEffect* effect;
     
+    //// None
+    effect = [[VnObjectEffect alloc] init];
+    effect.effectId = VnEffectIdNone;
+    effect.name = NSLocalizedString(@"None", nil);
+    [_effectsList addObject:effect];
+    
     //// Haze 3
     effect = [[VnObjectEffect alloc] init];
     effect.effectId = VnEffectIdHaze3;
     effect.name = [NSString stringWithFormat:@"#%02d", (int)effect.effectId];
     [_effectsList addObject:effect];
     
-    //// Haze 3
-    effect = [[VnObjectEffect alloc] init];
-    effect.effectId = VnEffectIdHaze3Pink;
-    effect.name = [NSString stringWithFormat:@"#%02d", (int)effect.effectId];
-    [_effectsList addObject:effect];
-    
-    //// Haze 3
+    //// Haze 3 Pink
     effect = [[VnObjectEffect alloc] init];
     effect.effectId = VnEffectIdHaze3Pink;
     effect.name = [NSString stringWithFormat:@"#%02d", (int)effect.effectId];

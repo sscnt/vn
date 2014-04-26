@@ -36,11 +36,11 @@
 + (CGRect)adjustmentToolViewFrame;
 + (CGRect)adjustmentToolViewBounds;
 + (CGRect)presetImageViewBounds;
++ (CGRect)presetImageBounds;
 + (float)presetImageViewPaddingTop;
 + (float)presetViewPaddingLeft;
 + (float)toolBarDefaultY;
 + (float)toolBarDefaultX;
-+ (CGRect)presetImageBounds;
 + (void)clean;
 - (void)clean;
 

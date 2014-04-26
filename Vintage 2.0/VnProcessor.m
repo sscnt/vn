@@ -107,6 +107,9 @@ static VnProcessor* sharedVnProcessor = nil;
     if (image == nil) {
         return nil;
     }
+    if (effectId == VnEffectIdNone) {
+        return image;
+    }
     if (effectId == VnEffectIdHaze3) {
         VnEffectHaze3* effect = [[VnEffectHaze3 alloc] init];
         effect.imageToProcess = image;

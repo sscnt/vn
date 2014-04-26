@@ -10,7 +10,7 @@
 #import "VnViewProgress.h"
 #import "VnObjectEffect.h"
 
-@interface VnViewEditorEffectPresetItemView : UIView
+@interface VnViewEditorEffectPresetItemView : UIButton
 {
     UIImageView* _imageView;
     VnViewProgress* _progressView;
@@ -19,5 +19,7 @@
 
 - (id)initWithEffect:(VnObjectEffect*)effect;
 - (void)removeProgress;
+
+- (void)didTouchUpInside:(UIButton*)sender;
 
 @end

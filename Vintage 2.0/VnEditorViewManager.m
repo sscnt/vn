@@ -280,12 +280,12 @@ static VnEditorViewManager* sharedVnEditorViewManager = nil;
 
 + (float)presetImageViewPaddingTop
 {
-    return 10.0f;
+    return 15.0f;
 }
 
 + (float)presetViewPaddingLeft
 {
-    return 5.0f;
+    return 7.50f;
 }
 
 + (CGRect)presetImageBounds

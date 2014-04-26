@@ -185,6 +185,12 @@ static VnProcessingQueueManager* sharedVnProcessingQueue = nil;
     VnObjectProcessingQueue* queue;
     
     queue = [[VnObjectProcessingQueue alloc] init];
+    queue.effectId = VnEffectIdNone;
+    queue.toolId = VnAdjustmentToolIdEffects;
+    queue.type = VnObjectProcessingQueueTypePreset;
+    [_effectsPresetQueueList addObject:queue];
+    
+    queue = [[VnObjectProcessingQueue alloc] init];
     queue.effectId = VnEffectIdHaze3;
     queue.toolId = VnAdjustmentToolIdEffects;
     queue.type = VnObjectProcessingQueueTypePreset;

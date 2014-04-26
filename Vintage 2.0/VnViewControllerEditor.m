@@ -67,11 +67,8 @@
     //// add other
     switch ([VnEditorViewManager currentToolId]) {
         case VnAdjustmentToolIdEffects:
-        {
             nextQueue = [VnProcessingQueueManager shiftEffectQueue];
-        }
             break;
-            
         default:
             break;
     }

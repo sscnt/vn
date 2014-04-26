@@ -21,6 +21,7 @@
         [self addSubview:_imageView];
         _progressView = [[VnViewProgress alloc] initWithFrame:[VnEditorViewManager presetImageBounds] Radius:[VnCurrentSettings thumbnailProgressRadius]];
         [_imageView addSubview:_progressView];
+        [self addTarget:self action:@selector(didTouchUpInside:) forControlEvents:UIControlEventTouchUpInside];
     }
     return self;
 }
@@ -33,6 +34,11 @@
 - (void)removeProgress
 {
     [_progressView removeFromSuperview];
+}
+
+- (void)didTouchUpInside:(UIButton *)sender
+{
+    
 }
 
 @end
