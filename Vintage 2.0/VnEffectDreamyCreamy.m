@@ -6,9 +6,9 @@
 //  Copyright (c) 2014年 SSC. All rights reserved.
 //
 
-#import "GPUEffectDreamyCreamy.h"
+#import "VnEffectDreamyCreamy.h"
 
-@implementation GPUEffectDreamyCreamy
+@implementation VnEffectDreamyCreamy
 
 - (id)init
 {
@@ -16,7 +16,7 @@
     if(self){
         self.defaultOpacity = 1.0f;
         self.faceOpacity = 0.80f;
-        self.effectId = EffectIdDreamyCreamy;
+        self.effectId = VnEffectIdDreamyCreamy;
     }
     return self;
 }
@@ -24,41 +24,40 @@
 - (UIImage*)process
 {
     
-    
-    UIImage* resultImage = self.imageToProcess;
+    [VnCurrentImage saveTmpImage:self.imageToProcess];
     
     // Curve
     @autoreleasepool {
         GPUImageToneCurveFilter* curveFilter = [[GPUImageToneCurveFilter alloc] initWithACV:@"dc1"];
         
-        resultImage = [self mergeBaseImage:resultImage overlayFilter:curveFilter opacity:1.0f blendingMode:MergeBlendingModeNormal];
+        [self mergeAndSaveTmpImageWithOverlayFilter:curveFilter opacity:1.0f blendingMode:VnBlendingModeNormal];
     }
     
     // Channel Mixer
     @autoreleasepool {
-        GPUImageChannelMixerFilter* mixerFilter = [[GPUImageChannelMixerFilter alloc] init];
+        VnAdjustmentLayerChannelMixerFilter* mixerFilter = [[VnAdjustmentLayerChannelMixerFilter alloc] init];
         [mixerFilter setRedChannelRed:100 Green:0 Blue:0 Constant:0];
         [mixerFilter setGreenChannelRed:0 Green:100 Blue:0 Constant:0];
         [mixerFilter setBlueChannelRed:12 Green:0 Blue:64 Constant:0];
         
-        resultImage = [self mergeBaseImage:resultImage overlayFilter:mixerFilter opacity:1.0f blendingMode:MergeBlendingModeNormal];
+        [self mergeAndSaveTmpImageWithOverlayFilter:mixerFilter opacity:1.0f blendingMode:VnBlendingModeNormal];
     }
     
     // Channel Mixer
     @autoreleasepool {
-        GPUImageChannelMixerFilter* mixerFilter = [[GPUImageChannelMixerFilter alloc] init];
+        VnAdjustmentLayerChannelMixerFilter* mixerFilter = [[VnAdjustmentLayerChannelMixerFilter alloc] init];
         [mixerFilter setRedChannelRed:100 Green:0 Blue:0 Constant:0];
         [mixerFilter setGreenChannelRed:0 Green:100 Blue:0 Constant:0];
         [mixerFilter setBlueChannelRed:-10 Green:26 Blue:102 Constant:0];
         
-        resultImage = [self mergeBaseImage:resultImage overlayFilter:mixerFilter opacity:1.0f blendingMode:MergeBlendingModeNormal];
+        [self mergeAndSaveTmpImageWithOverlayFilter:mixerFilter opacity:1.0f blendingMode:VnBlendingModeNormal];
     }
     
     // Curve
     @autoreleasepool {
         GPUImageToneCurveFilter* curveFilter = [[GPUImageToneCurveFilter alloc] initWithACV:@"dc2"];
         
-        resultImage = [self mergeBaseImage:resultImage overlayFilter:curveFilter opacity:0.20f blendingMode:MergeBlendingModeNormal];
+        [self mergeAndSaveTmpImageWithOverlayFilter:curveFilter opacity:0.20f blendingMode:VnBlendingModeNormal];
     }
     
     // Fill Layer
@@ -66,12 +65,12 @@
         GPUImageSolidColorGenerator* solidColor = [[GPUImageSolidColorGenerator alloc] init];
         [solidColor setColorRed:243.0f/255.0f green:211.0f/255.0f blue:57.0f/255.0 alpha:1.0f];
         
-        resultImage = [self mergeBaseImage:resultImage overlayFilter:solidColor opacity:0.05f blendingMode:MergeBlendingModeColor];
+        [self mergeAndSaveTmpImageWithOverlayFilter:solidColor opacity:0.05f blendingMode:VnBlendingModeColor];
     }
     
     // Color Balance
     @autoreleasepool {
-        GPUImageColorBalanceFilter* colorBalance = [[GPUImageColorBalanceFilter alloc] init];
+        VnAdjustmentLayerColorBalance* colorBalance = [[VnAdjustmentLayerColorBalance alloc] init];
         GPUVector3 shadows;
         shadows.one = 0.0f/255.0f;
         shadows.two = 2.0f/255.0f;
@@ -89,31 +88,31 @@
         [colorBalance setHighlights:highlights];
         colorBalance.preserveLuminosity = YES;
         
-        resultImage = [self mergeBaseImage:resultImage overlayFilter:colorBalance opacity:1.0f blendingMode:MergeBlendingModeNormal];
+        [self mergeAndSaveTmpImageWithOverlayFilter:colorBalance opacity:1.0f blendingMode:VnBlendingModeNormal];
     }
     
     // Selective Color
     @autoreleasepool {
-        GPUImageSelectiveColorFilter* selectiveColor = [[GPUImageSelectiveColorFilter alloc] init];
+        VnAdjustmentLayerSelectiveColor* selectiveColor = [[VnAdjustmentLayerSelectiveColor alloc] init];
         [selectiveColor setRedsCyan:14 Magenta:0 Yellow:15 Black:0];
         [selectiveColor setYellowsCyan:-3 Magenta:4 Yellow:-11 Black:0];
         
-        resultImage = [self mergeBaseImage:resultImage overlayFilter:selectiveColor opacity:1.0f blendingMode:MergeBlendingModeNormal];
+        [self mergeAndSaveTmpImageWithOverlayFilter:selectiveColor opacity:1.0f blendingMode:VnBlendingModeNormal];
     }
     
     
     // Selective Color
     @autoreleasepool {
-        GPUImageSelectiveColorFilter* selectiveColor = [[GPUImageSelectiveColorFilter alloc] init];
+        VnAdjustmentLayerSelectiveColor* selectiveColor = [[VnAdjustmentLayerSelectiveColor alloc] init];
         [selectiveColor setRedsCyan:50 Magenta:8 Yellow:9 Black:0];
         [selectiveColor setYellowsCyan:13 Magenta:-8 Yellow:-6 Black:0];
         
-        resultImage = [self mergeBaseImage:resultImage overlayFilter:selectiveColor opacity:1.0f blendingMode:MergeBlendingModeNormal];
+        [self mergeAndSaveTmpImageWithOverlayFilter:selectiveColor opacity:1.0f blendingMode:VnBlendingModeNormal];
     }
     
     // Color Balance
     @autoreleasepool {
-        GPUImageColorBalanceFilter* colorBalance = [[GPUImageColorBalanceFilter alloc] init];
+        VnAdjustmentLayerColorBalance* colorBalance = [[VnAdjustmentLayerColorBalance alloc] init];
         GPUVector3 shadows;
         shadows.one = -7.0f/255.0f;
         shadows.two = -7.0f/255.0f;
@@ -131,19 +130,19 @@
         [colorBalance setHighlights:highlights];
         colorBalance.preserveLuminosity = YES;
         
-        resultImage = [self mergeBaseImage:resultImage overlayFilter:colorBalance opacity:1.0f blendingMode:MergeBlendingModeNormal];
+        [self mergeAndSaveTmpImageWithOverlayFilter:colorBalance opacity:1.0f blendingMode:VnBlendingModeNormal];
     }
     
     // Curve
     @autoreleasepool {
         GPUImageToneCurveFilter* curveFilter = [[GPUImageToneCurveFilter alloc] initWithACV:@"dc3"];
         
-        resultImage = [self mergeBaseImage:resultImage overlayFilter:curveFilter opacity:1.0f blendingMode:MergeBlendingModeNormal];
+        [self mergeAndSaveTmpImageWithOverlayFilter:curveFilter opacity:1.0f blendingMode:VnBlendingModeNormal];
     }
     
     // Color Balance
     @autoreleasepool {
-        GPUImageColorBalanceFilter* colorBalance = [[GPUImageColorBalanceFilter alloc] init];
+        VnAdjustmentLayerColorBalance* colorBalance = [[VnAdjustmentLayerColorBalance alloc] init];
         GPUVector3 shadows;
         shadows.one = 0.0f/255.0f;
         shadows.two = 0.0f/255.0f;
@@ -161,13 +160,13 @@
         [colorBalance setHighlights:highlights];
         colorBalance.preserveLuminosity = YES;
         
-        resultImage = [self mergeBaseImage:resultImage overlayFilter:colorBalance opacity:1.0f blendingMode:MergeBlendingModeNormal];
+        [self mergeAndSaveTmpImageWithOverlayFilter:colorBalance opacity:1.0f blendingMode:VnBlendingModeNormal];
     }
     
     // duplicate
-    resultImage = [self mergeBaseImage:resultImage overlayImage:resultImage opacity:0.50f blendingMode:MergeBlendingModeSoftLight];
+    [self mergeAndSaveTmpImageWithOverlayImage:[VnCurrentImage tmpImage] opacity:0.50f blendingMode:VnBlendingModeSoftLight];
     
-    return resultImage;
+    return [VnCurrentImage tmpImage];
 }
 
 @end

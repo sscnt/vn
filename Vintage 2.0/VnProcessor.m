@@ -135,6 +135,16 @@ static VnProcessor* sharedVnProcessor = nil;
         effect.imageToProcess = image;
         return [effect process];
     }
+    if(effectId == VnEffectIdDreamyCreamy) {
+        VnEffectDreamyCreamy* effect = [[VnEffectDreamyCreamy alloc] init];
+        effect.imageToProcess = image;
+        return [effect process];
+    }
+    if(effectId == VnEffectIdDreamyVintage) {
+        VnEffectDreamyVintage* effect = [[VnEffectDreamyVintage alloc] init];
+        effect.imageToProcess = image;
+        return [effect process];
+    }
     if(effectId == VnEffectIdHaze3Pink) {
         VnEffectHaze3Pink* effect = [[VnEffectHaze3Pink alloc] init];
         effect.imageToProcess = image;

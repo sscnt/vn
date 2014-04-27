@@ -93,7 +93,9 @@
 		58F798AC190D2D40006B865A /* dc3.acv in Resources */ = {isa = PBXBuildFile; fileRef = 58F798A7190D2D40006B865A /* dc3.acv */; };
 		58F798AD190D2D40006B865A /* dc2.acv in Resources */ = {isa = PBXBuildFile; fileRef = 58F798A8190D2D40006B865A /* dc2.acv */; };
 		58F798AE190D2D40006B865A /* dc1.acv in Resources */ = {isa = PBXBuildFile; fileRef = 58F798A9190D2D40006B865A /* dc1.acv */; };
-		58F798AF190D2D40006B865A /* GPUEffectDreamyCreamy.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F798AB190D2D40006B865A /* GPUEffectDreamyCreamy.m */; };
+		58F798AF190D2D40006B865A /* VnEffectDreamyCreamy.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F798AB190D2D40006B865A /* VnEffectDreamyCreamy.m */; };
+		58F798B4190D3210006B865A /* dv1.acv in Resources */ = {isa = PBXBuildFile; fileRef = 58F798B1190D3210006B865A /* dv1.acv */; };
+		58F798B5190D3210006B865A /* VnEffectDreamyVintage.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F798B3190D3210006B865A /* VnEffectDreamyVintage.m */; };
 		58F79C4C18FFAE6000C0D2E1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58F79C4B18FFAE6000C0D2E1 /* Foundation.framework */; };
 		58F79C4E18FFAE6000C0D2E1 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58F79C4D18FFAE6000C0D2E1 /* CoreGraphics.framework */; };
 		58F79C5018FFAE6000C0D2E1 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58F79C4F18FFAE6000C0D2E1 /* UIKit.framework */; };
@@ -310,8 +312,11 @@
 		58F798A7190D2D40006B865A /* dc3.acv */ = {isa = PBXFileReference; lastKnownFileType = file; path = dc3.acv; sourceTree = "<group>"; };
 		58F798A8190D2D40006B865A /* dc2.acv */ = {isa = PBXFileReference; lastKnownFileType = file; path = dc2.acv; sourceTree = "<group>"; };
 		58F798A9190D2D40006B865A /* dc1.acv */ = {isa = PBXFileReference; lastKnownFileType = file; path = dc1.acv; sourceTree = "<group>"; };
-		58F798AA190D2D40006B865A /* GPUEffectDreamyCreamy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPUEffectDreamyCreamy.h; sourceTree = "<group>"; };
-		58F798AB190D2D40006B865A /* GPUEffectDreamyCreamy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GPUEffectDreamyCreamy.m; sourceTree = "<group>"; };
+		58F798AA190D2D40006B865A /* VnEffectDreamyCreamy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VnEffectDreamyCreamy.h; sourceTree = "<group>"; };
+		58F798AB190D2D40006B865A /* VnEffectDreamyCreamy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VnEffectDreamyCreamy.m; sourceTree = "<group>"; };
+		58F798B1190D3210006B865A /* dv1.acv */ = {isa = PBXFileReference; lastKnownFileType = file; path = dv1.acv; sourceTree = "<group>"; };
+		58F798B2190D3210006B865A /* VnEffectDreamyVintage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VnEffectDreamyVintage.h; sourceTree = "<group>"; };
+		58F798B3190D3210006B865A /* VnEffectDreamyVintage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VnEffectDreamyVintage.m; sourceTree = "<group>"; };
 		58F79C4818FFAE6000C0D2E1 /* Vintage 2.0.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Vintage 2.0.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		58F79C4B18FFAE6000C0D2E1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		58F79C4D18FFAE6000C0D2E1 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -483,6 +488,7 @@
 				58F5A952190CEA9000BD2A5C /* Cavalleria Rusticana */,
 				58F7989A190D28FD006B865A /* Creamy Noon */,
 				58F798A6190D2D23006B865A /* Dreamy Creamy */,
+				58F798B0190D3201006B865A /* Dreamy Vintage */,
 				583092C51907BE69007F2989 /* Haze 3 Pink */,
 				58FB1A09190CC7FD00057CE0 /* Hazelnut */,
 				58FB1A12190CC82600057CE0 /* Hazelnut Pink */,
@@ -755,10 +761,20 @@
 				58F798A7190D2D40006B865A /* dc3.acv */,
 				58F798A8190D2D40006B865A /* dc2.acv */,
 				58F798A9190D2D40006B865A /* dc1.acv */,
-				58F798AA190D2D40006B865A /* GPUEffectDreamyCreamy.h */,
-				58F798AB190D2D40006B865A /* GPUEffectDreamyCreamy.m */,
+				58F798AA190D2D40006B865A /* VnEffectDreamyCreamy.h */,
+				58F798AB190D2D40006B865A /* VnEffectDreamyCreamy.m */,
 			);
 			name = "Dreamy Creamy";
+			sourceTree = "<group>";
+		};
+		58F798B0190D3201006B865A /* Dreamy Vintage */ = {
+			isa = PBXGroup;
+			children = (
+				58F798B1190D3210006B865A /* dv1.acv */,
+				58F798B2190D3210006B865A /* VnEffectDreamyVintage.h */,
+				58F798B3190D3210006B865A /* VnEffectDreamyVintage.m */,
+			);
+			name = "Dreamy Vintage";
 			sourceTree = "<group>";
 		};
 		58F79C3F18FFAE6000C0D2E1 = {
@@ -1111,6 +1127,7 @@
 				581794CA190C056100A12825 /* hzlp1.acv in Resources */,
 				58F5A72819041F000028D6D2 /* Bg-Portrait.png in Resources */,
 				58FB1A10190CC81A00057CE0 /* Hzl1.acv in Resources */,
+				58F798B4190D3210006B865A /* dv1.acv in Resources */,
 				5811B9DA1904BFD000D4155C /* Bg@2x.png in Resources */,
 				58FB1A1D190CD5AA00057CE0 /* av2.acv in Resources */,
 				58FB1A11190CC81A00057CE0 /* Hzl2.acv in Resources */,
@@ -1165,7 +1182,7 @@
 				58FA3A4F1902C5670070B4B8 /* VnViewControllerTiltShift.m in Sources */,
 				58F5A94B190CE29D00BD2A5C /* VnAdjustmentLayerChannelMixerFilter.m in Sources */,
 				5807F5A719036588009FEA3C /* UIDevice+extend.m in Sources */,
-				58F798AF190D2D40006B865A /* GPUEffectDreamyCreamy.m in Sources */,
+				58F798AF190D2D40006B865A /* VnEffectDreamyCreamy.m in Sources */,
 				58F3A7921907C72700896D01 /* VnAdjustmentLayerColorBalance.m in Sources */,
 				58F5A72119041C1F0028D6D2 /* VnViewEditorEffectsOpacity.m in Sources */,
 				58FB1A0C190CC80B00057CE0 /* VnEffectHazelnut.m in Sources */,
@@ -1178,6 +1195,7 @@
 				583092C81907BE79007F2989 /* VnEffectHaze3Pink.m in Sources */,
 				58F17A7319020BEC0038DF34 /* UIScreen+extend.m in Sources */,
 				58325D9B1902724E000A3D0E /* VnBlendingHardLight.m in Sources */,
+				58F798B5190D3210006B865A /* VnEffectDreamyVintage.m in Sources */,
 				58325DAA190277DC000A3D0E /* VnBlendingLinearDodge.m in Sources */,
 				58F5F455190936AE00AD8BEA /* VnViewEditorToolBarButtonBgView.m in Sources */,
 				58F17A7619020BEC0038DF34 /* UIImage+extend.m in Sources */,

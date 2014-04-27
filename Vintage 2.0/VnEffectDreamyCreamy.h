@@ -6,8 +6,8 @@
 //  Copyright (c) 2014年 SSC. All rights reserved.
 //
 
-#import "GPUImageEffects.h"
+#import "VnEffect.h"
 
-@interface GPUEffectDreamyCreamy : GPUImageEffects
+@interface VnEffectDreamyCreamy : VnEffect
 
 @end

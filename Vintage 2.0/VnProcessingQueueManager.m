@@ -226,6 +226,20 @@ static VnProcessingQueueManager* sharedVnProcessingQueue = nil;
     queue.type = VnObjectProcessingQueueTypePreset;
     [_effectsPresetQueueList addObject:queue];
     
+    //// Dreamy Creamy
+    queue = [[VnObjectProcessingQueue alloc] init];
+    queue.effectId = VnEffectIdDreamyCreamy;
+    queue.toolId = VnAdjustmentToolIdEffects;
+    queue.type = VnObjectProcessingQueueTypePreset;
+    [_effectsPresetQueueList addObject:queue];
+    
+    //// Dreamy Vintage
+    queue = [[VnObjectProcessingQueue alloc] init];
+    queue.effectId = VnEffectIdDreamyVintage;
+    queue.toolId = VnAdjustmentToolIdEffects;
+    queue.type = VnObjectProcessingQueueTypePreset;
+    [_effectsPresetQueueList addObject:queue];
+    
     //// Haze 3 Pink
     queue = [[VnObjectProcessingQueue alloc] init];
     queue.effectId = VnEffectIdHaze3Pink;

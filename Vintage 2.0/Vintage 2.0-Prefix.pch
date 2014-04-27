@@ -160,6 +160,8 @@ typedef NS_ENUM(NSInteger, VnBlendingMode){
 #import "VnEffectBokehileVintage.h"
 #import "VnEffectCavalleriaRusticana.h"
 #import "VnEffectCreamyNoon.h"
+#import "VnEffectDreamyCreamy.h"
+#import "VnEffectDreamyVintage.h"
 #import "VnEffectHaze3Pink.h"
 #import "VnEffectHazelnut.h"
 #import "VnEffectHazelnutPink.h"
