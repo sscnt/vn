@@ -110,6 +110,21 @@ static VnProcessor* sharedVnProcessor = nil;
     if (effectId == VnEffectIdNone) {
         return image;
     }
+    if(effectId == VnEffectIdAutumnVintage) {
+        VnEffectAutumnVintage* effect = [[VnEffectAutumnVintage alloc] init];
+        effect.imageToProcess = image;
+        return [effect process];
+    }
+    if(effectId == VnEffectIdBeachVintage) {
+        VnEffectBeachVintage* effect = [[VnEffectBeachVintage alloc] init];
+        effect.imageToProcess = image;
+        return [effect process];
+    }
+    if(effectId == VnEffectIdBokehileVintage) {
+        VnEffectBokehileVintage* effect = [[VnEffectBokehileVintage alloc] init];
+        effect.imageToProcess = image;
+        return [effect process];
+    }
     if(effectId == VnEffectIdHaze3Pink) {
         VnEffectHaze3Pink* effect = [[VnEffectHaze3Pink alloc] init];
         effect.imageToProcess = image;

@@ -41,7 +41,8 @@
     [vm openAdjustmentToolView:VnAdjustmentToolIdEffects];
     
     VnObjectProcessingQueue* queue = [VnProcessingQueueManager shiftEffectQueue];
-    [VnProcessingQueueManager addQueue:queue];    
+    [VnProcessingQueueManager addQueue:queue];
+    
 }
 
 #pragma mark view delegate

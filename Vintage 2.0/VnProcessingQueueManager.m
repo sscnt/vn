@@ -191,6 +191,27 @@ static VnProcessingQueueManager* sharedVnProcessingQueue = nil;
     queue.type = VnObjectProcessingQueueTypePreset;
     [_effectsPresetQueueList addObject:queue];
     
+    //// Autumn Vintage
+    queue = [[VnObjectProcessingQueue alloc] init];
+    queue.effectId = VnEffectIdAutumnVintage;
+    queue.toolId = VnAdjustmentToolIdEffects;
+    queue.type = VnObjectProcessingQueueTypePreset;
+    [_effectsPresetQueueList addObject:queue];
+    
+    //// Beach Vintage
+    queue = [[VnObjectProcessingQueue alloc] init];
+    queue.effectId = VnEffectIdBeachVintage;
+    queue.toolId = VnAdjustmentToolIdEffects;
+    queue.type = VnObjectProcessingQueueTypePreset;
+    [_effectsPresetQueueList addObject:queue];
+    
+    //// Bokehile Vintage
+    queue = [[VnObjectProcessingQueue alloc] init];
+    queue.effectId = VnEffectIdBokehileVintage;
+    queue.toolId = VnAdjustmentToolIdEffects;
+    queue.type = VnObjectProcessingQueueTypePreset;
+    [_effectsPresetQueueList addObject:queue];
+    
     //// Haze 3 Pink
     queue = [[VnObjectProcessingQueue alloc] init];
     queue.effectId = VnEffectIdHaze3Pink;

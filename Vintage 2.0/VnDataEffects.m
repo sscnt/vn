@@ -55,6 +55,24 @@ static VnDataEffects* sharedVnDataEffects = nil;
     effect.name = NSLocalizedString(@"None", nil);
     [_effectsList addObject:effect];
     
+    //// Autumn Vintage
+    effect = [[VnObjectEffect alloc] init];
+    effect.effectId = VnEffectIdAutumnVintage;
+    effect.name = [NSString stringWithFormat:@"#%02d", (int)effect.effectId];
+    [_effectsList addObject:effect];
+    
+    //// Beach Vintage
+    effect = [[VnObjectEffect alloc] init];
+    effect.effectId = VnEffectIdBeachVintage;
+    effect.name = [NSString stringWithFormat:@"#%02d", (int)effect.effectId];
+    [_effectsList addObject:effect];
+    
+    //// Bokehile Vintage
+    effect = [[VnObjectEffect alloc] init];
+    effect.effectId = VnEffectIdBokehileVintage;
+    effect.name = [NSString stringWithFormat:@"#%02d", (int)effect.effectId];
+    [_effectsList addObject:effect];
+    
     //// Haze 3 Pink
     effect = [[VnObjectEffect alloc] init];
     effect.effectId = VnEffectIdHaze3Pink;
