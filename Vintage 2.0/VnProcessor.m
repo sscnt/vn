@@ -125,6 +125,16 @@ static VnProcessor* sharedVnProcessor = nil;
         effect.imageToProcess = image;
         return [effect process];
     }
+    if(effectId == VnEffectIdCavalleriaRusticana) {
+        VnEffectCavalleriaRusticana* effect = [[VnEffectCavalleriaRusticana alloc] init];
+        effect.imageToProcess = image;
+        return [effect process];
+    }
+    if(effectId == VnEffectIdCreamyNoon) {
+        VnEffectCreamyNoon* effect = [[VnEffectCreamyNoon alloc] init];
+        effect.imageToProcess = image;
+        return [effect process];
+    }
     if(effectId == VnEffectIdHaze3Pink) {
         VnEffectHaze3Pink* effect = [[VnEffectHaze3Pink alloc] init];
         effect.imageToProcess = image;

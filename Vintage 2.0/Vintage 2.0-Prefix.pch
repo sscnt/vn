@@ -153,10 +153,13 @@ typedef NS_ENUM(NSInteger, VnBlendingMode){
 #import "VnAdjustmentLayerSelectiveColor.h"
 #import "VnAdjustmentLayerGradientMap.h"
 #import "VnAdjustmentLayerChannelMixerFilter.h"
+#import "VnAdjustmentLayerHueSaturation.h"
 
 #import "VnEffectAutumnVintage.h"
 #import "VnEffectBeachVintage.h"
 #import "VnEffectBokehileVintage.h"
+#import "VnEffectCavalleriaRusticana.h"
+#import "VnEffectCreamyNoon.h"
 #import "VnEffectHaze3Pink.h"
 #import "VnEffectHazelnut.h"
 #import "VnEffectHazelnutPink.h"

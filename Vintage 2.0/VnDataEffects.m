@@ -73,6 +73,18 @@ static VnDataEffects* sharedVnDataEffects = nil;
     effect.name = [NSString stringWithFormat:@"#%02d", (int)effect.effectId];
     [_effectsList addObject:effect];
     
+    //// Cavalleria Rusticana
+    effect = [[VnObjectEffect alloc] init];
+    effect.effectId = VnEffectIdCavalleriaRusticana;
+    effect.name = [NSString stringWithFormat:@"#%02d", (int)effect.effectId];
+    [_effectsList addObject:effect];
+    
+    //// Creamy Noon
+    effect = [[VnObjectEffect alloc] init];
+    effect.effectId = VnEffectIdCreamyNoon;
+    effect.name = [NSString stringWithFormat:@"#%02d", (int)effect.effectId];
+    [_effectsList addObject:effect];
+    
     //// Haze 3 Pink
     effect = [[VnObjectEffect alloc] init];
     effect.effectId = VnEffectIdHaze3Pink;
