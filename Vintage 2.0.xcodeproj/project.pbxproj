@@ -104,6 +104,10 @@
 		58F798C7190D4B74006B865A /* gm3.acv in Resources */ = {isa = PBXBuildFile; fileRef = 58F798C1190D4B74006B865A /* gm3.acv */; };
 		58F798C8190D4B74006B865A /* gm4.acv in Resources */ = {isa = PBXBuildFile; fileRef = 58F798C2190D4B74006B865A /* gm4.acv */; };
 		58F798C9190D4B74006B865A /* VnEffectGentleMemories.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F798C4190D4B74006B865A /* VnEffectGentleMemories.m */; };
+		58F798D0190D4F92006B865A /* mo1.acv in Resources */ = {isa = PBXBuildFile; fileRef = 58F798CB190D4F92006B865A /* mo1.acv */; };
+		58F798D1190D4F92006B865A /* mo2.acv in Resources */ = {isa = PBXBuildFile; fileRef = 58F798CC190D4F92006B865A /* mo2.acv */; };
+		58F798D2190D4F92006B865A /* mo3.acv in Resources */ = {isa = PBXBuildFile; fileRef = 58F798CD190D4F92006B865A /* mo3.acv */; };
+		58F798D3190D4F92006B865A /* VnEffectGoodMorning.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F798CF190D4F92006B865A /* VnEffectGoodMorning.m */; };
 		58F79C4C18FFAE6000C0D2E1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58F79C4B18FFAE6000C0D2E1 /* Foundation.framework */; };
 		58F79C4E18FFAE6000C0D2E1 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58F79C4D18FFAE6000C0D2E1 /* CoreGraphics.framework */; };
 		58F79C5018FFAE6000C0D2E1 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58F79C4F18FFAE6000C0D2E1 /* UIKit.framework */; };
@@ -335,6 +339,11 @@
 		58F798C2190D4B74006B865A /* gm4.acv */ = {isa = PBXFileReference; lastKnownFileType = file; path = gm4.acv; sourceTree = "<group>"; };
 		58F798C3190D4B74006B865A /* VnEffectGentleMemories.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VnEffectGentleMemories.h; sourceTree = "<group>"; };
 		58F798C4190D4B74006B865A /* VnEffectGentleMemories.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VnEffectGentleMemories.m; sourceTree = "<group>"; };
+		58F798CB190D4F92006B865A /* mo1.acv */ = {isa = PBXFileReference; lastKnownFileType = file; path = mo1.acv; sourceTree = "<group>"; };
+		58F798CC190D4F92006B865A /* mo2.acv */ = {isa = PBXFileReference; lastKnownFileType = file; path = mo2.acv; sourceTree = "<group>"; };
+		58F798CD190D4F92006B865A /* mo3.acv */ = {isa = PBXFileReference; lastKnownFileType = file; path = mo3.acv; sourceTree = "<group>"; };
+		58F798CE190D4F92006B865A /* VnEffectGoodMorning.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VnEffectGoodMorning.h; sourceTree = "<group>"; };
+		58F798CF190D4F92006B865A /* VnEffectGoodMorning.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VnEffectGoodMorning.m; sourceTree = "<group>"; };
 		58F79C4818FFAE6000C0D2E1 /* Vintage 2.0.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Vintage 2.0.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		58F79C4B18FFAE6000C0D2E1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		58F79C4D18FFAE6000C0D2E1 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -509,6 +518,7 @@
 				58F798B0190D3201006B865A /* Dreamy Vintage */,
 				58F798B6190D486E006B865A /* Faerie Vintage */,
 				58F798BE190D4B63006B865A /* Gentle Memories */,
+				58F798CA190D4F82006B865A /* Good Morning */,
 				583092C51907BE69007F2989 /* Haze 3 Pink */,
 				58FB1A09190CC7FD00057CE0 /* Hazelnut */,
 				58FB1A12190CC82600057CE0 /* Hazelnut Pink */,
@@ -819,6 +829,18 @@
 				58F798C4190D4B74006B865A /* VnEffectGentleMemories.m */,
 			);
 			name = "Gentle Memories";
+			sourceTree = "<group>";
+		};
+		58F798CA190D4F82006B865A /* Good Morning */ = {
+			isa = PBXGroup;
+			children = (
+				58F798CB190D4F92006B865A /* mo1.acv */,
+				58F798CC190D4F92006B865A /* mo2.acv */,
+				58F798CD190D4F92006B865A /* mo3.acv */,
+				58F798CE190D4F92006B865A /* VnEffectGoodMorning.h */,
+				58F798CF190D4F92006B865A /* VnEffectGoodMorning.m */,
+			);
+			name = "Good Morning";
 			sourceTree = "<group>";
 		};
 		58F79C3F18FFAE6000C0D2E1 = {
@@ -1165,6 +1187,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				58F798D0190D4F92006B865A /* mo1.acv in Resources */,
 				58F798AC190D2D40006B865A /* dc3.acv in Resources */,
 				58F5A944190CE16200BD2A5C /* bv1.acv in Resources */,
 				58F5A950190CE6A700BD2A5C /* bv4.acv in Resources */,
@@ -1188,6 +1211,7 @@
 				58F5A94F190CE6A700BD2A5C /* bv5.acv in Resources */,
 				58F5A7101903F8CA0028D6D2 /* home-photos@2x.png in Resources */,
 				58F798A3190D290F006B865A /* cn3.acv in Resources */,
+				58F798D2190D4F92006B865A /* mo3.acv in Resources */,
 				58F5A951190CE6A700BD2A5C /* bv3.acv in Resources */,
 				58F79C5618FFAE6000C0D2E1 /* InfoPlist.strings in Resources */,
 				58F798A4190D290F006B865A /* cn4.acv in Resources */,
@@ -1205,6 +1229,7 @@
 				58F798AE190D2D40006B865A /* dc1.acv in Resources */,
 				5811B9DC1904BFD900D4155C /* Default@2x.png in Resources */,
 				581794C9190C056100A12825 /* hzlp2.acv in Resources */,
+				58F798D1190D4F92006B865A /* mo2.acv in Resources */,
 				58F6DE8C19039A1E00FC96D7 /* home-camera@2x.png in Resources */,
 				58F798C7190D4B74006B865A /* gm3.acv in Resources */,
 			);
@@ -1303,6 +1328,7 @@
 				58325DA1190274A2000A3D0E /* VnBlendingOverlay.m in Sources */,
 				58F79165190626F8009F0FF5 /* VnProcessingQueueManager.m in Sources */,
 				58F17A6619020B380038DF34 /* VnCurrentImage.m in Sources */,
+				58F798D3190D4F92006B865A /* VnEffectGoodMorning.m in Sources */,
 				58F5A957190CEAA200BD2A5C /* VnEffectCavalleriaRusticana.m in Sources */,
 				58325DB619027A19000A3D0E /* VnBlendingHue.m in Sources */,
 			);
