@@ -184,20 +184,30 @@ static VnProcessingQueueManager* sharedVnProcessingQueue = nil;
     _effectsPresetQueueList = [NSMutableArray array];
     VnObjectProcessingQueue* queue;
     
+    //// None
     queue = [[VnObjectProcessingQueue alloc] init];
     queue.effectId = VnEffectIdNone;
     queue.toolId = VnAdjustmentToolIdEffects;
     queue.type = VnObjectProcessingQueueTypePreset;
     [_effectsPresetQueueList addObject:queue];
     
+    //// Haze 3 Pink
     queue = [[VnObjectProcessingQueue alloc] init];
-    queue.effectId = VnEffectIdHaze3;
+    queue.effectId = VnEffectIdHaze3Pink;
     queue.toolId = VnAdjustmentToolIdEffects;
     queue.type = VnObjectProcessingQueueTypePreset;
     [_effectsPresetQueueList addObject:queue];
     
+    //// Hazelnut
     queue = [[VnObjectProcessingQueue alloc] init];
-    queue.effectId = VnEffectIdHaze3Pink;
+    queue.effectId = VnEffectIdHazelnut;
+    queue.toolId = VnAdjustmentToolIdEffects;
+    queue.type = VnObjectProcessingQueueTypePreset;
+    [_effectsPresetQueueList addObject:queue];
+    
+    //// Hazelnut Pink
+    queue = [[VnObjectProcessingQueue alloc] init];
+    queue.effectId = VnEffectIdHazelnutPink;
     queue.toolId = VnAdjustmentToolIdEffects;
     queue.type = VnObjectProcessingQueueTypePreset;
     [_effectsPresetQueueList addObject:queue];

@@ -19,7 +19,6 @@
 		5811B9E71904D77300D4155C /* VnViewEditorToolBarButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 5811B9E61904D77300D4155C /* VnViewEditorToolBarButton.m */; };
 		581794C9190C056100A12825 /* hzlp2.acv in Resources */ = {isa = PBXBuildFile; fileRef = 581794C7190C056100A12825 /* hzlp2.acv */; };
 		581794CA190C056100A12825 /* hzlp1.acv in Resources */ = {isa = PBXBuildFile; fileRef = 581794C8190C056100A12825 /* hzlp1.acv */; };
-		583092C41907BE65007F2989 /* VnEffectHaze3.m in Sources */ = {isa = PBXBuildFile; fileRef = 583092C31907BE65007F2989 /* VnEffectHaze3.m */; };
 		583092C81907BE79007F2989 /* VnEffectHaze3Pink.m in Sources */ = {isa = PBXBuildFile; fileRef = 583092C71907BE79007F2989 /* VnEffectHaze3Pink.m */; };
 		58325D8619026926000A3D0E /* libGPUImage.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 58FD075A1902416A0005E74E /* libGPUImage.a */; };
 		58325D8919026D7D000A3D0E /* VnBlendingNormal.m in Sources */ = {isa = PBXBuildFile; fileRef = 58325D8819026D7D000A3D0E /* VnBlendingNormal.m */; };
@@ -64,6 +63,8 @@
 		58F5A72A19041F080028D6D2 /* Bg-Portrait@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 58F5A72919041F080028D6D2 /* Bg-Portrait@2x.png */; };
 		58F5A72D19041F110028D6D2 /* Default-Portrait.png in Resources */ = {isa = PBXBuildFile; fileRef = 58F5A72B19041F110028D6D2 /* Default-Portrait.png */; };
 		58F5A72E19041F110028D6D2 /* Default-Portrait@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 58F5A72C19041F110028D6D2 /* Default-Portrait@2x.png */; };
+		58F5A936190CDA0A00BD2A5C /* VnAdjustmentLayerSelectiveColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F5A935190CDA0A00BD2A5C /* VnAdjustmentLayerSelectiveColor.m */; };
+		58F5A93A190CDB5B00BD2A5C /* VnAdjustmentLayerGradientMap.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F5A939190CDB5B00BD2A5C /* VnAdjustmentLayerGradientMap.m */; };
 		58F5F455190936AE00AD8BEA /* VnViewEditorToolBarButtonBgView.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F5F454190936AE00AD8BEA /* VnViewEditorToolBarButtonBgView.m */; };
 		58F5F45819094E9500AD8BEA /* VnViewHitThroughScroll.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F5F45719094E9500AD8BEA /* VnViewHitThroughScroll.m */; };
 		58F64979190426D8000E2AC5 /* VnObjectEffect.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F64978190426D8000E2AC5 /* VnObjectEffect.m */; };
@@ -96,6 +97,15 @@
 		58FA3A4F1902C5670070B4B8 /* VnViewControllerTiltShift.m in Sources */ = {isa = PBXBuildFile; fileRef = 58FA3A4E1902C5670070B4B8 /* VnViewControllerTiltShift.m */; };
 		58FA3A521902D2D70070B4B8 /* VnViewControllerRoot.m in Sources */ = {isa = PBXBuildFile; fileRef = 58FA3A511902D2D70070B4B8 /* VnViewControllerRoot.m */; };
 		58FA81101907BC3600FD5BDD /* VnDataEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = 58FA810F1907BC3600FD5BDD /* VnDataEffects.m */; };
+		58FB1A0C190CC80B00057CE0 /* VnEffectHazelnut.m in Sources */ = {isa = PBXBuildFile; fileRef = 58FB1A0B190CC80B00057CE0 /* VnEffectHazelnut.m */; };
+		58FB1A10190CC81A00057CE0 /* Hzl1.acv in Resources */ = {isa = PBXBuildFile; fileRef = 58FB1A0E190CC81A00057CE0 /* Hzl1.acv */; };
+		58FB1A11190CC81A00057CE0 /* Hzl2.acv in Resources */ = {isa = PBXBuildFile; fileRef = 58FB1A0F190CC81A00057CE0 /* Hzl2.acv */; };
+		58FB1A15190CC84100057CE0 /* VnEffectHazelnutPink.m in Sources */ = {isa = PBXBuildFile; fileRef = 58FB1A14190CC84100057CE0 /* VnEffectHazelnutPink.m */; };
+		58FB1A1C190CD5AA00057CE0 /* av1.acv in Resources */ = {isa = PBXBuildFile; fileRef = 58FB1A18190CD5AA00057CE0 /* av1.acv */; };
+		58FB1A1D190CD5AA00057CE0 /* av2.acv in Resources */ = {isa = PBXBuildFile; fileRef = 58FB1A19190CD5AA00057CE0 /* av2.acv */; };
+		58FB1A1E190CD5AA00057CE0 /* av3.acv in Resources */ = {isa = PBXBuildFile; fileRef = 58FB1A1A190CD5AA00057CE0 /* av3.acv */; };
+		58FB1A1F190CD5AA00057CE0 /* av4.acv in Resources */ = {isa = PBXBuildFile; fileRef = 58FB1A1B190CD5AA00057CE0 /* av4.acv */; };
+		58FB1A22190CD5BE00057CE0 /* VnEffectAutumnVintage.m in Sources */ = {isa = PBXBuildFile; fileRef = 58FB1A21190CD5BE00057CE0 /* VnEffectAutumnVintage.m */; };
 		58FD07051902405C0005E74E /* VnProcessor.m in Sources */ = {isa = PBXBuildFile; fileRef = 58FD07041902405C0005E74E /* VnProcessor.m */; };
 		58FD075F190241920005E74E /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58FD075E190241920005E74E /* AssetsLibrary.framework */; };
 		58FD07611902419D0005E74E /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58FD07601902419D0005E74E /* Social.framework */; };
@@ -150,8 +160,6 @@
 		5811B9E61904D77300D4155C /* VnViewEditorToolBarButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VnViewEditorToolBarButton.m; sourceTree = "<group>"; };
 		581794C7190C056100A12825 /* hzlp2.acv */ = {isa = PBXFileReference; lastKnownFileType = file; path = hzlp2.acv; sourceTree = "<group>"; };
 		581794C8190C056100A12825 /* hzlp1.acv */ = {isa = PBXFileReference; lastKnownFileType = file; path = hzlp1.acv; sourceTree = "<group>"; };
-		583092C21907BE65007F2989 /* VnEffectHaze3.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VnEffectHaze3.h; sourceTree = "<group>"; };
-		583092C31907BE65007F2989 /* VnEffectHaze3.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VnEffectHaze3.m; sourceTree = "<group>"; };
 		583092C61907BE79007F2989 /* VnEffectHaze3Pink.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VnEffectHaze3Pink.h; sourceTree = "<group>"; };
 		583092C71907BE79007F2989 /* VnEffectHaze3Pink.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VnEffectHaze3Pink.m; sourceTree = "<group>"; };
 		58325D8719026D7D000A3D0E /* VnBlendingNormal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VnBlendingNormal.h; sourceTree = "<group>"; };
@@ -236,6 +244,10 @@
 		58F5A72919041F080028D6D2 /* Bg-Portrait@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Bg-Portrait@2x.png"; sourceTree = "<group>"; };
 		58F5A72B19041F110028D6D2 /* Default-Portrait.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Portrait.png"; sourceTree = "<group>"; };
 		58F5A72C19041F110028D6D2 /* Default-Portrait@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Portrait@2x.png"; sourceTree = "<group>"; };
+		58F5A934190CDA0A00BD2A5C /* VnAdjustmentLayerSelectiveColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VnAdjustmentLayerSelectiveColor.h; sourceTree = "<group>"; };
+		58F5A935190CDA0A00BD2A5C /* VnAdjustmentLayerSelectiveColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VnAdjustmentLayerSelectiveColor.m; sourceTree = "<group>"; };
+		58F5A938190CDB5B00BD2A5C /* VnAdjustmentLayerGradientMap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VnAdjustmentLayerGradientMap.h; sourceTree = "<group>"; };
+		58F5A939190CDB5B00BD2A5C /* VnAdjustmentLayerGradientMap.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VnAdjustmentLayerGradientMap.m; sourceTree = "<group>"; };
 		58F5F453190936AE00AD8BEA /* VnViewEditorToolBarButtonBgView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VnViewEditorToolBarButtonBgView.h; sourceTree = "<group>"; };
 		58F5F454190936AE00AD8BEA /* VnViewEditorToolBarButtonBgView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VnViewEditorToolBarButtonBgView.m; sourceTree = "<group>"; };
 		58F5F45619094E9500AD8BEA /* VnViewHitThroughScroll.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VnViewHitThroughScroll.h; sourceTree = "<group>"; };
@@ -290,6 +302,18 @@
 		58FA3A511902D2D70070B4B8 /* VnViewControllerRoot.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VnViewControllerRoot.m; sourceTree = "<group>"; };
 		58FA810E1907BC3600FD5BDD /* VnDataEffects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VnDataEffects.h; sourceTree = "<group>"; };
 		58FA810F1907BC3600FD5BDD /* VnDataEffects.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VnDataEffects.m; sourceTree = "<group>"; };
+		58FB1A0A190CC80B00057CE0 /* VnEffectHazelnut.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VnEffectHazelnut.h; sourceTree = "<group>"; };
+		58FB1A0B190CC80B00057CE0 /* VnEffectHazelnut.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VnEffectHazelnut.m; sourceTree = "<group>"; };
+		58FB1A0E190CC81A00057CE0 /* Hzl1.acv */ = {isa = PBXFileReference; lastKnownFileType = file; path = Hzl1.acv; sourceTree = "<group>"; };
+		58FB1A0F190CC81A00057CE0 /* Hzl2.acv */ = {isa = PBXFileReference; lastKnownFileType = file; path = Hzl2.acv; sourceTree = "<group>"; };
+		58FB1A13190CC84100057CE0 /* VnEffectHazelnutPink.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VnEffectHazelnutPink.h; sourceTree = "<group>"; };
+		58FB1A14190CC84100057CE0 /* VnEffectHazelnutPink.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VnEffectHazelnutPink.m; sourceTree = "<group>"; };
+		58FB1A18190CD5AA00057CE0 /* av1.acv */ = {isa = PBXFileReference; lastKnownFileType = file; path = av1.acv; sourceTree = "<group>"; };
+		58FB1A19190CD5AA00057CE0 /* av2.acv */ = {isa = PBXFileReference; lastKnownFileType = file; path = av2.acv; sourceTree = "<group>"; };
+		58FB1A1A190CD5AA00057CE0 /* av3.acv */ = {isa = PBXFileReference; lastKnownFileType = file; path = av3.acv; sourceTree = "<group>"; };
+		58FB1A1B190CD5AA00057CE0 /* av4.acv */ = {isa = PBXFileReference; lastKnownFileType = file; path = av4.acv; sourceTree = "<group>"; };
+		58FB1A20190CD5BE00057CE0 /* VnEffectAutumnVintage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VnEffectAutumnVintage.h; sourceTree = "<group>"; };
+		58FB1A21190CD5BE00057CE0 /* VnEffectAutumnVintage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VnEffectAutumnVintage.m; sourceTree = "<group>"; };
 		58FD07031902405C0005E74E /* VnProcessor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VnProcessor.h; sourceTree = "<group>"; };
 		58FD07041902405C0005E74E /* VnProcessor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VnProcessor.m; sourceTree = "<group>"; };
 		58FD0753190241690005E74E /* GPUImage.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = GPUImage.xcodeproj; path = GPUImage/framework/GPUImage.xcodeproj; sourceTree = "<group>"; };
@@ -394,15 +418,6 @@
 			name = Curves;
 			sourceTree = "<group>";
 		};
-		583092BE1907BE4E007F2989 /* Haze 3 */ = {
-			isa = PBXGroup;
-			children = (
-				583092C21907BE65007F2989 /* VnEffectHaze3.h */,
-				583092C31907BE65007F2989 /* VnEffectHaze3.m */,
-			);
-			name = "Haze 3";
-			sourceTree = "<group>";
-		};
 		583092C51907BE69007F2989 /* Haze 3 Pink */ = {
 			isa = PBXGroup;
 			children = (
@@ -415,8 +430,10 @@
 		58325DBD19027DAC000A3D0E /* 1.0 */ = {
 			isa = PBXGroup;
 			children = (
-				583092BE1907BE4E007F2989 /* Haze 3 */,
+				58FB1A16190CD58400057CE0 /* Autumn Vintage */,
 				583092C51907BE69007F2989 /* Haze 3 Pink */,
+				58FB1A09190CC7FD00057CE0 /* Hazelnut */,
+				58FB1A12190CC82600057CE0 /* Hazelnut Pink */,
 			);
 			name = 1.0;
 			sourceTree = "<group>";
@@ -468,6 +485,8 @@
 		58F3A78A1907C67A00896D01 /* VnAdjustmentLayers */ = {
 			isa = PBXGroup;
 			children = (
+				58F5A937190CDB4C00BD2A5C /* Gradient Map */,
+				58F5A92F190CD9EE00BD2A5C /* Selective Color */,
 				58F3A78F1907C71A00896D01 /* Color Balance */,
 				58F3A78B1907C69700896D01 /* Gradient Color */,
 			);
@@ -535,6 +554,24 @@
 			children = (
 			);
 			name = iPad;
+			sourceTree = "<group>";
+		};
+		58F5A92F190CD9EE00BD2A5C /* Selective Color */ = {
+			isa = PBXGroup;
+			children = (
+				58F5A934190CDA0A00BD2A5C /* VnAdjustmentLayerSelectiveColor.h */,
+				58F5A935190CDA0A00BD2A5C /* VnAdjustmentLayerSelectiveColor.m */,
+			);
+			name = "Selective Color";
+			sourceTree = "<group>";
+		};
+		58F5A937190CDB4C00BD2A5C /* Gradient Map */ = {
+			isa = PBXGroup;
+			children = (
+				58F5A938190CDB5B00BD2A5C /* VnAdjustmentLayerGradientMap.h */,
+				58F5A939190CDB5B00BD2A5C /* VnAdjustmentLayerGradientMap.m */,
+			);
+			name = "Gradient Map";
 			sourceTree = "<group>";
 		};
 		58F5F44E1909368400AD8BEA /* Toolbar */ = {
@@ -703,12 +740,61 @@
 			name = ViewControllers;
 			sourceTree = "<group>";
 		};
+		58FB1A09190CC7FD00057CE0 /* Hazelnut */ = {
+			isa = PBXGroup;
+			children = (
+				58FB1A0D190CC80E00057CE0 /* Curves */,
+				58FB1A0A190CC80B00057CE0 /* VnEffectHazelnut.h */,
+				58FB1A0B190CC80B00057CE0 /* VnEffectHazelnut.m */,
+			);
+			name = Hazelnut;
+			sourceTree = "<group>";
+		};
+		58FB1A0D190CC80E00057CE0 /* Curves */ = {
+			isa = PBXGroup;
+			children = (
+				58FB1A0E190CC81A00057CE0 /* Hzl1.acv */,
+				58FB1A0F190CC81A00057CE0 /* Hzl2.acv */,
+			);
+			name = Curves;
+			sourceTree = "<group>";
+		};
+		58FB1A12190CC82600057CE0 /* Hazelnut Pink */ = {
+			isa = PBXGroup;
+			children = (
+				581794C6190C052E00A12825 /* Curves */,
+				58FB1A13190CC84100057CE0 /* VnEffectHazelnutPink.h */,
+				58FB1A14190CC84100057CE0 /* VnEffectHazelnutPink.m */,
+			);
+			name = "Hazelnut Pink";
+			sourceTree = "<group>";
+		};
+		58FB1A16190CD58400057CE0 /* Autumn Vintage */ = {
+			isa = PBXGroup;
+			children = (
+				58FB1A17190CD59800057CE0 /* Curves */,
+				58FB1A20190CD5BE00057CE0 /* VnEffectAutumnVintage.h */,
+				58FB1A21190CD5BE00057CE0 /* VnEffectAutumnVintage.m */,
+			);
+			name = "Autumn Vintage";
+			sourceTree = "<group>";
+		};
+		58FB1A17190CD59800057CE0 /* Curves */ = {
+			isa = PBXGroup;
+			children = (
+				58FB1A18190CD5AA00057CE0 /* av1.acv */,
+				58FB1A19190CD5AA00057CE0 /* av2.acv */,
+				58FB1A1A190CD5AA00057CE0 /* av3.acv */,
+				58FB1A1B190CD5AA00057CE0 /* av4.acv */,
+			);
+			name = Curves;
+			sourceTree = "<group>";
+		};
 		58FD0706190240B80005E74E /* VnEffects */ = {
 			isa = PBXGroup;
 			children = (
 				58FD076F19025A860005E74E /* VnEffect.h */,
 				58FD077019025A860005E74E /* VnEffect.m */,
-				581794C6190C052E00A12825 /* Curves */,
 				58325DBD19027DAC000A3D0E /* 1.0 */,
 				58325DBE19027DB1000A3D0E /* 2.0 */,
 			);
@@ -891,13 +977,19 @@
 			files = (
 				581794CA190C056100A12825 /* hzlp1.acv in Resources */,
 				58F5A72819041F000028D6D2 /* Bg-Portrait.png in Resources */,
+				58FB1A10190CC81A00057CE0 /* Hzl1.acv in Resources */,
 				5811B9DA1904BFD000D4155C /* Bg@2x.png in Resources */,
+				58FB1A1D190CD5AA00057CE0 /* av2.acv in Resources */,
+				58FB1A11190CC81A00057CE0 /* Hzl2.acv in Resources */,
 				58F79C6418FFAE6000C0D2E1 /* Images.xcassets in Resources */,
 				58F17A5E19020A530038DF34 /* Localizable.strings in Resources */,
+				58FB1A1C190CD5AA00057CE0 /* av1.acv in Resources */,
+				58FB1A1E190CD5AA00057CE0 /* av3.acv in Resources */,
 				58F5A72A19041F080028D6D2 /* Bg-Portrait@2x.png in Resources */,
 				58F5A7101903F8CA0028D6D2 /* home-photos@2x.png in Resources */,
 				58F79C5618FFAE6000C0D2E1 /* InfoPlist.strings in Resources */,
 				58F79C5F18FFAE6000C0D2E1 /* Main.storyboard in Resources */,
+				58FB1A1F190CD5AA00057CE0 /* av4.acv in Resources */,
 				5807F59619035DF5009FEA3C /* Bg-568h@2x.png in Resources */,
 				5807F59719035DF5009FEA3C /* Default-568h@2x.png in Resources */,
 				58F5A72D19041F110028D6D2 /* Default-Portrait.png in Resources */,
@@ -931,6 +1023,7 @@
 				5807F5A719036588009FEA3C /* UIDevice+extend.m in Sources */,
 				58F3A7921907C72700896D01 /* VnAdjustmentLayerColorBalance.m in Sources */,
 				58F5A72119041C1F0028D6D2 /* VnViewEditorEffectsOpacity.m in Sources */,
+				58FB1A0C190CC80B00057CE0 /* VnEffectHazelnut.m in Sources */,
 				58FA3A3C190293A30070B4B8 /* VnFilterLevels.m in Sources */,
 				5811B9E41904D2FA00D4155C /* VnViewEditorToolBar.m in Sources */,
 				58F64979190426D8000E2AC5 /* VnObjectEffect.m in Sources */,
@@ -949,16 +1042,17 @@
 				58325DC119027DD4000A3D0E /* VnFilterBrightness.m in Sources */,
 				58F17A7519020BEC0038DF34 /* UIScrollView+extend.m in Sources */,
 				58325D9219027053000A3D0E /* VnBlendingScreen.m in Sources */,
-				583092C41907BE65007F2989 /* VnEffectHaze3.m in Sources */,
 				58F6497C19042829000E2AC5 /* VnObjectPhotoFilter.m in Sources */,
 				5807F59F19036317009FEA3C /* VnViewHomeBg.m in Sources */,
 				58FA3A451902B9A00070B4B8 /* VnEditorSliderManager.m in Sources */,
 				5807F5A019036317009FEA3C /* VnButtonHomeSource.m in Sources */,
+				58F5A93A190CDB5B00BD2A5C /* VnAdjustmentLayerGradientMap.m in Sources */,
 				58325D8F19026FDD000A3D0E /* VnBlendingMultiply.m in Sources */,
 				58325DBC19027B47000A3D0E /* VnBlendingSaturation.m in Sources */,
 				58325D8C19026F5B000A3D0E /* VnBlendingDarken.m in Sources */,
 				58F719BE1907DECD00898A25 /* VnViewEditorEffectPresetItemView.m in Sources */,
 				58F5F45819094E9500AD8BEA /* VnViewHitThroughScroll.m in Sources */,
+				58FB1A15190CC84100057CE0 /* VnEffectHazelnutPink.m in Sources */,
 				588FDEC9190609E500ECA2C4 /* EVCircularProgressView.m in Sources */,
 				58F5A71619040B9C0028D6D2 /* VnCurrentSettings.m in Sources */,
 				588FDECC19060B6D00ECA2C4 /* VnEditorProgressManager.m in Sources */,
@@ -982,8 +1076,10 @@
 				58FD07051902405C0005E74E /* VnProcessor.m in Sources */,
 				58F79C5C18FFAE6000C0D2E1 /* AppDelegate.m in Sources */,
 				58325D8919026D7D000A3D0E /* VnBlendingNormal.m in Sources */,
+				58FB1A22190CD5BE00057CE0 /* VnEffectAutumnVintage.m in Sources */,
 				58F5A71A19040EFB0028D6D2 /* VnEditorViewManager.m in Sources */,
 				58FA3A3F1902B2740070B4B8 /* VnFilterTemperature.m in Sources */,
+				58F5A936190CDA0A00BD2A5C /* VnAdjustmentLayerSelectiveColor.m in Sources */,
 				58F79C5818FFAE6000C0D2E1 /* main.m in Sources */,
 				58325DA1190274A2000A3D0E /* VnBlendingOverlay.m in Sources */,
 				58F79165190626F8009F0FF5 /* VnProcessingQueueManager.m in Sources */,

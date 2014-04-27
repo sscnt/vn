@@ -55,15 +55,21 @@ static VnDataEffects* sharedVnDataEffects = nil;
     effect.name = NSLocalizedString(@"None", nil);
     [_effectsList addObject:effect];
     
-    //// Haze 3
-    effect = [[VnObjectEffect alloc] init];
-    effect.effectId = VnEffectIdHaze3;
-    effect.name = [NSString stringWithFormat:@"#%02d", (int)effect.effectId];
-    [_effectsList addObject:effect];
-    
     //// Haze 3 Pink
     effect = [[VnObjectEffect alloc] init];
     effect.effectId = VnEffectIdHaze3Pink;
+    effect.name = [NSString stringWithFormat:@"#%02d", (int)effect.effectId];
+    [_effectsList addObject:effect];
+    
+    //// Hazelnut
+    effect = [[VnObjectEffect alloc] init];
+    effect.effectId = VnEffectIdHazelnut;
+    effect.name = [NSString stringWithFormat:@"#%02d", (int)effect.effectId];
+    [_effectsList addObject:effect];
+    
+    //// Hazelnut Pink
+    effect = [[VnObjectEffect alloc] init];
+    effect.effectId = VnEffectIdHazelnutPink;
     effect.name = [NSString stringWithFormat:@"#%02d", (int)effect.effectId];
     [_effectsList addObject:effect];
     

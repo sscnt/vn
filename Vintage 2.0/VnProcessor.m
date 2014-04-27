@@ -110,13 +110,18 @@ static VnProcessor* sharedVnProcessor = nil;
     if (effectId == VnEffectIdNone) {
         return image;
     }
-    if (effectId == VnEffectIdHaze3) {
-        VnEffectHaze3* effect = [[VnEffectHaze3 alloc] init];
+    if(effectId == VnEffectIdHaze3Pink) {
+        VnEffectHaze3Pink* effect = [[VnEffectHaze3Pink alloc] init];
         effect.imageToProcess = image;
         return [effect process];
     }
-    if(effectId == VnEffectIdHaze3Pink) {
-        VnEffectHaze3Pink* effect = [[VnEffectHaze3Pink alloc] init];
+    if(effectId == VnEffectIdHazelnut) {
+        VnEffectHazelnut* effect = [[VnEffectHazelnut alloc] init];
+        effect.imageToProcess = image;
+        return [effect process];
+    }
+    if(effectId == VnEffectIdHazelnutPink) {
+        VnEffectHazelnutPink* effect = [[VnEffectHazelnutPink alloc] init];
         effect.imageToProcess = image;
         return [effect process];
     }

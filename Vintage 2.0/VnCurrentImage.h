@@ -11,6 +11,7 @@
 @interface VnCurrentImage : NSObject
 
 @property (nonatomic, assign) CGSize originalImageSize;
+@property (nonatomic, assign) CGSize tmpImageSize;
 
 + (VnCurrentImage*)instance;
 + (BOOL)lastSavedImageExists;
@@ -36,6 +37,7 @@
 + (CGSize)previewImageSize;
 + (CGSize)previewImageViewSize;
 + (CGSize)presetBaseImageSize;
++ (CGSize)tmpImageSize;
 + (BOOL)deleteImageAtPath:(NSString*)path;
 + (BOOL)deleteTmpImage;
 + (BOOL)deleteLastSavedImage;

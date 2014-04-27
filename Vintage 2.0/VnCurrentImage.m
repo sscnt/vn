@@ -143,6 +143,7 @@ NSString* const pathForPresetBaseImage = @"tmp/preset_base_image";
 
 + (BOOL)saveTmpImage:(UIImage *)image
 {
+    [VnCurrentImage instance].tmpImageSize = image.size;
     NSData *imageData = UIImageJPEGRepresentation(image, 0.99f);
     NSString *filePath = [NSHomeDirectory() stringByAppendingPathComponent:pathForTmpImage];
     return [imageData writeToFile:filePath atomically:YES];
@@ -177,6 +178,11 @@ NSString* const pathForPresetBaseImage = @"tmp/preset_base_image";
 {
     CGRect bounds = [VnEditorViewManager presetImageBounds];
     return CGSizeMake(bounds.size.width * [[UIScreen mainScreen] scale], bounds.size.height * [[UIScreen mainScreen] scale]);
+}
+
++ (CGSize)tmpImageSize
+{
+    return [VnCurrentImage instance].tmpImageSize;
 }
 
 + (CGSize)previewImageViewSize

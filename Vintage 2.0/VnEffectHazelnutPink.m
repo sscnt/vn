@@ -1,34 +1,33 @@
 //
-//  GPUEffectHaze3Pink.m
+//  GPUEffectHazelnutPink.m
 //  Vintage
 //
 //  Created by SSC on 2014/04/02.
 //  Copyright (c) 2014年 SSC. All rights reserved.
 //
 
-#import "VnEffectHaze3Pink.h"
+#import "VnEffectHazelnutPink.h"
 
-@implementation VnEffectHaze3Pink
+@implementation VnEffectHazelnutPink
 
 - (id)init
 {
     self = [super init];
     if(self){
-        self.effectId = VnEffectIdHaze3Pink;
+        self.effectId = VnEffectIdHazelnutPink;
     }
     return self;
 }
 
 - (UIImage*)process
 {
-    
-    [VnCurrentImage saveTmpImage:self.imageToProcess];
+    [VnCurrentImage saveTmpImage:[super process]];
     
     // Curve
     @autoreleasepool {
         GPUImageToneCurveFilter* curveFilter = [[GPUImageToneCurveFilter alloc] initWithACV:@"hzlp1"];
         
-        [self mergeAndSaveTmpImageWithOverlayFilter:curveFilter opacity:0.30f blendingMode:VnBlendingModeNormal];
+        [self mergeAndSaveTmpImageWithOverlayFilter:curveFilter opacity:0.50f blendingMode:VnBlendingModeNormal];
     }
     
     // Fill Layer
@@ -52,6 +51,7 @@
         
         [self mergeAndSaveTmpImageWithOverlayFilter:gradientColor opacity:0.38f blendingMode:VnBlendingModeOverlay];
     }
+    
     
     // Color Balance
     @autoreleasepool {
@@ -104,11 +104,10 @@
     @autoreleasepool {
         GPUImageSolidColorGenerator* solidColor = [[GPUImageSolidColorGenerator alloc] init];
         [solidColor setColorRed:255.0f/255.0f green:255.0f/255.0f blue:255.0f/255.0 alpha:1.0f];
-    
+        
         [self mergeAndSaveTmpImageWithOverlayFilter:solidColor opacity:0.15f blendingMode:VnBlendingModeHue];
     }
-    
+
     return [VnCurrentImage tmpImage];
 }
-
 @end

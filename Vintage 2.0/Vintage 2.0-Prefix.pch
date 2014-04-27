@@ -74,7 +74,6 @@ typedef NS_ENUM(NSInteger, VnAdjustmentToolId){
 
 typedef NS_ENUM(NSInteger, VnEffectId){
     VnEffectIdNone = 1,
-    VnEffectIdHaze3,
     VnEffectIdHaze3Pink,
     VnEffectIdHazelnut,
     VnEffectIdHazelnutPink,
@@ -151,9 +150,13 @@ typedef NS_ENUM(NSInteger, VnBlendingMode){
 
 #import "VnAdjustmentLayerGradientColorFill.h"
 #import "VnAdjustmentLayerColorBalance.h"
+#import "VnAdjustmentLayerSelectiveColor.h"
+#import "VnAdjustmentLayerGradientMap.h"
 
-#import "VnEffectHaze3.h"
+#import "VnEffectAutumnVintage.h"
 #import "VnEffectHaze3Pink.h"
+#import "VnEffectHazelnut.h"
+#import "VnEffectHazelnutPink.h"
 
 #import "UIDevice+extend.h"
 #import "UIScreen+extend.h"
