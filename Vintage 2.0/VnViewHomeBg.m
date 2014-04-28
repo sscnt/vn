@@ -31,9 +31,9 @@
         }else if([UIDevice resolution] == UIDeviceResolution_iPhoneRetina5){
             filename = @"Default-568h@2x.png";
         }else if([UIDevice resolution] == UIDeviceResolution_iPadStandard){
-            filename = @"Default-Portrait.png";
+            filename = @"Default-Landscape.png";
         }else if([UIDevice resolution] == UIDeviceResolution_iPadRetina){
-            filename = @"Default-Portrait@2x.png";
+            filename = @"Default-Landscape@2x.png";
         }
         
     }else if(_type == VnViewHomeBgTypeGeneral){
@@ -42,9 +42,9 @@
         }else if([UIDevice resolution] == UIDeviceResolution_iPhoneRetina5){
             filename = @"Bg-568h@2x.png";
         }else if([UIDevice resolution] == UIDeviceResolution_iPadStandard){
-            filename = @"Bg-Portrait.png";
+            filename = @"Bg-Landscape.png";
         }else if([UIDevice resolution] == UIDeviceResolution_iPadRetina){
-            filename = @"Bg-Portrait@2x.png";
+            filename = @"Bg-Landscape@2x.png";
         }
     }
     NSString* snowPath = [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:filename];

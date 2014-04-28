@@ -12,8 +12,13 @@
 
 + (CGSize)screenSize
 {
-    return [[self mainScreen] bounds].size;
+    CGSize size = [[self mainScreen] bounds].size;
+    if ([UIDevice isiPad]) {
+        return CGSizeMake(MAX(size.width, size.height), MIN(size.width, size.height));
+    }
+    return size;
 }
+
 + (CGRect)screenRect
 {
     return CGRectMake([[self mainScreen] bounds].origin.x, [[self mainScreen] bounds].origin.y, [[self mainScreen] bounds].size.width, [[self mainScreen] bounds].size.height);

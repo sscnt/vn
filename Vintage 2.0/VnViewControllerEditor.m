@@ -14,7 +14,7 @@
 {
     self = [super init];
     if (self) {
-        
+        _appeared = NO;
     }
     return self;
 }
@@ -22,15 +22,22 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    VnEditorViewManager* vm = [VnEditorViewManager instance];
-    vm.view = self.view;
-    vm.delegate = self;
-    [vm commonInit];
-    [vm layout];
+}
 
-    VnProcessingQueueManager* qm = [VnProcessingQueueManager instance];
-    [qm commonInit];
-    qm.delegate = self;
+- (void)viewDidAppear:(BOOL)animated
+{
+    if (_appeared == NO) {
+        VnEditorViewManager* vm = [VnEditorViewManager instance];
+        vm.view = self.view;
+        vm.delegate = self;
+        [vm commonInit];
+        [vm layout];
+        
+        VnProcessingQueueManager* qm = [VnProcessingQueueManager instance];
+        [qm commonInit];
+        qm.delegate = self;
+    }
+    _appeared = YES;
 }
 
 - (void)didFinishResizing

@@ -10,6 +10,9 @@
 #import "VnEditorViewManager.h"
 
 @interface VnViewControllerEditor : UIViewController <VnProcessingQueueManagerDelegate, VnEditorViewManagerDelegate>
+{
+    BOOL _appeared;
+}
 
 - (void)didFinishResizing;
 

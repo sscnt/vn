@@ -90,6 +90,12 @@
 		58F17A7519020BEC0038DF34 /* UIScrollView+extend.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F17A6F19020BEC0038DF34 /* UIScrollView+extend.m */; };
 		58F17A7619020BEC0038DF34 /* UIImage+extend.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F17A7119020BEC0038DF34 /* UIImage+extend.m */; };
 		58F2F471190550B3006A2860 /* VnViewEditorPhotoPreview.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F2F470190550B3006A2860 /* VnViewEditorPhotoPreview.m */; };
+		58F31528190E7461005895A0 /* Bg-Landscape.png in Resources */ = {isa = PBXBuildFile; fileRef = 58F31526190E7461005895A0 /* Bg-Landscape.png */; };
+		58F31529190E7461005895A0 /* Bg-Landscape@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 58F31527190E7461005895A0 /* Bg-Landscape@2x.png */; };
+		58F3152C190E746D005895A0 /* Default-Landscape.png in Resources */ = {isa = PBXBuildFile; fileRef = 58F3152A190E746D005895A0 /* Default-Landscape.png */; };
+		58F3152D190E746D005895A0 /* Default-Landscape@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 58F3152B190E746D005895A0 /* Default-Landscape@2x.png */; };
+		58F31530190E7DE7005895A0 /* VnImagePickerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F3152F190E7DE7005895A0 /* VnImagePickerController.m */; };
+		58F31533190E7FDF005895A0 /* UIViewController+extend.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F31532190E7FDF005895A0 /* UIViewController+extend.m */; };
 		58F3A78E1907C6A600896D01 /* VnAdjustmentLayerGradientColorFill.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F3A78D1907C6A600896D01 /* VnAdjustmentLayerGradientColorFill.m */; };
 		58F3A7921907C72700896D01 /* VnAdjustmentLayerColorBalance.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F3A7911907C72700896D01 /* VnAdjustmentLayerColorBalance.m */; };
 		58F51B471903820700B8E976 /* VnBoolean.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F51B461903820700B8E976 /* VnBoolean.m */; };
@@ -105,10 +111,6 @@
 		58F5A71E19041BEF0028D6D2 /* VnViewEditorEffectPresetsListView.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F5A71D19041BEF0028D6D2 /* VnViewEditorEffectPresetsListView.m */; };
 		58F5A72119041C1F0028D6D2 /* VnViewEditorEffectsOpacity.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F5A72019041C1F0028D6D2 /* VnViewEditorEffectsOpacity.m */; };
 		58F5A72419041C310028D6D2 /* VnViewEditorEffectsHistory.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F5A72319041C310028D6D2 /* VnViewEditorEffectsHistory.m */; };
-		58F5A72819041F000028D6D2 /* Bg-Portrait.png in Resources */ = {isa = PBXBuildFile; fileRef = 58F5A72719041F000028D6D2 /* Bg-Portrait.png */; };
-		58F5A72A19041F080028D6D2 /* Bg-Portrait@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 58F5A72919041F080028D6D2 /* Bg-Portrait@2x.png */; };
-		58F5A72D19041F110028D6D2 /* Default-Portrait.png in Resources */ = {isa = PBXBuildFile; fileRef = 58F5A72B19041F110028D6D2 /* Default-Portrait.png */; };
-		58F5A72E19041F110028D6D2 /* Default-Portrait@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 58F5A72C19041F110028D6D2 /* Default-Portrait@2x.png */; };
 		58F5A936190CDA0A00BD2A5C /* VnAdjustmentLayerSelectiveColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F5A935190CDA0A00BD2A5C /* VnAdjustmentLayerSelectiveColor.m */; };
 		58F5A93A190CDB5B00BD2A5C /* VnAdjustmentLayerGradientMap.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F5A939190CDB5B00BD2A5C /* VnAdjustmentLayerGradientMap.m */; };
 		58F5A93E190CDF1D00BD2A5C /* VnEffectBeachVintage.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F5A93D190CDF1D00BD2A5C /* VnEffectBeachVintage.m */; };
@@ -357,6 +359,14 @@
 		58F17A7119020BEC0038DF34 /* UIImage+extend.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+extend.m"; sourceTree = "<group>"; };
 		58F2F46F190550B3006A2860 /* VnViewEditorPhotoPreview.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VnViewEditorPhotoPreview.h; sourceTree = "<group>"; };
 		58F2F470190550B3006A2860 /* VnViewEditorPhotoPreview.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VnViewEditorPhotoPreview.m; sourceTree = "<group>"; };
+		58F31526190E7461005895A0 /* Bg-Landscape.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Bg-Landscape.png"; sourceTree = "<group>"; };
+		58F31527190E7461005895A0 /* Bg-Landscape@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Bg-Landscape@2x.png"; sourceTree = "<group>"; };
+		58F3152A190E746D005895A0 /* Default-Landscape.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Landscape.png"; sourceTree = "<group>"; };
+		58F3152B190E746D005895A0 /* Default-Landscape@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Landscape@2x.png"; sourceTree = "<group>"; };
+		58F3152E190E7DE7005895A0 /* VnImagePickerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VnImagePickerController.h; sourceTree = "<group>"; };
+		58F3152F190E7DE7005895A0 /* VnImagePickerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VnImagePickerController.m; sourceTree = "<group>"; };
+		58F31531190E7FDF005895A0 /* UIViewController+extend.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+extend.h"; sourceTree = "<group>"; };
+		58F31532190E7FDF005895A0 /* UIViewController+extend.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+extend.m"; sourceTree = "<group>"; };
 		58F3A78C1907C6A600896D01 /* VnAdjustmentLayerGradientColorFill.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VnAdjustmentLayerGradientColorFill.h; sourceTree = "<group>"; };
 		58F3A78D1907C6A600896D01 /* VnAdjustmentLayerGradientColorFill.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VnAdjustmentLayerGradientColorFill.m; sourceTree = "<group>"; };
 		58F3A7901907C72700896D01 /* VnAdjustmentLayerColorBalance.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VnAdjustmentLayerColorBalance.h; sourceTree = "<group>"; };
@@ -382,10 +392,6 @@
 		58F5A72019041C1F0028D6D2 /* VnViewEditorEffectsOpacity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VnViewEditorEffectsOpacity.m; sourceTree = "<group>"; };
 		58F5A72219041C310028D6D2 /* VnViewEditorEffectsHistory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VnViewEditorEffectsHistory.h; sourceTree = "<group>"; };
 		58F5A72319041C310028D6D2 /* VnViewEditorEffectsHistory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VnViewEditorEffectsHistory.m; sourceTree = "<group>"; };
-		58F5A72719041F000028D6D2 /* Bg-Portrait.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Bg-Portrait.png"; sourceTree = "<group>"; };
-		58F5A72919041F080028D6D2 /* Bg-Portrait@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Bg-Portrait@2x.png"; sourceTree = "<group>"; };
-		58F5A72B19041F110028D6D2 /* Default-Portrait.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Portrait.png"; sourceTree = "<group>"; };
-		58F5A72C19041F110028D6D2 /* Default-Portrait@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Portrait@2x.png"; sourceTree = "<group>"; };
 		58F5A934190CDA0A00BD2A5C /* VnAdjustmentLayerSelectiveColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VnAdjustmentLayerSelectiveColor.h; sourceTree = "<group>"; };
 		58F5A935190CDA0A00BD2A5C /* VnAdjustmentLayerSelectiveColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VnAdjustmentLayerSelectiveColor.m; sourceTree = "<group>"; };
 		58F5A938190CDB5B00BD2A5C /* VnAdjustmentLayerGradientMap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VnAdjustmentLayerGradientMap.h; sourceTree = "<group>"; };
@@ -562,12 +568,12 @@
 				58F6DE8A19039A1E00FC96D7 /* home-camera@2x.png */,
 				5811B9D91904BFD000D4155C /* Bg@2x.png */,
 				5807F59419035DF5009FEA3C /* Bg-568h@2x.png */,
-				58F5A72719041F000028D6D2 /* Bg-Portrait.png */,
-				58F5A72919041F080028D6D2 /* Bg-Portrait@2x.png */,
+				58F31526190E7461005895A0 /* Bg-Landscape.png */,
+				58F31527190E7461005895A0 /* Bg-Landscape@2x.png */,
 				5811B9DB1904BFD900D4155C /* Default@2x.png */,
 				5807F59519035DF5009FEA3C /* Default-568h@2x.png */,
-				58F5A72B19041F110028D6D2 /* Default-Portrait.png */,
-				58F5A72C19041F110028D6D2 /* Default-Portrait@2x.png */,
+				58F3152A190E746D005895A0 /* Default-Landscape.png */,
+				58F3152B190E746D005895A0 /* Default-Landscape@2x.png */,
 			);
 			name = Home;
 			sourceTree = "<group>";
@@ -841,6 +847,8 @@
 				58F17A6F19020BEC0038DF34 /* UIScrollView+extend.m */,
 				58F17A7019020BEC0038DF34 /* UIImage+extend.h */,
 				58F17A7119020BEC0038DF34 /* UIImage+extend.m */,
+				58F31531190E7FDF005895A0 /* UIViewController+extend.h */,
+				58F31532190E7FDF005895A0 /* UIViewController+extend.m */,
 			);
 			name = Categories;
 			sourceTree = "<group>";
@@ -1246,6 +1254,8 @@
 				58FA3A4B1902C5270070B4B8 /* VnViewControllerExport.m */,
 				58FA3A4D1902C5670070B4B8 /* VnViewControllerTiltShift.h */,
 				58FA3A4E1902C5670070B4B8 /* VnViewControllerTiltShift.m */,
+				58F3152E190E7DE7005895A0 /* VnImagePickerController.h */,
+				58F3152F190E7DE7005895A0 /* VnImagePickerController.m */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -1492,7 +1502,6 @@
 				58F5A950190CE6A700BD2A5C /* bv4.acv in Resources */,
 				5813A377190E3433009D634C /* wa1.acv in Resources */,
 				581794CA190C056100A12825 /* hzlp1.acv in Resources */,
-				58F5A72819041F000028D6D2 /* Bg-Portrait.png in Resources */,
 				58FB1A10190CC81A00057CE0 /* Hzl1.acv in Resources */,
 				58F798B4190D3210006B865A /* dv1.acv in Resources */,
 				5811B9DA1904BFD000D4155C /* Bg@2x.png in Resources */,
@@ -1509,6 +1518,7 @@
 				58C185C9190E177C004024F6 /* v21.acv in Resources */,
 				5818808B190DF14800A90032 /* jf2.acv in Resources */,
 				58F798C6190D4B74006B865A /* gm2.acv in Resources */,
+				58F31528190E7461005895A0 /* Bg-Landscape.png in Resources */,
 				5818808A190DF14800A90032 /* jf1.acv in Resources */,
 				58188095190DF54F00A90032 /* mi1.acv in Resources */,
 				58FB1A1C190CD5AA00057CE0 /* av1.acv in Resources */,
@@ -1517,7 +1527,7 @@
 				58F798A2190D290F006B865A /* cn2.acv in Resources */,
 				58F798C5190D4B74006B865A /* gm1.acv in Resources */,
 				58FB1A1E190CD5AA00057CE0 /* av3.acv in Resources */,
-				58F5A72A19041F080028D6D2 /* Bg-Portrait@2x.png in Resources */,
+				58F3152D190E746D005895A0 /* Default-Landscape@2x.png in Resources */,
 				58F5A94F190CE6A700BD2A5C /* bv5.acv in Resources */,
 				5813A35F190E261C009D634C /* vf.acv in Resources */,
 				58F5A7101903F8CA0028D6D2 /* home-photos@2x.png in Resources */,
@@ -1532,6 +1542,7 @@
 				5818809F190E00C000A90032 /* pbt.acv in Resources */,
 				58C185CA190E177C004024F6 /* v22.acv in Resources */,
 				5813A368190E2B7E009D634C /* vvv1.acv in Resources */,
+				58F31529190E7461005895A0 /* Bg-Landscape@2x.png in Resources */,
 				58188093190DF54F00A90032 /* mi3.acv in Resources */,
 				5811A2E1190E3B6A0062EFEA /* sl1.acv in Resources */,
 				5813A379190E3433009D634C /* wa3.acv in Resources */,
@@ -1542,12 +1553,11 @@
 				58F52F21190D56A1003B92EB /* gi2.acv in Resources */,
 				581880A9190E028E00A90032 /* sms5.acv in Resources */,
 				5813A36F190E2E8C009D634C /* wnd.acv in Resources */,
-				58F5A72D19041F110028D6D2 /* Default-Portrait.png in Resources */,
+				58F3152C190E746D005895A0 /* Default-Landscape.png in Resources */,
 				58F798BC190D488E006B865A /* fv2.acv in Resources */,
 				58F798A1190D290F006B865A /* cn1.acv in Resources */,
 				5813A378190E3433009D634C /* wa2.acv in Resources */,
 				581880AC190E028E00A90032 /* sms2.acv in Resources */,
-				58F5A72E19041F110028D6D2 /* Default-Portrait@2x.png in Resources */,
 				58F52F20190D56A1003B92EB /* gi3.acv in Resources */,
 				58F52F1F190D56A1003B92EB /* gi4.acv in Resources */,
 				58F798BB190D488E006B865A /* fv1.acv in Resources */,
@@ -1579,6 +1589,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				58325DB3190279B2000A3D0E /* VnBlendingExclusion.m in Sources */,
+				58F31530190E7DE7005895A0 /* VnImagePickerController.m in Sources */,
 				58325DA71902774A000A3D0E /* VnBlendingDifference.m in Sources */,
 				581880AE190E028E00A90032 /* VnEffectSummers.m in Sources */,
 				58FA3A421902B78A0070B4B8 /* VnBlendingLinearLight.m in Sources */,
@@ -1659,6 +1670,7 @@
 				58F79C6218FFAE6000C0D2E1 /* VnViewControllerHome.m in Sources */,
 				58325D9E190272F9000A3D0E /* VnBlendingVividLight.m in Sources */,
 				581880BA190E10E400A90032 /* VnEffectVampire.m in Sources */,
+				58F31533190E7FDF005895A0 /* UIViewController+extend.m in Sources */,
 				58FD07051902405C0005E74E /* VnProcessor.m in Sources */,
 				58F79C5C18FFAE6000C0D2E1 /* AppDelegate.m in Sources */,
 				58325D8919026D7D000A3D0E /* VnBlendingNormal.m in Sources */,

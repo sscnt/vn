@@ -14,6 +14,15 @@
 
 @implementation VnViewControllerHome
 
+- (id)init
+{
+    self = [super init];
+    if (self) {
+        _appeared = NO;
+    }
+    return self;
+}
+
 - (void)viewDidAppear:(BOOL)animated
 {
     LOG(@"Cleaned images.");
@@ -25,43 +34,63 @@
 {
     [super viewDidLoad];
     
-    CGSize screenSize = [UIScreen screenSize];
-    
     //// Background Image
     _bgView = [[VnViewHomeBg alloc] initWithFrame:self.view.bounds];
-    _bgView.type = VnViewHomeBgTypeGeneral;
     [self.view addSubview:_bgView];
     
     //// Button
-    CGFloat x = (screenSize.width - 240.0f) / 2.0f;
-    CGFloat padding = (screenSize.height - 568.0f) / 2.0f + 176.0f;
-
-    CGFloat buttonDiam = 100.0f;
-    _photosButton = [[VnButtonHomeSource alloc] initWithFrame:CGRectMake(x, [UIScreen height] - padding, buttonDiam, buttonDiam)];
-    _photosButton.iconType = VnButtonHomeSourceIconTypePhotos;
+    _photosButton = [[VnButtonHomeSource alloc] initWithFrame:CGRectZero];
     [_photosButton addTarget:self action:@selector(didPressButton:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:_photosButton];
-    _cameraButton = [[VnButtonHomeSource alloc] initWithFrame:CGRectMake([_photosButton right] + 40.0f, [UIScreen height] - padding, buttonDiam, buttonDiam)];
-    _cameraButton.iconType = VnButtonHomeSourceIconTypeCamera;
+    
+    _cameraButton = [[VnButtonHomeSource alloc] initWithFrame:CGRectZero];
     [_cameraButton addTarget:self action:@selector(didPressButton:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:_cameraButton];
     
-    
     //// Splash Image
     _splashView = [[VnViewHomeBg alloc] initWithFrame:self.view.bounds];
-    _splashView.type = VnViewHomeBgTypeSplash;
     [self.view addSubview:_splashView];;
     
     
-    //// Animate
-    __block VnViewHomeBg* _s = _splashView;
-    [UIView animateWithDuration:0.30f delay:1.0f options:UIViewAnimationOptionCurveLinear animations:^{
-        _s.alpha = 0.0f;
-    } completion:^(BOOL finished){
-        [_s removeFromSuperview];
-        _s = nil;
-    }];
+}
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    if (_appeared == NO) {
+        _splashView.frame = self.view.bounds;
+        _splashView.type = VnViewHomeBgTypeSplash;
+
+        _bgView.frame = self.view.bounds;
+        _bgView.type = VnViewHomeBgTypeGeneral;
+        
+        LOG_SIZE([UIScreen screenSize]);
+        
+        //// Button
+        CGFloat buttonDiam = 100.0f;
+        CGSize screenSize = self.view.bounds.size;
+        CGFloat x = (screenSize.width - 240.0f) / 2.0f;
+        CGFloat padding;
+        if ([UIDevice isiPad]) {
+            padding = (screenSize.height - 768.0f) / 2.0f + 264.0f;
+        } else {
+            padding = (screenSize.height - 568.0f) / 2.0f + 176.0f;
+        }
+        _photosButton.frame = CGRectMake(x, [UIScreen height] - padding, buttonDiam, buttonDiam);
+        _photosButton.iconType = VnButtonHomeSourceIconTypePhotos;
+        _cameraButton.frame = CGRectMake([_photosButton right] + 40.0f, [UIScreen height] - padding, buttonDiam, buttonDiam);
+        _cameraButton.iconType = VnButtonHomeSourceIconTypeCamera;
+        
+        //// Animate
+        __block VnViewHomeBg* _s = _splashView;
+        [UIView animateWithDuration:0.30f delay:1.0f options:UIViewAnimationOptionCurveLinear animations:^{
+            _s.alpha = 0.0f;
+        } completion:^(BOOL finished){
+            [_s removeFromSuperview];
+            _s = nil;
+        }];
+
+    }
+    _appeared = YES;
 }
 
 
@@ -102,7 +131,7 @@
         [self showErrorAlertWithMessage:@"Camera is not available."];
         return;
     }
-    UIImagePickerController *pickerController = [[UIImagePickerController alloc] init];
+    VnImagePickerController *pickerController = [[VnImagePickerController alloc] init];
     pickerController.delegate = self;
     [pickerController setSourceType:UIImagePickerControllerSourceTypeCamera];
     pickerController.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
@@ -111,7 +140,7 @@
 
 - (void)didPressPhotosButton
 {
-    UIImagePickerController *pickerController = [[UIImagePickerController alloc] init];
+    VnImagePickerController *pickerController = [[VnImagePickerController alloc] init];
     pickerController.delegate = self;
     [pickerController setSourceType:UIImagePickerControllerSourceTypePhotoLibrary];
     pickerController.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;

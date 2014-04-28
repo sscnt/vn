@@ -34,6 +34,7 @@ typedef NS_ENUM(NSInteger, UIDeviceMachineType){
 + (BOOL)isIOS5;
 + (BOOL)underIOS7;
 + (BOOL)isiPad;
++ (BOOL)isiPadMini;
 + (BOOL)underIPhone5s;
 + (BOOL)isIPhone5;
 + (BOOL)isIPhone5s;

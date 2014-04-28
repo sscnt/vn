@@ -11,6 +11,7 @@
 #import "VnViewHomeBg.h"
 #import "VnButtonHomeSource.h"
 #import "VnViewControllerEditor.h"
+#import "VnImagePickerController.h"
 
 @interface VnViewControllerHome : UIViewController <UINavigationControllerDelegate, UIImagePickerControllerDelegate>
 {
@@ -18,6 +19,7 @@
     VnViewHomeBg* _splashView;
     VnButtonHomeSource* _photosButton;
     VnButtonHomeSource* _cameraButton;
+    BOOL _appeared;
 }
 
 - (void)didPressButton:(VnButtonHomeSource*)sender;

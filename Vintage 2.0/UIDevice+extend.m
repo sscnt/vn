@@ -119,7 +119,9 @@
     return YES;
 }
 
-+ (BOOL) isiPad {NSString *deviceModel = (NSString*)[UIDevice currentDevice].model;
++ (BOOL) isiPad
+{
+    NSString *deviceModel = (NSString*)[UIDevice currentDevice].model;
     
     if ([[deviceModel substringWithRange:NSMakeRange(0, 4)] isEqualToString:@"iPad"]) {
         return YES;
