@@ -352,9 +352,23 @@ static VnProcessingQueueManager* sharedVnProcessingQueue = nil;
     queue.type = VnObjectProcessingQueueTypePreset;
     [_effectsPresetQueueList addObject:queue];
     
-    //// Vintage Baby
+    //// Vintage Film
     queue = [[VnObjectProcessingQueue alloc] init];
     queue.effectId = VnEffectIdVintageFilm;
+    queue.toolId = VnAdjustmentToolIdEffects;
+    queue.type = VnObjectProcessingQueueTypePreset;
+    [_effectsPresetQueueList addObject:queue];
+    
+    //// Vivid Vintage
+    queue = [[VnObjectProcessingQueue alloc] init];
+    queue.effectId = VnEffectIdVividVintage;
+    queue.toolId = VnAdjustmentToolIdEffects;
+    queue.type = VnObjectProcessingQueueTypePreset;
+    [_effectsPresetQueueList addObject:queue];
+    
+    //// Weekend
+    queue = [[VnObjectProcessingQueue alloc] init];
+    queue.effectId = VnEffectIdWeekend;
     queue.toolId = VnAdjustmentToolIdEffects;
     queue.type = VnObjectProcessingQueueTypePreset;
     [_effectsPresetQueueList addObject:queue];

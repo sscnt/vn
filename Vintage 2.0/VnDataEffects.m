@@ -199,6 +199,18 @@ static VnDataEffects* sharedVnDataEffects = nil;
     effect.name = [NSString stringWithFormat:@"#%02d", (int)effect.effectId];
     [_effectsList addObject:effect];
     
+    //// Vivid Vintage
+    effect = [[VnObjectEffect alloc] init];
+    effect.effectId = VnEffectIdVividVintage;
+    effect.name = [NSString stringWithFormat:@"#%02d", (int)effect.effectId];
+    [_effectsList addObject:effect];
+    
+    //// Weekend
+    effect = [[VnObjectEffect alloc] init];
+    effect.effectId = VnEffectIdWeekend;
+    effect.name = [NSString stringWithFormat:@"#%02d", (int)effect.effectId];
+    [_effectsList addObject:effect];
+    
 }
 
 + (int)effectsCount
