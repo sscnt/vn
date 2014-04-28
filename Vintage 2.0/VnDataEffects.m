@@ -187,6 +187,18 @@ static VnDataEffects* sharedVnDataEffects = nil;
     effect.name = [NSString stringWithFormat:@"#%02d", (int)effect.effectId];
     [_effectsList addObject:effect];
     
+    //// Vintage Baby
+    effect = [[VnObjectEffect alloc] init];
+    effect.effectId = VnEffectIdVintageBaby;
+    effect.name = [NSString stringWithFormat:@"#%02d", (int)effect.effectId];
+    [_effectsList addObject:effect];
+    
+    //// Vintage Film
+    effect = [[VnObjectEffect alloc] init];
+    effect.effectId = VnEffectIdVintageFilm;
+    effect.name = [NSString stringWithFormat:@"#%02d", (int)effect.effectId];
+    [_effectsList addObject:effect];
+    
 }
 
 + (int)effectsCount

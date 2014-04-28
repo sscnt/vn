@@ -17,6 +17,8 @@
 		5811B9E11904D21D00D4155C /* VnEditorButtonManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5811B9E01904D21D00D4155C /* VnEditorButtonManager.m */; };
 		5811B9E41904D2FA00D4155C /* VnViewEditorToolBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 5811B9E31904D2FA00D4155C /* VnViewEditorToolBar.m */; };
 		5811B9E71904D77300D4155C /* VnViewEditorToolBarButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 5811B9E61904D77300D4155C /* VnViewEditorToolBarButton.m */; };
+		5813A35F190E261C009D634C /* vf.acv in Resources */ = {isa = PBXBuildFile; fileRef = 5813A35C190E261C009D634C /* vf.acv */; };
+		5813A360190E261C009D634C /* VnEffectVintageFilm.m in Sources */ = {isa = PBXBuildFile; fileRef = 5813A35E190E261C009D634C /* VnEffectVintageFilm.m */; };
 		581794C9190C056100A12825 /* hzlp2.acv in Resources */ = {isa = PBXBuildFile; fileRef = 581794C7190C056100A12825 /* hzlp2.acv */; };
 		581794CA190C056100A12825 /* hzlp1.acv in Resources */ = {isa = PBXBuildFile; fileRef = 581794C8190C056100A12825 /* hzlp1.acv */; };
 		5818808A190DF14800A90032 /* jf1.acv in Resources */ = {isa = PBXBuildFile; fileRef = 58188086190DF14800A90032 /* jf1.acv */; };
@@ -223,6 +225,9 @@
 		5811B9E31904D2FA00D4155C /* VnViewEditorToolBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VnViewEditorToolBar.m; sourceTree = "<group>"; };
 		5811B9E51904D77300D4155C /* VnViewEditorToolBarButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VnViewEditorToolBarButton.h; sourceTree = "<group>"; };
 		5811B9E61904D77300D4155C /* VnViewEditorToolBarButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VnViewEditorToolBarButton.m; sourceTree = "<group>"; };
+		5813A35C190E261C009D634C /* vf.acv */ = {isa = PBXFileReference; lastKnownFileType = file; path = vf.acv; sourceTree = "<group>"; };
+		5813A35D190E261C009D634C /* VnEffectVintageFilm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VnEffectVintageFilm.h; sourceTree = "<group>"; };
+		5813A35E190E261C009D634C /* VnEffectVintageFilm.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VnEffectVintageFilm.m; sourceTree = "<group>"; };
 		581794C7190C056100A12825 /* hzlp2.acv */ = {isa = PBXFileReference; lastKnownFileType = file; path = hzlp2.acv; sourceTree = "<group>"; };
 		581794C8190C056100A12825 /* hzlp1.acv */ = {isa = PBXFileReference; lastKnownFileType = file; path = hzlp1.acv; sourceTree = "<group>"; };
 		58188086190DF14800A90032 /* jf1.acv */ = {isa = PBXFileReference; lastKnownFileType = file; path = jf1.acv; sourceTree = "<group>"; };
@@ -561,6 +566,16 @@
 			name = Home;
 			sourceTree = "<group>";
 		};
+		5813A358190E25FC009D634C /* Vintage Film */ = {
+			isa = PBXGroup;
+			children = (
+				5813A35C190E261C009D634C /* vf.acv */,
+				5813A35D190E261C009D634C /* VnEffectVintageFilm.h */,
+				5813A35E190E261C009D634C /* VnEffectVintageFilm.m */,
+			);
+			name = "Vintage Film";
+			sourceTree = "<group>";
+		};
 		581794C6190C052E00A12825 /* Curves */ = {
 			isa = PBXGroup;
 			children = (
@@ -681,6 +696,7 @@
 				581880B5190E10CB00A90032 /* Vampire */,
 				58C185C4190E175C004024F6 /* Vintage 2 */,
 				58C185CC190E1F63004024F6 /* Vintage Baby */,
+				5813A358190E25FC009D634C /* Vintage Film */,
 			);
 			name = 1.0;
 			sourceTree = "<group>";
@@ -1420,6 +1436,7 @@
 				58FB1A1E190CD5AA00057CE0 /* av3.acv in Resources */,
 				58F5A72A19041F080028D6D2 /* Bg-Portrait@2x.png in Resources */,
 				58F5A94F190CE6A700BD2A5C /* bv5.acv in Resources */,
+				5813A35F190E261C009D634C /* vf.acv in Resources */,
 				58F5A7101903F8CA0028D6D2 /* home-photos@2x.png in Resources */,
 				58C185D0190E1F7F004024F6 /* vb1.acv in Resources */,
 				58F798A3190D290F006B865A /* cn3.acv in Resources */,
@@ -1494,6 +1511,7 @@
 				58F79899190D2463006B865A /* VnAdjustmentLayerHueSaturation.m in Sources */,
 				583092C81907BE79007F2989 /* VnEffectHaze3Pink.m in Sources */,
 				58F17A7319020BEC0038DF34 /* UIScreen+extend.m in Sources */,
+				5813A360190E261C009D634C /* VnEffectVintageFilm.m in Sources */,
 				58325D9B1902724E000A3D0E /* VnBlendingHardLight.m in Sources */,
 				58F798B5190D3210006B865A /* VnEffectDreamyVintage.m in Sources */,
 				58325DAA190277DC000A3D0E /* VnBlendingLinearDodge.m in Sources */,

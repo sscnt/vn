@@ -177,6 +177,8 @@ typedef NS_ENUM(NSInteger, VnBlendingMode){
 #import "VnEffectSunsetCarnevale.h"
 #import "VnEffectVampire.h"
 #import "VnEffectVintage2.h"
+#import "VnEffectVintageBaby.h"
+#import "VnEffectVintageFilm.h"
 
 #import "UIDevice+extend.h"
 #import "UIScreen+extend.h"

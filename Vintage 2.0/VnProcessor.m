@@ -220,6 +220,16 @@ static VnProcessor* sharedVnProcessor = nil;
         effect.imageToProcess = image;
         return [effect process];
     }
+    if(effectId == VnEffectIdVintageBaby) {
+        VnEffectVintageBaby* effect = [[VnEffectVintageBaby alloc] init];
+        effect.imageToProcess = image;
+        return [effect process];
+    }
+    if(effectId == VnEffectIdVintageFilm) {
+        VnEffectVintageFilm* effect = [[VnEffectVintageFilm alloc] init];
+        effect.imageToProcess = image;
+        return [effect process];
+    }
     return nil;
 }
 
