@@ -200,6 +200,11 @@ NSString* const pathForPresetBaseImage = @"tmp/preset_base_image";
     return CGSizeMake(width, height);
 }
 
++ (float)tmpImageAndOriginalImageRatio
+{
+    return [VnCurrentImage tmpImageSize].width / [VnCurrentImage originalImageSize].width;
+}
+
 + (BOOL)lastSavedImageExists
 {
     NSString *filePath = [NSHomeDirectory() stringByAppendingPathComponent:pathForLastSavedImage];

@@ -38,6 +38,7 @@
 + (CGSize)previewImageViewSize;
 + (CGSize)presetBaseImageSize;
 + (CGSize)tmpImageSize;
++ (float)tmpImageAndOriginalImageRatio;
 + (BOOL)deleteImageAtPath:(NSString*)path;
 + (BOOL)deleteTmpImage;
 + (BOOL)deleteLastSavedImage;

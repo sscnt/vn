@@ -115,6 +115,12 @@ static VnDataEffects* sharedVnDataEffects = nil;
     effect.name = [NSString stringWithFormat:@"#%02d", (int)effect.effectId];
     [_effectsList addObject:effect];
     
+    //// Girder
+    effect = [[VnObjectEffect alloc] init];
+    effect.effectId = VnEffectIdGirder;
+    effect.name = [NSString stringWithFormat:@"#%02d", (int)effect.effectId];
+    [_effectsList addObject:effect];
+    
     //// Haze 3 Pink
     effect = [[VnObjectEffect alloc] init];
     effect.effectId = VnEffectIdHaze3Pink;
@@ -130,6 +136,42 @@ static VnDataEffects* sharedVnDataEffects = nil;
     //// Hazelnut Pink
     effect = [[VnObjectEffect alloc] init];
     effect.effectId = VnEffectIdHazelnutPink;
+    effect.name = [NSString stringWithFormat:@"#%02d", (int)effect.effectId];
+    [_effectsList addObject:effect];
+    
+    //// Joyful
+    effect = [[VnObjectEffect alloc] init];
+    effect.effectId = VnEffectIdJoyful;
+    effect.name = [NSString stringWithFormat:@"#%02d", (int)effect.effectId];
+    [_effectsList addObject:effect];
+    
+    //// Miami
+    effect = [[VnObjectEffect alloc] init];
+    effect.effectId = VnEffectIdMiami;
+    effect.name = [NSString stringWithFormat:@"#%02d", (int)effect.effectId];
+    [_effectsList addObject:effect];
+    
+    //// Old Tone
+    effect = [[VnObjectEffect alloc] init];
+    effect.effectId = VnEffectIdOldTone;
+    effect.name = [NSString stringWithFormat:@"#%02d", (int)effect.effectId];
+    [_effectsList addObject:effect];
+    
+    //// Pink Bubble Tea
+    effect = [[VnObjectEffect alloc] init];
+    effect.effectId = VnEffectIdPinkBubbleTea;
+    effect.name = [NSString stringWithFormat:@"#%02d", (int)effect.effectId];
+    [_effectsList addObject:effect];
+    
+    //// Summers
+    effect = [[VnObjectEffect alloc] init];
+    effect.effectId = VnEffectIdSummers;
+    effect.name = [NSString stringWithFormat:@"#%02d", (int)effect.effectId];
+    [_effectsList addObject:effect];
+    
+    //// Sunset Carnevale
+    effect = [[VnObjectEffect alloc] init];
+    effect.effectId = VnEffectIdSunsetCarnevale;
     effect.name = [NSString stringWithFormat:@"#%02d", (int)effect.effectId];
     [_effectsList addObject:effect];
     

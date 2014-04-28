@@ -261,6 +261,13 @@ static VnProcessingQueueManager* sharedVnProcessingQueue = nil;
     queue.type = VnObjectProcessingQueueTypePreset;
     [_effectsPresetQueueList addObject:queue];
     
+    //// Girder
+    queue = [[VnObjectProcessingQueue alloc] init];
+    queue.effectId = VnEffectIdGirder;
+    queue.toolId = VnAdjustmentToolIdEffects;
+    queue.type = VnObjectProcessingQueueTypePreset;
+    [_effectsPresetQueueList addObject:queue];
+    
     //// Haze 3 Pink
     queue = [[VnObjectProcessingQueue alloc] init];
     queue.effectId = VnEffectIdHaze3Pink;
@@ -278,6 +285,48 @@ static VnProcessingQueueManager* sharedVnProcessingQueue = nil;
     //// Hazelnut Pink
     queue = [[VnObjectProcessingQueue alloc] init];
     queue.effectId = VnEffectIdHazelnutPink;
+    queue.toolId = VnAdjustmentToolIdEffects;
+    queue.type = VnObjectProcessingQueueTypePreset;
+    [_effectsPresetQueueList addObject:queue];
+    
+    //// Joyful
+    queue = [[VnObjectProcessingQueue alloc] init];
+    queue.effectId = VnEffectIdJoyful;
+    queue.toolId = VnAdjustmentToolIdEffects;
+    queue.type = VnObjectProcessingQueueTypePreset;
+    [_effectsPresetQueueList addObject:queue];
+    
+    //// Miami
+    queue = [[VnObjectProcessingQueue alloc] init];
+    queue.effectId = VnEffectIdMiami;
+    queue.toolId = VnAdjustmentToolIdEffects;
+    queue.type = VnObjectProcessingQueueTypePreset;
+    [_effectsPresetQueueList addObject:queue];
+    
+    //// Old Tone
+    queue = [[VnObjectProcessingQueue alloc] init];
+    queue.effectId = VnEffectIdOldTone;
+    queue.toolId = VnAdjustmentToolIdEffects;
+    queue.type = VnObjectProcessingQueueTypePreset;
+    [_effectsPresetQueueList addObject:queue];
+    
+    //// Pink Bubble Tea
+    queue = [[VnObjectProcessingQueue alloc] init];
+    queue.effectId = VnEffectIdPinkBubbleTea;
+    queue.toolId = VnAdjustmentToolIdEffects;
+    queue.type = VnObjectProcessingQueueTypePreset;
+    [_effectsPresetQueueList addObject:queue];
+    
+    //// Summers
+    queue = [[VnObjectProcessingQueue alloc] init];
+    queue.effectId = VnEffectIdSummers;
+    queue.toolId = VnAdjustmentToolIdEffects;
+    queue.type = VnObjectProcessingQueueTypePreset;
+    [_effectsPresetQueueList addObject:queue];
+    
+    //// Sunset Carnevale
+    queue = [[VnObjectProcessingQueue alloc] init];
+    queue.effectId = VnEffectIdSunsetCarnevale;
     queue.toolId = VnAdjustmentToolIdEffects;
     queue.type = VnObjectProcessingQueueTypePreset;
     [_effectsPresetQueueList addObject:queue];

@@ -160,6 +160,11 @@ static VnProcessor* sharedVnProcessor = nil;
         effect.imageToProcess = image;
         return [effect process];
     }
+    if(effectId == VnEffectIdGirder) {
+        VnEffectGirder* effect = [[VnEffectGirder alloc] init];
+        effect.imageToProcess = image;
+        return [effect process];
+    }
     if(effectId == VnEffectIdHaze3Pink) {
         VnEffectHaze3Pink* effect = [[VnEffectHaze3Pink alloc] init];
         effect.imageToProcess = image;
@@ -172,6 +177,36 @@ static VnProcessor* sharedVnProcessor = nil;
     }
     if(effectId == VnEffectIdHazelnutPink) {
         VnEffectHazelnutPink* effect = [[VnEffectHazelnutPink alloc] init];
+        effect.imageToProcess = image;
+        return [effect process];
+    }
+    if(effectId == VnEffectIdJoyful) {
+        VnEffectJoyful* effect = [[VnEffectJoyful alloc] init];
+        effect.imageToProcess = image;
+        return [effect process];
+    }
+    if(effectId == VnEffectIdMiami) {
+        VnEffectMiami* effect = [[VnEffectMiami alloc] init];
+        effect.imageToProcess = image;
+        return [effect process];
+    }
+    if(effectId == VnEffectIdOldTone) {
+        VnEffectOldTone* effect = [[VnEffectOldTone alloc] init];
+        effect.imageToProcess = image;
+        return [effect process];
+    }
+    if(effectId == VnEffectIdPinkBubbleTea) {
+        VnEffectPinkBubbleTea* effect = [[VnEffectPinkBubbleTea alloc] init];
+        effect.imageToProcess = image;
+        return [effect process];
+    }
+    if(effectId == VnEffectIdSummers) {
+        VnEffectSummers* effect = [[VnEffectSummers alloc] init];
+        effect.imageToProcess = image;
+        return [effect process];
+    }
+    if(effectId == VnEffectIdSunsetCarnevale) {
+        VnEffectSunsetCarnevale* effect = [[VnEffectSunsetCarnevale alloc] init];
         effect.imageToProcess = image;
         return [effect process];
     }
