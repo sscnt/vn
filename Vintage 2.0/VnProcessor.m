@@ -240,6 +240,16 @@ static VnProcessor* sharedVnProcessor = nil;
         effect.imageToProcess = image;
         return [effect process];
     }
+    if(effectId == VnEffectIdWarmAutumn) {
+        VnEffectWarmAutumn* effect = [[VnEffectWarmAutumn alloc] init];
+        effect.imageToProcess = image;
+        return [effect process];
+    }
+    if(effectId == VnEffectIdWarmSpringLight) {
+        VnEffectWarmSpringLight* effect = [[VnEffectWarmSpringLight alloc] init];
+        effect.imageToProcess = image;
+        return [effect process];
+    }
     return nil;
 }
 

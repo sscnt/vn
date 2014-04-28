@@ -12,6 +12,9 @@
 		5807F59F19036317009FEA3C /* VnViewHomeBg.m in Sources */ = {isa = PBXBuildFile; fileRef = 5807F59C19036317009FEA3C /* VnViewHomeBg.m */; };
 		5807F5A019036317009FEA3C /* VnButtonHomeSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 5807F59E19036317009FEA3C /* VnButtonHomeSource.m */; };
 		5807F5A719036588009FEA3C /* UIDevice+extend.m in Sources */ = {isa = PBXBuildFile; fileRef = 5807F5A619036588009FEA3C /* UIDevice+extend.m */; };
+		5811A2E1190E3B6A0062EFEA /* sl1.acv in Resources */ = {isa = PBXBuildFile; fileRef = 5811A2DD190E3B6A0062EFEA /* sl1.acv */; };
+		5811A2E2190E3B6A0062EFEA /* sl2.acv in Resources */ = {isa = PBXBuildFile; fileRef = 5811A2DE190E3B6A0062EFEA /* sl2.acv */; };
+		5811A2E3190E3B6A0062EFEA /* VnEffectWarmSpringLight.m in Sources */ = {isa = PBXBuildFile; fileRef = 5811A2E0190E3B6A0062EFEA /* VnEffectWarmSpringLight.m */; };
 		5811B9DA1904BFD000D4155C /* Bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5811B9D91904BFD000D4155C /* Bg@2x.png */; };
 		5811B9DC1904BFD900D4155C /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5811B9DB1904BFD900D4155C /* Default@2x.png */; };
 		5811B9E11904D21D00D4155C /* VnEditorButtonManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5811B9E01904D21D00D4155C /* VnEditorButtonManager.m */; };
@@ -25,6 +28,10 @@
 		5813A36A190E2B7E009D634C /* VnEffectVividVintage.m in Sources */ = {isa = PBXBuildFile; fileRef = 5813A366190E2B7E009D634C /* VnEffectVividVintage.m */; };
 		5813A36F190E2E8C009D634C /* wnd.acv in Resources */ = {isa = PBXBuildFile; fileRef = 5813A36C190E2E8C009D634C /* wnd.acv */; };
 		5813A370190E2E8C009D634C /* VnEffectWeekend.m in Sources */ = {isa = PBXBuildFile; fileRef = 5813A36E190E2E8C009D634C /* VnEffectWeekend.m */; };
+		5813A377190E3433009D634C /* wa1.acv in Resources */ = {isa = PBXBuildFile; fileRef = 5813A372190E3433009D634C /* wa1.acv */; };
+		5813A378190E3433009D634C /* wa2.acv in Resources */ = {isa = PBXBuildFile; fileRef = 5813A373190E3433009D634C /* wa2.acv */; };
+		5813A379190E3433009D634C /* wa3.acv in Resources */ = {isa = PBXBuildFile; fileRef = 5813A374190E3433009D634C /* wa3.acv */; };
+		5813A37A190E3433009D634C /* VnEffectWarmAutumn.m in Sources */ = {isa = PBXBuildFile; fileRef = 5813A376190E3433009D634C /* VnEffectWarmAutumn.m */; };
 		581794C9190C056100A12825 /* hzlp2.acv in Resources */ = {isa = PBXBuildFile; fileRef = 581794C7190C056100A12825 /* hzlp2.acv */; };
 		581794CA190C056100A12825 /* hzlp1.acv in Resources */ = {isa = PBXBuildFile; fileRef = 581794C8190C056100A12825 /* hzlp1.acv */; };
 		5818808A190DF14800A90032 /* jf1.acv in Resources */ = {isa = PBXBuildFile; fileRef = 58188086190DF14800A90032 /* jf1.acv */; };
@@ -223,6 +230,10 @@
 		5807F59E19036317009FEA3C /* VnButtonHomeSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VnButtonHomeSource.m; sourceTree = "<group>"; };
 		5807F5A519036588009FEA3C /* UIDevice+extend.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIDevice+extend.h"; sourceTree = "<group>"; };
 		5807F5A619036588009FEA3C /* UIDevice+extend.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIDevice+extend.m"; sourceTree = "<group>"; };
+		5811A2DD190E3B6A0062EFEA /* sl1.acv */ = {isa = PBXFileReference; lastKnownFileType = file; path = sl1.acv; sourceTree = "<group>"; };
+		5811A2DE190E3B6A0062EFEA /* sl2.acv */ = {isa = PBXFileReference; lastKnownFileType = file; path = sl2.acv; sourceTree = "<group>"; };
+		5811A2DF190E3B6A0062EFEA /* VnEffectWarmSpringLight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VnEffectWarmSpringLight.h; sourceTree = "<group>"; };
+		5811A2E0190E3B6A0062EFEA /* VnEffectWarmSpringLight.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VnEffectWarmSpringLight.m; sourceTree = "<group>"; };
 		5811B9D91904BFD000D4155C /* Bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Bg@2x.png"; sourceTree = "<group>"; };
 		5811B9DB1904BFD900D4155C /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		5811B9DF1904D21D00D4155C /* VnEditorButtonManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VnEditorButtonManager.h; sourceTree = "<group>"; };
@@ -242,6 +253,11 @@
 		5813A36C190E2E8C009D634C /* wnd.acv */ = {isa = PBXFileReference; lastKnownFileType = file; path = wnd.acv; sourceTree = "<group>"; };
 		5813A36D190E2E8C009D634C /* VnEffectWeekend.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VnEffectWeekend.h; sourceTree = "<group>"; };
 		5813A36E190E2E8C009D634C /* VnEffectWeekend.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VnEffectWeekend.m; sourceTree = "<group>"; };
+		5813A372190E3433009D634C /* wa1.acv */ = {isa = PBXFileReference; lastKnownFileType = file; path = wa1.acv; sourceTree = "<group>"; };
+		5813A373190E3433009D634C /* wa2.acv */ = {isa = PBXFileReference; lastKnownFileType = file; path = wa2.acv; sourceTree = "<group>"; };
+		5813A374190E3433009D634C /* wa3.acv */ = {isa = PBXFileReference; lastKnownFileType = file; path = wa3.acv; sourceTree = "<group>"; };
+		5813A375190E3433009D634C /* VnEffectWarmAutumn.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VnEffectWarmAutumn.h; sourceTree = "<group>"; };
+		5813A376190E3433009D634C /* VnEffectWarmAutumn.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VnEffectWarmAutumn.m; sourceTree = "<group>"; };
 		581794C7190C056100A12825 /* hzlp2.acv */ = {isa = PBXFileReference; lastKnownFileType = file; path = hzlp2.acv; sourceTree = "<group>"; };
 		581794C8190C056100A12825 /* hzlp1.acv */ = {isa = PBXFileReference; lastKnownFileType = file; path = hzlp1.acv; sourceTree = "<group>"; };
 		58188086190DF14800A90032 /* jf1.acv */ = {isa = PBXFileReference; lastKnownFileType = file; path = jf1.acv; sourceTree = "<group>"; };
@@ -580,6 +596,17 @@
 			name = Home;
 			sourceTree = "<group>";
 		};
+		5811A2D9190E3B580062EFEA /* Warm Spring Light */ = {
+			isa = PBXGroup;
+			children = (
+				5811A2DD190E3B6A0062EFEA /* sl1.acv */,
+				5811A2DE190E3B6A0062EFEA /* sl2.acv */,
+				5811A2DF190E3B6A0062EFEA /* VnEffectWarmSpringLight.h */,
+				5811A2E0190E3B6A0062EFEA /* VnEffectWarmSpringLight.m */,
+			);
+			name = "Warm Spring Light";
+			sourceTree = "<group>";
+		};
 		5813A358190E25FC009D634C /* Vintage Film */ = {
 			isa = PBXGroup;
 			children = (
@@ -610,6 +637,18 @@
 				5813A36E190E2E8C009D634C /* VnEffectWeekend.m */,
 			);
 			name = Weekend;
+			sourceTree = "<group>";
+		};
+		5813A371190E341A009D634C /* Warm Autumn */ = {
+			isa = PBXGroup;
+			children = (
+				5813A372190E3433009D634C /* wa1.acv */,
+				5813A373190E3433009D634C /* wa2.acv */,
+				5813A374190E3433009D634C /* wa3.acv */,
+				5813A375190E3433009D634C /* VnEffectWarmAutumn.h */,
+				5813A376190E3433009D634C /* VnEffectWarmAutumn.m */,
+			);
+			name = "Warm Autumn";
 			sourceTree = "<group>";
 		};
 		581794C6190C052E00A12825 /* Curves */ = {
@@ -735,6 +774,8 @@
 				5813A358190E25FC009D634C /* Vintage Film */,
 				5813A361190E2B67009D634C /* Vivid Vintage */,
 				5813A36B190E2E73009D634C /* Weekend */,
+				5813A371190E341A009D634C /* Warm Autumn */,
+				5811A2D9190E3B580062EFEA /* Warm Spring Light */,
 			);
 			name = 1.0;
 			sourceTree = "<group>";
@@ -1449,6 +1490,7 @@
 				58F5A944190CE16200BD2A5C /* bv1.acv in Resources */,
 				581880AA190E028E00A90032 /* sms4.acv in Resources */,
 				58F5A950190CE6A700BD2A5C /* bv4.acv in Resources */,
+				5813A377190E3433009D634C /* wa1.acv in Resources */,
 				581794CA190C056100A12825 /* hzlp1.acv in Resources */,
 				58F5A72819041F000028D6D2 /* Bg-Portrait.png in Resources */,
 				58FB1A10190CC81A00057CE0 /* Hzl1.acv in Resources */,
@@ -1470,6 +1512,7 @@
 				5818808A190DF14800A90032 /* jf1.acv in Resources */,
 				58188095190DF54F00A90032 /* mi1.acv in Resources */,
 				58FB1A1C190CD5AA00057CE0 /* av1.acv in Resources */,
+				5811A2E2190E3B6A0062EFEA /* sl2.acv in Resources */,
 				58F798C8190D4B74006B865A /* gm4.acv in Resources */,
 				58F798A2190D290F006B865A /* cn2.acv in Resources */,
 				58F798C5190D4B74006B865A /* gm1.acv in Resources */,
@@ -1490,6 +1533,8 @@
 				58C185CA190E177C004024F6 /* v22.acv in Resources */,
 				5813A368190E2B7E009D634C /* vvv1.acv in Resources */,
 				58188093190DF54F00A90032 /* mi3.acv in Resources */,
+				5811A2E1190E3B6A0062EFEA /* sl1.acv in Resources */,
+				5813A379190E3433009D634C /* wa3.acv in Resources */,
 				58FB1A1F190CD5AA00057CE0 /* av4.acv in Resources */,
 				5807F59619035DF5009FEA3C /* Bg-568h@2x.png in Resources */,
 				5807F59719035DF5009FEA3C /* Default-568h@2x.png in Resources */,
@@ -1500,6 +1545,7 @@
 				58F5A72D19041F110028D6D2 /* Default-Portrait.png in Resources */,
 				58F798BC190D488E006B865A /* fv2.acv in Resources */,
 				58F798A1190D290F006B865A /* cn1.acv in Resources */,
+				5813A378190E3433009D634C /* wa2.acv in Resources */,
 				581880AC190E028E00A90032 /* sms2.acv in Resources */,
 				58F5A72E19041F110028D6D2 /* Default-Portrait@2x.png in Resources */,
 				58F52F20190D56A1003B92EB /* gi3.acv in Resources */,
@@ -1558,6 +1604,7 @@
 				58325D9B1902724E000A3D0E /* VnBlendingHardLight.m in Sources */,
 				58F798B5190D3210006B865A /* VnEffectDreamyVintage.m in Sources */,
 				58325DAA190277DC000A3D0E /* VnBlendingLinearDodge.m in Sources */,
+				5813A37A190E3433009D634C /* VnEffectWarmAutumn.m in Sources */,
 				581880B4190E0C8700A90032 /* VnEffectSunsetCarnevale.m in Sources */,
 				58188096190DF54F00A90032 /* VnEffectMiami.m in Sources */,
 				58F5F455190936AE00AD8BEA /* VnViewEditorToolBarButtonBgView.m in Sources */,
@@ -1604,6 +1651,7 @@
 				58FA3A521902D2D70070B4B8 /* VnViewControllerRoot.m in Sources */,
 				5813A370190E2E8C009D634C /* VnEffectWeekend.m in Sources */,
 				58F52F23190D56A1003B92EB /* VnEffectGirder.m in Sources */,
+				5811A2E3190E3B6A0062EFEA /* VnEffectWarmSpringLight.m in Sources */,
 				58325DB019027908000A3D0E /* VnBlendingDarkerColor.m in Sources */,
 				58FA3A4C1902C5270070B4B8 /* VnViewControllerExport.m in Sources */,
 				58325DAD1902787B000A3D0E /* VnBlendingColor.m in Sources */,

@@ -211,6 +211,18 @@ static VnDataEffects* sharedVnDataEffects = nil;
     effect.name = [NSString stringWithFormat:@"#%02d", (int)effect.effectId];
     [_effectsList addObject:effect];
     
+    //// Warm Autumn
+    effect = [[VnObjectEffect alloc] init];
+    effect.effectId = VnEffectIdWarmAutumn;
+    effect.name = [NSString stringWithFormat:@"#%02d", (int)effect.effectId];
+    [_effectsList addObject:effect];
+    
+    //// warm Sprint Light
+    effect = [[VnObjectEffect alloc] init];
+    effect.effectId = VnEffectIdWarmSpringLight;
+    effect.name = [NSString stringWithFormat:@"#%02d", (int)effect.effectId];
+    [_effectsList addObject:effect];
+    
 }
 
 + (int)effectsCount

@@ -372,6 +372,20 @@ static VnProcessingQueueManager* sharedVnProcessingQueue = nil;
     queue.toolId = VnAdjustmentToolIdEffects;
     queue.type = VnObjectProcessingQueueTypePreset;
     [_effectsPresetQueueList addObject:queue];
+    
+    //// Warm Autumn
+    queue = [[VnObjectProcessingQueue alloc] init];
+    queue.effectId = VnEffectIdWarmAutumn;
+    queue.toolId = VnAdjustmentToolIdEffects;
+    queue.type = VnObjectProcessingQueueTypePreset;
+    [_effectsPresetQueueList addObject:queue];
+    
+    //// Warm Spring Light
+    queue = [[VnObjectProcessingQueue alloc] init];
+    queue.effectId = VnEffectIdWarmSpringLight;
+    queue.toolId = VnAdjustmentToolIdEffects;
+    queue.type = VnObjectProcessingQueueTypePreset;
+    [_effectsPresetQueueList addObject:queue];
 }
 
 - (void)reset
