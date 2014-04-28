@@ -210,6 +210,16 @@ static VnProcessor* sharedVnProcessor = nil;
         effect.imageToProcess = image;
         return [effect process];
     }
+    if(effectId == VnEffectIdVampire) {
+        VnEffectVampire* effect = [[VnEffectVampire alloc] init];
+        effect.imageToProcess = image;
+        return [effect process];
+    }
+    if(effectId == VnEffectIdVintage2) {
+        VnEffectVintage2* effect = [[VnEffectVintage2 alloc] init];
+        effect.imageToProcess = image;
+        return [effect process];
+    }
     return nil;
 }
 
@@ -234,23 +244,42 @@ static VnProcessor* sharedVnProcessor = nil;
 
 + (UIImage*)mergeBaseImage:(UIImage *)baseImage overlayFilter:(GPUImageFilter *)overlayFilter opacity:(CGFloat)opacity blendingMode:(VnBlendingMode)blendingMode
 {
-    GPUImageOpacityFilter* opacityFilter = [[GPUImageOpacityFilter alloc] init];
-    opacityFilter.opacity = opacity;
-    [overlayFilter addTarget:opacityFilter];
-    
-    GPUImagePicture* picture = [[GPUImagePicture alloc] initWithImage:baseImage];
-    [picture addTarget:overlayFilter];
-    
-    id blending = [VnProcessor effectByBlendMode:blendingMode];
-    [opacityFilter addTarget:blending atTextureLocation:1];
-    
-    [picture addTarget:blending];
-    [picture processImage];
-    UIImage* mergedImage = [blending imageFromCurrentlyProcessedOutput];
-    [picture removeAllTargets];
-    [overlayFilter removeAllTargets];
-    [opacityFilter removeAllTargets];
-    return mergedImage;
+    if (opacity == 1.0f) {
+        
+        GPUImagePicture* picture = [[GPUImagePicture alloc] initWithImage:baseImage];
+        [picture addTarget:overlayFilter];
+        
+        id blending = [VnProcessor effectByBlendMode:blendingMode];
+        [overlayFilter addTarget:blending atTextureLocation:1];
+        
+        [picture addTarget:blending];
+        [picture processImage];
+        UIImage* mergedImage = [blending imageFromCurrentlyProcessedOutput];
+        [picture removeAllTargets];
+        [overlayFilter removeAllTargets];
+        return mergedImage;
+        
+    }else{
+        
+        GPUImageOpacityFilter* opacityFilter = [[GPUImageOpacityFilter alloc] init];
+        opacityFilter.opacity = opacity;
+        [overlayFilter addTarget:opacityFilter];
+        
+        GPUImagePicture* picture = [[GPUImagePicture alloc] initWithImage:baseImage];
+        [picture addTarget:overlayFilter];
+        
+        id blending = [VnProcessor effectByBlendMode:blendingMode];
+        [opacityFilter addTarget:blending atTextureLocation:1];
+        
+        [picture addTarget:blending];
+        [picture processImage];
+        UIImage* mergedImage = [blending imageFromCurrentlyProcessedOutput];
+        [picture removeAllTargets];
+        [overlayFilter removeAllTargets];
+        [opacityFilter removeAllTargets];
+        return mergedImage;
+        
+    }
     
 }
 

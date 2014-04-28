@@ -330,6 +330,20 @@ static VnProcessingQueueManager* sharedVnProcessingQueue = nil;
     queue.toolId = VnAdjustmentToolIdEffects;
     queue.type = VnObjectProcessingQueueTypePreset;
     [_effectsPresetQueueList addObject:queue];
+    
+    //// Vampire
+    queue = [[VnObjectProcessingQueue alloc] init];
+    queue.effectId = VnEffectIdVampire;
+    queue.toolId = VnAdjustmentToolIdEffects;
+    queue.type = VnObjectProcessingQueueTypePreset;
+    [_effectsPresetQueueList addObject:queue];
+    
+    //// Vintage 2
+    queue = [[VnObjectProcessingQueue alloc] init];
+    queue.effectId = VnEffectIdVintage2;
+    queue.toolId = VnAdjustmentToolIdEffects;
+    queue.type = VnObjectProcessingQueueTypePreset;
+    [_effectsPresetQueueList addObject:queue];
 }
 
 - (void)reset

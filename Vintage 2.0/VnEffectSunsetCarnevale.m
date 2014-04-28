@@ -31,7 +31,7 @@
         GPUImageContrastFilter* contrastFilter = [[GPUImageContrastFilter alloc] init];
         contrastFilter.contrast = 1.20f;
         
-        [self mergeAndSaveTmpImageWithOverlayFilter:contrastFilter opacity:1.0f blendingMode:VnBlendingModeMultiply];
+        [self mergeAndSaveTmpImageWithOverlayFilter:contrastFilter opacity:1.0f blendingMode:VnBlendingModeNormal];
     }
     
     // Curve
