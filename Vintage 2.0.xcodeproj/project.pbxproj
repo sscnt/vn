@@ -66,6 +66,8 @@
 		58C185C9190E177C004024F6 /* v21.acv in Resources */ = {isa = PBXBuildFile; fileRef = 58C185C5190E177C004024F6 /* v21.acv */; };
 		58C185CA190E177C004024F6 /* v22.acv in Resources */ = {isa = PBXBuildFile; fileRef = 58C185C6190E177C004024F6 /* v22.acv */; };
 		58C185CB190E177C004024F6 /* VnEffectVintage2.m in Sources */ = {isa = PBXBuildFile; fileRef = 58C185C8190E177C004024F6 /* VnEffectVintage2.m */; };
+		58C185D0190E1F7F004024F6 /* vb1.acv in Resources */ = {isa = PBXBuildFile; fileRef = 58C185CD190E1F7F004024F6 /* vb1.acv */; };
+		58C185D1190E1F7F004024F6 /* VnEffectVintageBaby.m in Sources */ = {isa = PBXBuildFile; fileRef = 58C185CF190E1F7F004024F6 /* VnEffectVintageBaby.m */; };
 		58F17A5E19020A530038DF34 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 58F17A6019020A530038DF34 /* Localizable.strings */; };
 		58F17A6619020B380038DF34 /* VnCurrentImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F17A6519020B380038DF34 /* VnCurrentImage.m */; };
 		58F17A7319020BEC0038DF34 /* UIScreen+extend.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F17A6B19020BEC0038DF34 /* UIScreen+extend.m */; };
@@ -300,6 +302,9 @@
 		58C185C6190E177C004024F6 /* v22.acv */ = {isa = PBXFileReference; lastKnownFileType = file; path = v22.acv; sourceTree = "<group>"; };
 		58C185C7190E177C004024F6 /* VnEffectVintage2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VnEffectVintage2.h; sourceTree = "<group>"; };
 		58C185C8190E177C004024F6 /* VnEffectVintage2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VnEffectVintage2.m; sourceTree = "<group>"; };
+		58C185CD190E1F7F004024F6 /* vb1.acv */ = {isa = PBXFileReference; lastKnownFileType = file; path = vb1.acv; sourceTree = "<group>"; };
+		58C185CE190E1F7F004024F6 /* VnEffectVintageBaby.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VnEffectVintageBaby.h; sourceTree = "<group>"; };
+		58C185CF190E1F7F004024F6 /* VnEffectVintageBaby.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VnEffectVintageBaby.m; sourceTree = "<group>"; };
 		58F17A5919020A120038DF34 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Main.strings; sourceTree = "<group>"; };
 		58F17A5A19020A120038DF34 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		58F17A5B19020A120038DF34 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -675,6 +680,7 @@
 				581880AF190E0C7400A90032 /* Sunset Carnevale */,
 				581880B5190E10CB00A90032 /* Vampire */,
 				58C185C4190E175C004024F6 /* Vintage 2 */,
+				58C185CC190E1F63004024F6 /* Vintage Baby */,
 			);
 			name = 1.0;
 			sourceTree = "<group>";
@@ -695,6 +701,16 @@
 				58C185C8190E177C004024F6 /* VnEffectVintage2.m */,
 			);
 			name = "Vintage 2";
+			sourceTree = "<group>";
+		};
+		58C185CC190E1F63004024F6 /* Vintage Baby */ = {
+			isa = PBXGroup;
+			children = (
+				58C185CD190E1F7F004024F6 /* vb1.acv */,
+				58C185CE190E1F7F004024F6 /* VnEffectVintageBaby.h */,
+				58C185CF190E1F7F004024F6 /* VnEffectVintageBaby.m */,
+			);
+			name = "Vintage Baby";
 			sourceTree = "<group>";
 		};
 		58F17A6219020AA80038DF34 /* Shared */ = {
@@ -1405,6 +1421,7 @@
 				58F5A72A19041F080028D6D2 /* Bg-Portrait@2x.png in Resources */,
 				58F5A94F190CE6A700BD2A5C /* bv5.acv in Resources */,
 				58F5A7101903F8CA0028D6D2 /* home-photos@2x.png in Resources */,
+				58C185D0190E1F7F004024F6 /* vb1.acv in Resources */,
 				58F798A3190D290F006B865A /* cn3.acv in Resources */,
 				58F798D2190D4F92006B865A /* mo3.acv in Resources */,
 				58F5A951190CE6A700BD2A5C /* bv3.acv in Resources */,
@@ -1538,6 +1555,7 @@
 				58FB1A22190CD5BE00057CE0 /* VnEffectAutumnVintage.m in Sources */,
 				58F5A71A19040EFB0028D6D2 /* VnEditorViewManager.m in Sources */,
 				581880A0190E00C000A90032 /* VnEffectPinkBubbleTea.m in Sources */,
+				58C185D1190E1F7F004024F6 /* VnEffectVintageBaby.m in Sources */,
 				58FA3A3F1902B2740070B4B8 /* VnFilterTemperature.m in Sources */,
 				58F5A936190CDA0A00BD2A5C /* VnAdjustmentLayerSelectiveColor.m in Sources */,
 				58F79C5818FFAE6000C0D2E1 /* main.m in Sources */,
