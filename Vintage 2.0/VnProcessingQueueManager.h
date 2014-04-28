@@ -17,11 +17,11 @@
 @interface VnProcessingQueueManager : NSObject
 {
     NSMutableArray* _queueList;
-    NSMutableArray* _effectsPresetQueueList;
 }
 
 @property (nonatomic, weak) id<VnProcessingQueueManagerDelegate> delegate;
 @property (nonatomic, assign) BOOL processing;
+@property (nonatomic, strong) NSMutableArray* effectsPresetQueueList;
 
 + (VnProcessingQueueManager*)instance;
 + (NSString*)generateQueueId;
@@ -32,6 +32,8 @@
 - (VnObjectProcessingQueue*)shiftEffectQueue;
 + (void)addQueue:(VnObjectProcessingQueue*)queue;
 - (void)addQueue:(VnObjectProcessingQueue*)queue;
+
++ (int)numberOfEffectsInPreset;
 
 - (void)processQueue;
 - (void)processQueueTypePreset:(VnObjectProcessingQueue*)queue;

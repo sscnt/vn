@@ -38,7 +38,7 @@
 + (CGRect)presetImageViewBounds;
 + (CGRect)presetImageBounds;
 + (float)presetImageViewPaddingTop;
-+ (float)presetViewPaddingLeft;
++ (float)presetImageViewPaddingLeft;
 + (float)toolBarDefaultY;
 + (float)toolBarDefaultX;
 + (void)clean;

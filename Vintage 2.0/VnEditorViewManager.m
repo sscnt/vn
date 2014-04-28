@@ -212,7 +212,7 @@ static VnEditorViewManager* sharedVnEditorViewManager = nil;
         wrapper.userInteractionEnabled = YES;
         VnViewEditorEffectPresetsListView* view = [[VnViewEditorEffectPresetsListView alloc] initWithFrame:[VnEditorViewManager adjustmentToolViewBounds]];
         
-        for (int i = 0; i < [VnDataEffects effectsCount]; i++) {
+        for (int i = 0; i < [VnProcessingQueueManager numberOfEffectsInPreset]; i++) {
             VnObjectEffect* efx = [VnDataEffects effectAtIndex:i];
             if (efx) {
                 [view addItemByEffectObject:efx];
@@ -239,6 +239,21 @@ static VnEditorViewManager* sharedVnEditorViewManager = nil;
         }
     }
     return [UIScreen height] - height - [VnCurrentSettings barHeight];
+}
+
++ (float)toolBarDefaultX
+{
+    float width = [VnCurrentSettings barHeight] * 3.0f;
+    if ([UIDevice isiPad]) {
+        width = [VnCurrentSettings barHeight] * 6.0f;
+    } else {
+        if ([UIDevice resolution] == UIDeviceResolution_iPhoneRetina4) {
+            width = [VnCurrentSettings barHeight] * 2.0f;
+        } else {
+            
+        }
+    }
+    return [UIScreen height] - width - [VnCurrentSettings barHeight];
 }
 
 + (CGRect)previewBounds
@@ -283,14 +298,14 @@ static VnEditorViewManager* sharedVnEditorViewManager = nil;
     return 15.0f;
 }
 
-+ (float)presetViewPaddingLeft
++ (float)presetImageViewPaddingLeft
 {
     return 7.50f;
 }
 
 + (CGRect)presetImageBounds
 {
-    float padding = [VnEditorViewManager presetViewPaddingLeft];
+    float padding = [VnEditorViewManager presetImageViewPaddingLeft];
     
     float barh = [VnCurrentSettings barHeight];
     float adjh = barh * 3.0f;

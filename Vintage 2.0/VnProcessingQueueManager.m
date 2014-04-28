@@ -175,6 +175,13 @@ static VnProcessingQueueManager* sharedVnProcessingQueue = nil;
     return queue;
 }
 
+#pragma mark number
+
++ (int)numberOfEffectsInPreset
+{
+    return (int)[[self instance].effectsPresetQueueList count];
+}
+
 #pragma mark init
 
 - (void)commonInit

@@ -12,6 +12,10 @@ typedef NS_ENUM(NSInteger, VnCurrentSettingsWorkspaceType){
     VnCurrentSettingsWorkspaceTypeEssentials = 1,
     VnCurrentSettingsWorkspaceTypeAdvanced
 };
+typedef NS_ENUM(NSInteger, VnCurrentSettingsWorkspaceOrientation){
+    VnCurrentSettingsWorkspaceOrientationPortrait = 1,
+    VnCurrentSettingsWorkspaceOrientationLandscape
+};
 
 @interface VnCurrentSettings : NSObject
 
@@ -26,5 +30,7 @@ typedef NS_ENUM(NSInteger, VnCurrentSettingsWorkspaceType){
 + (UIColor*)buttonIconHighlightedColor;
 + (UIColor*)buttonIconColoredColor;
 + (UIColor*)buttonHighlightedBgColor;
+
++ (VnCurrentSettingsWorkspaceOrientation)workspaceOrientation;
 
 @end

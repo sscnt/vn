@@ -13,6 +13,7 @@
 {
     NSMutableDictionary* _itemViews;
     float _right;
+    float _top;
 }
 
 @property (nonatomic, strong) UIScrollView* view;

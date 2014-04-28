@@ -102,4 +102,14 @@ static VnCurrentSettings* sharedVnCurrentSettings = nil;
     return [UIColor colorWithRed:s255(20.0f) green:s255(18.0f) blue:s255(18.0f) alpha:1.0f];
 }
 
+#pragma mark 
+
++ (VnCurrentSettingsWorkspaceOrientation)workspaceOrientation
+{
+    if ([UIDevice isiPad]) {
+        return VnCurrentSettingsWorkspaceOrientationLandscape;
+    }
+    return VnCurrentSettingsWorkspaceOrientationPortrait;
+}
+
 @end
