@@ -96,6 +96,10 @@
 		58F3152D190E746D005895A0 /* Default-Landscape@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 58F3152B190E746D005895A0 /* Default-Landscape@2x.png */; };
 		58F31530190E7DE7005895A0 /* VnImagePickerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F3152F190E7DE7005895A0 /* VnImagePickerController.m */; };
 		58F31533190E7FDF005895A0 /* UIViewController+extend.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F31532190E7FDF005895A0 /* UIViewController+extend.m */; };
+		58F31536190EA209005895A0 /* VnViewLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F31535190EA209005895A0 /* VnViewLabel.m */; };
+		58F3153C190EA668005895A0 /* Aller_Bd.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 58F31539190EA668005895A0 /* Aller_Bd.ttf */; };
+		58F3153D190EA668005895A0 /* ClearSans-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 58F3153A190EA668005895A0 /* ClearSans-Bold.ttf */; };
+		58F3153E190EA668005895A0 /* mplus-1c-bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 58F3153B190EA668005895A0 /* mplus-1c-bold.ttf */; };
 		58F3A78E1907C6A600896D01 /* VnAdjustmentLayerGradientColorFill.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F3A78D1907C6A600896D01 /* VnAdjustmentLayerGradientColorFill.m */; };
 		58F3A7921907C72700896D01 /* VnAdjustmentLayerColorBalance.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F3A7911907C72700896D01 /* VnAdjustmentLayerColorBalance.m */; };
 		58F51B471903820700B8E976 /* VnBoolean.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F51B461903820700B8E976 /* VnBoolean.m */; };
@@ -367,6 +371,11 @@
 		58F3152F190E7DE7005895A0 /* VnImagePickerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VnImagePickerController.m; sourceTree = "<group>"; };
 		58F31531190E7FDF005895A0 /* UIViewController+extend.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+extend.h"; sourceTree = "<group>"; };
 		58F31532190E7FDF005895A0 /* UIViewController+extend.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+extend.m"; sourceTree = "<group>"; };
+		58F31534190EA209005895A0 /* VnViewLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VnViewLabel.h; sourceTree = "<group>"; };
+		58F31535190EA209005895A0 /* VnViewLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VnViewLabel.m; sourceTree = "<group>"; };
+		58F31539190EA668005895A0 /* Aller_Bd.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Aller_Bd.ttf; sourceTree = "<group>"; };
+		58F3153A190EA668005895A0 /* ClearSans-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ClearSans-Bold.ttf"; sourceTree = "<group>"; };
+		58F3153B190EA668005895A0 /* mplus-1c-bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "mplus-1c-bold.ttf"; sourceTree = "<group>"; };
 		58F3A78C1907C6A600896D01 /* VnAdjustmentLayerGradientColorFill.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VnAdjustmentLayerGradientColorFill.h; sourceTree = "<group>"; };
 		58F3A78D1907C6A600896D01 /* VnAdjustmentLayerGradientColorFill.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VnAdjustmentLayerGradientColorFill.m; sourceTree = "<group>"; };
 		58F3A7901907C72700896D01 /* VnAdjustmentLayerColorBalance.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VnAdjustmentLayerColorBalance.h; sourceTree = "<group>"; };
@@ -585,6 +594,8 @@
 				588FDEC8190609E500ECA2C4 /* EVCircularProgressView.m */,
 				588FDEC11905FFAA00ECA2C4 /* VnViewProgress.h */,
 				588FDEC21905FFAA00ECA2C4 /* VnViewProgress.m */,
+				58F31534190EA209005895A0 /* VnViewLabel.h */,
+				58F31535190EA209005895A0 /* VnViewLabel.m */,
 				58F51B4B19038FCD00B8E976 /* Editor */,
 				5807F59A190362ED009FEA3C /* Home */,
 			);
@@ -853,6 +864,16 @@
 			name = Categories;
 			sourceTree = "<group>";
 		};
+		58F31538190EA61F005895A0 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				58F31539190EA668005895A0 /* Aller_Bd.ttf */,
+				58F3153A190EA668005895A0 /* ClearSans-Bold.ttf */,
+				58F3153B190EA668005895A0 /* mplus-1c-bold.ttf */,
+			);
+			name = Fonts;
+			sourceTree = "<group>";
+		};
 		58F3A78A1907C67A00896D01 /* VnAdjustmentLayers */ = {
 			isa = PBXGroup;
 			children = (
@@ -943,13 +964,6 @@
 				58F5A72319041C310028D6D2 /* VnViewEditorEffectsHistory.m */,
 			);
 			name = Effects;
-			sourceTree = "<group>";
-		};
-		58F5A72519041CA00028D6D2 /* iPad */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = iPad;
 			sourceTree = "<group>";
 		};
 		58F5A92F190CD9EE00BD2A5C /* Selective Color */ = {
@@ -1190,7 +1204,6 @@
 		58F79C5118FFAE6000C0D2E1 /* Vintage 2.0 */ = {
 			isa = PBXGroup;
 			children = (
-				58F5A72519041CA00028D6D2 /* iPad */,
 				58F17A6719020BDD0038DF34 /* Categories */,
 				58F3A78A1907C67A00896D01 /* VnAdjustmentLayers */,
 				58FD076D19025A4D0005E74E /* VnFilters */,
@@ -1202,6 +1215,7 @@
 				5807F599190362D4009FEA3C /* UIViews */,
 				58FA3A461902C4CD0070B4B8 /* ViewControllers */,
 				5807F58F19035A25009FEA3C /* Images */,
+				58F31538190EA61F005895A0 /* Fonts */,
 				58F79C5A18FFAE6000C0D2E1 /* AppDelegate.h */,
 				58F79C5B18FFAE6000C0D2E1 /* AppDelegate.m */,
 				58F79C5D18FFAE6000C0D2E1 /* Main.storyboard */,
@@ -1516,14 +1530,17 @@
 				5813A369190E2B7E009D634C /* vvv2.acv in Resources */,
 				58F17A5E19020A530038DF34 /* Localizable.strings in Resources */,
 				58C185C9190E177C004024F6 /* v21.acv in Resources */,
+				58F3153D190EA668005895A0 /* ClearSans-Bold.ttf in Resources */,
 				5818808B190DF14800A90032 /* jf2.acv in Resources */,
 				58F798C6190D4B74006B865A /* gm2.acv in Resources */,
 				58F31528190E7461005895A0 /* Bg-Landscape.png in Resources */,
 				5818808A190DF14800A90032 /* jf1.acv in Resources */,
+				58F3153C190EA668005895A0 /* Aller_Bd.ttf in Resources */,
 				58188095190DF54F00A90032 /* mi1.acv in Resources */,
 				58FB1A1C190CD5AA00057CE0 /* av1.acv in Resources */,
 				5811A2E2190E3B6A0062EFEA /* sl2.acv in Resources */,
 				58F798C8190D4B74006B865A /* gm4.acv in Resources */,
+				58F3153E190EA668005895A0 /* mplus-1c-bold.ttf in Resources */,
 				58F798A2190D290F006B865A /* cn2.acv in Resources */,
 				58F798C5190D4B74006B865A /* gm1.acv in Resources */,
 				58FB1A1E190CD5AA00057CE0 /* av3.acv in Resources */,
@@ -1603,6 +1620,7 @@
 				58F3A7921907C72700896D01 /* VnAdjustmentLayerColorBalance.m in Sources */,
 				58F5A72119041C1F0028D6D2 /* VnViewEditorEffectsOpacity.m in Sources */,
 				58FB1A0C190CC80B00057CE0 /* VnEffectHazelnut.m in Sources */,
+				58F31536190EA209005895A0 /* VnViewLabel.m in Sources */,
 				58FA3A3C190293A30070B4B8 /* VnFilterLevels.m in Sources */,
 				5811B9E41904D2FA00D4155C /* VnViewEditorToolBar.m in Sources */,
 				58F64979190426D8000E2AC5 /* VnObjectEffect.m in Sources */,

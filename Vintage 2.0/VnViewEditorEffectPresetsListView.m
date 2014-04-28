@@ -45,7 +45,7 @@
         } else {
             if (_top == 0.0f) {
                 _top = [VnEditorViewManager presetImageViewBounds].size.height;
-                CGFloat __r = [item right] + [VnEditorViewManager presetImageViewPaddingLeft];
+                __r = [item right] + [VnEditorViewManager presetImageViewPaddingLeft];
             } else {
                 _top = 0.0f;
                 _right = [item right] + [VnEditorViewManager presetImageViewPaddingLeft];

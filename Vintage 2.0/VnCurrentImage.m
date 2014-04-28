@@ -190,7 +190,7 @@ NSString* const pathForPresetBaseImage = @"tmp/preset_base_image";
     CGRect bounds = [VnEditorViewManager previewBounds];
     CGSize originalImageSize = [VnCurrentImage originalImageSize];
     float width, height;
-    if (originalImageSize.width > originalImageSize.height) {
+    if (originalImageSize.width >= originalImageSize.height) {
         height = bounds.size.height;
         width = originalImageSize.width * height / originalImageSize.height;
     } else {

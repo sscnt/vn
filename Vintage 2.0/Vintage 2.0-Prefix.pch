@@ -204,3 +204,4 @@ typedef NS_ENUM(NSInteger, VnBlendingMode){
 #import "VnObjectTexture.h"
 #import "VnObjectPhotoFilter.h"
 #import "VnObjectProcessingQueue.h"
+#import "VnViewLabel.h"
