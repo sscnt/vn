@@ -73,36 +73,35 @@ typedef NS_ENUM(NSInteger, VnAdjustmentToolId){
 };
 
 typedef NS_ENUM(NSInteger, VnEffectId){
-    VnEffectIdNone = 1,
+    VnEffectIdNone = 0,
+    VnEffectIdAutumnVintage,
+    VnEffectIdBeachVintage,
+    VnEffectIdBokehileVintage,
+    VnEffectIdCavalleriaRusticana,
+    VnEffectIdCreamyNoon,
+    VnEffectIdDreamyCreamy,
+    VnEffectIdDreamyVintage,
+    VnEffectIdFaerieVintage,
+    VnEffectIdGentleMemories,
+    VnEffectIdGoodMorning,
+    VnEffectIdGirder,
     VnEffectIdHaze3Pink,
     VnEffectIdHazelnut,
     VnEffectIdHazelnutPink,
-    VnEffectIdVintageFilm,
-    VnEffectIdVintage2,
+    VnEffectIdJoyful,
+    VnEffectIdMiami,
     VnEffectIdOldTone,
+    VnEffectIdPinkBubbleTea,
+    VnEffectIdSummers,
+    VnEffectIdSunsetCarnevale,
+    VnEffectIdVampire,
+    VnEffectIdVintage2,
+    VnEffectIdVintageBaby,
+    VnEffectIdVintageFilm,
+    VnEffectIdVividVintage,
     VnEffectIdWeekend,
     VnEffectIdWarmAutumn,
-    VnEffectIdJoyful,
-    VnEffectIdWarmSpringLight,
-    VnEffectIdGentleMemories,
-    VnEffectIdCreamyNoon,
-    VnEffectIdVividVintage,
-    VnEffectIdCavalleriaRusticana,
-    VnEffectIdDreamyVintage,
-    VnEffectIdSunsetCarnevale,
-    VnEffectIdBeachVintage,
-    VnEffectIdPinkBubbleTea,
-    VnEffectIdFaerieVintage,
-    VnEffectIdGirder,
-    VnEffectIdSummers,
-    VnEffectIdMiami,
-    VnEffectIdVampire,
-    VnEffectIdAutumnVintage,
-    VnEffectIdBokehileVintage,
-    VnEffectIdBokehileVintage2,
-    VnEffectIdGoodMorning,
-    VnEffectIdVintageBaby,
-    VnEffectIdDreamyCreamy
+    VnEffectIdWarmSpringLight
 };
 
 typedef NS_ENUM(NSInteger, VnBlendingMode){
@@ -189,6 +188,7 @@ typedef NS_ENUM(NSInteger, VnBlendingMode){
 #import "UIView+extend.h"
 #import "UIScrollView+extend.h"
 #import "UIViewController+extend.h"
+#import "UIImagePickerController+extend.h"
 #import "UIImage+extend.h"
 #import "VnCurrentImage.h"
 #import "VnCurrentSettings.h"
@@ -204,4 +204,3 @@ typedef NS_ENUM(NSInteger, VnBlendingMode){
 #import "VnObjectTexture.h"
 #import "VnObjectPhotoFilter.h"
 #import "VnObjectProcessingQueue.h"
-#import "VnViewLabel.h"

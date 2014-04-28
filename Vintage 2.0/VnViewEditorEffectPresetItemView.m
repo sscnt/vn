@@ -22,6 +22,12 @@
         _progressView = [[VnViewProgress alloc] initWithFrame:[VnEditorViewManager presetImageBounds] Radius:[VnCurrentSettings thumbnailProgressRadius]];
         [_imageView addSubview:_progressView];
         [self addTarget:self action:@selector(didTouchUpInside:) forControlEvents:UIControlEventTouchUpInside];
+        
+        float top = [VnEditorViewManager presetImageBounds].size.height + [VnEditorViewManager presetImageViewPaddingTop];
+        float height = [VnEditorViewManager presetImageViewBounds].size.height - top;
+        _titleLabel = [[VnViewLabel alloc] initWithFrame:CGRectMake(0.0f, top, [VnEditorViewManager presetImageViewBounds].size.width, height)];
+        _titleLabel.text = effect.name;
+        [self addSubview:_titleLabel];
     }
     return self;
 }

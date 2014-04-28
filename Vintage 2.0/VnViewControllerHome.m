@@ -131,7 +131,7 @@
         [self showErrorAlertWithMessage:@"Camera is not available."];
         return;
     }
-    VnImagePickerController *pickerController = [[VnImagePickerController alloc] init];
+    UIImagePickerController *pickerController = [[UIImagePickerController alloc] init];
     pickerController.delegate = self;
     [pickerController setSourceType:UIImagePickerControllerSourceTypeCamera];
     pickerController.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
@@ -140,7 +140,7 @@
 
 - (void)didPressPhotosButton
 {
-    VnImagePickerController *pickerController = [[VnImagePickerController alloc] init];
+    UIImagePickerController *pickerController = [[UIImagePickerController alloc] init];
     pickerController.delegate = self;
     [pickerController setSourceType:UIImagePickerControllerSourceTypePhotoLibrary];
     pickerController.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;

@@ -277,7 +277,6 @@ static VnEditorViewManager* sharedVnEditorViewManager = nil;
 
 + (CGRect)presetImageViewBounds
 {
-    
     float barh = [VnCurrentSettings barHeight];
     float adjh = barh * 3.0f;
     if ([UIDevice isiPad]) {

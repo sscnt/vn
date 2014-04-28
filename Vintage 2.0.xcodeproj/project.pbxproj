@@ -83,6 +83,7 @@
 		58C185CB190E177C004024F6 /* VnEffectVintage2.m in Sources */ = {isa = PBXBuildFile; fileRef = 58C185C8190E177C004024F6 /* VnEffectVintage2.m */; };
 		58C185D0190E1F7F004024F6 /* vb1.acv in Resources */ = {isa = PBXBuildFile; fileRef = 58C185CD190E1F7F004024F6 /* vb1.acv */; };
 		58C185D1190E1F7F004024F6 /* VnEffectVintageBaby.m in Sources */ = {isa = PBXBuildFile; fileRef = 58C185CF190E1F7F004024F6 /* VnEffectVintageBaby.m */; };
+		58EFFA3D190EB94F00F72AE9 /* UIImagePickerController+extend.m in Sources */ = {isa = PBXBuildFile; fileRef = 58EFFA3C190EB94F00F72AE9 /* UIImagePickerController+extend.m */; };
 		58F17A5E19020A530038DF34 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 58F17A6019020A530038DF34 /* Localizable.strings */; };
 		58F17A6619020B380038DF34 /* VnCurrentImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F17A6519020B380038DF34 /* VnCurrentImage.m */; };
 		58F17A7319020BEC0038DF34 /* UIScreen+extend.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F17A6B19020BEC0038DF34 /* UIScreen+extend.m */; };
@@ -94,7 +95,6 @@
 		58F31529190E7461005895A0 /* Bg-Landscape@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 58F31527190E7461005895A0 /* Bg-Landscape@2x.png */; };
 		58F3152C190E746D005895A0 /* Default-Landscape.png in Resources */ = {isa = PBXBuildFile; fileRef = 58F3152A190E746D005895A0 /* Default-Landscape.png */; };
 		58F3152D190E746D005895A0 /* Default-Landscape@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 58F3152B190E746D005895A0 /* Default-Landscape@2x.png */; };
-		58F31530190E7DE7005895A0 /* VnImagePickerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F3152F190E7DE7005895A0 /* VnImagePickerController.m */; };
 		58F31533190E7FDF005895A0 /* UIViewController+extend.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F31532190E7FDF005895A0 /* UIViewController+extend.m */; };
 		58F31536190EA209005895A0 /* VnViewLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F31535190EA209005895A0 /* VnViewLabel.m */; };
 		58F3153C190EA668005895A0 /* Aller_Bd.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 58F31539190EA668005895A0 /* Aller_Bd.ttf */; };
@@ -346,6 +346,8 @@
 		58C185CD190E1F7F004024F6 /* vb1.acv */ = {isa = PBXFileReference; lastKnownFileType = file; path = vb1.acv; sourceTree = "<group>"; };
 		58C185CE190E1F7F004024F6 /* VnEffectVintageBaby.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VnEffectVintageBaby.h; sourceTree = "<group>"; };
 		58C185CF190E1F7F004024F6 /* VnEffectVintageBaby.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VnEffectVintageBaby.m; sourceTree = "<group>"; };
+		58EFFA3B190EB94F00F72AE9 /* UIImagePickerController+extend.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImagePickerController+extend.h"; sourceTree = "<group>"; };
+		58EFFA3C190EB94F00F72AE9 /* UIImagePickerController+extend.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImagePickerController+extend.m"; sourceTree = "<group>"; };
 		58F17A5919020A120038DF34 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Main.strings; sourceTree = "<group>"; };
 		58F17A5A19020A120038DF34 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		58F17A5B19020A120038DF34 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -367,8 +369,6 @@
 		58F31527190E7461005895A0 /* Bg-Landscape@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Bg-Landscape@2x.png"; sourceTree = "<group>"; };
 		58F3152A190E746D005895A0 /* Default-Landscape.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Landscape.png"; sourceTree = "<group>"; };
 		58F3152B190E746D005895A0 /* Default-Landscape@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Landscape@2x.png"; sourceTree = "<group>"; };
-		58F3152E190E7DE7005895A0 /* VnImagePickerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VnImagePickerController.h; sourceTree = "<group>"; };
-		58F3152F190E7DE7005895A0 /* VnImagePickerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VnImagePickerController.m; sourceTree = "<group>"; };
 		58F31531190E7FDF005895A0 /* UIViewController+extend.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+extend.h"; sourceTree = "<group>"; };
 		58F31532190E7FDF005895A0 /* UIViewController+extend.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+extend.m"; sourceTree = "<group>"; };
 		58F31534190EA209005895A0 /* VnViewLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VnViewLabel.h; sourceTree = "<group>"; };
@@ -860,6 +860,8 @@
 				58F17A7119020BEC0038DF34 /* UIImage+extend.m */,
 				58F31531190E7FDF005895A0 /* UIViewController+extend.h */,
 				58F31532190E7FDF005895A0 /* UIViewController+extend.m */,
+				58EFFA3B190EB94F00F72AE9 /* UIImagePickerController+extend.h */,
+				58EFFA3C190EB94F00F72AE9 /* UIImagePickerController+extend.m */,
 			);
 			name = Categories;
 			sourceTree = "<group>";
@@ -1268,8 +1270,6 @@
 				58FA3A4B1902C5270070B4B8 /* VnViewControllerExport.m */,
 				58FA3A4D1902C5670070B4B8 /* VnViewControllerTiltShift.h */,
 				58FA3A4E1902C5670070B4B8 /* VnViewControllerTiltShift.m */,
-				58F3152E190E7DE7005895A0 /* VnImagePickerController.h */,
-				58F3152F190E7DE7005895A0 /* VnImagePickerController.m */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -1606,7 +1606,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				58325DB3190279B2000A3D0E /* VnBlendingExclusion.m in Sources */,
-				58F31530190E7DE7005895A0 /* VnImagePickerController.m in Sources */,
 				58325DA71902774A000A3D0E /* VnBlendingDifference.m in Sources */,
 				581880AE190E028E00A90032 /* VnEffectSummers.m in Sources */,
 				58FA3A421902B78A0070B4B8 /* VnBlendingLinearLight.m in Sources */,
@@ -1687,6 +1686,7 @@
 				5818809A190DF84D00A90032 /* VnEffectOldTone.m in Sources */,
 				58F79C6218FFAE6000C0D2E1 /* VnViewControllerHome.m in Sources */,
 				58325D9E190272F9000A3D0E /* VnBlendingVividLight.m in Sources */,
+				58EFFA3D190EB94F00F72AE9 /* UIImagePickerController+extend.m in Sources */,
 				581880BA190E10E400A90032 /* VnEffectVampire.m in Sources */,
 				58F31533190E7FDF005895A0 /* UIViewController+extend.m in Sources */,
 				58FD07051902405C0005E74E /* VnProcessor.m in Sources */,

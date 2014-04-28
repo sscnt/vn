@@ -1,18 +1,14 @@
 //
-//  VnImagePickerController.m
+//  UIImagePickerController+extend.m
 //  Vintage 2.0
 //
-//  Created by SSC on 2014/04/28.
+//  Created by SSC on 2014/04/29.
 //  Copyright (c) 2014年 SSC. All rights reserved.
 //
 
-#import "VnImagePickerController.h"
+#import "UIImagePickerController+extend.h"
 
-@interface VnImagePickerController ()
-
-@end
-
-@implementation VnImagePickerController
+@implementation UIImagePickerController (extend)
 
 - (BOOL)shouldAutorotate {
     return YES;
@@ -24,6 +20,5 @@
     }
     return UIInterfaceOrientationMaskPortrait;
 }
-
 
 @end

@@ -10,34 +10,18 @@
 
 @implementation VnViewControllerEditor
 
-- (id)init
-{
-    self = [super init];
-    if (self) {
-        _appeared = NO;
-    }
-    return self;
-}
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-}
-
-- (void)viewDidAppear:(BOOL)animated
-{
-    if (_appeared == NO) {
-        VnEditorViewManager* vm = [VnEditorViewManager instance];
-        vm.view = self.view;
-        vm.delegate = self;
-        [vm commonInit];
-        [vm layout];
-        
-        VnProcessingQueueManager* qm = [VnProcessingQueueManager instance];
-        [qm commonInit];
-        qm.delegate = self;
-    }
-    _appeared = YES;
+    VnEditorViewManager* vm = [VnEditorViewManager instance];
+    vm.view = self.view;
+    vm.delegate = self;
+    [vm commonInit];
+    [vm layout];
+    
+    VnProcessingQueueManager* qm = [VnProcessingQueueManager instance];
+    [qm commonInit];
+    qm.delegate = self;
 }
 
 - (void)didFinishResizing
@@ -65,9 +49,7 @@
 {
     LOG(@"Queue did finished.");
     if (queue.type == VnObjectProcessingQueueTypePreset) {
-        if (queue.effectId != 0) {
-            [VnEditorViewManager setProcessedPresetImage:queue.image ToEffect:queue.effectId];
-        }
+        [VnEditorViewManager setProcessedPresetImage:queue.image ToEffect:queue.effectId];
     } else {
         
     }

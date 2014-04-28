@@ -11,7 +11,6 @@
 #import "VnViewHomeBg.h"
 #import "VnButtonHomeSource.h"
 #import "VnViewControllerEditor.h"
-#import "VnImagePickerController.h"
 
 @interface VnViewControllerHome : UIViewController <UINavigationControllerDelegate, UIImagePickerControllerDelegate>
 {
